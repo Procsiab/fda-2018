@@ -1,0 +1,2784 @@
+%% LyX 2.2.3 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\RequirePackage{fix-cm}
+\documentclass[12pt,italian]{amsbook}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage[a4paper]{geometry}
+\geometry{verbose,tmargin=2cm,bmargin=2.2cm,lmargin=4cm,rmargin=2cm,headheight=2cm,headsep=1cm,footskip=1cm}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{babel}
+\usepackage{array}
+\usepackage{varioref}
+\usepackage{refstyle}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{units}
+\usepackage{textcomp}
+\usepackage{mathtools}
+\usepackage{amstext}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{cancel}
+\makeindex
+\usepackage{graphicx}
+\usepackage{wasysym}
+\PassOptionsToPackage{normalem}{ulem}
+\usepackage{ulem}
+\usepackage[unicode=true,
+ bookmarks=true,bookmarksnumbered=true,bookmarksopen=true,bookmarksopenlevel=1,
+ breaklinks=false,pdfborder={0 0 0},pdfborderstyle={},backref=page,colorlinks=false]
+ {hyperref}
+\hypersetup{pdftitle={Appunti di Fondamenti di fondamenti di Automatica},
+ pdfauthor={Lorenzo Prosseda},
+ pdfsubject={Corso di fondamenti di Automatica del prof. Fagiano, Politecnico di Milano 2017-2018},
+ pdfkeywords={automatica}}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+
+\AtBeginDocument{\providecommand\defref[1]{\ref{def:#1}}}
+\AtBeginDocument{\providecommand\exaref[1]{\ref{exa:#1}}}
+\AtBeginDocument{\providecommand\chapref[1]{\ref{chap:#1}}}
+\newcommand{\noun}[1]{\textsc{#1}}
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+\RS@ifundefined{subsecref}
+  {\newref{subsec}{name = \RSsectxt}}
+  {}
+\RS@ifundefined{thmref}
+  {\def\RSthmtxt{theorem~}\newref{thm}{name = \RSthmtxt}}
+  {}
+\RS@ifundefined{lemref}
+  {\def\RSlemtxt{lemma~}\newref{lem}{name = \RSlemtxt}}
+  {}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+\numberwithin{section}{chapter}
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+\newenvironment{lyxlist}[1]
+{\begin{list}{}
+{\settowidth{\labelwidth}{#1}
+ \setlength{\leftmargin}{\labelwidth}
+ \addtolength{\leftmargin}{\labelsep}
+ \renewcommand{\makelabel}[1]{##1\hfil}}}
+{\end{list}}
+  \theoremstyle{definition}
+    \ifx\thechapter\undefined
+      \newtheorem{defn}{\protect\definitionname}
+    \else
+      \newtheorem{defn}{\protect\definitionname}[chapter]
+    \fi
+  \theoremstyle{definition}
+    \ifx\thechapter\undefined
+      \newtheorem{example}{\protect\examplename}
+    \else
+      \newtheorem{example}{\protect\examplename}[chapter]
+    \fi
+  \theoremstyle{remark}
+    \ifx\thechapter\undefined
+      \newtheorem{rem}{\protect\remarkname}
+    \else
+      \newtheorem{rem}{\protect\remarkname}[chapter]
+    \fi
+\theoremstyle{plain}
+    \ifx\thechapter\undefined
+    \newtheorem{thm}{\protect\theoremname}
+  \else
+      \newtheorem{thm}{\protect\theoremname}[chapter]
+    \fi
+  \theoremstyle{plain}
+    \ifx\thechapter\undefined
+    \newtheorem{cor}{\protect\corollaryname}
+  \else
+      \newtheorem{cor}{\protect\corollaryname}[chapter]
+    \fi
+  \theoremstyle{definition}
+    \ifx\thechapter\undefined
+      \newtheorem{xca}{\protect\exercisename}
+    \else
+      \newtheorem{xca}{\protect\exercisename}[chapter]
+    \fi
+  \theoremstyle{definition}
+    \ifx\thechapter\undefined
+      \newtheorem{sol}{\protect\solutionname}
+    \else
+      \newtheorem{sol}{\protect\solutionname}[chapter]
+    \fi
+
+\@ifundefined{date}{}{\date{}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\reversemarginpar
+\usepackage{pgfplots}
+\usepackage{caption}
+\captionsetup{font=scriptsize,labelfont=scriptsize}
+\usepackage{geometry}
+\usepackage{marginnote}
+\usepackage{imakeidx}
+\usepackage{amsmath}
+
+\renewcommand{\marginpar}[1]{\marginnote{\footnotesize #1}}
+\setlength\marginparsep{0.3cm}
+\setlength\marginparwidth{3cm}
+\newcommand\xqed[1]{%
+  \leavevmode\unskip\penalty9999 \hbox{}\nobreak\hfill
+  \quad\hbox{#1}}
+\newcommand\demo{\xqed{$\square$}}
+\newcommand\sln[1]{\xqed{$\scriptstyle Sol.\,#1$}}
+\makeindex
+
+\makeatother
+
+  \providecommand{\definitionname}{Definizione}
+  \providecommand{\examplename}{Esempio}
+  \providecommand{\exercisename}{Esercizio}
+  \providecommand{\remarkname}{Osservazione}
+\providecommand{\corollaryname}{Corollario}
+\providecommand{\solutionname}{Soluzione}
+\providecommand{\theoremname}{Teorema}
+
+\begin{document}
+
+\title{Appunti di Fondamenti di Automatica}
+
+\author{Lorenzo Prosseda, a.a. 2017-2018}
+
+\maketitle
+\tableofcontents{}
+
+\global\long\def\lm#1#2#3{\underset{{\scriptstyle #1\rightarrow#2}}{\lim}#3}
+
+\global\long\def\serie#1#2#3{\overset{{\scriptstyle #2}}{\underset{{\scriptstyle #1}}{\sum}}#3}
+
+\global\long\def\somme#1#2#3#4{\underset{{\scriptstyle #1}}{\overset{{\scriptstyle #2}}{\int}}#3d#4}
+
+\chapter{Sistemi LTI a tempo continuo}
+
+\section{Modello matematico}
+
+\subsection{Problemi di controllo}
+
+Un \emph{problema di controllo} consiste nell'imporre un \emph{funzionamento
+desiderato} a un \emph{processo} assegnato: il processo è dunque l'oggetto
+del problema di controllo; il funzionamento desiderato è una funzione
+che mette in relazione le \emph{variabili controllat}e coi loro \emph{segnali
+di riferimento} (il loro valore desiderato).
+
+Si vuole ottenere una evoluzione del sistema nel tempo per cui le
+variabili controllate abbiano un valore quanto più possibile vicino
+al segnale di riferimento.
+
+Di un processo bisogna valutare, oltre all'andamento delle variabili
+controllate, anche due fonti di errore:
+\begin{lyxlist}{00.00.0000}
+\item [{Incertezza:}] I valori delle variabili controllate non possono
+essere misurati senza \emph{incertezza}; inoltre nel processo possono
+intervenire variabili non controllate dall'esterno, chiamate \emph{disturbi}.
+\item [{Tempo:}] Le variabili di un problema di controllo sono funzioni
+del tempo ed esso può essere \emph{continuo} o \emph{discreto}; inoltre
+un componente del sistema potrebbe variare le proprie caratteristiche
+nel tempo (\emph{non stazionario}).
+\end{lyxlist}
+Un processo è costituito in generale dai seguenti elementi:
+\begin{itemize}
+\item \noun{Uscita}: chiamata in generale $y\left(t\right)\in\mathbb{R}^{{\scriptscriptstyle p}}$,
+è la variabile che viene misurata e vogliamo controllare; l'apice
+$p$ indica la cardinalità dell'uscita (numero di uscite, sono trattate
+come un vettore) ed essa è chiamata anche variabile controllata.
+\item \noun{Trasduttore}: misura le variabili fisiche dell'uscita, restituendo
+in retroazione una misura dell'uscita o dei disturbi del processo;
+esso sarà soggetto a un errore di misura.
+\item \noun{Controllore}: sistema che, interagendo col processo, ne controlla
+le variabili tramite un attuatore; prende in ingresso i valori di
+misura dei trasduttori e l'andamento desiderato del processo (chiamato
+\emph{variabile di riferimento} $w\left(t\right)$).
+\item \marginpar{{\footnotesize{}Nel corso vedremo spesso l'attuatore ``inglobato''
+nel controllore}}\noun{Attuatore}: sistema che influenza il processo agendo sulla \emph{variabile
+manipolabile} $u\left(t\right)\in\mathbb{R}^{{\scriptscriptstyle m}}$
+anche detta ingresso del processo; l'apice $m$ indica la cardinalità
+degli ingressi (come per l'uscita).
+\item \noun{Disturbo}: variabili che non possono essere controllate ma possono
+essere ``viste'' dal controllore in tempo reale tramite un trasduttore
+dedicato; si indicano con $d\left(t\right)\in\mathbb{R}^{{\scriptscriptstyle m_{d}}}$
+dove l'apice $m_{d}$ indica la cardinalità dei disturbi (come per
+ingressi e uscite).
+\end{itemize}
+\begin{center}
+\begin{minipage}[t]{1\columnwidth}%
+\begin{center}
+\includegraphics{\string"Illustrazioni/1_1-1 Anello controllo retroazione\string".pdf}
+\par\end{center}
+\begin{center}
+\captionof{figure}{Anello di controllo in retroazione}\vspace{0.1cm}
+\par\end{center}%
+\end{minipage}
+\par\end{center}
+
+Quando $m=p$ il sistema si dice quadrato ed è una minima condizione
+per ottenere il comportamento desiderato dal sistema, tuttavia non
+è detto che il numero di ingressi sia sempre pari alle uscite.
+
+In un contesto ideale sarebbe possibile calcolare (tramite un inversione
+delle sue equazioni) gli ingressi del sistema per ottenere esattamente
+le uscite desiderate; tuttavia a causa dei disturbi questo non è possibile
+nel mondo fisico.
+
+Un sistema si dice allora \emph{stabile} quando, accoppiando controllore
+e processo, l'uscita è stabile nel tempo ed è vicina al valore desiderato
+anche in presenza dei disturbi.
+
+\subsection{Processi a tempo continuo}
+
+Un processo a tempo continuo presenta una una uscita ($y\left(t\right)$)
+e due possibili ingressi: manipolabili ($u\left(t\right)$) e non
+manipolabili ($d\left(t\right)$); un modello per questo sistema è
+dato dalla Definizione \defref{modello-matematico}.
+\begin{defn}
+\label{def:modello-matematico}Un modello matematico è un insieme
+di equazioni che descrivono il comportamento del sistema e i legami
+tra ingressi e uscite.
+\end{defn}
+I sistemi sono classificati tramite caratteristiche dei modelli (delle
+equazioni) che li rappresentano:
+\begin{lyxlist}{00.00.0000}
+\item [{Statico/Dinamico:}] la presenza del solo ingresso nella funzione
+di uscita del sistema lo classifica come statico; si dirà invece dinamico
+se presenta delle variabili di stato (vedi Esempio \exaref{maglia-rc}).
+\item [{Lineare:}] tutte le equazioni del modello sono combinazioni lineari
+delle variabili di stato e degli ingressi.
+\item [{Proprio:}] l'ingresso figura nell'equazione di uscita; altrimenti,
+se l'ingresso non compare nell'equazione di uscita (la influenza indirettamente)
+il sistema si dice strettamente proprio.
+\item [{Stazionario:}] la variabile tempo non modifica esplicitamente le
+variabili del sistema (per esempio una variabile che cambia comportamento
+nel tempo, come un componente che si usura).
+\item [{SISO/MIMO:}] sistema con una sola uscita e un solo ingresso o più
+uscite e più ingressi.
+\end{lyxlist}
+\pagebreak{}
+
+A seguire due esempi riguardanti un sistema statico e uno dinamico:
+\begin{example}
+\label{exa:resistore}\marginpar{{\footnotesize{}Per sistemi a }\emph{\footnotesize{}tempo continuo}{\footnotesize{},
+trattati in questo capitolo, la variabile tempo è sempre reale ($t\in\mathbb{R}$),
+ovvero tra due istanti di tempo ne esiste sempre un'altro}}Sia dato un resistore di valore $R$ di resistenza, ai cui capi è
+applicata una tensione $v\left(t\right)$ dove $t\in\mathbb{R}$;
+nel resistore scorrerà una corrente $i\left(t\right)$ dipendente
+dalla tensione applicata. Il modello del processo è il seguente:
+\[
+i\left(t\right)=\dfrac{v\left(t\right)}{R}
+\]
+Dalla precedente equazione si deduce che, scegliendo di voler misurare
+la corrente nel resistore, l'uscita sarà $y\left(t\right)=i\left(t\right)$
+mentre l'ingresso sarà $u\left(t\right)=v\left(t\right)$; inoltre
+notando che una perturbazione dell'ingresso si ripercuote istantaneamente
+sull'uscita ($y\left(t\right)$ dipende direttamente da $u\left(t\right)$)
+si può classificare il sistema come statico.
+
+Il sistema ha un solo ingresso e una sola uscita, quindi è quadrato
+e SISO (single input, single output).\demo
+\end{example}
+%
+\begin{example}
+\label{exa:maglia-rc}Sia data una serie costituita da un resistore
+di valore $R$ di resistenza e un condensatore di capacità $C$; ai
+capi del circuito è applicata una tensione $v\left(t\right)$, che
+causa una tensione $v_{\text{c}}\left(t\right)$ ai capi del condensatore
+e una corrente $i\left(t\right)$ nella serie. Sia $v_{\text{c}}\left(t\right)$
+la variabile da misurare.
+
+Adottando l'equilibrio delle tensioni possiamo scrivere che la somma
+delle tensioni su resistore e condensatore è pari alla tensione forzata
+sulla serie:
+\[
+R\cdot i\left(t\right)+v_{\text{c}}\left(t\right)=v\left(t\right)
+\]
+Nel caso del condensatore, la tensione ai suoi capi è proporzionale
+alla carica sulle sue armature e alla capacità come $v_{\text{c}}\left(t\right)=q\left(t\right)/C$,
+da cui si ottiene derivando
+\[
+\dot{v}_{\text{c}}\left(t\right)=\dfrac{1}{C}\cdot\overset{{\scriptscriptstyle \text{corrente}}}{\overbrace{\dfrac{\partial q\left(t\right)}{\partial t}}}=\dfrac{i\left(t\right)}{C}
+\]
+La corrente nella serie sarà la stessa per il condensatore e il resistore,
+e può essere ricavata dalla legge di Ohm come tensione sul resistore
+($v\left(t\right)-v_{\text{c}}\left(t\right)$) divisa la sua resistenza
+\[
+i\left(t\right)=-\dfrac{1}{R}v_{\text{c}}\left(t\right)+\dfrac{1}{R}v\left(t\right)
+\]
+Sostituendo $i\left(t\right)$ nell'espressione di $\dot{v}_{\text{c}}\left(t\right)$
+si ottiene la seguente
+\[
+\dot{v}_{\text{c}}\left(t\right)=-\dfrac{1}{RC}v_{\text{c}}\left(t\right)+\dfrac{1}{RC}v\left(t\right)
+\]
+Scegliendo di voler misurare la tensione ai capi del condensatore
+si ha che $y\left(t\right)=v_{\text{c}}\left(t\right)$, l'ingresso
+sarà la tensione forzata sulla serie $u\left(t\right)=v\left(t\right)$.
+Rispetto all'Esempio \exaref{resistore}, pur conoscendo la tensione
+$v\left(t\right)$ ai capi della serie non è possibile ottenere la
+tensione $v_{\text{c}}\left(t\right)$ ai capi della capacità (sarebbe
+necessario integrare l'equazione differenziale $\dot{v}_{\text{c}}\left(t\right)$,
+in cui compaiono delle costanti che rappresentano le \emph{condizioni
+iniziali} del sistema, ignote nel contesto di questo esercizio). La
+presenza di una grandezza simile in uscita classifica questo sistema
+come dinamico.\demo
+\end{example}
+\begin{defn}
+Si chiamano \emph{variabili di stato} quelle la cui conoscenza all'istante
+iniziale è necessaria per determinare l'andamento del sistema a seguito
+di un ingresso; esse sono indicate come $x\left(t\right)\in\mathbb{R}^{{\scriptscriptstyle n}}$
+con apice $n$ la cardinalità del sistema.
+
+Per $n>0$ il sistema si dice dinamico, altrimenti statico.
+\end{defn}
+Le variabili di stato in pratica indeboliscono il legame tra ingresso
+e uscita; il loro numero determina l'\emph{ordine} del sistema (quello
+dell'Esercizio \exaref{maglia-rc} è del primo ordine); i sistemi
+fisici in generale hanno infinite variabili di stato.
+
+Una formulazione generale per le equazioni del modello matematico
+per processi a tempo continuo è la seguente:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Equazioni di un processo a tempo continuo}{\footnotesize{}\index{Processo a tempo continuo, modello@{\footnotesize{}Processo a tempo continuo, modello}}}}
+\begin{equation}
+\begin{array}{ll}
+\dot{x}\left(t\right)=f\left(x\left(t\right),u\left(t\right),t\right) & \text{Equazione di stato}\\
+y\left(t\right)=g\left(x\left(t\right),u\left(t\right),t\right) & \text{Equazione di uscita}
+\end{array}\label{eq:Equazioni-processo-tempo-continuo}
+\end{equation}
+Tornando ai precedenti esempi, i sistemi che descrivono possono essere
+classificati nel modo seguente:
+
+\begin{table}[H]
+\begin{centering}
+\begin{tabular}{>{\centering}p{0.18\textwidth}>{\centering}m{0.22\textwidth}>{\centering}m{0.58\textwidth}}
+ & Esempio \ref{exa:resistore} & Esempio \ref{exa:maglia-rc}\tabularnewline
+Equazioni di stato & $\overset{\begin{cases}
+y\left(t\right)=\dfrac{1}{R}u\left(t\right)\end{cases}}{{\scriptstyle \text{per }v\left(t\right)=u\left(t\right)}}$ & \bigskip
+
+$\begin{cases}
+y\left(t\right)=x\left(t\right) & {\scriptstyle \text{per }v_{\text{c}}\left(t\right)=x\left(t\right)}\\
+\dot{x}\left(t\right)=-\dfrac{1}{RC}x\left(t\right)+\dfrac{1}{RC}u\left(t\right) & {\scriptstyle \text{per }v\left(t\right)=u\left(t\right)}
+\end{cases}$
+
+\bigskip\tabularnewline
+Caratteristiche & Proprio, statico, stazionario, lineare & \bigskip
+
+Strettamente proprio, dinamico del I ordine, stazionario, lineare\tabularnewline
+\end{tabular}
+\par\end{centering}
+\bigskip
+
+\caption{Classificazione di due sistemi, esempi \ref{exa:resistore} e \ref{exa:maglia-rc}}
+\end{table}
+
+Nel prossimo esempio si effettuerà una classificazione completa del
+sistema meccanico di un ammortizzatore MacPherson:
+\begin{example}
+Sia dato un ammortizzatore inserito in una molla: possiamo considerare
+il sistema (sospensione) come una massa sospesa $m$ (il veicolo)
+collegata a una molla di coefficiente $k$ (in cui è inclusa anche
+la rigidità dello pneumatico) e un ammortizzatore con coefficiente
+di attrito viscoso $\beta$. La sospensione in questione è attiva,
+ovvero è possibile applicare in modo controllato una forza $\vec{F}\left(t\right)$
+alla massa $m$ (vedi Figura \ref{fig:Esempio-sospensione}).
+
+\begin{table}[H]
+\begin{tabular}{>{\centering}m{0.26\textwidth}>{\centering}m{0.37\textwidth}>{\centering}m{0.37\textwidth}}
+\includegraphics[scale=2]{\string"Illustrazioni/1_2-1 Esempio sospensione MacPherson\string".pdf}
+
+\captionof{figure}{}\label{fig:Esempio-sospensione} & \includegraphics[scale=0.8]{\string"Illustrazioni/1_2-2 Andamento attrito viscoso\string".pdf}
+
+\captionof{figure}{}\label{fig:Andamento-attrito-viscoso} & \includegraphics[scale=0.8]{\string"Illustrazioni/1_2-3 Andamento costante elastica\string".pdf}
+
+\captionof{figure}{}\label{fig:Andamento-costante-elastica}\tabularnewline
+\end{tabular}
+\end{table}
+
+In condizioni statiche la posizione della massa rispetto al suolo
+è data da $p_{k}$ (posizione di riposo della molla); la variabile
+$\overline{p}_{m}=p_{m}\left(t\right)-p_{k}$ è la posizione della
+massa rispetto alla posizione di riposo $p_{k}$.
+
+L'ammortizzatore è dotato di fondo corsa, un limite meccanico all'estensione
+della molla: il coefficiente $\beta$ di attrito viscoso dipenderà
+allora dalla posizione $\overline{p}_{m}$ della massa (che è anche
+l'elongazione della molla); possiamo scrivere
+\[
+\beta\left(\overline{p}_{m}\right):\begin{cases}
+\beta_{0} & \text{se }\overline{p}_{m}\in\left[-p_{m},p_{m}\right]\\
+\dfrac{\beta_{0}\varepsilon}{\varepsilon-\left|\overline{p}_{m}\right|+\left|p_{k}\right|} & \text{se }\overline{p}_{m}\in\left(-p_{m}-\varepsilon,-p_{m}\right)\cup\left(p_{m},p_{m}+\varepsilon\right)
+\end{cases}
+\]
+dove i valori di fondo corsa sono indicati da $\varepsilon$, e $\beta_{0}$
+è il valore di attrito viscoso in condizioni statiche: l'espressione
+ha un coefficiente di attrito viscoso prossimo a $\beta_{0}$ finché
+non si raggiunge uno dei due asintoti verticali ($-p_{m}-\varepsilon$
+e $p_{m}+\varepsilon$) dove $\beta$ tende a diventare infinitamente
+grande (vedi Figura \ref{fig:Andamento-attrito-viscoso}).
+
+Per quanto riguarda il coefficiente della molla (rigidità della sospensione)
+esso può variare nel tempo, a causa dell'usura: modellizziamo tale
+valore con l'espressione
+\[
+k\left(t\right)=k_{0}-\left(1-e^{-\lambda t}\right)\Delta k
+\]
+con $k_{0}$ il valore iniziale della molla appena costruita e $\lambda$
+un parametro costante: l'espressione decresce esponenzialmente per
+$t\rightarrow\infty$ da $k_{0}$ a $k_{0}-\Delta k$ (vedi Figura
+\ref{fig:Andamento-costante-elastica}).
+
+Il modello per questo sistema si può scrivere usando le equazioni
+di Newton, equilibrando la traslazione verticale della massa:
+\[
+\overset{{\scriptscriptstyle \text{forza della massa}}}{\overbrace{m\ddot{\overline{p}}_{m}\left(t\right)}}+\underset{{\scriptscriptstyle \text{forza dell'attrito viscoso}}}{\underbrace{\beta\left(\overline{p}_{m}\left(t\right)\right)\dot{\overline{p}}_{m}\left(t\right)}}+\overset{{\scriptscriptstyle \text{forza della molla}}}{\overbrace{k\left(t\right)\overline{p}_{m}\left(t\right)}}=\underset{{\scriptscriptstyle \text{forza sospensione}}}{\underbrace{F\left(t\right)-mg}}
+\]
+\marginpar{{\footnotesize{}Per indicare le derivate di $\overline{p}_{m}$ è
+stata usata la notazione puntata: ad ogni punto sulla variabile corrisponde
+un grado di derivazione; quindi $\ddot{\overline{p}}_{m}\left(t\right)$
+è l'accelerazione e $\dot{\overline{p}}_{m}\left(t\right)$ la velocità}}
+
+Per scrivere la precedente nella forma generale bisogna individuare
+le variabili di stato ($\overline{p}_{m}$ e $\dot{\overline{p}}_{m}$
+pari a $x_{1}$ e $x_{2}$), gli ingressi ($F\left(t\right)$ pari
+a $u\left(t\right)$) e i disturbi ($-mg$ nell'espressione della
+forza sulla sospensione, pari a $d\left(t\right)$); la precedente
+diventa
+\[
+m\dot{x}_{2}\left(t\right)+\beta\left(x_{1}\left(t\right)\right)x_{2}\left(t\right)+k\left(t\right)x_{1}\left(t\right)=u\left(t\right)-d\left(t\right)
+\]
+dove posizione ($x_{1}$) e velocità ($x_{2}$) formano il vettore
+di variabili di stato; bisogna includere nel modello l'equazione che
+mette in relazione le due variabili di stato ($\dot{x}_{1}\left(t\right)=x_{2}\left(t\right)$)
+e due funzioni di stato; se vogliamo misurare la posizione della massa
+imponiamo $x_{1}\left(t\right)$ in uscita:
+\[
+\begin{array}{l}
+f_{1}\left(x\left(t\right),u\left(t\right),t\right)=x_{2}\left(t\right)\\
+f_{2}\left(x\left(t\right),u\left(t\right),t\right)=\dfrac{-\beta\left(x_{1}\left(t\right)\right)}{m}x_{2}\left(t\right)-\dfrac{k\left(t\right)}{m}x_{1}\left(t\right)+\dfrac{u\left(t\right)}{m}-\dfrac{d\left(t\right)}{m}\\
+g\left(x\left(t\right),u\left(t\right),t\right)=x_{1}\left(t\right)
+\end{array}
+\]
+Si osserva che il sistema è dinamico del secondo ordine (2 variabili
+di stato), non è lineare (la seconda equazione di stato non è lineare),
+è tempo-variante (non stazionario, il coefficiente della molla $k\left(t\right)$
+cambia nel tempo), è SISO (ha un ingresso e una uscita), è strettamente
+proprio (l'ingresso non figura nell'equazione di uscita).\demo
+\end{example}
+Nel prossimo esempio misuriamo il moto di un autoveicolo, tramite
+i principi della dinamica\begin{wrapfigure}{o}{0.3\textwidth}%
+\begin{centering}
+\includegraphics[scale=1.6]{\string"Illustrazioni/1_2-4 Modello veicolo in movimento\string".pdf}
+\par\end{centering}
+\caption{Modello per autoveicolo in movimento}
+\end{wrapfigure}%
+\begin{example}
+Sia dato un autoveicolo in movimento tramite la forza di trazione
+del motore $F\left(t\right)$ attraverso le ruote, a cui si oppongono
+la massa $m$, la forza di inerzia $m\dot{v}\left(t\right)$ e la
+resistenza aerodinamica $\beta mv^{2}\left(t\right)$; scrivere un
+modello che abbia come ingresso la forza di trazione e come uscita
+la velocità.
+
+L'equazione del sistema sarà l'equilibrio della forza di trazione
+con quelle che vi si oppongono:
+\[
+m\dot{v}\left(t\right)+\beta mv^{2}\left(t\right)=F\left(t\right)
+\]
+Per scrivere la precedente in modo standard consideriamo che (dalla
+richiesta dell'esercizio) l'uscita vale $y\left(t\right)=v\left(t\right)$
+e l'ingresso vale $u\left(t\right)=F\left(t\right)$; inoltre è presente
+la derivata della velocità nell'equazione del sistema: si tratta di
+una variabile di stato ($x\left(t\right)=v\left(t\right)$).
+
+Dopo queste considerazioni l'equazione diventa
+\[
+\begin{array}{c}
+m\dot{x}\left(t\right)+\beta mx^{2}\left(t\right)=u\left(t\right){\scriptstyle \text{ da cui segue}}\\
+\dot{x}\left(t\right)=-\beta x^{2}\left(t\right)+\dfrac{u\left(t\right)}{m};\quad y\left(t\right)=x\left(t\right)
+\end{array}
+\]
+Si tratta di un sistema dinamico del primo ordine (una variabile di
+stato), stazionario (nessuna equazione dipende dal tempo), non lineare
+(compare un termine al quadrato nell'equazione di stato), strettamente
+proprio (non compare l'ingresso nell'equazione di uscita), SISO (un
+ingresso e una uscita).
+
+Se ora immaginiamo di voler misurare anche la posizione del veicolo,
+dobbiamo introdurre un nuovo stato coerente con quello presente che
+riguardi la grandezza spazio $p\left(t\right)$. Sapendo che $v\left(t\right)=\dot{p}\left(t\right)$
+e ponendo dunque $x_{1}\left(t\right)=p\left(t\right)$ e $x_{2}\left(t\right)=v\left(t\right)$
+si ottiene
+\[
+\left\{ \begin{array}{l}
+\dot{x}_{1}\left(t\right)=x_{2}\left(t\right)\\
+\dot{x}_{2}\left(t\right)=-\beta x_{2}^{2}\left(t\right)+\dfrac{u\left(t\right)}{m}\\
+y\left(t\right)=x_{2}\left(t\right)
+\end{array}\right.{\scriptstyle \text{(nuovo modello per il sistema)}}
+\]
+Rispetto al modello precedente è cambiato l'ordine (secondo) mentre
+le altre caratteristiche sono immutate.\demo
+\end{example}
+Nel prossimo esempio un sistema dinamico di ordine \noun{IV:}\begin{wrapfigure}{o}{0.45\textwidth}%
+\begin{centering}
+\includegraphics[scale=1.5]{\string"Illustrazioni/1_2-5 Sistema due masse sospensioni\string".pdf}
+\par\end{centering}
+\caption{Sistema di due masse con sospensioni}
+\end{wrapfigure}%
+\begin{example}
+\label{exa:Due-masse-ammortizzate}Sia dato un sistema costituito
+da due masse $m_{1}$ e $m_{2}$ ciascuna avente una propria molla
+di costante $k_{1}$ e $k_{2}$ e un proprio ammortizzatore di coefficiente
+di attrito $\beta_{1}$ e $\beta_{2}$; le due masse sono collegate
+in serie a un vincolo - rispettivamente $m_{1}$ è collegata al vincolo
+e $m_{2}$ è collegata a $m_{1}$ - e la loro posizione rispetto a
+quella di riposo è data da $p_{1}\left(t\right)$ e $p_{2}\left(t\right)$;
+si possa esercitare una forza su ciascuna massa in modo longitudinale
+rispetto al sistema (rispettivamente $F_{1}\left(t\right)$ e $F_{2}\left(t\right)$).
+Si scriva un modello per misurare la posizione nel tempo delle due
+masse.
+
+Usando l'equilibrio delle forze (per una massa alla volta) possiamo
+scrivere un'equazione tra forza d'inerzia, forza dell'ammortizzatore,
+forza elastica e forze esercitate dall'altra massa in seguito al suo
+moto relativo, tutto eguagliato alla forza sulla massa considerata\marginpar{{\footnotesize{}In questo esempio viene introdotta in modo diretto
+la notazione vettoriale per le equazioni del sistema}}
+\[
+\begin{array}{c}
+m_{1}\ddot{p}_{1}\left(t\right)+\beta_{1}\dot{p}_{1}\left(t\right)+k_{1}p_{1}\left(t\right)+\beta_{2}\left(\dot{p}_{1}\left(t\right)-\dot{p}_{2}\left(t\right)\right)+k_{2}\left(p_{1}\left(t\right)-p_{2}\left(t\right)\right)=F_{1}\left(t\right)\\
+m_{2}\ddot{p}_{2}\left(t\right)+\beta_{2}\left(\dot{p}_{2}\left(t\right)-\dot{p}_{1}\left(t\right)\right)+k_{2}\left(p_{2}\left(t\right)+p_{1}\left(t\right)\right)=F_{2}\left(t\right)
+\end{array}
+\]
+Possiamo scrivere il modello nella sua forma standard usando le seguenti
+considerazioni (sono presentate direttamente le forme matriciali):
+\[
+u\left(t\right)\,:\,\begin{bmatrix}u_{1}\left(t\right)\\
+u_{2}\left(t\right)
+\end{bmatrix}=\begin{bmatrix}F_{1}\left(t\right)\\
+F_{2}\left(t\right)
+\end{bmatrix};\qquad y\left(t\right)\,:\,\begin{bmatrix}y_{1}\left(t\right)\\
+y_{2}\left(t\right)
+\end{bmatrix}=\begin{bmatrix}p_{1}\left(t\right)\\
+p_{2}\left(t\right)
+\end{bmatrix}
+\]
+Ingressi e uscite si ricavano dalla richiesta dell'esercizio, mentre
+gli stati sono determinati dai termini differenziali: dato che sono
+due per ciascuna equazione, si avranno 4 stati; inoltre sarà necessario
+rispettare la scrittura $\dot{x}\left(t\right)=f\left(x,u,t\right)$
+per ottenere le equazioni standard del sistema:
+\[
+x\left(t\right)\,:\,\begin{bmatrix}\dot{x}_{1}\left(t\right)\\
+\dot{x}_{2}\left(t\right)\\
+\dot{x}_{3}\left(t\right)\\
+\dot{x}_{4}\left(t\right)
+\end{bmatrix}=\begin{bmatrix}p_{1}\left(t\right)\\
+\dot{p}_{1}\left(t\right)\\
+p_{2}\left(t\right)\\
+\dot{p}_{2}\left(t\right)
+\end{bmatrix}
+\]
+Ora possiamo scrivere le equazioni standard sostituendo nelle equazioni
+del sistema:
+\begin{equation}
+\begin{bmatrix}\dot{x}_{1}\left(t\right)\\
+\dot{x}_{2}\left(t\right)\\
+\dot{x}_{3}\left(t\right)\\
+\dot{x}_{4}\left(t\right)
+\end{bmatrix}=\begin{bmatrix}x_{2}\left(t\right)\\
+\nicefrac{1}{m_{1}}\left({\scriptstyle -\beta_{1}x_{2}\left(t\right)-k_{1}x_{1}\left(t\right)-\beta_{2}\left(x_{2}\left(t\right)-x_{4}\left(t\right)\right)-k_{2}\left(x_{1}\left(t\right)-x_{3}\left(t\right)\right)+u\left(t\right)}\right)\\
+x_{4}\left(t\right)\\
+\nicefrac{1}{m_{2}}\left(-\beta_{2}\left(x_{4}\left(t\right)-x_{2}\left(t\right)\right)-k_{2}\left(x_{3}\left(t\right)-x_{1}\left(t\right)\right)+u_{2}\left(t\right)\right)
+\end{bmatrix}\label{eq:Vettore-equazioni-di-stato}
+\end{equation}
+\[
+\begin{bmatrix}y_{1}\left(t\right)\\
+y_{2}\left(t\right)
+\end{bmatrix}=\begin{bmatrix}x_{1}\left(t\right)\\
+x_{3}\left(t\right)
+\end{bmatrix}
+\]
+Si tratta di un sistema dinamico del quarto ordine, lineare (le equazioni
+di stato e di uscita non hanno termini quadratici), stazionario, MIMO
+(due ingressi e due uscite), strettamente proprio (nell'equazione
+di uscita non compare l'ingresso).\demo
+\end{example}
+
+\subsection{Modello standard per processi LTI}
+
+Per i sistemi lineari stazionari (tempo-invarianti), chiamati LTI,
+la forma matriciale standard del modello è la seguente:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Modello matriciale standard per sistemi LTI}{\footnotesize{}\index{LTI, modello matriciale standard@{\footnotesize{}LTI, modello matriciale standard}}}}
+\begin{equation}
+\begin{bmatrix}\dot{x}\left(t\right)=A\cdot x\left(t\right)+B\cdot u\left(t\right)\\
+y\left(t\right)=C\cdot x\left(t\right)+D\cdot u\left(t\right)
+\end{bmatrix}\label{eq:Forma-standard-matrice-LTI}
+\end{equation}
+
+I coefficienti $A,\,B,\,C,\,D$ sono matrici di coefficienti ricavati
+dalle equazioni in forma matriciale ``canonica'': per esempio osservando
+le equazioni (\ref{eq:Vettore-equazioni-di-stato}) dell'Esempio \ref{exa:Due-masse-ammortizzate},
+si ha che le quattro matrici varranno rispettivamente:
+\[
+\begin{array}{cc}
+A=\begin{bmatrix}0 & 1 & 0 & 0\\
+\dfrac{-k_{1}-k_{2}}{m_{1}} & \dfrac{-\beta_{1}-\beta_{2}}{m_{1}} & \dfrac{+k_{2}}{m_{1}} & \dfrac{+\beta_{2}}{m_{1}}\\
+0 & 0 & 0 & 1\\
+\dfrac{k_{2}}{m_{2}} & \dfrac{\beta_{2}}{m_{2}} & \dfrac{-k_{2}}{m_{2}} & \dfrac{-\beta_{2}}{m_{2}}
+\end{bmatrix} & B=\begin{bmatrix}0 & 0\\
+\nicefrac{1}{m_{1}} & 0\\
+0 & 0\\
+0 & \nicefrac{1}{m_{2}}
+\end{bmatrix}\\
+C=\begin{bmatrix}1 & 0 & 0 & 0\\
+0 & 0 & 1 & 0
+\end{bmatrix} & D=\begin{bmatrix}0 & 0\\
+0 & 0
+\end{bmatrix}
+\end{array}
+\]
+dove la matrice $C$ ha sulle righe le uscite e sulle colonne gli
+stati (la prima uscita è pari al primo stato e la seconda pari al
+terzo stato); la matrice $D$ ha sulle righe le uscite e sulle colonne
+gli ingressi (ed essendo il sistema nell'esempio strettamente proprio,
+sarà una matrice nulla); la matrice $B$ ha sulle righe gli stati
+e sulle colonne gli ingressi; la matrice $A$ ha sulle righe e sulle
+colonne gli stati.
+
+Si noti che un sistema rimane lineare anche se tempo-variante: infatti
+se uno dei coefficienti matriciali cambia nel tempo, il modello (\ref{eq:Forma-standard-matrice-LTI})
+rimane una combinazione lineare.
+
+In generale, posto che $u\in\mathbb{R}^{m},\,x\in\mathbb{R}^{n},\,y\in\mathbb{R}^{p}$,
+i coefficienti matriciali saranno rispettivamente di dimensione:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Dimensioni dei coefficienti standard per sistemi
+LTI}{\footnotesize{}\index{LTI, dimensioni dei coefficiente standard@{\footnotesize{}LTI, dimensioni dei coefficiente standard}}}}
+\begin{equation}
+A\in\mathbb{R}^{n\times n},\,B\in\mathbb{R}^{n\times m},\,C\in\mathbb{R}^{p\times n},\,D\in\mathbb{R}^{p\times m}\label{eq:Dimensioni-coeff-matrici-standard}
+\end{equation}
+Ricapitolando, i coefficienti matriciali sono costituiti come $A=\#_{\text{stati}}\times\#_{\text{stati}},\,B=\#_{\text{stati}}\times\#_{\text{ingressi}},\,C=\#_{\text{uscite}}\times\#_{\text{stati}},\,D=\#_{\text{uscite}}\times\#_{\text{ingressi}}$
+dove $\#_{i}$ è la cardinalità della funzione $i$ al pedice nelle
+equazioni (\ref{eq:Equazioni-processo-tempo-continuo}).
+
+Un sistema particolare (della categoria LTI) che ha il modello (\ref{eq:Forma-standard-matrice-LTI})
+è il \emph{sistema a ritardo di tempo}: i ritardi sono presenti in
+ogni sistema di controllo e rappresentano dei limiti alle prestazioni
+del sistema; per modellizzare un ritardo pari a $\tau$ secondi si
+scrive l'uscita influenzata come $y\left(t\right)=u\left(t-\tau\right)$.
+
+Il sistema con questa uscita rimane lineare e ha una traslazione di
+$y\left(t\right)$ lungo l'asse del tempo; per verificare che un sistema
+sia lineare non ostante la presenta di disturbi si può studiare usando
+la \emph{sovrapposizione degli effetti}: se l'ingresso e l'uscita
+sono combinazioni lineari di due segnali allora il sistema è lineare,
+ovvero deve valere\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Sovrapposizione degli effetti per LTI}{\footnotesize{}\index{LTI, sovrapposizione degli effetti@{\footnotesize{}LTI, sovrapposizione degli effetti}}}}
+\begin{equation}
+\begin{array}{c}
+u_{{\scriptscriptstyle \text{TOT}}}\left(t\right)=\alpha_{1}u_{1}\left(t\right)+\alpha_{2}u_{2}\left(t\right)\\
+y_{{\scriptscriptstyle \text{TOT}}}\left(t\right)=\alpha_{1}u_{1}\left(t-\tau\right)+\alpha_{2}u_{2}\left(t-\tau\right)
+\end{array}\label{eq:Sovrapposizione-effetti-sistema-lineare}
+\end{equation}
+Vale che $u_{i}\left(t-\tau\right)=y_{i}\left(t\right)$ ovvero l'uscita
+è pari all'ingresso sfasato del ritardo, da cui $y_{{\scriptscriptstyle \text{TOT}}}\left(t\right)=\alpha_{1}y_{1}\left(t\right)+\alpha_{2}y_{2}\left(t\right)$.
+
+\section{Comportamento del sistema}
+
+\subsection{Movimenti ed equilibrio}
+
+Dato un sistema lineare ad un certo istante iniziale $t_{0}$ a cui
+corrisponde lo stato (condizione) iniziale $x\left(t_{0}\right)=x_{0}$
+e un segnale $u\left(t\right)$ per $t\in\left(t_{0},\,\infty\right)$,
+in generale si può dire che:
+\begin{defn}
+Il \emph{movimento} di un sistema LTI dinamico sono le funzioni $x\left(t\right)$
+e $y\left(t\right)$ (rispettivamente dello stato e dell'uscita),
+a fronte di condizioni iniziali $x\left(t_{0}\right)$ e ingresso
+$u\left(t\right)$ per $t>t_{0}$.
+\end{defn}
+I movimenti di un sistema non lineare non sono calcolabili in forma
+chiusa ed è necessario applicare metodi di calcolo numerico. Una classe
+particolare di movimenti sono gli equilibri:
+\begin{defn}
+\label{def:Equilibrio-LTI}Gli \emph{equilibri} di un sistema dinamico
+sono una classe di movimenti per cui il valore dell'ingresso, dello
+stato e dell'uscita sono costanti nel tempo; in termini di equazioni
+(\ref{eq:Equazioni-processo-tempo-continuo}) si deve avere $\dot{x}\left(t\right)=0$
+per ottenere un andamento costante.
+
+Un equilibrio è dunque una coppia di valori $\left(\overline{u},\,\overline{x}\right)$
+tali che le equazioni di stato siano tutte nulle ($f\left(\overline{u},\,\overline{x},\,t\right)=0$)
+e l'uscita di equilibrio vale $g\left(\overline{u},\,\overline{x},\,t\right)=\overline{y}$.
+\end{defn}
+Uno dei requisiti principali dei sistemi di controllo è la garanzia
+di stabilità; questo concetto è legato in modo analitico ai movimenti
+del sistema: si parla infatti di stabilità dei movimenti di un sistema
+(e non del sistema).
+\begin{defn}
+\label{def:Stabilit=0000E0}Il movimento dello stato ottenuto a partire
+da condizioni iniziali $x\left(t_{0}\right)$ e applicando l'ingresso
+$u\left(t\geq t_{0}\right)$ si dice \emph{stabile} se, comunque preso
+un $\varepsilon$ piccolo a piacere positivo esiste un $\delta$ piccolo
+a piacere positivo tale che, per tutti i valori di $\tilde{x}_{0}$
+(perturbazioni dei valori iniziali) che soddisfano $\left\Vert \tilde{x}_{0}-x_{0}\right\Vert \leq\delta$
+(condizione iniziale perturbata sufficientemente vicina a quella iniziale
+nominale) risulti $\left\Vert \tilde{x}\left(t\right)-x\left(t\right)\right\Vert \leq\varepsilon$,
+dove $\tilde{x}\left(t\right)$ è il movimento generato dal sistema
+con condizione iniziale $\tilde{x}_{0}$ (valga $\tilde{x}\left(t_{0}\right)=\tilde{x}_{0}$)
+e lo stesso ingresso, con $t>t_{0}$.
+
+Scrivendo la formula logica si ha che la definizione equivale a\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Stabilità di un sistema LTI}{\footnotesize{}\index{LTI, stabilità@{\footnotesize{}LTI, stabilità}}}}
+\begin{equation}
+\forall\varepsilon>0\,\exists\delta>0\left(\forall\tilde{x}_{0}\left(\left\Vert \tilde{x}_{0}-x_{0}\right\Vert \leq\delta\right)\Rightarrow\forall t>t_{0}\left(\left\Vert \tilde{x}\left(t\right)-x\left(t\right)\right\Vert \leq\varepsilon\right)\right)\label{eq:Stabilit=0000E0-sistema-LTI}
+\end{equation}
+\end{defn}
+La definizione afferma che per ogni $t>t_{0}$ il segnale perturbato
+$x\left(t\right)$ rimane confinato intorno al movimento nominale
+per una $\tilde{x}_{0}$ entro un intorno della condizione iniziale
+nominale.
+
+Dalla Definizione \ref{def:Stabilit=0000E0} segue la
+\begin{defn}
+Un movimento si dice \emph{instabile} se non vale la (\ref{eq:Stabilit=0000E0-sistema-LTI}).
+\end{defn}
+Se anche in presenza di una perturbazione si osserva una convergenza
+del movimento a quello nominale si parla di
+\begin{defn}
+\label{def:Stabilit=0000E0-asintotica}Un movimento si dice \emph{asintoticamente
+stabile} se soddisfa la Definizione \ref{def:Stabilit=0000E0} e vale
+\[
+\lm t{\infty}{\left\Vert \tilde{x}\left(t\right)-x\left(t\right)\right\Vert =0}
+\]
+ovvero la perturbazione si smorza nel tempo.
+\end{defn}
+Nei capitoli successivi si vedrà che nel caso di sistemi lineari dinamici
+tempo-invarianti la stabilità è una proprietà strutturale, ovvero
+se il sistema ha un movimento stabile allora tutti i suoi movimenti
+sono stabili (quindi per i sistemi LTI si può anche parlare di stabilità
+del sistema).
+
+Il prossimo esempio presenta il concetto di equilibrio dei movimenti
+e di sovrapposizione degli effetti in modo analitico:
+\begin{example}
+Sia dato un circuito costituito da una serie di un resistore di resistenza
+$R$ e un condensatore di capacità $C$; è possibile forzare una tensione
+$v\left(t\right)$ ai capi della serie e si vuole misurare la tensione
+$v_{c}\left(t\right)$ ai capi del condensatore. Studiare la condizione
+di equilibrio e i movimenti del sistema.
+
+In analogia con l'Esempio \ref{exa:maglia-rc}, il modello per questo
+sistema, posto $v_{c}\left(t\right)=x\left(t\right)$, è $\dot{x}\left(t\right)=-\nicefrac{1}{RC}\cdot x\left(t\right)+\nicefrac{1}{RC}\cdot u\left(t\right);\;y\left(t\right)=x\left(t\right)$.
+Applichiamo al circuito una tensione costante $u\left(t\right)=\overline{u}$
+e controlliamo se si presenta un movimento di equilibrio: dalla Definizione
+\ref{def:Equilibrio-LTI} segue che dobbiamo cercare $\overline{x}$
+tale che $-\nicefrac{1}{RC}\cdot\overline{x}+\nicefrac{1}{RC}\cdot\overline{u}=0$;
+questo si verifica per $\overline{x}=\overline{u}$. Tutte le coppie
+$\left(\overline{x},\,\overline{u}\right)$ tali che $\overline{x}=\overline{u}$
+sono equilibri.
+
+Per capire di che tipo di equilibrio si tratti (stabile, instabile,
+asintoticamente stabile) si usa di nuovo la Definizione \ref{def:Equilibrio-LTI},
+assumendo che prendendo un movimento di equilibrio la condizione iniziale
+sia l'equilibrio stesso: partiamo dunque da $\overline{x}=x\left(t_{0}\right)$
+e applichiamo il segnale costante $\overline{u}=u\left(t>t_{0}\right)$
+(pari al valore di equilibrio); siccome il sistema è tempo-invariante
+possiamo considerare il tempo iniziale $t_{0}=0$.
+
+Studiamo in queste condizioni il comportamento di un movimento del
+sistema a fronte di una perturbazione: ponendo $\tilde{x}\left(t_{0}\right)=\overline{x}+\delta$
+scriviamo l'equazione del movimento quando $u\left(t\right)=\overline{u}$
+come
+\[
+\tilde{x}\left(t\right)=\tilde{x}_{0}e^{-\nicefrac{1}{RC}t}+\left(1-e^{-\nicefrac{1}{RC}t}\right)\overline{u}
+\]
+Si tratta dell'equazione analitica del movimento dello stato in forma
+chiusa; notando che compaiono degli esponenziali con esponente sempre
+minore di zero (il tempo $t$ e i valori di $R$ e $C$ sono positivi)
+possiamo affermare che la precedente tende per $t\rightarrow\infty$
+a $\overline{u}$, che è il valore del movimento nominale: il movimento
+converge a quello nominale in modo asintotico, in particolare (dalla
+Definizione \ref{def:Stabilit=0000E0})
+\[
+\left\Vert x\left(t\right)-\tilde{x}\left(t\right)\right\Vert =\left\Vert \overline{x}-\tilde{x}_{0}e^{-\nicefrac{1}{RC}t}-(1-e^{-\nicefrac{1}{RC}t})\overline{u}\right\Vert 
+\]
+\[
+\overset{{\scriptscriptstyle \overline{x}\rightarrow\overline{u}}}{=}\left\Vert \cancel{\overline{u}}-\tilde{x}_{0}e^{-\nicefrac{1}{RC}t}-\cancel{\overline{u}}+e^{-\nicefrac{1}{RC}t}\overline{u}\right\Vert =\bigl\Vert\overset{{\scriptscriptstyle \varhexstar}}{(\delta-\overline{x})}e^{-\nicefrac{1}{RC}t}+e^{-\nicefrac{1}{RC}t}\overline{u}\bigr\Vert
+\]
+\[
+\overset{{\scriptscriptstyle \overline{u}\rightarrow\overline{x}}}{=}\left\Vert \delta e^{-\nicefrac{1}{RC}t}+\left(\overline{x}-\overline{x}\right)e^{-\nicefrac{1}{RC}t}\right\Vert =\left\Vert \delta e^{-\nicefrac{1}{RC}t}\right\Vert 
+\]
+Nel passaggio $\varhexstar$ si è usata la considerazione iniziale
+per cui $\tilde{x}\left(t_{0}\right)=\overline{x}+\delta=\tilde{x}_{0}$;
+si ottiene un'esponenziale decrescente che soddisfa la Definizione
+\ref{def:Stabilit=0000E0-asintotica}, dunque per questo sistema qualsiasi
+condizione di equilibrio ha stabilità asintotica.\demo
+\end{example}
+
+\subsection{Formula di Lagrange}
+
+Vogliamo calcolare i movimenti di un sistema lineare: consideriamo
+prima l'equazione di stato (il movimento dell'uscita si ottiene facilmente
+dal movimento dello stato):
+\[
+\dot{x}\left(\tau\right)=Ax\left(\tau\right)+Bu\left(\tau\right)
+\]
+dove si assume che $x\left(\tau=t_{0}\right)$ e $u\left(\tau>t_{0}\right)$.
+Moltiplicando entrambi i membri per l'esponenziale di matrice $e^{A\left(t-\tau\right)}$
+si ottiene\marginpar{{\footnotesize{}Si ricordi che i coefficienti scritti in maiuscolo
+sono matrici, per le quali valgono specifiche proprietà (consultare
+\chapref{Richiami-di-Geometria})}}
+\[
+e^{A\left(t-\tau\right)}\dot{x}\left(\tau\right)-Ae^{A\left(t-\tau\right)}x\left(\tau\right)=e^{A\left(t-\tau\right)}Bu\left(\tau\right)
+\]
+\[
+e^{A\left(t-\tau\right)}\dot{x}\left(\tau\right)-Ae^{A\left(t-\tau\right)}x\left(\tau\right)=\dfrac{\partial\left(e^{A\left(t-\tau\right)}x\left(\tau\right)\right)}{\partial\tau}
+\]
+La seconda uguaglianza mette in risalto che al primo membro è presente
+una derivata di un prodotto: sostituendo una delle due precedenti
+equazioni nell'altra e integrando entrambi i membri scriviamo
+\[
+\somme{t_{0}}t{\dfrac{d}{d\tau}e^{A\left(t-\tau\right)}x\left(\tau\right)}{\tau}=\somme{t_{0}}t{e^{A\left(t-\tau\right)}Bu\left(\tau\right)}{\tau}
+\]
+Il primo membro può essere ricavato direttamente come $\left[e^{A\left(t-\tau\right)}x\left(\tau\right)\right]_{t_{0}}^{t}=x\left(t\right)-e^{A\left(t-t_{0}\right)}x\left(t_{0}\right)$;
+il secondo membro non può essere manipolato nella sua forma generale:
+la scrittura risultante è la formula di Lagrange:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Formula di Lagrange}{\footnotesize{}\index{Lagrange, Formula di@{\footnotesize{}Lagrange, Formula di}}}}[0.5cm]
+\begin{equation}
+x\left(t\right)=e^{A\left(t-t_{0}\right)}x\left(t_{0}\right)+\somme{t_{0}}t{e^{A\left(t-\tau\right)}Bu\left(\tau\right)}{\tau}\label{eq:Formula-di-Lagrange}
+\end{equation}
+La (\ref{eq:Formula-di-Lagrange}) è un integrale di convoluzione
+che permette di ottenere l'espressione del movimento dello stato di
+un sistema LTI; essa è la somma di due contributi: un primo contributo
+chiamato \emph{movimento libero} (dipendente dalla matrice $A$ e
+dalle condizioni iniziali), e un secondo contributo chiamato \emph{movimento
+forzato} (dipendente dall'effetto dell'ingresso sul sistema).
+
+Verifichiamo ora la proprietà della sovrapposizione degli effetti
+nei sistemi LTI sui movimenti del sistema:
+\begin{rem}
+\marginpar{{\footnotesize{}D'ora in avanti si userà la sigla PSE per riferirsi
+al principio di sovrapposizione degli effetti}}Il PSE afferma che, presa una coppia di condizioni iniziali e una
+di ingressi, il movimento dello stato e dell'uscita del sistema si
+ottiene come combinazione lineare dei movimenti degli ingressi e degli
+stati; poniamo per semplicità $t_{0}=0$ e scriviamo in generale le
+coppie ingresso-stati usando la (\ref{eq:Formula-di-Lagrange}):
+\[
+\begin{cases}
+x^{\prime}\left(t\right)=e^{At}x_{0}'+\somme 0t{e^{A\left(t-\tau\right)}Bu^{\prime}\left(\tau\right)}{\tau} & \text{per }\left(x_{0}^{\prime},\,u^{\prime}\left(t\right)\right)\\
+x^{\prime\prime}\left(t\right)=e^{At}x_{0}''+\somme 0t{e^{A\left(t-\tau\right)}Bu^{\prime\prime}\left(\tau\right)}{\tau} & \text{per }\left(x_{0}^{\prime\prime},\,u^{\prime\prime}\left(t\right)\right)
+\end{cases}
+\]
+a questo punto si prende una terza coppia $\left(x_{0}^{\prime\prime\prime},\,u^{\prime\prime\prime}\left(t\right)\right)$
+come combinazione lineare dei movimenti delle due precedenti:
+\[
+\begin{array}{c}
+x_{0}^{\prime\prime\prime}=\alpha_{1}x_{0}^{\prime}+\alpha_{2}x_{0}^{\prime\prime}\\
+u^{\prime\prime\prime}\left(t\right)=\alpha_{1}u^{\prime}\left(t\right)+\alpha_{2}u^{\prime\prime}\left(t\right)
+\end{array}
+\]
+dove i coefficienti $\alpha_{1}$ e $\alpha_{2}$ sono scalari; dalle
+due precedenti il movimento dello stato sarà (raccogliendo dalla (\ref{eq:Formula-di-Lagrange}))
+\[
+\boxed{x^{\prime\prime\prime}\left(t\right)=\alpha_{1}x^{\prime}\left(t\right)+\alpha_{2}x^{\prime\prime}\left(t\right)}
+\]
+\end{rem}
+La (\ref{eq:Formula-di-Lagrange}) permette anche per calcolare l'espressione
+del movimento di uscita; nel contesto di questa osservazione vale
+\[
+y\left(t\right)=Ce^{At}x_{0}+C\somme 0t{e^{A\left(t-\tau\right)}Bu\left(\tau\right)}{\tau}+Du\left(t\right)
+\]
+Possiamo dunque calcolare i movimenti dell'uscita rispetto ai movimenti
+dello stato applicando la precedente e raccogliendo come per il movimento
+dello stato:
+\[
+\boxed{y^{\prime\prime\prime}\left(t\right)=\alpha_{1}y^{\prime}\left(t\right)+\alpha_{2}y^{\prime\prime}\left(t\right)}
+\]
+
+\subsection{Movimento libero e forzato}
+
+Prendiamo un sistema di ordine uno con $a$ e $b$ scalari: avremo
+il movimento dello stato $\dot{x}\left(t\right)=ax\left(t\right)+bu\left(t\right)$;
+consideriamo il movimento libero ponendo $u\left(t\right)=0$ e supponiamo
+nota la condizione iniziale $x\left(t_{0}\right)=x_{0}$, applicando
+la (\ref{eq:Formula-di-Lagrange}) scriveremo\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Movimento libero}{\footnotesize{}\index{Movimento libero@{\footnotesize{}Movimento libero}}}}
+\begin{equation}
+x\left(t\right)=e^{at}x_{0}\label{eq:Movimento-libero}
+\end{equation}
+che è la componente del movimento libero. Questa funzione dipende
+dal valore di $a$ nel seguente modo
+\begin{itemize}
+\item per $a>0$ si ha un andamento esponenziale crescente;
+\item per $a<0$ si ha un andamento esponenziale decrescente;
+\item per $a=0$ si ha un andamento costante.
+\end{itemize}
+Considerando il caso $a=0$, ci chiediamo quanto velocemente il movimento
+libero converga a zero, ovvero quando $x\left(t\right)=\varepsilon x_{0}$
+con $\varepsilon\in\left(0,1\right)$ molto piccolo.
+
+Sostituendo si ha $e^{at_{\varepsilon}}x_{0}=x_{0}\varepsilon\rightarrow e^{at_{\varepsilon}}=\varepsilon\rightarrow t\varepsilon=\dfrac{1}{\left|a\right|}\left|\ln\left(\varepsilon\right)\right|$
+e ponendo $T=\dfrac{1}{\left|a\right|}$ (chiamata \emph{costante
+di tempo}) scriviamo infine
+\[
+t_{\varepsilon}=T\left|\ln\left(\varepsilon\right)\right|
+\]
+Il valore $T$ ci dice quanto velocemente il movimento libero (per
+moto \uline{convergente}) converge. Per esempio per $\varepsilon=5\%$
+vale $t_{\varepsilon}\simeq3T$.
+
+\marginpar{Nell'automatica si utilizzano gli \emph{ingressi canonici} di un sistema,
+segnali interessanti dal punto di vista delle prestazioni del sistema
+e del calcolo del suo comportamento; useremo nel seguito lo scalino
+($\text{sca}\left(t\right)$)}Analizziamo adesso il movimento forzato, ponendo l'ingresso al valore
+$u\left(t\right)=\overline{u}\cdot\text{sca}\left(t\right)$ dove
+l'ingresso canonico $\text{sca}\left(t\right):\begin{cases}
+1 & \text{per }t\geq0\\
+0 & \text{per }t<0
+\end{cases}$ viene moltiplicato per il valore costante $\overline{u}$. Annulliamo
+le altre condizioni iniziali per studiare solo la parte forzata, ponendo
+$t_{0}=0,\,\overline{u}>0,\,x_{0}=0$. Sono ammissibili due procedimenti:
+\begin{enumerate}
+\item \textsc{Formula di Lagrange}:\smallskip{}
+\\
+Dall'integrale di convoluzione al secondo addendo di (\ref{eq:Formula-di-Lagrange})
+otteniamo (portando le costanti fuori dall'integrale)
+\[
+x\left(t\right)=\somme 0t{e^{a\left(t-\tau\right)}b\overline{u}\text{sca}\left(\tau\right)}{\tau}=e^{at}b\overline{u}\somme 0t{e^{-a\tau}\text{sca}\left(\tau\right)}{\tau}
+\]
+Tra gli estremi di integrazione $\text{sca}\left(\tau\right)$ vale
+$1$\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Movimento forzato}{\footnotesize{}\index{Movimento forzato@{\footnotesize{}Movimento forzato}}}}[0.65cm]
+\begin{equation}
+=e^{at}b\overline{u}\somme 0t{e^{-a\tau}}{\tau}=-\dfrac{1}{a}e^{at}b\overline{u}\left[e^{-a\tau}\right]_{\tau=0}^{\tau=t}=\boxed{-\dfrac{b}{a}\overline{u}\left(1-e^{at}\right)}\label{eq:Movimento-forzato}
+\end{equation}
+Al variare dello scalare $a$ nell'esponenziale si hanno i seguenti
+andamenti (supponiamo $b\geq0$):\\
+\begin{minipage}[t]{1\columnwidth}%
+\begin{itemize}
+\item per $a>0$ si ha un andamento esponenziale crescente, tendente a $+\infty$;
+\item per $a<0$ si ha un andamento esponenziale decrescente, tendente a
+$\dfrac{b}{\left|a\right|}\overline{u}$;
+\item per $a=0$ si ha un andamento lineare, tendente a $b\overline{u}$;
+per ottenerlo bisogna fare un passo indietro rispetto alla (\ref{eq:Formula-di-Lagrange}):
+se $a$ si annulla infatti vale che $\dot{x}\left(t\right)=b\overline{u}$
+che è un segnale costante, dunque la primitiva $x\left(t\right)$
+ha andamento di una retta divergente.
+\end{itemize}
+%
+\end{minipage}\\
+\item \noun{Sovrapposizione degli effetti}:\smallskip{}
+\\
+Calcoliamo per prima cosa la condizione di equilibrio del sistema
+($\dot{x}\left(t\right)=0$) a fronte di un ingresso costante $\overline{u}$
+\begin{equation}
+\dot{x}\left(t\right)=a\overline{x}+b\overline{u}=0\rightarrow\boxed{\overline{x}=-\dfrac{b}{a}\overline{u}}\label{eq:Condizioni-iniziali-equilibrio-movimento-forzato}
+\end{equation}
+Interessiamoci al movimento forzato con ingresso a scalino e condizioni
+iniziali nulle; possiamo scomporre questo ingresso come una somma
+di contributi: condizione iniziale $\overline{x}$ e $u\left(t\right)=\text{sca}\left(t\right)$,
+e condizione iniziale $x_{0}-\overline{x}$.\\
+Per il primo contributo, essendo il sistema in equilibrio per ipotesi,
+il movimento vale $x\left(t\right)=\overline{x}$. Per il secondo
+contributo considero
+\[
+\begin{cases}
+x_{0}^{\prime}=\overline{x}, & u^{\prime}\left(t\right)=\overline{u}\cdot\text{sca}\left(t\right)\\
+x_{0}^{\prime\prime}=-\overline{x}, & u^{\prime\prime}\left(t\right)=0
+\end{cases}
+\]
+La somma di tali condizioni iniziali e ingressi fornisce il movimento
+cercato senza usare l'integrale di convoluzione:
+\[
+\begin{cases}
+x^{\prime}\left(t\right)=\overline{x} & (1)\\
+x^{\prime\prime}\left(t\right)=-e^{at}\overline{x}\overset{{\scriptscriptstyle *}}{=}\dfrac{b}{a}e^{at}\overline{u} & (2)
+\end{cases}
+\]
+dove la $\left(1\right)$ rappresenta il movimento a partire da condizioni
+iniziali di equilibrio con ingresso di equilibrio, mentre $\left(2\right)$
+con ingresso nullo e condizione iniziale $-\overline{x}$ è la risposta
+libera del sistema (nell'uguaglianza $*$ si è sostituita la (\ref{eq:Condizioni-iniziali-equilibrio-movimento-forzato})
+a $\overline{x}$).\\
+Il movimento cercato sarà la somma dei due contributi appena calcolati
+(dalla (\ref{eq:Sovrapposizione-effetti-sistema-lineare}) usiamo
+$x_{0}=x_{0}^{\prime}+x_{0}^{\prime\prime}$):
+\[
+x\left(t\right)=-\dfrac{b}{a}\overline{u}\left(1-e^{at}\right)
+\]
+Otteniamo infine lo stesso risultato dell'integrale di convoluzione.
+\end{enumerate}
+\begin{rem}
+Ricapitolando, abbiamo scelto una condizione iniziale e un ingresso
+per facilitare i calcoli: volendo studiare la condizione iniziale
+nulla $x_{0}=0$, prendiamo una prima condizione iniziale $x_{0}^{\prime}=\overline{x}$
+perché in sua presenza il movimento sarà costante pari a $\overline{x}$;
+siccome la condizione di interesse è quella nulla, prendiamo un secondo
+movimento con condizione iniziale opposta al primo ($x_{0}^{\prime\prime}-\overline{x}$)
+tale che la somma dei due si annulli. Infine abbiamo preso due ingressi
+tali che $u^{\prime}\left(t\right)+u^{\prime\prime}\left(t\right)=u\left(t\right)$.
+\end{rem}
+Proviamo nuovamente a calcolare nel caso $a<0$ il tempo che il movimento
+forzato impiega a raggiungere un valore stazionario (asintotico) di
+stato:
+\[
+x\left(t_{\varepsilon}\right)=\overline{x}\left(1-\varepsilon\right)=-\dfrac{b}{a}\overline{u}\left(1-\varepsilon\right)=-\dfrac{b}{a}\overline{u}\left(1-e^{at_{\varepsilon}}\right)
+\]
+ottenuta dalle (\ref{eq:Condizioni-iniziali-equilibrio-movimento-forzato})
+per il secondo membro e (\ref{eq:Movimento-forzato}) per il terzo.
+Dall'equazione precedente si ricava
+\[
+t_{\varepsilon}=\dfrac{1}{\left|a\right|}\left|\ln\left(\varepsilon\right)\right|
+\]
+che è la stessa condizione del (\ref{eq:Movimento-libero}); essa
+implica la presenza di una costante di tempo $T=1/\left|a\right|$
+per movimenti convergenti ($a<0$).
+
+\section{Rappresentazione equivalente}
+
+Rispetto al precedente paragrafo, dobbiamo generalizzare i conti fatti
+per ottenere i movimenti a coefficienti matriciali (soprattutto per
+quanto riguarda la matrice $A$); per affrontare questa generalizzazione
+introduciamo il seguente concetto di \emph{rappresentazione equivalente},
+in sistemi LTI.
+
+Riprendendo l'Esempio \ref{exa:Due-masse-ammortizzate}, si era scelto
+come vettore dello stato posizione e velocità delle due masse; nulla
+ci vieta di scegliere diversamente lo stato. Prendendo distanza e
+velocità relative tra le due masse otteniamo:
+\[
+x\left(t\right)=\begin{bmatrix}p_{1}\left(t\right)\\
+\dot{p}_{1}\left(t\right)\\
+p_{2}\left(t\right)\\
+\dot{p}_{2}\left(t\right)
+\end{bmatrix}\rightarrow\hat{x}\left(t\right)=\begin{bmatrix}p_{1}\left(t\right)\\
+p_{1}\left(t\right)-p_{2}\left(t\right)\\
+\dot{p}_{1}\left(t\right)\\
+\dot{p}_{1}\left(t\right)-\dot{p}_{2}\left(t\right)
+\end{bmatrix}
+\]
+Si noti che è ammissibile qualsiasi scelta che sia una combinazione
+lineare degli stati di partenza; in questo specifico caso lo stato
+equivalente può essere espresso come il prodotto di una matrice di
+trasformazione per il vettore degli stati:
+\[
+\hat{x}\left(t\right)=T\cdot x\left(t\right)\rightarrow\overset{{\scriptstyle \hat{x}\left(t\right)}}{\overbrace{\begin{bmatrix}p_{1}\left(t\right)\\
+p_{1}\left(t\right)-p_{2}\left(t\right)\\
+\dot{p}_{1}\left(t\right)\\
+\dot{p}_{1}\left(t\right)-\dot{p}_{2}\left(t\right)
+\end{bmatrix}}}=\overset{{\scriptstyle T}}{\overbrace{\begin{bmatrix}1 & 0 & 0 & 0\\
+1 & 0 & -1 & 0\\
+0 & 1 & 0 & 0\\
+0 & 1 & 0 & -1
+\end{bmatrix}}}\cdot\overset{{\scriptstyle x\left(t\right)}}{\overbrace{\begin{bmatrix}p_{1}\left(t\right)\\
+\dot{p}_{1}\left(t\right)\\
+p_{2}\left(t\right)\\
+\dot{p}_{2}\left(t\right)
+\end{bmatrix}}}
+\]
+Perché l'equivalenza sia valida deve verificarsi che $T$ sia una
+matrice invertibile (nel contesto di questo esempio $\det\left(T\right)=-1$
+quindi è invertibile).
+
+Ci chiediamo ora come si possano ottenere le rispettive equazioni
+della dinamica del sistema: dalla precedente, esplicitando lo stato
+e supponendo $T$ invertibile si può riscrivere che $x\left(t\right)=T^{-1}\cdot\hat{x}\left(t\right)$.
+
+Partiamo da (\ref{eq:Forma-standard-matrice-LTI}) e adottiamo le
+considerazioni appena fatte: 
+\[
+\dot{x}\left(t\right)=Ax\left(t\right)+Bu\left(t\right)\rightarrow T^{-1}\dot{\hat{x}}\left(t\right)=A\cdot T^{-1}\hat{x}\left(t\right)+Bu\left(t\right)
+\]
+\[
+\rightarrow\dot{\hat{x}}\left(t\right)=T\cdot A\cdot T^{-1}\hat{x}\left(t\right)+T\cdot Bu\left(t\right)
+\]
+
+L'equazione di uscita sarà di conseguenza
+\[
+y\left(t\right)=C\cdot x\left(t\right)+D\cdot u\left(t\right)\rightarrow y\left(t\right)=C\cdot T^{-1}\hat{x}\left(t\right)+Du\left(t\right)
+\]
+Il sistema che si ottiene è LTI della stessa forma di quello originale
+(\ref{eq:Forma-standard-matrice-LTI}) ma con i coefficienti matriciali
+(la cosiddetta rappresentazione del modello) equivalenti che ridefiniscono
+le equazioni nel modo seguente:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Modello equivalente per sistemi LTI}{\footnotesize{}\index{LTI, modello equivalente@{\footnotesize{}LTI, modello equivalente}}}}[1.25cm]
+\[
+\hat{A}=T\cdot A\cdot T^{-1},\,\hat{B}=T\cdot B,\,\hat{C}=C\cdot T^{-1},\,\hat{D}=D
+\]
+\begin{equation}
+\begin{cases}
+\dot{\hat{x}}\left(t\right)=\hat{A}\cdot\hat{x}\left(t\right)+\hat{B}\cdot u\left(t\right)\\
+y\left(t\right)=\hat{C}\cdot\hat{x}\left(t\right)+\hat{D}\cdot u\left(t\right)
+\end{cases}\label{eq:Forma-equivalente-matrice-LTI}
+\end{equation}
+\begin{rem}
+Per il PSE uno stato è combinazione lineare dello stato precedente
+e questo vale per tutti i movimenti; fissando condizione iniziale
+e ingresso si ottiene un movimento la cui rappresentazione equivalente
+è la combinazione lineare dei movimenti originali secondo la matrice
+$T$ di trasformazione.\marginpar{Nelle prossime sezioni vedremo che tutte le proprietà di un sistema
+LTI dipendono dagli autovalori di $A$, chiamati \emph{modi} del sistema.}
+
+Dall'Osservazione \ref{oss:Esponenziali-matrici-simili} possiamo
+risolvere il calcolo dei movimenti di un generico sistema con matrice
+$A$ quadrata, di cui basta cercare la rappresentazione equivalente
+più comoda per risolvere le equazioni: se $A$ fosse diagonalizzabile,
+potremmo adottare una rappresentazione equivalente nella quale $\hat{A}$
+è diagonale (quindi composta dai soli autovalori sulla diagonale mentre
+gli altri elementi sono nulli); questo facilita l'uso della (\ref{eq:Formula-di-Lagrange})
+poiché l'esponenziale di una matrice diagonale si ricava facilmente.
+
+Si nota che qualsiasi movimento dello stato di un sistema LTI è combinazione
+lineare di un numero piccolo di movimenti possibili, tanti quanti
+gli autovalori della matrice $A$ della rappresentazione.
+\end{rem}
+
+\section{Movimenti generati dai modi}
+
+\subsection{Modi e autovalori}
+
+Prendiamo in esame il caso in cui la matrice $A$ da (\ref{eq:Forma-standard-matrice-LTI})
+sia diagonalizzabile (autovalori tutti distinti, vedi Osservazione
+\ref{oss:Condizione-sufficiente-diagonalizzabilit=0000E0}): gli autovettori
+della matrice saranno soluzione di $\left(\lambda_{i}I-A\right)v_{i}=0$,
+generando una matrice di autospazi per una matrice diagonale di autovalori
+come
+\[
+A=\overset{{\scriptstyle T_{{\scriptscriptstyle \text{D}}}}}{\overbrace{\left[v_{1},\,v_{2},\,\ldots v_{n}\right]}}\cdot\overset{{\scriptstyle A_{{\scriptscriptstyle \text{D}}}}}{\overbrace{\text{diag}\left\{ \lambda_{1},\,\lambda_{2},\,\ldots\lambda_{n}\right\} }}\cdot T_{{\scriptscriptstyle \text{D}}}^{-1}
+\]
+dove $T_{{\scriptscriptstyle \text{D}}}$ è la trasformazione che
+diagonalizza $A$ in $A_{{\scriptscriptstyle \text{D}}}$(matrice
+diagonale con autovalori di $A$); possiamo riscrivere la relazione
+tra la matrice e la sua diagonale nei modi seguenti:
+\[
+T_{{\scriptscriptstyle \text{D}}}^{-1}\cdot A_{{\scriptscriptstyle \text{D}}}=A\cdot T_{{\scriptscriptstyle \text{D}}}^{-1}\rightarrow A=T_{{\scriptscriptstyle \text{D}}}^{-1}\cdot A_{{\scriptscriptstyle \text{D}}}\cdot T_{{\scriptscriptstyle \text{D}}}\rightarrow A_{{\scriptscriptstyle \text{D}}}=T_{{\scriptscriptstyle \text{D}}}\cdot A\cdot T_{{\scriptscriptstyle \text{D}}}^{-1}
+\]
+Se scegliamo un nuovo stato $\hat{x}\left(t\right)=T_{{\scriptscriptstyle \text{D}}}\cdot x\left(t\right)$
+ottenuto tramite la matrice di diagonalizzazione, ottengo l'equazione
+del modello:
+\[
+\begin{cases}
+\dot{\hat{x}}\left(t\right)=A_{{\scriptscriptstyle \text{D}}}\cdot x\left(t\right)+T_{{\scriptscriptstyle \text{D}}}\cdot Bu\left(t\right)\\
+y\left(t\right)=C\cdot T_{{\scriptscriptstyle \text{D}}}^{-1}\cdot\hat{x}\left(t\right)+D\cdot u\left(t\right)
+\end{cases}
+\]
+Notiamo che il nuovo sistema ha per matrice di stato una matrice diagonale
+($A_{{\scriptscriptstyle \text{D}}}$); ponendo la condizione iniziale
+$\hat{x}_{0}=T_{{\scriptscriptstyle \text{D}}}\cdot x_{0}$, il movimento
+libero (poniamo ingresso $u\left(t\right)=0$) del sistema si ottiene
+dalla (\ref{eq:Movimento-libero}):
+\[
+\hat{x}\left(t\right)=e^{A_{{\scriptscriptstyle \text{D}}}\cdot t}\hat{x}_{0}
+\]
+dove l'esponenziale di matrice diagonale vale $e^{A_{{\scriptscriptstyle \text{D}}}\cdot t}=\text{diag}\left\{ e^{\lambda_{1}t},\,e^{\lambda_{2}t},\,\ldots e^{\lambda_{n}t}\right\} $,
+dove gli autovalori sulla diagonale sono chiamati \emph{modi} del
+sistema. 
+\begin{rem}
+Questa è una generalizzazione del caso scalare studiato nella precedente
+sezione: la matrice $A$ era composta da un singolo elemento e avevamo
+ottenuto movimenti della forma $e^{at}$.
+
+Nel caso vettoriale con matrice $A$ diagonalizzabile, troviamo una
+matrice di trasformazione $T_{{\scriptscriptstyle \text{D}}}$ che
+produce un sistema equivalente il cui stato è combinazione degli stati
+originali, col vantaggio che la sua matrice di stato ($A_{{\scriptscriptstyle \text{D}}}$)
+è diagonale; a questo punto analizzando il movimento libero con la
+(\ref{eq:Formula-di-Lagrange}) si ottiene \uline{necessariamente}
+la combinazione lineare dei modi (espressioni della stessa forma $e^{\lambda_{i}t}$)
+del nuovo sistema.
+\end{rem}
+Infine, calcoliamo il movimento libero dello stato del sistema originale,
+tramite la trasformazione inversa
+\[
+x\left(t\right)=T_{{\scriptscriptstyle \text{D}}}^{-1}\cdot\hat{x}\left(t\right)
+\]
+
+Possiamo affermare che in sistemi LTI qualsiasi movimento libero del
+sistema è una combinazione dei suoi modi, che sono al più $n$. Se
+la matrice di stato ha coefficienti reali, si ottengono autovalori
+reali oppure complessi coniugati; i casi possibili sono elencati di
+seguito (viene sottinteso che per $\lambda_{i}$ complessi si abbia
+una coppia di autovalori complessi coniugati):\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Andamenti asintotici dei modi di sistemi LTI}{\footnotesize{}\index{LTI, andamenti asintotici dei modi@{\footnotesize{}LTI, andamenti asintotici dei modi}}\label{eq:Andamento-asintotico-modi-LTI}}}[0.5cm]
+\begin{itemize}
+\item $\lambda_{i}\in\mathbb{\mathbb{R}}$
+\begin{itemize}
+\item $\lambda_{i}<0$: modo convergenti;
+\item $\lambda_{i}=0$: modo costanti;
+\item $\lambda_{i}>0$: modo divergenti.
+\end{itemize}
+\item $\lambda_{i}\in\mathbb{C}$
+\begin{itemize}
+\item $\text{Re}\left(\lambda_{i}\right)>0$: modo oscillante divergente;
+\item $\text{Re}\left(\lambda_{i}\right)=0$: modo oscillante limitato;
+\item $\text{Re}\left(\lambda_{i}\right)<0$: modo oscillante convergente.
+\end{itemize}
+\end{itemize}
+\bigskip{}
+
+In particolare, per il caso di autovalori complessi coniugati, avremo
+$\lambda_{i,1}=\sigma_{i}+j\omega_{i},\,\lambda_{i,2}=\sigma_{i}-j\omega_{i}$,
+si dimostra che anche gli autovettori associati sono complessi coniugati
+e gli esponenziali $e^{\lambda_{i}t}$ saranno moltiplicati per coefficienti
+complessi coniugati; otterremo dei termini del tipo:
+\[
+\left(a_{i}+jb_{i}\right)e^{\left(\sigma_{i}+j\omega_{i}\right)t}+\left(a_{i}-jb_{i}\right)e^{\left(\sigma_{i}-j\omega_{i}\right)t}
+\]
+Se chiamiamo il modulo del coefficiente complesso $m_{p}=\left|a_{i}\pm jb_{i}\right|$
+e la sua fase $\phi_{p}=\text{arg}\left(a_{i}\pm jb_{i}\right)$,
+possiamo riscrivere la precedente come:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Modo oscillante}{\footnotesize{}\index{Modo oscillante@{\footnotesize{}Modo oscillante}}}}[1.5cm]
+\[
+m_{p}e^{j\phi_{p}}\cdot e^{\left(\sigma_{i}+j\omega_{i}\right)t}+m_{p}e^{-j\phi_{p}}\cdot e^{\left(\sigma_{i}-jw_{i}\right)t}
+\]
+\begin{equation}
+=m_{p}e^{\sigma_{i}t}\cdot\left(e^{j\left(\omega_{i}t+\phi_{p}\right)}+e^{-j\left(\omega_{i}t-\phi_{p}\right)}\right)=\boxed{m_{p}e^{\sigma_{i}t}\cdot2\cos\left(\omega_{i}t+\phi_{p}\right)}\label{eq:Modo-oscillante}
+\end{equation}
+dove nella seconda uguaglianza è stata utilizzata la (\ref{eq:Formula-di-Eulero})
+ottenendo $e^{\left(\omega_{i}t\pm\phi_{p}\right)}=\cos\left(\omega_{i}t\pm\phi_{p}\right)+j\sin\left(\omega_{i}t\pm\phi_{p}\right)$.
+Chiamiamo modo oscillante l'espressione (\ref{eq:Modo-oscillante}),
+anche se in modo improprio dato che si tratta della combinazione lineare
+di due modi (la coppia di complessi coniugati); esso presenta un andamento
+reale in funzione del tempo.\smallskip{}
+\begin{wrapfigure}{o}{0.4\textwidth}%
+\begin{centering}
+\includegraphics[scale=0.9]{\string"Illustrazioni/1_8-1 Circuito RL\string".pdf}
+\par\end{centering}
+\caption{Circuito RLC con generatore controllato in ingresso}
+\end{wrapfigure}%
+\begin{example}
+\label{exa:Circuito-serie_RLC}Sia dato un circuito formato da una
+maglia con la serie di resistore di valore $R$, condensatore di valore
+$C$ e induttore di valore $L$, chiusi su un generatore indipendente
+di tensione $u\left(t\right)$, che è l'ingresso del sistema. Nella
+serie scorre una corrente $i\left(t\right)$ e su condensatore e induttore
+ci sarà rispettivamente una tensione $v_{c}\left(t\right)$ e $v_{{\scriptscriptstyle L}}\left(t\right)$;
+si scriva un modello per questo sistema che abbia come uscita la tensione
+sul condensatore $v_{c}\left(t\right)$ e si analizzi il movimento
+libero del sistema (senza ingresso) al variare dei parametri costruttivi
+($R,\,L,\,C$).
+
+Per i due componenti dinamici (condensatore e induttore) si hanno
+dalla Fisica le seguenti relazioni:
+\[
+\dfrac{\partial}{\partial t}v_{c}\left(t\right)=\dfrac{i\left(t\right)}{C}
+\]
+\[
+\dfrac{\partial}{\partial t}i\left(t\right)=\dfrac{v_{{\scriptscriptstyle L}}\left(t\right)}{L}=\dfrac{1}{L}\left(u\left(t\right)-Ri\left(t\right)-v_{c}\left(t\right)\right)
+\]
+Abbiamo sostituito la tensione sull'induttore nella seconda relazione
+col bilancio delle tensioni sulla maglia, scrivendo $v_{{\scriptscriptstyle L}}\left(t\right)$
+in funzione di $v_{c}\left(t\right)$, con $Ri\left(t\right)$ la
+tensione sul resistore.
+
+Scegliamo le variabili di stato per portare le equazioni in forma
+standard: abbiamo la derivata della tensione sul condensatore nella
+prima e la derivata della corrente nella seconda, quindi prendiamo:
+\[
+x\left(t\right)=\begin{bmatrix}x_{1}\left(t\right)\\
+x_{2}\left(t\right)
+\end{bmatrix}=\begin{bmatrix}i\left(t\right)\\
+v_{c}\left(t\right)
+\end{bmatrix}
+\]
+da cui segue la seguente scrittura per l'equazione di stato (\ref{eq:Forma-standard-matrice-LTI}):
+\[
+\dot{x}\left(t\right)=\overset{{\scriptstyle A}}{\overbrace{\begin{bmatrix}-R/L & -1/L\\
+1/C & 0
+\end{bmatrix}}}\cdot x\left(t\right)+\overset{{\scriptstyle B}}{\overbrace{\begin{bmatrix}1/L\\
+0
+\end{bmatrix}}}u\left(t\right)
+\]
+
+Scegliamo come condizioni iniziali una certa corrente nel circuito
+e una certa tensione ai capi della capacità al tempo $t=0=t_{0}$;
+imponiamo inoltre l'equazione di uscita per ottenere $v_{c}\left(t\right)$:
+\[
+x_{0}=\begin{bmatrix}x_{0,1}\\
+x_{0,2}
+\end{bmatrix}=\begin{bmatrix}i\left(t_{0}\right)\\
+v_{c}\left(t_{0}\right)
+\end{bmatrix},\quad y\left(t\right)=\begin{bmatrix}0 & 1\end{bmatrix}\cdot x\left(t\right)
+\]
+
+Cerchiamo prima di tutto gli autovalori della matrice di stato $A$:
+\[
+\begin{vmatrix}\lambda+R/L & 1/L\\
+-1/C & \lambda
+\end{vmatrix}=0\rightarrow\lambda^{2}+\dfrac{R}{L}\lambda+\dfrac{1}{LC}=0\rightarrow\lambda_{1,2}=-\dfrac{R}{2L}\pm\sqrt{\dfrac{R^{2}C-4L}{4L^{2}C}}
+\]
+Dovremo studiare i casi distinti in cui gli autovalori saranno reali
+e i casi in cui saranno complessi coniugati, in dipendenza dal numeratore
+della frazione sotto radice. Dovendo cercare il movimento libero calcoleremo
+la funzione $e^{A\cdot t}x_{0}$, dalla (\ref{eq:Movimento-libero}).\bigskip{}
+
+\noun{Autovalori reali e distinti} ($R^{2}C>4L$):
+
+In questo caso vale $\lambda_{1},\,\lambda_{2}\in\mathbb{R}\land\lambda_{1}\neq\lambda_{2}$
+dunque avendo autovalori distinti la matrice $A$ è diagonalizzabile;
+gli autovettori associati a tali autovalori sono:
+\[
+v_{1}=\begin{bmatrix}1\\
+L\lambda_{2}
+\end{bmatrix},\,v_{2}=\begin{bmatrix}1\\
+L\lambda_{1}
+\end{bmatrix}
+\]
+da cui otteniamo l'inversa della matrice di trasformazione e possiamo
+ricavare direttamente $T_{{\scriptscriptstyle \text{D}}}$:
+\[
+T_{{\scriptscriptstyle \text{D}}}^{-1}=\begin{bmatrix}1 & 1\\
+L\lambda_{2} & L\lambda_{1}
+\end{bmatrix}\rightarrow T_{{\scriptscriptstyle \text{D}}}=\dfrac{1}{\lambda_{1}-\lambda_{2}}\begin{bmatrix}\lambda_{1} & -1/L\\
+-\lambda_{2} & 1/L
+\end{bmatrix}
+\]
+La matrice di stato sarà dunque simile a una matrice diagonale $A_{{\scriptscriptstyle \text{D}}}$
+con gli stessi autovalori:\marginpar{D'ora in avanti si presti molta attenzione al pedice $_{D}$ alle
+matrici: le relazioni che seguono sfruttano le proprietà di similitudine
+e diagonalizzabilità de \chapref{Richiami-di-Geometria}}
+\[
+A=\overset{{\scriptstyle T_{{\scriptscriptstyle \text{D}}}^{-1}}}{\overbrace{\begin{bmatrix}1 & 1\\
+L\lambda_{2} & L\lambda_{1}
+\end{bmatrix}}}\cdot\underset{{\scriptstyle {\scriptstyle A_{{\scriptscriptstyle \text{D}}}}}}{\underbrace{\begin{bmatrix}\lambda_{1} & 0\\
+0 & \lambda_{2}
+\end{bmatrix}}}\cdot\overset{{\scriptstyle T_{{\scriptscriptstyle \text{D}}}}}{\overbrace{\dfrac{1}{\lambda_{1}-\lambda_{2}}\begin{bmatrix}\lambda_{1} & -1/L\\
+-\lambda_{2} & 1/L
+\end{bmatrix}}}
+\]
+L'esponenziale di questa matrice diagonale vale quanto quello della
+sua diagonalizzata $A_{{\scriptscriptstyle \text{D}}}$ trasformata
+da $T_{{\scriptscriptstyle \text{D}}}$:
+\[
+e^{A\cdot t}=T_{{\scriptscriptstyle \text{D}}}^{-1}\overset{{\scriptstyle e^{A_{{\scriptscriptstyle \text{D}}}t}}}{\overbrace{\begin{bmatrix}e^{\lambda_{1}t} & 0\\
+0 & e^{\lambda_{2}t}
+\end{bmatrix}}}\cdot T_{{\scriptscriptstyle \text{D}}}
+\]
+La risposta libera del sistema $x\left(t\right)=e^{A\cdot t}x_{0}$
+si riscrive dalle precedenti come:
+\[
+x\left(t\right)=T_{{\scriptscriptstyle \text{D}}}^{-1}\cdot e^{A_{{\scriptscriptstyle \text{D}}}t}\cdot T_{{\scriptscriptstyle \text{D}}}\cdot x_{0}
+\]
+\[
+=\dfrac{1}{\lambda_{1}-\lambda_{2}}\begin{bmatrix}\left(\lambda_{1}x_{0,1}-\nicefrac{1}{L}x_{0,2}\right)e^{\lambda_{1}t}+\left(\lambda_{2}x_{0,1}+\nicefrac{1}{L}x_{0,2}\right)e^{\lambda_{2}t}\\
+\left(\lambda_{1}x_{0,1}-\nicefrac{1}{L}x_{0,2}\right)L\lambda_{2}e^{\lambda_{1}t}+\left(-\lambda_{2}x_{0,1}+\nicefrac{1}{L}x_{0,2}\right)L\lambda_{1}e^{\lambda_{2}t}
+\end{bmatrix}
+\]
+La precedente ha due componenti siccome lo stato ha due componenti.
+I suoi coefficienti sono una combinazione lineare dei coefficienti
+dello stato iniziale e degli elementi della matrice di trasformazione.
+Il movimento avrà un andamento sempre convergente: dall'espressione
+degli autovalori ricavata inizialmente si ricava
+\[
+\lambda_{1,2}=-\dfrac{R}{2L}\left(1\pm\sqrt{1-\dfrac{4L}{R^{2}C}}\right)<0
+\]
+essendoci posti nel caso $R^{2}C>4L$ , quindi gli autovalori reali
+distinti saranno sempre negativi e ogni possibile modo derivante avrà
+andamento convergente.
+
+Le costanti di tempo di ciascun modo sono $T_{i}=\dfrac{1}{\left|\lambda_{i}\right|}$.\bigskip{}
+
+\noun{Autovalori complessi coniugati} ($R^{2}C<4L$):
+
+I due autovalori saranno pari a $\lambda_{1,2}=\sigma\pm j\omega\in\mathbb{C}\land\lambda_{1}\neq\lambda_{2}$;
+essendo sempre distinti la matrice di stato sarà comunque diagonalizzabile.
+Gli autovettori di $A$ e le relative matrici di trasformazione sono
+uguali a quelle ottenute nel caso precedente; in particolare vale
+\[
+\sigma=-\dfrac{R}{2L},\quad\omega=\sqrt{\dfrac{\left|R^{2}C-4L\right|}{4L^{2}C}}
+\]
+Anche in questo caso è corretta l'espressione per $x\left(t\right)=e^{A\cdot t}x_{0}$
+ottenuta nel caso precedente; per facilitare la scrittura del primo
+stato, definiamo i seguenti:
+\[
+m_{p}=\left|\dfrac{x_{0,1}}{2}-\dfrac{j}{2\omega}\left(\sigma x_{0,1}-\dfrac{1}{L}x_{0,2}\right)\right|,\quad\phi_{p}=\text{arg}\left(\dfrac{x_{0,1}}{2}-\dfrac{j}{2\omega}\left(\sigma x_{0,1}-\dfrac{1}{L}x_{0,2}\right)\right)
+\]
+Dopo aver messo in coordinate polari i coefficienti tramite le due
+precedenti, si ottiene:
+\[
+x_{1}\left(t\right)=m_{p}e^{\sigma t}\cdot2\cos\left(\omega t+\phi_{p}\right)
+\]
+Viene riconfermato il risultato (\ref{eq:Modo-oscillante}).
+
+\marginpar{Un circuito oscillante analogico, come un risonatore puro, ha applicazioni
+nel campo dell'elettronica delle telecomunicazioni}L'andamento è decrescente, determinato dall'esponente $\sigma=-R/2L<0$,
+dato che le grandezze di resistenza e induttanza sono sempre positive
+in un sistema reale; la pulsazione $\omega$ risulta invece inversamente
+proporzionale ai valori di resistenza e induttanza: se avessimo un
+circuito di resistenza $R=0$ si avrebbe $\omega=\sqrt{1/LC}$, che
+caratterizza il circuito come risonatore puro.\bigskip{}
+
+\noun{Autovalori coincidenti} ($R^{2}C=4L$):
+
+I due autovalori saranno pari a $\lambda_{1,2}\in\mathbb{R}\land\lambda_{1}=\lambda_{2}=-R/2L$
+(si annulla la radice nell'espressione degli autovalori) e in generale,
+la matrice di stato potrebbe non essere diagonalizzabile: controlliamo
+che la molteplicità algebrica dell'autovalore $\lambda$ (pari a 2
+in questo caso) e quella geometrica coincidano:
+\[
+g_{1}=n-\text{rango}\left(-\dfrac{R}{2L}I-A\right)=2-\text{rango}\left(\begin{bmatrix}-\dfrac{R}{2L}+\dfrac{R}{L} & \dfrac{1}{L}\\
+-\dfrac{1}{C} & -\dfrac{R}{2L}
+\end{bmatrix}\right)
+\]
+\[
+=2-\text{rango}\left(\begin{bmatrix}-\dfrac{R}{2L} & \dfrac{1}{L}\\
+-\dfrac{R^{2}}{4L} & -\dfrac{R}{2L}
+\end{bmatrix}\right)=2-1=1
+\]
+dove nella seconda abbiamo sostituito $C=4L/R^{2}$ dalla condizione
+studiata e il rango è 1 poiché la seconda riga è combinazione lineare
+della prima per $-R/2$. Essendo $g_{1}<n_{1}$ la matrice di stato
+non è diagonalizzabile; tuttavia può essere scritta in forma (\ref{eq:Forma-di-Jordan}):
+la matrice $A_{{\scriptscriptstyle \text{J}}}$ ottenuta sarà in relazione
+con $A$ nel modo seguente:
+\begin{equation}
+A=T_{{\scriptscriptstyle \text{J}}}^{-1}\cdot A_{{\scriptscriptstyle \text{J}}}\cdot T_{{\scriptscriptstyle \text{J}}}\label{eq:Trasformazione-Jordan-Normale}
+\end{equation}
+La matrice in forma di Jordan avrà sulla diagonale i due autovalori
+coincidenti e un 1 in posizione $a_{1,\,2}$ mentre la matrice di
+trasformazione si ottiene calcolando (\ref{eq:Autovettori-generalizzati}):
+\[
+A_{{\scriptscriptstyle \text{J}}}=\begin{bmatrix}\lambda_{1} & 1\\
+0 & \lambda_{1}
+\end{bmatrix},\quad T_{{\scriptscriptstyle \text{J}}}^{-1}=\begin{bmatrix}1 & 1\\
+\lambda_{1}L & L\left(\lambda_{1}-1\right)
+\end{bmatrix}\rightarrow T_{{\scriptscriptstyle \text{J}}}=\dfrac{1}{L}\begin{bmatrix}L\left(\lambda_{1}-1\right) & 1\\
+-\lambda_{1}L & 1
+\end{bmatrix}
+\]
+Possiamo a questo punto ottenere il movimento libero con (\ref{eq:Movimento-libero})
+applicato al sistema in forma di Jordan, a cui applichiamo la trasformazione
+(\ref{eq:Trasformazione-Jordan-Normale}):
+\begin{equation}
+x\left(t\right)=T_{{\scriptscriptstyle \text{J}}}^{-1}\cdot e^{A_{{\scriptscriptstyle \text{J}}}t}\cdot T_{{\scriptscriptstyle \text{J}}}\cdot x_{0}=e^{At}x_{0}\label{eq:Risposta-libera-autovalori-coincidenti}
+\end{equation}
+dove si ha che $e^{A_{{\scriptscriptstyle \text{J}}}t}=\begin{bmatrix}e^{\lambda_{1}t} & te^{\lambda_{1}t}\\
+0 & e^{\lambda_{1}t}
+\end{bmatrix}$.
+\end{example}
+\begin{rem}
+Svolgendo il prodotto (\ref{eq:Risposta-libera-autovalori-coincidenti})
+otteniamo una risposta libera come combinazione lineare dei modi ottenuti
+nel caso di autovalori reali distinti, con dei nuovi modi esponenziali
+(tanti quanti gli autovalori con $g_{i}<n_{i}$).
+\end{rem}
+Nel caso di una matrice non diagonalizzabile, gli autovalori con molteplicità
+algebrica $n_{i}>1$ che si ottengono dalla forma di Jordan determinano
+i seguenti andamenti dei modi:\label{eq:Andamento-modi-autovalori-multipli}
+\begin{itemize}
+\item $\lambda_{i}\in\mathbb{R}$ (modi del tipo $te^{\lambda_{i}t}$):\smallskip{}
+\begin{itemize}
+\item $\lambda_{i}>0$: modo divergente;
+\item $\lambda_{i}=0$: modo limitato;
+\item $\lambda_{i}<0$: modo convergente.
+\end{itemize}
+\item $\lambda_{i}\in\mathbb{C}$ (autovalori complessi coniugati, modi
+del tipo\\
+$te^{\sigma t}\left(\cos\left(\omega t+\phi\right)+j\sin\left(\omega t+\phi\right)\right)$):\smallskip{}
+\begin{itemize}
+\item $\text{Re}\left(\lambda_{i}\right)>0$: modo divergente (esponenziale);
+\item $\text{Re}\left(\lambda_{i}\right)=0$: modo divergente (lineare);
+\item $\text{Re}\left(\lambda_{i}\right)<0$: modo convergente.
+\end{itemize}
+\end{itemize}
+\demo
+
+\bigskip{}
+\begin{figure}[H]
+\begin{centering}
+$F\left(t\right)\rightarrow\boxed{1/m}\overset{\ddot{p}\left(t\right)}{\rightarrow}\boxed{\somme 0t{\ddot{p}\left(t\right)}t+p_{0}}\overset{\dot{p}\left(t\right)}{\rightarrow}\boxed{\somme 0t{\dot{p}\left(t\right)}t+p_{0}}\rightarrow p\left(t\right)$
+\par\end{centering}
+\caption{Schema a blocchi del doppio integratore in questo sistema}
+\label{fig:Schema-doppio-integratore}
+\end{figure}
+\begin{example}
+\marginpar{Il sistema nell'esempio con due autovalori coincidenti nulli appartiene
+alla categoria dei \emph{doppi integratori}}\label{exa:Doppio-integratore-carrello}Consideriamo un carrello di
+massa $m$ che si muova lungo una superficie priva di attrito con
+una traiettoria rettilinea; la sua posizione è data da $p\left(t\right)$
+mentre ad esso è applicata una forza esterna $F\left(t\right)$. Scrivere
+un modello per questo sistema in cui si misuri la posizione e stabilirne
+l'andamento dei modi.
+
+Si ricava facilmente l'equazione della dinamica del sistema:
+\[
+m\cdot a\left(t\right)=F\left(t\right)
+\]
+L'ingresso del sistema sarà la forza ($u\left(t\right)=F\left(t\right)$)
+e l'uscita da misurare la posizione ($y\left(t\right)=p\left(t\right)$);
+come stati scegliamo la posizione ($p\left(t\right)$) e la velocità
+($\dot{p}\left(t\right)$) in modo da poter scrivere in funzione di
+essi l'accelerazione ($\ddot{p}\left(t\right)$):
+\[
+x\left(t\right)=\begin{bmatrix}x_{1}\left(t\right)\\
+x_{2}\left(t\right)
+\end{bmatrix}=\begin{bmatrix}p\left(t\right)\\
+\dot{p}\left(t\right)
+\end{bmatrix}
+\]
+Dalla (\ref{eq:Forma-standard-matrice-LTI}) le equazioni di stato
+saranno scritte come:
+\[
+\dot{x}\left(t\right)=\overset{{\scriptstyle A}}{\overbrace{\begin{bmatrix}0 & 1\\
+0 & 0
+\end{bmatrix}}}\cdot\overset{{\scriptstyle x\left(t\right)}}{\overbrace{\begin{bmatrix}p\left(t\right)\\
+\dot{p}\left(t\right)
+\end{bmatrix}}}+\overset{{\scriptstyle B}}{\overbrace{\begin{bmatrix}0\\
+1/m
+\end{bmatrix}}}\cdot\overset{{\scriptstyle u\left(t\right)}}{\overbrace{F\left(t\right)}}
+\]
+Il sistema di questo esempio si chiama appunto doppio integratore
+poiché presenta due integrazioni in serie dell'ingresso (mostrate
+in Figura \ref{fig:Schema-doppio-integratore}); cerchiamo gli autovalori
+della matrice di stato per calcolare i movimenti del sistema: essendo
+una matrice triangolare, gli autovalori sono i coefficienti sulla
+diagonale principale, ovvero vale:
+\[
+\lambda_{1}=\lambda_{2}=0
+\]
+Si osserva inoltre che $A$ è già in forma (\ref{eq:Forma-di-Jordan});
+posto $x\left(t_{0}\right)=x_{0}$, il movimento libero (\ref{eq:Movimento-libero})
+di questo sistema sarà pari a
+\[
+x\left(t\right)=e^{A\cdot t}x_{0}=\begin{bmatrix}e^{0t} & te^{0t}\\
+0 & e^{0t}
+\end{bmatrix}\cdot\begin{bmatrix}x_{0,1}\\
+x_{0,2}
+\end{bmatrix}=\begin{bmatrix}x_{0,1}+tx_{0,2}\\
+x_{0,2}
+\end{bmatrix}
+\]
+dove l'esponenziale si calcola in modo diretto per la matrice di stato
+di ordine 2 in forma di Jordan.
+
+Il movimento ottenuto rappresenta il fatto che in un sistema di questo
+tipo, in assenza di forze in ingresso e di disturbi come l'attrito
+(siamo nel caso dell'esempio) la velocità rimarrà costante nel tempo
+mentre la posizione (integrale della velocità) aumenterà in modo lineare.\smallskip{}
+
+Calcoliamo invece il movimento forzato applicando in ingresso uno
+scalino (forza costante) come $u\left(t\right)=\overline{u}\cdot\text{sca}\left(t\right)$;
+la (\ref{eq:Movimento-forzato}) assume il seguente valore:
+\[
+x\left(t\right)=\somme 0t{e^{A\left(t-\tau\right)}Bu\left(\tau\right)}{\tau}=\somme 0t{\begin{bmatrix}1 & t-\tau\\
+0 & 1
+\end{bmatrix}\cdot\begin{bmatrix}0\\
+\nicefrac{1}{m}
+\end{bmatrix}\cdot\overline{u}\cdot\text{sca}\left(\tau\right)}{\tau}
+\]
+\[
+=\somme 0t{\begin{bmatrix}\dfrac{1-\tau}{m}\overline{u}\cdot\text{sca}\left(\tau\right)\\
+\dfrac{1}{m}\overline{u}\cdot\text{sca}\left(\tau\right)
+\end{bmatrix}}{\tau}=\begin{bmatrix}\dfrac{\overline{u}}{2m}\left[-\left(t-\tau\right)\right]_{0}^{t}\\
+\dfrac{1}{m}\overline{u}\left[\tau\right]_{0}^{t}
+\end{bmatrix}=\begin{bmatrix}\dfrac{\overline{u}}{2m}t^{2}\\
+\dfrac{1}{m}\overline{u}t
+\end{bmatrix}
+\]
+I coefficienti risultanti dal movimento forzato sono una riscrittura
+delle equazioni della dinamica, rispettivamente $a_{1,1}:\,v\left(t\right)=a\left(t\right)t,\,a_{2,1}:\,p\left(t\right)=\dfrac{1}{2}a\left(t\right)t^{2}$
+ponendo $a\left(t\right)=\overline{u}/m$. Notiamo inoltre che il
+movimento forzato della posizione sarà un esponenziale mentre quello
+della velocità è lineare, entrambi divergenti.
+\end{example}
+
+\subsection{Modo dominante}
+
+Prendiamo in esame i sistemi con autovalori reali negativi: essi generano
+modi convergenti; la costante di tempo associata a ciascun autovalore
+dipende inversamente da esso come $T_{i}=1/\left|\lambda_{i}\right|$
+(esiste solo per modi convergenti).
+
+Se invece abbiamo autovalori complessi coniugati nella forma (\ref{eq:Modo-oscillante})
+possiamo vedere la costante di tempo come il tempo impiegato dall'ampiezza
+dell'oscillazione a scendere sotto una certa soglia: concettualmente
+si parla dell'esponente $\sigma$ nel modo oscillante, e la costante
+di tempo può essere definita come $T=1/\left|\sigma\right|$.
+
+In generale, in un sistema di ordine $n$ ci saranno al più $n$ autovalori
+con associate le rispettive costanti di tempo; la risposta complessiva
+del sistema (la combinazione lineare dei modi) sarà influenzata dal
+modo più ``lento'' (quello con costante di tempo maggiore): tale
+modo si chiama \emph{modo dominante}, il quale avrà analiticamente
+l'autovalore associato con parte reale più piccola degli altri.
+
+\section{Equilibrio di sistemi LTI}
+
+Per portare in equilibrio un sistema LTI a tempo continuo bisogna
+avere una coppia di condizioni iniziali e ingressi costanti $\left(\overline{x},\,\overline{u}\right)$
+tali che il movimento di stato rimanga costante, ovvero $\dot{x}\left(t\right)\,:\,A\cdot\overline{x}+B\cdot\overline{u}=0$,
+e l'equazione di uscita segue da (\ref{eq:Forma-standard-matrice-LTI})
+risultando in $\overline{y}=C\cdot\overline{x}+D\cdot\overline{u}$;
+questa equazione ammette una e una sola soluzione quando $A$ è invertibile:
+\begin{itemize}
+\item Se $A$ è priva di autovalori nulli allora essa è invertibile, e a
+fronte di qualsiasi ingresso costante troviamo sempre uno e un solo
+stato di equilibrio; dall'equazione di stato si ottiene $\overline{x}=A^{-1}\cdot B\cdot\overline{u}$.
+\item Se $A$ non è invertibile almeno un autovalore è nullo e bisogna risolvere
+$A\cdot\overline{x}=-B\cdot\overline{u}$.
+\end{itemize}
+Dalle precedenti considerazioni scriviamo le equazioni di equilibrio
+del sistema rispetto ai valori iniziali e alle uscite di equilibrio,
+ammettendo che $A$ sia invertibile:
+\[
+\begin{cases}
+\overline{x}=A^{-1}\cdot B\cdot\overline{u}\\
+\overline{y}=\left(-C\cdot A^{-1}\cdot B+D\right)\overline{u}
+\end{cases}
+\]
+\begin{example}
+Dall'Esempio \ref{exa:Doppio-integratore-carrello} otteniamo la seguente
+equazione del sistema (notando che $A$ non è invertibile in questo
+caso):
+\[
+\begin{bmatrix}0 & 1\\
+0 & 0
+\end{bmatrix}\cdot\begin{bmatrix}\overline{x}_{1}\\
+\overline{x}_{2}
+\end{bmatrix}=-\begin{bmatrix}0\\
+\nicefrac{1}{m}
+\end{bmatrix}\cdot\overline{u}
+\]
+L'equazione ammette soluzione solo per ingresso nullo $\overline{u}=0$,
+mentre la prima equazione impone la velocità $\overline{x}_{2}=0$;
+a questo punto la posizione $\overline{x}_{1}=\alpha,\,\alpha\in\mathbb{R}$
+può assumere qualunque valore reale.
+\end{example}
+
+\section{Risposta all'impulso}
+
+L'ingresso canonico chiamato impulso è definito come $\text{imp}\left(t\right)=\left\{ 1\,\text{per }t=0;\;0\,\text{per }t\neq0\right\} $
+e il suo integrale vale:
+\[
+\somme{-\infty}{\infty}{\text{imp}\left(t\right)}t=1
+\]
+Nella realtà non è possibile avere un ingresso istantaneo: per modellizzare
+l'impulso si forza nel sistema un ingresso molto ampio per un breve
+periodo di tempo a partire da $t=0$.
+
+Noto il movimento generato dall'impulso di un sistema LTI, è possibile
+calcolare il movimento forzato derivante da qualsiasi altro ingresso
+in condizioni iniziali nulle.
+
+In generale il movimento forzato dello stato sarà ottenuto da (\ref{eq:Formula-di-Lagrange})
+come:
+\[
+x_{{\scriptscriptstyle \text{F}}}\left(t\right)=\somme 0t{e^{A\left(t-\tau\right)}B\cdot\text{imp}\left(\tau\right)}{\tau}=e^{A\cdot t}\cdot B\somme 0t{e^{\left(-A\cdot\tau\right)}\,\text{imp}\left(\tau\right)}{\tau}
+\]
+\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Risposta all'impulso}{\footnotesize{}\index{impulso, risposta al@{\footnotesize{}impulso, risposta al}}}}
+\begin{equation}
+=e^{A\cdot t}\cdot B\label{eq:Risposta-all'-impulso}
+\end{equation}
+Si ottiene questo risultato osservando che l'impulso vale 1 solo per
+$t=0$ e per questo valore si ha che $e^{\left(-A\cdot0\right)}$
+equivale a una matrice identità; nota la (\ref{eq:Risposta-all'-impulso})
+possiamo calcolare in generale il movimento forzato del sistema come
+integrale di convoluzione di (\ref{eq:Movimento-forzato}) in cui
+l'argomento contiene il termine (\ref{eq:Risposta-all'-impulso})
+per l'ingresso forzato in esame.
+
+Un sistema si dirà stabile se la risposta all'impulso genera modi
+convergenti: osservando la risposta all'impulso (\ref{eq:Risposta-all'-impulso})
+come la risposta libera (\ref{eq:Movimento-libero}) con condizioni
+iniziai pari a $B$, si vorranno ottenere combinazioni lineari di
+modi convergenti per garantire la stabilità del sistema.
+
+\section{Stabilità del sistema}
+
+\subsection{Condizioni di stabilità in sistemi LTI}
+
+Prendiamo un sistema LTI a tempo continuo e poniamoci in una condizione
+di equilibrio: il movimento dello stato si ottiene dalla (\ref{eq:Formula-di-Lagrange});
+perturbiamo ora la condizione iniziale applicando lo stesso ingresso
+di equilibrio e chiamiamo $\tilde{x}_{0}=x\left(t_{0}\right)+\delta$
+dove $\delta$ è una perturbazione iniziale.
+
+Scriviamo il movimento perturbato come:
+\[
+\tilde{x}\left(t\right)=e^{A\cdot t}\tilde{x}_{0}+\somme 0t{e^{A\left(t-\tau\right)}B\cdot u\left(\tau\right)}{\tau}
+\]
+La distanza della perturbazione da $x\left(t\right)$ sarà definita
+da $\delta x\left(t\right)=\tilde{x}\left(t\right)-x\left(t\right)$,
+dove possiamo raccogliere l'esponenziale di matrice e notando che
+si annulla il termine dovuto all'ingresso (abbiamo ipotizzato una
+condizione di equilibrio) avremo:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Andamento della perturbazione}{\footnotesize{}\index{LTI, andamento della perturbazione@{\footnotesize{}LTI, andamento della perturbazione}}}}
+\begin{equation}
+e^{A\cdot t}\left(\tilde{x}-x_{0}\right)=e^{A\cdot t}\delta\label{eq:Perturbazione-sistema-LTI}
+\end{equation}
+Si ottiene questo risultato a prescindere dalle condizioni iniziali.
+\begin{rem}
+In un sistema LTI a tempo continuo, presa qualsiasi coppia di movimento
+e movimento perturbato, la distanza tra i due movimenti è data sempre
+dalla (\ref{eq:Perturbazione-sistema-LTI}); da questo deriva il seguente
+Teorema \ref{thm:Stabilit=0000E0-del-sistema}.
+\end{rem}
+\begin{thm}
+\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Teorema sulla stabilità del sistema}{\footnotesize{}\index{stabilità del sistema, Teorema@{\footnotesize{}stabilità del sistema, Teorema}}}}\label{thm:Stabilit=0000E0-del-sistema}In un sistema LTI un movimento
+(incluso quello di equilibrio) è stabile, asintoticamente stabile
+o instabile se e solo se sono rispettivamente stabili, asintoticamente
+stabili o instabili tutti i movimenti del sistema.
+\end{thm}
+\begin{rem}
+Si nota che l'equazione (\ref{eq:Perturbazione-sistema-LTI}) è l'espressione
+di un movimento libero (\ref{eq:Movimento-libero}), dunque è una
+combinazione lineare dei modi del sistema: si deduce che l'espressione
+(\ref{eq:Perturbazione-sistema-LTI}) sarà limitata, convergente o
+divergente a seconda dell'andamento di questi modi. Possiamo quindi
+controllare l'andamento di (\ref{eq:Perturbazione-sistema-LTI}) per
+conoscere l'andamento di tutto il sistema, per il Teorema \ref{thm:Stabilit=0000E0-del-sistema}.
+\end{rem}
+Possiamo usare le condizioni (\ref{eq:Andamento-asintotico-modi-LTI})
+assieme alla precedente osservazione per ottenere le seguenti considerazioni:
+\begin{thm}
+\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Teorema dell'asintotica stabilità}{\footnotesize{}\label{thm:Teorema-dell'asintotica-stabilit=0000E0}\index{asintotica stabilità, Teorema@{\footnotesize{}asintotica stabilità, Teorema}}}}[-0.5cm]Un sistema LTI della forma (\ref{eq:Forma-standard-matrice-LTI})
+si dice asintoticamente stabile se e solo se \uline{tutti} gli
+autovalori della sua matrice di stato ($A$) hanno parte reale negativa
+(ovvero quando (\ref{eq:Perturbazione-sistema-LTI}) converge a zero).
+\end{thm}
+%
+\begin{thm}
+\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Teorema dell'instabilità}{\footnotesize{}\label{thm:Teorema-dell'instabilit=0000E0}\index{instabilità, Teorema@{\footnotesize{}instabilità, Teorema}}}}[-0.5cm]Un sistema LTI della forma (\ref{eq:Forma-standard-matrice-LTI})
+si dice instabile se e solo se \uline{almeno uno} degli autovalori
+della sua matrice di stato ($A$) ha parte reale positiva.
+\end{thm}
+Per autovalori con parte reale nulla, bisogna controllare la diagonalizzabilità
+della matrice di stato ($n_{i}=g_{i}$): se questo si verifica si
+ottengono solo modi limitati; se la molteplicità geometrica è inferiore
+a quella algebrica, allora tutti i modi divergeranno (vedi le condizioni
+\vpageref{eq:Andamento-modi-autovalori-multipli}). Enunciamo il seguente
+\begin{thm}
+In un sistema LTI, per autovalori della matrice di stato tali che
+$\text{Re}\left(\lambda_{i}\right)=0$, se vale $n_{i}=g_{i}$ si
+ha un sistema stabile (modi limitati); nel caso in cui $g_{i}<n_{i}$
+allora il sistema è instabile.
+\end{thm}
+Riprendiamo due esempi fatti in precedenza per mostrare un'applicazione
+dei teoremi appena enunciati:
+
+Dall'Esempio \ref{exa:Circuito-serie_RLC} si ottenevano due autovalori
+nella forma $\lambda_{1,2}=-\dfrac{R}{2L}\pm\sqrt{\dfrac{R^{2}C-4L}{4L^{2}C}}$;
+per $R\neq0$ si ottengono sempre autovalori con parte reale negativa:
+il sistema risulterà asintoticamente stabile; per $R=0$ si ottengono
+autovalori complessi coniugati (immaginari puri): il sistema risulterà
+semplicemente stabile.
+
+Dall'Esempio \ref{exa:Doppio-integratore-carrello} si ottenevano
+autovalori nulli con molteplicità algebrica maggiore della geometrica:
+dalla matrice di stato in forma di Jordan si ottiene che il sistema
+è instabile.
+
+Elenchiamo ora alcune proprietà dei sistemi LTI asintoticamente stabili:
+\begin{enumerate}
+\item Un movimento per $t\rightarrow\infty$ non dipende dalle condizioni
+iniziali $x\left(t_{0}\right)$;
+\item La risposta (movimento) a un impulso tende ad annullarsi per $t\rightarrow\infty$;
+\item La risposta (movimento) a qualsiasi ingresso limitato nel tempo tende
+ad annullarsi per $t\rightarrow\infty$;
+\item Gli stati e le uscite di equilibrio, con ingresso costante nel tempo
+($\overline{u}$), sono unici e pari a $\overline{x}$ e $\overline{y}$;
+\item \marginpar{La proprietà di stabilità esterna è abbreviata come BIBO: bounded
+input, bounded output}Il sistema gode della proprietà di \emph{stabilità esterna}: a fronte
+di ingressi limitati nel tempo, anche le uscite saranno limitate nel
+tempo.
+\end{enumerate}
+
+\subsection{Segno degli autovalori}
+
+Sappiamo che gli autovalori della matrice di stato sono i valori per
+cui vale la Definizione \ref{def:Autovalore} e risolvono (\ref{eq:Polinomio-caratteristico});
+chiamiamo tale polinomio $\phi\left(\lambda\right)=0$, che in generale
+ha grado pari all'ordine della matrice da cui deriva (nel nostro caso
+ha grado pari all'ordine di $A$).
+
+Possiamo scrivere tale polinomio come
+\begin{equation}
+\phi\left(\lambda\right)=\phi_{0}\lambda^{n}+\phi_{1}\lambda^{n-1}+\ldots+\phi_{n}\label{eq:Polinomio-caratteristico-Routh}
+\end{equation}
+Studiamo il segno della parte reale delle soluzioni di tale polinomio,
+osservando i suoi coefficienti; enunciamo su questa base il seguente:
+\begin{thm}
+\label{thm:Criterio-segni-concordi-autovalori}Se il sistema della
+forma (\ref{eq:Forma-standard-matrice-LTI}) è asintoticamente stabile,
+allora i coefficienti del suo polinomio caratteristico $\phi_{i},\,i\in0\ldots n$
+hanno tutti lo stesso segno.
+\end{thm}
+\begin{cor}
+In un sistema di ordine $n\leq2$, la condizione del Teorema (\ref{thm:Criterio-segni-concordi-autovalori})
+diventa necessaria e sufficiente.
+\end{cor}
+Nel caso di un sistema di ordine maggiore di 2 con segno concorde
+per tutti gli autovalori della matrice di stato, il sistema potrebbe
+essere stabile ma bisogna verificarlo col criterio proposto nella
+sezione successiva.
+
+\subsection{Criterio di Routh}
+
+Enunciamo un criterio che fornisce una condizione necessaria e sufficiente
+per stabilire la stabilità asintotica di un sistema; questo criterio
+si basa sulla seguente \emph{tabella di Routh}, costruita a partire
+dal polinomio caratteristico nella forma (\ref{eq:Polinomio-caratteristico-Routh}):
+\begin{equation}
+\begin{array}{cccccc}
+\phi_{0} & \phi_{2} & \phi_{4} & \cdots & \phi_{n-1} & 0\\
+\phi_{1} & \phi_{3} & \phi_{5} & \cdots & \phi_{n} & 0\\
+\vdots & \vdots & \vdots & \ddots & 0 & \vdots\\
+h_{1} & h_{2} & h_{3} & \vdots & \vdots & \vdots\\
+k_{1} & k_{2} & k_{3} & \vdots & \vdots & \vdots\\
+l_{1} & l_{2} & l_{3} & 0 & 0 & 0
+\end{array}\label{eq:Tabella-di-Routh}
+\end{equation}
+Questa tabella si compila grazie al seguente \emph{algoritmo di Routh}
+che dalle due righe precedenti ($h_{i},\,k_{i}$) ottiene la successiva
+($l_{i}$):
+\begin{equation}
+l_{i}=-\dfrac{1}{k_{1}}\cdot\det\left(\begin{bmatrix}h_{1} & h_{i+1}\\
+k_{1} & k_{i+1}
+\end{bmatrix}\right)=h_{i+1}-\dfrac{h_{1}k_{i+1}}{k_{1}}\label{eq:Algoritmo-di-Routh}
+\end{equation}
+Si osserva che essa in generale è triangolare, e inoltre l'algoritmo
+non si può applicare per il caso $k_{1}=0$ per almeno una riga (in
+tal caso si dice che la (\ref{eq:Tabella-di-Routh}) non è ben definita).
+L'algoritmo termina quando si otterrebbe uno zero nella prima posizione
+della riga più in basso.
+\begin{thm}
+\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Criterio di Routh}{\footnotesize{}\index{Routh, criterio@{\footnotesize{}Routh, criterio}}}}\label{thm:Criterio-di-Routh}Un sistema LTI della forma (\ref{eq:Forma-standard-matrice-LTI})
+è asintoticamente stabile se e solo se la tabella di Routh (\ref{eq:Tabella-di-Routh})
+del polinomio caratteristico della matrice di stato ($A$) del sistema
+è ben definita, e tutti gli elementi sulla prima colonna della tabella
+hanno segno concorde.
+\end{thm}
+\begin{cor}
+Il numero di variazioni di segno degli elementi sulla prima colonna
+della tabella (\ref{eq:Tabella-di-Routh}) è pari al numero di autovalori
+con parte reale positiva (i quali generano modi instabili).\bigskip{}
+\end{cor}
+\begin{example}
+Sia dato il seguente polinomio caratteristico della matrice di stato
+di un sistema LTI di ordine 5
+\[
+\phi\left(\lambda\right)=\lambda^{5}+15\lambda^{4}+85\lambda^{3}+225\lambda^{2}+274\lambda+120
+\]
+Verificare la stabilità dei movimenti del sistema.
+
+Il Teorema \ref{thm:Criterio-segni-concordi-autovalori} fornisce
+un indizio sulla possibile stabilità del sistema: usiamo il Teorema
+\ref{thm:Criterio-di-Routh} per sfruttarne la condizione sufficiente;
+grazie all'algoritmo (\ref{eq:Algoritmo-di-Routh}) compiliamo la
+seguente tabella:
+
+\begin{minipage}[t]{1\textwidth}%
+\begin{center}
+\begin{tabular}{cccc}
+1 & 85 & 274 & 0\tabularnewline[\doublerulesep]
+15 & 225 & 120 & 0\tabularnewline[\doublerulesep]
+$85-\dfrac{1\cdot225}{15}$ & $274-\dfrac{1\cdot120}{15}$ & $0-\dfrac{1\cdot0}{15}$ & 0\tabularnewline[\doublerulesep]
+$225-\dfrac{15\cdot266}{70}$ & $120-\dfrac{15\cdot0}{70}$ & $0-\dfrac{15\cdot0}{70}$ & 0\tabularnewline[\doublerulesep]
+$266-\dfrac{70\cdot120}{168}$ & $0-\dfrac{70\cdot0}{168}$ & $0-\dfrac{70\cdot0}{168}$ & 0\tabularnewline[\doublerulesep]
+$120-\dfrac{168\cdot0}{216}$ & $0-\dfrac{168\cdot0}{216}$ & $0-\dfrac{168\cdot0}{216}$ & 0\tabularnewline[\doublerulesep]
+\end{tabular}$=$%
+\begin{tabular}{cccc}
+1 & 85 & 274 & 0\tabularnewline[\doublerulesep]
+15 & 225 & 120 & 0\tabularnewline[\doublerulesep]
+70 & 266 & 0 & 0\tabularnewline[\doublerulesep]
+168 & 120 & 0 & 0\tabularnewline[\doublerulesep]
+216 & 0 & 0 & 0\tabularnewline[\doublerulesep]
+120 & 0 & 0 & 0\tabularnewline[\doublerulesep]
+\end{tabular}
+\par\end{center}%
+\end{minipage}
+
+Il sistema risulta asintoticamente stabile per il Teorema \ref{thm:Criterio-di-Routh}
+poiché tutti gli elementi della prima colonna hanno segno concorde.
+\end{example}
+%
+\begin{example}
+Sia dato un sistema LTI con parametri incerti, ovvero gli autovalori
+sono variabili; è possibile calcolare il polinomio caratteristico
+rispetto a tali parametri: si valuti dunque la stabilità del sistema
+col seguente polinomio caratteristico di stato
+\[
+\phi\left(\lambda\right)=\lambda^{3}+\left(2+\beta\right)\lambda^{2}+\left(1+2\beta\right)\lambda+\alpha+\beta
+\]
+
+Grazie al Teorema \ref{thm:Criterio-di-Routh} possiamo compilare
+una tabella di Routh e ottenere su di essa le condizioni perché gli
+autovalori incerti abbiano segno concorde.
+
+\begin{minipage}[t]{1\textwidth}%
+\begin{center}
+\begin{tabular}{ccc}
+1 & $1+2\beta$ & 0\tabularnewline[\doublerulesep]
+$2+\beta$ & $\alpha+\beta$ & 0\tabularnewline[\doublerulesep]
+\cline{1-2} 
+$\left(1+2\beta\right)-\dfrac{1\cdot\left(\alpha+\beta\right)}{2+\beta}$ & $0-\dfrac{1\cdot0}{2+\beta}$ & 0\tabularnewline[\doublerulesep]
+$\left(\alpha+\beta\right)-\dfrac{\left(2+\beta\right)\cdot0}{\dfrac{2\left(\beta+1\right)^{2}-\alpha}{\beta+2}}$ & $0-\dfrac{\left(2+\beta\right)\cdot0}{\dfrac{2\left(\beta+1\right)^{2}-\alpha}{\beta+2}}$ & 0\tabularnewline[\doublerulesep]
+\end{tabular}$=\quad$%
+\begin{tabular}{ccc}
+1 & $1+2\beta$ & 0\tabularnewline[\doublerulesep]
+$2+\beta$ & $\alpha+\beta$ & 0\tabularnewline[\doublerulesep]
+\cline{1-2} 
+$\dfrac{2\left(\beta+1\right)^{2}-\alpha}{\beta+2}$ & 0 & 0\tabularnewline[\doublerulesep]
+$\alpha+\beta$ & 0 & 0\tabularnewline[\doublerulesep]
+\end{tabular}
+\par\end{center}%
+\end{minipage}
+
+Imponiamo che tutti i coefficienti della prima colonna siano maggiori
+di zero (è presente un 1, che è costante e positivo, esso influenza
+il segno della colonna):
+\[
+\begin{cases}
+2+\beta>0\\
+2\left(\beta+1\right)^{2}-\alpha>0\\
+\alpha+\beta>0
+\end{cases}
+\]
+Le coppie $\left(\alpha,\,\beta\right)$ che soddisfano tutte queste
+condizioni generano movimenti asintoticamente stabili per il sistema.
+Quelle che non le soddisfano generano movimenti instabili.
+\end{example}
+\printindex{}
+
+\appendix
+
+\chapter{\label{chap:Richiami-di-Geometria}Richiami di Geometria e Algebra
+Lineare}
+
+\section{Matrici}
+
+Richiamiamo le proprietà del prodotto nell'ambito delle matrici; siano
+date due matrici quadrate di ordine $n$ chiamate $A,\,B\in\mathbb{R}^{n\times n}$
+e uno scalare $\alpha$; siano inoltre $a_{i,\,j}$ e $b_{i,\,j}$
+gli elementi alla riga $i$ e colonna $j$ delle rispettive matrici
+(indicate con la maiuscola corrispondente).
+\begin{defn}
+Il \emph{prodotto per uno scalare} di una matrice, indicato con $\alpha\cdot A$,
+è pari a
+\[
+A^{\prime}=\begin{bmatrix}\alpha\cdot a_{1,1} & \cdots & \alpha\cdot a_{1,n}\\
+\vdots & \ddots & \vdots\\
+\alpha\cdot a_{n,1} & \cdots & \alpha\cdot a_{n,n}
+\end{bmatrix}
+\]
+dove $a'_{i,\,j}=\alpha\cdot a_{i,\,j}$; il prodotto per uno scalare
+gode delle stesse proprietà del prodotto tra due scalari.
+\end{defn}
+%
+\begin{defn}
+Prese $A\in\mathbb{R}^{m\times n},\,B\in\mathbb{R}^{n\times p},\,C\in\mathbb{R}^{m\times p}$,
+chiamiamo \emph{prodotto righe per colonne} la relazione $A\cdot B=C$,
+dove gli elementi della matrice $C$ valgono
+\[
+c_{i,\,j}=a_{i,\,1}\cdot b_{1,\,i}+a_{i,\,2}\cdot b_{2,\,i}+\ldots+a_{i,\,n}\cdot b_{n,\,j}
+\]
+Si osserva che l'elemento $c_{i,\,j}$ è ottenuto dal prodotto termine
+a termine della $i$-esima riga di $A$ con la $j$-esima colonna
+di $B$; questa operazione non è commutativa.
+\end{defn}
+%
+\begin{defn}
+Si chiama matrice \emph{trasposta} di $A$ e si indica con $A^{{\scriptscriptstyle \text{T}}}$
+la matrice ottenuta scambiando ordinatamente le righe con le colonne
+di $A$.
+\end{defn}
+Il prossimo concetto è essenziale per capire la successiva Definizione
+\ref{def:Determinante}:
+\begin{defn}
+\label{def:Complemento-algebrico}Data una matrice quadrata $A$ il
+\emph{complemento algebrico} del suo elemento $a_{i,\,j}$ è il determinante
+della sotto-matrice che si ottiene eliminando dalla matrice principale
+la $i$-esima riga e la $j$-esima colonna, moltiplicato per $(-1)^{i+j}$;
+esso è indicato con $\Delta_{i,\,j}$.
+\end{defn}
+Ora possiamo introdurre il concetto di determinante, utilizzato ricorsivamente
+nella precedente Definizione \ref{def:Complemento-algebrico}:
+\begin{defn}
+\label{def:Determinante}Il \emph{determinante} di una generica matrice
+quadrata $A$ di ordine $n>1$ è pari a\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}I teorema di Laplace}{\footnotesize{}\index{Laplace, I teorema@{\footnotesize{}Laplace, I teorema}}}}[0.5cm]
+\[
+\det\left(A\right)=\serie{i=1}n{\left(a_{i,\,j}\cdot\Delta_{i,\,j}\right)}=\serie{j=1}n{\left(a_{i,\,j}\cdot\Delta_{i,\,j}\right)}
+\]
+o in altri termini il determinante di $A$ è la somma dei prodotti
+degli elementi di una sua linea (riga o colonna) per i rispettivi
+complementi algebrici. Se $n=1$ si ha il caso banale in cui la matrice
+$A$ ha un solo elemento $a$ e vale $\det\left(a\right)=a$.
+
+Inoltre per una matrice con $n=2$ si ottiene facilmente $\det\left(A\right)=a_{1,\,1}\cdot a_{2,\,2}-a_{2,\,1}\cdot a_{1,\,2}$.
+\end{defn}
+\begin{center}
+\smallskip{}
+\par\end{center}
+\begin{xca}
+Calcolare il determinante della seguente matrice:\marginpar{$\blacktriangleright$ \emph{Esercizio: determinante di una matrice
+$3\times3$}}
+
+\[
+A=\begin{bmatrix}1 & 0 & 2\\
+2 & -1 & 3\\
+1 & 5 & 2
+\end{bmatrix}
+\]
+\end{xca}
+\begin{center}
+\rule[0.5ex]{0.9\textwidth}{0.1pt}
+\par\end{center}
+\begin{sol}
+Considero la riga $1$, la quale presenta uno zero (semplificando
+un addendo della somma di complementi algebrici): applicando la Definizione
+\ref{def:Determinante} si ottiene che:
+\end{sol}
+\begin{itemize}
+\item il primo addendo (relativo all'elemento $a_{1,\,1}=1$) si ottiene
+da
+\[
+\begin{bmatrix}\boxed{1} & \cancel{0} & \cancel{2}\\
+\cancel{2} & -1 & 3\\
+\cancel{1} & 5 & 2
+\end{bmatrix}\rightarrow1\cdot\left(-1\right)^{1+1}\cdot\det\left(\begin{bmatrix}-1 & 3\\
+5 & 2
+\end{bmatrix}\right)=-2-15=-17;
+\]
+\item il secondo addendo vale $0$;
+\item il terzo addendo (relativo all'elemento $a_{1,\,3}=2$) si ottiene
+da
+\[
+\begin{bmatrix}\cancel{1} & \cancel{0} & \boxed{2}\\
+2 & -1 & \cancel{3}\\
+1 & 5 & \cancel{2}
+\end{bmatrix}\rightarrow2\cdot\left(-1\right)^{1+3}\cdot\det\left(\begin{bmatrix}2 & -1\\
+1 & 5
+\end{bmatrix}\right)=2\left(10+1\right)=22;
+\]
+\end{itemize}
+Il determinante di $A$ sarà $\det\left(A\right)=22-17=\boxed{5}$.\demo
+\begin{center}
+\smallskip{}
+\par\end{center}
+
+A seguire alcune proprietà e osservazioni sul determinante di una
+matrice:
+\begin{rem}
+Una matrice e la sua trasposta hanno lo stesso determinante: $\det\left(A\right)=\det\left(A^{{\scriptscriptstyle \text{T}}}\right)$.
+\end{rem}
+%
+\begin{rem}
+Il determinante di un prodotto matrice per scalare è dato da $\det\left(\alpha\cdot A\right)=\alpha^{n}\det\left(A\right)$.\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Teorema di Binet}{\footnotesize{}\index{Binet, teorema@{\footnotesize{}Binet, teorema}}}}[0.5cm]
+\end{rem}
+\begin{thm}
+Per due matrici quadrate $A$ e $B$ dello stesso ordine vale $\det\left(A\cdot B\right)=\det\left(A\right)\cdot\det\left(B\right)$.
+\end{thm}
+\begin{defn}
+\label{def:Matrice-singolare}Una matrice il cui determinante sia
+nullo (zero) si dice \emph{singolare}; una matrice singolare non è
+invertibile.
+\end{defn}
+%
+\begin{defn}
+\label{def:Rango}Il \emph{rango} di una matrice quadrata è il numero
+massimo di vettori \emph{linearmente indipendenti} tra righe e colonne;
+presi $n$ vettori, essi si dicono linearmente indipendenti se $\serie{i=1}n{\alpha_{i}v_{i}\neq0}\,\forall\alpha_{i}\in\mathbb{R},\,\alpha\neq0$.
+
+Vice versa si parla di vettori linearmente \emph{dipendenti} se $\exists\alpha_{i},\,i\in1\ldots n\,:\,\serie{i=1}n{\alpha_{i}v_{i}=0}$.
+\end{defn}
+%
+\begin{defn}
+\label{def:Matrice-inversa}Data una matrice $A\in\mathbb{R}^{n\times n}$
+indichiamo con $A^{-1}$ la sua \emph{inversa}, tale che $A\cdot A^{-1}=I$
+(questo è valido solo per matrici non singolari, dalla Definizione
+\ref{def:Matrice-singolare}).\marginpar{Attenzione agli indici del complemento algebrico $\Delta$: sono scambiati
+rispetto a quelli dell'elemento $b$ corrispondente!}
+
+Tale matrice si calcola come $A^{-1}=B=\begin{bmatrix}b_{1,1} & \cdots & b_{1,n}\\
+\vdots & \ddots & \vdots\\
+b_{n,1} & \cdots & b_{n,n}
+\end{bmatrix}$ dove l'elemento $b_{i,\,j}=\dfrac{\Delta_{j,\,i}}{\det\left(A\right)}$.
+\end{defn}
+\begin{thm}
+Data una matrice quadrata $A$, essa è invertibile se e solo se non
+è singolare; se $A$ non è singolare allora la sua inversa vale $A^{-1}=\dfrac{1}{\det\left(A\right)}A^{*}$;
+con $A^{*}=\left[a_{i,,j}^{*}\right]$ si indica la \emph{matrice
+aggiunta} di $A$, ovvero quella il cui elemento di posto $a_{i,,j}^{*}$
+corrisponde al complemento algebrico di $a_{j,,i}$.
+\end{thm}
+\begin{example}
+Si vuole invertire la seguente matrice:
+\[
+A=\begin{bmatrix}1 & 3\\
+5 & 2
+\end{bmatrix}
+\]
+Usando la Definizione \ref{def:Matrice-inversa}, controlliamo che
+$A$ sia invertibile: $\det\left(A\right)=1\cdot2-5\cdot3=2-15=-13$
+che essendo diverso da zero rende la matrice invertibile; scriviamo
+dunque la matrice inversa come il prodotto dell'inverso del determinante
+per la matrice dei complementi algebrici di $A$ (dove per $a_{i,\,j}$
+si prende $\Delta_{j,\,i}$, si rimanda inoltre alla Definizione \ref{def:Complemento-algebrico}):
+\[
+A^{-1}=-\dfrac{1}{13}\cdot\begin{bmatrix}2 & -3\\
+-5 & 1
+\end{bmatrix}
+\]
+\demo
+\end{example}
+\begin{center}
+\smallskip{}
+\par\end{center}
+\begin{xca}
+Calcolare l'inversa (se esiste) della seguente matrice:\marginpar{$\blacktriangleright$ \emph{Esercizio: inversa di una matrice $3\times3$}}
+\[
+A=\begin{bmatrix}3 & -1 & 2\\
+4 & 0 & 1\\
+1 & 2 & 3
+\end{bmatrix}
+\]
+\end{xca}
+\begin{center}
+\rule[0.5ex]{0.9\textwidth}{0.1pt}
+\par\end{center}
+\begin{sol}
+Controlliamo che la matrice sia invertibile; calcoliamo dunque il
+determinante utilizzando la seconda riga (contenente uno zero):
+\[
+\det\left(A\right)=4\cdot\left(-1\right)^{2+1}\cdot\det\left(\begin{bmatrix}-1 & 2\\
+2 & 3
+\end{bmatrix}\right)+0+1\cdot\left(-1\right)^{2+3}\cdot\det\left(\begin{bmatrix}3 & -1\\
+1 & 2
+\end{bmatrix}\right)
+\]
+\[
+=-4\cdot(-3-4)-1\cdot\left(6+1\right)=28-7=21
+\]
+che risulta maggiore di zero e la matrice è invertibile.
+
+Procediamo calcolando l'inversa come il prodotto dell'inverso del
+determinante per la matrice dei complementi algebrici degli elementi
+speculari ($a_{i,\,j}=\Delta_{j,\,i}$):\marginpar{Per brevità è stata usata la scrittura alternativa $\left|A\right|$
+per indicare $\det\left(A\right)$}
+\[
+A^{-1}=\dfrac{1}{21}\cdot\begin{bmatrix}\Delta_{1,1} & \Delta_{2,1} & \Delta_{3,1}\\
+\Delta_{1,2} & \Delta_{2,2} & \Delta_{3,2}\\
+\Delta_{1,3} & \Delta_{2,3} & \Delta_{3,3}
+\end{bmatrix}
+\]
+
+\[
+=\dfrac{1}{21}\cdot\begin{bmatrix}\left(-1\right)^{1+1}\cdot\begin{vmatrix}0 & 1\\
+2 & 3
+\end{vmatrix} & \left(-1\right)^{2+1}\cdot\begin{vmatrix}-1 & 2\\
+2 & 3
+\end{vmatrix} & \left(-1\right)^{3+1}\cdot\begin{vmatrix}-1 & 2\\
+0 & 1
+\end{vmatrix}\\
+\left(-1\right)^{2+1}\cdot\begin{vmatrix}4 & 1\\
+1 & 3
+\end{vmatrix} & \left(-1\right)^{2+2}\cdot\begin{vmatrix}3 & 2\\
+1 & 3
+\end{vmatrix} & \left(-1\right)^{3+2}\cdot\begin{vmatrix}3 & 2\\
+4 & 1
+\end{vmatrix}\\
+\left(-1\right)^{3+1}\cdot\begin{vmatrix}4 & 0\\
+1 & 2
+\end{vmatrix} & \left(-1\right)^{3+2}\cdot\begin{vmatrix}3 & -1\\
+1 & 2
+\end{vmatrix} & \left(-1\right)^{3+3}\cdot\begin{vmatrix}3 & -1\\
+4 & 0
+\end{vmatrix}
+\end{bmatrix}
+\]
+
+\[
+=\dfrac{1}{21}\cdot\begin{bmatrix}-2 & \left(-1\right)-7 & -1\\
+\left(-1\right)11 & 7 & \left(-1\right)-5\\
+8 & \left(-1\right)7 & 4
+\end{bmatrix}=\dfrac{1}{21}\begin{bmatrix}-2 & 7 & -1\\
+-11 & 7 & 5\\
+8 & -7 & 4
+\end{bmatrix}
+\]
+\demo
+\end{sol}
+\begin{center}
+\smallskip{}
+\par\end{center}
+
+Seguono ora alcune osservazioni sulle proprietà delle matrici inverse:
+\begin{rem}
+Per l'operazione di inverso sulle matrici sono dimostrate le seguenti
+proprietà:
+\end{rem}
+\begin{itemize}
+\item l'inversa di una matrice inversa è la matrice non invertita $\left(A^{-1}\right)^{-1}=A$;
+\item l'inverso del prodotto di uno scalare per una matrice è il prodotto
+del suo inverso per la matrice inversa $\left(\alpha\cdot A\right)^{-1}=\nicefrac{1}{\alpha}\cdot A^{-1}$;
+\item l'inverso del prodotto di due matrici è uguale al prodotto delle inverse
+scambiate di posto $\left(A\cdot B\right)^{-1}=B^{-1}\cdot A^{-1}$.
+\end{itemize}
+\begin{rem}
+Sia $A$ una matrice diagonale del tipo $\begin{bmatrix}a_{1,1} & 0 & 0\\
+0 & \ddots & 0\\
+0 & 0 & a_{n,n}
+\end{bmatrix}$, allora la sua inversa è ancora una matrice diagonale nella forma
+\[
+\begin{bmatrix}\dfrac{1}{a_{1,1}} & 0 & 0\\
+0 & \ddots & 0\\
+0 & 0 & \dfrac{1}{a_{n,n}}
+\end{bmatrix}
+\]
+Si verifica inoltre che, se una matrice è invertibile, risulta che
+$\det\left(A^{-1}\right)=\dfrac{1}{\det\left(A\right)}$.
+\end{rem}
+
+\section{Autovalori e autovettori}
+\begin{defn}
+\label{def:Autovalore}Un numero $\lambda\in\mathbb{C}$ è un \emph{autovalore}
+per una matrice $A\in\mathbb{C}^{n\times n}$ se vale la seguente:
+\[
+\exists v\in\mathbb{C}^{n}\,:\,A\cdot v=\lambda\cdot v
+\]
+che può essere riscritta come $\left(\lambda I-A\right)\cdot v=0$
+per $v\neq0$; questo si verifica se e solo se \marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Polinomio caratteristico}{\footnotesize{}\index{Matrice, polinomio caratteristico@{\footnotesize{}Matrice, polinomio caratteristico}}}}
+\begin{equation}
+\det\left(\lambda I-A\right)=0\label{eq:Polinomio-caratteristico}
+\end{equation}
+Il (\ref{eq:Polinomio-caratteristico}), che indichiamo come $\phi\left(\lambda\right)=0$,
+ha per soluzioni $\lambda_{i}\in\mathbb{C}$ le quali sono gli autovalori
+della matrice $A$.
+
+La molteplicità degli autovalori è minore o uguale all'ordine della
+matrice $A$ ($i\in1\ldots n$); chiamiamo il numero di autovalori
+distinti $\mu_{n}\in1\ldots n$.
+\end{defn}
+%
+\begin{defn}
+\label{def:Molteplicit=0000E0-algebrica}La \emph{molteplicità algebrica}
+di un autovalore $\lambda_{i}$ è il numero di volte che esso compare
+tra gli autovalori di una matrice, e si indica con $n_{i}$; possiamo
+scrivere le soluzioni di (\ref{eq:Polinomio-caratteristico}) rispetto
+alla molteplicità algebrica:
+\[
+\phi\left(\lambda\right)=\overset{{\scriptstyle \mu_{n}}}{\underset{{\scriptstyle i=1}}{\prod}}\left(\lambda-\lambda_{i}\right)^{n_{i}}
+\]
+Si verifica che il numero $\mu_{n}$ di autovalori distinti deve corrispondere
+al rango della matrice.
+\end{defn}
+%
+\begin{defn}
+Un \emph{autovettore} $v_{i}$ associato all'autovalore $\lambda_{i}$
+è tale per cui (applicando la Definizione \ref{def:Autovalore}) valga
+$\left(\lambda_{i}I-A\right)v_{i}=0$ posto che $v_{i}\neq0$. Gli
+autovettori associati a un autovalore sono infiniti.
+\end{defn}
+\begin{center}
+\smallskip{}
+\par\end{center}
+\begin{xca}
+Calcolare gli autovalori e un autovettore per ciascuno di essi, per
+la seguente matrice:\marginpar{$\blacktriangleright$ \emph{Esercizio: autovettori di matrice $2\times2$}}[-0.5cm]
+\[
+A=\begin{bmatrix}1 & 3\\
+-2 & 5
+\end{bmatrix}
+\]
+\end{xca}
+\begin{center}
+\rule[0.5ex]{0.9\textwidth}{0.1pt}
+\par\end{center}
+\begin{sol}
+Per cominciare calcoliamo (\ref{eq:Polinomio-caratteristico}) in
+generale (rispetto a $\lambda$):
+\[
+\det\left(\lambda I-A\right)=\det\left(\lambda\cdot\begin{bmatrix}1 & 0\\
+0 & 1
+\end{bmatrix}-\begin{bmatrix}1 & 3\\
+-2 & 5
+\end{bmatrix}\right)=\begin{vmatrix}\lambda-1 & -3\\
+2 & \lambda-5
+\end{vmatrix}
+\]
+\[
+=\left(\lambda-1\right)\left(\lambda-5\right)+6=\lambda^{2}-6\lambda+11
+\]
+Le soluzioni del determinante (polinomio caratteristico) sono le complesse
+coniugate $\lambda_{i}=3\pm j\sqrt{2}$ (con $j$ l'unità immaginaria,
+tale che $j^{2}=-1$); calcoliamo gli autovettori associati a entrambi
+gli autovalori:
+\end{sol}
+\begin{enumerate}
+\item Autovettore $v_{1}$ associato a $\lambda_{1}=3+j\sqrt{2}$:\\
+deve valere $\det\left(\lambda_{1}I-A\right)v_{1}=0$ ovvero $\begin{bmatrix}3+j\sqrt{2}-1 & -3\\
+2 & 3+j\sqrt{2}-5
+\end{bmatrix}\cdot\begin{bmatrix}v_{1,1}\\
+v_{2,1}
+\end{bmatrix}=0$; dal prodotto righe per colonne si ottiene l'equazione $\left(2-j\sqrt{2}\right)v_{1,1}-3v_{2,1}=0$.
+Essa può essere risolta scegliendo una condizione per una delle due
+componenti del vettore; imponiamo $v_{1,1}=3$: si ottiene $v_{2,1}=2+j\sqrt{2}$
+e quindi il vettore $v_{1}$ avrà le componenti $\boxed{\left(3,\,2+j\sqrt{2}\right)}$
+\item Autovettore $v_{2}$ associato a $\lambda_{2}=3-j\sqrt{2}$:\\
+essendo gli autovalori complessi coniugati e la matrice di ordine
+$2$, possiamo assumere che il secondo autovettore abbia la seconda
+componente complessa coniugata rispetto al primo $\boxed{\left(3,\,2-j\sqrt{2}\right)}$\demo
+\end{enumerate}
+\begin{center}
+\smallskip{}
+\par\end{center}
+\begin{xca}
+Calcolare autovalori e autovettori della seguente matrice:\marginpar{$\blacktriangleright$ \emph{Esercizio: autovettori di matrice $2\times2$}}
+\[
+A=\begin{bmatrix}-1 & -1\\
+-4 & -1
+\end{bmatrix}
+\]
+\sln{\lambda_{1}=1,\,\lambda_{2}=-3,\,v_{1}=\left(-1,2\right),\,v_{2}=\left(1,2\right)}
+\end{xca}
+\begin{center}
+\smallskip{}
+\par\end{center}
+\begin{rem}
+Se scriviamo il determinante (Definizione \ref{def:Determinante})
+in termini di autovalori (Definizione \ref{def:Molteplicit=0000E0-algebrica})
+segue che
+\[
+\det\left(A\right)=\overset{{\scriptstyle \mu_{n}}}{\underset{{\scriptstyle i=1}}{\prod}}\left(\lambda_{i}\right)^{n_{i}}
+\]
+Per annullare la produttoria deve esistere almeno un $\lambda_{i}=0$,
+per cui una matrice con determinante nullo (singolare) ha almeno un
+autovalore nullo.
+\end{rem}
+%
+\begin{rem}
+Sia $A$ una matrice triangolare (ha solo elementi nulli al di sotto
+o al di sopra della diagonale principale); allora gli autovalori di
+$A$ sono esattamente gli elementi sulla diagonale principale ($\lambda_{i}=a_{i,\,i}$).
+\end{rem}
+%
+\begin{rem}
+Se $\lambda_{i}$ è un autovalore di una matrice $A$ allora $\lambda_{i}^{-1}$
+è un autovalore di $A^{-1}$ (posto che $A$ sia invertibile).
+\end{rem}
+%
+\begin{rem}
+la \emph{traccia} della matrice $A$ (la somma degli elementi sulla
+diagonale principale) è anche pari alla somma dei suoi autovalori
+(contati con le rispettive molteplicità algebriche):
+\[
+\text{tr}\left(A\right)=\serie{i=1}n{a_{i,\,i}}=\serie{i=1}n{n_{i}\lambda_{i}}
+\]
+\end{rem}
+Definiamo ora alcune proprietà degli autovettori.
+\begin{defn}
+\label{def:Autospazio-molt-geometrica}Un autovettore $v_{i}$ si
+chiama \emph{autospazio} per il suo autovalore associato $\lambda_{i}$;
+la dimensione di tale autospazio è indicata con $g_{i}\in\left[1,n_{i}\right]$
+e si chiama \emph{molteplicità geometrica}, relativa a $\lambda_{i}$.
+Essa si calcola come $g_{i}=n-\text{rango}\left(\lambda_{i}I-A\right)$
+
+Per autovalori tutti distinti la loro molteplicità geometrica sarà
+in ogni caso $1$.
+\end{defn}
+\begin{center}
+\smallskip{}
+\par\end{center}
+\begin{xca}
+Calcolare la molteplicità geometrica degli autovalori della seguente
+matrice:\marginpar{$\blacktriangleright$ \emph{Esercizio: molteplicità geometrica di
+autovalori di matrice $3\times3$}}[-0.5cm]
+\[
+A=\begin{bmatrix}0 & 1 & 0\\
+1 & 0 & 0\\
+0 & 0 & 1
+\end{bmatrix}
+\]
+\end{xca}
+\begin{center}
+\rule[0.5ex]{0.9\textwidth}{0.1pt}
+\par\end{center}
+\begin{sol}
+Partiamo cercando gli autovalori di $A$ tramite il (\ref{eq:Polinomio-caratteristico}):
+\[
+\det\left(\lambda I-A\right)=\begin{bmatrix}\lambda & -1 & 0\\
+-1 & \lambda & 0\\
+0 & 0 & \lambda-1
+\end{bmatrix}=\lambda\left(-1\right)^{1+1}\begin{vmatrix}\lambda & 0\\
+0 & \lambda-1
+\end{vmatrix}-1\left(-1\right)^{1+2}\begin{vmatrix}-1 & 0\\
+0 & \lambda-1
+\end{vmatrix}
+\]
+\[
+=\lambda\left(\lambda\left(\lambda-1\right)\right)-\left(\lambda-1\right)=\left(\lambda-1\right)\left(\lambda^{2}-1\right)=\left(\lambda-1\right)\left(\lambda+1\right)\left(\lambda-1\right)
+\]
+Il gli autovalori risultano essere $\lambda_{1}=1$ con $n_{1}=2$
+e $\lambda_{2}=-1$ con $n_{2}=1$; calcoliamo quindi la molteplicità
+geometrica per entrambi gli autovalori:
+\end{sol}
+\begin{enumerate}
+\item Per il primo autovalore applichiamo la Definizione \ref{def:Autospazio-molt-geometrica}:
+\[
+g_{1}=3-\text{rango}\left(\begin{bmatrix}1 & -1 & 0\\
+-1 & 1 & 0\\
+0 & 0 & 0
+\end{bmatrix}\right)=3-1=2
+\]
+ricordando che per la Definizione \ref{def:Rango} il rango è il numero
+massimo di righe o colonne linearmente indipendenti; nel caso di $A$
+sono al più 1, essendo l'ultima riga e l'ultima colonna costituite
+da zeri (quindi combinazione lineare di una delle altre righe o colonne
+per 0) mentre le prima due righe e colonne sono l'una l'opposto dell'altra
+(quindi combinazione lineare di una delle due per $-1$).
+\item Per il secondo autovalore, che ha molteplicità algebrica $1$, la
+molteplicità geometrica vale $g_{2}=1$.
+\end{enumerate}
+In conclusione, abbiamo trovato $g_{1}=1,\,g_{2}=1$\demo\smallskip{}
+
+\section{Similitudine e diagonalizzabilità}
+
+La seguente definizione realizza una relazione di equivalenza (riflessiva,
+simmetrica e transitiva) tra due matrici:
+\begin{defn}
+Siano $A$ e $B$ matrici quadrate dello stesso ordine; $A$ è detta
+\emph{simile} a $B$ se esiste una matrice non singolare $T$ tale
+che $B=T\cdot A\cdot T^{-1}$.
+
+La matrice di trasformazione $T^{-1}$ ha per colonne autovettori
+della matrice $A$: $T^{-1}=\left[v_{1},v_{2},\ldots\,,v_{\mu_{n}}\right]$
+con $v_{i}$ associato a $\lambda_{i}$ per $A$; ogni $v_{i}$ inoltre
+ha un numero di colonne pari alla molteplicità algebrica $n_{i}$
+del $\lambda_{i}$ associato.
+\end{defn}
+\begin{thm}
+Due matrici simili possiedono lo stesso polinomio caratteristico,
+quindi gli stessi autovalori.
+\end{thm}
+\begin{defn}
+Una matrice si dice \emph{diagonalizzabile} se è simile a una matrice
+diagonale, ovvero $A$ è diagonalizzabile se
+\[
+\exists T_{{\scriptscriptstyle \text{D}}}\,:\,A_{{\scriptscriptstyle \text{D}}}=T_{{\scriptscriptstyle \text{D}}}AT_{{\scriptscriptstyle \text{D}}}^{-1}
+\]
+dove $A_{{\scriptscriptstyle \text{D}}}$ è una matrice diagonale
+con gli stessi autovalori di $A$.
+\end{defn}
+\begin{rem}
+\label{oss:Condizione-sufficiente-diagonalizzabilit=0000E0}Si osserva
+allora che una matrice $A$ è diagonalizzabile se e solo se ha autovalori
+tutti distinti (la molteplicità algebrica e geometrica dei suoi autovalori
+coincidono) $\forall i\in1\ldots n\left(n_{i}=g_{i}\right)$.
+\end{rem}
+\smallskip{}
+\begin{xca}
+Ottenere se la seguente matrice è diagonalizzabile, e in tal caso
+ottenere la matrice di trasformazione:\marginpar{$\blacktriangleright$ \emph{Esercizio: diagonalizzabilità di matrice
+$3\times3$}}[-0.5cm]
+\[
+A=\begin{bmatrix}1 & 0 & 1\\
+0 & 1 & 0\\
+0 & 0 & 2
+\end{bmatrix}
+\]
+\end{xca}
+\begin{center}
+\rule[0.5ex]{0.9\textwidth}{0.1pt}
+\par\end{center}
+\begin{sol}
+Per sapere se $A$ sia diagonalizzabile dobbiamo riuscire a ottenere
+una matrice invertibile $T_{{\scriptscriptstyle \text{D}}}$ che renda
+$A$ simile a una matrice diagonale; cominciamo quindi usando l'Osservazione
+\ref{oss:Condizione-sufficiente-diagonalizzabilit=0000E0} e cerchiamo
+gli autovalori di $A$:
+\[
+\det\left(\lambda I-A\right)=\begin{vmatrix}\lambda-1 & 0 & -1\\
+0 & \lambda-1 & 0\\
+0 & 0 & \lambda-2
+\end{vmatrix}=\left(\lambda-1\right)^{2}\left(\lambda-2\right)
+\]
+La precedente è una matrice triangolare, dunque il determinante si
+ottiene come prodotto degli elementi sulla diagonale principale; otteniamo
+$\lambda_{1}=1$ con $n_{1}=2$ e $\lambda_{2}=2$ con $n_{2}=1$.
+
+Abbiamo che la $n_{2}=1=g_{2}$, rimane da controllare che $g_{1}=n_{1}=2$;
+usando la definizione scriviamo
+\[
+g_{1}=3-\text{rango}\left(\lambda_{1}I-A\right)=3-\text{rango}\left(\begin{bmatrix}0 & 0 & -1\\
+0 & 0 & 0\\
+0 & 0 & -1
+\end{bmatrix}\right)=3-1=\boxed{2}
+\]
+Possiamo affermare che $A$ è diagonalizzabile, quindi troviamo la
+matrice di trasformazione $T_{{\scriptscriptstyle \text{D}}}$ cercando
+gli autospazi associati agli autovalori:
+\end{sol}
+\begin{enumerate}
+\item Per $\lambda_{1}=1$ abbiamo $\left(I-A\right)v_{1}=0$:
+\[
+\begin{bmatrix}0 & 0 & -1\\
+0 & 0 & 0\\
+0 & 0 & -1
+\end{bmatrix}\cdot\begin{bmatrix}v_{1,1} & v_{1,2}\\
+v_{2,1} & v_{2,2}\\
+v_{3,1} & v_{3,2}
+\end{bmatrix}=0
+\]
+Imponendo $v_{3,1}=0$ possiamo scegliere $v_{1,1}=0$ e $v_{2,1}\neq0$
+per ottenere due autovettori linearmente indipendenti:
+\[
+v_{1}=\left(1,0,0\right),\,\left(0,1,0\right)
+\]
+\item Per $\lambda_{2}=2$ abbiamo $\left(2I-A\right)v_{2}=0:$
+\[
+\begin{bmatrix}1 & 0 & -1\\
+0 & 1 & 0\\
+0 & 0 & 0
+\end{bmatrix}\cdot\begin{bmatrix}v_{1,1}\\
+v_{2,1}\\
+v_{3,1}
+\end{bmatrix}=0\rightarrow\begin{cases}
+v_{1,1}=v_{3,1} & {\scriptscriptstyle \text{(1\textdegree riga\ensuremath{\times v_{2}})}}\\
+v_{2,1}=0 & {\scriptscriptstyle \text{(2\textdegree riga\ensuremath{\times v_{2}})}}
+\end{cases}
+\]
+Una possibile scelta per il secondo autospazio è $v_{2}=\left(1,0,1\right)$.
+\end{enumerate}
+Infine, scriviamo la matrice di trasformazione inversa, le cui righe
+sono gli autospazi trovati:
+\[
+T_{{\scriptscriptstyle \text{D}}}^{-1}=\begin{bmatrix}1 & 0 & 1\\
+0 & 1 & 0\\
+0 & 0 & 1
+\end{bmatrix}\rightarrow T_{{\scriptscriptstyle \text{D}}}=1\cdot\begin{bmatrix}1 & 0 & -1\\
+0 & 1 & 0\\
+0 & 0 & 1
+\end{bmatrix}
+\]
+e grazie ad essa otteniamo la matrice diagonale $A_{{\scriptscriptstyle \text{D}}}$
+simile ad $A$:
+\[
+A_{{\scriptscriptstyle \text{D}}}=\begin{bmatrix}1 & 0 & -1\\
+0 & 1 & 0\\
+0 & 0 & 1
+\end{bmatrix}\cdot\begin{bmatrix}1 & 0 & 1\\
+0 & 1 & 0\\
+0 & 0 & 2
+\end{bmatrix}\cdot\begin{bmatrix}1 & 0 & 1\\
+0 & 1 & 0\\
+0 & 0 & 1
+\end{bmatrix}=\begin{bmatrix}1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 2
+\end{bmatrix}
+\]
+
+che è proprio la matrice diagonale cercata, con gli autovalori di
+$A$ sulla diagonale principale.\demo
+
+\smallskip{}
+\begin{xca}
+Trova (se esiste) la matrice diagonale simile alla seguente matrice:\marginpar{$\blacktriangleright$ \emph{Esercizio: matrice diagonale simile a
+matrice $2\times2$}}
+\[
+A=\begin{bmatrix}1 & 3\\
+-2 & 5
+\end{bmatrix}
+\]
+\sln{A_{{\scriptscriptstyle \text{D}}}=[[3+j\sqrt{2},0],\,[0,3-j\sqrt{2}]]}
+\end{xca}
+\begin{center}
+\smallskip{}
+\par\end{center}
+
+Anche se una matrice non è diagonalizzabile (non vale la Definizione
+\ref{oss:Condizione-sufficiente-diagonalizzabilit=0000E0}), è possibile
+metterla comunque in una forma il più simile possibile a una matrice
+diagonale:
+\begin{defn}
+Una matrice $A$ che non sia diagonalizzabile può comunque essere
+scritta in una forma diagonale a blocchi, chiamata \emph{forma di
+Jordan}.
+
+Si prendono tutti gli autovalori di $A$ tali che $g_{i}<n_{i}$ e
+si trovano gli \emph{autovettori generalizzati} associati ai $\lambda_{i}$
+nel modo seguente:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Autovettori generalizzati}{\footnotesize{}\index{Autovettori generalizzati@{\footnotesize{}Autovettori generalizzati}}}}[1cm]
+\begin{equation}
+\begin{array}{c}
+v_{i,\,1}\coloneqq\left(\lambda_{i}I-A\right)v_{i,\,1}=0\\
+v_{i,\,2}\coloneqq\left(A-\lambda_{i}I\right)v_{i,\,2}=v_{i,\,1}\\
+\vdots\\
+v_{i,\,\mu_{n}}\coloneqq\left(A-\lambda_{i}I\right)v_{i,\,\mu_{n}}=v_{i,\,\mu_{n}-1}
+\end{array}\label{eq:Autovettori-generalizzati}
+\end{equation}
+La matrice di trasformazione si otterrà come $T_{{\scriptscriptstyle \text{J}}}^{-1}=\left[v_{i,1},\,v_{i,2},\,\ldots v_{i,\,\mu_{n}}\right]$
+in cui le colonne sono costituite dagli autovettori generalizzati.
+
+La matrice $A$ in forma di Jordan si scrive come\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Forma di Jordan}{\footnotesize{}\index{Jordan, forma di@{\footnotesize{}Jordan, forma di}}}}[0.5cm]
+\begin{equation}
+A_{{\scriptscriptstyle \text{J}}}=T_{{\scriptscriptstyle \text{J}}}\cdot A\cdot T_{{\scriptscriptstyle \text{J}}}^{-1}\label{eq:Forma-di-Jordan}
+\end{equation}
+\end{defn}
+\begin{wrapfigure}{o}{0.3\textwidth}%
+\begin{centering}
+$A_{{\scriptscriptstyle \text{J}}}=\begin{bmatrix}\boxed{\begin{array}{cc}
+\lambda_{1} & 1\\
+0 & \lambda_{1}
+\end{array}} & \begin{array}{c}
+0\\
+0
+\end{array}\\
+\begin{array}{cc}
+0\; & \;0\end{array} & \boxed{\lambda_{2}}
+\end{bmatrix}$
+\par\end{centering}
+\caption{Esempio di matrice in forma di Jordan, per $n_{1}=2,\,g_{1}=1$ e
+$n_{2}=g_{2}=1$}
+\end{wrapfigure}%
+La matrice in forma di Jordan ha una struttura diagonale a blocchi,
+ognuno dei quali è sulla diagonale principale e sono tanti quanti
+gli autovalori distinti; ciascun blocco ha dimensione pari alla molteplicità
+algebrica dell'autovalore relativo, e ogni coefficiente sulla diagonale
+del blocco è l'autovalore a cui appartiene il blocco.
+
+Nei blocchi di ordine maggiore di uno (hanno ordine $n_{i}$, relativi
+ad autovalori con $n_{i}>1$) sono presenti gli autovalori $\lambda_{i}$
+sulla diagonale principale, e tutti gli elementi della sopra-diagonale
+sono pari a 1;
+
+L'esponenziale di una matrice in forma di Jordan è costituito dall'esponenziale
+di ogni blocco di Jordan di ordine uno, mentre per i blocchi di ordine
+maggiore i coefficienti al di sopra della diagonale (quelli sulla
+diagonale sono l'esponenziale dei coefficienti sulla diagonale) sono
+pari al termine $t^{h}/h!$ con $h=i-j$ la distanza dell'elemento
+$a_{{\scriptscriptstyle \text{J}},\,i,j}^{\prime}$ da quello sulla
+diagonale $a_{{\scriptscriptstyle \text{J}},\,i,i}^{\prime}$ all'interno
+della stessa riga:
+\[
+e^{A_{{\scriptscriptstyle \text{J}}}t}=e^{\lambda_{1}}\cdot\begin{bmatrix}1 & t & t^{2}/2\\
+0 & 1 & t\\
+0 & 0 & 1
+\end{bmatrix}=\begin{bmatrix}e^{\lambda_{1}} & te^{\lambda_{1}} & \nicefrac{t^{2}}{2}e^{\lambda_{1}}\\
+0 & e^{\lambda_{1}} & te^{\lambda_{1}}\\
+0 & 0 & e^{\lambda_{1}}
+\end{bmatrix}
+\]
+dove $A_{{\scriptscriptstyle \text{J}}}$ è una matrice in forma di
+Jordan con un unico blocco di Jordan relativo a un autovalore $\lambda_{1}$
+con $n_{i}=3$.
+
+\smallskip{}
+\begin{xca}
+Trova la matrice in forma di Jordan simile alla seguente matrice:\marginpar{$\blacktriangleright$ \emph{Esercizio: matrice $3\times3$ in forma
+di Jordan}}
+\[
+A=\begin{bmatrix}1 & -4 & 3\\
+0 & -2 & 0\\
+-3 & 8 & 1
+\end{bmatrix}
+\]
+\sln{A_{{\scriptscriptstyle \text{J}}}=[[-2,1,0],\,[0,2,0],\,[0,0,4]]}
+\end{xca}
+\begin{center}
+\smallskip{}
+\par\end{center}
+
+\section{Esponenziali di matrici}
+
+Possiamo definire la funzione esponenziale di una matrice $A$ rispetto
+a una variabile $t$ come:
+\begin{defn}
+\label{def:Esponenziale-di-matrice}Un \emph{esponenziale di matrice}
+è una funzione del tipo $e^{A\cdot t}=\serie{i=0}{\infty}{\dfrac{1}{i!}\left(A\cdot t\right)^{i}}=I+A\cdot t+\dfrac{1}{2}\left(A\cdot t\right)^{2}+\ldots$
+
+Se abbiamo una matrice diagonale $A=\begin{bmatrix}\lambda_{1} & 0\\
+0 & \lambda_{2}
+\end{bmatrix}$ allora il suo esponenziale vale $e^{A\cdot t}=\begin{bmatrix}e^{\lambda_{1}t} & 0\\
+0 & e^{\lambda_{2}t}
+\end{bmatrix}$, dove si ha l'esponenziale scalare $e^{\lambda t}=\serie{i=1}{\infty}{\dfrac{1}{i!}\left(\lambda t\right)^{i}}$.
+
+Se abbiamo una matrice in forma di Jordan, per i blocchi di Jordan
+con ordine maggiore di 1 vale $A_{{\scriptscriptstyle \text{J}}}=\begin{bmatrix}\lambda_{1} & 1\\
+0 & \lambda_{1}
+\end{bmatrix}\rightarrow e^{A_{{\scriptscriptstyle \text{J}}}\cdot t}=\begin{bmatrix}e^{\lambda_{1}t} & te^{\lambda_{1}t}\\
+0 & e^{\lambda_{1}t}
+\end{bmatrix}$; da un blocco di Jordan $2\times2$ compare un termine lineare, per
+dimensione $n$ maggiore compariranno termini di grado $n-1$.
+\end{defn}
+\begin{rem}
+\label{oss:Esponenziali-matrici-simili}Siano $A$ e $B$ due matrici
+simili ($B=T\cdot A\cdot T^{-1}$), allora vale $e^{B\cdot t}=T\cdot e^{A\cdot t}\cdot T^{-1}$;
+questo si verifica applicando la Definizione \ref{def:Esponenziale-di-matrice}.
+\end{rem}
+%
+\begin{rem}
+Sia $A$ una matrice diagonale o in forma di Jordan, allora si ha
+che $A\cdot e^{A\cdot t}=e^{A\cdot t}\cdot A$; dato che $A$ è diagonale,
+anche la sua esponenziale sarà una matrice diagonale e il prodotto
+di due matrici diagonali è commutativo.
+
+Dalla Osservazione \ref{oss:Esponenziali-matrici-simili} otteniamo
+che questa uguaglianza vale in generale per una matrice $A$ qualsiasi;
+infatti $T_{{\scriptscriptstyle \text{D}}}^{-1}\cdot A_{{\scriptscriptstyle \text{D}}}\cdot T_{{\scriptscriptstyle \text{D}}}\cdot T_{{\scriptscriptstyle \text{D}}}^{-1}\cdot e^{A_{{\scriptscriptstyle \text{D}}}\cdot t}\cdot T_{{\scriptscriptstyle \text{D}}}=T_{{\scriptscriptstyle \text{D}}}^{-1}\cdot A_{{\scriptscriptstyle \text{D}}}\cdot e^{A_{{\scriptscriptstyle \text{D}}}\cdot t}\cdot T_{{\scriptscriptstyle \text{D}}}=A$.
+\end{rem}
+%
+\begin{rem}
+\label{oss:Derivata-esponenziale-matrice}Sia $A_{{\scriptscriptstyle \text{D}}}$
+una matrice diagonale, allora la derivata nel tempo del suo esponenziale
+vale $\dfrac{\partial}{\partial t}e^{A_{{\scriptscriptstyle \text{D}}}\cdot t}=A_{{\scriptscriptstyle \text{D}}}\cdot e^{A_{{\scriptscriptstyle \text{D}}}\cdot t}$;
+questo risultato proviene dalla derivata degli elementi sulla diagonale
+di una matrice esponenziale.
+
+Si ottiene di nuovo che questa uguaglianza vale in generale, per qualsiasi
+matrice $A$.
+\end{rem}
+
+\section{Numeri nel campo complesso}
+\begin{defn}
+Un numero complesso nella forma algebrica è scritto come $s=a+jb$,
+dove $a=\text{Re}\left(s\right)$ è la parte reale e $b=\text{Im}\left(s\right)$
+la parte immaginaria; $j$ è l'unità immaginaria tale che $j^{2}=-1$.
+
+Ogni numero complesso possiede un complesso coniugato, che ha la stessa
+parte reale e la parte immaginaria cambiata di segno ($\overline{s}=a-jb$).
+
+I numero complessi ammettono anche la rappresentazione in forma trigonometrica
+(modulo e fase) sul piano di Gauss: $s=\rho\left(\cos\left(\phi\right)+j\sin\left(\phi\right)\right)$,
+dove $\rho$ è la distanza del numero dall'origine e $\phi$ è l'angolo
+che questa distanza forma con l'asse orizzontale.
+\end{defn}
+\begin{rem}
+Per passare da una rappresentazione algebrica a una trigonometrica
+si usano le seguenti considerazioni:
+\[
+\rho=\sqrt{a^{2}+b^{2}}
+\]
+\[
+\phi=\text{arg}\left(s\right)\coloneqq\begin{cases}
+\arctan\left(\dfrac{b}{a}\right) & a>0\\
+\arctan\left(\dfrac{b}{a}\right)+\pi & a<0\\
+\dfrac{\pi}{2} & a=0\land b>0\\
+-\dfrac{\pi}{2} & a=0\land b<0
+\end{cases}
+\]
+\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Formula di Eulero}{\footnotesize{}\index{Eulero, formula di@{\footnotesize{}Eulero, formula di}}}}[1.2cm]
+\end{rem}
+\begin{thm}
+Consideriamo l'esponenziale di un numero complesso; scriveremo: $e^{a+jb}=e^{a}\cdot e^{jb}$.
+La formula di Eulero afferma che
+\begin{equation}
+e^{jb}=\cos\left(b\right)+j\sin\left(b\right)\label{eq:Formula-di-Eulero}
+\end{equation}
+\end{thm}
+La (\ref{eq:Formula-di-Eulero}) è molto utile per eseguire il prodotto
+di numeri complessi, riconducendolo alle proprietà delle potenze.
+\end{document}

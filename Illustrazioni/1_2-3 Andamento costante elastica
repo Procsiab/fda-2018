@@ -1,0 +1,12 @@
+﻿\begin{tikzpicture} [scale=1.5]
+% Assi
+	\draw[->] (-0.5, 0) -- (3, 0) node[right] {$t$};
+	\draw[->] (0, -0.5) -- (0, 2) node[above] {$k (t)$};
+% Funzione
+	\draw[scale=0.5, domain=-0.5:5, smooth, variable=\x, gray] plot ({\x}, {1+e^(-\x)});
+% Punti sul grafico
+	\filldraw (0, 0.5) circle (1pt)
+		node[below right] (A1) {$k_0 - \Delta k$};
+	\filldraw (0, 1) circle (1pt)
+		node[above right] (K0) {$k_0$};
+\end{tikzpicture}

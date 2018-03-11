@@ -1,0 +1,14 @@
+﻿\begin{tikzpicture} [scale=1.5]
+% Massa
+	\draw (0, 0) rectangle (0.5, 0.5)
+		node [midway] {$\scriptstyle m$};
+% Forze
+	\draw [->] (0, 0.4) -- ++(-0.5, 0)
+		node [above] (AV) {$\scriptscriptstyle m \dot v (t)$};
+	\draw [->] (0, 0.1) -- ++(-0.5, 0)
+		node [below] (A) {$\scriptscriptstyle \beta mv^2 (t)$};
+	\draw [->] (0.5, 0.4) -- ++(0.5, 0)
+		node [above] (AV) {$\scriptscriptstyle v(t)$};
+	\draw [->] (0.5, 0.1) -- ++(0.5, 0)
+		node [below] (A) {$\scriptscriptstyle F(t)$};
+\end{tikzpicture}

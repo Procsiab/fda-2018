@@ -1,0 +1,17 @@
+﻿\begin{tikzpicture} [scale=1.5]
+% Assi
+	\draw[->] (-1.5, 0) -- (1.5, 0) node[right] {$t$};
+	\draw[->] (0, -0.5) -- (0, 3) node[above] {$\beta (t)$};
+% Funzione
+	\draw[scale=0.5, domain=-2.3:2.3, smooth, variable=\x, gray] plot ({\x}, {cosh(\x)});
+% Punti sul grafico
+	\filldraw (0, 0.5) circle (1pt)
+		node[below right] (B0) {$\beta_0$};
+	\filldraw (1.2, 0) circle (1pt)
+		node[below] (A1) {$p_m + \varepsilon$};
+	\filldraw (-1.2, 0) circle (1pt)
+		node[below] (A2) {$-p_m - \varepsilon$};
+% Asintoti
+	\draw [gray, dashed] (A1) -- ++(0, 3);
+	\draw [gray, dashed] (A2) -- ++(0, 3);
+\end{tikzpicture}
