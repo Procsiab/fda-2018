@@ -1,0 +1,7 @@
+﻿
+\begin{circuitikz}[american voltages]
+	\draw (0,0) to [R, l_=\mbox{$R$}, -*, n=R, v^=$\scriptstyle R\cdot	 i(t)$] (2,0);
+	\draw (2,0) to [L, l_=\mbox{$L$}, -*, n=L, v^=$\scriptstyle v_{{\scriptscriptstyle L}}\left(t\right)$] (2,-2);
+	\draw (2, -2) -- (0, -2);
+	\draw (0,-2) to [V, v^<=\mbox{$u(t)$}, -*, n=E3] (0,0);
+\end{circuitikz}

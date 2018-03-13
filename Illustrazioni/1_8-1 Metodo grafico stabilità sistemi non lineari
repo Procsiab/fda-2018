@@ -1,0 +1,20 @@
+﻿\begin{tikzpicture} [scale=1]
+% Assi
+	\draw[->] (-1.5, 0) -- (2.5, 0) node[right] {$x$};
+	\draw[->] (0, -1) -- (0, 1) node[above] {$\dot x$};
+% Funzione
+	\draw[scale=0.33, domain=-4:6, smooth, variable=\x, gray] plot ({\x}, {cos(\x r))});
+% Punti sul grafico
+	\filldraw (-pi/6, 0) circle (1pt)
+		node[above] (x1) {$\scriptstyle \overline{x}_1$};
+	\filldraw (pi/6, 0) circle (1pt)
+		node[above] (x2) {$\scriptstyle \overline{x}_2$};
+	\filldraw (pi/2, 0) circle (1pt)
+		node[above] (x3) {$\scriptstyle \overline{x}_3$};
+% Freccie sul grafico
+	%\draw [decorate, decoration={triangles}] (-1.5, 0) -- (-pi/6, 0);
+	\draw[snake=triangles] (-0.8, 0) -- (-1.5,0);
+	\draw[snake=triangles] (-0.4, 0) -- (0.4, 0);
+	\draw[snake=triangles] (1.45, 0) -- (0.65, 0);
+	\draw[snake=triangles] (1.7, 0) -- (2.2, 0);
+\end{tikzpicture}

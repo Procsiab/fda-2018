@@ -864,10 +864,10 @@ Processo a tempo continuo, modello
 
 \begin_inset Formula 
 \begin{equation}
-\begin{array}{ll}
+\begin{cases}
 \dot{x}\left(t\right)=f\left(x\left(t\right),u\left(t\right),t\right) & \text{Equazione di stato}\\
 y\left(t\right)=g\left(x\left(t\right),u\left(t\right),t\right) & \text{Equazione di uscita}
-\end{array}\label{eq:Equazioni-processo-tempo-continuo}
+\end{cases}\label{eq:Equazioni-processo-tempo-continuo}
 \end{equation}
 
 \end_inset
@@ -2851,7 +2851,7 @@ status open
 \begin_layout Plain Layout
 
 \size footnotesize
-Lagrange, Formula di
+Lagrange, formula
 \end_layout
 
 \end_inset
@@ -3000,9 +3000,9 @@ reference "eq:Formula-di-Lagrange"
  permette anche per calcolare l'espressione del movimento di uscita; nel
  contesto di questa osservazione vale
 \begin_inset Formula 
-\[
-y\left(t\right)=Ce^{At}x_{0}+C\somme 0t{e^{A\left(t-\tau\right)}Bu\left(\tau\right)}{\tau}+Du\left(t\right)
-\]
+\begin{equation}
+y\left(t\right)=Ce^{At}x_{0}+C\somme 0t{e^{A\left(t-\tau\right)}Bu\left(\tau\right)}{\tau}+Du\left(t\right)\label{eq:Movimento-uscita-Lagrange}
+\end{equation}
 
 \end_inset
 
@@ -5370,6 +5370,19 @@ I coefficienti risultanti dal movimento forzato sono una riscrittura delle
 .
  Notiamo inoltre che il movimento forzato della posizione sarà un esponenziale
  mentre quello della velocità è lineare, entrambi divergenti.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+demo
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -5552,6 +5565,19 @@ L'equazione ammette soluzione solo per ingresso nullo
 \end_inset
 
  può assumere qualunque valore reale.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+demo
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -5597,7 +5623,7 @@ reference "eq:Formula-di-Lagrange"
  come:
 \begin_inset Formula 
 \[
-x_{{\scriptscriptstyle \text{F}}}\left(t\right)=\somme 0t{e^{A\left(t-\tau\right)}B\cdot\text{imp}\left(\tau\right)}{\tau}=e^{A\cdot t}\cdot B\somme 0t{e^{\left(-A\cdot\tau\right)}\,\text{imp}\left(\tau\right)}{\tau}
+x_{{\scriptscriptstyle \text{F}}}\left(t\right)=\somme 0t{e^{A\left(t-\tau\right)}B\cdot\text{imp}\left(\tau\right)}{\tau}=e^{A\cdot t}\cdot B\somme 0t{\text{imp}\left(\tau\right)}{\tau}
 \]
 
 \end_inset
@@ -5650,14 +5676,15 @@ impulso, risposta al
 \end_inset
 
 Si ottiene questo risultato osservando che l'impulso vale 1 solo per 
-\begin_inset Formula $t=0$
+\begin_inset Formula $\tau=0$
 \end_inset
 
- e per questo valore si ha che 
-\begin_inset Formula $e^{\left(-A\cdot0\right)}$
+ e per qualunque valore di 
+\begin_inset Formula $\tau\neq0$
 \end_inset
 
- equivale a una matrice identità; nota la 
+ il prodotto con l'impulso che si annulla annulla tutto l'integrale; nota
+ la 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:Risposta-all'-impulso"
@@ -5711,7 +5738,7 @@ Stabilità del sistema
 \end_layout
 
 \begin_layout Subsection
-Condizioni di stabilità in sistemi LTI
+Condizioni di stabilità in sistemi a tempo continuo
 \end_layout
 
 \begin_layout Standard
@@ -7081,6 +7108,19 @@ reference "thm:Criterio-di-Routh"
 \end_inset
 
  poiché tutti gli elementi della prima colonna hanno segno concorde.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+demo
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -7463,6 +7503,1696 @@ Le coppie
  che soddisfano tutte queste condizioni generano movimenti asintoticamente
  stabili per il sistema.
  Quelle che non le soddisfano generano movimenti instabili.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+demo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Sistemi non lineari tempo-invarianti
+\end_layout
+
+\begin_layout Subsection
+Linearizzazione
+\end_layout
+
+\begin_layout Standard
+Un sistema si definisce 
+\emph on
+non lineare
+\emph default
+ quando una delle equazioni 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Forma-standard-matrice-LTI"
+
+\end_inset
+
+ non è una combinazione degli stati con gli ingressi; il calcolo dei movimenti
+ per questo tipo di sistemi, a partire da condizioni iniziali ben definite
+ e un certo ingresso non è risolvibile in forma chiusa (l'equazione differenzial
+e dello stato avrà almeno una costante indeterminata).
+\end_layout
+
+\begin_layout Standard
+I movimenti di equilibrio di questi sistemi sono tuttavia ottenibili direttament
+e usando la Definizione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Equilibrio-LTI"
+
+\end_inset
+
+; per sistemi non lineari si cercano nella pratica degli equilibri di interesse
+ attorno ai quali i movimenti sono stabili.
+ Grazie a una trasformazione chiamata linearizzazione, ovvero tramite uno
+ sviluppo di Taylor al primo ordine (lineare) delle matrici 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Dimensioni-coeff-matrici-standard"
+
+\end_inset
+
+ nel punto di equilibrio, si studia la stabilità dei movimenti del sistema.
+\end_layout
+
+\begin_layout Standard
+Si effettua dunque la seguente approssimazione: sia dato un sistema nella
+ forma 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Forma-standard-matrice-LTI"
+
+\end_inset
+
+, e una sua condizione di equilibrio 
+\begin_inset Formula $\left(\overline{x},\,\overline{u}\right)$
+\end_inset
+
+; lo sviluppo di Taylor troncato al primo ordine delle equazioni di stato
+ e di uscita vale:
+\begin_inset Formula 
+\[
+\dot{x}\left(t\right)=f\left(\overline{x},\,\overline{u},\,t\right)+\left.\dfrac{\partial f}{\partial x}\right|_{\overline{x},\overline{u}}\cdot\left(x\left(t\right)-\overline{x}\right)+\left.\dfrac{\partial f}{\partial u}\right|_{\overline{x},\overline{u}}\cdot\left(u\left(t\right)-\overline{u}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+y\left(t\right)=g\left(\overline{x},\,\overline{u},\,t\right)+\left.\dfrac{\partial g}{\partial x}\right|_{\overline{x},\overline{u}}\cdot\left(x\left(t\right)-\overline{x}\right)+\left.\dfrac{\partial g}{\partial u}\right|_{\overline{x},\overline{u}}\cdot\left(u\left(t\right)-\overline{u}\right)
+\]
+
+\end_inset
+
+Se definiamo le quantità 
+\begin_inset Formula $\delta x\left(t\right)=x\left(t\right)-\overline{x}$
+\end_inset
+
+ e 
+\begin_inset Formula $\delta u\left(t\right)=u\left(t\right)-\overline{u}$
+\end_inset
+
+ per le equazioni di stato, e la quantità 
+\begin_inset Formula $\delta y\left(t\right)=y\left(t\right)-\overline{y}$
+\end_inset
+
+ per l'equazione di uscita, le precedenti diventano
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "3cm"
+height "1pt"
+
+\end_inset
+
+
+\series bold
+\size footnotesize
+
+\begin_inset Newline newline
+\end_inset
+
+Forma linearizzata tempo-invariante
+\series default
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Linearizzazione
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[1.3cm]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\begin{array}{c}
+\delta\dot{x}\left(t\right)=\dot{x}\left(t\right)-\dot{\overline{x}}=\overset{{\scriptstyle A}}{\overbrace{\left.\dfrac{\partial f}{\partial x}\right|_{\overline{x},\overline{u}}}}\cdot\delta x\left(t\right)+\overset{{\scriptstyle B}}{\overbrace{\left.\dfrac{\partial f}{\partial u}\right|_{\overline{x},\overline{u}}}}\cdot\delta u\left(t\right)\\
+\delta y\left(t\right)=y\left(t\right)-\overline{y}=\overset{{\scriptstyle C}}{\overbrace{\left.\dfrac{\partial g}{\partial x}\right|_{\overline{x},\overline{u}}}}\cdot\delta x\left(t\right)+\overset{{\scriptstyle D}}{\overbrace{\left.\dfrac{\partial g}{\partial u}\right|_{\overline{x},\overline{u}}}}\cdot\delta u\left(t\right)
+\end{array}\label{eq:Forma-linearizzata-sistema-LTI}
+\end{equation}
+
+\end_inset
+
+Ritroviamo le equazioni della forma standard 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Forma-standard-matrice-LTI"
+
+\end_inset
+
+; l'approssimazione fatta vale in un intorno appropriato dell'equilibrio.
+ Come per i sistemi lineari, valgono i risultati sulla stabilità asintotica
+ e sul segno degli autovalori della matrice di stato 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ In particolare enunciamo i seguenti teoremi:
+\end_layout
+
+\begin_layout Theorem
+Lo stato di equilibrio 
+\begin_inset Formula $\overline{x}$
+\end_inset
+
+ relativo all'ingresso 
+\begin_inset Formula $\overline{u}$
+\end_inset
+
+ per un sistema non lineare della forma 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Forma-standard-matrice-LTI"
+
+\end_inset
+
+, si dice asintoticamente stabile se tutti gli autovalori della matrice
+ di stato 
+\begin_inset Formula $A$
+\end_inset
+
+ del sistema 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Forma-linearizzata-sistema-LTI"
+
+\end_inset
+
+ hanno parte reale negativa.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+Lo stato di equilibrio 
+\begin_inset Formula $\overline{x}$
+\end_inset
+
+ relativo all'ingresso 
+\begin_inset Formula $\overline{u}$
+\end_inset
+
+ per un sistema non lineare della forma 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Forma-standard-matrice-LTI"
+
+\end_inset
+
+, si dice instabile se almeno uno degli autovalori della matrice di stato
+ 
+\begin_inset Formula $A$
+\end_inset
+
+ del sistema 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Forma-linearizzata-sistema-LTI"
+
+\end_inset
+
+ ha parte reale negativa.
+\end_layout
+
+\begin_layout Standard
+Si nota che entrambi i teoremi sono i corrispettivi dei 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:Teorema-dell'asintotica-stabilità"
+
+\end_inset
+
+ e 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:Teorema-dell'instabilità"
+
+\end_inset
+
+, ma per i sistemi non lineari le condizioni poste sono solo sufficienti;
+ nel caso di autovalori nulli non è possibile, a partire da un equilibrio
+ di un sistema linearizzato, stabilire la sua stabilità.
+\end_layout
+
+\begin_layout Subsection
+Metodo grafico per sistemi non lineari
+\end_layout
+
+\begin_layout Standard
+Tale metodo è applicabile solo per sistemi di ordine molto piccolo, nel
+ nostro caso di ordine 1; questo metodo è una alternativa alla linearizzazione
+ che però coinvolge il disegno della funzione di stato su un grafico costruito
+ in un certo modo.
+\end_layout
+
+\begin_layout Standard
+Consideriamo 
+\begin_inset Formula $\dot{x}\left(t\right)=f\left(t\right)$
+\end_inset
+
+ costante con 
+\begin_inset Formula $x\in\mathbb{R}$
+\end_inset
+
+; rappresentiamo sul riferimento 
+\begin_inset Formula $\left(\dot{x}\left(t\right),\,x\left(t\right)\right)$
+\end_inset
+
+ l'andamento della derivata della funzione di stato, e osserviamo che:
+\end_layout
+
+\begin_layout Itemize
+I punti in cui la funzione 
+\begin_inset Formula $f\left(t\right)$
+\end_inset
+
+ (la derivata dello stato) si annulla rappresentano gli equilibri dello
+ stato;
+\end_layout
+
+\begin_layout Itemize
+La stabilità degli equilibri individuati è determinata dal segno della funzione
+ 
+\begin_inset Formula $f\left(t\right)$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+se la funzione decresce a destra e cresce a sinistra (riporta lo stato sul
+ valore di equilibrio) l'equilibrio è asintoticamente stabile;
+\end_layout
+
+\begin_layout Itemize
+se la funzione cresce o decresce sia a destra che a sinistra, l'equilibrio
+ è stabile semplicemente;
+\end_layout
+
+\begin_layout Itemize
+se la funzione cresce a destra e decresce a sinistra (allontana lo stato
+ dal valore di equilibrio) l'equilibrio è instabile.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/1_8-1 Metodo grafico stabilità sistemi non lineari.pdf
+	display false
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Funzione-di-stato-metodo-grafico"
+
+\end_inset
+
+Funzione di stato analizzata col metodo grafico
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+Sia dato il grafico in figura che indica l'andamento dell'equazione di stato
+ in funzione dello stato, in un sistema di ordine 1: determinare la stabilità
+ degli eventuali equilibri.
+\end_layout
+
+\begin_layout Example
+Notiamo che la funzione di stato (una cosinusoide) si annulla in tre punti,
+ che chiameremo in ordine 1, 2 e 3; osservando il segno della funzione (se
+ si trova al di sopra o al di sotto dell'asse orizzontale) giungiamo alle
+ seguenti conclusioni:
+\end_layout
+
+\begin_layout Enumerate
+equilibrio instabile;
+\end_layout
+
+\begin_layout Enumerate
+equilibrio asintoticamente stabile;
+\end_layout
+
+\begin_layout Enumerate
+equilibrio instabile.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+demo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Sistemi dinamici a tempo discreto
+\end_layout
+
+\begin_layout Section
+Modello matematico nel tempo discreto
+\end_layout
+
+\begin_layout Standard
+Le considerazioni già fatte per i sistemi lineari a tempo continuo valgono
+ ancora, con degli accorgimenti, per i sistemi a tempo discreto.
+ Questi ultimi presentano la variabile temporale definita in istanti atomici
+ (
+\begin_inset Formula $k\in\mathbb{Z}$
+\end_inset
+
+), e la dinamica del sistema evolve per successione di istanti.
+\end_layout
+
+\begin_layout Standard
+La riscrittura del modello matriciale standard per i sistemi a tempo discreto
+ è la seguente:
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "3cm"
+height "1pt"
+
+\end_inset
+
+
+\series bold
+\size footnotesize
+
+\begin_inset Newline newline
+\end_inset
+
+Equazioni di un processo a tempo discreto
+\series default
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+
+\size footnotesize
+tempo discreto, equazioni di processo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\begin{cases}
+x\left(k+1\right)=f\left(x\left(k\right),\,u\left(k\right),\,k\right) & \text{Equazione di stato}\\
+y\left(k\right)=g\left(x\left(k\right),\,u\left(k\right),\,k\right) & \text{Equazione di uscita}
+\end{cases}\label{eq:Modello-standard-sistemi-tempo-discreto}
+\end{equation}
+
+\end_inset
+
+In generale lo stato ha 
+\begin_inset Formula $n$
+\end_inset
+
+ dimensioni e l'ingresso 
+\begin_inset Formula $m$
+\end_inset
+
+ dimensioni, mentre l'uscita 
+\begin_inset Formula $p$
+\end_inset
+
+ dimensioni, come secondo 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Dimensioni-coeff-matrici-standard"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Definiamo i movimenti generati da questa categoria di sistemi, a fronte
+ di condizione iniziale 
+\begin_inset Formula $x_{0}=x\left(k_{0}\right)$
+\end_inset
+
+ e l'andamento dell'ingresso 
+\begin_inset Formula $u\left(k\right)$
+\end_inset
+
+ per 
+\begin_inset Formula $k\geq0$
+\end_inset
+
+, iterando l'equazione 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Modello-standard-sistemi-tempo-discreto"
+
+\end_inset
+
+ fino al 
+\begin_inset Formula $k-$
+\end_inset
+
+esimo istante di interesse; l'istante di tempo discreto può riferirsi sia
+ a eventi periodici (ogni minuto, primo di ogni mese) oppure a eventi che
+ non dipendono dallo scorrere del tempo (auto che entra in un parcheggio,
+ temperatura che supera un certo valore)
+\end_layout
+
+\begin_layout Example
+Definiamo le seguenti variabili:
+\end_layout
+
+\begin_layout Example
+Le scorte in un magazzino a inizio mese successivo (con 
+\begin_inset Formula $k$
+\end_inset
+
+ indice del mese attuale) come 
+\begin_inset Formula 
+\[
+s\left(k+1\right)=a\cdot s\left(k\right)+q\left(k\right)-v\left(k\right)
+\]
+
+\end_inset
+
+con 
+\begin_inset Formula $a$
+\end_inset
+
+ indice di deperimento, 
+\begin_inset Formula $q\left(k\right)$
+\end_inset
+
+ la quantità prodotta, 
+\begin_inset Formula $v\left(k\right)$
+\end_inset
+
+ la quantità venduta; l'andamento delle vendite può essere visto come
+\begin_inset Formula 
+\[
+\alpha\left(k\right)-\beta\left(k\right)\cdot p\left(k\right)
+\]
+
+\end_inset
+
+con 
+\begin_inset Formula $\alpha\left(k\right)$
+\end_inset
+
+ la domanda, 
+\begin_inset Formula $\beta\left(k\right)$
+\end_inset
+
+ il comportamento degli acquirenti, 
+\begin_inset Formula $p\left(k\right)$
+\end_inset
+
+ il prezzo (
+\begin_inset Formula $\alpha,\,\beta>0$
+\end_inset
+
+); la politica di prezzo è definito da
+\begin_inset Formula 
+\[
+p\left(k+1\right)=p\left(k\right)+\gamma\left(k\right)\cdot\left(s_{0}\left(k\right)-s\left(k\right)\right)+\delta\left(k\right)\cdot v\left(t\right)
+\]
+
+\end_inset
+
+con 
+\begin_inset Formula $\gamma\left(k\right)$
+\end_inset
+
+ le scorte in magazzino, 
+\begin_inset Formula $s_{0}$
+\end_inset
+
+ il valore di riferimento per la quantità da tenere in magazzino, 
+\begin_inset Formula $\delta\left(k\right)$
+\end_inset
+
+ variabile decisionale dell'azienda rispetto alle vendite; vogliamo misurare
+ il profitto mensile definito come
+\begin_inset Formula 
+\[
+g\left(k\right)=p\left(k\right)\cdot v\left(k\right)-\zeta\left(k\right)\cdot q\left(k\right)
+\]
+
+\end_inset
+
+con 
+\begin_inset Formula $\zeta\left(k\right)$
+\end_inset
+
+ il costo di produzione.
+\end_layout
+
+\begin_layout Example
+Adoperiamo come stati le variabili di cui è nota l'espressione all'
+\emph on
+istante successivo
+\emph default
+ (
+\begin_inset Formula $k+1$
+\end_inset
+
+) e come ingressi i seguenti, assegnati:
+\begin_inset Formula 
+\[
+x\left(k\right)=\begin{bmatrix}x_{1}\left(k\right)\\
+x_{2}\left(k\right)
+\end{bmatrix}=\begin{bmatrix}s\left(k\right)\\
+p\left(k\right)
+\end{bmatrix};\;u\left(k\right)=\begin{bmatrix}u_{1}\left(k\right)\\
+u_{2}\left(k\right)\\
+u_{3}\left(k\right)
+\end{bmatrix}=\begin{bmatrix}q\left(k\right)\\
+\alpha\left(k\right)\\
+s_{0}\left(k\right)
+\end{bmatrix}
+\]
+
+\end_inset
+
+per quanto riguarda 
+\begin_inset Formula $a,\,\beta\left(k\right),\,\gamma\left(k\right),\,\delta\left(k\right),\,\zeta\left(k\right)$
+\end_inset
+
+ essi sono 
+\bar under
+parametri
+\bar default
+; infine poniamo l'uscita 
+\begin_inset Formula $y\left(k\right)=g\left(k\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+Il modello del sistema con queste premesse sarà il seguente:
+\begin_inset Formula 
+\[
+\begin{array}{c}
+x\left(k+1\right)=ax_{1}\left(k\right)+u_{1}\left(k\right)-u_{2}\left(k\right)+\beta\left(k\right)x_{2}\left(k\right)\\
+x_{2}\left(k+1\right)=x_{2}\left(k\right)+\gamma\left(k\right)u_{3}\left(k\right)-\gamma\left(k\right)x_{1}\left(k\right)+\delta\left(k\right)u_{2}\left(k\right)-\delta\left(k\right)\beta\left(k\right)x_{2}\left(k\right)\\
+y\left(k\right)=x_{2}\left(k\right)u_{2}\left(k\right)-x_{2}^{2}\left(k\right)\beta\left(k\right)-\zeta\left(k\right)u_{1}\left(k\right)
+\end{array}
+\]
+
+\end_inset
+
+Da questo modello osserviamo che (come per i sistemi a tempo continuo, analizzan
+do le equazioni in forma standard) il sistema è classificabile come: dinamico
+ (possiede almeno uno stato) del secondo ordine (due stati in totale), ha
+ più ingressi e una uscita (MISO), tempo-variante (i 
+\bar under
+parametri
+\bar default
+ delle equazioni dipendono da 
+\begin_inset Formula $k$
+\end_inset
+
+), non lineare (l'equazione di uscita presenta uno stato al quadrato e un
+ prodotto con uno stato), proprio (almeno un ingresso nell'equazione di
+ uscita).
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+demo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/2_1-1 Modello di sistema con discretizzazione.pdf
+	display false
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Modello di sistema con discretizzazione
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Modello-sistema-discretizzazione"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nel prossimo esempio viene proposta la discretizzazione di un sistema a
+ tempo continuo, procedimento che riguarda l'acquisizione di dati dal mondo
+ fisico; introduciamo prima il concetto di interazione tra un sistema a
+ tempo continuo e uno a tempo discreto.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+I sistemi che coinvolgono l'interazione tra una componente analogica (tempo
+ continuo) e una digitale (tempo discreto) sono chiamati cyber-physical
+ system (CPS)
+\end_layout
+
+\end_inset
+
+Prendiamo un sistema dinamico a tempo continuo 
+\begin_inset Formula $s$
+\end_inset
+
+ (vedi figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Modello-sistema-discretizzazione"
+
+\end_inset
+
+), dotato di un ingresso 
+\begin_inset Formula $u\left(t\right)$
+\end_inset
+
+ e una uscita 
+\begin_inset Formula $y\left(t\right)$
+\end_inset
+
+; essa è acquisita a intervalli di tempo regolari da un dispositivo chiamato
+ scheda di acquisizione dati (DAQ), che riporta l'uscita 
+\begin_inset Formula $y\left(k\right)$
+\end_inset
+
+ a un controllore digitale 
+\begin_inset Formula $c$
+\end_inset
+
+ che stabilisce un valore di ingresso discreto 
+\begin_inset Formula $u\left(k\right)$
+\end_inset
+
+, che infine viene convertito in un valore a tempo continuo 
+\begin_inset Formula $u\left(t\right)$
+\end_inset
+
+ da un componente chiamato 
+\emph on
+filtro di mantenimento
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/2_1-2 Modello di circuito per elettrovalvola.pdf
+	display false
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Circuito RL, modello per elettrovalvola
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Modello-elettrovalvola"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+\begin_inset CommandInset label
+LatexCommand label
+name "exa:Circuito-RL-elettrovalvola"
+
+\end_inset
+
+Sia dato un circuito formato da una maglia con induttore e resistore in
+ serie, e sia controllabile il generatore di tensione in ingresso; scrivere
+ un modello che abbia la corrente nella maglia come uscita.
+\end_layout
+
+\begin_layout Example
+Chiamiamo la corrente che scorre nella maglia 
+\begin_inset Formula $i\left(t\right)$
+\end_inset
+
+: la tensione sul resistore vale 
+\begin_inset Formula $Ri\left(t\right)$
+\end_inset
+
+ e quella sull'induttore 
+\begin_inset Formula $v_{{\scriptscriptstyle L}}\left(t\right)=\partial i\left(t\right)/\partial t$
+\end_inset
+
+; con un bilancio di tensioni rispetto al generatore controllabile, vale
+ 
+\begin_inset Formula $u\left(t\right)=Ri\left(t\right)+v_{{\scriptscriptstyle L}}\left(t\right)$
+\end_inset
+
+.
+ Poniamo 
+\begin_inset Formula $y\left(t\right)=i\left(i\right)$
+\end_inset
+
+, come richiesto dall'esempio e scriviamo:
+\begin_inset Formula 
+\[
+\dot{x}\left(t\right)=-\dfrac{R}{L}x\left(t\right)+\dfrac{1}{L}u\left(t\right)
+\]
+
+\end_inset
+
+ponendo lo stato 
+\begin_inset Formula $x\left(t\right)=i\left(t\right)$
+\end_inset
+
+ (compare la derivata della corrente in 
+\begin_inset Formula $v_{{\scriptscriptstyle L}}\left(t\right)$
+\end_inset
+
+).
+ Nel passaggio dal mondo analogico a quello digitale discreto c'è l'operazione
+ di 
+\emph on
+campionamento
+\emph default
+, ovvero l'acquisizione di un segnale a intervalli regolari: questi intervalli
+ di tempo sono chiamati 
+\emph on
+passo
+\emph default
+ di campionamento (
+\begin_inset Formula $T_{s}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Example
+Facciamo un'approssimazione a tempo discreto del sistema, considerando per
+ ogni passo di campionamento lo stato del sistema in quell'istante, in cui
+ iniettiamo un ingresso costante fino all'istante successivo; potremo così
+ risolvere il movimento del sistema (per esempio integrando per un passo
+ di campionamento con la 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Formula-di-Lagrange"
+
+\end_inset
+
+).
+ Partendo da 
+\begin_inset Formula $x\left(k\right)$
+\end_inset
+
+, calcoliamo il movimento del sistema dall'istante successivo 
+\begin_inset Formula $k+1$
+\end_inset
+
+ come:
+\begin_inset Formula 
+\[
+x\left(k+1\right)=e^{-\nicefrac{R}{L}T_{s}}x\left(k_{0}\right)+\somme 0{T_{s}}{e^{-\nicefrac{R}{L}\left(T_{s}-\tau\right)}\dfrac{1}{L}u\left(k\right)}{\tau}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+=\underset{{\scriptstyle a}}{\underbrace{e^{-\nicefrac{R}{L}T_{s}}}}x\left(k\right)+\underset{{\scriptstyle b}}{\underbrace{\dfrac{1-e^{-\nicefrac{R}{L}T_{s}}}{R}}}u\left(k\right)
+\]
+
+\end_inset
+
+Si nota che, essendo il sistema tempo invariante, gli estremi di integrazione
+ possono essere traslati in 
+\begin_inset Formula $0-T_{s}$
+\end_inset
+
+ invece di avere 
+\begin_inset Formula $kT_{s}-\left(k+1\right)T_{s}$
+\end_inset
+
+ (la distanza tra istanti successivi è costante) e il valore di ingresso
+ 
+\begin_inset Formula $u\left(k\right)$
+\end_inset
+
+ sarà mantenuto costante tra due istanti successivi.
+ Inoltre essendo il sistema scalare abbiamo già l'autovalore 
+\begin_inset Formula $a=-R/L$
+\end_inset
+
+.
+ Per quanto riguarda l'equazione di uscita, essa rimane invariata come 
+\begin_inset Formula $y\left(k\right)=x\left(k\right)$
+\end_inset
+
+, infatti nella discretizzazione si approssima solo l'operazione di derivazione
+ nelle equazioni di stato.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+demo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Il metodo appena visto nell'Esempio 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:Circuito-RL-elettrovalvola"
+
+\end_inset
+
+ ha dei vantaggi per i sistemi a tempo continuo asintoticamente stabili:
+ con coefficienti scalari, il sistema deve avere 
+\begin_inset Formula $a<0\land a\in\mathbb{R}$
+\end_inset
+
+; nel caso dell'Esempio 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:Circuito-RL-elettrovalvola"
+
+\end_inset
+
+ abbiamo un coefficiente 
+\begin_inset Formula $a$
+\end_inset
+
+ reale negativo.
+ Se ora iteriamo l'equazione di stato a tempo discreto, otteniamo:
+\begin_inset Formula 
+\[
+x\left(k+1\right)=ax\left(k\right)\implies x\left(0\right)=1,\,x\left(1\right)=a,\,x\left(2\right)=a^{2},\,\ldots
+\]
+
+\end_inset
+
+Per avere la convergenza a 0 del movimento così definito deve valere 
+\begin_inset Formula $\left|a\right|<1$
+\end_inset
+
+; questo approccio garantisce che se abbiamo un sistema a tempo continuo
+ asintoticamente stabile (
+\begin_inset Formula $a<0$
+\end_inset
+
+), anche nel tempo discreto il nostro sistema sarà stabile (
+\begin_inset Formula $\left|a\right|<1$
+\end_inset
+
+ sicuramente) e i movimenti convergeranno; questo non vale per qualsiasi
+ metodo di discretizzazione.
+\end_layout
+
+\begin_layout Standard
+Un metodo alternativo consiste nell'usare la formula 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Formula-di-Eulero"
+
+\end_inset
+
+ approssimando la derivata nel tempo continuo come una differenza finita:
+\begin_inset Formula 
+\[
+\dot{x}\left(t\right)=\dfrac{\partial x\left(t\right)}{\partial d}\simeq\dfrac{x\left(k+1\right)-x\left(k\right)}{T_{s}}
+\]
+
+\end_inset
+
+Questa approssimazione è valida nella misura in cui il passo di campionamento
+ ha dimensione adeguata rispetto alla velocità del sistema.
+\end_layout
+
+\begin_layout Standard
+Sostituendo questa equazione in quella a tempo continuo del sistema possiamo
+ ottenere un modello discretizzato; riprendendo l'Esempio 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:Circuito-RL-elettrovalvola"
+
+\end_inset
+
+, otteniamo le stesse equazioni di stato e uscita ma i coefficienti avranno
+ forme differenti:
+\begin_inset Formula 
+\[
+a=1-\dfrac{R}{L}T_{s},\;b=\dfrac{1}{L}T_{s}
+\]
+
+\end_inset
+
+In questo caso scegliendo un 
+\begin_inset Formula $T_{s}$
+\end_inset
+
+ troppo elevato si rischia di avere un valore di 
+\begin_inset Formula $a$
+\end_inset
+
+ per cui l'andamento simulato del sistema è diverso da quello reale.
+\end_layout
+
+\begin_layout Section
+Comportamento nel tempo discreto
+\end_layout
+
+\begin_layout Subsection
+Equilibrio
+\end_layout
+
+\begin_layout Standard
+Un movimento di un sistema a tempo discreto si ottiene iterando l'equazione
+ di stato fino all'istante di interesse.
+ Una coppia di ingressi 
+\begin_inset Formula $\overline{x}$
+\end_inset
+
+ e uscite 
+\begin_inset Formula $\overline{u}$
+\end_inset
+
+ è un equilibrio se 
+\begin_inset Formula $\overline{x}=f\left(\overline{x},\,\overline{u},\,k\right)$
+\end_inset
+
+; l'equazione di stato infatti restituisce lo stato all'istante successivo
+ e se questo è uguale allo stato attuale, si ha un andamento costante dello
+ stato nel tempo.
+ L'uscita di equilibrio è funzione della coppia 
+\begin_inset Formula $\overline{x},\,\overline{u}$
+\end_inset
+
+; in breve:
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "3cm"
+height "1pt"
+
+\end_inset
+
+
+\series bold
+\size footnotesize
+
+\begin_inset Newline newline
+\end_inset
+
+Condizione di equilibrio nel tempo discreto
+\series default
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+
+\size footnotesize
+tempo discreto, equilibrio
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\begin{array}{c}
+\overline{x}=f\left(\overline{x},\,\overline{u}\right)\\
+\overline{y}=g\left(\overline{x},\,\overline{u}\right)
+\end{array}\label{eq:Condizioni-equilibrio-tempo-discreto}
+\end{equation}
+
+\end_inset
+
+Nel caso di un sistema a coefficienti scalari dovrà valere 
+\begin_inset Formula $\overline{x}=a\overline{x}+b\overline{u}$
+\end_inset
+
+, da cui 
+\begin_inset Formula $\overline{x}=\dfrac{b}{1-a}\overline{u}$
+\end_inset
+
+; esse sono tutte le coppie ingresso-stato di equilibrio per il sistema
+ in esame.
+\end_layout
+
+\begin_layout Subsection
+Stabilità
+\end_layout
+
+\begin_layout Standard
+Nei sistemi a tempo discreto possiamo enunciare le seguenti proprietà e
+ definizioni, analoghe a quelle dei sistemi a tempo continuo (non siamo
+ necessariamente nell'ambito dei sistemi lineari):
+\end_layout
+
+\begin_layout Definition
+\begin_inset CommandInset label
+LatexCommand label
+name "def:Stabilità-tempo-discreto"
+
+\end_inset
+
+Un movimento 
+\begin_inset Formula $x\left(k\right)$
+\end_inset
+
+ per 
+\begin_inset Formula $k\geq k_{0}$
+\end_inset
+
+, generato da un sistema dinamico a partire da 
+\begin_inset Formula $x\left(k_{0}\right)$
+\end_inset
+
+ e con ingresso 
+\begin_inset Formula $u\left(k\right)$
+\end_inset
+
+, si dice 
+\emph on
+stabile
+\emph default
+ se per ogni 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+ esiste un 
+\begin_inset Formula $\delta>0$
+\end_inset
+
+ tale che, per ogni condizione iniziale perturbata 
+\begin_inset Formula $\tilde{x}\left(k_{0}\right)$
+\end_inset
+
+ che sia distante dalla condizione iniziale nominale 
+\begin_inset Formula $x\left(k_{0}\right)$
+\end_inset
+
+ di una quantità in norma minore di 
+\begin_inset Formula $\delta$
+\end_inset
+
+, risulta che la distanza tra la traiettoria nominale 
+\begin_inset Formula $x\left(k\right)$
+\end_inset
+
+ e quella perturbata 
+\begin_inset Formula $\tilde{x}\left(k\right)$
+\end_inset
+
+ rimanga limitata in un intorno minore o uguale a 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+ per qualunque 
+\begin_inset Formula $k\geq k_{0}$
+\end_inset
+
+; chiamiamo 
+\begin_inset Formula $\tilde{x}\left(k\right)$
+\end_inset
+
+ il movimento generato dal sistema a fronte del medesimo ingresso 
+\begin_inset Formula $u\left(k\geq k_{0}\right)$
+\end_inset
+
+ e condizioni iniziali 
+\begin_inset Formula $\tilde{x}\left(k_{0}\right)$
+\end_inset
+
+.
+ In termini di formula logica deve valere
+\begin_inset Formula 
+\begin{equation}
+\forall\varepsilon>0\,\exists\delta>0\,\left(\forall k_{0}\left(\left\Vert x\left(k_{0}\right)-\tilde{x}\left(k_{0}\right)\right\Vert \leq\delta\implies\forall k\geq k_{0}\left(\left\Vert x\left(k\right)-\tilde{x}\left(k\right)\right\Vert \leq\varepsilon\right)\right)\right)\label{eq:Stabilità-tempo-discreto}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+Un movimento 
+\begin_inset Formula $x\left(k\right)$
+\end_inset
+
+ generato da un sistema a tempo discreto è 
+\emph on
+instabile
+\emph default
+ se non soddisfa la Definizione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Stabilità-tempo-discreto"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+Un movimento generato da un sistema a tempo discreto si dice 
+\emph on
+asintoticamente stabile
+\emph default
+ se soddisfa la Definizione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Stabilità-tempo-discreto"
+
+\end_inset
+
+ e vale inoltre
+\begin_inset Formula 
+\[
+\lm k{\infty}{\left\Vert x\left(k\right)-\tilde{x}\left(k\right)\right\Vert =0}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Movimenti di sistemi LTI discreti
+\end_layout
+
+\begin_layout Subsection
+Forma standard
+\end_layout
+
+\begin_layout Standard
+Per sistemi lineari a tempo discreto la forma standard è analoga a 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Forma-standard-matrice-LTI"
+
+\end_inset
+
+:
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "3cm"
+height "1pt"
+
+\end_inset
+
+
+\series bold
+\size footnotesize
+
+\begin_inset Newline newline
+\end_inset
+
+Modello matriciale per sistemi LTI a tempo discreto
+\series default
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+
+\size footnotesize
+LTI, modello matriciale discreto
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[-0.25cm]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\begin{bmatrix}x\left(k+1\right)=A\cdot x\left(k\right)+B\cdot u\left(k\right)\\
+y\left(k\right)=C\cdot x\left(k\right)+D\cdot u\left(k\right)
+\end{bmatrix}\label{eq:Forma-standard-matrice-LTI-discreto}
+\end{equation}
+
+\end_inset
+
+Come condizione iniziale per le successive considerazioni possiamo imporre
+ 
+\begin_inset Formula $k_{0}=0$
+\end_inset
+
+ (condizione iniziale 
+\begin_inset Formula $x_{0}=x\left(t_{0}\right)$
+\end_inset
+
+), essendo il sistema stazionario; in generale a un certo istante conosciamo
+ il valore dello stato e possiamo calcolare i movimenti a fronte di un certo
+ ingresso.
+ Una forma chiusa per il calcolo del movimento di stato e uscita è offerta
+ dalla riscrittura della 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Formula-di-Lagrange"
+
+\end_inset
+
+; essa si ricava applicando ricorsivamente l'equazione di stato, dalla quale
+ si ottiene poi l'equazione di uscita:
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "3cm"
+height "1pt"
+
+\end_inset
+
+
+\series bold
+\size footnotesize
+
+\begin_inset Newline newline
+\end_inset
+
+Formula di Lagrange a tempo discreto
+\series default
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Lagrange, formula discretizzata
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[0.25cm]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+x\left(k\right)=A^{k}\cdot x_{0}+\serie{i=0}{k-1}{A^{k-i-1}\cdot B\cdot u\left(i\right)}\label{eq:Formula-di-Lagrange-discreta}
+\end{equation}
+
+\end_inset
+
+L'integrale di convoluzione nel tempo discreto diventa la sommatoria appena
+ mostrata; questo risultato intuitivo si ottiene con l'iterazione dell'equazione
+ di stato; prendendo il caso di 
+\begin_inset Formula $k=1$
+\end_inset
+
+, otteniamo da 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Forma-standard-matrice-LTI-discreto"
+
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+x\left(2\right)=A\cdot x\left(1\right)+B\cdot u\left(1\right)=A\cdot\left(A\cdot x\left(0\right)+B\cdot u\left(0\right)\right)+B\cdot u\left(0\right)
+\]
+
+\end_inset
+
+da cui la sommatoria nella formula di Lagrange discretizzata.
+ 
+\end_layout
+
+\begin_layout Standard
+Distinguiamo dalla 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Formula-di-Lagrange-discreta"
+
+\end_inset
+
+ i movimenti libero e forzato:
+\end_layout
+
+\begin_layout Itemize
+movimento libero 
+\begin_inset Formula $x_{{\scriptscriptstyle \text{L}}}\left(k\right)=A^{k}\cdot x_{0}$
+\end_inset
+
+: è indipendente dagli ingressi e legato alle condizioni iniziali;
+\end_layout
+
+\begin_layout Itemize
+movimento forzato 
+\begin_inset Formula $x_{{\scriptscriptstyle \text{F}}}\left(k\right)=\serie{i=0}{k-1}{A^{k-i-1}\cdot B\cdot u\left(i\right)}$
+\end_inset
+
+: è legato agli ingressi.
+\end_layout
+
+\begin_layout Subsection
+Sovrapposizione degli effetti
+\end_layout
+
+\begin_layout Standard
+Le equazioni per i sistemi a tempo discreto rimangono lineari, dunque vale
+ la sovrapposizione degli effetti come nel tempo continuo: se abbiamo due
+ condizioni iniziali 
+\begin_inset Formula $x^{\prime}\left(0\right)$
+\end_inset
+
+ e 
+\begin_inset Formula $x^{\prime\prime}\left(0\right)$
+\end_inset
+
+, e due andamenti 
+\begin_inset Formula $x^{\prime}\left(k\right)$
+\end_inset
+
+ e 
+\begin_inset Formula $x^{\prime\prime}\left(k\right)$
+\end_inset
+
+, posto che l'ingresso 
+\begin_inset Formula $u^{\prime\prime\prime}\left(k\right)=\alpha u^{\prime}\left(k\right)+\beta u^{\prime\prime}\left(k\right)$
+\end_inset
+
+ possiamo vedere il movimento dello stato a partire dalle coppie stato-ingresso
+ come combinazione lineare dei movimenti ottenuti separatamente dalle condizioni
+ iniziali e dagli ingressi separatamente:
+\begin_inset Formula 
+\[
+\begin{array}{c}
+x^{\prime}\left(k\right)=f\left(x^{\prime}\left(0\right),\,u^{\prime}\left(k\right)\right)\\
++\\
+x^{\prime\prime}\left(k\right)=f\left(x^{\prime\prime}\left(0\right),\,u^{\prime\prime}\left(k\right)\right)
+\end{array}=\;\begin{cases}
+x^{\prime\prime\prime}\left(k\right)=\alpha x^{\prime}\left(k\right)+\beta x^{\prime\prime}\left(k\right)\\
+y^{\prime\prime\prime}\left(k\right)=\alpha y^{\prime}\left(k\right)+\beta y^{\prime\prime}\left(k\right)
+\end{cases}
+\]
+
+\end_inset
+
+dove 
+\begin_inset Formula $f\left(x\left(0\right),\,u\left(k\right)\right)$
+\end_inset
+
+ rappresenta la 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Formula-di-Lagrange-discreta"
+
+\end_inset
+
+ con condizione iniziale 
+\begin_inset Formula $x\left(0\right)$
+\end_inset
+
+e ingresso 
+\begin_inset Formula $u\left(k\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Si può facilmente verificare questa proprietà per sostituzione; l'equazione
+ di uscita in forma chiusa, dalla 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Formula-di-Lagrange-discreta"
+
+\end_inset
+
+, vale allora:
+\begin_inset Formula 
+\begin{equation}
+y\left(k\right)=C\cdot A^{k}\cdot x_{0}+C\cdot\serie{i=0}{k-1}{A^{k-i-1}\cdot B\cdot u\left(i\right)}+D\cdot u\left(k\right)\label{eq:Movimento-uscita-Lagrange-discreto}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Rappresentazione equivalente discreta
+\end_layout
+
+\begin_layout Standard
+Presa una matrice di trasformazione 
+\begin_inset Formula $T$
+\end_inset
+
+ invertibile, definiamo uno stato equivalente 
+\begin_inset Formula $\hat{x}\left(k\right)$
+\end_inset
+
+ come combinazione lineare dello stato originale 
+\begin_inset Formula $x\left(k\right)$
+\end_inset
+
+; vale la seguente relazione tra stato originale ed equivalente:
+\begin_inset Formula 
+\[
+x\left(k\right)=T^{-1}\cdot\hat{x}\left(k\right)\,\leftrightarrows\,\hat{x}\left(k\right)=T\cdot x\left(k\right)
+\]
+
+\end_inset
+
+Possiamo parlare di rappresentazioni equivalenti di sistemi LTI a tempo
+ discreto, in particolare se il sistema di partenza è della forma 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Forma-standard-matrice-LTI-discreto"
+
+\end_inset
+
+, con questa trasformazione otteniamo la rappresentazione equivalente:
+\begin_inset Formula 
+\[
+\begin{array}{c}
+\hat{x}\left(k+1\right)=T\cdot A\cdot T^{-1}\cdot\hat{x}\left(k\right)+T\cdot B\cdot u\left(k\right)\\
+y\left(k\right)=C\cdot T^{-1}\cdot\hat{x}\left(k\right)+D\cdot u\left(k\right)
+\end{array}
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
