@@ -4210,21 +4210,21 @@ status open
 
 \begin_deeper
 \begin_layout Itemize
-\begin_inset Formula $\text{Re}\left(\lambda_{i}\right)>0$
+\begin_inset Formula $\Re\left(\lambda_{i}\right)>0$
 \end_inset
 
 : modo oscillante divergente;
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $\text{Re}\left(\lambda_{i}\right)=0$
+\begin_inset Formula $\Re\left(\lambda_{i}\right)=0$
 \end_inset
 
 : modo oscillante limitato;
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $\text{Re}\left(\lambda_{i}\right)<0$
+\begin_inset Formula $\Re\left(\lambda_{i}\right)<0$
 \end_inset
 
 : modo oscillante convergente.
@@ -5070,21 +5070,21 @@ name "eq:Andamento-modi-autovalori-multipli"
 
 \begin_deeper
 \begin_layout Itemize
-\begin_inset Formula $\text{Re}\left(\lambda_{i}\right)>0$
+\begin_inset Formula $\Re\left(\lambda_{i}\right)>0$
 \end_inset
 
 : modo divergente (esponenziale);
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $\text{Re}\left(\lambda_{i}\right)=0$
+\begin_inset Formula $\Re\left(\lambda_{i}\right)=0$
 \end_inset
 
 : modo divergente (lineare);
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $\text{Re}\left(\lambda_{i}\right)<0$
+\begin_inset Formula $\Re\left(\lambda_{i}\right)<0$
 \end_inset
 
 : modo convergente.
@@ -5347,9 +5347,9 @@ x\left(t\right)=\somme 0t{e^{A\left(t-\tau\right)}Bu\left(\tau\right)}{\tau}=\so
 
 \begin_inset Formula 
 \[
-=\somme 0t{\begin{bmatrix}\dfrac{1-\tau}{m}\overline{u}\cdot\text{sca}\left(\tau\right)\\
+=\somme 0t{\begin{bmatrix}\dfrac{t-\tau}{m}\overline{u}\cdot\text{sca}\left(\tau\right)\\
 \dfrac{1}{m}\overline{u}\cdot\text{sca}\left(\tau\right)
-\end{bmatrix}}{\tau}=\begin{bmatrix}\dfrac{\overline{u}}{2m}\left[-\left(t-\tau\right)\right]_{0}^{t}\\
+\end{bmatrix}}{\tau}=\begin{bmatrix}\dfrac{\overline{u}}{2m}\left[-\left(t-\tau\right)^{2}\right]_{0}^{t}\\
 \dfrac{1}{m}\overline{u}\left[\tau\right]_{0}^{t}
 \end{bmatrix}=\begin{bmatrix}\dfrac{\overline{u}}{2m}t^{2}\\
 \dfrac{1}{m}\overline{u}t
@@ -6140,7 +6140,7 @@ reference "eq:Andamento-modi-autovalori-multipli"
 
 \begin_layout Theorem
 In un sistema LTI, per autovalori della matrice di stato tali che 
-\begin_inset Formula $\text{Re}\left(\lambda_{i}\right)=0$
+\begin_inset Formula $\Re\left(\lambda_{i}\right)=0$
 \end_inset
 
 , se vale 
@@ -6380,7 +6380,7 @@ reference "eq:Polinomio-caratteristico-Routh"
 \vdots & \vdots & \vdots & \ddots & 0 & \vdots\\
 h_{1} & h_{2} & h_{3} & \vdots & \vdots & \vdots\\
 k_{1} & k_{2} & k_{3} & \vdots & \vdots & \vdots\\
-l_{1} & l_{2} & l_{3} & 0 & 0 & 0
+\ell_{1} & \ell_{2} & \ell_{3} & 0 & 0 & 0
 \end{array}\label{eq:Tabella-di-Routh}
 \end{equation}
 
@@ -6395,21 +6395,21 @@ algoritmo di Routh
 \end_inset
 
 ) ottiene la successiva (
-\begin_inset Formula $l_{i}$
+\begin_inset Formula $\ell_{i}$
 \end_inset
 
 ):
 \begin_inset Formula 
 \begin{equation}
-l_{i}=-\dfrac{1}{k_{1}}\cdot\det\left(\begin{bmatrix}h_{1} & h_{i+1}\\
+\ell_{i}=-\dfrac{1}{k_{1}}\cdot\det\left(\begin{bmatrix}h_{1} & h_{i+1}\\
 k_{1} & k_{i+1}
 \end{bmatrix}\right)=h_{i+1}-\dfrac{h_{1}k_{i+1}}{k_{1}}\label{eq:Algoritmo-di-Routh}
 \end{equation}
 
 \end_inset
 
-Si osserva che essa in generale è triangolare, e inoltre l'algoritmo non
- si può applicare per il caso 
+Si osserva che in generale la tabella è triangolare, e inoltre l'algoritmo
+ non si può applicare per il caso 
 \begin_inset Formula $k_{1}=0$
 \end_inset
 
@@ -7926,6 +7926,10 @@ Sistemi dinamici a tempo discreto
 Modello matematico nel tempo discreto
 \end_layout
 
+\begin_layout Subsection
+Processi a tempo discreto
+\end_layout
+
 \begin_layout Standard
 Le considerazioni già fatte per i sistemi lineari a tempo continuo valgono
  ancora, con degli accorgimenti, per i sistemi a tempo discreto.
@@ -8610,257 +8614,8 @@ In questo caso scegliendo un
  per cui l'andamento simulato del sistema è diverso da quello reale.
 \end_layout
 
-\begin_layout Section
-Comportamento nel tempo discreto
-\end_layout
-
 \begin_layout Subsection
-Equilibrio
-\end_layout
-
-\begin_layout Standard
-Un movimento di un sistema a tempo discreto si ottiene iterando l'equazione
- di stato fino all'istante di interesse.
- Una coppia di ingressi 
-\begin_inset Formula $\overline{x}$
-\end_inset
-
- e uscite 
-\begin_inset Formula $\overline{u}$
-\end_inset
-
- è un equilibrio se 
-\begin_inset Formula $\overline{x}=f\left(\overline{x},\,\overline{u},\,k\right)$
-\end_inset
-
-; l'equazione di stato infatti restituisce lo stato all'istante successivo
- e se questo è uguale allo stato attuale, si ha un andamento costante dello
- stato nel tempo.
- L'uscita di equilibrio è funzione della coppia 
-\begin_inset Formula $\overline{x},\,\overline{u}$
-\end_inset
-
-; in breve:
-\begin_inset Marginal
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset CommandInset line
-LatexCommand rule
-offset "0.5ex"
-width "3cm"
-height "1pt"
-
-\end_inset
-
-
-\series bold
-\size footnotesize
-
-\begin_inset Newline newline
-\end_inset
-
-Condizione di equilibrio nel tempo discreto
-\series default
-
-\begin_inset Index idx
-status open
-
-\begin_layout Plain Layout
-
-\size footnotesize
-tempo discreto, equilibrio
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset Formula 
-\begin{equation}
-\begin{array}{c}
-\overline{x}=f\left(\overline{x},\,\overline{u}\right)\\
-\overline{y}=g\left(\overline{x},\,\overline{u}\right)
-\end{array}\label{eq:Condizioni-equilibrio-tempo-discreto}
-\end{equation}
-
-\end_inset
-
-Nel caso di un sistema a coefficienti scalari dovrà valere 
-\begin_inset Formula $\overline{x}=a\overline{x}+b\overline{u}$
-\end_inset
-
-, da cui 
-\begin_inset Formula $\overline{x}=\dfrac{b}{1-a}\overline{u}$
-\end_inset
-
-; esse sono tutte le coppie ingresso-stato di equilibrio per il sistema
- in esame.
-\end_layout
-
-\begin_layout Subsection
-Stabilità
-\end_layout
-
-\begin_layout Standard
-Nei sistemi a tempo discreto possiamo enunciare le seguenti proprietà e
- definizioni, analoghe a quelle dei sistemi a tempo continuo (non siamo
- necessariamente nell'ambito dei sistemi lineari):
-\end_layout
-
-\begin_layout Definition
-\begin_inset CommandInset label
-LatexCommand label
-name "def:Stabilità-tempo-discreto"
-
-\end_inset
-
-Un movimento 
-\begin_inset Formula $x\left(k\right)$
-\end_inset
-
- per 
-\begin_inset Formula $k\geq k_{0}$
-\end_inset
-
-, generato da un sistema dinamico a partire da 
-\begin_inset Formula $x\left(k_{0}\right)$
-\end_inset
-
- e con ingresso 
-\begin_inset Formula $u\left(k\right)$
-\end_inset
-
-, si dice 
-\emph on
-stabile
-\emph default
- se per ogni 
-\begin_inset Formula $\varepsilon>0$
-\end_inset
-
- esiste un 
-\begin_inset Formula $\delta>0$
-\end_inset
-
- tale che, per ogni condizione iniziale perturbata 
-\begin_inset Formula $\tilde{x}\left(k_{0}\right)$
-\end_inset
-
- che sia distante dalla condizione iniziale nominale 
-\begin_inset Formula $x\left(k_{0}\right)$
-\end_inset
-
- di una quantità in norma minore di 
-\begin_inset Formula $\delta$
-\end_inset
-
-, risulta che la distanza tra la traiettoria nominale 
-\begin_inset Formula $x\left(k\right)$
-\end_inset
-
- e quella perturbata 
-\begin_inset Formula $\tilde{x}\left(k\right)$
-\end_inset
-
- rimanga limitata in un intorno minore o uguale a 
-\begin_inset Formula $\varepsilon$
-\end_inset
-
- per qualunque 
-\begin_inset Formula $k\geq k_{0}$
-\end_inset
-
-; chiamiamo 
-\begin_inset Formula $\tilde{x}\left(k\right)$
-\end_inset
-
- il movimento generato dal sistema a fronte del medesimo ingresso 
-\begin_inset Formula $u\left(k\geq k_{0}\right)$
-\end_inset
-
- e condizioni iniziali 
-\begin_inset Formula $\tilde{x}\left(k_{0}\right)$
-\end_inset
-
-.
- In termini di formula logica deve valere
-\begin_inset Formula 
-\begin{equation}
-\forall\varepsilon>0\,\exists\delta>0\,\left(\forall k_{0}\left(\left\Vert x\left(k_{0}\right)-\tilde{x}\left(k_{0}\right)\right\Vert \leq\delta\implies\forall k\geq k_{0}\left(\left\Vert x\left(k\right)-\tilde{x}\left(k\right)\right\Vert \leq\varepsilon\right)\right)\right)\label{eq:Stabilità-tempo-discreto}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Definition
-Un movimento 
-\begin_inset Formula $x\left(k\right)$
-\end_inset
-
- generato da un sistema a tempo discreto è 
-\emph on
-instabile
-\emph default
- se non soddisfa la Definizione 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "def:Stabilità-tempo-discreto"
-
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Standard
-\begin_inset Separator plain
-\end_inset
-
-
-\end_layout
-
-\begin_layout Definition
-Un movimento generato da un sistema a tempo discreto si dice 
-\emph on
-asintoticamente stabile
-\emph default
- se soddisfa la Definizione 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "def:Stabilità-tempo-discreto"
-
-\end_inset
-
- e vale inoltre
-\begin_inset Formula 
-\[
-\lm k{\infty}{\left\Vert x\left(k\right)-\tilde{x}\left(k\right)\right\Vert =0}
-\]
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Section
-Movimenti di sistemi LTI discreti
-\end_layout
-
-\begin_layout Subsection
-Forma standard
+Forma dei movimenti
 \end_layout
 
 \begin_layout Standard
@@ -9149,6 +8904,313 @@ y\left(k\right)=C\cdot A^{k}\cdot x_{0}+C\cdot\serie{i=0}{k-1}{A^{k-i-1}\cdot B\
 \end_layout
 
 \begin_layout Section
+Comportamento nel tempo discreto
+\end_layout
+
+\begin_layout Subsection
+Equilibrio
+\end_layout
+
+\begin_layout Standard
+Un movimento di un sistema a tempo discreto si ottiene iterando l'equazione
+ di stato fino all'istante di interesse.
+ Una coppia di ingressi 
+\begin_inset Formula $\overline{x}$
+\end_inset
+
+ e uscite 
+\begin_inset Formula $\overline{u}$
+\end_inset
+
+ è un equilibrio se 
+\begin_inset Formula $\overline{x}=f\left(\overline{x},\,\overline{u},\,k\right)$
+\end_inset
+
+; l'equazione di stato infatti restituisce lo stato all'istante successivo
+ e se questo è uguale allo stato attuale, si ha un andamento costante dello
+ stato nel tempo.
+ L'uscita di equilibrio è funzione della coppia 
+\begin_inset Formula $\overline{x},\,\overline{u}$
+\end_inset
+
+; in breve:
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "3cm"
+height "1pt"
+
+\end_inset
+
+
+\series bold
+\size footnotesize
+
+\begin_inset Newline newline
+\end_inset
+
+Condizione di equilibrio nel tempo discreto
+\series default
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+
+\size footnotesize
+tempo discreto, equilibrio
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\begin{array}{c}
+\overline{x}=f\left(\overline{x},\,\overline{u}\right)\\
+\overline{y}=g\left(\overline{x},\,\overline{u}\right)
+\end{array}\label{eq:Condizioni-equilibrio-tempo-discreto}
+\end{equation}
+
+\end_inset
+
+Nel caso di un sistema a coefficienti scalari dovrà valere 
+\begin_inset Formula $\overline{x}=a\overline{x}+b\overline{u}$
+\end_inset
+
+, da cui 
+\begin_inset Formula $\overline{x}=\dfrac{b}{1-a}\overline{u}$
+\end_inset
+
+; esse sono tutte le coppie ingresso-stato di equilibrio per il sistema
+ in esame.
+ Il modello del sistema nella forma 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Modello-standard-sistemi-tempo-discreto"
+
+\end_inset
+
+, nelle condizioni di equilibrio 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Condizioni-equilibrio-tempo-discreto"
+
+\end_inset
+
+, si scriverà come
+\begin_inset Formula 
+\[
+\begin{cases}
+\overline{x}=A\cdot\overline{x}+B\cdot\overline{u}\\
+\overline{y}=C\cdot\overline{x}+D\cdot\overline{u}
+\end{cases}
+\]
+
+\end_inset
+
+Lo stato di equilibrio esiste solo se l'equazione di stato per l'equilibrio
+ ammette una e una sola soluzione; questo si verifica quando 
+\begin_inset Formula $\det\left(I-A\right)\neq0$
+\end_inset
+
+, e in tal caso possiamo scrivere 
+\begin_inset Formula $\overline{x}=\left(I-A\right)^{-1}\cdot B\cdot\overline{u}$
+\end_inset
+
+ per l'equilibrio dello stato e 
+\begin_inset Formula $\overline{y}=\left(C\cdot\left(I-A\right)^{-1}\cdot B+D\right)\overline{u}$
+\end_inset
+
+ per l'equilibrio di uscita, dove la matrice a cui l'uscita è moltiplicata
+ è detta matrice dei 
+\emph on
+guadagni statici
+\emph default
+ (è una relazione statica tra ingressi costanti e uscite costanti).
+\end_layout
+
+\begin_layout Standard
+Se 
+\begin_inset Formula $\left(I-A\right)$
+\end_inset
+
+ non fosse invertibile si potrebbero avere nessuna o infinite soluzioni
+ (non nulle), sempre che per un 
+\begin_inset Formula $\overline{u}$
+\end_inset
+
+ si riesca a trovare 
+\begin_inset Formula $\overline{x}$
+\end_inset
+
+ di equilibrio; la coppia ingresso-uscita di equilibrio nulla risolve comunque
+ il sistema.
+\end_layout
+
+\begin_layout Subsection
+Stabilità
+\end_layout
+
+\begin_layout Standard
+Nei sistemi a tempo discreto possiamo enunciare le seguenti proprietà e
+ definizioni, analoghe a quelle dei sistemi a tempo continuo (non siamo
+ necessariamente nell'ambito dei sistemi lineari):
+\end_layout
+
+\begin_layout Definition
+\begin_inset CommandInset label
+LatexCommand label
+name "def:Stabilità-tempo-discreto"
+
+\end_inset
+
+Un movimento 
+\begin_inset Formula $x\left(k\right)$
+\end_inset
+
+ per 
+\begin_inset Formula $k\geq k_{0}$
+\end_inset
+
+, generato da un sistema dinamico a partire da 
+\begin_inset Formula $x\left(k_{0}\right)=x_{0}$
+\end_inset
+
+ e con ingresso 
+\begin_inset Formula $u\left(k\right)$
+\end_inset
+
+, si dice 
+\emph on
+stabile
+\emph default
+ se per ogni 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+ esiste un 
+\begin_inset Formula $\delta>0$
+\end_inset
+
+ tale che, per ogni condizione iniziale perturbata 
+\begin_inset Formula $\tilde{x}\left(k_{0}\right)=\tilde{x}_{0}$
+\end_inset
+
+ che sia distante dalla condizione iniziale nominale 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+ di una quantità in norma minore di 
+\begin_inset Formula $\delta$
+\end_inset
+
+, risulta che la distanza tra la traiettoria nominale 
+\begin_inset Formula $x\left(k\right)$
+\end_inset
+
+ e quella perturbata 
+\begin_inset Formula $\tilde{x}\left(k\right)$
+\end_inset
+
+ rimanga limitata in un intorno minore o uguale a 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+ per qualunque 
+\begin_inset Formula $k\geq k_{0}$
+\end_inset
+
+; chiamiamo 
+\begin_inset Formula $\tilde{x}\left(k\right)$
+\end_inset
+
+ il movimento generato dal sistema a fronte del medesimo ingresso 
+\begin_inset Formula $u\left(k\geq k_{0}\right)$
+\end_inset
+
+ e condizioni iniziali 
+\begin_inset Formula $\tilde{x}_{0}$
+\end_inset
+
+.
+ In termini di formula logica deve valere
+\begin_inset Formula 
+\begin{equation}
+\forall\varepsilon>0\,\exists\delta>0\,\left(\forall\tilde{x}_{0}\left(\left\Vert \tilde{x}_{0}-x_{0}\right\Vert \leq\delta\Rightarrow\forall k\geq k_{0}\left(\left\Vert \tilde{x}\left(k\right)-x\left(k\right)\right\Vert \leq\varepsilon\right)\right)\right)\label{eq:Stabilità-tempo-discreto}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+Un movimento 
+\begin_inset Formula $x\left(k\right)$
+\end_inset
+
+ generato da un sistema a tempo discreto è 
+\emph on
+instabile
+\emph default
+ se non soddisfa la Definizione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Stabilità-tempo-discreto"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+Un movimento generato da un sistema a tempo discreto si dice 
+\emph on
+asintoticamente stabile
+\emph default
+ se soddisfa la Definizione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Stabilità-tempo-discreto"
+
+\end_inset
+
+ e vale inoltre
+\begin_inset Formula 
+\[
+\lm k{\infty}{\left\Vert x\left(k\right)-\tilde{x}\left(k\right)\right\Vert =0}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
 Rappresentazione equivalente discreta
 \end_layout
 
@@ -9183,16 +9245,1487 @@ reference "eq:Forma-standard-matrice-LTI-discreto"
 
 , con questa trasformazione otteniamo la rappresentazione equivalente:
 \begin_inset Formula 
-\[
+\begin{equation}
 \begin{array}{c}
 \hat{x}\left(k+1\right)=T\cdot A\cdot T^{-1}\cdot\hat{x}\left(k\right)+T\cdot B\cdot u\left(k\right)\\
 y\left(k\right)=C\cdot T^{-1}\cdot\hat{x}\left(k\right)+D\cdot u\left(k\right)
-\end{array}
+\end{array}\label{eq:Rappresentazione-equivalente-discreta}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Movimenti nel tempo discreto
+\end_layout
+
+\begin_layout Subsection
+Modi e autovalori
+\end_layout
+
+\begin_layout Standard
+Il movimento libero nel tempo discreto di un sistema LTI è definito 
+\begin_inset Formula $x_{{\scriptscriptstyle \text{L}}}\left(k\right)=A^{k}\cdot x_{0}$
+\end_inset
+
+ dalla 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Formula-di-Lagrange-discreta"
+
+\end_inset
+
+; come nel caso del tempo continuo, sfruttiamo la rappresentazione equivalente
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Rappresentazione-equivalente-discreta"
+
+\end_inset
+
+ più comoda per calcolare il movimento libero.
+\end_layout
+
+\begin_layout Standard
+Se la matrice di stato è diagonalizzabile esisterà una matrice di trasformazione
+ 
+\begin_inset Formula $T_{{\scriptscriptstyle \text{D}}}$
+\end_inset
+
+ che rende 
+\begin_inset Formula $A$
+\end_inset
+
+ simile ad 
+\begin_inset Formula $A_{{\scriptscriptstyle \text{D}}}$
+\end_inset
+
+, quest'ultima una matrice diagonale con gli stessi autovalori 
+\begin_inset Formula $z_{i}$
+\end_inset
+
+ di 
+\begin_inset Formula $A$
+\end_inset
+
+; tale matrice di trasformazione verifica le seguenti equazioni:
+\begin_inset Formula 
+\[
+A_{{\scriptscriptstyle \text{D}}}=T_{{\scriptscriptstyle \text{D}}}\cdot A\cdot T_{{\scriptscriptstyle \text{D}}}^{-1}\,\leftrightarrows\,A=T_{{\scriptscriptstyle \text{D}}}^{-1}\cdot A_{{\scriptscriptstyle \text{D}}}\cdot T_{{\scriptscriptstyle \text{D}}}
+\]
+
+\end_inset
+
+Iteriamo la precedente equazione per calcolare 
+\begin_inset Formula $A^{k}$
+\end_inset
+
+ dalla matrice diagonale simile, ottenendo:
+\begin_inset Formula 
+\[
+A^{k}=T_{{\scriptscriptstyle \text{D}}}^{-1}\cdot A_{{\scriptscriptstyle \text{D}}}\cdot\cancel{T_{{\scriptscriptstyle \text{D}}}}\cdot\cancel{T_{{\scriptscriptstyle \text{D}}}^{-1}}\cdot A_{{\scriptscriptstyle \text{D}}}\cdot T_{{\scriptscriptstyle \text{D}}}\ldots=T_{{\scriptscriptstyle \text{D}}}^{-1}\cdot A_{{\scriptscriptstyle \text{D}}}^{k}\cdot T_{{\scriptscriptstyle \text{D}}}
+\]
+
+\end_inset
+
+dove la potenza di matrice diagonale 
+\begin_inset Formula $A_{{\scriptscriptstyle \text{D}}}^{k}$
+\end_inset
+
+ è una matrice diagonale con elementi sulla diagonale elevati a 
+\begin_inset Formula $k$
+\end_inset
+
+: 
+\begin_inset Formula $A_{{\scriptscriptstyle \text{D}}}^{k}=\begin{bmatrix}z_{1}^{k} & 0 & 0\\
+0 & \ddots & 0\\
+0 & 0 & z_{n}^{k}
+\end{bmatrix}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Ritornando all'equazione del movimento libero, possiamo ora riscriverla
+ come 
+\begin_inset Formula $x_{{\scriptscriptstyle \text{L}}}\left(k\right)=T_{{\scriptscriptstyle \text{D}}}^{-1}\cdot A_{{\scriptscriptstyle \text{D}}}^{k}\cdot T_{{\scriptscriptstyle \text{D}}}\cdot x_{0}$
+\end_inset
+
+; questo movimento libero generico sarà una combinazione lineare dipendente
+ dal valore iniziale degli stati e dalla matrice di trasformazione, e avrà
+ una scrittura del tipo 
+\begin_inset Formula $\alpha_{1}z_{1}^{k}+\alpha_{2}z_{2}^{k}+\ldots+\alpha_{n}z_{n}^{k}$
+\end_inset
+
+.
+ Al contrario dei movimenti esponenziali, generati dai sistemi a tempo continuo,
+ nel tempo discreto i movimenti assumono forma polinomiale.
+\end_layout
+
+\begin_layout Standard
+Gli autovalori (della matrice di stato 
+\begin_inset Formula $A$
+\end_inset
+
+) 
+\begin_inset Formula $z_{i}$
+\end_inset
+
+ con 
+\begin_inset Formula $i\in\left[1,\,n\right]$
+\end_inset
+
+ si dicono 
+\emph on
+modi
+\emph default
+ del sistema a tempo discreto.
+\end_layout
+
+\begin_layout Subsection
+Segno degli autovalori
+\end_layout
+
+\begin_layout Standard
+Nel caso di autovalori reali, dobbiamo distinguere i seguenti casi:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $z_{i}\in\mathbb{R},\,z_{i}>0$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $z_{i}=1$
+\end_inset
+
+: vale 
+\begin_inset Formula $z_{i}^{k}=\text{costante}\,\forall k\in\mathbb{Z}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $z_{i}>1$
+\end_inset
+
+: vale 
+\begin_inset Formula $z_{i}^{k}=\text{polinomio divergente}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $z_{i}<1$
+\end_inset
+
+: vale 
+\begin_inset Formula $z_{i}^{k}=\text{polinomio convergente}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+\begin_inset Formula $z_{i}\in\mathbb{R},\,z_{i}<0$
+\end_inset
+
+:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\left|z_{i}\right|=1$
+\end_inset
+
+: vale 
+\begin_inset Formula $z_{i}^{k}=\text{limitato tra }\left[-1,\,1\right]$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\left|z_{i}\right|>1$
+\end_inset
+
+: vale 
+\begin_inset Formula $z_{i}^{k}=\text{divergente a segni alterni}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\left|z_{i}\right|<1$
+\end_inset
+
+: vale 
+\begin_inset Formula $z_{i}^{k}=\text{convergente a segni alterni}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+Con l'apice 
+\begin_inset Formula $^{*}$
+\end_inset
+
+ si indica il coniugato di un numero complesso, ovvero il corrispettivo
+ con la parte immaginaria di segno opposto
+\end_layout
+
+\end_inset
+
+Nel caso di valori complessi coniugati i modi sono sempre 
+\begin_inset Formula $z_{1,2}=\left(\sigma\pm j\omega\right)^{k}$
+\end_inset
+
+; per la loro analisi adottiamo la rappresentazione polare:
+\begin_inset Formula 
+\[
+\rho=\sqrt{\sigma^{2}+\omega^{2}},\;\phi=\arg\left(z_{i}\right)
+\]
+
+\end_inset
+
+da cui gli autovalori valgono 
+\begin_inset Formula $z_{1,2}=\rho e^{\pm j\phi}$
+\end_inset
+
+ e i modi 
+\begin_inset Formula $z_{1,2}^{k}=\rho^{k}e^{\pm jk\phi}$
+\end_inset
+
+; questi modi saranno sempre combinati, nel movimento complessivo, con dei
+ coefficienti 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ anch'essi complessi coniugati, in generale nella forma 
+\begin_inset Formula $\alpha=\rho_{\alpha}e^{j\phi_{\alpha}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+La combinazione lineare dei modi associati agli autovalori complessi coniugati
+ è:
+\begin_inset Formula 
+\[
+x_{{\scriptscriptstyle \text{L}}}\left(k\right)=\alpha z_{1}+\alpha^{*}z_{2}=\rho_{\alpha}\rho^{k}e^{j\left(k\phi+\phi_{\alpha}\right)}+\rho_{\alpha}\rho^{k}e^{-j\left(k\phi+\phi_{\alpha}\right)}
 \]
 
 \end_inset
 
 
+\begin_inset Formula 
+\begin{equation}
+=\rho_{\alpha}\rho^{k}\left(e^{j\left(k\phi+\phi_{\alpha}\right)}+e^{-j\left(k\phi+\phi_{\alpha}\right)}\right)\overset{{\scriptscriptstyle \text{Eulero}}}{=}\boxed{2\rho_{\alpha}\rho^{k}\cos\left(k\phi+\phi_{\alpha}\right)}\label{eq:Movimento-libero-discreto-complesso}
+\end{equation}
+
+\end_inset
+
+dove abbiamo usato la 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Formula-di-Eulero"
+
+\end_inset
+
+ nell'ultima uguaglianza, e i coefficienti in pedice 
+\begin_inset Formula $_{\alpha}$
+\end_inset
+
+ sono dipendenti dalle condizioni iniziali; la convergenza del movimento
+ è determinata dal segno dominante di 
+\begin_inset Formula $\rho^{k}$
+\end_inset
+
+ (in particolare 
+\begin_inset Formula $\rho$
+\end_inset
+
+ è il modulo dell'autovalore), infatti la funzione coseno è limitata e 
+\begin_inset Formula $\rho_{\alpha}$
+\end_inset
+
+ è costante.
+ Come per il caso dell'autovalore reale, si osserva il modulo degli autovalori
+ per determinarne l'andamento generato.
+\end_layout
+
+\begin_layout Example
+Sia dato un sistema LTI a tempo discreto con la seguente matrice di stato:
+\begin_inset Formula 
+\[
+A=\begin{bmatrix}1 & 1\\
+-1 & 1
+\end{bmatrix}
+\]
+
+\end_inset
+
+Si calcoli il movimento libero del sistema in generale.
+\end_layout
+
+\begin_layout Example
+Cominciamo calcolando gli autovalori di 
+\begin_inset Formula $A$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\det\left(zI-A\right)=0\rightarrow\begin{vmatrix}z-1 & -1\\
+1 & z-1
+\end{vmatrix}=0\rightarrow z^{2}-2z+2=0\rightarrow z_{1,2}=1\pm j
+\]
+
+\end_inset
+
+Per questi due autovalori complessi coniugati abbiamo 
+\begin_inset Formula $\rho=\sqrt{2}$
+\end_inset
+
+ e 
+\begin_inset Formula $\phi=\pi/4$
+\end_inset
+
+.
+ Il movimento associato alla combinazione lineare di questi due modi sarà
+ nella forma 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Movimento-libero-discreto-complesso"
+
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\rho_{\alpha}2\left(\sqrt{2}\right)^{k}\cos\left(k\dfrac{\pi}{4}+\phi_{\alpha}\right)
+\]
+
+\end_inset
+
+Una possibile scelta per la matrice di trasformazione, presi autovettori
+ associati a 
+\begin_inset Formula $z_{1,2}$
+\end_inset
+
+ con base canonica unitaria, è la seguente:
+\begin_inset Formula 
+\[
+T_{{\scriptscriptstyle \text{D}}}^{-1}=\begin{bmatrix}1 & 1\\
+j & -j
+\end{bmatrix}\rightarrow T_{{\scriptscriptstyle \text{D}}}=\dfrac{1}{2}\cdot\begin{bmatrix}1 & -j\\
+1 & j
+\end{bmatrix}
+\]
+
+\end_inset
+
+Il generico movimento libero sarà scritto come:
+\begin_inset Formula 
+\[
+x_{{\scriptscriptstyle \text{L}}}\left(k\right)=\overset{{\scriptstyle T_{{\scriptscriptstyle \text{D}}}^{-1}}}{\overbrace{\begin{bmatrix}1 & 1\\
+j & -j
+\end{bmatrix}}}\cdot\overset{{\scriptstyle A_{{\scriptscriptstyle \text{D}}}}}{\overbrace{\begin{bmatrix}\left(\sqrt{2}e^{j\nicefrac{\pi}{4}}\right)^{k} & 0\\
+0 & \left(\sqrt{2}e^{-j\nicefrac{\pi}{4}}\right)^{k}
+\end{bmatrix}}}\cdot\overset{{\scriptstyle T_{{\scriptscriptstyle \text{D}}}}}{\overbrace{\dfrac{1}{2}\cdot\begin{bmatrix}1 & -j\\
+1 & j
+\end{bmatrix}}}\cdot x_{0}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+=\left(\sqrt{2}\right)^{k}\cdot\begin{bmatrix}\cos\left(k\nicefrac{\pi}{4}\right) & -\sin\left(k\nicefrac{\pi}{4}\right)\\
+\sin\left(k\nicefrac{\pi}{4}\right) & \cos\left(k\nicefrac{\pi}{4}\right)
+\end{bmatrix}\cdot x_{0}
+\]
+
+\end_inset
+
+Da questa scrittura è possibile calcolare qualsiasi movimento del sistema
+ a fronte di condizioni iniziali.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+demo
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Possiamo distinguere gli andamenti dei modi nel tempo discreto studiando
+ il modulo degli autovalori e considerando se sono complessi coniugati:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="middle" width="55text%">
+<row interlinespace="default">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $_{\text{Insieme}}\backslash^{\text{Modulo}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left|z_{i}\right|<1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="default">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $z_{i}\in\mathbb{R}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{array}{l}
+z_{i}>0\rightarrow\text{{\scriptstyle \text{converge asintotico}}}\\
+z_{i}=0\rightarrow\text{{\scriptstyle \text{converge in tempo finito}}}\\
+z_{i}<0\rightarrow\text{{\scriptstyle \text{converge a segno alterno}}}
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="default">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $z_{i}\in\mathbb{C}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\text{{\scriptstyle \text{converge come inviluppo di cosinusoide}}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="middle" width="55text%">
+<row interlinespace="default">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $_{\text{Insieme}}\backslash^{\text{Modulo}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left|z_{i}\right|>1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="default">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $z_{i}\in\mathbb{R}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{array}{l}
+z_{i}>1\rightarrow\text{{\scriptstyle \text{diverge polinomiale}}}\\
+z_{i}<-1\rightarrow\text{{\scriptstyle \text{diverge polinomiale a segni alterni}}}
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="default">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $z_{i}\in\mathbb{C}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\text{{\scriptstyle \text{diverge come inviluppo di cosinusoide}}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="middle" width="55text%">
+<row interlinespace="default">
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $_{\text{Insieme}}\backslash^{\text{Modulo}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left|z_{i}\right|=1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="default">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $z_{i}\in\mathbb{R}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\begin{array}{l}
+z_{i}=1\rightarrow\text{{\scriptstyle \text{limitato e costante}}}\\
+z_{i}=-1\rightarrow\text{{\scriptstyle \text{limitato a segni alterni}}}
+\end{array}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="default">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $z_{i}\in\mathbb{C}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Re\left(z_{i}\right)=0,\,\Im\left(z_{i}\right)=\pm1\rightarrow\text{{\scriptstyle \text{limitato come cosinusoide}}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset VSpace defskip
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Classificazione dei movimenti nel tempo discreto
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Classificazione-movimenti-discreti"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Per concludere il discorso sui modi nel tempo discreto, esaminiamo il caso
+ di una matrice di stato non diagonalizzabile: cercheremo di scriverla nella
+ forma di Jordan 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Forma-di-Jordan"
+
+\end_inset
+
+, trovando una matrice di trasformazione 
+\begin_inset Formula $T_{{\scriptscriptstyle \text{J}}}$
+\end_inset
+
+ adeguata.
+ Compariranno dei modi aggiuntivi nella matrice, al di sopra della diagonale
+ principale; si avranno dunque sulla diagonale i modi 
+\begin_inset Formula $z_{i}^{k}$
+\end_inset
+
+, mentre al di sopra i modi 
+\begin_inset Formula $k^{\eta-1}z^{k-\eta-1}$
+\end_inset
+
+ dove 
+\begin_inset Formula $\eta$
+\end_inset
+
+ dipende dalle molteplicità degli autovalori e 
+\begin_inset Formula $i$
+\end_inset
+
+ è l'indice di colonna nella matrice.
+\end_layout
+
+\begin_layout Standard
+Le proprietà di convergenza di questi nuovi modi sono determinate sempre
+ dal modulo dell'autovalore 
+\begin_inset Formula $z$
+\end_inset
+
+ (l'esponenziale di 
+\begin_inset Formula $z$
+\end_inset
+
+ domina sulla potenza di 
+\begin_inset Formula $k$
+\end_inset
+
+ costante), quindi sono soggetti alle considerazioni esposte ne 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "tab:Classificazione-movimenti-discreti"
+
+\end_inset
+
+; rispetto ad essa, per 
+\begin_inset Formula $\left|z_{i}\right|=1$
+\end_inset
+
+ si hanno modi divergenti, a causa del contributo del coefficiente 
+\begin_inset Formula $k$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Stabilità del sistema
+\end_layout
+
+\begin_layout Subsection
+Condizioni di stabilità in sistemi a tempo discreto
+\end_layout
+
+\begin_layout Standard
+Se prendiamo un movimento 
+\begin_inset Formula $x\left(k\right)$
+\end_inset
+
+ a partire da 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+ e un movimento perturbato 
+\begin_inset Formula $\tilde{x}\left(k\right)$
+\end_inset
+
+ a partire da 
+\begin_inset Formula $\tilde{x}_{0}=x_{0}+\delta x_{0}$
+\end_inset
+
+, a parità di ingresso 
+\begin_inset Formula $u\left(k\right)$
+\end_inset
+
+ studiamo il comportamento di 
+\begin_inset Formula $\delta x\left(k\right)=\tilde{x}\left(k\right)-x\left(k\right)$
+\end_inset
+
+; con l'equazione 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Formula-di-Lagrange-discreta"
+
+\end_inset
+
+ otteniamo l'andamento della perturbazione:
+\begin_inset Formula 
+\begin{equation}
+A^{k}\left(\tilde{x}_{0}-x_{0}\right)=A^{k}\delta x_{0}\label{eq:Andamento-perturbazione-discreta}
+\end{equation}
+
+\end_inset
+
+Questo risultato non dipende dall'ingresso né dalla perturbazione: esso
+ è la risposta libera del sistema alla perturbazione considerata.
+\end_layout
+
+\begin_layout Remark
+In un sistema LTI a tempo discreto, presa qualsiasi coppia di movimento
+ e movimento perturbato, la distanza tra i due movimenti è data sempre dalla
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Andamento-perturbazione-discreta"
+
+\end_inset
+
+; da questo deriva il seguente Teorema 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:Stabilità-sistema-LTI-discreto"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:Stabilità-sistema-LTI-discreto"
+
+\end_inset
+
+In un sistema LTI a tempo dinamico un movimento (incluso quello di equilibrio)
+ è stabile, asintoticamente stabile o instabile se e solo se sono rispettivament
+e stabili, asintoticamente stabili o instabili tutti i movimenti del sistema.
+\end_layout
+
+\begin_layout Remark
+Notiamo che essendo 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Andamento-perturbazione-discreta"
+
+\end_inset
+
+ un movimento libero, questa espressione è combinazione lineare dei modi
+ del sistema e il suo andamento dipende dagli autovalori della matrice di
+ stato.
+ Per il Teorema 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:Stabilità-sistema-LTI-discreto"
+
+\end_inset
+
+ possiamo controllare la stabilità del sistema studiando quella dei sui
+ movimenti liberi.
+\end_layout
+
+\begin_layout Standard
+Possiamo usare le condizioni ne 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "tab:Classificazione-movimenti-discreti"
+
+\end_inset
+
+ assieme alla precedente osservazione per ottenere le seguenti considerazioni:
+\end_layout
+
+\begin_layout Theorem
+Un sistema LTI della forma 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Forma-standard-matrice-LTI-discreto"
+
+\end_inset
+
+ si dice asintoticamente stabile se e solo se 
+\bar under
+tutti
+\bar default
+ gli autovalori della sua matrice di stato sono in modulo minori di 1 (ovvero
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Andamento-perturbazione-discreta"
+
+\end_inset
+
+ converge a zero).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+Un sistema LTI della forma 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Forma-standard-matrice-LTI-discreto"
+
+\end_inset
+
+ si dice instabile se 
+\bar under
+almeno uno
+\bar default
+ degli autovalori della sua matrice di stato è in modulo maggiore di 1.
+\end_layout
+
+\begin_layout Standard
+Se il modulo degli autovalori è unitario, distinguiamo i seguenti casi per
+ studiare la stabilità del sistema:
+\end_layout
+
+\begin_layout Itemize
+Con 
+\begin_inset Formula $A$
+\end_inset
+
+ diagonalizzabile, se 
+\begin_inset Formula $\nexists i\in0\ldots\eta_{n}\,:\,\left|z_{i}\right|>1$
+\end_inset
+
+ allora il sistema è stabile semplicemente;
+\end_layout
+
+\begin_layout Itemize
+Con 
+\begin_inset Formula $A$
+\end_inset
+
+ non diagonalizzabile, il sistema è instabile.
+\end_layout
+
+\begin_layout Standard
+Elenchiamo ora alcune proprietà dei sistemi LTI a tempo discreto asintoticamente
+ stabili:
+\end_layout
+
+\begin_layout Enumerate
+Un movimento per 
+\begin_inset Formula $k\rightarrow\infty$
+\end_inset
+
+ non dipende dalle condizioni iniziali 
+\begin_inset Formula $x\left(k_{0}\right)$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+La risposta a un impulso tende ad annullarsi per 
+\begin_inset Formula $t\rightarrow\infty$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+La risposta a qualunque ingresso limitato nel tempo tende ad annullarsi
+ per 
+\begin_inset Formula $t\rightarrow\infty$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+Gli stati e le uscite di equilibrio, con ingresso 
+\begin_inset Formula $\overline{u}$
+\end_inset
+
+ costante nel tempo, sono univocamente definiti e pari a 
+\begin_inset Formula $\overline{x}$
+\end_inset
+
+ e 
+\begin_inset Formula $\overline{y}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+Il sistema gode della proprietà di stabilità esterna.
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Criterio di Jury
+\end_layout
+
+\begin_layout Standard
+Il polinomio caratteristico di una matrice permette di trovare i suoi autovalori
+: se definiamo tale polinomio per i sistemi a tempo discreto come 
+\begin_inset Formula $\phi\left(z\right)$
+\end_inset
+
+, gli autovalori associati si trovano a partire da 
+\begin_inset Formula $\phi\left(z\right)=0$
+\end_inset
+
+; scrivendo il polinomio nella forma di combinazione lineare di autovalori
+ 
+\begin_inset Formula $z_{i}$
+\end_inset
+
+ e coefficienti 
+\begin_inset Formula $\phi_{i}$
+\end_inset
+
+ avremo
+\begin_inset Formula 
+\begin{equation}
+\phi\left(z\right)=\phi_{0}z^{n}+\phi_{1}z^{n-1}+\ldots+\phi_{n}\label{eq:Polinomio-caratteristico-discreto}
+\end{equation}
+
+\end_inset
+
+Enunciamo un criterio che fornisce una condizione necessaria e sufficiente
+ per stabilire la stabilità asintotica di un sistema a tempo discreto; esso
+ si basa sulla seguente 
+\emph on
+tabella di Jury
+\emph default
+, costruita a partire dal polinomio caratteristico della matrice di stato,
+ scritto nella forma 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Polinomio-caratteristico-discreto"
+
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{equation}
+\begin{array}{ccccccc}
+\phi_{0} & \phi_{1} & \phi_{2} & \ldots & \phi_{n-1} & \phi_{n} & 0\\
+h_{0} & h_{1} & h_{2} & \ldots & h_{\nu} & 0 & 0\\
+\ell_{1} & \ell_{2} & \ldots & \ell_{\nu-1} & 0 & 0 & 0
+\end{array}\label{eq:Tabella-di-Jury}
+\end{equation}
+
+\end_inset
+
+Questa tabella si compila grazie al seguente 
+\emph on
+algoritmo di Jury
+\emph default
+ che dalle riga precedente (
+\begin_inset Formula $h_{i}$
+\end_inset
+
+) ottiene la successiva (
+\begin_inset Formula $\ell_{i}$
+\end_inset
+
+):
+\begin_inset Formula 
+\begin{equation}
+\ell_{i}=\dfrac{1}{h_{1}}\cdot\det\left(\begin{bmatrix}h_{1} & h_{\nu-i+1}\\
+h_{\nu} & h_{i}
+\end{bmatrix}\right)\rightarrow h_{i}-\dfrac{h_{\nu}\cdot h_{\nu-i+1}}{h_{1}}\label{eq:Algoritmo-di-Jury}
+\end{equation}
+
+\end_inset
+
+Si osserva che in generale la tabella è triangolare, e inoltre l’algoritmo
+ non si può applicare per il caso 
+\begin_inset Formula $h_{1}=0$
+\end_inset
+
+ per almeno una riga (in tal caso si dice che la 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Tabella-di-Jury"
+
+\end_inset
+
+ non è ben definita).
+ L’algoritmo termina quando si otterrebbe uno zero nella prima posizione
+ della riga più in basso.
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "3cm"
+height "1pt"
+
+\end_inset
+
+
+\series bold
+\size footnotesize
+
+\begin_inset Newline newline
+\end_inset
+
+Criterio di Jury
+\series default
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Jury, criterio
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:Criterio-di-Jury"
+
+\end_inset
+
+Un sistema LTI a tempo discreto della forma 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Forma-standard-matrice-LTI-discreto"
+
+\end_inset
+
+ è asintoticamente stabile se e solo se la tabella di Jury 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Tabella-di-Jury"
+
+\end_inset
+
+ del polinomio caratteristico della matrice di stato del sistema è ben definita,
+ e tutti gli elementi sulla prima colonna della tabella hanno segno concorde.
+\end_layout
+
+\begin_layout Example
+Consideriamo un sistema dinamico a tempo discreto, col seguente polinomio
+ caratteristico:
+\begin_inset Formula 
+\[
+\phi\left(z\right)=z^{2}+\alpha z+\beta
+\]
+
+\end_inset
+
+Studiare per quali valori di 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ e 
+\begin_inset Formula $\beta$
+\end_inset
+
+ il sistema è stabile.
+\end_layout
+
+\begin_layout Example
+Scegliendo di applicare il criterio di Jury, costruiamo la tabella 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Tabella-di-Jury"
+
+\end_inset
+
+ nel modo seguente:
+\end_layout
+
+\begin_layout Example
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row bottomspace="default">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\alpha$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\beta$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row bottomspace="default">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1-\beta^{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\alpha\left(1-\beta\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row bottomspace="default">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $1-\beta^{2}-\dfrac{\alpha^{2}\left(1-\beta\right)^{2}}{1-\beta^{2}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+Applicando il Teorema 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:Criterio-di-Jury"
+
+\end_inset
+
+ cerchiamo i valori dei coefficienti che rendano concordi i segni dei termini
+ sulla prima colonna; otteniamo dunque le seguenti condizioni, osservando
+ che il termine 1 è positivo:
+\begin_inset Formula 
+\[
+\begin{cases}
+1-\beta^{2}>0 & \left(1\right)\\
+1-\beta^{2}-\dfrac{\alpha^{2}\left(1-\beta\right)^{2}}{1-\beta^{2}} & \left(2\right)
+\end{cases}=\begin{cases}
+\beta\in\left(-1,\,1\right)\\
+1+\beta\in\left(-\alpha,\,\alpha\right)
+\end{cases}
+\]
+
+\end_inset
+
+Per giungere a questa conclusione si è usata la condizione 
+\begin_inset Formula $\left(1\right)$
+\end_inset
+
+ nella 
+\begin_inset Formula $\left(2\right)$
+\end_inset
+
+, studiando il segno del numeratore 
+\begin_inset Formula $-\alpha^{2}\left(1-\beta\right)^{2}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -11843,12 +13376,20 @@ A_{{\scriptscriptstyle \text{J}}}=T_{{\scriptscriptstyle \text{J}}}\cdot A\cdot 
 \end_layout
 
 \begin_layout Standard
+La matrice in forma di Jordan ha una struttura diagonale a blocchi, ognuno
+ dei quali è sulla diagonale principale e sono tanti quanti gli autovalori
+ distinti; ciascun blocco ha dimensione pari alla molteplicità algebrica
+ dell'autovalore relativo, e ogni coefficiente sulla diagonale del blocco
+ è l'autovalore a cui appartiene il blocco.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Wrap figure
 lines 0
 placement o
 overhang 0in
 width "30text%"
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -11890,14 +13431,6 @@ Esempio di matrice in forma di Jordan, per
 
 \end_inset
 
-La matrice in forma di Jordan ha una struttura diagonale a blocchi, ognuno
- dei quali è sulla diagonale principale e sono tanti quanti gli autovalori
- distinti; ciascun blocco ha dimensione pari alla molteplicità algebrica
- dell'autovalore relativo, e ogni coefficiente sulla diagonale del blocco
- è l'autovalore a cui appartiene il blocco.
-\end_layout
-
-\begin_layout Standard
 Nei blocchi di ordine maggiore di uno (hanno ordine 
 \begin_inset Formula $n_{i}$
 \end_inset
@@ -12237,11 +13770,11 @@ Un numero complesso nella forma algebrica è scritto come
 \end_inset
 
 , dove 
-\begin_inset Formula $a=\text{Re}\left(s\right)$
+\begin_inset Formula $a=\Re\left(s\right)$
 \end_inset
 
  è la parte reale e 
-\begin_inset Formula $b=\text{Im}\left(s\right)$
+\begin_inset Formula $b=\Im\left(s\right)$
 \end_inset
 
  la parte immaginaria; 
