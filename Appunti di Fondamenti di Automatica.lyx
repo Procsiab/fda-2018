@@ -1576,6 +1576,8 @@ Modello per autoveicolo in movimento
 \end_layout
 
 \begin_layout Example
+
+\emph on
 Sia dato un autoveicolo in movimento tramite la forza di trazione del motore
  
 \begin_inset Formula $F\left(t\right)$
@@ -1593,7 +1595,11 @@ Sia dato un autoveicolo in movimento tramite la forza di trazione del motore
 \begin_inset Formula $\beta mv^{2}\left(t\right)$
 \end_inset
 
-; scrivere un modello che abbia come ingresso la forza di trazione e come
+; 
+\begin_inset Formula $\checkmark$
+\end_inset
+
+scrivere un modello che abbia come ingresso la forza di trazione e come
  uscita la velocità.
 \end_layout
 
@@ -1741,6 +1747,8 @@ name "exa:Due-masse-ammortizzate"
 
 \end_inset
 
+
+\emph on
 Sia dato un sistema costituito da due masse 
 \begin_inset Formula $m_{1}$
 \end_inset
@@ -1795,7 +1803,11 @@ Sia dato un sistema costituito da due masse
 \end_inset
 
 ).
- Si scriva un modello per misurare la posizione nel tempo delle due masse.
+ 
+\begin_inset Formula $\checkmark$
+\end_inset
+
+Si scriva un modello per misurare la posizione nel tempo delle due masse.
 \end_layout
 
 \begin_layout Example
@@ -2064,7 +2076,7 @@ In generale, posto che
 
 , i coefficienti matriciali saranno rispettivamente di dimensione:
 \begin_inset Marginal
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \begin_inset CommandInset line
@@ -2097,6 +2109,17 @@ LTI, dimensioni dei coefficiente standard
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[-0.25cm]
 \end_layout
 
 \end_inset
@@ -2202,6 +2225,17 @@ LTI, sovrapposizione degli effetti
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[0.25cm]
 \end_layout
 
 \end_inset
@@ -2440,6 +2474,17 @@ LTI, stabilità
 \end_inset
 
 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[0.2cm]
+\end_layout
+
+\end_inset
+
+
 \begin_inset Formula 
 \begin{equation}
 \forall\varepsilon>0\,\exists\delta>0\left(\forall\tilde{x}_{0}\left(\left\Vert \tilde{x}_{0}-x_{0}\right\Vert \leq\delta\right)\Rightarrow\forall t>t_{0}\left(\left\Vert \tilde{x}\left(t\right)-x\left(t\right)\right\Vert \leq\varepsilon\right)\right)\label{eq:Stabilità-sistema-LTI}
@@ -2539,6 +2584,8 @@ Il prossimo esempio presenta il concetto di equilibrio dei movimenti e di
 \end_layout
 
 \begin_layout Example
+
+\emph on
 Sia dato un circuito costituito da una serie di un resistore di resistenza
  
 \begin_inset Formula $R$
@@ -2557,7 +2604,11 @@ Sia dato un circuito costituito da una serie di un resistore di resistenza
 \end_inset
 
  ai capi del condensatore.
- Studiare la condizione di equilibrio e i movimenti del sistema.
+ 
+\begin_inset Formula $\checkmark$
+\end_inset
+
+Studiare la condizione di equilibrio e i movimenti del sistema.
 \end_layout
 
 \begin_layout Example
@@ -2867,7 +2918,7 @@ status open
 
 \begin_layout Plain Layout
 
-[0.5cm]
+[0.6cm]
 \end_layout
 
 \end_inset
@@ -3086,6 +3137,17 @@ Movimento libero
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[0.2cm]
 \end_layout
 
 \end_inset
@@ -3817,7 +3879,7 @@ status open
 
 \begin_layout Plain Layout
 
-[1.25cm]
+[1.3cm]
 \end_layout
 
 \end_inset
@@ -4163,7 +4225,7 @@ status open
 
 \begin_layout Plain Layout
 
-[0.5cm]
+[1.6cm]
 \end_layout
 
 \end_inset
@@ -4401,6 +4463,8 @@ name "exa:Circuito-serie_RLC"
 
 \end_inset
 
+
+\emph on
 Sia dato un circuito formato da una maglia con la serie di resistore di
  valore 
 \begin_inset Formula $R$
@@ -4431,12 +4495,20 @@ Sia dato un circuito formato da una maglia con la serie di resistore di
 \begin_inset Formula $v_{{\scriptscriptstyle L}}\left(t\right)$
 \end_inset
 
-; si scriva un modello per questo sistema che abbia come uscita la tensione
+; 
+\begin_inset Formula $\checkmark$
+\end_inset
+
+si scriva un modello per questo sistema che abbia come uscita la tensione
  sul condensatore 
 \begin_inset Formula $v_{c}\left(t\right)$
 \end_inset
 
- e si analizzi il movimento libero del sistema (senza ingresso) al variare
+ e 
+\begin_inset Formula $\checkmark$
+\end_inset
+
+si analizzi il movimento libero del sistema (senza ingresso) al variare
  dei parametri costruttivi (
 \begin_inset Formula $R,\,L,\,C$
 \end_inset
@@ -5170,6 +5242,8 @@ name "exa:Doppio-integratore-carrello"
 
 \end_inset
 
+
+\emph on
 Consideriamo un carrello di massa 
 \begin_inset Formula $m$
 \end_inset
@@ -5184,8 +5258,15 @@ Consideriamo un carrello di massa
 \end_inset
 
 .
- Scrivere un modello per questo sistema in cui si misuri la posizione e
- stabilirne l'andamento dei modi.
+ 
+\begin_inset Formula $\checkmark$
+\end_inset
+
+Scrivere un modello per questo sistema in cui si misuri la posizione e 
+\begin_inset Formula $\checkmark$
+\end_inset
+
+stabilirne l'andamento dei modi.
 \end_layout
 
 \begin_layout Example
@@ -5621,14 +5702,6 @@ reference "eq:Formula-di-Lagrange"
 \end_inset
 
  come:
-\begin_inset Formula 
-\[
-x_{{\scriptscriptstyle \text{F}}}\left(t\right)=\somme 0t{e^{A\left(t-\tau\right)}B\cdot\text{imp}\left(\tau\right)}{\tau}=e^{A\cdot t}\cdot B\somme 0t{\text{imp}\left(\tau\right)}{\tau}
-\]
-
-\end_inset
-
-
 \begin_inset Marginal
 status collapsed
 
@@ -5664,6 +5737,25 @@ impulso, risposta al
 
 
 \end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[2cm]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+x_{{\scriptscriptstyle \text{F}}}\left(t\right)=\somme 0t{e^{A\left(t-\tau\right)}B\cdot\text{imp}\left(\tau\right)}{\tau}=e^{A\cdot t}\cdot B\somme 0t{\text{imp}\left(\tau\right)}{\tau}
+\]
 
 \end_inset
 
@@ -5821,6 +5913,17 @@ LTI, andamento della perturbazione
 \end_inset
 
 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[0.2cm]
+\end_layout
+
+\end_inset
+
+
 \begin_inset Formula 
 \begin{equation}
 e^{A\cdot t}\left(\tilde{x}-x_{0}\right)=e^{A\cdot t}\delta\label{eq:Perturbazione-sistema-LTI}
@@ -5886,6 +5989,17 @@ stabilità del sistema, Teorema
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[-0.2cm]
 \end_layout
 
 \end_inset
@@ -6007,7 +6121,7 @@ status open
 
 \begin_layout Plain Layout
 
-[-0.5cm]
+[-0.2cm]
 \end_layout
 
 \end_inset
@@ -6096,7 +6210,7 @@ status open
 
 \begin_layout Plain Layout
 
-[-0.5cm]
+[-0.2cm]
 \end_layout
 
 \end_inset
@@ -6511,6 +6625,8 @@ reference "eq:Tabella-di-Routh"
 \end_layout
 
 \begin_layout Example
+
+\emph on
 Sia dato il seguente polinomio caratteristico della matrice di stato di
  un sistema LTI di ordine 5
 \begin_inset Formula 
@@ -6518,6 +6634,10 @@ Sia dato il seguente polinomio caratteristico della matrice di stato di
 \phi\left(\lambda\right)=\lambda^{5}+15\lambda^{4}+85\lambda^{3}+225\lambda^{2}+274\lambda+120
 \]
 
+\end_inset
+
+
+\begin_inset Formula $\checkmark$
 \end_inset
 
 Verificare la stabilità dei movimenti del sistema.
@@ -7131,10 +7251,18 @@ demo
 \end_layout
 
 \begin_layout Example
+
+\emph on
 Sia dato un sistema LTI con parametri incerti, ovvero gli autovalori sono
  variabili; è possibile calcolare il polinomio caratteristico rispetto a
- tali parametri: si valuti dunque la stabilità del sistema col seguente
- polinomio caratteristico di stato
+ tali parametri: 
+\begin_inset Formula $\checkmark$
+\end_inset
+
+si valuti dunque la stabilità del sistema col seguente polinomio caratteristico
+ di stato
+\emph default
+
 \begin_inset Formula 
 \[
 \phi\left(\lambda\right)=\lambda^{3}+\left(2+\beta\right)\lambda^{2}+\left(1+2\beta\right)\lambda+\alpha+\beta
@@ -7772,7 +7900,7 @@ reference "thm:Teorema-dell'instabilità"
 
 , ma per i sistemi non lineari le condizioni poste sono solo sufficienti;
  nel caso di autovalori nulli non è possibile, a partire da un equilibrio
- di un sistema linearizzato, stabilire la sua stabilità.
+ di un sistema linearizzato, determinare la sua stabilità.
 \end_layout
 
 \begin_layout Subsection
@@ -7881,9 +8009,14 @@ Funzione di stato analizzata col metodo grafico
 \end_layout
 
 \begin_layout Example
+
+\emph on
 Sia dato il grafico in figura che indica l'andamento dell'equazione di stato
- in funzione dello stato, in un sistema di ordine 1: determinare la stabilità
- degli eventuali equilibri.
+ in funzione dello stato, in un sistema di ordine 1: 
+\begin_inset Formula $\checkmark$
+\end_inset
+
+determinare la stabilità degli eventuali equilibri.
 \end_layout
 
 \begin_layout Example
@@ -7978,6 +8111,17 @@ tempo discreto, equazioni di processo
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[0.2cm]
 \end_layout
 
 \end_inset
@@ -8375,9 +8519,14 @@ name "exa:Circuito-RL-elettrovalvola"
 
 \end_inset
 
+
+\emph on
 Sia dato un circuito formato da una maglia con induttore e resistore in
- serie, e sia controllabile il generatore di tensione in ingresso; scrivere
- un modello che abbia la corrente nella maglia come uscita.
+ serie, e sia controllabile il generatore di tensione in ingresso; 
+\begin_inset Formula $\checkmark$
+\end_inset
+
+scrivere un modello che abbia la corrente nella maglia come uscita.
 \end_layout
 
 \begin_layout Example
@@ -8666,17 +8815,6 @@ LTI, modello matriciale discreto
 \end_inset
 
 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-[-0.25cm]
-\end_layout
-
-\end_inset
-
-
 \begin_inset Formula 
 \begin{equation}
 \begin{bmatrix}x\left(k+1\right)=A\cdot x\left(k\right)+B\cdot u\left(k\right)\\
@@ -8752,7 +8890,7 @@ status open
 
 \begin_layout Plain Layout
 
-[0.25cm]
+[0.5cm]
 \end_layout
 
 \end_inset
@@ -8968,6 +9106,17 @@ tempo discreto, equilibrio
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[0.2cm]
 \end_layout
 
 \end_inset
@@ -9572,6 +9721,8 @@ reference "eq:Formula-di-Eulero"
 \end_layout
 
 \begin_layout Example
+
+\emph on
 Sia dato un sistema LTI a tempo discreto con la seguente matrice di stato:
 \begin_inset Formula 
 \[
@@ -9580,6 +9731,10 @@ A=\begin{bmatrix}1 & 1\\
 \end{bmatrix}
 \]
 
+\end_inset
+
+
+\begin_inset Formula $\checkmark$
 \end_inset
 
 Si calcoli il movimento libero del sistema in generale.
@@ -10016,6 +10171,55 @@ name "tab:Classificazione-movimenti-discreti"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "3cm"
+height "1pt"
+
+\end_inset
+
+
+\series bold
+\size footnotesize
+
+\begin_inset Newline newline
+\end_inset
+
+Movimenti nel tempo discreto
+\series default
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+
+\size footnotesize
+tempo discreto, movimenti
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[-5.5cm]
+\end_layout
+
+\end_inset
+
 Per concludere il discorso sui modi nel tempo discreto, esaminiamo il caso
  di una matrice di stato non diagonalizzabile: cercheremo di scriverla nella
  forma di Jordan 
@@ -10488,6 +10692,8 @@ reference "eq:Tabella-di-Jury"
 \end_layout
 
 \begin_layout Example
+
+\emph on
 Consideriamo un sistema dinamico a tempo discreto, col seguente polinomio
  caratteristico:
 \begin_inset Formula 
@@ -10495,6 +10701,10 @@ Consideriamo un sistema dinamico a tempo discreto, col seguente polinomio
 \phi\left(z\right)=z^{2}+\alpha z+\beta
 \]
 
+\end_inset
+
+
+\begin_inset Formula $\checkmark$
 \end_inset
 
 Studiare per quali valori di 
@@ -10726,6 +10936,395 @@ Per giungere a questa conclusione si è usata la condizione
 \end_inset
 
 .
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+demo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Sistemi non lineari a tempo discreto
+\end_layout
+
+\begin_layout Standard
+Prendiamo un sistema a tempo discreto stazionario e non lineare, nella forma
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Forma-standard-matrice-LTI-discreto"
+
+\end_inset
+
+; per risolvere in forma chiusa il calcolo di un movimento, ci concentriamo
+ sugli equilibri di questi sistemi: cerchiamo una coppia stato-ingresso
+ 
+\begin_inset Formula $\overline{x},\,\overline{u}$
+\end_inset
+
+ tale che valga 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Condizioni-equilibrio-tempo-discreto"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Per studiare la stabilità di questi equilibri, possiamo approssimare il
+ modello del sistema, localmente alla condizione di equilibrio, con lo sviluppo
+ di Taylor al primo ordine delle equazioni del sistema; questa approssimazione
+ lineare si ottiene nel modo seguente:
+\begin_inset Formula 
+\[
+\begin{array}{c}
+f\left(x\left(k\right),\,u\left(k\right)\right)\simeq f\left(\overline{x},\,\overline{u}\right)+\left.\dfrac{\partial f}{\partial x}\right|_{\overline{x},\overline{u}}\left(x\left(k\right)-\overline{x}\right)+\left.\dfrac{\partial f}{\partial u}\right|_{\overline{x},\overline{u}}\left(u\left(k\right)-\overline{u}\right)\\
+g\left(x\left(k\right),\,u\left(k\right)\right)\simeq g\left(\overline{x},\,\overline{u}\right)+\left.\dfrac{\partial g}{\partial x}\right|_{\overline{x},\overline{u}}\left(x\left(k\right)-\overline{x}\right)+\left.\dfrac{\partial g}{\partial u}\right|_{\overline{x},\overline{u}}\left(u\left(k\right)-\overline{u}\right)
+\end{array}
+\]
+
+\end_inset
+
+Se definiamo le quantità 
+\begin_inset Formula $\delta x\left(k\right)=x\left(k\right)-\overline{x}$
+\end_inset
+
+ per l'equazione di stato e 
+\begin_inset Formula $\delta u\left(k\right)=u\left(k\right)-\overline{u}$
+\end_inset
+
+ per l'equazione di uscita, le precedenti diventano
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "3cm"
+height "1pt"
+
+\end_inset
+
+
+\series bold
+\size footnotesize
+
+\begin_inset Newline newline
+\end_inset
+
+Forma linearizzata nel tempo discreto
+\series default
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Linearizzazione nel tempo discreto
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[1.8cm]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\begin{array}{c}
+\delta x\left(k+1\right)=f\left(x\left(k\right),\,u\left(k\right)\right)-f\left(\overline{x},\,\overline{u}\right)=\overset{A}{\overbrace{\left.\dfrac{\partial f}{\partial x}\right|_{\overline{x},\overline{u}}}}\delta x\left(k\right)+\overset{B}{\overbrace{\left.\dfrac{\partial f}{\partial u}\right|_{\overline{x},\overline{u}}}}\delta u\left(k\right)\\
+\delta y\left(k\right)=g\left(x\left(k\right),\,u\left(k\right)\right)-g\left(\overline{x},\,\overline{u}\right)=\overset{C}{\overbrace{\left.\dfrac{\partial g}{\partial x}\right|_{\overline{x},\overline{u}}}}\delta x\left(k\right)+\overset{D}{\overbrace{\left.\dfrac{\partial g}{\partial u}\right|_{\overline{x},\overline{u}}}}\delta u\left(k\right)
+\end{array}\label{eq:Forma-linearizzata-tempo-discreto}
+\end{equation}
+
+\end_inset
+
+Ritroviamo le equazioni della forma standard nel tempo discreto 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Forma-standard-matrice-LTI-discreto"
+
+\end_inset
+
+; l’approssimazione fatta vale in un intorno appropriato dell'equilibrio.
+ Come per i sistemi lineari, valgono i risultati sulla stabilità asintotica
+ e sul modulo degli autovalori della matrice di stato 
+\begin_inset Formula $A$
+\end_inset
+
+.
+ In particolare enunciamo i seguenti teoremi:
+\end_layout
+
+\begin_layout Theorem
+Lo stato di equilibrio 
+\begin_inset Formula $\overline{x}$
+\end_inset
+
+ elativo all'ingresso 
+\begin_inset Formula $\overline{u}$
+\end_inset
+
+ per un sistema non lineare della forma 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Forma-standard-matrice-LTI-discreto"
+
+\end_inset
+
+, si dice asintoticamente stabile se tutti gli autovalori della matrice
+ di stato A del sistema 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Forma-linearizzata-tempo-discreto"
+
+\end_inset
+
+ hanno modulo strettamente minore di 1.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+Lo stato di equilibrio 
+\begin_inset Formula $\overline{x}$
+\end_inset
+
+ relativo all'ingresso 
+\begin_inset Formula $\overline{u}$
+\end_inset
+
+ per un sistema non lineare della forma 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Forma-standard-matrice-LTI-discreto"
+
+\end_inset
+
+, si dice instabile se almeno uno degli autovalori della matrice di stato
+ A del sistema 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Forma-linearizzata-tempo-discreto"
+
+\end_inset
+
+ ha modulo maggiore di uno.
+\end_layout
+
+\begin_layout Standard
+Se uno degli autovalori avesse modulo pari a 1, non si potrebbe concludere
+ nulla sulla sua stabilità, con gli strumenti della linearizzazione; si
+ noti che i due teoremi appena enunciati forniscono condizioni solo sufficienti.
+\end_layout
+
+\begin_layout Example
+
+\emph on
+Sia dato un sistema non lineare a tempo discreto con la seguente equazione
+ di stato:
+\begin_inset Formula 
+\[
+\begin{array}{l}
+x_{1}\left(k+1\right)=x_{1}^{3}\left(k\right)+x_{2}\left(k\right)x_{3}\left(k\right)\\
+x_{2}\left(k+1\right)=\sin\left(\dfrac{4}{9}\pi\cdot x_{2}\left(k\right)\right)-\dfrac{1}{8}x_{3}\left(k\right)\\
+x_{3}\left(k+1\right)=\alpha x_{3}\left(k\right)+u\left(k\right)
+\end{array}
+\]
+
+\end_inset
+
+con 
+\begin_inset Formula $\alpha\in\mathbb{R}$
+\end_inset
+
+; 
+\begin_inset Formula $\checkmark$
+\end_inset
+
+calcolare l'ingresso di equilibrio e la terza variabile di stato, in funzione
+ del parametro reale (
+\begin_inset Formula $\overline{u}\left(\alpha\right)$
+\end_inset
+
+ e 
+\begin_inset Formula $\overline{x}_{3}\left(\alpha\right)$
+\end_inset
+
+), tali che 
+\begin_inset Formula $\overline{x}=\begin{bmatrix}1/2\\
+3/8\\
+\overline{x}_{3}
+\end{bmatrix}$
+\end_inset
+
+ sia uno stato di equilibrio.
+\end_layout
+
+\begin_layout Example
+Facendo un passo indietro, classifichiamo il sistema: esso è un sistema
+ a tempo discreto, non lineare, del 3° ordine, ha un ingresso, stazionario
+ (non abbiamo informazioni sull'uscita nell'ambito dell'esercizio).
+\end_layout
+
+\begin_layout Example
+Per ottenere le condizioni che determinano l'equilibrio, poniamo ciascuna
+ equazione di stato pari allo stato corrispondente, sfruttando la 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Condizioni-equilibrio-tempo-discreto"
+
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\begin{cases}
+\dfrac{1}{2}=\left(\dfrac{1}{2}\right)^{3}+\dfrac{1}{8}\cdot\overline{x}_{3} & \mathrm{\left(I\right)}\\
+\dfrac{1}{8}=\sin\left(\dfrac{4}{9}\pi\cdot\dfrac{3}{8}\right)-\dfrac{1}{8}\cdot\overline{x}_{3} & \left(\mathrm{II}\right)\\
+\overline{x}_{3}=\alpha\overline{x}_{3}+\overline{u}\left(\alpha\right) & \left(\mathrm{III}\right)
+\end{cases}\rightarrow\,\begin{cases}
+\overline{x}_{3}=1 & \mathrm{\left(I\right)}\\
+\dfrac{1}{2}=\dfrac{1}{2} & \mathrm{\left(II\right)}\\
+1-\alpha=\overline{u}\left(\alpha\right) & \mathrm{\left(III\right)}
+\end{cases}
+\]
+
+\end_inset
+
+dove abbiamo ricavato dalla 
+\begin_inset Formula $\mathrm{\left(I\right)}$
+\end_inset
+
+ il valore numerico di 
+\begin_inset Formula $\overline{x}_{3}$
+\end_inset
+
+, che abbiamo poi usato nella 
+\begin_inset Formula $\mathrm{\left(II\right)}$
+\end_inset
+
+ e nella 
+\begin_inset Formula $\mathrm{\left(III\right)}$
+\end_inset
+
+; il fatto che dalla 
+\begin_inset Formula $\mathrm{\left(II\right)}$
+\end_inset
+
+ si ricavi una identità ci conferma che stiamo usando una condizione di
+ equilibrio dello stato ammissibile; dalla 
+\begin_inset Formula $\mathrm{\left(III\right)}$
+\end_inset
+
+ si ricava infine il valore dell'uscita di equilibrio.
+\end_layout
+
+\begin_layout Example
+
+\emph on
+\begin_inset Formula $\checkmark$
+\end_inset
+
+Studiare ora le proprietà di stabilità dell'equilibrio al variare del parametro
+ 
+\begin_inset Formula $\alpha\in\mathbb{R}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+Per approcciare il problema, linearizziamo la matrice di stato intorno all'equil
+ibrio appena ottenuto, e studiamo il modulo degli autovalori corrispondenti:
+\begin_inset Formula 
+\[
+A_{{\scriptscriptstyle \text{L}}}=\begin{bmatrix}3\overline{x}_{1}^{2} & \overline{x}_{3} & \overline{x}_{2}\\
+0 & \nicefrac{4}{9}\pi\cos\left(\nicefrac{4}{9}\pi\overline{x}_{2}\right) & -\nicefrac{1}{8}\\
+0 & 0 & \alpha
+\end{bmatrix}=\begin{bmatrix}\nicefrac{3}{4} & 1 & \nicefrac{3}{8}\\
+0 & \nicefrac{2\sqrt{3}}{9} & -\nicefrac{1}{8}\\
+0 & 0 & \alpha
+\end{bmatrix}
+\]
+
+\end_inset
+
+La matrice di stato linearizzata è costituita dalle derivate parziali: l'indice
+ di riga rappresenta le funzioni di stato non lineari, l'indice di colonna
+ lo stato rispetto al quale si deriva parzialmente; tutte le derivate parziali
+ sono valutate in 
+\begin_inset Formula $\overline{x},\,\overline{u}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+La matrice trovata è diagonale, dunque i suoi autovalori sono i termini
+ sulla diagonale principale; scrivendo in modo numerico abbiamo 
+\begin_inset Formula $z_{1}=0.75,\,z_{2}\simeq1.2,\,z_{3}=\alpha$
+\end_inset
+
+: dato che 
+\begin_inset Formula $\left|z_{2}\right|>1$
+\end_inset
+
+, l'equilibrio è instabile (vedi 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "tab:Classificazione-movimenti-discreti"
+
+\end_inset
+
+) comunque scelto 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+demo
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -11896,6 +12495,17 @@ Matrice, polinomio caratteristico
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[0.2cm]
 \end_layout
 
 \end_inset
@@ -13882,7 +14492,7 @@ status open
 
 \begin_layout Plain Layout
 
-[1.2cm]
+[1.4cm]
 \end_layout
 
 \end_inset

@@ -477,12 +477,12 @@ i principi della dinamica\begin{wrapfigure}{o}{0.3\textwidth}%
 \caption{Modello per autoveicolo in movimento}
 \end{wrapfigure}%
 \begin{example}
-Sia dato un autoveicolo in movimento tramite la forza di trazione
+\emph{Sia dato un autoveicolo in movimento tramite la forza di trazione
 del motore $F\left(t\right)$ attraverso le ruote, a cui si oppongono
 la massa $m$, la forza di inerzia $m\dot{v}\left(t\right)$ e la
-resistenza aerodinamica $\beta mv^{2}\left(t\right)$; scrivere un
-modello che abbia come ingresso la forza di trazione e come uscita
-la velocità.
+resistenza aerodinamica $\beta mv^{2}\left(t\right)$; $\checkmark$scrivere
+un modello che abbia come ingresso la forza di trazione e come uscita
+la velocità.}
 
 L'equazione del sistema sarà l'equilibrio della forza di trazione
 con quelle che vi si oppongono:
@@ -530,7 +530,7 @@ Nel prossimo esempio un sistema dinamico di ordine \noun{IV:}\begin{wrapfigure}{
 \caption{Sistema di due masse con sospensioni}
 \end{wrapfigure}%
 \begin{example}
-\label{exa:Due-masse-ammortizzate}Sia dato un sistema costituito
+\label{exa:Due-masse-ammortizzate}\emph{Sia dato un sistema costituito
 da due masse $m_{1}$ e $m_{2}$ ciascuna avente una propria molla
 di costante $k_{1}$ e $k_{2}$ e un proprio ammortizzatore di coefficiente
 di attrito $\beta_{1}$ e $\beta_{2}$; le due masse sono collegate
@@ -539,8 +539,8 @@ e $m_{2}$ è collegata a $m_{1}$ - e la loro posizione rispetto a
 quella di riposo è data da $p_{1}\left(t\right)$ e $p_{2}\left(t\right)$;
 si possa esercitare una forza su ciascuna massa in modo longitudinale
 rispetto al sistema (rispettivamente $F_{1}\left(t\right)$ e $F_{2}\left(t\right)$).
-Si scriva un modello per misurare la posizione nel tempo delle due
-masse.
+$\checkmark$Si scriva un modello per misurare la posizione nel tempo
+delle due masse.}
 
 Usando l'equilibrio delle forze (per una massa alla volta) possiamo
 scrivere un'equazione tra forza d'inerzia, forza dell'ammortizzatore,
@@ -656,7 +656,7 @@ rimane una combinazione lineare.
 In generale, posto che $u\in\mathbb{R}^{m},\,x\in\mathbb{R}^{n},\,y\in\mathbb{R}^{p}$,
 i coefficienti matriciali saranno rispettivamente di dimensione:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
 \textbf{\footnotesize{}Dimensioni dei coefficienti standard per sistemi
-LTI}{\footnotesize{}\index{LTI, dimensioni dei coefficiente standard@{\footnotesize{}LTI, dimensioni dei coefficiente standard}}}}
+LTI}{\footnotesize{}\index{LTI, dimensioni dei coefficiente standard@{\footnotesize{}LTI, dimensioni dei coefficiente standard}}}}[-0.25cm]
 \begin{equation}
 A\in\mathbb{R}^{n\times n},\,B\in\mathbb{R}^{n\times m},\,C\in\mathbb{R}^{p\times n},\,D\in\mathbb{R}^{p\times m}\label{eq:Dimensioni-coeff-matrici-standard}
 \end{equation}
@@ -676,7 +676,7 @@ sia lineare non ostante la presenta di disturbi si può studiare usando
 la \emph{sovrapposizione degli effetti}: se l'ingresso e l'uscita
 sono combinazioni lineari di due segnali allora il sistema è lineare,
 ovvero deve valere\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
-\textbf{\footnotesize{}Sovrapposizione degli effetti per LTI}{\footnotesize{}\index{LTI, sovrapposizione degli effetti@{\footnotesize{}LTI, sovrapposizione degli effetti}}}}
+\textbf{\footnotesize{}Sovrapposizione degli effetti per LTI}{\footnotesize{}\index{LTI, sovrapposizione degli effetti@{\footnotesize{}LTI, sovrapposizione degli effetti}}}}[0.25cm]
 \begin{equation}
 \begin{array}{c}
 u_{{\scriptscriptstyle \text{TOT}}}\left(t\right)=\alpha_{1}u_{1}\left(t\right)+\alpha_{2}u_{2}\left(t\right)\\
@@ -732,7 +732,7 @@ con condizione iniziale $\tilde{x}_{0}$ (valga $\tilde{x}\left(t_{0}\right)=\til
 e lo stesso ingresso, con $t>t_{0}$.
 
 Scrivendo la formula logica si ha che la definizione equivale a\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
-\textbf{\footnotesize{}Stabilità di un sistema LTI}{\footnotesize{}\index{LTI, stabilità@{\footnotesize{}LTI, stabilità}}}}
+\textbf{\footnotesize{}Stabilità di un sistema LTI}{\footnotesize{}\index{LTI, stabilità@{\footnotesize{}LTI, stabilità}}}}[0.2cm]
 \begin{equation}
 \forall\varepsilon>0\,\exists\delta>0\left(\forall\tilde{x}_{0}\left(\left\Vert \tilde{x}_{0}-x_{0}\right\Vert \leq\delta\right)\Rightarrow\forall t>t_{0}\left(\left\Vert \tilde{x}\left(t\right)-x\left(t\right)\right\Vert \leq\varepsilon\right)\right)\label{eq:Stabilit=0000E0-sistema-LTI}
 \end{equation}
@@ -765,11 +765,12 @@ del sistema).
 Il prossimo esempio presenta il concetto di equilibrio dei movimenti
 e di sovrapposizione degli effetti in modo analitico:
 \begin{example}
-Sia dato un circuito costituito da una serie di un resistore di resistenza
-$R$ e un condensatore di capacità $C$; è possibile forzare una tensione
-$v\left(t\right)$ ai capi della serie e si vuole misurare la tensione
-$v_{c}\left(t\right)$ ai capi del condensatore. Studiare la condizione
-di equilibrio e i movimenti del sistema.
+\emph{Sia dato un circuito costituito da una serie di un resistore
+di resistenza $R$ e un condensatore di capacità $C$; è possibile
+forzare una tensione $v\left(t\right)$ ai capi della serie e si vuole
+misurare la tensione $v_{c}\left(t\right)$ ai capi del condensatore.
+$\checkmark$Studiare la condizione di equilibrio e i movimenti del
+sistema.}
 
 In analogia con l'Esempio \ref{exa:maglia-rc}, il modello per questo
 sistema, posto $v_{c}\left(t\right)=x\left(t\right)$, è $\dot{x}\left(t\right)=-\nicefrac{1}{RC}\cdot x\left(t\right)+\nicefrac{1}{RC}\cdot u\left(t\right);\;y\left(t\right)=x\left(t\right)$.
@@ -847,7 +848,7 @@ equazioni nell'altra e integrando entrambi i membri scriviamo
 Il primo membro può essere ricavato direttamente come $\left[e^{A\left(t-\tau\right)}x\left(\tau\right)\right]_{t_{0}}^{t}=x\left(t\right)-e^{A\left(t-t_{0}\right)}x\left(t_{0}\right)$;
 il secondo membro non può essere manipolato nella sua forma generale:
 la scrittura risultante è la formula di Lagrange:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
-\textbf{\footnotesize{}Formula di Lagrange}{\footnotesize{}\index{Lagrange, formula@{\footnotesize{}Lagrange, formula}}}}[0.5cm]
+\textbf{\footnotesize{}Formula di Lagrange}{\footnotesize{}\index{Lagrange, formula@{\footnotesize{}Lagrange, formula}}}}[0.6cm]
 \begin{equation}
 x\left(t\right)=e^{A\left(t-t_{0}\right)}x\left(t_{0}\right)+\somme{t_{0}}t{e^{A\left(t-\tau\right)}Bu\left(\tau\right)}{\tau}\label{eq:Formula-di-Lagrange}
 \end{equation}
@@ -906,7 +907,7 @@ il movimento dello stato $\dot{x}\left(t\right)=ax\left(t\right)+bu\left(t\right
 consideriamo il movimento libero ponendo $u\left(t\right)=0$ e supponiamo
 nota la condizione iniziale $x\left(t_{0}\right)=x_{0}$, applicando
 la (\ref{eq:Formula-di-Lagrange}) scriveremo\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
-\textbf{\footnotesize{}Movimento libero}{\footnotesize{}\index{Movimento libero@{\footnotesize{}Movimento libero}}}}
+\textbf{\footnotesize{}Movimento libero}{\footnotesize{}\index{Movimento libero@{\footnotesize{}Movimento libero}}}}[0.2cm]
 \begin{equation}
 x\left(t\right)=e^{at}x_{0}\label{eq:Movimento-libero}
 \end{equation}
@@ -1105,7 +1106,7 @@ Il sistema che si ottiene è LTI della stessa forma di quello originale
 (\ref{eq:Forma-standard-matrice-LTI}) ma con i coefficienti matriciali
 (la cosiddetta rappresentazione del modello) equivalenti che ridefiniscono
 le equazioni nel modo seguente:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
-\textbf{\footnotesize{}Modello equivalente per sistemi LTI}{\footnotesize{}\index{LTI, modello equivalente@{\footnotesize{}LTI, modello equivalente}}}}[1.25cm]
+\textbf{\footnotesize{}Modello equivalente per sistemi LTI}{\footnotesize{}\index{LTI, modello equivalente@{\footnotesize{}LTI, modello equivalente}}}}[1.3cm]
 \[
 \hat{A}=T\cdot A\cdot T^{-1},\,\hat{B}=T\cdot B,\,\hat{C}=C\cdot T^{-1},\,\hat{D}=D
 \]
@@ -1203,7 +1204,7 @@ la matrice di stato ha coefficienti reali, si ottengono autovalori
 reali oppure complessi coniugati; i casi possibili sono elencati di
 seguito (viene sottinteso che per $\lambda_{i}$ complessi si abbia
 una coppia di autovalori complessi coniugati):\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
-\textbf{\footnotesize{}Andamenti asintotici dei modi di sistemi LTI}{\footnotesize{}\index{LTI, andamenti asintotici dei modi@{\footnotesize{}LTI, andamenti asintotici dei modi}}\label{eq:Andamento-asintotico-modi-LTI}}}[0.5cm]
+\textbf{\footnotesize{}Andamenti asintotici dei modi di sistemi LTI}{\footnotesize{}\index{LTI, andamenti asintotici dei modi@{\footnotesize{}LTI, andamenti asintotici dei modi}}\label{eq:Andamento-asintotico-modi-LTI}}}[1.6cm]
 \begin{itemize}
 \item $\lambda_{i}\in\mathbb{\mathbb{R}}$
 \begin{itemize}
@@ -1251,16 +1252,17 @@ reale in funzione del tempo.\smallskip{}
 \caption{Circuito RLC con generatore controllato in ingresso}
 \end{wrapfigure}%
 \begin{example}
-\label{exa:Circuito-serie_RLC}Sia dato un circuito formato da una
-maglia con la serie di resistore di valore $R$, condensatore di valore
-$C$ e induttore di valore $L$, chiusi su un generatore indipendente
-di tensione $u\left(t\right)$, che è l'ingresso del sistema. Nella
-serie scorre una corrente $i\left(t\right)$ e su condensatore e induttore
-ci sarà rispettivamente una tensione $v_{c}\left(t\right)$ e $v_{{\scriptscriptstyle L}}\left(t\right)$;
-si scriva un modello per questo sistema che abbia come uscita la tensione
-sul condensatore $v_{c}\left(t\right)$ e si analizzi il movimento
-libero del sistema (senza ingresso) al variare dei parametri costruttivi
-($R,\,L,\,C$).
+\label{exa:Circuito-serie_RLC}\emph{Sia dato un circuito formato
+da una maglia con la serie di resistore di valore $R$, condensatore
+di valore $C$ e induttore di valore $L$, chiusi su un generatore
+indipendente di tensione $u\left(t\right)$, che è l'ingresso del
+sistema. Nella serie scorre una corrente $i\left(t\right)$ e su condensatore
+e induttore ci sarà rispettivamente una tensione $v_{c}\left(t\right)$
+e $v_{{\scriptscriptstyle L}}\left(t\right)$; $\checkmark$si scriva
+un modello per questo sistema che abbia come uscita la tensione sul
+condensatore $v_{c}\left(t\right)$ e $\checkmark$si analizzi il
+movimento libero del sistema (senza ingresso) al variare dei parametri
+costruttivi ($R,\,L,\,C$).}
 
 Per i due componenti dinamici (condensatore e induttore) si hanno
 dalla Fisica le seguenti relazioni:
@@ -1497,12 +1499,12 @@ $F\left(t\right)\rightarrow\boxed{1/m}\overset{\ddot{p}\left(t\right)}{\rightarr
 \end{figure}
 \begin{example}
 \marginpar{Il sistema nell'esempio con due autovalori coincidenti nulli appartiene
-alla categoria dei \emph{doppi integratori}}\label{exa:Doppio-integratore-carrello}Consideriamo un carrello di
-massa $m$ che si muova lungo una superficie priva di attrito con
+alla categoria dei \emph{doppi integratori}}\label{exa:Doppio-integratore-carrello}\emph{Consideriamo un carrello
+di massa $m$ che si muova lungo una superficie priva di attrito con
 una traiettoria rettilinea; la sua posizione è data da $p\left(t\right)$
-mentre ad esso è applicata una forza esterna $F\left(t\right)$. Scrivere
-un modello per questo sistema in cui si misuri la posizione e stabilirne
-l'andamento dei modi.
+mentre ad esso è applicata una forza esterna $F\left(t\right)$. $\checkmark$Scrivere
+un modello per questo sistema in cui si misuri la posizione e $\checkmark$stabilirne
+l'andamento dei modi.}
 
 Si ricava facilmente l'equazione della dinamica del sistema:
 \[
@@ -1665,12 +1667,11 @@ calcolare il movimento forzato derivante da qualsiasi altro ingresso
 in condizioni iniziali nulle.
 
 In generale il movimento forzato dello stato sarà ottenuto da (\ref{eq:Formula-di-Lagrange})
-come:
+come:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Risposta all'impulso}{\footnotesize{}\index{impulso, risposta al@{\footnotesize{}impulso, risposta al}}}}[2cm]
 \[
 x_{{\scriptscriptstyle \text{F}}}\left(t\right)=\somme 0t{e^{A\left(t-\tau\right)}B\cdot\text{imp}\left(\tau\right)}{\tau}=e^{A\cdot t}\cdot B\somme 0t{\text{imp}\left(\tau\right)}{\tau}
 \]
-\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
-\textbf{\footnotesize{}Risposta all'impulso}{\footnotesize{}\index{impulso, risposta al@{\footnotesize{}impulso, risposta al}}}}
 \begin{equation}
 =e^{A\cdot t}\cdot B\label{eq:Risposta-all'-impulso}
 \end{equation}
@@ -1707,7 +1708,7 @@ da $\delta x\left(t\right)=\tilde{x}\left(t\right)-x\left(t\right)$,
 dove possiamo raccogliere l'esponenziale di matrice e notando che
 si annulla il termine dovuto all'ingresso (abbiamo ipotizzato una
 condizione di equilibrio) avremo:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
-\textbf{\footnotesize{}Andamento della perturbazione}{\footnotesize{}\index{LTI, andamento della perturbazione@{\footnotesize{}LTI, andamento della perturbazione}}}}
+\textbf{\footnotesize{}Andamento della perturbazione}{\footnotesize{}\index{LTI, andamento della perturbazione@{\footnotesize{}LTI, andamento della perturbazione}}}}[0.2cm]
 \begin{equation}
 e^{A\cdot t}\left(\tilde{x}-x_{0}\right)=e^{A\cdot t}\delta\label{eq:Perturbazione-sistema-LTI}
 \end{equation}
@@ -1720,9 +1721,9 @@ Teorema \ref{thm:Stabilit=0000E0-del-sistema}.
 \end{rem}
 \begin{thm}
 \marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
-\textbf{\footnotesize{}Teorema sulla stabilità del sistema}{\footnotesize{}\index{stabilità del sistema, Teorema@{\footnotesize{}stabilità del sistema, Teorema}}}}\label{thm:Stabilit=0000E0-del-sistema}In un sistema LTI un movimento
-(incluso quello di equilibrio) è stabile, asintoticamente stabile
-o instabile se e solo se sono rispettivamente stabili, asintoticamente
+\textbf{\footnotesize{}Teorema sulla stabilità del sistema}{\footnotesize{}\index{stabilità del sistema, Teorema@{\footnotesize{}stabilità del sistema, Teorema}}}}[-0.2cm]\label{thm:Stabilit=0000E0-del-sistema}In un sistema LTI
+un movimento (incluso quello di equilibrio) è stabile, asintoticamente
+stabile o instabile se e solo se sono rispettivamente stabili, asintoticamente
 stabili o instabili tutti i movimenti del sistema.
 \end{thm}
 \begin{rem}
@@ -1738,7 +1739,7 @@ Possiamo usare le condizioni (\ref{eq:Andamento-asintotico-modi-LTI})
 assieme alla precedente osservazione per ottenere le seguenti considerazioni:
 \begin{thm}
 \marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
-\textbf{\footnotesize{}Teorema dell'asintotica stabilità}{\footnotesize{}\label{thm:Teorema-dell'asintotica-stabilit=0000E0}\index{asintotica stabilità, Teorema@{\footnotesize{}asintotica stabilità, Teorema}}}}[-0.5cm]Un sistema LTI della forma (\ref{eq:Forma-standard-matrice-LTI})
+\textbf{\footnotesize{}Teorema dell'asintotica stabilità}{\footnotesize{}\label{thm:Teorema-dell'asintotica-stabilit=0000E0}\index{asintotica stabilità, Teorema@{\footnotesize{}asintotica stabilità, Teorema}}}}[-0.2cm]Un sistema LTI della forma (\ref{eq:Forma-standard-matrice-LTI})
 si dice asintoticamente stabile se e solo se \uline{tutti} gli
 autovalori della sua matrice di stato ($A$) hanno parte reale negativa
 (ovvero quando (\ref{eq:Perturbazione-sistema-LTI}) converge a zero).
@@ -1746,7 +1747,7 @@ autovalori della sua matrice di stato ($A$) hanno parte reale negativa
 %
 \begin{thm}
 \marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
-\textbf{\footnotesize{}Teorema dell'instabilità}{\footnotesize{}\label{thm:Teorema-dell'instabilit=0000E0}\index{instabilità, Teorema@{\footnotesize{}instabilità, Teorema}}}}[-0.5cm]Un sistema LTI della forma (\ref{eq:Forma-standard-matrice-LTI})
+\textbf{\footnotesize{}Teorema dell'instabilità}{\footnotesize{}\label{thm:Teorema-dell'instabilit=0000E0}\index{instabilità, Teorema@{\footnotesize{}instabilità, Teorema}}}}[-0.2cm]Un sistema LTI della forma (\ref{eq:Forma-standard-matrice-LTI})
 si dice instabile se e solo se \uline{almeno uno} degli autovalori
 della sua matrice di stato ($A$) ha parte reale positiva.
 \end{thm}
@@ -1863,12 +1864,12 @@ della tabella (\ref{eq:Tabella-di-Routh}) è pari al numero di autovalori
 con parte reale positiva (i quali generano modi instabili).\bigskip{}
 \end{cor}
 \begin{example}
-Sia dato il seguente polinomio caratteristico della matrice di stato
-di un sistema LTI di ordine 5
+\emph{Sia dato il seguente polinomio caratteristico della matrice
+di stato di un sistema LTI di ordine 5
 \[
 \phi\left(\lambda\right)=\lambda^{5}+15\lambda^{4}+85\lambda^{3}+225\lambda^{2}+274\lambda+120
 \]
-Verificare la stabilità dei movimenti del sistema.
+$\checkmark$Verificare la stabilità dei movimenti del sistema.}
 
 Il Teorema \ref{thm:Criterio-segni-concordi-autovalori} fornisce
 un indizio sulla possibile stabilità del sistema: usiamo il Teorema
@@ -1902,10 +1903,10 @@ poiché tutti gli elementi della prima colonna hanno segno concorde.\demo
 \end{example}
 %
 \begin{example}
-Sia dato un sistema LTI con parametri incerti, ovvero gli autovalori
+\emph{Sia dato un sistema LTI con parametri incerti, ovvero gli autovalori
 sono variabili; è possibile calcolare il polinomio caratteristico
-rispetto a tali parametri: si valuti dunque la stabilità del sistema
-col seguente polinomio caratteristico di stato
+rispetto a tali parametri: $\checkmark$si valuti dunque la stabilità
+del sistema col seguente polinomio caratteristico di stato}
 \[
 \phi\left(\lambda\right)=\lambda^{3}+\left(2+\beta\right)\lambda^{2}+\left(1+2\beta\right)\lambda+\alpha+\beta
 \]
@@ -2014,7 +2015,7 @@ Si nota che entrambi i teoremi sono i corrispettivi dei \ref{thm:Teorema-dell'as
 e \ref{thm:Teorema-dell'instabilit=0000E0}, ma per i sistemi non
 lineari le condizioni poste sono solo sufficienti; nel caso di autovalori
 nulli non è possibile, a partire da un equilibrio di un sistema linearizzato,
-stabilire la sua stabilità.
+determinare la sua stabilità.
 
 \subsection{Metodo grafico per sistemi non lineari}
 
@@ -2048,9 +2049,9 @@ stato dal valore di equilibrio) l'equilibrio è instabile.
 col metodo grafico}
 \end{figure}
 \begin{example}
-Sia dato il grafico in figura che indica l'andamento dell'equazione
-di stato in funzione dello stato, in un sistema di ordine 1: determinare
-la stabilità degli eventuali equilibri.
+\emph{Sia dato il grafico in figura che indica l'andamento dell'equazione
+di stato in funzione dello stato, in un sistema di ordine 1: $\checkmark$determinare
+la stabilità degli eventuali equilibri.}
 
 Notiamo che la funzione di stato (una cosinusoide) si annulla in tre
 punti, che chiameremo in ordine 1, 2 e 3; osservando il segno della
@@ -2077,7 +2078,7 @@ successione di istanti.
 
 La riscrittura del modello matriciale standard per i sistemi a tempo
 discreto è la seguente:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
-\textbf{\footnotesize{}Equazioni di un processo a tempo discreto}{\footnotesize{}\index{tempo discreto, equazioni di processo@{\footnotesize{}tempo discreto, equazioni di processo}}}}
+\textbf{\footnotesize{}Equazioni di un processo a tempo discreto}{\footnotesize{}\index{tempo discreto, equazioni di processo@{\footnotesize{}tempo discreto, equazioni di processo}}}}[0.2cm]
 \begin{equation}
 \begin{cases}
 x\left(k+1\right)=f\left(x\left(k\right),\,u\left(k\right),\,k\right) & \text{Equazione di stato}\\
@@ -2191,10 +2192,10 @@ di mantenimento}.
 \label{fig:Modello-elettrovalvola}
 \end{figure}
 \begin{example}
-\label{exa:Circuito-RL-elettrovalvola}Sia dato un circuito formato
-da una maglia con induttore e resistore in serie, e sia controllabile
-il generatore di tensione in ingresso; scrivere un modello che abbia
-la corrente nella maglia come uscita.
+\label{exa:Circuito-RL-elettrovalvola}\emph{Sia dato un circuito
+formato da una maglia con induttore e resistore in serie, e sia controllabile
+il generatore di tensione in ingresso; $\checkmark$scrivere un modello
+che abbia la corrente nella maglia come uscita.}
 
 Chiamiamo la corrente che scorre nella maglia $i\left(t\right)$:
 la tensione sul resistore vale $Ri\left(t\right)$ e quella sull'induttore
@@ -2276,7 +2277,7 @@ diverso da quello reale.
 Per sistemi lineari a tempo discreto la forma standard è analoga a
 (\ref{eq:Forma-standard-matrice-LTI}):\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
 \textbf{\footnotesize{}Modello matriciale per sistemi LTI a tempo
-discreto}{\footnotesize{}\index{LTI, modello matriciale discreto@{\footnotesize{}LTI, modello matriciale discreto}}}}[-0.25cm]
+discreto}{\footnotesize{}\index{LTI, modello matriciale discreto@{\footnotesize{}LTI, modello matriciale discreto}}}}
 \begin{equation}
 \begin{bmatrix}x\left(k+1\right)=A\cdot x\left(k\right)+B\cdot u\left(k\right)\\
 y\left(k\right)=C\cdot x\left(k\right)+D\cdot u\left(k\right)
@@ -2290,7 +2291,7 @@ un certo ingresso. Una forma chiusa per il calcolo del movimento di
 stato e uscita è offerta dalla riscrittura della (\ref{eq:Formula-di-Lagrange});
 essa si ricava applicando ricorsivamente l'equazione di stato, dalla
 quale si ottiene poi l'equazione di uscita:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
-\textbf{\footnotesize{}Formula di Lagrange a tempo discreto}{\footnotesize{}\index{Lagrange, formula discretizzata@{\footnotesize{}Lagrange, formula discretizzata}}}}[0.25cm]
+\textbf{\footnotesize{}Formula di Lagrange a tempo discreto}{\footnotesize{}\index{Lagrange, formula discretizzata@{\footnotesize{}Lagrange, formula discretizzata}}}}[0.5cm]
 \begin{equation}
 x\left(k\right)=A^{k}\cdot x_{0}+\serie{i=0}{k-1}{A^{k-i-1}\cdot B\cdot u\left(i\right)}\label{eq:Formula-di-Lagrange-discreta}
 \end{equation}
@@ -2354,7 +2355,7 @@ l'equazione di stato infatti restituisce lo stato all'istante successivo
 e se questo è uguale allo stato attuale, si ha un andamento costante
 dello stato nel tempo. L'uscita di equilibrio è funzione della coppia
 $\overline{x},\,\overline{u}$; in breve:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
-\textbf{\footnotesize{}Condizione di equilibrio nel tempo discreto}{\footnotesize{}\index{tempo discreto, equilibrio@{\footnotesize{}tempo discreto, equilibrio}}}}
+\textbf{\footnotesize{}Condizione di equilibrio nel tempo discreto}{\footnotesize{}\index{tempo discreto, equilibrio@{\footnotesize{}tempo discreto, equilibrio}}}}[0.2cm]
 \begin{equation}
 \begin{array}{c}
 \overline{x}=f\left(\overline{x},\,\overline{u}\right)\\
@@ -2529,14 +2530,14 @@ infatti la funzione coseno è limitata e $\rho_{\alpha}$ è costante.
 Come per il caso dell'autovalore reale, si osserva il modulo degli
 autovalori per determinarne l'andamento generato.
 \begin{example}
-Sia dato un sistema LTI a tempo discreto con la seguente matrice di
-stato:
+\emph{Sia dato un sistema LTI a tempo discreto con la seguente matrice
+di stato:
 \[
 A=\begin{bmatrix}1 & 1\\
 -1 & 1
 \end{bmatrix}
 \]
-Si calcoli il movimento libero del sistema in generale.
+$\checkmark$Si calcoli il movimento libero del sistema in generale.}
 
 Cominciamo calcolando gli autovalori di $A$:
 \[
@@ -2629,7 +2630,8 @@ $z_{i}\in\mathbb{C}$ & $\Re\left(z_{i}\right)=0,\,\Im\left(z_{i}\right)=\pm1\rig
 \caption{Classificazione dei movimenti nel tempo discreto\label{tab:Classificazione-movimenti-discreti}}
 \end{table}
 
-Per concludere il discorso sui modi nel tempo discreto, esaminiamo
+\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Movimenti nel tempo discreto}{\footnotesize{}\index{tempo discreto, movimenti@{\footnotesize{}tempo discreto, movimenti}}}}[-5.5cm]Per concludere il discorso sui modi nel tempo discreto, esaminiamo
 il caso di una matrice di stato non diagonalizzabile: cercheremo di
 scriverla nella forma di Jordan (\ref{eq:Forma-di-Jordan}), trovando
 una matrice di trasformazione $T_{{\scriptscriptstyle \text{J}}}$
@@ -2762,12 +2764,13 @@ ben definita, e tutti gli elementi sulla prima colonna della tabella
 hanno segno concorde.
 \end{thm}
 \begin{example}
-Consideriamo un sistema dinamico a tempo discreto, col seguente polinomio
-caratteristico:
+\emph{Consideriamo un sistema dinamico a tempo discreto, col seguente
+polinomio caratteristico:
 \[
 \phi\left(z\right)=z^{2}+\alpha z+\beta
 \]
-Studiare per quali valori di $\alpha$ e $\beta$ il sistema è stabile.
+$\checkmark$Studiare per quali valori di $\alpha$ e $\beta$ il
+sistema è stabile.}
 
 Scegliendo di applicare il criterio di Jury, costruiamo la tabella
 (\ref{eq:Tabella-di-Jury}) nel modo seguente:
@@ -2797,7 +2800,126 @@ termine 1 è positivo:
 \end{cases}
 \]
 Per giungere a questa conclusione si è usata la condizione $\left(1\right)$
-nella $\left(2\right)$, studiando il segno del numeratore $-\alpha^{2}\left(1-\beta\right)^{2}$.
+nella $\left(2\right)$, studiando il segno del numeratore $-\alpha^{2}\left(1-\beta\right)^{2}$.\demo
+\end{example}
+
+\section{Sistemi non lineari a tempo discreto}
+
+Prendiamo un sistema a tempo discreto stazionario e non lineare, nella
+forma (\ref{eq:Forma-standard-matrice-LTI-discreto}); per risolvere
+in forma chiusa il calcolo di un movimento, ci concentriamo sugli
+equilibri di questi sistemi: cerchiamo una coppia stato-ingresso $\overline{x},\,\overline{u}$
+tale che valga (\ref{eq:Condizioni-equilibrio-tempo-discreto}).
+
+Per studiare la stabilità di questi equilibri, possiamo approssimare
+il modello del sistema, localmente alla condizione di equilibrio,
+con lo sviluppo di Taylor al primo ordine delle equazioni del sistema;
+questa approssimazione lineare si ottiene nel modo seguente:
+\[
+\begin{array}{c}
+f\left(x\left(k\right),\,u\left(k\right)\right)\simeq f\left(\overline{x},\,\overline{u}\right)+\left.\dfrac{\partial f}{\partial x}\right|_{\overline{x},\overline{u}}\left(x\left(k\right)-\overline{x}\right)+\left.\dfrac{\partial f}{\partial u}\right|_{\overline{x},\overline{u}}\left(u\left(k\right)-\overline{u}\right)\\
+g\left(x\left(k\right),\,u\left(k\right)\right)\simeq g\left(\overline{x},\,\overline{u}\right)+\left.\dfrac{\partial g}{\partial x}\right|_{\overline{x},\overline{u}}\left(x\left(k\right)-\overline{x}\right)+\left.\dfrac{\partial g}{\partial u}\right|_{\overline{x},\overline{u}}\left(u\left(k\right)-\overline{u}\right)
+\end{array}
+\]
+Se definiamo le quantità $\delta x\left(k\right)=x\left(k\right)-\overline{x}$
+per l'equazione di stato e $\delta u\left(k\right)=u\left(k\right)-\overline{u}$
+per l'equazione di uscita, le precedenti diventano\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Forma linearizzata nel tempo discreto}{\footnotesize{}\index{Linearizzazione nel tempo discreto@{\footnotesize{}Linearizzazione nel tempo discreto}}}}[1.8cm]
+\begin{equation}
+\begin{array}{c}
+\delta x\left(k+1\right)=f\left(x\left(k\right),\,u\left(k\right)\right)-f\left(\overline{x},\,\overline{u}\right)=\overset{A}{\overbrace{\left.\dfrac{\partial f}{\partial x}\right|_{\overline{x},\overline{u}}}}\delta x\left(k\right)+\overset{B}{\overbrace{\left.\dfrac{\partial f}{\partial u}\right|_{\overline{x},\overline{u}}}}\delta u\left(k\right)\\
+\delta y\left(k\right)=g\left(x\left(k\right),\,u\left(k\right)\right)-g\left(\overline{x},\,\overline{u}\right)=\overset{C}{\overbrace{\left.\dfrac{\partial g}{\partial x}\right|_{\overline{x},\overline{u}}}}\delta x\left(k\right)+\overset{D}{\overbrace{\left.\dfrac{\partial g}{\partial u}\right|_{\overline{x},\overline{u}}}}\delta u\left(k\right)
+\end{array}\label{eq:Forma-linearizzata-tempo-discreto}
+\end{equation}
+Ritroviamo le equazioni della forma standard nel tempo discreto (\ref{eq:Forma-standard-matrice-LTI-discreto});
+l\textquoteright approssimazione fatta vale in un intorno appropriato
+dell'equilibrio. Come per i sistemi lineari, valgono i risultati sulla
+stabilità asintotica e sul modulo degli autovalori della matrice di
+stato $A$. In particolare enunciamo i seguenti teoremi:
+\begin{thm}
+Lo stato di equilibrio $\overline{x}$ elativo all'ingresso $\overline{u}$
+per un sistema non lineare della forma (\ref{eq:Forma-standard-matrice-LTI-discreto}),
+si dice asintoticamente stabile se tutti gli autovalori della matrice
+di stato A del sistema (\ref{eq:Forma-linearizzata-tempo-discreto})
+hanno modulo strettamente minore di 1.
+\end{thm}
+%
+\begin{thm}
+Lo stato di equilibrio $\overline{x}$ relativo all'ingresso $\overline{u}$
+per un sistema non lineare della forma (\ref{eq:Forma-standard-matrice-LTI-discreto}),
+si dice instabile se almeno uno degli autovalori della matrice di
+stato A del sistema (\ref{eq:Forma-linearizzata-tempo-discreto})
+ha modulo maggiore di uno.
+\end{thm}
+Se uno degli autovalori avesse modulo pari a 1, non si potrebbe concludere
+nulla sulla sua stabilità, con gli strumenti della linearizzazione;
+si noti che i due teoremi appena enunciati forniscono condizioni solo
+sufficienti.
+\begin{example}
+\emph{Sia dato un sistema non lineare a tempo discreto con la seguente
+equazione di stato:
+\[
+\begin{array}{l}
+x_{1}\left(k+1\right)=x_{1}^{3}\left(k\right)+x_{2}\left(k\right)x_{3}\left(k\right)\\
+x_{2}\left(k+1\right)=\sin\left(\dfrac{4}{9}\pi\cdot x_{2}\left(k\right)\right)-\dfrac{1}{8}x_{3}\left(k\right)\\
+x_{3}\left(k+1\right)=\alpha x_{3}\left(k\right)+u\left(k\right)
+\end{array}
+\]
+con $\alpha\in\mathbb{R}$; $\checkmark$calcolare l'ingresso di equilibrio
+e la terza variabile di stato, in funzione del parametro reale ($\overline{u}\left(\alpha\right)$
+e $\overline{x}_{3}\left(\alpha\right)$), tali che $\overline{x}=\begin{bmatrix}1/2\\
+3/8\\
+\overline{x}_{3}
+\end{bmatrix}$ sia uno stato di equilibrio.}
+
+Facendo un passo indietro, classifichiamo il sistema: esso è un sistema
+a tempo discreto, non lineare, del 3\textdegree{} ordine, ha un ingresso,
+stazionario (non abbiamo informazioni sull'uscita nell'ambito dell'esercizio).
+
+Per ottenere le condizioni che determinano l'equilibrio, poniamo ciascuna
+equazione di stato pari allo stato corrispondente, sfruttando la (\ref{eq:Condizioni-equilibrio-tempo-discreto}):
+\[
+\begin{cases}
+\dfrac{1}{2}=\left(\dfrac{1}{2}\right)^{3}+\dfrac{1}{8}\cdot\overline{x}_{3} & \mathrm{\left(I\right)}\\
+\dfrac{1}{8}=\sin\left(\dfrac{4}{9}\pi\cdot\dfrac{3}{8}\right)-\dfrac{1}{8}\cdot\overline{x}_{3} & \left(\mathrm{II}\right)\\
+\overline{x}_{3}=\alpha\overline{x}_{3}+\overline{u}\left(\alpha\right) & \left(\mathrm{III}\right)
+\end{cases}\rightarrow\,\begin{cases}
+\overline{x}_{3}=1 & \mathrm{\left(I\right)}\\
+\dfrac{1}{2}=\dfrac{1}{2} & \mathrm{\left(II\right)}\\
+1-\alpha=\overline{u}\left(\alpha\right) & \mathrm{\left(III\right)}
+\end{cases}
+\]
+dove abbiamo ricavato dalla $\mathrm{\left(I\right)}$ il valore numerico
+di $\overline{x}_{3}$, che abbiamo poi usato nella $\mathrm{\left(II\right)}$
+e nella $\mathrm{\left(III\right)}$; il fatto che dalla $\mathrm{\left(II\right)}$
+si ricavi una identità ci conferma che stiamo usando una condizione
+di equilibrio dello stato ammissibile; dalla $\mathrm{\left(III\right)}$
+si ricava infine il valore dell'uscita di equilibrio.
+
+\emph{$\checkmark$Studiare ora le proprietà di stabilità dell'equilibrio
+al variare del parametro $\alpha\in\mathbb{R}$.}
+
+Per approcciare il problema, linearizziamo la matrice di stato intorno
+all'equilibrio appena ottenuto, e studiamo il modulo degli autovalori
+corrispondenti:
+\[
+A_{{\scriptscriptstyle \text{L}}}=\begin{bmatrix}3\overline{x}_{1}^{2} & \overline{x}_{3} & \overline{x}_{2}\\
+0 & \nicefrac{4}{9}\pi\cos\left(\nicefrac{4}{9}\pi\overline{x}_{2}\right) & -\nicefrac{1}{8}\\
+0 & 0 & \alpha
+\end{bmatrix}=\begin{bmatrix}\nicefrac{3}{4} & 1 & \nicefrac{3}{8}\\
+0 & \nicefrac{2\sqrt{3}}{9} & -\nicefrac{1}{8}\\
+0 & 0 & \alpha
+\end{bmatrix}
+\]
+La matrice di stato linearizzata è costituita dalle derivate parziali:
+l'indice di riga rappresenta le funzioni di stato non lineari, l'indice
+di colonna lo stato rispetto al quale si deriva parzialmente; tutte
+le derivate parziali sono valutate in $\overline{x},\,\overline{u}$.
+
+La matrice trovata è diagonale, dunque i suoi autovalori sono i termini
+sulla diagonale principale; scrivendo in modo numerico abbiamo $z_{1}=0.75,\,z_{2}\simeq1.2,\,z_{3}=\alpha$:
+dato che $\left|z_{2}\right|>1$, l'equilibrio è instabile (vedi \tabref{Classificazione-movimenti-discreti})
+comunque scelto $\alpha$.\demo
 \end{example}
 \printindex{}
 
@@ -3101,7 +3223,7 @@ per una matrice $A\in\mathbb{C}^{n\times n}$ se vale la seguente:
 \]
 che può essere riscritta come $\left(\lambda I-A\right)\cdot v=0$
 per $v\neq0$; questo si verifica se e solo se \marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
-\textbf{\footnotesize{}Polinomio caratteristico}{\footnotesize{}\index{Matrice, polinomio caratteristico@{\footnotesize{}Matrice, polinomio caratteristico}}}}
+\textbf{\footnotesize{}Polinomio caratteristico}{\footnotesize{}\index{Matrice, polinomio caratteristico@{\footnotesize{}Matrice, polinomio caratteristico}}}}[0.2cm]
 \begin{equation}
 \det\left(\lambda I-A\right)=0\label{eq:Polinomio-caratteristico}
 \end{equation}
@@ -3623,7 +3745,7 @@ si usano le seguenti considerazioni:
 \end{cases}
 \]
 \marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
-\textbf{\footnotesize{}Formula di Eulero}{\footnotesize{}\index{Eulero, formula di@{\footnotesize{}Eulero, formula di}}}}[1.2cm]
+\textbf{\footnotesize{}Formula di Eulero}{\footnotesize{}\index{Eulero, formula di@{\footnotesize{}Eulero, formula di}}}}[1.4cm]
 \end{rem}
 \begin{thm}
 Consideriamo l'esponenziale di un numero complesso; scriveremo: $e^{a+jb}=e^{a}\cdot e^{jb}$.
