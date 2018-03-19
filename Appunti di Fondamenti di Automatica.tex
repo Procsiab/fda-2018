@@ -16,6 +16,7 @@
 \usepackage{wrapfig}
 \usepackage{units}
 \usepackage{textcomp}
+\usepackage{mathrsfs}
 \usepackage{mathtools}
 \usepackage{amstext}
 \usepackage{amsthm}
@@ -2921,7 +2922,8 @@ sulla diagonale principale; scrivendo in modo numerico abbiamo $z_{1}=0.75,\,z_{
 dato che $\left|z_{2}\right|>1$, l'equilibrio è instabile (vedi \tabref{Classificazione-movimenti-discreti})
 comunque scelto $\alpha$.\demo
 \end{example}
-\printindex{}
+
+\chapter{Risposta in frequanza}
 
 \appendix
 
@@ -3756,4 +3758,307 @@ e^{jb}=\cos\left(b\right)+j\sin\left(b\right)\label{eq:Formula-di-Eulero}
 \end{thm}
 La (\ref{eq:Formula-di-Eulero}) è molto utile per eseguire il prodotto
 di numeri complessi, riconducendolo alle proprietà delle potenze.
+
+\chapter{Strumenti per analisi nel tempo continuo}
+
+\section{Trasformata di Laplace}
+
+\subsection{Definizione}
+\begin{defn}
+Sia data una funzione $f\,:\,\mathbb{R}\rightarrow\mathbb{C}$ e definiamo
+una variabile complessa $s=\sigma+j\omega\in\mathbb{C}$; se la funzione\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Trasformata di Laplace}{\footnotesize{}\index{Laplace, trasformata continua@{\footnotesize{}Laplace, trasformata continua}}}}[0.7cm]
+\begin{equation}
+F\left(s\right)=\somme 0{+\infty}{f\left(t\right)e^{-st}}t\label{eq:Trasformata-Laplace}
+\end{equation}
+esiste per qualche valore di $s$, essa si dice \emph{trasformata
+di Laplace} di $f\left(t\right)$ e si indice come $\mathscr{L}\left[f\left(t\right)\right]=F\left(s\right)$.
+\end{defn}
+La definizione appena enunciata implica che $f\left(t\right)$ sia
+almeno definita per $t\geq0$; i contributi della funzione per $t<0$
+saranno nulli. Per questo motivo useremo moltiplicare i segnali di
+cui calcoleremo (\ref{eq:Trasformata-Laplace}) per l'ingresso canonico
+$\text{sca}\left(t\right)$, che si annulla proprio per $t<0$ mentre
+è costante e unitario per gli altri valori di $t$.
+
+Inoltre il primo estremo di integrazione di (\ref{eq:Trasformata-Laplace})
+va inteso come $0^{-}$ (avvicinamento da sinistra), ovvero esso comprende
+i contributi impulsivi della funzione applicati nell'istante $t=0$.
+\begin{defn}
+Sia $\overline{\sigma}>-\infty$ l'estremo inferiore delle parti reali
+$\Re\left(s\right)$ dei valori $s$ per cui l'integrale (\ref{eq:Trasformata-Laplace})
+converge; allora la trasformata di Laplace esiste in un semipiano
+delimitato dalla condizione $\Re\left(s\right)>\overline{\sigma}$,
+per questo motivo $\overline{\sigma}$ si chiama ascissa di convergenza.
+\end{defn}
+%
+\begin{defn}
+Sia $F\left(s\right)$ la trasformata di Laplace di una funzione $f\left(t\right)$;
+se è possibile scrivere
+\begin{equation}
+F\left(s\right)=\dfrac{N\left(s\right)}{D\left(s\right)}\label{eq:Trasformata-razionale}
+\end{equation}
+con $N\left(s\right)$ e $D\left(s\right)$ polinomi primi tra loro,
+si ha una trasformata razionale.
+
+Per questa categoria di trasformate, le radici dei polinomi al numeratore
+e denominatore si chiamano \emph{singolarità} e si classificano in
+\begin{equation}
+\begin{cases}
+N\left(s\right)=0 & \text{zeri}\\
+D\left(s\right)=0 & \text{poli}
+\end{cases}\label{eq:Singolarit=0000E0}
+\end{equation}
+Quando $f\left(t\right)\in\mathbb{R}$ i coefficienti di $N\left(s\right)$
+e $D\left(s\right)$ sono reali e l'ascissa di convergenza è pari
+alla massima tra le parti reali dei coefficienti dei poli.
+\end{defn}
+%
+\begin{defn}
+Chiamiamo \emph{formula di antitrasformazione} la funzione inversa
+della trasformata di Laplace, definita come\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Antitrasformata di Laplace}{\footnotesize{}\index{Laplace, antitrasformata continua@{\footnotesize{}Laplace, antitrasformata continua}}}}[0.7cm]
+\begin{equation}
+\mathscr{L}^{-1}\left[F\left(s\right)\right]=f\left(t\right)=\dfrac{1}{2\pi j}\somme{\sigma-j\infty}{\sigma+j\infty}{F\left(s\right)e^{st}}s\label{eq:Antitrasformata-Laplace}
+\end{equation}
+dove agli estremi di integrazione si ha $\sigma>\overline{\sigma},\,\sigma\in\mathbb{R}$
+qualsiasi. La corrispondenza tra trasformata e antitrasformata di
+Laplace è biunivoca nel caso di funzioni nulle per $t<0$.
+\end{defn}
+
+\subsection{Proprietà\label{subsec:Propriet=0000E0-della-trasformata}}
+\begin{lyxlist}{00.00.0000}
+\item [{$\mathrm{\left(I\right)}\,\text{\textsc{Linearità}}$\noun{:}}] Prendiamo
+due funzioni $f\left(t\right)$ e $g\left(t\right)$, allora $\forall\alpha\in\mathbb{C},\,\forall\beta\in\mathbb{C}$
+vale
+\[
+\mathscr{L}\left[\alpha f\left(t\right)+\beta g\left(t\right)\right]=\alpha F\left(s\right)+\beta G\left(s\right)
+\]
+ovvero la (\ref{eq:Trasformata-razionale}) è una operazione lineare.\bigskip{}
+\item [{$\mathrm{\left(II\right)}\,\text{\textsc{Traslazione nel dominio del Tempo}}$\noun{:}}] Comunque
+preso un ritardo $\tau>0$, si consideri la funzione traslata $f\left(t-\tau\right)$;
+la sua trasformata di Laplace vale
+\[
+\mathscr{L}\left[f\left(t-\tau\right)\right]=\somme 0{+\infty}{f\left(t-\tau\right)e^{-st}}t=e^{-s\tau}\somme 0{+\infty}{f\left(t-\tau\right)e^{-st}\cdot e^{s\tau}}t
+\]
+\[
+=e^{-s\tau}\somme 0{+\infty}{f\left(t-\tau\right)e^{-s\left(t-\tau\right)}}{\left(t-\tau\right)}=\boxed{e^{-s\tau}F\left(s\right)}
+\]
+dove abbiamo moltiplicato e diviso per $e^{-s\tau}$ e infine abbiamo
+aggiustato il differenziale $dt$ considerando anche il ritardo (costante).\bigskip{}
+\item [{$\mathrm{\left(III\right)}\,\text{\textsc{Traslazione nel dominio di Laplace}}$\noun{:}}] Comunque
+preso un valore $\alpha\in\mathbb{C}$, la trasformata della funzione
+$e^{\alpha t}f\left(t\right)$ vale:
+\[
+\mathscr{L}\left[e^{\alpha t}f\left(t\right)\right]=\somme 0{+\infty}{e^{\alpha t}f\left(t\right)e^{-st}}t=\somme 0{+\infty}{f\left(t\right)e^{-t\left(s-\alpha\right)}}t=\boxed{F\left(s-\alpha\right)}.
+\]
+\item [{$\mathrm{\left(IV\right)}\,\text{\textsc{Derivazione nel dominio del Tempo}}$\noun{:}}] La
+trasformata di Laplace della derivata prima di una funzione $f\left(t\right)$
+rispetto a $t$, vale:
+\[
+\mathscr{L}\left[\dot{f}\left(t\right)\right]=\somme 0{+\infty}{\dot{f}\left(t\right)e^{-st}}t=sF\left(s\right)-f\left(0\right)
+\]
+Questo risultato si ottiene a partire dalla seguente uguaglianza sull'integranda:
+\[
+\dfrac{\partial}{\partial t}\left(f\left(t\right)e^{-st}\right)=\dot{f}\left(t\right)e^{-st}-sf\left(t\right)e^{-st}\implies
+\]
+\[
+\dot{f}\left(t\right)e^{-st}=\dfrac{\partial}{\partial t}\left(f\left(t\right)e^{-st}\right)+sf\left(t\right)e^{-st}
+\]
+da cui otteniamo
+\[
+\somme 0{+\infty}{\left(\dfrac{\partial}{\partial t}\left(f\left(t\right)e^{-st}\right)+sf\left(t\right)e^{-st}\right)}t=\somme 0{+\infty}{\dfrac{\partial}{\partial t}\left(f\left(t\right)e^{-st}\right)}t+s\somme 0{+\infty}{f\left(t\right)e^{-st}}t
+\]
+\[
+=\left[f\left(0\right)e^{-st}\right]_{0}^{+\infty}+sF\left(s\right)=\boxed{sF\left(s\right)-f\left(0\right)}
+\]
+Questa proprietà può essere usata in catena per ottenere la seguente
+formula, valida per qualsiasi derivata multipla:
+\begin{equation}
+\mathscr{L}\left[\dfrac{\partial^{n}}{\partial t}f\left(t\right)\right]=s^{n}F\left(s\right)-\serie{i=1}n{s^{n-i}\left.\dfrac{\partial^{i-1}}{\partial t}f\left(t\right)\right|_{t=0}}\label{eq:Derivazione-multipla-tempo-Laplace}
+\end{equation}
+\bigskip{}
+\item [{$\mathrm{\left(V\right)}\,\text{\textsc{Derivazione nel dominio di Laplace}}$\noun{:}}] Supponendo
+che la trasformata $F\left(s\right)$ sia derivabile per ogni $s$
+eccetto un numero finito di valori, vale:
+\[
+\mathscr{L}\left[t\cdot f\left(t\right)\right]=\boxed{-\dfrac{\partial}{\partial s}F\left(s\right)}
+\]
+Questo risultato si ottiene dalla seguente considerazione:
+\[
+\dfrac{\partial}{\partial s}F\left(s\right)=\dfrac{\partial}{\partial s}\left(\somme 0{+\infty}{f\left(t\right)e^{-st}}t\right)=\somme 0{+\infty}{\dfrac{\partial}{\partial s}\left(f\left(t\right)e^{-st}\right)}t
+\]
+\[
+=-t\somme 0{+\infty}{f\left(t\right)e^{-st}}t=-\mathscr{L}\left[t\cdot f\left(t\right)\right]
+\]
+\bigskip{}
+\item [{$\mathrm{\left(VI\right)}\,\text{\textsc{Integrazione nel dominio del Tempo}}$\noun{:}}] Con
+l'intuizione che l'integrazione è l'operazione inversa della derivazione,
+si dimostra che ciò vale anche per le trasformate; presa $f\left(t\right)$
+integrabile tra 0 e $+\infty$, vale:
+\[
+\mathscr{L}\left[\somme 0{+\infty}{f\left(t\right)}t\right]=\boxed{\dfrac{1}{s}\cdot F\left(s\right)}
+\]
+dal fatto che l'operazione di derivazione nel dominio del tempo $\left(\mathrm{IV}\right)$
+si effettua moltiplicando per $s$ (a meno della condizione iniziale).\bigskip{}
+\item [{$\mathrm{\left(VII\right)}\,\text{\textsc{Convoluzione nel dominio del Tempo}}$\noun{:}}] \marginpar{Questa proprietà è fondamentale nell'analisi in frequenza dei movimenti
+dei sistemi LTI}Prendiamo due segnali $f_{1}\left(t\right)$ e $f_{2}\left(t\right)$
+e facciamone il \emph{prodotto di convoluzione} come
+\begin{equation}
+f_{1}\left(t\right)\varhexstar f_{2}\left(t\right)=\somme{-\infty}{+\infty}{f_{1}\left(\tau\right)f_{2}\left(t-\tau\right)}{\tau}=\somme{-\infty}{+\infty}{f_{1}\left(t-\eta\right)f_{2}\left(\eta\right)}{\eta}=f_{2}\left(t\right)\varhexstar f_{1}\left(t\right)\label{eq:Prodotto-di-convoluzione}
+\end{equation}
+Si dimostra che la trasformata di (\ref{eq:Prodotto-di-convoluzione})
+vale:
+\[
+\mathscr{L}\left[f_{1}\left(t\right)\varhexstar f_{2}\left(t\right)\right]=\boxed{F_{1}\left(s\right)\cdot F_{2}\left(s\right)}
+\]
+\bigskip{}
+\item [{$\mathrm{\left(VIII\right)}\,\text{\textsc{Teorema del valore iniziale}}$\noun{:}}] Se
+la trasformata è razionale nella forma (\ref{eq:Trasformata-razionale})
+e vale $n\left(N\left(s\right)\right)<n\left(D\left(s\right)\right)$
+(con $n\left(P\left(x\right)\right)$ il grado del polinomio $P$
+nella variabile $x$), allora vale:
+\begin{equation}
+f\left(0\right)=\lm s{+\infty}{s\cdot F\left(s\right)}.\label{eq:Teorema-valore-iniziale}
+\end{equation}
+\bigskip{}
+\item [{$\mathrm{\left(IX\right)}\,\text{\textsc{Teorema del valore finale}}$\noun{:}}] Se
+la trasformata è razionale nella forma (\ref{eq:Trasformata-razionale})
+e vale $n\left(N\left(s\right)\right)<n\left(D\left(s\right)\right)$,
+e inoltre per ogni suo polo $p_{i}$ vale $\Re\left(p_{1}\right)<0$,
+allora vale:
+\begin{equation}
+\lm t{+\infty}{f\left(t\right)}=\lm s0{s\cdot F\left(s\right)}.\label{eq:Teorema-valore-finale}
+\end{equation}
+\bigskip{}
+\end{lyxlist}
+
+\subsection{Trasformate notevoli}
+
+L'\textbf{impulso} è un ingresso canonico il cui integrale è non nullo
+solo nell'istante $t=0$; la sua trasformata di Laplace vale
+\[
+\mathscr{L}\left[\text{imp}\left(t\right)\right]=\somme 0{+\infty}{e^{-st}\text{imp}\left(t\right)}t=e^{-s\cdot0}\somme 0{+\infty}{\text{imp}\left(0\right)}t=1
+\]
+
+Lo \textbf{scalino} è un ingresso canonico il cui integrale è nullo
+per istanti di tempo negativi e costante unitario altrimenti; la sua
+trasformata di Laplace vale:
+\[
+\mathscr{L}\left[\text{sca}\left(t\right)\right]=\somme 0{+\infty}{e^{-st}\text{sca}\left(t\right)}t=\somme 0{+\infty}{e^{-st}\cdot1}t=\left[-\dfrac{1}{s}e^{-st}\right]_{0}^{\infty}=\dfrac{1}{s}
+\]
+
+L'\textbf{esponenziale} è una funzione ricorrente nei modi dei sistemi
+LTI, definita strettamente monotona; la sua trasformata di Laplace
+vale:
+\[
+\mathscr{L}\left[e^{\alpha t}\cdot\text{sca}\left(t\right)\right]=\dfrac{1}{s-\alpha}
+\]
+per la proprietà $\left(\mathrm{III}\right)$ e per il risultato ottenuto
+sulla trasformata dello scalino.
+
+La \textbf{cosinusoide} è una funzione limitata, tipica dei movimenti
+associati a modi complessi coniugati; la sua trasformata di Laplace
+vale:
+\[
+\mathscr{L}\left[\cos\left(\omega t\right)\cdot\text{sca}\left(t\right)\right]\overset{{\scriptscriptstyle \text{Eulero}}}{=}\mathscr{L}\biggl[\overset{{\scriptstyle 2\cos\left(\omega t\right)}}{\overbrace{\dfrac{e^{j\omega t}+e^{-j\omega t}}{2}}}\text{sca}\left(t\right)\biggr]\overset{{\scriptscriptstyle \left(\mathrm{I}\right)}}{=}\mathscr{L}\left[\dfrac{e^{j\omega t}}{2}\text{sca}\left(t\right)\right]+\mathscr{L}\left[\dfrac{e^{-j\omega t}}{2}\text{sca}\left(t\right)\right]
+\]
+\[
+\overset{{\scriptscriptstyle \left(\mathrm{II}\right)}}{=}\dfrac{1}{2}\cdot\left(\dfrac{1}{s+j\omega}+\dfrac{1}{s-j\omega}\right)=\dfrac{s}{s^{2}+\omega^{2}}
+\]
+
+\marginpar{La trasformata della sinusoide può essere ottenuta usando la (\ref{eq:Formula-di-Eulero}),
+come per la cosinusoide}La \textbf{sinusoide}, come la cosinusoide, è una funzione limitata
+tipica dei movimenti associati a modi complessi coniugati; facciamo
+le seguenti considerazioni per calcolare la sua trasformata di Laplace:
+\[
+\dfrac{\partial}{\partial t}\text{sca}\left(t\right)=\text{imp}\left(t\right)\implies\dfrac{\partial}{\partial t}\left(\cos\left(\omega t\right)\cdot\text{sca}\left(t\right)\right)=-\omega\sin\left(\omega t\right)\cdot\text{sca}\left(t\right)+\cos\left(wt\right)\cdot\text{imp}\left(t\right)
+\]
+Dalle precedenti scriviamo (esplicitando la sinusoide) che:
+\[
+\sin\left(\omega t\right)\cdot\text{sca}\left(t\right)=-\dfrac{1}{\omega}\dfrac{\partial}{\partial t}\left(\cos\left(\omega t\right)\cdot\text{sca}\left(t\right)\right)+\dfrac{1}{\omega}\cos\left(\omega t\right)\cdot\text{imp}\left(t\right)
+\]
+da cui la trasformata della sinusoide vale:
+\[
+\mathscr{L}\left[\sin\left(\omega t\right)\cdot\text{sca}\left(t\right)\right]\overset{{\scriptscriptstyle \left(\mathrm{I}\right)}}{=}\dfrac{1}{\omega}\left(\mathscr{L}\left[-\dfrac{\partial}{\partial t}\left(\cos\left(\omega t\right)\cdot\text{sca}\left(t\right)\right)\right]+\mathscr{L}\left[\cos\left(\omega t\right)\cdot\text{imp}\left(t\right)\right]\right)
+\]
+\[
+\overset{{\scriptscriptstyle \left(\mathrm{IV}\right)}}{=}-\dfrac{1}{\omega}\left(\dfrac{s^{2}}{s^{2}+\omega^{2}}-1\right)=\dfrac{\omega}{s^{2}+\omega^{2}}
+\]
+dai risultati sulla trasformata della cosinusoide e dell'\uline{impulso}.
+
+La \textbf{rampa} è un ingresso canonico definito a partire dallo
+scalino come $\text{ram}\left(t\right)=t\cdot\text{sca}\left(t\right)$;
+la sua trasformata di Laplace vale:
+\[
+\mathscr{L}\left[\text{ram}\left(t\right)\right]=\mathscr{L}\left[t\cdot\text{sca}\left(t\right)\right]\overset{{\scriptscriptstyle \left(\mathrm{V}\right)}}{=}-\dfrac{\partial}{\partial s}\mathscr{L}\left[\text{sca}\left(t\right)\right]=-\dfrac{\partial}{\partial s}\cdot\dfrac{1}{s}=\dfrac{1}{s^{2}}
+\]
+Un'alternativa per ottenere questo risultato consiste nel vedere la
+rampa come integrale dello scalino (moltiplicando quindi per $\nicefrac{1}{s}$
+la trasformata dello scalino).
+
+La \textbf{parabola} è un ingresso canonico monotono che si annulla
+nell'istante iniziale, definita a partire dallo scalino come $\text{par}\left(t\right)=\nicefrac{1}{2}\,t^{2}\text{sca}\left(t\right)$;
+la sua trasformata di Laplace vale:
+\[
+\mathscr{L}\left[\text{par}\left(t\right)\right]=\mathscr{L}\left[\somme 0{\infty}{\text{ram}\left(t\right)}t\right]\overset{{\scriptscriptstyle \left(\mathrm{VI}\right)}}{=}\dfrac{1}{s}\mathscr{L}\left[\text{ram}\left(t\right)\right]=\dfrac{1}{s^{3}}
+\]
+\begin{example}
+\emph{Sia dato il seguente movimento forzato di un sistema dinamico
+del I ordine, con coefficiente di stato $\alpha$:
+\[
+f\left(t\right)=e^{\alpha t}\cdot\text{sca}\left(t\right)\varhexstar\text{sca}\left(t\right)
+\]
+$\checkmark$Calcolare la trasformata di Laplace di tale movimento.}
+
+Utilizziamo le proprietà di traslazione e di convoluzione per ottenere
+il seguente risultato:
+\[
+\mathscr{L}\left[f\left(t\right)\right]=\dfrac{1}{s-\alpha}\cdot\dfrac{1}{s}=\dfrac{1}{s\left(s-\alpha\right)}
+\]
+
+\emph{$\checkmark$Calcolare valore iniziale e finale del movimento
+$f\left(t\right)$.}
+
+Essendo $f\left(t\right)$ razionale e con più poli che zeri, possiamo
+applicare il Teorema \ref{eq:Teorema-valore-iniziale} e il Teorema
+\ref{eq:Teorema-valore-finale}:
+\[
+f\left(0\right)\overset{{\scriptscriptstyle \left(\mathrm{VIII}\right)}}{=}\lm s{+\infty}{\dfrac{s}{s\left(s-\alpha\right)}}=\lm s{+\infty}{\dfrac{1}{s-\alpha}}\rightarrow1
+\]
+\[
+\lm t{+\infty}{f\left(t\right)}\overset{{\scriptscriptstyle \left(IX\right)}}{=}\lm s0{\dfrac{s}{s\left(s-\alpha\right)}}=\lm s0{\dfrac{1}{s-\alpha}}\rightarrow\dfrac{1}{\alpha}
+\]
+dove nella seconda uguaglianza si è posto $\alpha<0$ come da ipotesi
+del Teorema \ref{eq:Teorema-valore-finale}.\demo
+\end{example}
+\begin{xca}
+\marginpar{$\blacktriangleright$ \emph{Esercizio: trasformata di Laplace}}Trovare
+la trasformata di Laplace dei seguenti segnali:
+\[
+t\sin\left(\omega t\right)\cdot\text{sca}\left(t\right)
+\]
+\sln{2\omega s/\left(s^{2}+\omega^{2}\right)^{2}}
+\[
+t\cos\left(\omega t\right)\cdot\text{sca}\left(t\right)
+\]
+\sln{s^{2}-\omega^{2}/\left(s^{2}+\omega^{2}\right)^{2}}
+\[
+e^{\alpha t}\cos\left(\omega t\right)\cdot\text{sca}\left(t\right)
+\]
+\sln{\left(s-\sigma\right)/\left(\left(s-\sigma\right)^{2}+\omega^{2}\right)}
+\[
+e^{\alpha t}\sin\left(\omega t\right)\cdot\text{sca}\left(t\right)
+\]
+\sln{\omega/\left(\left(s-\alpha\right)^{2}+\omega^{2}\right)}
+\[
+te^{\alpha t}\cos\left(\omega t\right)\cdot\text{sca}\left(t\right)
+\]
+\sln{\left(\left(s-\alpha\right)^{2}-\omega^{2}\right)/\left(\left(s-\alpha\right)^{2}-\omega^{2}\right)^{2}}
+\[
+te^{\alpha t}\sin\left(\omega t\right)\cdot\text{sca}\left(t\right)
+\]
+\sln{2\omega\left(s-\alpha\right)/\left(\left(s-\alpha\right)^{2}+\omega^{2}\right)^{2}}
+\end{xca}
+\renewcommand{\chaptername}{}\printindex{}
 \end{document}

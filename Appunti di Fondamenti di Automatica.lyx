@@ -11327,14 +11327,8 @@ demo
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset CommandInset index_print
-LatexCommand printindex
-type "idx"
-
-\end_inset
-
-
+\begin_layout Chapter
+Risposta in frequanza
 \end_layout
 
 \begin_layout Chapter
@@ -14527,6 +14521,1355 @@ reference "eq:Formula-di-Eulero"
 
  è molto utile per eseguire il prodotto di numeri complessi, riconducendolo
  alle proprietà delle potenze.
+\end_layout
+
+\begin_layout Chapter
+Strumenti per analisi nel tempo continuo
+\end_layout
+
+\begin_layout Section
+Trasformata di Laplace
+\end_layout
+
+\begin_layout Subsection
+Definizione
+\end_layout
+
+\begin_layout Definition
+Sia data una funzione 
+\begin_inset Formula $f\,:\,\mathbb{R}\rightarrow\mathbb{C}$
+\end_inset
+
+ e definiamo una variabile complessa 
+\begin_inset Formula $s=\sigma+j\omega\in\mathbb{C}$
+\end_inset
+
+; se la funzione
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "3cm"
+height "1pt"
+
+\end_inset
+
+
+\series bold
+\size footnotesize
+
+\begin_inset Newline newline
+\end_inset
+
+Trasformata di Laplace
+\series default
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Laplace, trasformata continua
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[0.7cm]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+F\left(s\right)=\somme 0{+\infty}{f\left(t\right)e^{-st}}t\label{eq:Trasformata-Laplace}
+\end{equation}
+
+\end_inset
+
+esiste per qualche valore di 
+\begin_inset Formula $s$
+\end_inset
+
+, essa si dice 
+\emph on
+trasformata di Laplace
+\emph default
+ di 
+\begin_inset Formula $f\left(t\right)$
+\end_inset
+
+ e si indice come 
+\begin_inset Formula $\mathscr{L}\left[f\left(t\right)\right]=F\left(s\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+La definizione appena enunciata implica che 
+\begin_inset Formula $f\left(t\right)$
+\end_inset
+
+ sia almeno definita per 
+\begin_inset Formula $t\geq0$
+\end_inset
+
+; i contributi della funzione per 
+\begin_inset Formula $t<0$
+\end_inset
+
+ saranno nulli.
+ Per questo motivo useremo moltiplicare i segnali di cui calcoleremo 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Trasformata-Laplace"
+
+\end_inset
+
+ per l'ingresso canonico 
+\begin_inset Formula $\text{sca}\left(t\right)$
+\end_inset
+
+, che si annulla proprio per 
+\begin_inset Formula $t<0$
+\end_inset
+
+ mentre è costante e unitario per gli altri valori di 
+\begin_inset Formula $t$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Inoltre il primo estremo di integrazione di 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Trasformata-Laplace"
+
+\end_inset
+
+ va inteso come 
+\begin_inset Formula $0^{-}$
+\end_inset
+
+ (avvicinamento da sinistra), ovvero esso comprende i contributi impulsivi
+ della funzione applicati nell'istante 
+\begin_inset Formula $t=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+Sia 
+\begin_inset Formula $\overline{\sigma}>-\infty$
+\end_inset
+
+ l'estremo inferiore delle parti reali 
+\begin_inset Formula $\Re\left(s\right)$
+\end_inset
+
+ dei valori 
+\begin_inset Formula $s$
+\end_inset
+
+ per cui l'integrale 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Trasformata-Laplace"
+
+\end_inset
+
+ converge; allora la trasformata di Laplace esiste in un semipiano delimitato
+ dalla condizione 
+\begin_inset Formula $\Re\left(s\right)>\overline{\sigma}$
+\end_inset
+
+, per questo motivo 
+\begin_inset Formula $\overline{\sigma}$
+\end_inset
+
+ si chiama ascissa di convergenza.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+Sia 
+\begin_inset Formula $F\left(s\right)$
+\end_inset
+
+ la trasformata di Laplace di una funzione 
+\begin_inset Formula $f\left(t\right)$
+\end_inset
+
+; se è possibile scrivere
+\begin_inset Formula 
+\begin{equation}
+F\left(s\right)=\dfrac{N\left(s\right)}{D\left(s\right)}\label{eq:Trasformata-razionale}
+\end{equation}
+
+\end_inset
+
+con 
+\begin_inset Formula $N\left(s\right)$
+\end_inset
+
+ e 
+\begin_inset Formula $D\left(s\right)$
+\end_inset
+
+ polinomi primi tra loro, si ha una trasformata razionale.
+\end_layout
+
+\begin_layout Definition
+Per questa categoria di trasformate, le radici dei polinomi al numeratore
+ e denominatore si chiamano 
+\emph on
+singolarità
+\emph default
+ e si classificano in
+\begin_inset Formula 
+\begin{equation}
+\begin{cases}
+N\left(s\right)=0 & \text{zeri}\\
+D\left(s\right)=0 & \text{poli}
+\end{cases}\label{eq:Singolarità}
+\end{equation}
+
+\end_inset
+
+Quando 
+\begin_inset Formula $f\left(t\right)\in\mathbb{R}$
+\end_inset
+
+ i coefficienti di 
+\begin_inset Formula $N\left(s\right)$
+\end_inset
+
+ e 
+\begin_inset Formula $D\left(s\right)$
+\end_inset
+
+ sono reali e l'ascissa di convergenza è pari alla massima tra le parti
+ reali dei coefficienti dei poli.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+Chiamiamo 
+\emph on
+formula di antitrasformazione
+\emph default
+ la funzione inversa della trasformata di Laplace, definita come
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "3cm"
+height "1pt"
+
+\end_inset
+
+
+\series bold
+\size footnotesize
+
+\begin_inset Newline newline
+\end_inset
+
+Antitrasformata di Laplace
+\series default
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Laplace, antitrasformata continua
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[0.7cm]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\mathscr{L}^{-1}\left[F\left(s\right)\right]=f\left(t\right)=\dfrac{1}{2\pi j}\somme{\sigma-j\infty}{\sigma+j\infty}{F\left(s\right)e^{st}}s\label{eq:Antitrasformata-Laplace}
+\end{equation}
+
+\end_inset
+
+dove agli estremi di integrazione si ha 
+\begin_inset Formula $\sigma>\overline{\sigma},\,\sigma\in\mathbb{R}$
+\end_inset
+
+ qualsiasi.
+ La corrispondenza tra trasformata e antitrasformata di Laplace è biunivoca
+ nel caso di funzioni nulle per 
+\begin_inset Formula $t<0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Proprietà
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Proprietà-della-trasformata"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $\mathrm{\left(I\right)}\,\text{\textsc{Linearità}}$
+\end_inset
+
+
+\noun on
+:
+\noun default
+ Prendiamo due funzioni 
+\begin_inset Formula $f\left(t\right)$
+\end_inset
+
+ e 
+\begin_inset Formula $g\left(t\right)$
+\end_inset
+
+, allora 
+\begin_inset Formula $\forall\alpha\in\mathbb{C},\,\forall\beta\in\mathbb{C}$
+\end_inset
+
+ vale
+\begin_inset Formula 
+\[
+\mathscr{L}\left[\alpha f\left(t\right)+\beta g\left(t\right)\right]=\alpha F\left(s\right)+\beta G\left(s\right)
+\]
+
+\end_inset
+
+ovvero la 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Trasformata-razionale"
+
+\end_inset
+
+ è una operazione lineare.
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $\mathrm{\left(II\right)}\,\text{\textsc{Traslazione nel dominio del Tempo}}$
+\end_inset
+
+
+\noun on
+:
+\noun default
+ Comunque preso un ritardo 
+\begin_inset Formula $\tau>0$
+\end_inset
+
+, si consideri la funzione traslata 
+\begin_inset Formula $f\left(t-\tau\right)$
+\end_inset
+
+; la sua trasformata di Laplace vale
+\begin_inset Formula 
+\[
+\mathscr{L}\left[f\left(t-\tau\right)\right]=\somme 0{+\infty}{f\left(t-\tau\right)e^{-st}}t=e^{-s\tau}\somme 0{+\infty}{f\left(t-\tau\right)e^{-st}\cdot e^{s\tau}}t
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+=e^{-s\tau}\somme 0{+\infty}{f\left(t-\tau\right)e^{-s\left(t-\tau\right)}}{\left(t-\tau\right)}=\boxed{e^{-s\tau}F\left(s\right)}
+\]
+
+\end_inset
+
+dove abbiamo moltiplicato e diviso per 
+\begin_inset Formula $e^{-s\tau}$
+\end_inset
+
+ e infine abbiamo aggiustato il differenziale 
+\begin_inset Formula $dt$
+\end_inset
+
+ considerando anche il ritardo (costante).
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $\mathrm{\left(III\right)}\,\text{\textsc{Traslazione nel dominio di Laplace}}$
+\end_inset
+
+
+\noun on
+:
+\noun default
+ Comunque preso un valore 
+\begin_inset Formula $\alpha\in\mathbb{C}$
+\end_inset
+
+, la trasformata della funzione 
+\begin_inset Formula $e^{\alpha t}f\left(t\right)$
+\end_inset
+
+ vale:
+\begin_inset Formula 
+\[
+\mathscr{L}\left[e^{\alpha t}f\left(t\right)\right]=\somme 0{+\infty}{e^{\alpha t}f\left(t\right)e^{-st}}t=\somme 0{+\infty}{f\left(t\right)e^{-t\left(s-\alpha\right)}}t=\boxed{F\left(s-\alpha\right)}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $\mathrm{\left(IV\right)}\,\text{\textsc{Derivazione nel dominio del Tempo}}$
+\end_inset
+
+
+\noun on
+:
+\noun default
+ La trasformata di Laplace della derivata prima di una funzione 
+\begin_inset Formula $f\left(t\right)$
+\end_inset
+
+ rispetto a 
+\begin_inset Formula $t$
+\end_inset
+
+, vale:
+\begin_inset Formula 
+\[
+\mathscr{L}\left[\dot{f}\left(t\right)\right]=\somme 0{+\infty}{\dot{f}\left(t\right)e^{-st}}t=sF\left(s\right)-f\left(0\right)
+\]
+
+\end_inset
+
+Questo risultato si ottiene a partire dalla seguente uguaglianza sull'integranda
+:
+\begin_inset Formula 
+\[
+\dfrac{\partial}{\partial t}\left(f\left(t\right)e^{-st}\right)=\dot{f}\left(t\right)e^{-st}-sf\left(t\right)e^{-st}\implies
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\dot{f}\left(t\right)e^{-st}=\dfrac{\partial}{\partial t}\left(f\left(t\right)e^{-st}\right)+sf\left(t\right)e^{-st}
+\]
+
+\end_inset
+
+da cui otteniamo
+\begin_inset Formula 
+\[
+\somme 0{+\infty}{\left(\dfrac{\partial}{\partial t}\left(f\left(t\right)e^{-st}\right)+sf\left(t\right)e^{-st}\right)}t=\somme 0{+\infty}{\dfrac{\partial}{\partial t}\left(f\left(t\right)e^{-st}\right)}t+s\somme 0{+\infty}{f\left(t\right)e^{-st}}t
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+=\left[f\left(0\right)e^{-st}\right]_{0}^{+\infty}+sF\left(s\right)=\boxed{sF\left(s\right)-f\left(0\right)}
+\]
+
+\end_inset
+
+Questa proprietà può essere usata in catena per ottenere la seguente formula,
+ valida per qualsiasi derivata multipla:
+\begin_inset Formula 
+\begin{equation}
+\mathscr{L}\left[\dfrac{\partial^{n}}{\partial t}f\left(t\right)\right]=s^{n}F\left(s\right)-\serie{i=1}n{s^{n-i}\left.\dfrac{\partial^{i-1}}{\partial t}f\left(t\right)\right|_{t=0}}\label{eq:Derivazione-multipla-tempo-Laplace}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $\mathrm{\left(V\right)}\,\text{\textsc{Derivazione nel dominio di Laplace}}$
+\end_inset
+
+
+\noun on
+:
+\noun default
+ Supponendo che la trasformata 
+\begin_inset Formula $F\left(s\right)$
+\end_inset
+
+ sia derivabile per ogni 
+\begin_inset Formula $s$
+\end_inset
+
+ eccetto un numero finito di valori, vale:
+\begin_inset Formula 
+\[
+\mathscr{L}\left[t\cdot f\left(t\right)\right]=\boxed{-\dfrac{\partial}{\partial s}F\left(s\right)}
+\]
+
+\end_inset
+
+Questo risultato si ottiene dalla seguente considerazione:
+\begin_inset Formula 
+\[
+\dfrac{\partial}{\partial s}F\left(s\right)=\dfrac{\partial}{\partial s}\left(\somme 0{+\infty}{f\left(t\right)e^{-st}}t\right)=\somme 0{+\infty}{\dfrac{\partial}{\partial s}\left(f\left(t\right)e^{-st}\right)}t
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+=-t\somme 0{+\infty}{f\left(t\right)e^{-st}}t=-\mathscr{L}\left[t\cdot f\left(t\right)\right]
+\]
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $\mathrm{\left(VI\right)}\,\text{\textsc{Integrazione nel dominio del Tempo}}$
+\end_inset
+
+
+\noun on
+:
+\noun default
+ Con l'intuizione che l'integrazione è l'operazione inversa della derivazione,
+ si dimostra che ciò vale anche per le trasformate; presa 
+\begin_inset Formula $f\left(t\right)$
+\end_inset
+
+ integrabile tra 0 e 
+\begin_inset Formula $+\infty$
+\end_inset
+
+, vale:
+\begin_inset Formula 
+\[
+\mathscr{L}\left[\somme 0{+\infty}{f\left(t\right)}t\right]=\boxed{\dfrac{1}{s}\cdot F\left(s\right)}
+\]
+
+\end_inset
+
+dal fatto che l'operazione di derivazione nel dominio del tempo 
+\begin_inset Formula $\left(\mathrm{IV}\right)$
+\end_inset
+
+ si effettua moltiplicando per 
+\begin_inset Formula $s$
+\end_inset
+
+ (a meno della condizione iniziale).
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $\mathrm{\left(VII\right)}\,\text{\textsc{Convoluzione nel dominio del Tempo}}$
+\end_inset
+
+
+\noun on
+:
+\noun default
+ 
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+Questa proprietà è fondamentale nell'analisi in frequenza dei movimenti
+ dei sistemi LTI
+\end_layout
+
+\end_inset
+
+Prendiamo due segnali 
+\begin_inset Formula $f_{1}\left(t\right)$
+\end_inset
+
+ e 
+\begin_inset Formula $f_{2}\left(t\right)$
+\end_inset
+
+ e facciamone il 
+\emph on
+prodotto di convoluzione
+\emph default
+ come
+\begin_inset Formula 
+\begin{equation}
+f_{1}\left(t\right)\varhexstar f_{2}\left(t\right)=\somme{-\infty}{+\infty}{f_{1}\left(\tau\right)f_{2}\left(t-\tau\right)}{\tau}=\somme{-\infty}{+\infty}{f_{1}\left(t-\eta\right)f_{2}\left(\eta\right)}{\eta}=f_{2}\left(t\right)\varhexstar f_{1}\left(t\right)\label{eq:Prodotto-di-convoluzione}
+\end{equation}
+
+\end_inset
+
+Si dimostra che la trasformata di 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Prodotto-di-convoluzione"
+
+\end_inset
+
+ vale:
+\begin_inset Formula 
+\[
+\mathscr{L}\left[f_{1}\left(t\right)\varhexstar f_{2}\left(t\right)\right]=\boxed{F_{1}\left(s\right)\cdot F_{2}\left(s\right)}
+\]
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $\mathrm{\left(VIII\right)}\,\text{\textsc{Teorema del valore iniziale}}$
+\end_inset
+
+
+\noun on
+:
+\noun default
+ Se la trasformata è razionale nella forma 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Trasformata-razionale"
+
+\end_inset
+
+ e vale 
+\begin_inset Formula $n\left(N\left(s\right)\right)<n\left(D\left(s\right)\right)$
+\end_inset
+
+ (con 
+\begin_inset Formula $n\left(P\left(x\right)\right)$
+\end_inset
+
+ il grado del polinomio 
+\begin_inset Formula $P$
+\end_inset
+
+ nella variabile 
+\begin_inset Formula $x$
+\end_inset
+
+), allora vale:
+\begin_inset Formula 
+\begin{equation}
+f\left(0\right)=\lm s{+\infty}{s\cdot F\left(s\right)}.\label{eq:Teorema-valore-iniziale}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+\begin_inset Formula $\mathrm{\left(IX\right)}\,\text{\textsc{Teorema del valore finale}}$
+\end_inset
+
+
+\noun on
+:
+\noun default
+ Se la trasformata è razionale nella forma 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Trasformata-razionale"
+
+\end_inset
+
+ e vale 
+\begin_inset Formula $n\left(N\left(s\right)\right)<n\left(D\left(s\right)\right)$
+\end_inset
+
+, e inoltre per ogni suo polo 
+\begin_inset Formula $p_{i}$
+\end_inset
+
+ vale 
+\begin_inset Formula $\Re\left(p_{1}\right)<0$
+\end_inset
+
+, allora vale:
+\begin_inset Formula 
+\begin{equation}
+\lm t{+\infty}{f\left(t\right)}=\lm s0{s\cdot F\left(s\right)}.\label{eq:Teorema-valore-finale}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Trasformate notevoli
+\end_layout
+
+\begin_layout Standard
+L'
+\series bold
+impulso
+\series default
+ è un ingresso canonico il cui integrale è non nullo solo nell'istante 
+\begin_inset Formula $t=0$
+\end_inset
+
+; la sua trasformata di Laplace vale
+\begin_inset Formula 
+\[
+\mathscr{L}\left[\text{imp}\left(t\right)\right]=\somme 0{+\infty}{e^{-st}\text{imp}\left(t\right)}t=e^{-s\cdot0}\somme 0{+\infty}{\text{imp}\left(0\right)}t=1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Lo 
+\series bold
+scalino
+\series default
+ è un ingresso canonico il cui integrale è nullo per istanti di tempo negativi
+ e costante unitario altrimenti; la sua trasformata di Laplace vale:
+\begin_inset Formula 
+\[
+\mathscr{L}\left[\text{sca}\left(t\right)\right]=\somme 0{+\infty}{e^{-st}\text{sca}\left(t\right)}t=\somme 0{+\infty}{e^{-st}\cdot1}t=\left[-\dfrac{1}{s}e^{-st}\right]_{0}^{\infty}=\dfrac{1}{s}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+L'
+\series bold
+esponenziale
+\series default
+ è una funzione ricorrente nei modi dei sistemi LTI, definita strettamente
+ monotona; la sua trasformata di Laplace vale:
+\begin_inset Formula 
+\[
+\mathscr{L}\left[e^{\alpha t}\cdot\text{sca}\left(t\right)\right]=\dfrac{1}{s-\alpha}
+\]
+
+\end_inset
+
+per la proprietà 
+\begin_inset Formula $\left(\mathrm{III}\right)$
+\end_inset
+
+ e per il risultato ottenuto sulla trasformata dello scalino.
+\end_layout
+
+\begin_layout Standard
+La 
+\series bold
+cosinusoide
+\series default
+ è una funzione limitata, tipica dei movimenti associati a modi complessi
+ coniugati; la sua trasformata di Laplace vale:
+\begin_inset Formula 
+\[
+\mathscr{L}\left[\cos\left(\omega t\right)\cdot\text{sca}\left(t\right)\right]\overset{{\scriptscriptstyle \text{Eulero}}}{=}\mathscr{L}\biggl[\overset{{\scriptstyle 2\cos\left(\omega t\right)}}{\overbrace{\dfrac{e^{j\omega t}+e^{-j\omega t}}{2}}}\text{sca}\left(t\right)\biggr]\overset{{\scriptscriptstyle \left(\mathrm{I}\right)}}{=}\mathscr{L}\left[\dfrac{e^{j\omega t}}{2}\text{sca}\left(t\right)\right]+\mathscr{L}\left[\dfrac{e^{-j\omega t}}{2}\text{sca}\left(t\right)\right]
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\overset{{\scriptscriptstyle \left(\mathrm{II}\right)}}{=}\dfrac{1}{2}\cdot\left(\dfrac{1}{s+j\omega}+\dfrac{1}{s-j\omega}\right)=\dfrac{s}{s^{2}+\omega^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+La trasformata della sinusoide può essere ottenuta usando la 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Formula-di-Eulero"
+
+\end_inset
+
+, come per la cosinusoide
+\end_layout
+
+\end_inset
+
+La 
+\series bold
+sinusoide
+\series default
+, come la cosinusoide, è una funzione limitata tipica dei movimenti associati
+ a modi complessi coniugati; facciamo le seguenti considerazioni per calcolare
+ la sua trasformata di Laplace:
+\begin_inset Formula 
+\[
+\dfrac{\partial}{\partial t}\text{sca}\left(t\right)=\text{imp}\left(t\right)\implies\dfrac{\partial}{\partial t}\left(\cos\left(\omega t\right)\cdot\text{sca}\left(t\right)\right)=-\omega\sin\left(\omega t\right)\cdot\text{sca}\left(t\right)+\cos\left(wt\right)\cdot\text{imp}\left(t\right)
+\]
+
+\end_inset
+
+Dalle precedenti scriviamo (esplicitando la sinusoide) che:
+\begin_inset Formula 
+\[
+\sin\left(\omega t\right)\cdot\text{sca}\left(t\right)=-\dfrac{1}{\omega}\dfrac{\partial}{\partial t}\left(\cos\left(\omega t\right)\cdot\text{sca}\left(t\right)\right)+\dfrac{1}{\omega}\cos\left(\omega t\right)\cdot\text{imp}\left(t\right)
+\]
+
+\end_inset
+
+da cui la trasformata della sinusoide vale:
+\begin_inset Formula 
+\[
+\mathscr{L}\left[\sin\left(\omega t\right)\cdot\text{sca}\left(t\right)\right]\overset{{\scriptscriptstyle \left(\mathrm{I}\right)}}{=}\dfrac{1}{\omega}\left(\mathscr{L}\left[-\dfrac{\partial}{\partial t}\left(\cos\left(\omega t\right)\cdot\text{sca}\left(t\right)\right)\right]+\mathscr{L}\left[\cos\left(\omega t\right)\cdot\text{imp}\left(t\right)\right]\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\overset{{\scriptscriptstyle \left(\mathrm{IV}\right)}}{=}-\dfrac{1}{\omega}\left(\dfrac{s^{2}}{s^{2}+\omega^{2}}-1\right)=\dfrac{\omega}{s^{2}+\omega^{2}}
+\]
+
+\end_inset
+
+dai risultati sulla trasformata della cosinusoide e dell'
+\bar under
+impulso
+\bar default
+.
+\end_layout
+
+\begin_layout Standard
+La 
+\series bold
+rampa
+\series default
+ è un ingresso canonico definito a partire dallo scalino come 
+\begin_inset Formula $\text{ram}\left(t\right)=t\cdot\text{sca}\left(t\right)$
+\end_inset
+
+; la sua trasformata di Laplace vale:
+\begin_inset Formula 
+\[
+\mathscr{L}\left[\text{ram}\left(t\right)\right]=\mathscr{L}\left[t\cdot\text{sca}\left(t\right)\right]\overset{{\scriptscriptstyle \left(\mathrm{V}\right)}}{=}-\dfrac{\partial}{\partial s}\mathscr{L}\left[\text{sca}\left(t\right)\right]=-\dfrac{\partial}{\partial s}\cdot\dfrac{1}{s}=\dfrac{1}{s^{2}}
+\]
+
+\end_inset
+
+Un'alternativa per ottenere questo risultato consiste nel vedere la rampa
+ come integrale dello scalino (moltiplicando quindi per 
+\begin_inset Formula $\nicefrac{1}{s}$
+\end_inset
+
+ la trasformata dello scalino).
+\end_layout
+
+\begin_layout Standard
+La 
+\series bold
+parabola
+\series default
+ è un ingresso canonico monotono che si annulla nell'istante iniziale, definita
+ a partire dallo scalino come 
+\begin_inset Formula $\text{par}\left(t\right)=\nicefrac{1}{2}\,t^{2}\text{sca}\left(t\right)$
+\end_inset
+
+; la sua trasformata di Laplace vale:
+\begin_inset Formula 
+\[
+\mathscr{L}\left[\text{par}\left(t\right)\right]=\mathscr{L}\left[\somme 0{\infty}{\text{ram}\left(t\right)}t\right]\overset{{\scriptscriptstyle \left(\mathrm{VI}\right)}}{=}\dfrac{1}{s}\mathscr{L}\left[\text{ram}\left(t\right)\right]=\dfrac{1}{s^{3}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+
+\emph on
+Sia dato il seguente movimento forzato di un sistema dinamico del I ordine,
+ con coefficiente di stato 
+\begin_inset Formula $\alpha$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+f\left(t\right)=e^{\alpha t}\cdot\text{sca}\left(t\right)\varhexstar\text{sca}\left(t\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula $\checkmark$
+\end_inset
+
+Calcolare la trasformata di Laplace di tale movimento.
+\end_layout
+
+\begin_layout Example
+Utilizziamo le proprietà di traslazione e di convoluzione per ottenere il
+ seguente risultato:
+\begin_inset Formula 
+\[
+\mathscr{L}\left[f\left(t\right)\right]=\dfrac{1}{s-\alpha}\cdot\dfrac{1}{s}=\dfrac{1}{s\left(s-\alpha\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+
+\emph on
+\begin_inset Formula $\checkmark$
+\end_inset
+
+Calcolare valore iniziale e finale del movimento 
+\begin_inset Formula $f\left(t\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+Essendo 
+\begin_inset Formula $f\left(t\right)$
+\end_inset
+
+ razionale e con più poli che zeri, possiamo applicare il Teorema 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Teorema-valore-iniziale"
+
+\end_inset
+
+ e il Teorema 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Teorema-valore-finale"
+
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+f\left(0\right)\overset{{\scriptscriptstyle \left(\mathrm{VIII}\right)}}{=}\lm s{+\infty}{\dfrac{s}{s\left(s-\alpha\right)}}=\lm s{+\infty}{\dfrac{1}{s-\alpha}}\rightarrow1
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\lm t{+\infty}{f\left(t\right)}\overset{{\scriptscriptstyle \left(IX\right)}}{=}\lm s0{\dfrac{s}{s\left(s-\alpha\right)}}=\lm s0{\dfrac{1}{s-\alpha}}\rightarrow\dfrac{1}{\alpha}
+\]
+
+\end_inset
+
+dove nella seconda uguaglianza si è posto 
+\begin_inset Formula $\alpha<0$
+\end_inset
+
+ come da ipotesi del Teorema 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Teorema-valore-finale"
+
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+demo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Exercise
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Formula $\blacktriangleright$
+\end_inset
+
+ 
+\emph on
+Esercizio: trasformata di Laplace
+\end_layout
+
+\end_inset
+
+Trovare la trasformata di Laplace dei seguenti segnali:
+\begin_inset Formula 
+\[
+t\sin\left(\omega t\right)\cdot\text{sca}\left(t\right)
+\]
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+sln{2
+\backslash
+omega s/
+\backslash
+left(s^{2}+
+\backslash
+omega^{2}
+\backslash
+right)^{2}}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+t\cos\left(\omega t\right)\cdot\text{sca}\left(t\right)
+\]
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+sln{s^{2}-
+\backslash
+omega^{2}/
+\backslash
+left(s^{2}+
+\backslash
+omega^{2}
+\backslash
+right)^{2}}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+e^{\alpha t}\cos\left(\omega t\right)\cdot\text{sca}\left(t\right)
+\]
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+sln{
+\backslash
+left(s-
+\backslash
+sigma
+\backslash
+right)/
+\backslash
+left(
+\backslash
+left(s-
+\backslash
+sigma
+\backslash
+right)^{2}+
+\backslash
+omega^{2}
+\backslash
+right)}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+e^{\alpha t}\sin\left(\omega t\right)\cdot\text{sca}\left(t\right)
+\]
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+sln{
+\backslash
+omega/
+\backslash
+left(
+\backslash
+left(s-
+\backslash
+alpha
+\backslash
+right)^{2}+
+\backslash
+omega^{2}
+\backslash
+right)}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+te^{\alpha t}\cos\left(\omega t\right)\cdot\text{sca}\left(t\right)
+\]
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+sln{
+\backslash
+left(
+\backslash
+left(s-
+\backslash
+alpha
+\backslash
+right)^{2}-
+\backslash
+omega^{2}
+\backslash
+right)/
+\backslash
+left(
+\backslash
+left(s-
+\backslash
+alpha
+\backslash
+right)^{2}-
+\backslash
+omega^{2}
+\backslash
+right)^{2}}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+te^{\alpha t}\sin\left(\omega t\right)\cdot\text{sca}\left(t\right)
+\]
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+sln{2
+\backslash
+omega
+\backslash
+left(s-
+\backslash
+alpha
+\backslash
+right)/
+\backslash
+left(
+\backslash
+left(s-
+\backslash
+alpha
+\backslash
+right)^{2}+
+\backslash
+omega^{2}
+\backslash
+right)^{2}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+chaptername}{}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset index_print
+LatexCommand printindex
+type "idx"
+
+\end_inset
+
+
 \end_layout
 
 \end_body
