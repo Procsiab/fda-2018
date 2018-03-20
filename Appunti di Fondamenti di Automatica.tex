@@ -4033,8 +4033,8 @@ dove nella seconda uguaglianza si è posto $\alpha<0$ come da ipotesi
 del Teorema \ref{eq:Teorema-valore-finale}.\demo
 \end{example}
 \begin{xca}
-\marginpar{$\blacktriangleright$ \emph{Esercizio: trasformata di Laplace}}Trovare
-la trasformata di Laplace dei seguenti segnali:
+\marginpar{$\blacktriangleright$ \emph{Esercizio: trasformata di Laplace}}\emph{$\checkmark$Trovare
+la trasformata di Laplace dei seguenti segnali:}
 \[
 t\sin\left(\omega t\right)\cdot\text{sca}\left(t\right)
 \]
@@ -4060,5 +4060,113 @@ te^{\alpha t}\sin\left(\omega t\right)\cdot\text{sca}\left(t\right)
 \]
 \sln{2\omega\left(s-\alpha\right)/\left(\left(s-\alpha\right)^{2}+\omega^{2}\right)^{2}}
 \end{xca}
+
+\subsection{Antitrasformata}
+
+Poniamoci nel caso di trasformate razionali (\ref{eq:Trasformata-razionale}),
+con coefficienti reali; scegliamo $N\left(s\right)$ e $D\left(s\right)$
+per cui $n\left(N\left(s\right)\right)<n\left(D\left(s\right)\right)$.
+Nei sistemi LTI, è sempre possibile ricondurre i movimenti a forme
+razionali come quella in esame; in particolare, utilizzando l'algoritmo
+per la divisione dei polinomi, è sempre possibile la seguente riscrittura:
+\[
+F\left(s\right)=\dfrac{N\left(s\right)}{D\left(s\right)}=\dfrac{\beta_{0}s^{n}+\beta_{1}s^{n-1}+\ldots+\beta_{n}}{\alpha_{0}s^{n}+\alpha_{1}s^{n-1}+\ldots+\alpha_{n}}
+\]
+\[
+=\dfrac{\beta_{0}}{\alpha_{0}}+\dfrac{\left(\beta_{1}-\beta_{0}\alpha_{1}\right)s^{n}+\left(\beta_{2}-\beta_{1}\alpha_{2}\right)s^{n-1}+\ldots+\left(\beta_{n}-\beta_{n-1}\alpha_{n}\right)}{\alpha_{0}s^{n}+\alpha_{1}s^{n-1}+\ldots+\alpha_{n}}
+\]
+Vale in generale che una funzione razionale può essere scritta come
+somma di una costante e di una frazione strettamente propria, e grazie
+alla proprietà $\left(\mathrm{I}\right)$ essa è ancora una antitrasformata
+di Laplace.
+
+L'antitrasformata della precedente riscrittura vale
+\[
+\mathscr{L}^{-1}\left[F\left(s\right)\right]=\dfrac{\beta_{0}}{\alpha_{0}}\cdot\text{imp}\left(t\right)
+\]
+dato che l'antitrasformata di una costante è un impulso di ampiezza
+la costante.\bigskip{}
+
+Analizziamo come antitrasformare una funzione che abbia \textbf{poli
+distinti}; si procede scomponendo $F\left(s\right)$ in una sommatoria
+di termini semplici (con denominatore al più di secondo grado) di
+cui conosciamo l'antitrasformata e dai quali otterremo l'antitrasformata
+complessiva per linearità.
+
+Si scrive il polinomio al denominatore nel modo seguente:
+\[
+D\left(s\right)=\overset{{\scriptstyle n}}{\underset{{\scriptstyle i=1}}{\prod}}\left(s+p_{i}\right)
+\]
+con $p_{i}\in\mathbb{C}$, e la trasformata diventa sviluppabile come
+\[
+F\left(s\right)=\dfrac{N\left(s\right)}{\prod_{i=1}^{n}\left(s+p_{i}\right)}=\serie{i=1}n{\dfrac{P_{i}}{s+p_{i}}}
+\]
+dove $P_{i}$ sono i \emph{residui} che vogliamo calcolare, mentre
+$p_{i}$ sono le radici di $D\left(s\right)$ (i \emph{poli}).
+
+D'ora in avanti si procede applicando il \emph{metodo di Heaviside},
+nel quale si moltiplica per uno dei termini $\left(s+p_{i}\right)$
+la funzione sviluppata e la si valuta per $s=-p_{i}$:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Metodo di Heaviside}{\footnotesize{}\index{Heaviside, metodo di@{\footnotesize{}Heaviside, metodo di}}}}[2.25cm]
+\[
+\left(s+p_{i}\right)F\left(s\right)=\left[\left(s+p_{i}\right)\serie{j=1,\,j\neq i}n{\dfrac{P_{j}}{s+p_{j}}}\right]+P_{i}
+\]
+\begin{equation}
+P_{i}=\dfrac{N\left(-p_{i}\right)}{\prod_{j=1,\,j\neq i}^{n}\left(p_{i}-p_{j}\right)}=\dfrac{N\left(-p_{i}\right)}{\nicefrac{\partial}{\partial s}\left.D\left(s\right)\right|_{s=-p_{i}}}=\left.\left[\left(s+p_{i}\right)F\left(s\right)\right]\right|_{s=-p_{i}}\label{eq:Metodo-di-Heaviside}
+\end{equation}
+Una volta ricavati i residui con (\ref{eq:Metodo-di-Heaviside}) in
+corrispondenza di ciascun polo, otteniamo l'antitrasformata come:
+\begin{equation}
+f\left(t\right)=\mathscr{L}^{-1}\left[F\left(s\right)\right]=\mathscr{L}^{-1}\left[\serie{i=1}n{\dfrac{P_{i}}{s+p_{i}}}\right]=\left(\serie{i=1}n{P_{i}\cdot e^{-p_{i}t}}\right)\cdot\text{sca}\left(t\right)\label{eq:Antitrasformata-Laplace-poli-distinti}
+\end{equation}
+\bigskip{}
+\begin{example}
+\emph{Sia data la seguente trasformata di Laplace di un segnale:}
+\[
+F\left(s\right)=\dfrac{s-10}{\left(s+2\right)\left(s+5\right)}
+\]
+\emph{$\checkmark$Trovare la sua antitrasformata.}
+
+Possiamo riscrivere con (\ref{eq:Metodo-di-Heaviside}) la funzione
+come
+\[
+F\left(s\right)=\dfrac{P_{1}}{s+2}+\dfrac{P_{2}}{s+5}
+\]
+da cui ricaviamo i residui $P_{1,2}$ nel modo seguente:
+
+\begin{minipage}[t]{1\columnwidth}%
+\begin{enumerate}
+\item $\left[\left(s+2\right)F\left(s\right)\right]|_{s=-2}=\left.\dfrac{\cancel{\left(s+2\right)}\left(s-10\right)}{\cancel{\left(s+2\right)}\left(s+5\right)}\right|_{s=-2}=\dfrac{-12}{3}=-4=P_{1}$\bigskip{}
+\item $\left[\left(s+5\right)F\left(s\right)\right]|_{s=-5}=\left.\dfrac{\cancel{\left(s+5\right)}\left(s-10\right)}{\left(s+2\right)\cancel{\left(s+5\right)}}\right|_{s=-5}=\dfrac{-15}{-3}=5=P_{2}$
+\end{enumerate}
+%
+\end{minipage}
+
+Usando (\ref{eq:Antitrasformata-Laplace-poli-distinti}) scriviamo
+l'antitrasformata come:
+\[
+\mathscr{L}^{-1}\left[F\left(s\right)\right]=\left(-4e^{-2t}+5e^{-5t}\right)\cdot\text{sca}\left(t\right)
+\]
+\demo
+\end{example}
+Nel caso di \textbf{poli complessi coniugati}, abbiamo comunque poli
+distinti, con residui complessi coniugati; prendiamo due poli tali
+che $s_{i}=-p_{i}$ e $s_{j}=-p_{i}^{*}$, allora il residuo $P_{j}=P_{i}^{*}$.
+Scriviamo la funzione trasformata come combinazione lineare di termini
+del tipo:
+\[
+F\left(s\right)=\dfrac{P_{i}}{\left(s+p_{i}\right)}+\dfrac{P_{i}^{*}}{\left(s+p_{i}^{*}\right)}
+\]
+Quando questa somma viene antitrasformata, si ottiene con (\ref{eq:Formula-di-Eulero})
+dalla (\ref{eq:Antitrasformata-Laplace-poli-distinti}):
+\[
+P_{i}e^{-p_{i}t}+P_{i}^{*}e^{-p_{i}^{*}t}
+\]
+Se esprimiamo i poli $p_{i}=\sigma_{i}+j\omega_{i}$ e i residui $P_{i}=\left|P_{i}\right|e^{j\arg\left(P_{i}\right)}$,
+con calcoli analoghi al caso di poli distinti, otteniamo la scrittura:
+\begin{equation}
+\mathscr{L}^{-1}\left[F\left(s\right)\right]=2\left|P_{i}\right|e^{-\sigma_{i}t}\cos\left(\omega_{i}t+\arg\left(P_{i}\right)\right)\label{eq:Antitrasformata-Laplace-poli-complessi-coniugati}
+\end{equation}
+
 \renewcommand{\chaptername}{}\printindex{}
 \end{document}

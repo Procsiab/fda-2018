@@ -15626,7 +15626,15 @@ Esercizio: trasformata di Laplace
 
 \end_inset
 
+
+\emph on
+
+\begin_inset Formula $\checkmark$
+\end_inset
+
 Trovare la trasformata di Laplace dei seguenti segnali:
+\emph default
+
 \begin_inset Formula 
 \[
 t\sin\left(\omega t\right)\cdot\text{sca}\left(t\right)
@@ -15841,6 +15849,421 @@ omega^{2}
 \backslash
 right)^{2}}
 \end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Antitrasformata
+\end_layout
+
+\begin_layout Standard
+Poniamoci nel caso di trasformate razionali 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Trasformata-razionale"
+
+\end_inset
+
+, con coefficienti reali; scegliamo 
+\begin_inset Formula $N\left(s\right)$
+\end_inset
+
+ e 
+\begin_inset Formula $D\left(s\right)$
+\end_inset
+
+ per cui 
+\begin_inset Formula $n\left(N\left(s\right)\right)<n\left(D\left(s\right)\right)$
+\end_inset
+
+.
+ Nei sistemi LTI, è sempre possibile ricondurre i movimenti a forme razionali
+ come quella in esame; in particolare, utilizzando l'algoritmo per la divisione
+ dei polinomi, è sempre possibile la seguente riscrittura:
+\begin_inset Formula 
+\[
+F\left(s\right)=\dfrac{N\left(s\right)}{D\left(s\right)}=\dfrac{\beta_{0}s^{n}+\beta_{1}s^{n-1}+\ldots+\beta_{n}}{\alpha_{0}s^{n}+\alpha_{1}s^{n-1}+\ldots+\alpha_{n}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+=\dfrac{\beta_{0}}{\alpha_{0}}+\dfrac{\left(\beta_{1}-\beta_{0}\alpha_{1}\right)s^{n}+\left(\beta_{2}-\beta_{1}\alpha_{2}\right)s^{n-1}+\ldots+\left(\beta_{n}-\beta_{n-1}\alpha_{n}\right)}{\alpha_{0}s^{n}+\alpha_{1}s^{n-1}+\ldots+\alpha_{n}}
+\]
+
+\end_inset
+
+Vale in generale che una funzione razionale può essere scritta come somma
+ di una costante e di una frazione strettamente propria, e grazie alla proprietà
+ 
+\begin_inset Formula $\left(\mathrm{I}\right)$
+\end_inset
+
+ essa è ancora una antitrasformata di Laplace.
+\end_layout
+
+\begin_layout Standard
+L'antitrasformata della precedente riscrittura vale
+\begin_inset Formula 
+\[
+\mathscr{L}^{-1}\left[F\left(s\right)\right]=\dfrac{\beta_{0}}{\alpha_{0}}\cdot\text{imp}\left(t\right)
+\]
+
+\end_inset
+
+dato che l'antitrasformata di una costante è un impulso di ampiezza la costante.
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Analizziamo come antitrasformare una funzione che abbia 
+\series bold
+poli distinti
+\series default
+; si procede scomponendo 
+\begin_inset Formula $F\left(s\right)$
+\end_inset
+
+ in una sommatoria di termini semplici (con denominatore al più di secondo
+ grado) di cui conosciamo l'antitrasformata e dai quali otterremo l'antitrasform
+ata complessiva per linearità.
+\end_layout
+
+\begin_layout Standard
+Si scrive il polinomio al denominatore nel modo seguente:
+\begin_inset Formula 
+\[
+D\left(s\right)=\overset{{\scriptstyle n}}{\underset{{\scriptstyle i=1}}{\prod}}\left(s+p_{i}\right)
+\]
+
+\end_inset
+
+con 
+\begin_inset Formula $p_{i}\in\mathbb{C}$
+\end_inset
+
+, e la trasformata diventa sviluppabile come
+\begin_inset Formula 
+\[
+F\left(s\right)=\dfrac{N\left(s\right)}{\prod_{i=1}^{n}\left(s+p_{i}\right)}=\serie{i=1}n{\dfrac{P_{i}}{s+p_{i}}}
+\]
+
+\end_inset
+
+dove 
+\begin_inset Formula $P_{i}$
+\end_inset
+
+ sono i 
+\emph on
+residui
+\emph default
+ che vogliamo calcolare, mentre 
+\begin_inset Formula $p_{i}$
+\end_inset
+
+ sono le radici di 
+\begin_inset Formula $D\left(s\right)$
+\end_inset
+
+ (i 
+\emph on
+poli
+\emph default
+).
+\end_layout
+
+\begin_layout Standard
+D'ora in avanti si procede applicando il 
+\emph on
+metodo di Heaviside
+\emph default
+, nel quale si moltiplica per uno dei termini 
+\begin_inset Formula $\left(s+p_{i}\right)$
+\end_inset
+
+ la funzione sviluppata e la si valuta per 
+\begin_inset Formula $s=-p_{i}$
+\end_inset
+
+:
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "3cm"
+height "1pt"
+
+\end_inset
+
+
+\series bold
+\size footnotesize
+
+\begin_inset Newline newline
+\end_inset
+
+Metodo di Heaviside
+\series default
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Heaviside, metodo di
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[2.25cm]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\left(s+p_{i}\right)F\left(s\right)=\left[\left(s+p_{i}\right)\serie{j=1,\,j\neq i}n{\dfrac{P_{j}}{s+p_{j}}}\right]+P_{i}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+P_{i}=\dfrac{N\left(-p_{i}\right)}{\prod_{j=1,\,j\neq i}^{n}\left(p_{i}-p_{j}\right)}=\dfrac{N\left(-p_{i}\right)}{\nicefrac{\partial}{\partial s}\left.D\left(s\right)\right|_{s=-p_{i}}}=\left.\left[\left(s+p_{i}\right)F\left(s\right)\right]\right|_{s=-p_{i}}\label{eq:Metodo-di-Heaviside}
+\end{equation}
+
+\end_inset
+
+Una volta ricavati i residui con 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Metodo-di-Heaviside"
+
+\end_inset
+
+ in corrispondenza di ciascun polo, otteniamo l'antitrasformata come:
+\begin_inset Formula 
+\begin{equation}
+f\left(t\right)=\mathscr{L}^{-1}\left[F\left(s\right)\right]=\mathscr{L}^{-1}\left[\serie{i=1}n{\dfrac{P_{i}}{s+p_{i}}}\right]=\left(\serie{i=1}n{P_{i}\cdot e^{-p_{i}t}}\right)\cdot\text{sca}\left(t\right)\label{eq:Antitrasformata-Laplace-poli-distinti}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+
+\emph on
+Sia data la seguente trasformata di Laplace di un segnale:
+\emph default
+
+\begin_inset Formula 
+\[
+F\left(s\right)=\dfrac{s-10}{\left(s+2\right)\left(s+5\right)}
+\]
+
+\end_inset
+
+
+\emph on
+
+\begin_inset Formula $\checkmark$
+\end_inset
+
+Trovare la sua antitrasformata.
+\end_layout
+
+\begin_layout Example
+Possiamo riscrivere con 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Metodo-di-Heaviside"
+
+\end_inset
+
+ la funzione come
+\begin_inset Formula 
+\[
+F\left(s\right)=\dfrac{P_{1}}{s+2}+\dfrac{P_{2}}{s+5}
+\]
+
+\end_inset
+
+da cui ricaviamo i residui 
+\begin_inset Formula $P_{1,2}$
+\end_inset
+
+ nel modo seguente:
+\end_layout
+
+\begin_layout Example
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Enumerate
+\begin_inset Formula $\left[\left(s+2\right)F\left(s\right)\right]|_{s=-2}=\left.\dfrac{\cancel{\left(s+2\right)}\left(s-10\right)}{\cancel{\left(s+2\right)}\left(s+5\right)}\right|_{s=-2}=\dfrac{-12}{3}=-4=P_{1}$
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left[\left(s+5\right)F\left(s\right)\right]|_{s=-5}=\left.\dfrac{\cancel{\left(s+5\right)}\left(s-10\right)}{\left(s+2\right)\cancel{\left(s+5\right)}}\right|_{s=-5}=\dfrac{-15}{-3}=5=P_{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+Usando 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Antitrasformata-Laplace-poli-distinti"
+
+\end_inset
+
+ scriviamo l'antitrasformata come:
+\begin_inset Formula 
+\[
+\mathscr{L}^{-1}\left[F\left(s\right)\right]=\left(-4e^{-2t}+5e^{-5t}\right)\cdot\text{sca}\left(t\right)
+\]
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+demo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nel caso di 
+\series bold
+poli complessi coniugati
+\series default
+, abbiamo comunque poli distinti, con residui complessi coniugati; prendiamo
+ due poli tali che 
+\begin_inset Formula $s_{i}=-p_{i}$
+\end_inset
+
+ e 
+\begin_inset Formula $s_{j}=-p_{i}^{*}$
+\end_inset
+
+, allora il residuo 
+\begin_inset Formula $P_{j}=P_{i}^{*}$
+\end_inset
+
+.
+ Scriviamo la funzione trasformata come combinazione lineare di termini
+ del tipo:
+\begin_inset Formula 
+\[
+F\left(s\right)=\dfrac{P_{i}}{\left(s+p_{i}\right)}+\dfrac{P_{i}^{*}}{\left(s+p_{i}^{*}\right)}
+\]
+
+\end_inset
+
+Quando questa somma viene antitrasformata, si ottiene con 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Formula-di-Eulero"
+
+\end_inset
+
+ dalla 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Antitrasformata-Laplace-poli-distinti"
+
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+P_{i}e^{-p_{i}t}+P_{i}^{*}e^{-p_{i}^{*}t}
+\]
+
+\end_inset
+
+Se esprimiamo i poli 
+\begin_inset Formula $p_{i}=\sigma_{i}+j\omega_{i}$
+\end_inset
+
+ e i residui 
+\begin_inset Formula $P_{i}=\left|P_{i}\right|e^{j\arg\left(P_{i}\right)}$
+\end_inset
+
+, con calcoli analoghi al caso di poli distinti, otteniamo la scrittura:
+\begin_inset Formula 
+\begin{equation}
+\mathscr{L}^{-1}\left[F\left(s\right)\right]=2\left|P_{i}\right|e^{-\sigma_{i}t}\cos\left(\omega_{i}t+\arg\left(P_{i}\right)\right)\label{eq:Antitrasformata-Laplace-poli-complessi-coniugati}
+\end{equation}
 
 \end_inset
 
