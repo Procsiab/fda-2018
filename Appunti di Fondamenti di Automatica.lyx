@@ -447,6 +447,13 @@ stabile
 
 \begin_layout Subsection
 Processi a tempo continuo
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Processi-a-tempo-continuo"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -11328,7 +11335,906 @@ demo
 \end_layout
 
 \begin_layout Chapter
-Risposta in frequanza
+Funzione di trasferimento
+\end_layout
+
+\begin_layout Section
+Definizione
+\end_layout
+
+\begin_layout Standard
+Richiamiamo la scrittura matriciale di un sistema LTI a tempo continuo 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Forma-standard-matrice-LTI"
+
+\end_inset
+
+; possiamo allora cercare la trasformata di Laplace 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Trasformata-Laplace"
+
+\end_inset
+
+ per ciascuna equazione del sistema:
+\begin_inset Formula 
+\[
+\begin{array}{l}
+\mathscr{L}\left[\dot{x}\left(t\right)\right]=sX\left(s\right)-x\left(0\right)=A\cdot X\left(s\right)+B\cdot U\left(s\right)\\
+\mathscr{L}\left[y\left(t\right)\right]=C\cdot X\left(s\right)+D\cdot U\left(s\right)
+\end{array}
+\]
+
+\end_inset
+
+Dalla trasformata dell'equazione di stato possiamo ricavare il valore di
+ 
+\begin_inset Formula $X\left(s\right)$
+\end_inset
+
+ invertendo nel modo seguente:
+\begin_inset Formula 
+\[
+\left(sI-A\right)\cdot X\left(s\right)-\left(sI-A\right)\cdot x\left(0\right)=B\cdot U\left(s\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+X\left(s\right)=\left(sI-A\right)^{-1}x\left(0\right)+\left(sI-A\right)^{-1}B\cdot U\left(s\right)
+\]
+
+\end_inset
+
+Considerando il termine 
+\begin_inset Formula $\left(sI-A\right)^{-1}$
+\end_inset
+
+ associato a 
+\begin_inset Formula $e^{At}$
+\end_inset
+
+, osserviamo un'analogia coi movimenti dello stato, descritti da 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Formula-di-Lagrange"
+
+\end_inset
+
+: si tratta della stessa equazione, vista nel dominio di Laplace; sostituendo
+ nella trasformata dell'equazione di uscita l'espressione ottenuta per 
+\begin_inset Formula $X\left(s\right)$
+\end_inset
+
+, otteniamo:
+\begin_inset Formula 
+\[
+Y\left(s\right)=\left[C\cdot\left(sI-A\right)^{-1}\cdot B+D\right]U\left(s\right)+C\left(sI-A\right)^{-1}x\left(0\right)
+\]
+
+\end_inset
+
+dove il coefficiente di 
+\begin_inset Formula $U\left(s\right)$
+\end_inset
+
+ è la trasformata del movimento forzato, mentre il coefficiente di 
+\begin_inset Formula $x\left(0\right)$
+\end_inset
+
+ è la trasformata del movimento libero dell'uscita; in particolare chiamiamo
+ funzione di trasferimento, e la indichiamo con 
+\begin_inset Formula $G\left(s\right)$
+\end_inset
+
+, il prodotto di convoluzione
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "3cm"
+height "1pt"
+
+\end_inset
+
+
+\series bold
+\size footnotesize
+
+\begin_inset Newline newline
+\end_inset
+
+Funzione di trasferimento
+\series default
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Trasferimento nel tempo continuo, funzione
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[0.5cm]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+G\left(s\right)=C\cdot\left(sI-A\right)^{-1}\cdot B+D\label{eq:Funzione-trasferimento}
+\end{equation}
+
+\end_inset
+
+Essa fornisce informazioni sulla dipendenza dell'uscita forzata dall'ingresso.
+\end_layout
+
+\begin_layout Standard
+Dato che la funzione di trasferimento è la componente forzata dell'uscita
+ nel dominio di Laplace, possiamo scrivere l'uscita in funzione di essa:
+\begin_inset Formula 
+\begin{equation}
+Y\left(s\right)=G\left(s\right)\cdot U\left(s\right)\label{eq:Uscita-trasferimento-Laplace}
+\end{equation}
+
+\end_inset
+
+Notiamo che, avendo 
+\begin_inset Formula $Y\left(s\right)$
+\end_inset
+
+ grado 
+\begin_inset Formula $p$
+\end_inset
+
+ e 
+\begin_inset Formula $U\left(s\right)$
+\end_inset
+
+ grado 
+\begin_inset Formula $m$
+\end_inset
+
+, allora 
+\begin_inset Formula $G\left(s\right)$
+\end_inset
+
+ avrà dimensioni 
+\begin_inset Formula $p\times m$
+\end_inset
+
+; inoltre, se abbiamo un sistema SISO, la funzione di trasferimento è scalare
+ (a 1 dimensione, essendo 
+\begin_inset Formula $p=m=1$
+\end_inset
+
+) e vale la scrittura 
+\begin_inset Formula $G\left(s\right)=Y\left(s\right)/U\left(s\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Per osservare che il significato della 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Funzione-trasferimento"
+
+\end_inset
+
+ è quello di trasformata della risposta dell'uscita a un impulso (a partire
+ da condizioni iniziali nulle), prendiamo il caso SISO con 
+\begin_inset Formula $u\left(t\right)=\text{imp}\left(t\right)$
+\end_inset
+
+: la sua trasformata vale 
+\begin_inset Formula $U\left(s\right)=1$
+\end_inset
+
+.
+ Allora l'equazione di uscita assumerà la forma 
+\begin_inset Formula $Y\left(s\right)=G\left(s\right)$
+\end_inset
+
+, che eguaglia la funzione di trasferimento con la trasformata dell'uscita.
+\end_layout
+
+\begin_layout Section
+Proprietà
+\end_layout
+
+\begin_layout Subsection
+Struttura della funzione di trasferimento
+\end_layout
+
+\begin_layout Standard
+Consideriamo di nuovo per semplicità un sistema LTI SISO; scriveremo la
+ sua funzione di trasferimento (con le rispettive dimensioni per ciascuna
+ matrice) come:
+\begin_inset Formula 
+\[
+G\left(s\right)=\overset{{\scriptscriptstyle 1\times n}}{C}\cdot\underset{{\scriptscriptstyle n\times n}}{\left(sI-A\right)^{-1}}\cdot\overset{{\scriptscriptstyle n\times1}}{B}+\underset{{\scriptscriptstyle 1\times1}}{D}
+\]
+
+\end_inset
+
+Da questa scrittura possiamo ricavare la matrice inversa 
+\begin_inset Formula $\left(sI-A\right)^{-1}$
+\end_inset
+
+ dalla Definizione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Matrice-inversa"
+
+\end_inset
+
+ come matrice dei complementi algebrici diviso il determinante; quest'ultimo
+ è un polinomio in 
+\begin_inset Formula $s$
+\end_inset
+
+ di grado al più 
+\begin_inset Formula $n$
+\end_inset
+
+ che chiamiamo 
+\begin_inset Formula $D\left(s\right)$
+\end_inset
+
+, mentre i complementi algebrici sono determinanti delle sotto-matrici dell'inve
+rsa, quindi avranno al più grado 
+\begin_inset Formula $n-1$
+\end_inset
+
+.
+ Con queste considerazioni la funzione di trasferimento può essere riscritta
+ come:
+\begin_inset Formula 
+\[
+G\left(s\right)=C\cdot\dfrac{\left[\Delta_{s_{i}}\right]}{\det\left(sI-A\right)}\cdot B+D=\dfrac{1}{D\left(s\right)}\left(C\cdot\left[\Delta_{s_{i}}\right]\cdot B\right)+D=\dfrac{N^{\prime}\left(s\right)}{D\left(s\right)}+D
+\]
+
+\end_inset
+
+dove 
+\begin_inset Formula $N^{\prime}\left(s\right)$
+\end_inset
+
+ è la combinazione lineare derivata dal prodotto della matrice dei coefficienti
+ algebrici con 
+\begin_inset Formula $C$
+\end_inset
+
+ e 
+\begin_inset Formula $B$
+\end_inset
+
+, e 
+\begin_inset Formula $D$
+\end_inset
+
+ è non nulla.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+Avevamo osservato ne 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "subsec:Processi-a-tempo-continuo"
+
+\end_inset
+
+ che un sistema si dice strettamente proprio quando l'ingresso non compare
+ nell'equazione di uscita; in un sistema LTI vale 
+\begin_inset Formula $D=0$
+\end_inset
+
+ e anche la funzione di trasferimento è strettamente propria
+\end_layout
+
+\end_inset
+
+Se vale 
+\begin_inset Formula $D=0$
+\end_inset
+
+ la funzione di trasferimento risulta razionale e 
+\emph on
+strettamente propria
+\emph default
+, dalla precedente osservazione per cui 
+\begin_inset Formula $n\left(N^{\prime}\left(s\right)\right)<n\left(D\left(s\right)\right)$
+\end_inset
+
+; se 
+\begin_inset Formula $D$
+\end_inset
+
+ è non nulla si ottiene al più una funzione 
+\emph on
+bi-propria
+\emph default
+ (numeratore e denominatore hanno stesso grado).
+\end_layout
+
+\begin_layout Standard
+Nel prodotto 
+\begin_inset Formula $C\cdot\left[\Delta_{s_{i}}\right]\cdot B$
+\end_inset
+
+ si possono verificare delle cancellazioni tra zeri e poli; formalizziamo
+ questa eventualità scrivendo (a meno di un guadagno 
+\begin_inset Formula $\rho$
+\end_inset
+
+):
+\begin_inset Formula 
+\[
+G\left(s\right)=\rho\cdot\dfrac{\prod_{i=1}^{n-1}\left(s+z_{i}\right)}{\prod_{i=1}^{n}\left(s+p_{i}\right)}
+\]
+
+\end_inset
+
+Se vi fossero cancellazioni tra termini di 
+\begin_inset Formula $N\left(s\right)$
+\end_inset
+
+ e 
+\begin_inset Formula $D\left(s\right)$
+\end_inset
+
+, posto 
+\begin_inset Formula $\nu$
+\end_inset
+
+ il grado del denominatore, varrebbe 
+\begin_inset Formula $\nu<n$
+\end_inset
+
+; in generale possiamo scrivere la funzione di trasferimento come:
+\begin_inset Formula 
+\[
+G\left(s\right)=\dfrac{N\left(s\right)}{D\left(s\right)}=\dfrac{\beta_{\nu}s^{\nu}+\beta_{\nu-1}s^{\nu-1}+\ldots+\beta_{0}}{\alpha_{\nu}s^{\nu}+\alpha_{\nu-1}s^{\nu-1}+\ldots+\alpha_{0}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+dove abbiamo 
+\begin_inset Formula $\beta_{\nu}\neq0\iff D\neq0$
+\end_inset
+
+, ovvero il grado di numeratore e denominatore è uguale solo se la matrice
+ 
+\begin_inset Formula $D$
+\end_inset
+
+ è non nulla.
+ Ricaviamo da questa scrittura gli zeri come le radici che verificano 
+\begin_inset Formula $N\left(s\right)=0$
+\end_inset
+
+ e i poli come le radici che verificano 
+\begin_inset Formula $D\left(s\right)=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Remark
+Il polinomio al denominatore della funzione di trasferimento vale 
+\begin_inset Formula $D\left(s\right)=\det\left(sI-A\right)$
+\end_inset
+
+, che è proprio il polinomio caratteristico 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Polinomio-caratteristico"
+
+\end_inset
+
+ della matrice di stato 
+\begin_inset Formula $A$
+\end_inset
+
+, se eguagliato a zero per trovarne le radici: allora i poli (le radici
+ del denominatore di 
+\begin_inset Formula $G\left(s\right)$
+\end_inset
+
+) coincidono con alcuni autovalori di 
+\begin_inset Formula $A$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Remark
+Questo è un utile strumento per misurare la stabilità di un sistema, a partire
+ dalla sua funzione di trasferimento: la stabilità asintotica di un sistema
+ infatti dipende dalla parte reale degli autovalori della sua matrice di
+ stato (Definizione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "def:Stabilità-asintotica"
+
+\end_inset
+
+); in un sistema di ordine 
+\begin_inset Formula $n$
+\end_inset
+
+, la cui funzione di trasferimento ha un denominatore di ordine 
+\begin_inset Formula $n$
+\end_inset
+
+, si ha la certezza che tutti i poli siano tutti gli autovalori della matrice
+ 
+\begin_inset Formula $A$
+\end_inset
+
+: se essi hanno parte reale negativa, il sistema risulta asintoticamente
+ stabile.
+\end_layout
+
+\begin_layout Example
+
+\emph on
+Sia dato un circuito idraulico consistente in una pompa di portata 
+\begin_inset Formula $u\left(t\right)$
+\end_inset
+
+ che, prelevando liquido da un serbatoio a capacità infinita, viene smistato
+ in due serbatoi cilindrici, con due tubi di portata 
+\begin_inset Formula $u\left(t\right)/2$
+\end_inset
+
+.
+ Il livello del liquido nei due serbatoi è indicato con 
+\begin_inset Formula $h_{1,2}\left(t\right)$
+\end_inset
+
+ e la sezione di ciascun serbatoio è indicata con 
+\begin_inset Formula $s_{1,2}$
+\end_inset
+
+.
+ Si voglia misurare il volume complessivo nei due serbatoi (
+\begin_inset Formula $y\left(t\right)=s_{1}h_{1}\left(t\right)+s_{2}h_{2}\left(t\right)$
+\end_inset
+
+).
+ 
+\begin_inset Formula $\checkmark$
+\end_inset
+
+Scrivere una funzione di trasferimento per questo sistema.
+\end_layout
+
+\begin_layout Example
+Innanzitutto scriviamo la variazione del livello di liquido nel tempo (rispetto
+ all'
+\begin_inset Formula $i$
+\end_inset
+
+-esimo serbatoio) come:
+\begin_inset Formula 
+\[
+\dot{h}_{i}\left(t\right)=\dfrac{u\left(t\right)}{2}\cdot\dfrac{1}{s_{i}}
+\]
+
+\end_inset
+
+e scegliamo come stato del sistema il livello istantaneo del liquido nei
+ due serbatoi:
+\begin_inset Formula 
+\[
+x\left(t\right)=\begin{bmatrix}x_{1}\left(t\right)\\
+x_{2}\left(t\right)
+\end{bmatrix}=\begin{bmatrix}h_{1}\left(t\right)\\
+h_{2}\left(t\right)
+\end{bmatrix}
+\]
+
+\end_inset
+
+Per calcolare la funzione di trasferimento, da qui sono possibili due strade:
+\end_layout
+
+\begin_layout Enumerate
+
+\noun on
+Formula della funzione di trasferimento
+\noun default
+
+\begin_inset Newline newline
+\end_inset
+
+Scriviamo il sistema nella forma 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Forma-standard-matrice-LTI"
+
+\end_inset
+
+:
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+Si osserva una cancellazione nella funzione di trasferimento (il grado del
+ denominatore non è 2); il sistema in tal caso si dice 
+\emph on
+non controllabile
+\emph default
+: infatti è impossibile controllare in modo differente i volumi dei due
+ serbatoi
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\dot{x}\left(t\right)=\overset{{\scriptstyle A}}{\overbrace{\begin{bmatrix}0 & 0\\
+0 & 0
+\end{bmatrix}}}\cdot x\left(t\right)+\overset{{\scriptstyle B}}{\overbrace{\begin{bmatrix}\nicefrac{1}{2s_{1}}\\
+\nicefrac{1}{2s_{2}}
+\end{bmatrix}}}\cdot u\left(t\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+y\left(t\right)=\overset{{\scriptstyle C}}{\overbrace{\begin{bmatrix}s_{1} & s_{2}\end{bmatrix}}}\cdot x\left(t\right)+\overset{{\scriptstyle D}}{\overbrace{0}}
+\]
+
+\end_inset
+
+Sostituiamo i coefficienti nella 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Funzione-trasferimento"
+
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+G\left(s\right)=\begin{bmatrix}s_{1} & s_{2}\end{bmatrix}\cdot\begin{bmatrix}s & 0\\
+0 & s
+\end{bmatrix}^{-1}\cdot\begin{bmatrix}\nicefrac{1}{2s_{1}}\\
+\nicefrac{1}{2s_{2}}
+\end{bmatrix}+0=\begin{bmatrix}s_{1} & s_{2}\end{bmatrix}\cdot\dfrac{1}{s^{2}}\cdot\begin{bmatrix}s & 0\\
+0 & s
+\end{bmatrix}\cdot\begin{bmatrix}\nicefrac{1}{2s_{1}}\\
+\nicefrac{1}{2s_{2}}
+\end{bmatrix}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+=\begin{bmatrix}s_{1} & s_{2}\end{bmatrix}\cdot\begin{bmatrix}\nicefrac{1}{s} & 0\\
+0 & \nicefrac{1}{s}
+\end{bmatrix}\cdot\begin{bmatrix}\nicefrac{1}{2s_{1}}\\
+\nicefrac{1}{2s_{2}}
+\end{bmatrix}=\begin{bmatrix}\nicefrac{s_{1}}{s} & \nicefrac{s_{2}}{s}\end{bmatrix}\cdot\begin{bmatrix}\nicefrac{1}{2s_{1}}\\
+\nicefrac{1}{2s_{2}}
+\end{bmatrix}=\dfrac{1}{2s}+\dfrac{1}{2s}=\boxed{\dfrac{1}{s}}
+\]
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\noun on
+Trasformata di Laplace delle derivate
+\noun default
+
+\begin_inset Newline newline
+\end_inset
+
+Scriviamo la trasformata di ciascuna equazione del sistema e sostituiamo
+ nella trasformata dell'equazione di uscita le trasformate delle equazioni
+ di stato:
+\begin_inset Formula 
+\[
+\mathscr{L}\left[\dot{x}_{1}\left(t\right)=\dfrac{1}{2}\cdot\dfrac{u\left(t\right)}{s_{1}}\right]\rightarrow sX_{1}\left(s\right)=\dfrac{U\left(s\right)}{2s_{1}}\rightarrow X_{1}\left(s\right)=\dfrac{U\left(s\right)}{2s\cdot s_{1}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mathscr{L}\left[\dot{x}_{2}\left(t\right)=\dfrac{1}{2}\cdot\dfrac{u\left(t\right)}{s_{2}}\right]\rightarrow sX_{2}\left(s\right)=\dfrac{U\left(s\right)}{2s_{2}}\rightarrow X_{2}\left(s\right)=\dfrac{U\left(s\right)}{2s\cdot s_{2}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mathscr{L}\left[y\left(t\right)=s_{1}x_{1}\left(t\right)+s_{2}x_{2}\left(t\right)\right]=s_{1}X_{1}\left(s\right)+s_{2}X_{2}\left(s\right)
+\]
+
+\end_inset
+
+Consideriamo nulle le condizioni iniziali degli stati, per poter ignorare
+ il termine che comparirebbe nella trasformata della derivata (tale termine
+ non influenza la funzione di trasferimento, dato che essa riguarda ingresso
+ e uscita).
+ Sostituendo nella trasformata dell'uscita otteniamo:
+\begin_inset Formula 
+\[
+Y\left(s\right)=\cancel{s_{1}}\dfrac{U\left(s\right)}{2s\cdot\cancel{s_{1}}}+\cancel{s_{2}}\dfrac{U\left(s\right)}{2s\cdot\cancel{s_{2}}}=\dfrac{1}{s}U\left(s\right)
+\]
+
+\end_inset
+
+Dal momento che il sistema è strettamente proprio e SISO possiamo ottenere
+ usando 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Uscita-trasferimento-Laplace"
+
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+G\left(s\right)=\dfrac{Y\left(s\right)}{U\left(s\right)}=\boxed{\dfrac{1}{s}}
+\]
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+demo
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+
+\emph on
+\begin_inset CommandInset label
+LatexCommand label
+name "exa:Sistema-2ord-cancellazione-polo"
+
+\end_inset
+
+Sia dato un sistema costituito da un carrello di massa 
+\begin_inset Formula $m$
+\end_inset
+
+, in movimento su un piano indefinito con coefficiente di attrito dinamico
+ 
+\begin_inset Formula $\beta$
+\end_inset
+
+, situato in posizione 
+\begin_inset Formula $p\left(t\right)$
+\end_inset
+
+ e sospinto da una forza esterna 
+\begin_inset Formula $F\left(t\right)$
+\end_inset
+
+; si voglia misurare la velocità del carrello (
+\begin_inset Formula $\dot{p}\left(t\right)$
+\end_inset
+
+).
+ 
+\begin_inset Formula $\checkmark$
+\end_inset
+
+Scrivere una funzione di trasferimento per il sistema.
+\end_layout
+
+\begin_layout Example
+L'equazione della dinamica del sistema si ottiene come:
+\begin_inset Formula 
+\[
+m\ddot{p}\left(t\right)+\beta\dot{p}\left(t\right)=F\left(t\right)
+\]
+
+\end_inset
+
+Nel contesto dell'esercizio vale 
+\begin_inset Formula $u\left(t\right)=F\left(t\right)$
+\end_inset
+
+, 
+\begin_inset Formula $y\left(t\right)=\dot{p}\left(t\right)$
+\end_inset
+
+; scegliamo inoltre gli stati del sistema come 
+\begin_inset Formula $x\left(t\right)=\begin{bmatrix}x_{1}\left(t\right)\\
+x_{2}\left(t\right)
+\end{bmatrix}=\begin{bmatrix}p\left(t\right)\\
+\dot{p}\left(t\right)
+\end{bmatrix}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+Procediamo trasformando le equazioni di stato (sempre a meno delle condizioni
+ iniziali):
+\begin_inset Formula 
+\[
+\mathscr{L}\left[\dot{p}\left(t\right)\right]=sP\left(s\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mathscr{L}\left[\ddot{p}\left(t\right)\right]=s^{2}P\left(s\right)
+\]
+
+\end_inset
+
+L'equazione della dinamica del sistema diventa 
+\begin_inset Formula $ms^{2}P\left(s\right)+\beta sP\left(s\right)=U\left(s\right)$
+\end_inset
+
+, dove possiamo sostituire 
+\begin_inset Formula $Y\left(s\right)=sP\left(s\right)$
+\end_inset
+
+ (ottenuta da 
+\begin_inset Formula $\mathscr{L}\left[y\left(t\right)\right]=\mathscr{L}\left[\dot{p}\left(t\right)\right]$
+\end_inset
+
+); avremo la seguente relazione tra 
+\begin_inset Formula $U\left(s\right)$
+\end_inset
+
+ e 
+\begin_inset Formula $Y\left(s\right)$
+\end_inset
+
+, dalla quale si ottiene l'espressione per la trasformata dell'uscita:
+\begin_inset Formula 
+\[
+msY\left(s\right)+\beta Y\left(s\right)=U\left(s\right)\rightarrow Y\left(s\right)=\dfrac{U\left(s\right)}{ms+\beta}
+\]
+
+\end_inset
+
+Ricaviamo infine la funzione di trasferimento da 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Uscita-trasferimento-Laplace"
+
+\end_inset
+
+, osservando che il sistema è SISO:
+\begin_inset Formula 
+\[
+G\left(s\right)=\dfrac{Y\left(s\right)}{U\left(s\right)}=\dfrac{1}{ms+\beta}
+\]
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+demo
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+Nell'Esempio 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:Sistema-2ord-cancellazione-polo"
+
+\end_inset
+
+ viene dato un sistema del secondo ordine, che possiede infatti due stati,
+ tuttavia la funzione di trasferimento è razionale e propria con denominatore
+ di grado 1: questo è dovuto a una cancellazione provocata dall'uscita,
+ definita come derivata di uno stato.
+ Questo caso ricade sotto il nome di 
+\emph on
+non osservabilità
+\emph default
+ e indica l'impossibilità di ricostruire l'andamento di tutti gli stati
+ a partire dall'uscita.
+\end_layout
+
+\begin_layout Remark
+Dal risultato dell'Esempio 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:Sistema-2ord-cancellazione-polo"
+
+\end_inset
+
+ possiamo dedurre che la funzione di trasferimento di un sistema completamente
+ osservabile avrà denominatore di grado massimo (pari al numero di poli);
+ sfruttando questa osservazione, deduciamo che in un sistema completamente
+ osservabile tutti i poli sono anche gli autovalori della matrice di stato:
+ basta osservare la loro parte reale per studiare l'asintotica stabilità.
+\end_layout
+
+\begin_layout Subsection
+Trasferimento di sistemi con ritardo
 \end_layout
 
 \begin_layout Chapter
@@ -15452,6 +16358,22 @@ dai risultati sulla trasformata della cosinusoide e dell'
 impulso
 \bar default
 .
+ Si noti che, anche se la trasformata di una derivata contiene le condizioni
+ iniziali (
+\begin_inset Formula $f\left(0\right)$
+\end_inset
+
+), la trasformata della cosinusoide è una funzione discontinua di prima
+ specie nell'origine (a causa dello scalino): in questo caso la condizione
+ iniziale 
+\begin_inset Formula $f\left(0\right)\rightarrow f\left(0^{-}\right)=0$
+\end_inset
+
+ col contributo dello scalino, che vale 0 per 
+\begin_inset Formula $t<0$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -16264,6 +17186,674 @@ Se esprimiamo i poli
 \begin{equation}
 \mathscr{L}^{-1}\left[F\left(s\right)\right]=2\left|P_{i}\right|e^{-\sigma_{i}t}\cos\left(\omega_{i}t+\arg\left(P_{i}\right)\right)\label{eq:Antitrasformata-Laplace-poli-complessi-coniugati}
 \end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+
+\emph on
+\begin_inset CommandInset label
+LatexCommand label
+name "exa:Anitrasformata-poli-complessi-coniugati"
+
+\end_inset
+
+Sia data la seguente trasformata di Laplace:
+\begin_inset Formula 
+\[
+F\left(s\right)=\dfrac{100}{\left(s+1\right)\left(s^{2}+4s+13\right)}
+\]
+
+\end_inset
+
+
+\begin_inset Formula $\checkmark$
+\end_inset
+
+Calcolare la sua antitrasformata.
+\end_layout
+
+\begin_layout Example
+Cominciamo calcolando i poli, ricavandoli da 
+\begin_inset Formula $D\left(s\right)=0$
+\end_inset
+
+; essi valgono rispettivamente 
+\begin_inset Formula $p_{1}=-1,\,p_{2}=-2+j3,\,p_{3}=-2-j3$
+\end_inset
+
+, con il secondo e il terzo polo le radici complesse coniugate del polinomio
+ 
+\begin_inset Formula $s^{2}+4s+13$
+\end_inset
+
+.
+ Ricaviamo ora i residuo con il 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Metodo-di-Heaviside"
+
+\end_inset
+
+, tenendo conto dei poli complessi coniugati:
+\begin_inset Formula 
+\[
+F\left(s\right)=\dfrac{P_{1}}{s-p_{1}}+\dfrac{P_{2}}{s-p_{2}}+\dfrac{P_{2}^{*}}{s-p_{2}^{*}}=\dfrac{P_{1}}{s+1}+\dfrac{P_{2}}{s+2-j3}+\dfrac{P_{2}^{*}}{s+2-j3}
+\]
+
+\end_inset
+
+Da questa scrittura applichiamo il metodo di Heaviside e otteniamo i residui
+ 
+\begin_inset Formula $P_{1,2,3}$
+\end_inset
+
+, moltiplicando a turno la trasformata per ciascun denominatore 
+\begin_inset Formula $s-p_{i}$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Example
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Enumerate
+\begin_inset Formula $\left.\dfrac{\cancel{\left(s+1\right)}\cdot100}{\cancel{\left(s+1\right)}\left(s+2-j3\right)\left(s+2+j3\right)}\right|_{s=-1}=\dfrac{100}{10}=10$
+\end_inset
+
+;
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left.\dfrac{\cancel{\left(s+2-j3\right)}\cdot100}{\left(s+1\right)\cancel{\left(s+2-j3\right)}\left(s+2+j3\right)}\right|_{s=-2+j3}=\dfrac{100}{2\left(-9-j3\right)}=\dfrac{5}{3}\left(-3+j\right)\rightarrow\dfrac{5}{3}\sqrt{10}e^{j\left(\arctan\left(-\nicefrac{1}{3}\right)+\pi\right)}$
+\end_inset
+
+;
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $P_{3}=P_{2}^{*}=\dfrac{5}{3}\left(-3-j\right)\rightarrow\dfrac{5}{3}\sqrt{10}e^{j\arctan\left(\nicefrac{1}{3}\right)}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+Possiamo usare le considerazioni fatte per i poli complessi coniugati per
+ affermare 
+\begin_inset Formula $\left(3\right)$
+\end_inset
+
+; sostituendo i residui nella scrittura della trasformata, otteniamo
+\begin_inset Formula 
+\[
+F\left(s\right)=\dfrac{10}{s+1}+\dfrac{\nicefrac{5}{3}\sqrt{10}e^{j\left(\arctan\left(-\nicefrac{1}{3}\right)+\pi\right)}}{s+2-j3}+\dfrac{\nicefrac{5}{3}\sqrt{10}e^{j\arctan\left(\nicefrac{1}{3}\right)}}{s+2+j3}
+\]
+
+\end_inset
+
+dalla quale, usando 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Antitrasformata-Laplace-poli-distinti"
+
+\end_inset
+
+, si ottiene direttamente
+\begin_inset Formula 
+\[
+\mathscr{L}^{-1}\left[F\left(s\right)\right]=\left(10e^{-t}+\nicefrac{5}{3}\sqrt{10}e^{j\left(\arctan\left(-\nicefrac{1}{3}\right)+\pi\right)+\left(-2+j3\right)t}+\nicefrac{5}{3}\sqrt{10}e^{j\arctan\left(\nicefrac{1}{3}\right)+\left(-2-j3\right)t}\right)\cdot\text{sca}\left(t\right)
+\]
+
+\end_inset
+
+e sfruttando la formula 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Antitrasformata-Laplace-poli-complessi-coniugati"
+
+\end_inset
+
+ possiamo infine scrivere
+\begin_inset Formula 
+\[
+f\left(t\right)=\left[10e^{-t}+\nicefrac{5}{3}\sqrt{10}e^{-2t}\cdot2\cos\left(3t+\arctan\left(-\nicefrac{1}{3}\right)+\pi\right)\right]\cdot\text{sca}\left(t\right)
+\]
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+demo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nel caso di 
+\series bold
+poli multipli
+\series default
+ (radici di grado superiore al primo), il metodo di Heaviside risulta inefficace
+, poiché esso perde dell'informazione sui residui associati ai poli con
+ molteplicità maggiore di 1; esprimiamo la trasformata con poli multipli
+ nella seguente scrittura:
+\begin_inset Formula 
+\[
+F\left(s\right)=\dfrac{N\left(s\right)}{\prod_{i=1}^{\mu}\left(s+p_{i}\right)^{n_{i}}}
+\]
+
+\end_inset
+
+con 
+\begin_inset Formula $\mu<n$
+\end_inset
+
+ rispettivamente il numero di poli distinti minore stretto del grado del
+ denominatore, 
+\begin_inset Formula $\exists i\in1\ldots\mu\,:\,n_{i}>1$
+\end_inset
+
+ la molteplicità del 
+\begin_inset Formula $i$
+\end_inset
+
+-esimo polo sia per qualche 
+\begin_inset Formula $i$
+\end_inset
+
+ maggiore di 1, e valga 
+\begin_inset Formula $\serie{i=1}{\mu}{n_{i}=n}$
+\end_inset
+
+ (la somma di tutte le molteplicità sia pari al grado del denominatore).
+\end_layout
+
+\begin_layout Standard
+Introduciamo il metodo di 
+\emph on
+cancellazione del denominatore
+\emph default
+, che in questa situazione permette di ottenere comunque ciascun residuo
+ a prescindere dalla molteplicità del suo polo; esso consiste nel moltiplicare
+ per 
+\begin_inset Formula $D\left(s\right)$
+\end_inset
+
+ la trasformata, in forma di somma di residui pesati sui poli, per ottenere
+ la seguente scrittura:
+\begin_inset Formula 
+\begin{equation}
+N\left(s\right)=\serie{i=1}{\mu}{\serie{h=1}{n_{i}}{\left(P_{i,h}\cdot\overset{{\scriptstyle \mu}}{\underset{{\scriptstyle i=1}}{\prod}}\left[\left(s+p_{i}\right)^{n_{i}}\cdot\dfrac{1}{\left(s+p_{i}\right)^{h}}\right]\right)}}\label{eq:Metodo-cancellazione-denominatore}
+\end{equation}
+
+\end_inset
+
+Da questa uguaglianza si ricavano 
+\begin_inset Formula $n$
+\end_inset
+
+ equazioni che, risolte in un sistema, forniscono tutti i residui anche
+ in caso di molteplicità (
+\begin_inset Formula $h>1$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Example
+
+\emph on
+Sia data la seguente trasformata di Laplace:
+\begin_inset Formula 
+\[
+F\left(s\right)=\dfrac{s+18}{s\left(s+3\right)^{2}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula $\checkmark$
+\end_inset
+
+Calcolarne l'antitrasformata.
+\end_layout
+
+\begin_layout Example
+I poli della trasformata valgono rispettivamente 
+\begin_inset Formula $p_{1}=0$
+\end_inset
+
+ con 
+\begin_inset Formula $n_{1}=1$
+\end_inset
+
+ e 
+\begin_inset Formula $p_{2}=-3$
+\end_inset
+
+ con 
+\begin_inset Formula $n_{2}=2$
+\end_inset
+
+; riscriviamo la trasformata nella combinazione di residui pesati sui poli:
+\begin_inset Formula 
+\[
+F\left(s\right)=\dfrac{P_{1,1}}{s-0}+\dfrac{P_{2,1}}{s+3}+\dfrac{P_{2,2}}{\left(s+3\right)^{2}}
+\]
+
+\end_inset
+
+Otteniamo quindi i residui nei modi seguenti:
+\end_layout
+
+\begin_layout Example
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Itemize
+\begin_inset Formula $P_{1,1}$
+\end_inset
+
+ può essere di nuovo ottenuto con 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Metodo-di-Heaviside"
+
+\end_inset
+
+, dato che ha molteplicità unitaria; in tal caso scriviamo:
+\begin_inset Formula 
+\[
+P_{1,1}=\left.\dfrac{\cancel{s}\left(s+18\right)}{\cancel{s}\left(s+3\right)^{2}}\right|_{s=0}=\dfrac{18}{9}=2
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $P_{2,2}$
+\end_inset
+
+ può anch'esso essere ottenuto con 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Metodo-di-Heaviside"
+
+\end_inset
+
+, dato che moltiplicando per il suo denominatore rimane un polo di primo
+ grado:
+\begin_inset Formula 
+\[
+P_{2,2}=\left.\dfrac{\cancel{\left(s+3\right)^{2}}\left(s+18\right)}{s\cancel{\left(s+3\right)^{2}}}\right|_{s=-3}=\dfrac{15}{-3}=-5
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $P_{2,1}$
+\end_inset
+
+ deve essere calcolato con 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Metodo-cancellazione-denominatore"
+
+\end_inset
+
+, vale a dire:
+\begin_inset Formula 
+\[
+F\left(s\right)\doteq\dfrac{s+18}{s\left(s+3\right)^{2}}=\dfrac{P_{1,1}}{s}+\dfrac{P_{2,1}}{s+3}+\dfrac{P_{2,2}}{\left(s+3\right)^{2}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+s+18=P_{1,1}\left(s+3\right)^{2}+P_{2,1}s\left(s+3\right)+P_{2,2}s
+\]
+
+\end_inset
+
+A questo punto si raccolgono le 
+\begin_inset Formula $s$
+\end_inset
+
+ per imporre delle condizioni rispetto ai residui e ai valori già noti dal
+ numeratore, a sinistra dell'uguale:
+\begin_inset Formula 
+\[
+s+18=s^{2}\left(P_{1,1}+P_{2,1}\right)+s\left(6P_{1,1}+3P_{2,1}+P_{2,2}\right)+9P_{1}
+\]
+
+\end_inset
+
+da cui si nota che 
+\begin_inset Formula $s^{2}=0$
+\end_inset
+
+ dunque 
+\begin_inset Formula $P_{1,1}+P_{2,1}=0\rightarrow P_{1,1}=-P_{2,2}$
+\end_inset
+
+ e, avendo già calcolato il valore di 
+\begin_inset Formula $P_{1.1}$
+\end_inset
+
+, segue che 
+\begin_inset Formula $P_{2,1}=-2$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+L'espressione generale della trasformata sarà quindi:
+\begin_inset Formula 
+\[
+F\left(s\right)=\dfrac{2}{s}+\dfrac{-2}{s+3}+\dfrac{-5}{\left(s+3\right)^{2}}
+\]
+
+\end_inset
+
+da cui ricaviamo l'antitrasformata
+\begin_inset Formula 
+\[
+\mathscr{L}^{-1}\left[F\left(s\right)\right]=\left(2-2e^{-3t}-5te^{-3t}\right)\cdot\text{sca}\left(t\right)=f\left(t\right)
+\]
+
+\end_inset
+
+dove il terzo addendo (
+\begin_inset Formula $-5te^{-3t}$
+\end_inset
+
+) è ottenuto come prodotto di un esponenziale per una rampa; infatti 
+\begin_inset Formula $\mathscr{L}\left[e^{\alpha t}\cdot\text{ram}\left(t\right)\right]=\dfrac{1}{\left(s-\alpha\right)^{2}}$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+demo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+Riprendiamo il testo dell'Esempio 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:Anitrasformata-poli-complessi-coniugati"
+
+\end_inset
+
+; la trasformata assegnata era
+\begin_inset Formula 
+\[
+F\left(s\right)=\dfrac{100}{\left(s+1\right)\left(s^{2}+4s+13\right)}
+\]
+
+\end_inset
+
+Riscriviamola nel modo seguente, per poter sfruttare 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Metodo-cancellazione-denominatore"
+
+\end_inset
+
+:
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+Si ricorda che il denominatore della trasformata di una sinusoide è del
+ tipo 
+\begin_inset Formula $1/\left(\left(s+\alpha\right)^{2}+\omega^{2}\right)$
+\end_inset
+
+, come in questo caso per il secondo e terzo residuo
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+F\left(s\right)=\dfrac{100}{\left(s+1\right)\left(\left(s+2\right)^{2}+9\right)}=\dfrac{P_{1}}{s+1}+\dfrac{P_{2}s+P_{3}}{\left(s+2\right)^{2}+9}
+\]
+
+\end_inset
+
+Nel secondo addendo abbiamo posto il denominatore pari a una combinazione
+ lineare di residui con grado inferiore di uno rispetto al polo associato;
+ otteniamo dunque i seguenti valori dei residui:
+\end_layout
+
+\begin_layout Example
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Itemize
+\begin_inset Formula $P_{1}$
+\end_inset
+
+ si ottiene usando il metodo di Heaviside; come nell'Esempio 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:Anitrasformata-poli-complessi-coniugati"
+
+\end_inset
+
+ (per quanto riguardava 
+\begin_inset Formula $P_{1,1}$
+\end_inset
+
+), esso vale 10;
+\end_layout
+
+\begin_layout Itemize
+Applicando 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Metodo-cancellazione-denominatore"
+
+\end_inset
+
+ otteniamo le condizioni necessarie a calcolare 
+\begin_inset Formula $P_{2}$
+\end_inset
+
+ e 
+\begin_inset Formula $P_{3}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+100=P_{1}\left(s^{2}+4s+13\right)+P_{2}s\left(s+1\right)+P_{3}\left(s+1\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+=s^{2}\left(P_{1}+P_{2}\right)+s\left(4P_{1}+P_{2}+P_{3}\right)+13P_{1}+P_{3}
+\]
+
+\end_inset
+
+Osservando che nel numeratore non compare la variabile 
+\begin_inset Formula $s$
+\end_inset
+
+, imponiamo che 
+\begin_inset Formula $100=13P_{1}+P_{3}$
+\end_inset
+
+ da cui, con la conoscenza di 
+\begin_inset Formula $P_{1}=10$
+\end_inset
+
+, otteniamo sostituendo nella precedente che 
+\begin_inset Formula $P_{2}=-30$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+Infine usiamo il coefficiente di 
+\begin_inset Formula $s^{2}$
+\end_inset
+
+ per imporre che 
+\begin_inset Formula $P_{1}+P_{2}=0\rightarrow P_{2}=-P_{1}=-10$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+La forma generale della trasformata risulta:
+\begin_inset Formula 
+\[
+F\left(s\right)=\dfrac{10}{s+1}+\dfrac{-10s-30}{\left(s+2\right)^{2}+9}\overset{{\scriptscriptstyle *}}{=}\dfrac{10}{s+1}-10\left(\dfrac{s+2}{\left(s+2\right)^{2}+9}+\nicefrac{1}{3}\dfrac{3}{\left(s+2\right)^{2}+9}\right)
+\]
+
+\end_inset
+
+dove nell'uguaglianza 
+\begin_inset Formula ${\scriptstyle *}$
+\end_inset
+
+ abbiamo raccolto e separato per ottenere dei termini simili alla trasformata
+ di funzioni trigonometriche; grazie a questo raffinamento possiamo scrivere
+ direttamente l'antitrasformata come:
+\begin_inset Formula 
+\[
+\mathscr{L}^{-1}\left[F\left(s\right)\right]=\left(10e^{-t}-10e^{-2t}\cos\left(3t\right)-\dfrac{10}{3}e^{-2t}\sin\left(3t\right)\right)\cdot\text{sca}\left(t\right)
+\]
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+demo
+\end_layout
 
 \end_inset
 

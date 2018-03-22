@@ -44,6 +44,7 @@
 \AtBeginDocument{\providecommand\exaref[1]{\ref{exa:#1}}}
 \AtBeginDocument{\providecommand\chapref[1]{\ref{chap:#1}}}
 \AtBeginDocument{\providecommand\tabref[1]{\ref{tab:#1}}}
+\AtBeginDocument{\providecommand\subsecref[1]{\ref{subsec:#1}}}
 \newcommand{\noun}[1]{\textsc{#1}}
 %% Because html converters don't know tabularnewline
 \providecommand{\tabularnewline}{\\}
@@ -234,7 +235,7 @@ Un sistema si dice allora \emph{stabile} quando, accoppiando controllore
 e processo, l'uscita è stabile nel tempo ed è vicina al valore desiderato
 anche in presenza dei disturbi.
 
-\subsection{Processi a tempo continuo}
+\subsection{Processi a tempo continuo\label{subsec:Processi-a-tempo-continuo}}
 
 Un processo a tempo continuo presenta una una uscita ($y\left(t\right)$)
 e due possibili ingressi: manipolabili ($u\left(t\right)$) e non
@@ -2923,7 +2924,287 @@ dato che $\left|z_{2}\right|>1$, l'equilibrio è instabile (vedi \tabref{Classifi
 comunque scelto $\alpha$.\demo
 \end{example}
 
-\chapter{Risposta in frequanza}
+\chapter{Funzione di trasferimento}
+
+\section{Definizione}
+
+Richiamiamo la scrittura matriciale di un sistema LTI a tempo continuo
+(\ref{eq:Forma-standard-matrice-LTI}); possiamo allora cercare la
+trasformata di Laplace (\ref{eq:Trasformata-Laplace}) per ciascuna
+equazione del sistema:
+\[
+\begin{array}{l}
+\mathscr{L}\left[\dot{x}\left(t\right)\right]=sX\left(s\right)-x\left(0\right)=A\cdot X\left(s\right)+B\cdot U\left(s\right)\\
+\mathscr{L}\left[y\left(t\right)\right]=C\cdot X\left(s\right)+D\cdot U\left(s\right)
+\end{array}
+\]
+Dalla trasformata dell'equazione di stato possiamo ricavare il valore
+di $X\left(s\right)$ invertendo nel modo seguente:
+\[
+\left(sI-A\right)\cdot X\left(s\right)-\left(sI-A\right)\cdot x\left(0\right)=B\cdot U\left(s\right)
+\]
+\[
+X\left(s\right)=\left(sI-A\right)^{-1}x\left(0\right)+\left(sI-A\right)^{-1}B\cdot U\left(s\right)
+\]
+Considerando il termine $\left(sI-A\right)^{-1}$ associato a $e^{At}$,
+osserviamo un'analogia coi movimenti dello stato, descritti da (\ref{eq:Formula-di-Lagrange}):
+si tratta della stessa equazione, vista nel dominio di Laplace; sostituendo
+nella trasformata dell'equazione di uscita l'espressione ottenuta
+per $X\left(s\right)$, otteniamo:
+\[
+Y\left(s\right)=\left[C\cdot\left(sI-A\right)^{-1}\cdot B+D\right]U\left(s\right)+C\left(sI-A\right)^{-1}x\left(0\right)
+\]
+dove il coefficiente di $U\left(s\right)$ è la trasformata del movimento
+forzato, mentre il coefficiente di $x\left(0\right)$ è la trasformata
+del movimento libero dell'uscita; in particolare chiamiamo funzione
+di trasferimento, e la indichiamo con $G\left(s\right)$, il prodotto
+di convoluzione\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Funzione di trasferimento}{\footnotesize{}\index{Trasferimento nel tempo continuo, funzione@{\footnotesize{}Trasferimento nel tempo continuo, funzione}}}}[0.5cm]
+\begin{equation}
+G\left(s\right)=C\cdot\left(sI-A\right)^{-1}\cdot B+D\label{eq:Funzione-trasferimento}
+\end{equation}
+Essa fornisce informazioni sulla dipendenza dell'uscita forzata dall'ingresso.
+
+Dato che la funzione di trasferimento è la componente forzata dell'uscita
+nel dominio di Laplace, possiamo scrivere l'uscita in funzione di
+essa:
+\begin{equation}
+Y\left(s\right)=G\left(s\right)\cdot U\left(s\right)\label{eq:Uscita-trasferimento-Laplace}
+\end{equation}
+Notiamo che, avendo $Y\left(s\right)$ grado $p$ e $U\left(s\right)$
+grado $m$, allora $G\left(s\right)$ avrà dimensioni $p\times m$;
+inoltre, se abbiamo un sistema SISO, la funzione di trasferimento
+è scalare (a 1 dimensione, essendo $p=m=1$) e vale la scrittura $G\left(s\right)=Y\left(s\right)/U\left(s\right)$.
+
+Per osservare che il significato della (\ref{eq:Funzione-trasferimento})
+è quello di trasformata della risposta dell'uscita a un impulso (a
+partire da condizioni iniziali nulle), prendiamo il caso SISO con
+$u\left(t\right)=\text{imp}\left(t\right)$: la sua trasformata vale
+$U\left(s\right)=1$. Allora l'equazione di uscita assumerà la forma
+$Y\left(s\right)=G\left(s\right)$, che eguaglia la funzione di trasferimento
+con la trasformata dell'uscita.
+
+\section{Proprietà}
+
+\subsection{Struttura della funzione di trasferimento}
+
+Consideriamo di nuovo per semplicità un sistema LTI SISO; scriveremo
+la sua funzione di trasferimento (con le rispettive dimensioni per
+ciascuna matrice) come:
+\[
+G\left(s\right)=\overset{{\scriptscriptstyle 1\times n}}{C}\cdot\underset{{\scriptscriptstyle n\times n}}{\left(sI-A\right)^{-1}}\cdot\overset{{\scriptscriptstyle n\times1}}{B}+\underset{{\scriptscriptstyle 1\times1}}{D}
+\]
+Da questa scrittura possiamo ricavare la matrice inversa $\left(sI-A\right)^{-1}$
+dalla Definizione \ref{def:Matrice-inversa} come matrice dei complementi
+algebrici diviso il determinante; quest'ultimo è un polinomio in $s$
+di grado al più $n$ che chiamiamo $D\left(s\right)$, mentre i complementi
+algebrici sono determinanti delle sotto-matrici dell'inversa, quindi
+avranno al più grado $n-1$. Con queste considerazioni la funzione
+di trasferimento può essere riscritta come:
+\[
+G\left(s\right)=C\cdot\dfrac{\left[\Delta_{s_{i}}\right]}{\det\left(sI-A\right)}\cdot B+D=\dfrac{1}{D\left(s\right)}\left(C\cdot\left[\Delta_{s_{i}}\right]\cdot B\right)+D=\dfrac{N^{\prime}\left(s\right)}{D\left(s\right)}+D
+\]
+dove $N^{\prime}\left(s\right)$ è la combinazione lineare derivata
+dal prodotto della matrice dei coefficienti algebrici con $C$ e $B$,
+e $D$ è non nulla.
+
+\marginpar{Avevamo osservato ne \subsecref{Processi-a-tempo-continuo} che un
+sistema si dice strettamente proprio quando l'ingresso non compare
+nell'equazione di uscita; in un sistema LTI vale $D=0$ e anche la
+funzione di trasferimento è strettamente propria}Se vale $D=0$ la funzione di trasferimento risulta razionale e \emph{strettamente
+propria}, dalla precedente osservazione per cui $n\left(N^{\prime}\left(s\right)\right)<n\left(D\left(s\right)\right)$;
+se $D$ è non nulla si ottiene al più una funzione \emph{bi-propria}
+(numeratore e denominatore hanno stesso grado).
+
+Nel prodotto $C\cdot\left[\Delta_{s_{i}}\right]\cdot B$ si possono
+verificare delle cancellazioni tra zeri e poli; formalizziamo questa
+eventualità scrivendo (a meno di un guadagno $\rho$):
+\[
+G\left(s\right)=\rho\cdot\dfrac{\prod_{i=1}^{n-1}\left(s+z_{i}\right)}{\prod_{i=1}^{n}\left(s+p_{i}\right)}
+\]
+Se vi fossero cancellazioni tra termini di $N\left(s\right)$ e $D\left(s\right)$,
+posto $\nu$ il grado del denominatore, varrebbe $\nu<n$; in generale
+possiamo scrivere la funzione di trasferimento come:
+\[
+G\left(s\right)=\dfrac{N\left(s\right)}{D\left(s\right)}=\dfrac{\beta_{\nu}s^{\nu}+\beta_{\nu-1}s^{\nu-1}+\ldots+\beta_{0}}{\alpha_{\nu}s^{\nu}+\alpha_{\nu-1}s^{\nu-1}+\ldots+\alpha_{0}}
+\]
+
+dove abbiamo $\beta_{\nu}\neq0\iff D\neq0$, ovvero il grado di numeratore
+e denominatore è uguale solo se la matrice $D$ è non nulla. Ricaviamo
+da questa scrittura gli zeri come le radici che verificano $N\left(s\right)=0$
+e i poli come le radici che verificano $D\left(s\right)=0$.
+\begin{rem}
+Il polinomio al denominatore della funzione di trasferimento vale
+$D\left(s\right)=\det\left(sI-A\right)$, che è proprio il polinomio
+caratteristico (\ref{eq:Polinomio-caratteristico}) della matrice
+di stato $A$, se eguagliato a zero per trovarne le radici: allora
+i poli (le radici del denominatore di $G\left(s\right)$) coincidono
+con alcuni autovalori di $A$.
+
+Questo è un utile strumento per misurare la stabilità di un sistema,
+a partire dalla sua funzione di trasferimento: la stabilità asintotica
+di un sistema infatti dipende dalla parte reale degli autovalori della
+sua matrice di stato (Definizione \ref{def:Stabilit=0000E0-asintotica});
+in un sistema di ordine $n$, la cui funzione di trasferimento ha
+un denominatore di ordine $n$, si ha la certezza che tutti i poli
+siano tutti gli autovalori della matrice $A$: se essi hanno parte
+reale negativa, il sistema risulta asintoticamente stabile.
+\end{rem}
+\begin{example}
+\emph{Sia dato un circuito idraulico consistente in una pompa di portata
+$u\left(t\right)$ che, prelevando liquido da un serbatoio a capacità
+infinita, viene smistato in due serbatoi cilindrici, con due tubi
+di portata $u\left(t\right)/2$. Il livello del liquido nei due serbatoi
+è indicato con $h_{1,2}\left(t\right)$ e la sezione di ciascun serbatoio
+è indicata con $s_{1,2}$. Si voglia misurare il volume complessivo
+nei due serbatoi ($y\left(t\right)=s_{1}h_{1}\left(t\right)+s_{2}h_{2}\left(t\right)$).
+$\checkmark$Scrivere una funzione di trasferimento per questo sistema.}
+
+Innanzitutto scriviamo la variazione del livello di liquido nel tempo
+(rispetto all'$i$-esimo serbatoio) come:
+\[
+\dot{h}_{i}\left(t\right)=\dfrac{u\left(t\right)}{2}\cdot\dfrac{1}{s_{i}}
+\]
+e scegliamo come stato del sistema il livello istantaneo del liquido
+nei due serbatoi:
+\[
+x\left(t\right)=\begin{bmatrix}x_{1}\left(t\right)\\
+x_{2}\left(t\right)
+\end{bmatrix}=\begin{bmatrix}h_{1}\left(t\right)\\
+h_{2}\left(t\right)
+\end{bmatrix}
+\]
+Per calcolare la funzione di trasferimento, da qui sono possibili
+due strade:
+\end{example}
+\begin{enumerate}
+\item \noun{Formula della funzione di trasferimento}\\
+Scriviamo il sistema nella forma (\ref{eq:Forma-standard-matrice-LTI}):\marginpar{Si osserva una cancellazione nella funzione di trasferimento (il grado
+del denominatore non è 2); il sistema in tal caso si dice \emph{non
+controllabile}: infatti è impossibile controllare in modo differente
+i volumi dei due serbatoi}
+\[
+\dot{x}\left(t\right)=\overset{{\scriptstyle A}}{\overbrace{\begin{bmatrix}0 & 0\\
+0 & 0
+\end{bmatrix}}}\cdot x\left(t\right)+\overset{{\scriptstyle B}}{\overbrace{\begin{bmatrix}\nicefrac{1}{2s_{1}}\\
+\nicefrac{1}{2s_{2}}
+\end{bmatrix}}}\cdot u\left(t\right)
+\]
+\[
+y\left(t\right)=\overset{{\scriptstyle C}}{\overbrace{\begin{bmatrix}s_{1} & s_{2}\end{bmatrix}}}\cdot x\left(t\right)+\overset{{\scriptstyle D}}{\overbrace{0}}
+\]
+Sostituiamo i coefficienti nella (\ref{eq:Funzione-trasferimento}):
+\[
+G\left(s\right)=\begin{bmatrix}s_{1} & s_{2}\end{bmatrix}\cdot\begin{bmatrix}s & 0\\
+0 & s
+\end{bmatrix}^{-1}\cdot\begin{bmatrix}\nicefrac{1}{2s_{1}}\\
+\nicefrac{1}{2s_{2}}
+\end{bmatrix}+0=\begin{bmatrix}s_{1} & s_{2}\end{bmatrix}\cdot\dfrac{1}{s^{2}}\cdot\begin{bmatrix}s & 0\\
+0 & s
+\end{bmatrix}\cdot\begin{bmatrix}\nicefrac{1}{2s_{1}}\\
+\nicefrac{1}{2s_{2}}
+\end{bmatrix}
+\]
+\[
+=\begin{bmatrix}s_{1} & s_{2}\end{bmatrix}\cdot\begin{bmatrix}\nicefrac{1}{s} & 0\\
+0 & \nicefrac{1}{s}
+\end{bmatrix}\cdot\begin{bmatrix}\nicefrac{1}{2s_{1}}\\
+\nicefrac{1}{2s_{2}}
+\end{bmatrix}=\begin{bmatrix}\nicefrac{s_{1}}{s} & \nicefrac{s_{2}}{s}\end{bmatrix}\cdot\begin{bmatrix}\nicefrac{1}{2s_{1}}\\
+\nicefrac{1}{2s_{2}}
+\end{bmatrix}=\dfrac{1}{2s}+\dfrac{1}{2s}=\boxed{\dfrac{1}{s}}
+\]
+\bigskip{}
+\item \noun{Trasformata di Laplace delle derivate}\\
+Scriviamo la trasformata di ciascuna equazione del sistema e sostituiamo
+nella trasformata dell'equazione di uscita le trasformate delle equazioni
+di stato:
+\[
+\mathscr{L}\left[\dot{x}_{1}\left(t\right)=\dfrac{1}{2}\cdot\dfrac{u\left(t\right)}{s_{1}}\right]\rightarrow sX_{1}\left(s\right)=\dfrac{U\left(s\right)}{2s_{1}}\rightarrow X_{1}\left(s\right)=\dfrac{U\left(s\right)}{2s\cdot s_{1}}
+\]
+\[
+\mathscr{L}\left[\dot{x}_{2}\left(t\right)=\dfrac{1}{2}\cdot\dfrac{u\left(t\right)}{s_{2}}\right]\rightarrow sX_{2}\left(s\right)=\dfrac{U\left(s\right)}{2s_{2}}\rightarrow X_{2}\left(s\right)=\dfrac{U\left(s\right)}{2s\cdot s_{2}}
+\]
+\[
+\mathscr{L}\left[y\left(t\right)=s_{1}x_{1}\left(t\right)+s_{2}x_{2}\left(t\right)\right]=s_{1}X_{1}\left(s\right)+s_{2}X_{2}\left(s\right)
+\]
+Consideriamo nulle le condizioni iniziali degli stati, per poter ignorare
+il termine che comparirebbe nella trasformata della derivata (tale
+termine non influenza la funzione di trasferimento, dato che essa
+riguarda ingresso e uscita). Sostituendo nella trasformata dell'uscita
+otteniamo:
+\[
+Y\left(s\right)=\cancel{s_{1}}\dfrac{U\left(s\right)}{2s\cdot\cancel{s_{1}}}+\cancel{s_{2}}\dfrac{U\left(s\right)}{2s\cdot\cancel{s_{2}}}=\dfrac{1}{s}U\left(s\right)
+\]
+Dal momento che il sistema è strettamente proprio e SISO possiamo
+ottenere usando (\ref{eq:Uscita-trasferimento-Laplace}):
+\[
+G\left(s\right)=\dfrac{Y\left(s\right)}{U\left(s\right)}=\boxed{\dfrac{1}{s}}
+\]
+\demo\bigskip{}
+\end{enumerate}
+\begin{example}
+\emph{\label{exa:Sistema-2ord-cancellazione-polo}Sia dato un sistema
+costituito da un carrello di massa $m$, in movimento su un piano
+indefinito con coefficiente di attrito dinamico $\beta$, situato
+in posizione $p\left(t\right)$ e sospinto da una forza esterna $F\left(t\right)$;
+si voglia misurare la velocità del carrello ($\dot{p}\left(t\right)$).
+$\checkmark$Scrivere una funzione di trasferimento per il sistema.}
+
+L'equazione della dinamica del sistema si ottiene come:
+\[
+m\ddot{p}\left(t\right)+\beta\dot{p}\left(t\right)=F\left(t\right)
+\]
+Nel contesto dell'esercizio vale $u\left(t\right)=F\left(t\right)$,
+$y\left(t\right)=\dot{p}\left(t\right)$; scegliamo inoltre gli stati
+del sistema come $x\left(t\right)=\begin{bmatrix}x_{1}\left(t\right)\\
+x_{2}\left(t\right)
+\end{bmatrix}=\begin{bmatrix}p\left(t\right)\\
+\dot{p}\left(t\right)
+\end{bmatrix}$.
+
+Procediamo trasformando le equazioni di stato (sempre a meno delle
+condizioni iniziali):
+\[
+\mathscr{L}\left[\dot{p}\left(t\right)\right]=sP\left(s\right)
+\]
+\[
+\mathscr{L}\left[\ddot{p}\left(t\right)\right]=s^{2}P\left(s\right)
+\]
+L'equazione della dinamica del sistema diventa $ms^{2}P\left(s\right)+\beta sP\left(s\right)=U\left(s\right)$,
+dove possiamo sostituire $Y\left(s\right)=sP\left(s\right)$ (ottenuta
+da $\mathscr{L}\left[y\left(t\right)\right]=\mathscr{L}\left[\dot{p}\left(t\right)\right]$);
+avremo la seguente relazione tra $U\left(s\right)$ e $Y\left(s\right)$,
+dalla quale si ottiene l'espressione per la trasformata dell'uscita:
+\[
+msY\left(s\right)+\beta Y\left(s\right)=U\left(s\right)\rightarrow Y\left(s\right)=\dfrac{U\left(s\right)}{ms+\beta}
+\]
+Ricaviamo infine la funzione di trasferimento da (\ref{eq:Uscita-trasferimento-Laplace}),
+osservando che il sistema è SISO:
+\[
+G\left(s\right)=\dfrac{Y\left(s\right)}{U\left(s\right)}=\dfrac{1}{ms+\beta}
+\]
+\demo\bigskip{}
+\end{example}
+\begin{rem}
+Nell'Esempio \ref{exa:Sistema-2ord-cancellazione-polo} viene dato
+un sistema del secondo ordine, che possiede infatti due stati, tuttavia
+la funzione di trasferimento è razionale e propria con denominatore
+di grado 1: questo è dovuto a una cancellazione provocata dall'uscita,
+definita come derivata di uno stato. Questo caso ricade sotto il nome
+di \emph{non osservabilità} e indica l'impossibilità di ricostruire
+l'andamento di tutti gli stati a partire dall'uscita.
+
+Dal risultato dell'Esempio \ref{exa:Sistema-2ord-cancellazione-polo}
+possiamo dedurre che la funzione di trasferimento di un sistema completamente
+osservabile avrà denominatore di grado massimo (pari al numero di
+poli); sfruttando questa osservazione, deduciamo che in un sistema
+completamente osservabile tutti i poli sono anche gli autovalori della
+matrice di stato: basta osservare la loro parte reale per studiare
+l'asintotica stabilità.
+\end{rem}
+
+\subsection{Trasferimento di sistemi con ritardo}
 
 \appendix
 
@@ -3986,6 +4267,11 @@ da cui la trasformata della sinusoide vale:
 \overset{{\scriptscriptstyle \left(\mathrm{IV}\right)}}{=}-\dfrac{1}{\omega}\left(\dfrac{s^{2}}{s^{2}+\omega^{2}}-1\right)=\dfrac{\omega}{s^{2}+\omega^{2}}
 \]
 dai risultati sulla trasformata della cosinusoide e dell'\uline{impulso}.
+Si noti che, anche se la trasformata di una derivata contiene le condizioni
+iniziali ($f\left(0\right)$), la trasformata della cosinusoide è
+una funzione discontinua di prima specie nell'origine (a causa dello
+scalino): in questo caso la condizione iniziale $f\left(0\right)\rightarrow f\left(0^{-}\right)=0$
+col contributo dello scalino, che vale 0 per $t<0$.
 
 La \textbf{rampa} è un ingresso canonico definito a partire dallo
 scalino come $\text{ram}\left(t\right)=t\cdot\text{sca}\left(t\right)$;
@@ -4167,6 +4453,186 @@ con calcoli analoghi al caso di poli distinti, otteniamo la scrittura:
 \begin{equation}
 \mathscr{L}^{-1}\left[F\left(s\right)\right]=2\left|P_{i}\right|e^{-\sigma_{i}t}\cos\left(\omega_{i}t+\arg\left(P_{i}\right)\right)\label{eq:Antitrasformata-Laplace-poli-complessi-coniugati}
 \end{equation}
+\begin{example}
+\emph{\label{exa:Anitrasformata-poli-complessi-coniugati}Sia data
+la seguente trasformata di Laplace:
+\[
+F\left(s\right)=\dfrac{100}{\left(s+1\right)\left(s^{2}+4s+13\right)}
+\]
+$\checkmark$Calcolare la sua antitrasformata.}
 
+Cominciamo calcolando i poli, ricavandoli da $D\left(s\right)=0$;
+essi valgono rispettivamente $p_{1}=-1,\,p_{2}=-2+j3,\,p_{3}=-2-j3$,
+con il secondo e il terzo polo le radici complesse coniugate del polinomio
+$s^{2}+4s+13$. Ricaviamo ora i residuo con il (\ref{eq:Metodo-di-Heaviside}),
+tenendo conto dei poli complessi coniugati:
+\[
+F\left(s\right)=\dfrac{P_{1}}{s-p_{1}}+\dfrac{P_{2}}{s-p_{2}}+\dfrac{P_{2}^{*}}{s-p_{2}^{*}}=\dfrac{P_{1}}{s+1}+\dfrac{P_{2}}{s+2-j3}+\dfrac{P_{2}^{*}}{s+2-j3}
+\]
+Da questa scrittura applichiamo il metodo di Heaviside e otteniamo
+i residui $P_{1,2,3}$, moltiplicando a turno la trasformata per ciascun
+denominatore $s-p_{i}$:
+
+\begin{minipage}[t]{1\columnwidth}%
+\begin{enumerate}
+\item $\left.\dfrac{\cancel{\left(s+1\right)}\cdot100}{\cancel{\left(s+1\right)}\left(s+2-j3\right)\left(s+2+j3\right)}\right|_{s=-1}=\dfrac{100}{10}=10$;\bigskip{}
+\item $\left.\dfrac{\cancel{\left(s+2-j3\right)}\cdot100}{\left(s+1\right)\cancel{\left(s+2-j3\right)}\left(s+2+j3\right)}\right|_{s=-2+j3}=\dfrac{100}{2\left(-9-j3\right)}=\dfrac{5}{3}\left(-3+j\right)\rightarrow\dfrac{5}{3}\sqrt{10}e^{j\left(\arctan\left(-\nicefrac{1}{3}\right)+\pi\right)}$;\bigskip{}
+\item $P_{3}=P_{2}^{*}=\dfrac{5}{3}\left(-3-j\right)\rightarrow\dfrac{5}{3}\sqrt{10}e^{j\arctan\left(\nicefrac{1}{3}\right)}$.
+\end{enumerate}
+%
+\end{minipage}
+
+Possiamo usare le considerazioni fatte per i poli complessi coniugati
+per affermare $\left(3\right)$; sostituendo i residui nella scrittura
+della trasformata, otteniamo
+\[
+F\left(s\right)=\dfrac{10}{s+1}+\dfrac{\nicefrac{5}{3}\sqrt{10}e^{j\left(\arctan\left(-\nicefrac{1}{3}\right)+\pi\right)}}{s+2-j3}+\dfrac{\nicefrac{5}{3}\sqrt{10}e^{j\arctan\left(\nicefrac{1}{3}\right)}}{s+2+j3}
+\]
+dalla quale, usando (\ref{eq:Antitrasformata-Laplace-poli-distinti}),
+si ottiene direttamente
+\[
+\mathscr{L}^{-1}\left[F\left(s\right)\right]=\left(10e^{-t}+\nicefrac{5}{3}\sqrt{10}e^{j\left(\arctan\left(-\nicefrac{1}{3}\right)+\pi\right)+\left(-2+j3\right)t}+\nicefrac{5}{3}\sqrt{10}e^{j\arctan\left(\nicefrac{1}{3}\right)+\left(-2-j3\right)t}\right)\cdot\text{sca}\left(t\right)
+\]
+e sfruttando la formula (\ref{eq:Antitrasformata-Laplace-poli-complessi-coniugati})
+possiamo infine scrivere
+\[
+f\left(t\right)=\left[10e^{-t}+\nicefrac{5}{3}\sqrt{10}e^{-2t}\cdot2\cos\left(3t+\arctan\left(-\nicefrac{1}{3}\right)+\pi\right)\right]\cdot\text{sca}\left(t\right)
+\]
+\demo
+\end{example}
+Nel caso di \textbf{poli multipli} (radici di grado superiore al primo),
+il metodo di Heaviside risulta inefficace, poiché esso perde dell'informazione
+sui residui associati ai poli con molteplicità maggiore di 1; esprimiamo
+la trasformata con poli multipli nella seguente scrittura:
+\[
+F\left(s\right)=\dfrac{N\left(s\right)}{\prod_{i=1}^{\mu}\left(s+p_{i}\right)^{n_{i}}}
+\]
+con $\mu<n$ rispettivamente il numero di poli distinti minore stretto
+del grado del denominatore, $\exists i\in1\ldots\mu\,:\,n_{i}>1$
+la molteplicità del $i$-esimo polo sia per qualche $i$ maggiore
+di 1, e valga $\serie{i=1}{\mu}{n_{i}=n}$ (la somma di tutte le molteplicità
+sia pari al grado del denominatore).
+
+Introduciamo il metodo di \emph{cancellazione del denominatore}, che
+in questa situazione permette di ottenere comunque ciascun residuo
+a prescindere dalla molteplicità del suo polo; esso consiste nel moltiplicare
+per $D\left(s\right)$ la trasformata, in forma di somma di residui
+pesati sui poli, per ottenere la seguente scrittura:
+\begin{equation}
+N\left(s\right)=\serie{i=1}{\mu}{\serie{h=1}{n_{i}}{\left(P_{i,h}\cdot\overset{{\scriptstyle \mu}}{\underset{{\scriptstyle i=1}}{\prod}}\left[\left(s+p_{i}\right)^{n_{i}}\cdot\dfrac{1}{\left(s+p_{i}\right)^{h}}\right]\right)}}\label{eq:Metodo-cancellazione-denominatore}
+\end{equation}
+Da questa uguaglianza si ricavano $n$ equazioni che, risolte in un
+sistema, forniscono tutti i residui anche in caso di molteplicità
+($h>1$).
+\begin{example}
+\emph{Sia data la seguente trasformata di Laplace:
+\[
+F\left(s\right)=\dfrac{s+18}{s\left(s+3\right)^{2}}
+\]
+$\checkmark$Calcolarne l'antitrasformata.}
+
+I poli della trasformata valgono rispettivamente $p_{1}=0$ con $n_{1}=1$
+e $p_{2}=-3$ con $n_{2}=2$; riscriviamo la trasformata nella combinazione
+di residui pesati sui poli:
+\[
+F\left(s\right)=\dfrac{P_{1,1}}{s-0}+\dfrac{P_{2,1}}{s+3}+\dfrac{P_{2,2}}{\left(s+3\right)^{2}}
+\]
+Otteniamo quindi i residui nei modi seguenti:
+
+\begin{minipage}[t]{1\columnwidth}%
+\begin{itemize}
+\item $P_{1,1}$ può essere di nuovo ottenuto con (\ref{eq:Metodo-di-Heaviside}),
+dato che ha molteplicità unitaria; in tal caso scriviamo:
+\[
+P_{1,1}=\left.\dfrac{\cancel{s}\left(s+18\right)}{\cancel{s}\left(s+3\right)^{2}}\right|_{s=0}=\dfrac{18}{9}=2
+\]
+\item $P_{2,2}$ può anch'esso essere ottenuto con (\ref{eq:Metodo-di-Heaviside}),
+dato che moltiplicando per il suo denominatore rimane un polo di primo
+grado:
+\[
+P_{2,2}=\left.\dfrac{\cancel{\left(s+3\right)^{2}}\left(s+18\right)}{s\cancel{\left(s+3\right)^{2}}}\right|_{s=-3}=\dfrac{15}{-3}=-5
+\]
+\item $P_{2,1}$ deve essere calcolato con (\ref{eq:Metodo-cancellazione-denominatore}),
+vale a dire:
+\[
+F\left(s\right)\doteq\dfrac{s+18}{s\left(s+3\right)^{2}}=\dfrac{P_{1,1}}{s}+\dfrac{P_{2,1}}{s+3}+\dfrac{P_{2,2}}{\left(s+3\right)^{2}}
+\]
+\[
+s+18=P_{1,1}\left(s+3\right)^{2}+P_{2,1}s\left(s+3\right)+P_{2,2}s
+\]
+A questo punto si raccolgono le $s$ per imporre delle condizioni
+rispetto ai residui e ai valori già noti dal numeratore, a sinistra
+dell'uguale:
+\[
+s+18=s^{2}\left(P_{1,1}+P_{2,1}\right)+s\left(6P_{1,1}+3P_{2,1}+P_{2,2}\right)+9P_{1}
+\]
+da cui si nota che $s^{2}=0$ dunque $P_{1,1}+P_{2,1}=0\rightarrow P_{1,1}=-P_{2,2}$
+e, avendo già calcolato il valore di $P_{1.1}$, segue che $P_{2,1}=-2$.
+\end{itemize}
+%
+\end{minipage}
+
+L'espressione generale della trasformata sarà quindi:
+\[
+F\left(s\right)=\dfrac{2}{s}+\dfrac{-2}{s+3}+\dfrac{-5}{\left(s+3\right)^{2}}
+\]
+da cui ricaviamo l'antitrasformata
+\[
+\mathscr{L}^{-1}\left[F\left(s\right)\right]=\left(2-2e^{-3t}-5te^{-3t}\right)\cdot\text{sca}\left(t\right)=f\left(t\right)
+\]
+dove il terzo addendo ($-5te^{-3t}$) è ottenuto come prodotto di
+un esponenziale per una rampa; infatti $\mathscr{L}\left[e^{\alpha t}\cdot\text{ram}\left(t\right)\right]=\dfrac{1}{\left(s-\alpha\right)^{2}}$.\demo
+\end{example}
+%
+\begin{example}
+Riprendiamo il testo dell'Esempio \ref{exa:Anitrasformata-poli-complessi-coniugati};
+la trasformata assegnata era
+\[
+F\left(s\right)=\dfrac{100}{\left(s+1\right)\left(s^{2}+4s+13\right)}
+\]
+Riscriviamola nel modo seguente, per poter sfruttare (\ref{eq:Metodo-cancellazione-denominatore}):\marginpar{Si ricorda che il denominatore della trasformata di una sinusoide
+è del tipo $1/\left(\left(s+\alpha\right)^{2}+\omega^{2}\right)$,
+come in questo caso per il secondo e terzo residuo}
+\[
+F\left(s\right)=\dfrac{100}{\left(s+1\right)\left(\left(s+2\right)^{2}+9\right)}=\dfrac{P_{1}}{s+1}+\dfrac{P_{2}s+P_{3}}{\left(s+2\right)^{2}+9}
+\]
+Nel secondo addendo abbiamo posto il denominatore pari a una combinazione
+lineare di residui con grado inferiore di uno rispetto al polo associato;
+otteniamo dunque i seguenti valori dei residui:
+
+\begin{minipage}[t]{1\columnwidth}%
+\begin{itemize}
+\item $P_{1}$ si ottiene usando il metodo di Heaviside; come nell'Esempio
+\ref{exa:Anitrasformata-poli-complessi-coniugati} (per quanto riguardava
+$P_{1,1}$), esso vale 10;
+\item Applicando (\ref{eq:Metodo-cancellazione-denominatore}) otteniamo
+le condizioni necessarie a calcolare $P_{2}$ e $P_{3}$:
+\[
+100=P_{1}\left(s^{2}+4s+13\right)+P_{2}s\left(s+1\right)+P_{3}\left(s+1\right)
+\]
+\[
+=s^{2}\left(P_{1}+P_{2}\right)+s\left(4P_{1}+P_{2}+P_{3}\right)+13P_{1}+P_{3}
+\]
+Osservando che nel numeratore non compare la variabile $s$, imponiamo
+che $100=13P_{1}+P_{3}$ da cui, con la conoscenza di $P_{1}=10$,
+otteniamo sostituendo nella precedente che $P_{2}=-30$.\\
+Infine usiamo il coefficiente di $s^{2}$ per imporre che $P_{1}+P_{2}=0\rightarrow P_{2}=-P_{1}=-10$.
+\end{itemize}
+%
+\end{minipage}
+
+La forma generale della trasformata risulta:
+\[
+F\left(s\right)=\dfrac{10}{s+1}+\dfrac{-10s-30}{\left(s+2\right)^{2}+9}\overset{{\scriptscriptstyle *}}{=}\dfrac{10}{s+1}-10\left(\dfrac{s+2}{\left(s+2\right)^{2}+9}+\nicefrac{1}{3}\dfrac{3}{\left(s+2\right)^{2}+9}\right)
+\]
+dove nell'uguaglianza ${\scriptstyle *}$ abbiamo raccolto e separato
+per ottenere dei termini simili alla trasformata di funzioni trigonometriche;
+grazie a questo raffinamento possiamo scrivere direttamente l'antitrasformata
+come:
+\[
+\mathscr{L}^{-1}\left[F\left(s\right)\right]=\left(10e^{-t}-10e^{-2t}\cos\left(3t\right)-\dfrac{10}{3}e^{-2t}\sin\left(3t\right)\right)\cdot\text{sca}\left(t\right)
+\]
+\demo
+\end{example}
 \renewcommand{\chaptername}{}\printindex{}
 \end{document}
