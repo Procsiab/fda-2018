@@ -2986,7 +2986,7 @@ con la trasformata dell'uscita.
 
 \section{Proprietà}
 
-\subsection{Struttura della funzione di trasferimento}
+\subsection{Struttura della funzione e cancellazioni}
 
 Consideriamo di nuovo per semplicità un sistema LTI SISO; scriveremo
 la sua funzione di trasferimento (con le rispettive dimensioni per
@@ -3034,12 +3034,12 @@ e denominatore è uguale solo se la matrice $D$ è non nulla. Ricaviamo
 da questa scrittura gli zeri come le radici che verificano $N\left(s\right)=0$
 e i poli come le radici che verificano $D\left(s\right)=0$.
 \begin{rem}
-Il polinomio al denominatore della funzione di trasferimento vale
-$D\left(s\right)=\det\left(sI-A\right)$, che è proprio il polinomio
-caratteristico (\ref{eq:Polinomio-caratteristico}) della matrice
-di stato $A$, se eguagliato a zero per trovarne le radici: allora
-i poli (le radici del denominatore di $G\left(s\right)$) coincidono
-con alcuni autovalori di $A$.
+\label{oss:Stabilit=0000E0-segno-poli}Il polinomio al denominatore
+della funzione di trasferimento vale $D\left(s\right)=\det\left(sI-A\right)$,
+che è proprio il polinomio caratteristico (\ref{eq:Polinomio-caratteristico})
+della matrice di stato $A$, se eguagliato a zero per trovarne le
+radici: allora i poli (le radici del denominatore di $G\left(s\right)$)
+coincidono con alcuni autovalori di $A$.
 
 Questo è un utile strumento per misurare la stabilità di un sistema,
 a partire dalla sua funzione di trasferimento: la stabilità asintotica
@@ -3204,7 +3204,103 @@ matrice di stato: basta osservare la loro parte reale per studiare
 l'asintotica stabilità.
 \end{rem}
 
-\subsection{Trasferimento di sistemi con ritardo}
+\subsection{Trasferimento nei sistemi con ritardo}
+
+Consideriamo un sistema dinamico con ritardo in ingresso $\tau_{u}>0$,
+tale che l'ingresso traslato nel tempo valga $u\left(t\right)=u^{\prime}\left(t-\tau_{u}\right)$;
+la sua trasformata sarà del tipo esponenziale (a causa della traslazione):
+\[
+\mathscr{L}\left[u\left(t\right)\right]=U\left(s\right)=\mathscr{L}\left[u^{\prime}\left(t-\tau_{u}\right)\right]=e^{-\tau_{u}s}U^{\prime}\left(s\right)
+\]
+A questo punto ricaviamo anche la trasformata dell'uscita usando (\ref{eq:Uscita-trasferimento-Laplace}):
+\[
+Y\left(s\right)=G\left(s\right)U\left(s\right)=G\left(s\right)\cdot e^{-\tau_{u}s}U^{\prime}\left(s\right)
+\]
+Notiamo che un ritardo comporta la presenza di un coefficiente esponenziale,
+legato alla traslazione, nella funzione di trasferimento.
+
+Lo stesso ragionamento vale per un ritardo $\tau_{y}>0$ in uscita,
+dove possiamo sostituire l'uscita $Y\left(s\right)$ con quella appena
+ottenuta:
+\[
+Y^{\prime}\left(s\right)=e^{-\tau_{y}s}Y\left(s\right)=e^{-\tau_{y}s}e^{-\tau_{u}s}G\left(s\right)U^{\prime}\left(s\right)=e^{-\left(\tau_{u+\tau_{y}}\right)s}G\left(s\right)U^{\prime}\left(s\right)
+\]
+Il termine esponenziale dipende nuovamente dai ritardi, tuttavia la
+funzione di trasferimento non è più razionale a coefficienti reali
+(l'esponenziale ha comunque la variabile $s$ all'esponente).
+\begin{rem}
+\marginpar{Questo non vale per i sistemi retro-azionati (saranno discussi successivamente)}Dato
+un sistema LTI con ritardo, supponendo di non avere cancellazioni
+nella funzione di trasferimento e tutti i poli abbiano parte reale
+negativa, ovvero il sistema sarà asintoticamente stabile (dall'Osservazione
+\ref{oss:Stabilit=0000E0-segno-poli}); si dimostra che, se il sistema
+interno è asintoticamente stabile, eventuali ritardi su ingressi e
+uscite non influenzano questa sua proprietà.
+\end{rem}
+
+\section{Forme fattorizzate}
+
+Per comodità si usa rappresentare le funzioni di trasferimento, in
+un sistema SISO, secondo delle scritture standard fattorizzate:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Forma di Bode}{\footnotesize{}\index{Bode, forma di@{\footnotesize{}Bode, forma di}}}}[2.7cm]
+\begin{equation}
+G\left(s\right)=\dfrac{\rho\cdot\prod_{i}\left(s+z_{i}\right)\prod_{i}\left(s^{2}+2\zeta_{i}\alpha_{n_{i}}s+\alpha_{n_{i}}^{2}\right)}{s^{g}\cdot\prod_{i}\left(s+p_{i}\right)\prod_{i}\left(s^{2}+2\xi_{i}\omega_{n_{i}}s+\omega_{n_{i}}^{2}\right)}\label{eq:Forma-fattorizzata-standard}
+\end{equation}
+\begin{equation}
+G\left(s\right)=\dfrac{\mu\cdot\prod_{i}\left(1+\tau_{i}s\right)\prod_{i}\left(1+\dfrac{2\zeta_{i}s}{\alpha_{n_{i}}}+\dfrac{s^{2}}{\alpha_{n_{i}}^{2}}\right)}{s^{g}\cdot\prod_{i}\left(1+T_{i}s\right)\prod_{i}\left(1+\dfrac{2\xi_{i}s}{\omega_{n_{i}}}+\dfrac{s^{2}}{\omega_{n_{i}}^{2}}\right)}\label{eq:Forma-di-Bode}
+\end{equation}
+I termini delle forme fattorizzate hanno il seguente significato:
+\begin{itemize}
+\item la \emph{costante di trasferimento} $\rho$ è uno scalare, esso è
+il valore iniziale del trasferimento; si ottiene applicando (\ref{eq:Teorema-valore-iniziale})
+con ingresso un impulso. Risulta che
+\[
+\lm s{+\infty}{sG\left(s\right)}=s\rho\cdot s^{\left(n_{{\scriptscriptstyle \text{N}}}-n_{{\scriptscriptstyle \text{D}}}\right)}
+\]
+e si osserva che per una funzione di trasferimento in forma standard
+vale $n_{{\scriptscriptstyle \text{N}}}-n_{{\scriptscriptstyle \text{D}}}=-1$,
+in tal caso il limite appena calcolato tende a $\rho$;
+\item il \emph{tipo} del sistema $g$ è un intero che indica il numero di
+poli ($g>0$) o zeri ($g<0$) nell'origine; se $g$ è positivo si
+dice che il sistema presenta degli integratori ideali, poiché l'uscita
+sarà la trasformata dell'integrale dell'ingresso; se $g$ è negativo
+si dice che il sistema presenta dei derivatori ideali, poiché l'uscita
+sarà la trasformata della derivata dell'ingresso;
+\item i poli $p_{i}$ e gli zeri $z_{i}$ cambiati di segno sono scalari
+non nulli;
+\item le \emph{pulsazioni naturali} $\omega_{i}$ e $\alpha_{i}$ delle
+coppie di poli e zeri complessi coniugati sono scalari strettamente
+maggiori di 0;
+\item gli \emph{smorzamenti} $\xi_{i}$ e $\zeta_{i}$ delle coppie di poli
+e zeri complessi coniugati sono scalari con modulo strettamente minore
+di 1 (se in modulo fossero maggiori di 1 non si otterrebbero radici
+complesse coniugate dalla seconda produttoria);
+\item il \emph{guadagno statico} $\mu$ è uno scalare, esso è il valore
+finale del trasferimento; si ottiene applicando (\ref{eq:Teorema-valore-finale})
+con uno segnale costante in ingresso, ad esempio lo scalino $\overline{u}\cdot\text{sca}\left(t\right)$
+di ampiezza $\overline{u}$, la cui trasformata è $\overline{u}/s$.
+In assenza di poli o zeri nell'origine ($g=0$) risulta che
+\[
+\lm s0{sG\left(s\right)\cdot\dfrac{\overline{u}}{s}}=\overline{u}\cdot\mu
+\]
+dove $\overline{u}$ è l'ampiezza dello scalino in ingresso. Otteniamo
+in effetti il rapporto tra l'ampiezza dello scalino in ingresso (ingresso
+di equilibrio) e l'ampiezza dell'uscita (di equilibrio);
+\item le \emph{costanti di tempo} $T_{i}=1/p_{i}$ dei poli e $\tau_{i}=1/z_{i}$
+degli zeri sono scalari.
+\end{itemize}
+Se rappresentiamo i poli complessi coniugati sul piano di Gauss, appaiono
+evidenti alcune proprietà riguardo pulsazioni naturali e smorzamenti:
+
+preso un polo stabile, esso avrà (risolvendo le radici) $\Re\left(p\right)=-\xi\omega_{n},\,\Im\left(p\right)=\pm\omega_{n}\sqrt{1-\xi^{2}}$;
+in particolare $\omega_{n}$è la distanza dall'origine di ciascun
+polo della coppia coniugata, mentre il coseno dell'angolo $\theta$
+che questa distanza forma con l'asse reale è pari a $\xi$, dunque
+vale $\theta=\arccos\left(\xi\right)$.
+
+Da queste osservazioni segue che, a parità di pulsazione $\omega_{n}$
+lo smorzamento $\xi$ è inversamente proporzionale all'angolo $\theta$
+tra le distanze dei due complessi coniugati.
 
 \appendix
 

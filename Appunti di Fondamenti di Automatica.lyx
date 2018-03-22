@@ -11567,7 +11567,7 @@ Proprietà
 \end_layout
 
 \begin_layout Subsection
-Struttura della funzione di trasferimento
+Struttura della funzione e cancellazioni
 \end_layout
 
 \begin_layout Standard
@@ -11753,6 +11753,12 @@ dove abbiamo
 \end_layout
 
 \begin_layout Remark
+\begin_inset CommandInset label
+LatexCommand label
+name "oss:Stabilità-segno-poli"
+
+\end_inset
+
 Il polinomio al denominatore della funzione di trasferimento vale 
 \begin_inset Formula $D\left(s\right)=\det\left(sI-A\right)$
 \end_inset
@@ -12234,7 +12240,395 @@ reference "exa:Sistema-2ord-cancellazione-polo"
 \end_layout
 
 \begin_layout Subsection
-Trasferimento di sistemi con ritardo
+Trasferimento nei sistemi con ritardo
+\end_layout
+
+\begin_layout Standard
+Consideriamo un sistema dinamico con ritardo in ingresso 
+\begin_inset Formula $\tau_{u}>0$
+\end_inset
+
+, tale che l'ingresso traslato nel tempo valga 
+\begin_inset Formula $u\left(t\right)=u^{\prime}\left(t-\tau_{u}\right)$
+\end_inset
+
+; la sua trasformata sarà del tipo esponenziale (a causa della traslazione):
+\begin_inset Formula 
+\[
+\mathscr{L}\left[u\left(t\right)\right]=U\left(s\right)=\mathscr{L}\left[u^{\prime}\left(t-\tau_{u}\right)\right]=e^{-\tau_{u}s}U^{\prime}\left(s\right)
+\]
+
+\end_inset
+
+A questo punto ricaviamo anche la trasformata dell'uscita usando 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Uscita-trasferimento-Laplace"
+
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+Y\left(s\right)=G\left(s\right)U\left(s\right)=G\left(s\right)\cdot e^{-\tau_{u}s}U^{\prime}\left(s\right)
+\]
+
+\end_inset
+
+Notiamo che un ritardo comporta la presenza di un coefficiente esponenziale,
+ legato alla traslazione, nella funzione di trasferimento.
+\end_layout
+
+\begin_layout Standard
+Lo stesso ragionamento vale per un ritardo 
+\begin_inset Formula $\tau_{y}>0$
+\end_inset
+
+ in uscita, dove possiamo sostituire l'uscita 
+\begin_inset Formula $Y\left(s\right)$
+\end_inset
+
+ con quella appena ottenuta:
+\begin_inset Formula 
+\[
+Y^{\prime}\left(s\right)=e^{-\tau_{y}s}Y\left(s\right)=e^{-\tau_{y}s}e^{-\tau_{u}s}G\left(s\right)U^{\prime}\left(s\right)=e^{-\left(\tau_{u+\tau_{y}}\right)s}G\left(s\right)U^{\prime}\left(s\right)
+\]
+
+\end_inset
+
+Il termine esponenziale dipende nuovamente dai ritardi, tuttavia la funzione
+ di trasferimento non è più razionale a coefficienti reali (l'esponenziale
+ ha comunque la variabile 
+\begin_inset Formula $s$
+\end_inset
+
+ all'esponente).
+\end_layout
+
+\begin_layout Remark
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+Questo non vale per i sistemi retro-azionati (saranno discussi successivamente)
+\end_layout
+
+\end_inset
+
+Dato un sistema LTI con ritardo, supponendo di non avere cancellazioni nella
+ funzione di trasferimento e tutti i poli abbiano parte reale negativa,
+ ovvero il sistema sarà asintoticamente stabile (dall'Osservazione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "oss:Stabilità-segno-poli"
+
+\end_inset
+
+); si dimostra che, se il sistema interno è asintoticamente stabile, eventuali
+ ritardi su ingressi e uscite non influenzano questa sua proprietà.
+\end_layout
+
+\begin_layout Section
+Forme fattorizzate
+\end_layout
+
+\begin_layout Standard
+Per comodità si usa rappresentare le funzioni di trasferimento, in un sistema
+ SISO, secondo delle scritture standard fattorizzate:
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "3cm"
+height "1pt"
+
+\end_inset
+
+
+\series bold
+\size footnotesize
+
+\begin_inset Newline newline
+\end_inset
+
+Forma di Bode
+\series default
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Bode, forma di
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[2.7cm]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+G\left(s\right)=\dfrac{\rho\cdot\prod_{i}\left(s+z_{i}\right)\prod_{i}\left(s^{2}+2\zeta_{i}\alpha_{n_{i}}s+\alpha_{n_{i}}^{2}\right)}{s^{g}\cdot\prod_{i}\left(s+p_{i}\right)\prod_{i}\left(s^{2}+2\xi_{i}\omega_{n_{i}}s+\omega_{n_{i}}^{2}\right)}\label{eq:Forma-fattorizzata-standard}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+G\left(s\right)=\dfrac{\mu\cdot\prod_{i}\left(1+\tau_{i}s\right)\prod_{i}\left(1+\dfrac{2\zeta_{i}s}{\alpha_{n_{i}}}+\dfrac{s^{2}}{\alpha_{n_{i}}^{2}}\right)}{s^{g}\cdot\prod_{i}\left(1+T_{i}s\right)\prod_{i}\left(1+\dfrac{2\xi_{i}s}{\omega_{n_{i}}}+\dfrac{s^{2}}{\omega_{n_{i}}^{2}}\right)}\label{eq:Forma-di-Bode}
+\end{equation}
+
+\end_inset
+
+I termini delle forme fattorizzate hanno il seguente significato:
+\end_layout
+
+\begin_layout Itemize
+la 
+\emph on
+costante di trasferimento
+\emph default
+ 
+\begin_inset Formula $\rho$
+\end_inset
+
+ è uno scalare, esso è il valore iniziale del trasferimento; si ottiene
+ applicando 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Teorema-valore-iniziale"
+
+\end_inset
+
+ con ingresso un impulso.
+ Risulta che
+\begin_inset Formula 
+\[
+\lm s{+\infty}{sG\left(s\right)}=s\rho\cdot s^{\left(n_{{\scriptscriptstyle \text{N}}}-n_{{\scriptscriptstyle \text{D}}}\right)}
+\]
+
+\end_inset
+
+e si osserva che per una funzione di trasferimento in forma standard vale
+ 
+\begin_inset Formula $n_{{\scriptscriptstyle \text{N}}}-n_{{\scriptscriptstyle \text{D}}}=-1$
+\end_inset
+
+, in tal caso il limite appena calcolato tende a 
+\begin_inset Formula $\rho$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+il 
+\emph on
+tipo
+\emph default
+ del sistema 
+\begin_inset Formula $g$
+\end_inset
+
+ è un intero che indica il numero di poli (
+\begin_inset Formula $g>0$
+\end_inset
+
+) o zeri (
+\begin_inset Formula $g<0$
+\end_inset
+
+) nell'origine; se 
+\begin_inset Formula $g$
+\end_inset
+
+ è positivo si dice che il sistema presenta degli integratori ideali, poiché
+ l'uscita sarà la trasformata dell'integrale dell'ingresso; se 
+\begin_inset Formula $g$
+\end_inset
+
+ è negativo si dice che il sistema presenta dei derivatori ideali, poiché
+ l'uscita sarà la trasformata della derivata dell'ingresso;
+\end_layout
+
+\begin_layout Itemize
+i poli 
+\begin_inset Formula $p_{i}$
+\end_inset
+
+ e gli zeri 
+\begin_inset Formula $z_{i}$
+\end_inset
+
+ cambiati di segno sono scalari non nulli;
+\end_layout
+
+\begin_layout Itemize
+le 
+\emph on
+pulsazioni naturali
+\emph default
+ 
+\begin_inset Formula $\omega_{i}$
+\end_inset
+
+ e 
+\begin_inset Formula $\alpha_{i}$
+\end_inset
+
+ delle coppie di poli e zeri complessi coniugati sono scalari strettamente
+ maggiori di 0;
+\end_layout
+
+\begin_layout Itemize
+gli 
+\emph on
+smorzamenti
+\emph default
+ 
+\begin_inset Formula $\xi_{i}$
+\end_inset
+
+ e 
+\begin_inset Formula $\zeta_{i}$
+\end_inset
+
+ delle coppie di poli e zeri complessi coniugati sono scalari con modulo
+ strettamente minore di 1 (se in modulo fossero maggiori di 1 non si otterrebber
+o radici complesse coniugate dalla seconda produttoria);
+\end_layout
+
+\begin_layout Itemize
+il 
+\emph on
+guadagno statico
+\emph default
+ 
+\begin_inset Formula $\mu$
+\end_inset
+
+ è uno scalare, esso è il valore finale del trasferimento; si ottiene applicando
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Teorema-valore-finale"
+
+\end_inset
+
+ con uno segnale costante in ingresso, ad esempio lo scalino 
+\begin_inset Formula $\overline{u}\cdot\text{sca}\left(t\right)$
+\end_inset
+
+ di ampiezza 
+\begin_inset Formula $\overline{u}$
+\end_inset
+
+, la cui trasformata è 
+\begin_inset Formula $\overline{u}/s$
+\end_inset
+
+.
+ In assenza di poli o zeri nell'origine (
+\begin_inset Formula $g=0$
+\end_inset
+
+) risulta che
+\begin_inset Formula 
+\[
+\lm s0{sG\left(s\right)\cdot\dfrac{\overline{u}}{s}}=\overline{u}\cdot\mu
+\]
+
+\end_inset
+
+dove 
+\begin_inset Formula $\overline{u}$
+\end_inset
+
+ è l'ampiezza dello scalino in ingresso.
+ Otteniamo in effetti il rapporto tra l'ampiezza dello scalino in ingresso
+ (ingresso di equilibrio) e l'ampiezza dell'uscita (di equilibrio);
+\end_layout
+
+\begin_layout Itemize
+le 
+\emph on
+costanti di tempo
+\emph default
+ 
+\begin_inset Formula $T_{i}=1/p_{i}$
+\end_inset
+
+ dei poli e 
+\begin_inset Formula $\tau_{i}=1/z_{i}$
+\end_inset
+
+ degli zeri sono scalari.
+\end_layout
+
+\begin_layout Standard
+Se rappresentiamo i poli complessi coniugati sul piano di Gauss, appaiono
+ evidenti alcune proprietà riguardo pulsazioni naturali e smorzamenti:
+\end_layout
+
+\begin_layout Standard
+preso un polo stabile, esso avrà (risolvendo le radici) 
+\begin_inset Formula $\Re\left(p\right)=-\xi\omega_{n},\,\Im\left(p\right)=\pm\omega_{n}\sqrt{1-\xi^{2}}$
+\end_inset
+
+; in particolare 
+\begin_inset Formula $\omega_{n}$
+\end_inset
+
+è la distanza dall'origine di ciascun polo della coppia coniugata, mentre
+ il coseno dell'angolo 
+\begin_inset Formula $\theta$
+\end_inset
+
+ che questa distanza forma con l'asse reale è pari a 
+\begin_inset Formula $\xi$
+\end_inset
+
+, dunque vale 
+\begin_inset Formula $\theta=\arccos\left(\xi\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Da queste osservazioni segue che, a parità di pulsazione 
+\begin_inset Formula $\omega_{n}$
+\end_inset
+
+ lo smorzamento 
+\begin_inset Formula $\xi$
+\end_inset
+
+ è inversamente proporzionale all'angolo 
+\begin_inset Formula $\theta$
+\end_inset
+
+ tra le distanze dei due complessi coniugati.
 \end_layout
 
 \begin_layout Chapter
