@@ -14,6 +14,7 @@
 \usepackage{marginnote}
 \usepackage{imakeidx}
 \usepackage{amsmath}
+\usepackage{wrapfig}
 
 \renewcommand{\marginpar}[1]{\marginnote{\footnotesize #1}}
 \setlength\marginparsep{0.3cm}
@@ -56,7 +57,7 @@ theorems-ams-chap-bytype
 \output_sync 0
 \bibtex_command default
 \index_command default
-\float_placement H
+\float_placement !h
 \paperfontsize 12
 \spacing single
 \use_hyperref true
@@ -5184,9 +5185,6 @@ demo
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -8371,58 +8369,32 @@ demo
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "60text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
 
 \begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename Illustrazioni/2_1-1 Modello di sistema con discretizzazione.pdf
-	display false
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Modello di sistema con discretizzazione
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Modello-sistema-discretizzazione"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 Nel prossimo esempio viene proposta la discretizzazione di un sistema a
  tempo continuo, procedimento che riguarda l'acquisizione di dati dal mondo
  fisico; introduciamo prima il concetto di interazione tra un sistema a
  tempo continuo e uno a tempo discreto.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Plain Layout
 \begin_inset Marginal
 status collapsed
 
@@ -8453,7 +8425,76 @@ reference "fig:Modello-sistema-discretizzazione"
 \begin_inset Formula $y\left(t\right)$
 \end_inset
 
-; essa è acquisita a intervalli di tempo regolari da un dispositivo chiamato
+;
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "40text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/2_1-1 Modello di sistema con discretizzazione.pdf
+	display false
+	scale 66
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Modello di sistema con discretizzazione}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Modello-sistema-discretizzazione"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+essa è acquisita a intervalli di tempo regolari da un dispositivo chiamato
  scheda di acquisizione dati (DAQ), che riporta l'uscita 
 \begin_inset Formula $y\left(k\right)$
 \end_inset
@@ -8475,49 +8516,32 @@ reference "fig:Modello-sistema-discretizzazione"
 filtro di mantenimento
 \emph default
 .
+\begin_inset VSpace bigskip
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status collapsed
 
-\begin_layout Plain Layout
-\noindent
-\align center
-\begin_inset Graphics
-	filename Illustrazioni/2_1-2 Modello di circuito per elettrovalvola.pdf
-	display false
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Circuito RL, modello per elettrovalvola
-\end_layout
-
-\end_inset
-
-
-\begin_inset CommandInset label
-LatexCommand label
-name "fig:Modello-elettrovalvola"
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
+\emph on
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "60text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
 
 \begin_layout Example
 \begin_inset CommandInset label
@@ -8536,7 +8560,7 @@ Sia dato un circuito formato da una maglia con induttore e resistore in
 scrivere un modello che abbia la corrente nella maglia come uscita.
 \end_layout
 
-\begin_layout Example
+\begin_layout Plain Layout
 Chiamiamo la corrente che scorre nella maglia 
 \begin_inset Formula $i\left(t\right)$
 \end_inset
@@ -8560,6 +8584,62 @@ Chiamiamo la corrente che scorre nella maglia
 \end_inset
 
 , come richiesto dall'esempio e scriviamo:
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "40text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/2_1-2 Modello di circuito per elettrovalvola.pdf
+	display false
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Modello di circuito per elettrovalvola}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\emph default
+
 \begin_inset Formula 
 \[
 \dot{x}\left(t\right)=-\dfrac{R}{L}x\left(t\right)+\dfrac{1}{L}u\left(t\right)
@@ -8593,7 +8673,7 @@ passo
 ).
 \end_layout
 
-\begin_layout Example
+\begin_layout Standard
 Facciamo un'approssimazione a tempo discreto del sistema, considerando per
  ogni passo di campionamento lo stato del sistema in quell'istante, in cui
  iniettiamo un ingresso costante fino all'istante successivo; potremo così
@@ -9851,7 +9931,15 @@ demo
 
 \begin_layout Standard
 Possiamo distinguere gli andamenti dei modi nel tempo discreto studiando
- il modulo degli autovalori e considerando se sono complessi coniugati:
+ il modulo degli autovalori e considerando se sono complessi coniugati (vedi
+ 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "tab:Classificazione-movimenti-discreti"
+
+\end_inset
+
+)
 \end_layout
 
 \begin_layout Standard
@@ -10178,55 +10266,6 @@ name "tab:Classificazione-movimenti-discreti"
 \end_layout
 
 \begin_layout Standard
-\begin_inset Marginal
-status collapsed
-
-\begin_layout Plain Layout
-\begin_inset CommandInset line
-LatexCommand rule
-offset "0.5ex"
-width "3cm"
-height "1pt"
-
-\end_inset
-
-
-\series bold
-\size footnotesize
-
-\begin_inset Newline newline
-\end_inset
-
-Movimenti nel tempo discreto
-\series default
-
-\begin_inset Index idx
-status open
-
-\begin_layout Plain Layout
-
-\size footnotesize
-tempo discreto, movimenti
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-[-5.5cm]
-\end_layout
-
-\end_inset
-
 Per concludere il discorso sui modi nel tempo discreto, esaminiamo il caso
  di una matrice di stato non diagonalizzabile: cercheremo di scriverla nella
  forma di Jordan 
@@ -10295,6 +10334,56 @@ reference "tab:Classificazione-movimenti-discreti"
 
 \begin_layout Section
 Stabilità del sistema
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "3cm"
+height "1pt"
+
+\end_inset
+
+
+\series bold
+\size footnotesize
+
+\begin_inset Newline newline
+\end_inset
+
+Movimenti nel tempo discreto
+\series default
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+
+\size footnotesize
+tempo discreto, movimenti
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[-9cm]
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -11055,7 +11144,7 @@ status open
 
 \begin_layout Plain Layout
 
-[1.8cm]
+[1.5cm]
 \end_layout
 
 \end_inset
@@ -11814,6 +11903,27 @@ reference "def:Stabilità-asintotica"
  stabile.
 \end_layout
 
+\begin_layout Standard
+
+\emph on
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "50text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
 \begin_layout Example
 
 \emph on
@@ -11848,7 +11958,62 @@ Sia dato un circuito idraulico consistente in una pompa di portata
 Scrivere una funzione di trasferimento per questo sistema.
 \end_layout
 
-\begin_layout Example
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "50text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/3_2-3 Circuito idraulico serbatoi.pdf
+	display false
+	scale 70
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Circuito idraulico con serbatoi}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Innanzitutto scriviamo la variazione del livello di liquido nel tempo (rispetto
  all'
 \begin_inset Formula $i$
@@ -11878,7 +12043,7 @@ h_{2}\left(t\right)
 Per calcolare la funzione di trasferimento, da qui sono possibili due strade:
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Standard
 
 \noun on
 Formula della funzione di trasferimento
@@ -11974,7 +12139,7 @@ G\left(s\right)=\begin{bmatrix}s_{1} & s_{2}\end{bmatrix}\cdot\begin{bmatrix}s &
 
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout Standard
 
 \noun on
 Trasformata di Laplace delle derivate
@@ -12038,6 +12203,9 @@ G\left(s\right)=\dfrac{Y\left(s\right)}{U\left(s\right)}=\boxed{\dfrac{1}{s}}
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
 \begin_inset ERT
 status open
 
@@ -12051,11 +12219,30 @@ demo
 \end_inset
 
 
-\begin_inset VSpace bigskip
+\begin_inset VSpace defskip
 \end_inset
 
 
 \end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "65text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
 
 \begin_layout Example
 
@@ -12095,7 +12282,62 @@ Sia dato un sistema costituito da un carrello di massa
 Scrivere una funzione di trasferimento per il sistema.
 \end_layout
 
-\begin_layout Example
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "40text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/3_2-2 Carrello su piano attrito.pdf
+	display false
+	scale 150
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Carrello su piano con attrito}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 L'equazione della dinamica del sistema si ottiene come:
 \begin_inset Formula 
 \[
@@ -12123,7 +12365,7 @@ x_{2}\left(t\right)
 .
 \end_layout
 
-\begin_layout Example
+\begin_layout Standard
 Procediamo trasformando le equazioni di stato (sempre a meno delle condizioni
  iniziali):
 \begin_inset Formula 
@@ -12379,7 +12621,7 @@ status open
 
 \begin_layout Plain Layout
 
-[2.7cm]
+[3cm]
 \end_layout
 
 \end_inset
@@ -12555,7 +12797,7 @@ reference "eq:Teorema-valore-finale"
 ) risulta che
 \begin_inset Formula 
 \[
-\lm s0{sG\left(s\right)\cdot\dfrac{\overline{u}}{s}}=\overline{u}\cdot\mu
+\lm s0{\,s\cdot G\left(s\right)\cdot\dfrac{\overline{u}}{s}}=\overline{u}\cdot\mu
 \]
 
 \end_inset
@@ -12592,14 +12834,18 @@ Se rappresentiamo i poli complessi coniugati sul piano di Gauss, appaiono
 
 \begin_layout Standard
 preso un polo stabile, esso avrà (risolvendo le radici) 
-\begin_inset Formula $\Re\left(p\right)=-\xi\omega_{n},\,\Im\left(p\right)=\pm\omega_{n}\sqrt{1-\xi^{2}}$
+\begin_inset Formula $\Re\left(p\right)=-\xi\omega_{n}$
+\end_inset
+
+, 
+\begin_inset Formula $\Im\left(p\right)=\pm\omega_{n}\sqrt{1-\xi^{2}}$
 \end_inset
 
 ; in particolare 
 \begin_inset Formula $\omega_{n}$
 \end_inset
 
-è la distanza dall'origine di ciascun polo della coppia coniugata, mentre
+ è la distanza dall'origine di ciascun polo della coppia coniugata, mentre
  il coseno dell'angolo 
 \begin_inset Formula $\theta$
 \end_inset
@@ -12629,6 +12875,816 @@ Da queste osservazioni segue che, a parità di pulsazione
 \end_inset
 
  tra le distanze dei due complessi coniugati.
+\end_layout
+
+\begin_layout Section
+Risposta forzata allo scalino
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "65text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+Consideriamo un sistema dinamico nel dominio del tempo, espresso in forma
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Forma-standard-matrice-LTI"
+
+\end_inset
+
+; se abbiamo un ingresso generico 
+\begin_inset Formula $u\left(t\right)$
+\end_inset
+
+ è necessario risolvere un'equazione differenziale ordinaria per ottenere
+ l'uscita 
+\begin_inset Formula $y\left(t\right)$
+\end_inset
+
+.
+ Questi risultati sono riassunti in 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Formula-di-Lagrange"
+
+\end_inset
+
+, che tuttavia non risulta comodo da calcolare; si adotta la seguente strategia:
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "45text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/3_4-1 Equivalenza risposta dominio tempo con Laplace.pdf
+	display false
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Equivalenza risposta nel dominio del tempo con dominio
+ di Laplace}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Trasformiamo il segale di ingresso nel dominio di Laplace;
+\end_layout
+
+\begin_layout Enumerate
+Calcoliamo la funzione di trasferimento;
+\end_layout
+
+\begin_layout Enumerate
+Otteniamo l'uscita nel dominio di Laplace;
+\end_layout
+
+\begin_layout Enumerate
+Antitrasformiamo l'uscita per ottenerla nel dominio del tempo.
+\end_layout
+
+\begin_layout Standard
+Useremo l'ingresso canonico a scalino 
+\begin_inset Formula $u\left(t\right)=\overline{u}\cdot\text{sca}\left(t\right)$
+\end_inset
+
+ poiché si tratta di un segnale facilmente realizzabile nella pratica in
+ un sistema dinamico; in particolare ci poniamo nelle condizioni di uno
+ scalino unitario in sistemi asintoticamente stabili del I e del II ordine,
+ quindi sistemi con al più due poli (con parte reale negativa) e al più
+ uno zero, e nessun polo è nell'origine.
+\end_layout
+
+\begin_layout Subsection
+Valori iniziale e finale della risposta
+\end_layout
+
+\begin_layout Standard
+Calcoliamo il valore finale della risposta allo scalino a partire dalla
+ trasformata di Laplace dell'uscita, usando la funzione di trasferimento:
+\begin_inset Formula 
+\[
+Y\left(s\right)=G\left(s\right)\cdot\dfrac{1}{s}
+\]
+
+\end_inset
+
+Applicando 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Teorema-valore-finale"
+
+\end_inset
+
+ otteniamo (scrivendo nella 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Forma-di-Bode"
+
+\end_inset
+
+ la funzione di trasferimento):
+\begin_inset Formula 
+\[
+\lm s0{\,s\cdot Y\left(s\right)}=\lm s0{\,s\cdot G\left(s\right)\cdot\dfrac{1}{s}}=\mu
+\]
+
+\end_inset
+
+Questo vale in assenza di zeri nell'origine, altrimenti si avrebbe un 
+\begin_inset Formula $s^{g+1}$
+\end_inset
+
+ al numeratore che annulla l'uscita (con uno zero nell'origine 
+\begin_inset Formula $g=-1$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Calcoliamo il valore iniziale come l'uscita al tempo 
+\begin_inset Formula $t=0$
+\end_inset
+
+, usando 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Teorema-valore-iniziale"
+
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+y\left(t\rightarrow0\right)=\lm s{+\infty}{s\cdot Y\left(s\right)}=\lm s{+\infty}{G\left(s\right)}
+\]
+
+\end_inset
+
+Questo limite vale 
+\begin_inset Formula $\rho$
+\end_inset
+
+ se numeratore e denominatore sono di pari grado, altrimenti si annulla.
+\end_layout
+
+\begin_layout Standard
+Possiamo calcolare anche il valore iniziale delle derivate dell'uscita nello
+ stesso modo: supponendo che la funzione di trasferimento sia strettamente
+ propria, allora il valore iniziale della derivata prima vale
+\begin_inset Formula 
+\[
+\lm s{+\infty}{s\cdot\mathscr{L}\left[\dot{y}\left(t\right)\right]}=\lm s{+\infty}{s\left[s\cdot Y\left(s\right)\right]}=\lm s{+\infty}{s^{\cancel{2}}\cdot G\left(s\right)\cdot\dfrac{1}{\cancel{s}}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Osserviamo che l'annullamento del limite dipende dal grado relativo (il
+ numeratore è moltiplicato per 
+\begin_inset Formula $s$
+\end_inset
+
+): in generale il valore delle prime 
+\begin_inset Formula $n_{{\scriptscriptstyle \text{D}}}-n_{{\scriptscriptstyle \text{N}}}-1$
+\end_inset
+
+ derivate è nullo, mentre la successiva vale 
+\begin_inset Formula $\rho$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Nel caso di sistemi del I e II ordine c'è un transitorio per la risposta
+ allo scalino, tipicamente una oscillazione convergente; elenchiamo alcuni
+ termini per la nomenclatura e l'analisi di questa risposta:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "50text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Itemize
+Il valore di stato stazionario 
+\begin_inset Formula $y_{\infty}=\mu\cdot\overline{u}$
+\end_inset
+
+ è il prodotto del guadagno statico per l'ampiezza dello scalino;
+\end_layout
+
+\begin_layout Itemize
+Il massimo valore che raggiunge l'uscita nel transitorio è 
+\begin_inset Formula $y_{{\scriptscriptstyle \text{MAX}}}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+La 
+\emph on
+sovraelongazione
+\emph default
+ 
+\begin_inset Formula $s_{\%}=\dfrac{y_{{\scriptscriptstyle \text{MAX}}}-y_{\infty}}{y_{\infty}}$
+\end_inset
+
+ è la distanza del picco dal valore asintotico;
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "50text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/3_4-2 Risposta allo scalino ordine elevato.pdf
+	display false
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Risposta allo scalino per sistemi di ordine elevato}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Il 
+\emph on
+tempo di assestamento
+\emph default
+ 
+\begin_inset Formula $T_{a,\varepsilon}$
+\end_inset
+
+ è l'istante dopo il quale l'uscita è definitivamente compresa in 
+\begin_inset Formula $\left(y_{\infty}+\varepsilon,\,y_{\infty}-\varepsilon\right)$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+Il 
+\emph on
+tempo di salita
+\emph default
+ 
+\begin_inset Formula $T_{s}=y^{-1}\left(0.9y_{\infty}\right)-y^{-1}\left(0.1y_{\infty}\right)$
+\end_inset
+
+ è l'intervallo di tempo nel quale l'uscita raggiunge il valore stazionario
+ 
+\begin_inset Formula $y_{\infty}$
+\end_inset
+
+ per la prima volta approssimato tra il 
+\begin_inset Formula $10\%$
+\end_inset
+
+ e il 
+\begin_inset Formula $90\%$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Risposta per sistemi del I ordine
+\end_layout
+
+\begin_layout Standard
+Consideriamo solo il caso di sistemi strettamente propri (una funzione di
+ trasferimento bi-propria genera una risposta dell'uscita allo scalino poco
+ interessante): il numeratore della funzione di trasferimento di un sistema
+ del genere sarà una costante e il denominatore avrà un singolo polo; l'uscita
+ si ottiene da 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Uscita-trasferimento-Laplace"
+
+\end_inset
+
+:
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+Si tenga a mente che la trasformata dello scalino vale 
+\begin_inset Formula $\mathscr{L}\left[\text{sca}\left(t\right)\right]=1/s$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+G\left(s\right)=\dfrac{\mu}{1+Ts},\qquad Y\left(s\right)=\dfrac{\mu}{s\left(1+Ts\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Per calcolare l'uscita nel dominio del tempo, antitrasformiamo l'espressione
+ appena ottenuta; per prima cosa usiamo 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Metodo-cancellazione-denominatore"
+
+\end_inset
+
+ per scrivere in modo adeguato tale espressione:
+\begin_inset Formula 
+\[
+Y\left(s\right)=\dfrac{a}{s}+\dfrac{b}{1+Ts}\rightarrow a+aTs+bs=\mu\rightarrow s\left(aT+b\right)+a=\mu
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{cases}
+a=\mu\\
+b=-aT=-\mu T
+\end{cases}
+\]
+
+\end_inset
+
+Sostituendo nell'espressione dell'uscita possiamo calcolare la sua antitrasforma
+ta:
+\begin_inset Formula 
+\[
+Y\left(s\right)=\dfrac{\mu}{s}-\dfrac{\mu T}{1+Ts}=\mu\left(\dfrac{1}{s}-\dfrac{1}{s+\nicefrac{1}{T}}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mathscr{L}^{-1}\left[Y\left(s\right)\right]=\mu\left(1-e^{-\nicefrac{t}{T}}\right)\text{sca}\left(t\right)
+\]
+
+\end_inset
+
+Le caratteristiche di questa risposta sono le seguenti:
+\end_layout
+
+\begin_layout Itemize
+Valore iniziale nullo al tempo zero (
+\begin_inset Formula $y\left(0\right)=0$
+\end_inset
+
+);
+\end_layout
+
+\begin_layout Itemize
+Valore iniziale della derivata prima pari a 
+\begin_inset Formula $\lm s{+\infty}{s^{2}\dfrac{\mu}{1+Ts}\cdot\dfrac{1}{s}}=\dfrac{\mu}{T}$
+\end_inset
+
+ (pendenza nella tangente nell'origine);
+\end_layout
+
+\begin_layout Itemize
+Tempo di assestamento in 
+\begin_inset Formula $\varepsilon$
+\end_inset
+
+ pari a 
+\begin_inset Formula $T_{a,\varepsilon}\Rightarrow y\left(T_{a,\varepsilon}\right)=\mu\left(1-\varepsilon\right)=\mu\left(1-e^{-\nicefrac{T_{a}}{T}}\right)\text{sca}\left(t\right)\rightarrow e^{-\nicefrac{T_{a}}{T}}=\varepsilon\rightarrow\boxed{T_{a}=-T\ln\left(\varepsilon\right)}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/3_4-3 Risposta del I ord scalino.pdf
+	display false
+	scale 140
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Risposta allo scalino in sistemi del I ordine
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Risposta per sistemi del II ordine
+\end_layout
+
+\begin_layout Standard
+Scriviamo in forma 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Forma-di-Bode"
+
+\end_inset
+
+ la funzione di trasferimento, supponendo che 
+\begin_inset Formula $T_{1}>T_{2}$
+\end_inset
+
+; la funzione di uscita si ricava moltiplicando direttamente per la trasformata
+ dell'ingresso (
+\begin_inset Formula $1/s$
+\end_inset
+
+):
+\begin_inset Formula 
+\[
+G\left(s\right)=\dfrac{\mu}{\left(1+T_{1}s\right)\left(1+T_{2}s\right)},\qquad Y\left(s\right)=\dfrac{\mu}{s\left(1+T_{1}s\right)\left(1+T_{2}s\right)}
+\]
+
+\end_inset
+
+Utilizziamo il metodo di Heaviside 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Metodo-di-Heaviside"
+
+\end_inset
+
+ per ottenere l'antitrasformata dell'uscita:
+\begin_inset Formula 
+\[
+Y\left(s\right)=\dfrac{a}{s}+\dfrac{b}{1+T_{1}s}+\dfrac{c}{1+T_{2}s}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{array}{l}
+a=\left.\dfrac{\mu}{\left(1+T_{1}s\right)\left(1+T_{2}s\right)}\right|_{s=0}=\mu\\
+b=\left.\dfrac{\mu}{s\left(1+T_{2}s\right)}\right|_{s=-\nicefrac{1}{T_{1}}}=\dfrac{\mu}{{\scriptstyle -\nicefrac{1}{T_{1}}}\left(1-{\scriptstyle \nicefrac{T_{2}}{T_{1}}}\right)}=\dfrac{-\mu T_{1}^{2}}{T_{1}-T_{2}}\\
+b=\left.\dfrac{\mu}{s\left(1+T_{1}s\right)}\right|_{s=-\nicefrac{1}{T_{2}}}=\dfrac{\mu}{{\scriptstyle -\nicefrac{1}{T_{2}}}\left(1-{\scriptstyle \nicefrac{T_{1}}{T_{2}}}\right)}=\dfrac{\mu T_{1}^{2}}{T_{1}-T_{2}}
+\end{array}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+Y\left(s\right)=\dfrac{\mu}{s}-\dfrac{\mu T_{1}^{2}}{\left(T_{1}-T_{2}\right)\left(1+T_{1}s\right)}+\dfrac{\mu T_{2}^{2}}{\left(T_{1}-T_{2}\right)\left(1+T_{2}s\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Riscriviamo infine l'espressione dell'uscita per favorire l'antitrasformazione,
+ raccogliendo i termini di secondo grado dei numeratori:
+\begin_inset Formula 
+\[
+Y\left(s\right)=\mu\left(\dfrac{1}{s}-\dfrac{\mu T_{1}}{\left(T_{1}-T_{2}\right)}\cdot\dfrac{1}{{\scriptstyle \nicefrac{1}{T_{1}}}+s}+\dfrac{\mu T_{2}}{\left(T_{1}-T_{2}\right)}\cdot\dfrac{1}{{\scriptstyle \nicefrac{1}{T_{2}}}+s}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+y\left(t\right)=\mathscr{L}^{-1}\left[Y\left(s\right)\right]=\mu\left(1-\dfrac{T_{1}}{T_{1}-T_{2}}e^{-\nicefrac{t}{T_{1}}}+\dfrac{T_{2}}{T_{1}-T_{2}}e^{-\nicefrac{t}{T_{2}}}\right)\text{sca}\left(t\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+\begin_inset CommandInset label
+LatexCommand label
+name "oss:Velocità-della-risposta"
+
+\end_inset
+
+Se fosse 
+\begin_inset Formula $T_{1}\gg T_{2}$
+\end_inset
+
+, il polo associato a 
+\begin_inset Formula $T_{1}$
+\end_inset
+
+ si dice dominante e la risposta si avvicina a quella del primo ordine studiata
+ nella sezione precedente; quando invece 
+\begin_inset Formula $T_{1}\sim T_{2}$
+\end_inset
+
+, la risposta complessiva risulterà rallentata dalla presenza di un secondo
+ polo rispetto al caso del I ordine.
+\end_layout
+
+\begin_layout Standard
+Calcoliamo ora le derivate nell'origine; se non abbiamo zeri nell'origine,
+ con due poli si avrà la derivata prima nulla e la derivata seconda pari
+ al guadagno statico:
+\begin_inset Formula 
+\[
+\dot{y}\left(0\right)=\lm s{+\infty}{\dfrac{s^{2}\mu}{\left(1+T_{1}s\right)\left(1+T_{2}s\right)s}}=0
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\ddot{y}\left(0\right)=\lm s{+\infty}{\dfrac{s^{3}\mu}{\left(1+T_{1}s\right)\left(1+T_{2}s\right)s}}=\dfrac{\mu}{T_{1}T_{2}}
+\]
+
+\end_inset
+
+dove abbiamo usato il teorema 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Teorema-valore-iniziale"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Nel caso dei poli reali coincidenti avremo 
+\begin_inset Formula $T_{1}=T_{2}=T$
+\end_inset
+
+, ovvero la risposta del sistema sarà la più lenta possibile per quanto
+ detto nell'Osservazione 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "oss:Velocità-della-risposta"
+
+\end_inset
+
+; scriviamo funzione di trasferimento e uscita come:
+\begin_inset Formula 
+\[
+G\left(s\right)=\dfrac{\mu}{\left(1+Ts\right)^{2}},\qquad Y\left(s\right)=\dfrac{\mu}{s\left(1+Ts\right)^{2}}=\dfrac{a}{s}+\dfrac{b}{1+Ts}+\dfrac{c}{\left(1+Ts\right)^{2}}
+\]
+
+\end_inset
+
+Scegliamo di usare 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Metodo-di-Heaviside"
+
+\end_inset
+
+ per calcolare 
+\begin_inset Formula $a$
+\end_inset
+
+, e di ottenere 
+\begin_inset Formula $b$
+\end_inset
+
+ e 
+\begin_inset Formula $c$
+\end_inset
+
+ da 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Metodo-cancellazione-denominatore"
+
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+a=\left.\dfrac{\mu}{\left(1+Ts\right)^{2}}\right|_{s=0}=\mu
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\mu=aT^{2}s^{2}+2aTs+a+bs\left(1+Ts\right)+cs
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+=s^{2}\left(sT^{2}+bT\right)+s\left(2aT+b+c\right)+a
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{cases}
+aT^{2}+bT=0\\
+2aT+b+c=0
+\end{cases}\Rightarrow\begin{cases}
+b=-\mu T\\
+c=-\mu T
+\end{cases}
+\]
+
+\end_inset
+
+Riscriviamo infine l'uscita sostituendo i coefficienti e troviamo la sua
+ antitrasformata:
+\begin_inset Formula 
+\[
+Y\left(s\right)=\dfrac{\mu}{s}-\frac{\mu T}{1+Ts}-\frac{\mu T}{\left(1+Ts\right)^{2}}=\mu\left(\dfrac{1}{s}-\dfrac{1}{\left({\scriptstyle \nicefrac{1}{T}}+s\right)}-\dfrac{1}{T\left({\scriptstyle \nicefrac{1}{T}}+s\right)^{2}}\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+y\left(t\right)=\mathscr{L}^{-1}\left[Y\left(s\right)\right]=\mu\left(1-e^{-\nicefrac{t}{T}}-\dfrac{1}{T}e^{-\nicefrac{t}{T}}\right)\text{sca}\left(t\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+La velocità di risposta, calcolata in maniera analitica tramite le derivate
+ dell'uscita, si ottiene come prima e vale che il tempo di assestamento
+ all'
+\begin_inset Formula $1\%$
+\end_inset
+
+ è circa 
+\begin_inset Formula $7T$
+\end_inset
+
+, mentre per il sistema a singolo polo questo valore è circa 
+\begin_inset Formula $5T$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Chapter
@@ -16593,7 +17649,7 @@ reference "eq:Trasformata-razionale"
 , allora vale:
 \begin_inset Formula 
 \begin{equation}
-\lm t{+\infty}{f\left(t\right)}=\lm s0{s\cdot F\left(s\right)}.\label{eq:Teorema-valore-finale}
+\lm t{+\infty}{f\left(t\right)}=\lm s0{\,s\cdot F\left(s\right)}.\label{eq:Teorema-valore-finale}
 \end{equation}
 
 \end_inset

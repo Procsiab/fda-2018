@@ -1,0 +1,21 @@
+﻿\begin{tikzpicture} [scale=1.5]
+
+% Punti sul grafico
+	\draw[dashdotdotted, color=gray, thick] (0, 1) -- (2.5, 1);
+	\draw[loosely dashed] (0, 1.2) -- (2.5, 1.2) node[right] {$\scriptstyle \mu(1+\varepsilon)$};
+	\draw[loosely dashed] (0, 0.8) -- (2.5, 0.8) node[right] {$\scriptstyle \mu(1-\varepsilon)$};
+	\filldraw (0, 1) circle (1pt)
+		node[left] (Yi) {$y_\infty$};
+	\filldraw (0, 1.6) circle (1pt)
+		node[left] (Ym) {$y_{\scriptscriptstyle \text MAX}$};
+	
+	\draw[dotted] (0.1, 0.2) -- (0.1, 0);
+	\draw[dotted] (0.22, 0.8) --(0.22, 0);
+	\draw[thick] (0.1, 0) -- (0.22, 0) node[below] {$T_s$};
+	\draw[dotted] (1.55, 1.2) -- ++(0, -1.2) node[below] {$T_{a,\varepsilon}$};
+% Assi
+	\draw[->] (-0.2, 0) -- (2.5, 0) node[right] {$t$};
+	\draw[->] (0, -0.2) -- (0, 2) node[above] {$y(t)$};
+% Funzione
+	\draw[scale=1, domain=0:2.5, smooth, variable=\x, thick] plot ({\x},{exp(-\x)*(-cos(deg(2*pi*\x)))+1 });
+\end{tikzpicture}

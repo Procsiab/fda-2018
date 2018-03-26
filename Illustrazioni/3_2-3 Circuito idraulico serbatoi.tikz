@@ -1,0 +1,31 @@
+﻿\begin{tikzpicture} [scale=1]
+% Serbatoio principale
+	%contorno
+	\draw (0,0) circle[x radius=2cm,y radius=0.5cm];
+	\draw (-2,0) -- ++(0, -2);
+	\draw (2,0) -- ++(0, -2);
+	\draw (0,-2) circle[x radius=2cm,y radius=0.5cm];
+	%contenuto
+	\filldraw[color=gray, fill=none, pattern=dots, pattern color=gray] (-1.8,-1.9) arc [start angle=180,end angle=360,x radius=1.8,y radius=0.4] -- ++(0, 0.8) arc [start angle=0,end angle=180,x radius=1.8,y radius=0.4] -- ++(0, -0.8);
+	\draw[gray] (-1.8,-1.1) arc [start angle=180,end angle=360,x radius=1.8,y radius=0.4];
+% Serbatoio 1
+	\draw (4.7,-1.3) circle[x radius=0.7cm,y radius=0.2cm] ++(-0.7,0) node(h1_s){} -- ++(0,-0.6) node(h1_e){} ++(0.7,0) circle[x radius=0.7cm,y radius=0.2cm] node(s1){} ++(0.7,0) -- ++(0,0.6);
+% Serbatoio 2
+	\draw (6.3,-1.3) circle[x radius=0.7cm,y radius=0.2cm] ++(-0.7,0) -- ++(0,-0.6) ++(0.7,0) circle[x radius=0.7cm,y radius=0.2cm] node(s2){} ++(0.7,0) node(h2_s){}  -- ++(0,0.6) node(h2_e){};
+% Condotti
+	%serbatoio principale
+	\filldraw[preaction={fill,white}, color=gray, pattern=dots, pattern color=gray] (-0.2,-1) -- ++(0,3) -- ++(4,0) -- ++(0,-0.4) -- ++(-3.6,0) -- ++(0,-2.6) ++(-0.4,0);
+	\draw[gray] (-0.2,-1) arc [start angle=180,end angle=360,x radius=0.2,y radius=0.1];
+	\draw (-2,0) arc [start angle=180,end angle=360,x radius=2,y radius=0.5];
+	%serbatoi secondari
+	\filldraw[preaction={fill,white}, color=gray, pattern=dots, pattern color=gray] (4.5,2) -- ++(1.2,0) -- ++(0,-2) -- ++(0.7,0) node[above, midway, color=black] {$\scriptstyle{1/2}$} -- ++(0,-1.2) arc [start angle=360,end angle=180,x radius=0.2,y radius=0.1] -- ++(0,0.8) -- ++(-1,0) -- ++(0, -0.8) arc [start angle=360,end angle=180,x radius=0.2,y radius=0.1] -- ++(0,1.2) -- ++(0.7,0) node[above, midway, color=black] {$\scriptstyle{1/2}$} -- ++(0,1.6) -- ++(-0.8,0) -- ++(0,0.4);
+% Pompa
+	\draw[fill=white] (4.15,1.8) circle[x radius=0.5cm,y radius=0.5cm] node[] {$u\;\triangleright$};
+% Decorazioni
+	\draw [decorate, decoration={brace, amplitude=3pt}] (h1_e) -- (h1_s)
+		node [midway, left] {$h_1$};
+	\draw [decorate, decoration={brace, amplitude=3pt}] (h2_e) -- (h2_s)
+		node [midway, right] {$h_2$};
+	\draw (s1) -- (s1) node [] {$s_1$};
+	\draw (s2) -- (s2) node [] {$s_2$};
+\end{tikzpicture}

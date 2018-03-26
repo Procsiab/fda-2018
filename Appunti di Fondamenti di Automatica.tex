@@ -12,7 +12,6 @@
 \usepackage{array}
 \usepackage{varioref}
 \usepackage{refstyle}
-\usepackage{float}
 \usepackage{wrapfig}
 \usepackage{units}
 \usepackage{textcomp}
@@ -124,6 +123,7 @@
 \usepackage{marginnote}
 \usepackage{imakeidx}
 \usepackage{amsmath}
+\usepackage{wrapfig}
 
 \renewcommand{\marginpar}[1]{\marginnote{\footnotesize #1}}
 \setlength\marginparsep{0.3cm}
@@ -355,7 +355,7 @@ y\left(t\right)=g\left(x\left(t\right),u\left(t\right),t\right) & \text{Equazion
 Tornando ai precedenti esempi, i sistemi che descrivono possono essere
 classificati nel modo seguente:
 
-\begin{table}[H]
+\begin{table}[!h]
 \begin{centering}
 \begin{tabular}{>{\centering}p{0.18\textwidth}>{\centering}m{0.22\textwidth}>{\centering}m{0.58\textwidth}}
  & Esempio \ref{exa:resistore} & Esempio \ref{exa:maglia-rc}\tabularnewline
@@ -389,7 +389,7 @@ di attrito viscoso $\beta$. La sospensione in questione è attiva,
 ovvero è possibile applicare in modo controllato una forza $\vec{F}\left(t\right)$
 alla massa $m$ (vedi Figura \ref{fig:Esempio-sospensione}).
 
-\begin{table}[H]
+\begin{table}[!h]
 \begin{tabular}{>{\centering}m{0.26\textwidth}>{\centering}m{0.37\textwidth}>{\centering}m{0.37\textwidth}}
 \includegraphics[scale=2]{\string"Illustrazioni/1_2-1 Esempio sospensione MacPherson\string".pdf}
 
@@ -1489,10 +1489,8 @@ $te^{\sigma t}\left(\cos\left(\omega t+\phi\right)+j\sin\left(\omega t+\phi\righ
 \item $\Re\left(\lambda_{i}\right)<0$: modo convergente.
 \end{itemize}
 \end{itemize}
-\demo
-
-\bigskip{}
-\begin{figure}[H]
+\demo\bigskip{}
+\begin{figure}[!h]
 \begin{centering}
 $F\left(t\right)\rightarrow\boxed{1/m}\overset{\ddot{p}\left(t\right)}{\rightarrow}\boxed{\somme 0t{\ddot{p}\left(t\right)}t+p_{0}}\overset{\dot{p}\left(t\right)}{\rightarrow}\boxed{\somme 0t{\dot{p}\left(t\right)}t+p_{0}}\rightarrow p\left(t\right)$
 \par\end{centering}
@@ -2043,7 +2041,7 @@ sul valore di equilibrio) l'equilibrio è asintoticamente stabile;
 stato dal valore di equilibrio) l'equilibrio è instabile.
 \end{itemize}
 \end{itemize}
-\begin{figure}[H]
+\begin{figure}[!h]
 \begin{centering}
 \includegraphics{\string"Illustrazioni/1_8-1 Metodo grafico stabilità sistemi non lineari\string".pdf}
 \par\end{centering}
@@ -2161,15 +2159,7 @@ stati in totale), ha più ingressi e una uscita (MISO), tempo-variante
 (l'equazione di uscita presenta uno stato al quadrato e un prodotto
 con uno stato), proprio (almeno un ingresso nell'equazione di uscita).\demo
 \end{example}
-\begin{figure}[H]
-\begin{centering}
-\includegraphics{\string"Illustrazioni/2_1-1 Modello di sistema con discretizzazione\string".pdf}
-\par\end{centering}
-\caption{Modello di sistema con discretizzazione}
-
-\label{fig:Modello-sistema-discretizzazione}
-\end{figure}
-
+\begin{minipage}[c]{0.6\textwidth}%
 Nel prossimo esempio viene proposta la discretizzazione di un sistema
 a tempo continuo, procedimento che riguarda l'acquisizione di dati
 dal mondo fisico; introduciamo prima il concetto di interazione tra
@@ -2178,34 +2168,46 @@ un sistema a tempo continuo e uno a tempo discreto.
 \marginpar{I sistemi che coinvolgono l'interazione tra una componente analogica
 (tempo continuo) e una digitale (tempo discreto) sono chiamati cyber-physical
 system (CPS)}Prendiamo un sistema dinamico a tempo continuo $s$ (vedi figura \ref{fig:Modello-sistema-discretizzazione}),
-dotato di un ingresso $u\left(t\right)$ e una uscita $y\left(t\right)$;
+dotato di un ingresso $u\left(t\right)$ e una uscita $y\left(t\right)$;%
+\end{minipage}%
+\begin{minipage}[c]{0.4\textwidth}%
+\begin{center}
+\includegraphics[scale=0.66]{\string"Illustrazioni/2_1-1 Modello di sistema con discretizzazione\string".pdf}
+\par\end{center}
+\captionof{figure}{Modello di sistema con discretizzazione}
+
+\label{fig:Modello-sistema-discretizzazione}%
+\end{minipage}
+
 essa è acquisita a intervalli di tempo regolari da un dispositivo
 chiamato scheda di acquisizione dati (DAQ), che riporta l'uscita $y\left(k\right)$
 a un controllore digitale $c$ che stabilisce un valore di ingresso
 discreto $u\left(k\right)$, che infine viene convertito in un valore
 a tempo continuo $u\left(t\right)$ da un componente chiamato \emph{filtro
-di mantenimento}.
+di mantenimento}.\bigskip{}
 
-\begin{figure}[H]
-\begin{centering}
-\includegraphics{\string"Illustrazioni/2_1-2 Modello di circuito per elettrovalvola\string".pdf}
-\par\end{centering}
-\caption{Circuito RL, modello per elettrovalvola}
-\label{fig:Modello-elettrovalvola}
-\end{figure}
+\emph{}%
+\begin{minipage}[c]{0.6\textwidth}%
 \begin{example}
 \label{exa:Circuito-RL-elettrovalvola}\emph{Sia dato un circuito
 formato da una maglia con induttore e resistore in serie, e sia controllabile
 il generatore di tensione in ingresso; $\checkmark$scrivere un modello
 che abbia la corrente nella maglia come uscita.}
-
+\end{example}
 Chiamiamo la corrente che scorre nella maglia $i\left(t\right)$:
 la tensione sul resistore vale $Ri\left(t\right)$ e quella sull'induttore
 $v_{{\scriptscriptstyle L}}\left(t\right)=\partial i\left(t\right)/\partial t$;
 con un bilancio di tensioni rispetto al generatore controllabile,
 vale $u\left(t\right)=Ri\left(t\right)+v_{{\scriptscriptstyle L}}\left(t\right)$.
 Poniamo $y\left(t\right)=i\left(i\right)$, come richiesto dall'esempio
-e scriviamo:
+e scriviamo:%
+\end{minipage}\emph{}%
+\begin{minipage}[c]{0.4\textwidth}%
+\begin{center}
+\includegraphics{\string"Illustrazioni/2_1-2 Modello di circuito per elettrovalvola\string".pdf}
+\par\end{center}
+\captionof{figure}{Modello di circuito per elettrovalvola}%
+\end{minipage}
 \[
 \dot{x}\left(t\right)=-\dfrac{R}{L}x\left(t\right)+\dfrac{1}{L}u\left(t\right)
 \]
@@ -2238,7 +2240,7 @@ Per quanto riguarda l'equazione di uscita, essa rimane invariata come
 $y\left(k\right)=x\left(k\right)$, infatti nella discretizzazione
 si approssima solo l'operazione di derivazione nelle equazioni di
 stato.\demo
-\end{example}
+
 Il metodo appena visto nell'Esempio \ref{exa:Circuito-RL-elettrovalvola}
 ha dei vantaggi per i sistemi a tempo continuo asintoticamente stabili:
 con coefficienti scalari, il sistema deve avere $a<0\land a\in\mathbb{R}$;
@@ -2581,9 +2583,10 @@ Da questa scrittura è possibile calcolare qualsiasi movimento del
 sistema a fronte di condizioni iniziali.\demo\smallskip{}
 \end{example}
 Possiamo distinguere gli andamenti dei modi nel tempo discreto studiando
-il modulo degli autovalori e considerando se sono complessi coniugati:
+il modulo degli autovalori e considerando se sono complessi coniugati
+(vedi \tabref{Classificazione-movimenti-discreti})
 
-\begin{table}[H]
+\begin{table}[!h]
 \begin{centering}
 \begin{tabular}{c>{\centering}m{0.55\textwidth}}
 $_{\text{Insieme}}\backslash^{\text{Modulo}}$ & $\left|z_{i}\right|<1$\tabularnewline
@@ -2632,8 +2635,7 @@ $z_{i}\in\mathbb{C}$ & $\Re\left(z_{i}\right)=0,\,\Im\left(z_{i}\right)=\pm1\rig
 \caption{Classificazione dei movimenti nel tempo discreto\label{tab:Classificazione-movimenti-discreti}}
 \end{table}
 
-\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
-\textbf{\footnotesize{}Movimenti nel tempo discreto}{\footnotesize{}\index{tempo discreto, movimenti@{\footnotesize{}tempo discreto, movimenti}}}}[-5.5cm]Per concludere il discorso sui modi nel tempo discreto, esaminiamo
+Per concludere il discorso sui modi nel tempo discreto, esaminiamo
 il caso di una matrice di stato non diagonalizzabile: cercheremo di
 scriverla nella forma di Jordan (\ref{eq:Forma-di-Jordan}), trovando
 una matrice di trasformazione $T_{{\scriptscriptstyle \text{J}}}$
@@ -2650,7 +2652,8 @@ esposte ne \tabref{Classificazione-movimenti-discreti}; rispetto
 ad essa, per $\left|z_{i}\right|=1$ si hanno modi divergenti, a causa
 del contributo del coefficiente $k$.
 
-\section{Stabilità del sistema}
+\section{Stabilità del sistema\protect\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Movimenti nel tempo discreto}{\footnotesize{}\index{tempo discreto, movimenti@{\footnotesize{}tempo discreto, movimenti}}}}[-9cm]}
 
 \subsection{Condizioni di stabilità in sistemi a tempo discreto}
 
@@ -2826,7 +2829,7 @@ g\left(x\left(k\right),\,u\left(k\right)\right)\simeq g\left(\overline{x},\,\ove
 Se definiamo le quantità $\delta x\left(k\right)=x\left(k\right)-\overline{x}$
 per l'equazione di stato e $\delta u\left(k\right)=u\left(k\right)-\overline{u}$
 per l'equazione di uscita, le precedenti diventano\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
-\textbf{\footnotesize{}Forma linearizzata nel tempo discreto}{\footnotesize{}\index{Linearizzazione nel tempo discreto@{\footnotesize{}Linearizzazione nel tempo discreto}}}}[1.8cm]
+\textbf{\footnotesize{}Forma linearizzata nel tempo discreto}{\footnotesize{}\index{Linearizzazione nel tempo discreto@{\footnotesize{}Linearizzazione nel tempo discreto}}}}[1.5cm]
 \begin{equation}
 \begin{array}{c}
 \delta x\left(k+1\right)=f\left(x\left(k\right),\,u\left(k\right)\right)-f\left(\overline{x},\,\overline{u}\right)=\overset{A}{\overbrace{\left.\dfrac{\partial f}{\partial x}\right|_{\overline{x},\overline{u}}}}\delta x\left(k\right)+\overset{B}{\overbrace{\left.\dfrac{\partial f}{\partial u}\right|_{\overline{x},\overline{u}}}}\delta u\left(k\right)\\
@@ -3050,6 +3053,8 @@ un denominatore di ordine $n$, si ha la certezza che tutti i poli
 siano tutti gli autovalori della matrice $A$: se essi hanno parte
 reale negativa, il sistema risulta asintoticamente stabile.
 \end{rem}
+\emph{}%
+\begin{minipage}[c]{0.5\textwidth}%
 \begin{example}
 \emph{Sia dato un circuito idraulico consistente in una pompa di portata
 $u\left(t\right)$ che, prelevando liquido da un serbatoio a capacità
@@ -3059,6 +3064,15 @@ di portata $u\left(t\right)/2$. Il livello del liquido nei due serbatoi
 è indicata con $s_{1,2}$. Si voglia misurare il volume complessivo
 nei due serbatoi ($y\left(t\right)=s_{1}h_{1}\left(t\right)+s_{2}h_{2}\left(t\right)$).
 $\checkmark$Scrivere una funzione di trasferimento per questo sistema.}
+\end{example}
+%
+\end{minipage}\emph{}%
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{center}
+\includegraphics[scale=0.7]{\string"Illustrazioni/3_2-3 Circuito idraulico serbatoi\string".pdf}
+\par\end{center}
+\captionof{figure}{Circuito idraulico con serbatoi}%
+\end{minipage}
 
 Innanzitutto scriviamo la variazione del livello di liquido nel tempo
 (rispetto all'$i$-esimo serbatoio) come:
@@ -3076,9 +3090,8 @@ h_{2}\left(t\right)
 \]
 Per calcolare la funzione di trasferimento, da qui sono possibili
 due strade:
-\end{example}
-\begin{enumerate}
-\item \noun{Formula della funzione di trasferimento}\\
+
+\noun{Formula della funzione di trasferimento}\\
 Scriviamo il sistema nella forma (\ref{eq:Forma-standard-matrice-LTI}):\marginpar{Si osserva una cancellazione nella funzione di trasferimento (il grado
 del denominatore non è 2); il sistema in tal caso si dice \emph{non
 controllabile}: infatti è impossibile controllare in modo differente
@@ -3115,7 +3128,8 @@ G\left(s\right)=\begin{bmatrix}s_{1} & s_{2}\end{bmatrix}\cdot\begin{bmatrix}s &
 \end{bmatrix}=\dfrac{1}{2s}+\dfrac{1}{2s}=\boxed{\dfrac{1}{s}}
 \]
 \bigskip{}
-\item \noun{Trasformata di Laplace delle derivate}\\
+
+\noun{Trasformata di Laplace delle derivate}\\
 Scriviamo la trasformata di ciascuna equazione del sistema e sostituiamo
 nella trasformata dell'equazione di uscita le trasformate delle equazioni
 di stato:
@@ -3141,8 +3155,10 @@ ottenere usando (\ref{eq:Uscita-trasferimento-Laplace}):
 \[
 G\left(s\right)=\dfrac{Y\left(s\right)}{U\left(s\right)}=\boxed{\dfrac{1}{s}}
 \]
-\demo\bigskip{}
-\end{enumerate}
+
+\demo\smallskip{}
+
+\begin{minipage}[c]{0.65\textwidth}%
 \begin{example}
 \emph{\label{exa:Sistema-2ord-cancellazione-polo}Sia dato un sistema
 costituito da un carrello di massa $m$, in movimento su un piano
@@ -3150,6 +3166,15 @@ indefinito con coefficiente di attrito dinamico $\beta$, situato
 in posizione $p\left(t\right)$ e sospinto da una forza esterna $F\left(t\right)$;
 si voglia misurare la velocità del carrello ($\dot{p}\left(t\right)$).
 $\checkmark$Scrivere una funzione di trasferimento per il sistema.}
+\end{example}
+%
+\end{minipage}%
+\begin{minipage}[c]{0.4\textwidth}%
+\begin{center}
+\includegraphics[scale=1.5]{\string"Illustrazioni/3_2-2 Carrello su piano attrito\string".pdf}
+\par\end{center}
+\captionof{figure}{Carrello su piano con attrito}%
+\end{minipage}
 
 L'equazione della dinamica del sistema si ottiene come:
 \[
@@ -3185,7 +3210,6 @@ osservando che il sistema è SISO:
 G\left(s\right)=\dfrac{Y\left(s\right)}{U\left(s\right)}=\dfrac{1}{ms+\beta}
 \]
 \demo\bigskip{}
-\end{example}
 \begin{rem}
 Nell'Esempio \ref{exa:Sistema-2ord-cancellazione-polo} viene dato
 un sistema del secondo ordine, che possiede infatti due stati, tuttavia
@@ -3242,7 +3266,7 @@ uscite non influenzano questa sua proprietà.
 
 Per comodità si usa rappresentare le funzioni di trasferimento, in
 un sistema SISO, secondo delle scritture standard fattorizzate:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
-\textbf{\footnotesize{}Forma di Bode}{\footnotesize{}\index{Bode, forma di@{\footnotesize{}Bode, forma di}}}}[2.7cm]
+\textbf{\footnotesize{}Forma di Bode}{\footnotesize{}\index{Bode, forma di@{\footnotesize{}Bode, forma di}}}}[3cm]
 \begin{equation}
 G\left(s\right)=\dfrac{\rho\cdot\prod_{i}\left(s+z_{i}\right)\prod_{i}\left(s^{2}+2\zeta_{i}\alpha_{n_{i}}s+\alpha_{n_{i}}^{2}\right)}{s^{g}\cdot\prod_{i}\left(s+p_{i}\right)\prod_{i}\left(s^{2}+2\xi_{i}\omega_{n_{i}}s+\omega_{n_{i}}^{2}\right)}\label{eq:Forma-fattorizzata-standard}
 \end{equation}
@@ -3281,7 +3305,7 @@ con uno segnale costante in ingresso, ad esempio lo scalino $\overline{u}\cdot\t
 di ampiezza $\overline{u}$, la cui trasformata è $\overline{u}/s$.
 In assenza di poli o zeri nell'origine ($g=0$) risulta che
 \[
-\lm s0{sG\left(s\right)\cdot\dfrac{\overline{u}}{s}}=\overline{u}\cdot\mu
+\lm s0{\,s\cdot G\left(s\right)\cdot\dfrac{\overline{u}}{s}}=\overline{u}\cdot\mu
 \]
 dove $\overline{u}$ è l'ampiezza dello scalino in ingresso. Otteniamo
 in effetti il rapporto tra l'ampiezza dello scalino in ingresso (ingresso
@@ -3292,15 +3316,248 @@ degli zeri sono scalari.
 Se rappresentiamo i poli complessi coniugati sul piano di Gauss, appaiono
 evidenti alcune proprietà riguardo pulsazioni naturali e smorzamenti:
 
-preso un polo stabile, esso avrà (risolvendo le radici) $\Re\left(p\right)=-\xi\omega_{n},\,\Im\left(p\right)=\pm\omega_{n}\sqrt{1-\xi^{2}}$;
-in particolare $\omega_{n}$è la distanza dall'origine di ciascun
-polo della coppia coniugata, mentre il coseno dell'angolo $\theta$
-che questa distanza forma con l'asse reale è pari a $\xi$, dunque
-vale $\theta=\arccos\left(\xi\right)$.
+preso un polo stabile, esso avrà (risolvendo le radici) $\Re\left(p\right)=-\xi\omega_{n}$,
+$\Im\left(p\right)=\pm\omega_{n}\sqrt{1-\xi^{2}}$; in particolare
+$\omega_{n}$ è la distanza dall'origine di ciascun polo della coppia
+coniugata, mentre il coseno dell'angolo $\theta$ che questa distanza
+forma con l'asse reale è pari a $\xi$, dunque vale $\theta=\arccos\left(\xi\right)$.
 
 Da queste osservazioni segue che, a parità di pulsazione $\omega_{n}$
 lo smorzamento $\xi$ è inversamente proporzionale all'angolo $\theta$
 tra le distanze dei due complessi coniugati.
+
+\section{Risposta forzata allo scalino}
+
+\begin{minipage}[c]{0.65\textwidth}%
+Consideriamo un sistema dinamico nel dominio del tempo, espresso in
+forma (\ref{eq:Forma-standard-matrice-LTI}); se abbiamo un ingresso
+generico $u\left(t\right)$ è necessario risolvere un'equazione differenziale
+ordinaria per ottenere l'uscita $y\left(t\right)$. Questi risultati
+sono riassunti in (\ref{eq:Formula-di-Lagrange}), che tuttavia non
+risulta comodo da calcolare; si adotta la seguente strategia:%
+\end{minipage}%
+\begin{minipage}[c]{0.45\textwidth}%
+\begin{center}
+\includegraphics[scale=0.6]{\string"Illustrazioni/3_4-1 Equivalenza risposta dominio tempo con Laplace\string".pdf}
+\par\end{center}
+\captionof{figure}{Equivalenza risposta nel dominio del tempo con dominio di Laplace}%
+\end{minipage}
+\begin{enumerate}
+\item Trasformiamo il segale di ingresso nel dominio di Laplace;
+\item Calcoliamo la funzione di trasferimento;
+\item Otteniamo l'uscita nel dominio di Laplace;
+\item Antitrasformiamo l'uscita per ottenerla nel dominio del tempo.
+\end{enumerate}
+Useremo l'ingresso canonico a scalino $u\left(t\right)=\overline{u}\cdot\text{sca}\left(t\right)$
+poiché si tratta di un segnale facilmente realizzabile nella pratica
+in un sistema dinamico; in particolare ci poniamo nelle condizioni
+di uno scalino unitario in sistemi asintoticamente stabili del I e
+del II ordine, quindi sistemi con al più due poli (con parte reale
+negativa) e al più uno zero, e nessun polo è nell'origine.
+
+\subsection{Valori iniziale e finale della risposta}
+
+Calcoliamo il valore finale della risposta allo scalino a partire
+dalla trasformata di Laplace dell'uscita, usando la funzione di trasferimento:
+\[
+Y\left(s\right)=G\left(s\right)\cdot\dfrac{1}{s}
+\]
+Applicando (\ref{eq:Teorema-valore-finale}) otteniamo (scrivendo
+nella (\ref{eq:Forma-di-Bode}) la funzione di trasferimento):
+\[
+\lm s0{\,s\cdot Y\left(s\right)}=\lm s0{\,s\cdot G\left(s\right)\cdot\dfrac{1}{s}}=\mu
+\]
+Questo vale in assenza di zeri nell'origine, altrimenti si avrebbe
+un $s^{g+1}$ al numeratore che annulla l'uscita (con uno zero nell'origine
+$g=-1$).
+
+Calcoliamo il valore iniziale come l'uscita al tempo $t=0$, usando
+(\ref{eq:Teorema-valore-iniziale}):
+\[
+y\left(t\rightarrow0\right)=\lm s{+\infty}{s\cdot Y\left(s\right)}=\lm s{+\infty}{G\left(s\right)}
+\]
+Questo limite vale $\rho$ se numeratore e denominatore sono di pari
+grado, altrimenti si annulla.
+
+Possiamo calcolare anche il valore iniziale delle derivate dell'uscita
+nello stesso modo: supponendo che la funzione di trasferimento sia
+strettamente propria, allora il valore iniziale della derivata prima
+vale
+\[
+\lm s{+\infty}{s\cdot\mathscr{L}\left[\dot{y}\left(t\right)\right]}=\lm s{+\infty}{s\left[s\cdot Y\left(s\right)\right]}=\lm s{+\infty}{s^{\cancel{2}}\cdot G\left(s\right)\cdot\dfrac{1}{\cancel{s}}}
+\]
+
+Osserviamo che l'annullamento del limite dipende dal grado relativo
+(il numeratore è moltiplicato per $s$): in generale il valore delle
+prime $n_{{\scriptscriptstyle \text{D}}}-n_{{\scriptscriptstyle \text{N}}}-1$
+derivate è nullo, mentre la successiva vale $\rho$.
+
+Nel caso di sistemi del I e II ordine c'è un transitorio per la risposta
+allo scalino, tipicamente una oscillazione convergente; elenchiamo
+alcuni termini per la nomenclatura e l'analisi di questa risposta:
+
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{itemize}
+\item Il valore di stato stazionario $y_{\infty}=\mu\cdot\overline{u}$
+è il prodotto del guadagno statico per l'ampiezza dello scalino;
+\item Il massimo valore che raggiunge l'uscita nel transitorio è $y_{{\scriptscriptstyle \text{MAX}}}$;
+\item La \emph{sovraelongazione} $s_{\%}=\dfrac{y_{{\scriptscriptstyle \text{MAX}}}-y_{\infty}}{y_{\infty}}$
+è la distanza del picco dal valore asintotico;
+\end{itemize}
+%
+\end{minipage}%
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{center}
+\includegraphics{\string"Illustrazioni/3_4-2 Risposta allo scalino ordine elevato\string".pdf}
+\par\end{center}
+\captionof{figure}{Risposta allo scalino per sistemi di ordine elevato}%
+\end{minipage}
+\begin{itemize}
+\item Il \emph{tempo di assestamento} $T_{a,\varepsilon}$ è l'istante dopo
+il quale l'uscita è definitivamente compresa in $\left(y_{\infty}+\varepsilon,\,y_{\infty}-\varepsilon\right)$;
+\item Il \emph{tempo di salita} $T_{s}=y^{-1}\left(0.9y_{\infty}\right)-y^{-1}\left(0.1y_{\infty}\right)$
+è l'intervallo di tempo nel quale l'uscita raggiunge il valore stazionario
+$y_{\infty}$ per la prima volta approssimato tra il $10\%$ e il
+$90\%$.
+\end{itemize}
+
+\subsection{Risposta per sistemi del I ordine}
+
+Consideriamo solo il caso di sistemi strettamente propri (una funzione
+di trasferimento bi-propria genera una risposta dell'uscita allo scalino
+poco interessante): il numeratore della funzione di trasferimento
+di un sistema del genere sarà una costante e il denominatore avrà
+un singolo polo; l'uscita si ottiene da (\ref{eq:Uscita-trasferimento-Laplace}):\marginpar{Si tenga a mente che la trasformata dello scalino vale $\mathscr{L}\left[\text{sca}\left(t\right)\right]=1/s$}
+\[
+G\left(s\right)=\dfrac{\mu}{1+Ts},\qquad Y\left(s\right)=\dfrac{\mu}{s\left(1+Ts\right)}
+\]
+
+Per calcolare l'uscita nel dominio del tempo, antitrasformiamo l'espressione
+appena ottenuta; per prima cosa usiamo (\ref{eq:Metodo-cancellazione-denominatore})
+per scrivere in modo adeguato tale espressione:
+\[
+Y\left(s\right)=\dfrac{a}{s}+\dfrac{b}{1+Ts}\rightarrow a+aTs+bs=\mu\rightarrow s\left(aT+b\right)+a=\mu
+\]
+\[
+\begin{cases}
+a=\mu\\
+b=-aT=-\mu T
+\end{cases}
+\]
+Sostituendo nell'espressione dell'uscita possiamo calcolare la sua
+antitrasformata:
+\[
+Y\left(s\right)=\dfrac{\mu}{s}-\dfrac{\mu T}{1+Ts}=\mu\left(\dfrac{1}{s}-\dfrac{1}{s+\nicefrac{1}{T}}\right)
+\]
+\[
+\mathscr{L}^{-1}\left[Y\left(s\right)\right]=\mu\left(1-e^{-\nicefrac{t}{T}}\right)\text{sca}\left(t\right)
+\]
+Le caratteristiche di questa risposta sono le seguenti:
+\begin{itemize}
+\item Valore iniziale nullo al tempo zero ($y\left(0\right)=0$);
+\item Valore iniziale della derivata prima pari a $\lm s{+\infty}{s^{2}\dfrac{\mu}{1+Ts}\cdot\dfrac{1}{s}}=\dfrac{\mu}{T}$
+(pendenza nella tangente nell'origine);
+\item Tempo di assestamento in $\varepsilon$ pari a $T_{a,\varepsilon}\Rightarrow y\left(T_{a,\varepsilon}\right)=\mu\left(1-\varepsilon\right)=\mu\left(1-e^{-\nicefrac{T_{a}}{T}}\right)\text{sca}\left(t\right)\rightarrow e^{-\nicefrac{T_{a}}{T}}=\varepsilon\rightarrow\boxed{T_{a}=-T\ln\left(\varepsilon\right)}$.
+\end{itemize}
+\begin{figure}[!h]
+\begin{centering}
+\includegraphics[scale=1.4]{\string"Illustrazioni/3_4-3 Risposta del I ord scalino\string".pdf}
+\par\end{centering}
+\caption{Risposta allo scalino in sistemi del I ordine}
+
+\end{figure}
+
+\subsection{Risposta per sistemi del II ordine}
+
+Scriviamo in forma (\ref{eq:Forma-di-Bode}) la funzione di trasferimento,
+supponendo che $T_{1}>T_{2}$; la funzione di uscita si ricava moltiplicando
+direttamente per la trasformata dell'ingresso ($1/s$):
+\[
+G\left(s\right)=\dfrac{\mu}{\left(1+T_{1}s\right)\left(1+T_{2}s\right)},\qquad Y\left(s\right)=\dfrac{\mu}{s\left(1+T_{1}s\right)\left(1+T_{2}s\right)}
+\]
+Utilizziamo il metodo di Heaviside (\ref{eq:Metodo-di-Heaviside})
+per ottenere l'antitrasformata dell'uscita:
+\[
+Y\left(s\right)=\dfrac{a}{s}+\dfrac{b}{1+T_{1}s}+\dfrac{c}{1+T_{2}s}
+\]
+\[
+\begin{array}{l}
+a=\left.\dfrac{\mu}{\left(1+T_{1}s\right)\left(1+T_{2}s\right)}\right|_{s=0}=\mu\\
+b=\left.\dfrac{\mu}{s\left(1+T_{2}s\right)}\right|_{s=-\nicefrac{1}{T_{1}}}=\dfrac{\mu}{{\scriptstyle -\nicefrac{1}{T_{1}}}\left(1-{\scriptstyle \nicefrac{T_{2}}{T_{1}}}\right)}=\dfrac{-\mu T_{1}^{2}}{T_{1}-T_{2}}\\
+b=\left.\dfrac{\mu}{s\left(1+T_{1}s\right)}\right|_{s=-\nicefrac{1}{T_{2}}}=\dfrac{\mu}{{\scriptstyle -\nicefrac{1}{T_{2}}}\left(1-{\scriptstyle \nicefrac{T_{1}}{T_{2}}}\right)}=\dfrac{\mu T_{1}^{2}}{T_{1}-T_{2}}
+\end{array}
+\]
+\[
+Y\left(s\right)=\dfrac{\mu}{s}-\dfrac{\mu T_{1}^{2}}{\left(T_{1}-T_{2}\right)\left(1+T_{1}s\right)}+\dfrac{\mu T_{2}^{2}}{\left(T_{1}-T_{2}\right)\left(1+T_{2}s\right)}
+\]
+
+Riscriviamo infine l'espressione dell'uscita per favorire l'antitrasformazione,
+raccogliendo i termini di secondo grado dei numeratori:
+\[
+Y\left(s\right)=\mu\left(\dfrac{1}{s}-\dfrac{\mu T_{1}}{\left(T_{1}-T_{2}\right)}\cdot\dfrac{1}{{\scriptstyle \nicefrac{1}{T_{1}}}+s}+\dfrac{\mu T_{2}}{\left(T_{1}-T_{2}\right)}\cdot\dfrac{1}{{\scriptstyle \nicefrac{1}{T_{2}}}+s}\right)
+\]
+\[
+y\left(t\right)=\mathscr{L}^{-1}\left[Y\left(s\right)\right]=\mu\left(1-\dfrac{T_{1}}{T_{1}-T_{2}}e^{-\nicefrac{t}{T_{1}}}+\dfrac{T_{2}}{T_{1}-T_{2}}e^{-\nicefrac{t}{T_{2}}}\right)\text{sca}\left(t\right)
+\]
+\begin{rem}
+\label{oss:Velocit=0000E0-della-risposta}Se fosse $T_{1}\gg T_{2}$,
+il polo associato a $T_{1}$ si dice dominante e la risposta si avvicina
+a quella del primo ordine studiata nella sezione precedente; quando
+invece $T_{1}\sim T_{2}$, la risposta complessiva risulterà rallentata
+dalla presenza di un secondo polo rispetto al caso del I ordine.
+\end{rem}
+Calcoliamo ora le derivate nell'origine; se non abbiamo zeri nell'origine,
+con due poli si avrà la derivata prima nulla e la derivata seconda
+pari al guadagno statico:
+\[
+\dot{y}\left(0\right)=\lm s{+\infty}{\dfrac{s^{2}\mu}{\left(1+T_{1}s\right)\left(1+T_{2}s\right)s}}=0
+\]
+\[
+\ddot{y}\left(0\right)=\lm s{+\infty}{\dfrac{s^{3}\mu}{\left(1+T_{1}s\right)\left(1+T_{2}s\right)s}}=\dfrac{\mu}{T_{1}T_{2}}
+\]
+dove abbiamo usato il teorema (\ref{eq:Teorema-valore-iniziale}).
+
+Nel caso dei poli reali coincidenti avremo $T_{1}=T_{2}=T$, ovvero
+la risposta del sistema sarà la più lenta possibile per quanto detto
+nell'Osservazione \ref{oss:Velocit=0000E0-della-risposta}; scriviamo
+funzione di trasferimento e uscita come:
+\[
+G\left(s\right)=\dfrac{\mu}{\left(1+Ts\right)^{2}},\qquad Y\left(s\right)=\dfrac{\mu}{s\left(1+Ts\right)^{2}}=\dfrac{a}{s}+\dfrac{b}{1+Ts}+\dfrac{c}{\left(1+Ts\right)^{2}}
+\]
+Scegliamo di usare (\ref{eq:Metodo-di-Heaviside}) per calcolare $a$,
+e di ottenere $b$ e $c$ da (\ref{eq:Metodo-cancellazione-denominatore}):
+\[
+a=\left.\dfrac{\mu}{\left(1+Ts\right)^{2}}\right|_{s=0}=\mu
+\]
+\[
+\mu=aT^{2}s^{2}+2aTs+a+bs\left(1+Ts\right)+cs
+\]
+\[
+=s^{2}\left(sT^{2}+bT\right)+s\left(2aT+b+c\right)+a
+\]
+\[
+\begin{cases}
+aT^{2}+bT=0\\
+2aT+b+c=0
+\end{cases}\Rightarrow\begin{cases}
+b=-\mu T\\
+c=-\mu T
+\end{cases}
+\]
+Riscriviamo infine l'uscita sostituendo i coefficienti e troviamo
+la sua antitrasformata:
+\[
+Y\left(s\right)=\dfrac{\mu}{s}-\frac{\mu T}{1+Ts}-\frac{\mu T}{\left(1+Ts\right)^{2}}=\mu\left(\dfrac{1}{s}-\dfrac{1}{\left({\scriptstyle \nicefrac{1}{T}}+s\right)}-\dfrac{1}{T\left({\scriptstyle \nicefrac{1}{T}}+s\right)^{2}}\right)
+\]
+\[
+y\left(t\right)=\mathscr{L}^{-1}\left[Y\left(s\right)\right]=\mu\left(1-e^{-\nicefrac{t}{T}}-\dfrac{1}{T}e^{-\nicefrac{t}{T}}\right)\text{sca}\left(t\right)
+\]
+\begin{rem}
+La velocità di risposta, calcolata in maniera analitica tramite le
+derivate dell'uscita, si ottiene come prima e vale che il tempo di
+assestamento all'$1\%$ è circa $7T$, mentre per il sistema a singolo
+polo questo valore è circa $5T$.
+\end{rem}
 
 \appendix
 
@@ -4305,7 +4562,7 @@ e vale $n\left(N\left(s\right)\right)<n\left(D\left(s\right)\right)$,
 e inoltre per ogni suo polo $p_{i}$ vale $\Re\left(p_{1}\right)<0$,
 allora vale:
 \begin{equation}
-\lm t{+\infty}{f\left(t\right)}=\lm s0{s\cdot F\left(s\right)}.\label{eq:Teorema-valore-finale}
+\lm t{+\infty}{f\left(t\right)}=\lm s0{\,s\cdot F\left(s\right)}.\label{eq:Teorema-valore-finale}
 \end{equation}
 \bigskip{}
 \end{lyxlist}
