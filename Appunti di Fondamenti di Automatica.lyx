@@ -12621,7 +12621,7 @@ status open
 
 \begin_layout Plain Layout
 
-[3cm]
+[2.8cm]
 \end_layout
 
 \end_inset
@@ -12827,13 +12827,14 @@ costanti di tempo
  degli zeri sono scalari.
 \end_layout
 
-\begin_layout Standard
-Se rappresentiamo i poli complessi coniugati sul piano di Gauss, appaiono
- evidenti alcune proprietà riguardo pulsazioni naturali e smorzamenti:
+\begin_layout Subsection*
+Poli complessi coniugati
 \end_layout
 
 \begin_layout Standard
-preso un polo stabile, esso avrà (risolvendo le radici) 
+Se rappresentiamo i poli complessi coniugati sul piano di Gauss, appaiono
+ evidenti alcune proprietà riguardo pulsazioni naturali e smorzamenti: preso
+ un polo stabile, esso avrà (risolvendo le radici) 
 \begin_inset Formula $\Re\left(p\right)=-\xi\omega_{n}$
 \end_inset
 
@@ -12875,6 +12876,34 @@ Da queste osservazioni segue che, a parità di pulsazione
 \end_inset
 
  tra le distanze dei due complessi coniugati.
+\end_layout
+
+\begin_layout Subsection*
+Guadagno generalizzato
+\end_layout
+
+\begin_layout Standard
+Per sistemi che hanno tipo 
+\begin_inset Formula $g>0$
+\end_inset
+
+, la grandezza 
+\begin_inset Formula $\mu$
+\end_inset
+
+ non è ben definita (il limite per ottenerla vale 
+\begin_inset Formula $\infty$
+\end_inset
+
+); si definisce allora il guadagno statico generalizzato come:
+\begin_inset Formula 
+\[
+\lm s{+\infty}{s^{g}G\left(s\right)}\qquad\text{per}\,g>0
+\]
+
+\end_inset
+
+In questo modo si eliminano i poli nell'origine.
 \end_layout
 
 \begin_layout Section
@@ -13015,6 +13044,13 @@ Useremo l'ingresso canonico a scalino
 
 \begin_layout Subsection
 Valori iniziale e finale della risposta
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Valori-della-risposta"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -13346,9 +13382,9 @@ Y\left(s\right)=\dfrac{\mu}{s}-\dfrac{\mu T}{1+Ts}=\mu\left(\dfrac{1}{s}-\dfrac{
 
 
 \begin_inset Formula 
-\[
-\mathscr{L}^{-1}\left[Y\left(s\right)\right]=\mu\left(1-e^{-\nicefrac{t}{T}}\right)\text{sca}\left(t\right)
-\]
+\begin{equation}
+\mathscr{L}^{-1}\left[Y\left(s\right)\right]=\mu\left(1-e^{-\nicefrac{t}{T}}\right)\text{sca}\left(t\right)\label{eq:Risposta-scalino-ord-1}
+\end{equation}
 
 \end_inset
 
@@ -13502,9 +13538,9 @@ Y\left(s\right)=\mu\left(\dfrac{1}{s}-\dfrac{\mu T_{1}}{\left(T_{1}-T_{2}\right)
 
 
 \begin_inset Formula 
-\[
-y\left(t\right)=\mathscr{L}^{-1}\left[Y\left(s\right)\right]=\mu\left(1-\dfrac{T_{1}}{T_{1}-T_{2}}e^{-\nicefrac{t}{T_{1}}}+\dfrac{T_{2}}{T_{1}-T_{2}}e^{-\nicefrac{t}{T_{2}}}\right)\text{sca}\left(t\right)
-\]
+\begin{equation}
+y\left(t\right)=\mathscr{L}^{-1}\left[Y\left(s\right)\right]=\mu\left(1-\dfrac{T_{1}}{T_{1}-T_{2}}e^{-\nicefrac{t}{T_{1}}}+\dfrac{T_{2}}{T_{1}-T_{2}}e^{-\nicefrac{t}{T_{2}}}\right)\text{sca}\left(t\right)\label{eq:Risposta-scalino-ord-2}
+\end{equation}
 
 \end_inset
 
@@ -13660,9 +13696,9 @@ Y\left(s\right)=\dfrac{\mu}{s}-\frac{\mu T}{1+Ts}-\frac{\mu T}{\left(1+Ts\right)
 
 
 \begin_inset Formula 
-\[
-y\left(t\right)=\mathscr{L}^{-1}\left[Y\left(s\right)\right]=\mu\left(1-e^{-\nicefrac{t}{T}}-\dfrac{1}{T}e^{-\nicefrac{t}{T}}\right)\text{sca}\left(t\right)
-\]
+\begin{equation}
+y\left(t\right)=\mathscr{L}^{-1}\left[Y\left(s\right)\right]=\mu\left(1-e^{-\nicefrac{t}{T}}-\dfrac{1}{T}e^{-\nicefrac{t}{T}}\right)\text{sca}\left(t\right)\label{eq:Risposta-scalino-ord-2-poli-reali-coincidenti}
+\end{equation}
 
 \end_inset
 
@@ -13682,6 +13718,494 @@ La velocità di risposta, calcolata in maniera analitica tramite le derivate
 
 , mentre per il sistema a singolo polo questo valore è circa 
 \begin_inset Formula $5T$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Sistemi del II ordine con uno zero
+\end_layout
+
+\begin_layout Standard
+Rimanendo all'interno delle nostre ipotesi, abbiamo due poli reali negativi
+ (sistema asintoticamente stabile) e uno zero (il numeratore avrà grado
+ 1); la forma generale della funzione di trasferimento sarà la seguente:
+\begin_inset Formula 
+\[
+G\left(s\right)=\dfrac{\mu\left(1+\tau s\right)}{\left(1+T_{1}s\right)\left(1+T_{2}s\right)}
+\]
+
+\end_inset
+
+L'uscita sarà pari alla trasformata dell'ingresso (scalino) per la funzione
+ di trasferimento:
+\begin_inset Formula 
+\[
+Y\left(s\right)=\dfrac{\mu\left(1+\tau s\right)}{s\left(1+T_{1}s\right)\left(1+T_{2}s\right)}=\dfrac{a}{s}+\dfrac{b}{1+T_{1}s}+\dfrac{c}{1+T_{2}s}
+\]
+
+\end_inset
+
+Per calcolare i coefficienti nella riscrittura dell'uscita usiamo il metodo
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Metodo-di-Heaviside"
+
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\begin{array}{l}
+a=\left.\dfrac{\mu\left(1+\tau s\right)}{\left(1+T_{1}s\right)\left(1+T_{2}s\right)}\right|_{s=0}=\mu\\
+b=\left.\dfrac{\mu\left(1+\tau s\right)}{\left(1+T_{2}s\right)}\right|_{s=-\nicefrac{1}{T_{1}}}=\dfrac{\mu\left(1-\tau/T_{1}\right)}{-1/T_{1}\left(1-T_{2}/T_{1}\right)}=-\dfrac{\mu T_{1}\left(T_{1}-\tau\right)}{T_{1}-T_{2}}\\
+c=\left.\dfrac{\mu\left(1+\tau s\right)}{\left(1+T_{1}s\right)}\right|_{s=-\nicefrac{1}{T_{2}}}=\dfrac{\mu\left(1-\tau/T_{2}\right)}{-1/T_{2}\left(1-T_{1}/T_{2}\right)}=\dfrac{\mu T_{2}\left(T_{2}-\tau\right)}{T_{1}-T_{2}}
+\end{array}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+Y\left(s\right)=\mu\left(\dfrac{1}{s}-\dfrac{\mu\left(T_{1}-\tau\right)}{\left(T_{1}-T_{2}\right)\left(1/T_{1}+s\right)}+\dfrac{\mu\left(T_{2}-\tau\right)}{\left(T_{1}-T_{2}\right)\left(1/T_{2}+s\right)}\right)
+\]
+
+\end_inset
+
+L'antitrasformata presenta uno scalino e due esponenziali:
+\begin_inset Formula 
+\begin{equation}
+y\left(t\right)=\mu\left(1-\dfrac{T_{1}-\tau}{T_{1}-T_{2}}e^{-\nicefrac{t}{T_{1}}}+\dfrac{T_{2}-\tau}{T_{1}-T_{2}}e^{-\nicefrac{t}{T_{2}}}\right)\text{sca}\left(t\right)\label{eq:Risposta-scalino-ord-2-con-zero}
+\end{equation}
+
+\end_inset
+
+Ora la funzione di uscita dipende anche dalla costante di tempo dello zero;
+ assumiamo che 
+\begin_inset Formula $T_{1}>T_{2}$
+\end_inset
+
+, per avere la quantità al denominatore sempre positiva, e analizziamo il
+ valore dell'uscita rispetto alla variazione di 
+\begin_inset Formula $\tau$
+\end_inset
+
+.
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\noun on
+\begin_inset Formula $\quad$
+\end_inset
+
+Zero positivo
+\end_layout
+
+\begin_layout Standard
+Prendiamo uno zero con parametro 
+\begin_inset Formula $\tau<0$
+\end_inset
+
+: la costante di tempo sarà positiva; nel grafico della risposta compare
+ una 
+\emph on
+sottoelongazione
+\emph default
+, tanto più marcata quanto più il modulo dello zero tende a 0.
+\end_layout
+
+\begin_layout Standard
+Si può considerare uno zero positivo in prossimità dell'origine come un
+ 
+\emph on
+derivatore puro
+\emph default
+, che dà all'uscita un impulso nella prima fase del transitorio; si dice
+ anche che questo comportamento è in 
+\emph on
+contro-fase
+\emph default
+.
+ Lo stesso comportamento si avrebbe per guadagno negativo.
+\end_layout
+
+\begin_layout Standard
+Possiamo calcolare la pendenza nell'origine della risposta usando il teorema
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Teorema-valore-iniziale"
+
+\end_inset
+
+ sull'uscita:
+\begin_inset Formula 
+\[
+\dot{y}\left(0\right)=\lm s{+\infty}{s^{2}Y\left(s\right)}=\lm s{+\infty}{s^{2}G\left(s\right)\dfrac{1}{s}}=\lm s{+\infty}{s\dfrac{\mu\left(1+\tau s\right)}{\left(1+T_{1}s\right)\left(1+T_{2}s\right)}}=\dfrac{\mu\tau}{T_{1}T_{2}}
+\]
+
+\end_inset
+
+Notiamo che un guadagno elevato o in prossimità dell'origine (
+\begin_inset Formula $-\nicefrac{1}{\tau}\ll1\implies\left|\tau\right|\gg0$
+\end_inset
+
+) la pendenza aumenta.
+\end_layout
+
+\begin_layout Standard
+Bisogna precisare che la vicinanza con l'origine di cui abbiamo parlato
+ è in realtà da riferirsi alla distanza con i poli negativi, nello specifico
+ con quelli dominanti (discuteremo successivamente l'andamento asintotico
+ dei sistemi).
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\noun on
+\begin_inset Formula $\quad$
+\end_inset
+
+Zero negativo
+\end_layout
+
+\begin_layout Standard
+Prendiamo uno zero con 
+\begin_inset Formula $\tau>0$
+\end_inset
+
+: la costante di tempo sarà negativa; se essa è maggiore di 
+\begin_inset Formula $-1/T_{1}$
+\end_inset
+
+, si ha il comportamento simmetrico rispetto al caso positivo, col presentarsi
+ di una 
+\emph on
+sovraelongazione
+\emph default
+ durante il transitorio, tanto maggiore quanto più lo zero è vicino all'origine
+ (come prima, se lo zero fosse nell'origine si avrebbe un impulso che precede
+ il transitorio); Uno zero reale negativo allora velocizza la risposta del
+ sistema.
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\noun on
+\begin_inset Formula $\quad$
+\end_inset
+
+Zero nei pressi del polo
+\end_layout
+
+\begin_layout Standard
+Se si aumenta in modulo 
+\begin_inset Formula $\tau$
+\end_inset
+
+ spostando lo zero sempre più a sinistra, prima o poi esso sarà quasi coincident
+e col primo polo (
+\begin_inset Formula $\tau\simeq T_{1}$
+\end_inset
+
+): in un primo momento il transitorio procederà senza elongazioni alla velocità
+ 
+\begin_inset Formula $\mu/T_{2}$
+\end_inset
+
+ stabilita dal polo rimanente.
+\end_layout
+
+\begin_layout Standard
+A seconda della posizione relativa tra lo zero e il polo dominante, si ha
+ un 
+\emph on
+effetto coda
+\emph default
+ durante il transitorio, ovvero la pendenza iniziale è determinata dalla
+ costante di tempo più 
+\begin_inset Quotes eld
+\end_inset
+
+veloce
+\begin_inset Quotes erd
+\end_inset
+
+, seguita da un lungo transitorio determinato dal polo più 
+\begin_inset Quotes eld
+\end_inset
+
+lento
+\begin_inset Quotes erd
+\end_inset
+
+.
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\noun on
+\begin_inset Formula $\quad$
+\end_inset
+
+Zero cancella un polo
+\end_layout
+
+\begin_layout Standard
+Quando vale effettivamente 
+\begin_inset Formula $\tau=T_{1}$
+\end_inset
+
+, si verifica una cancellazione zero-polo e la risposta assomiglia a quella
+ di un sistema di ordine 1 senza zeri.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\noun on
+\begin_inset Formula $\quad$
+\end_inset
+
+Zero molto piccolo negativo
+\end_layout
+
+\begin_layout Standard
+Quando vale 
+\begin_inset Formula $\left|\tau\right|\gg0$
+\end_inset
+
+, la costante di tempo diventa trascurabile e il sistema risponde come se
+ non avesse affatto lo zero.
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Sistemi del II ordine con poli complessi coniugati
+\end_layout
+
+\begin_layout Standard
+La forma della funzione di trasferimento in questo caso può essere scritta
+ nella seguente forma:
+\begin_inset Formula 
+\[
+G\left(s\right)=\frac{\mu\omega_{n}^{2}}{\left(s^{2}+2\xi\omega_{n}s+\omega_{n}^{2}\right)}\qquad\omega_{n}>0,\,\xi\in\left(0,1\right)
+\]
+
+\end_inset
+
+In questo modo i poli saranno in
+\begin_inset Formula 
+\[
+p_{1,2}=\overset{\sigma}{\overbrace{-\xi\omega_{n}}}\pm j\overset{\omega}{\overbrace{\sqrt{1-\xi^{2}}}}
+\]
+
+\end_inset
+
+e per i valori scelti di smorzamento e pulsazione abbiamo due poli complessi
+ coniugati con parte reale negativa.
+ Calcoliamo come al solito la risposta dell'uscita antitrasformando la sua
+ espressione nel dominio di Laplace, dopo averla scritta col metodo di Heaviside
+:
+\begin_inset Formula 
+\[
+Y\left(s\right)=\frac{\mu\omega_{n}^{2}}{s\left(s-\sigma-j\omega\right)\left(s-\sigma+j\omega\right)}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+a=\left.\dfrac{\mu\omega_{n}^{2}}{\left(s-\sigma-j\omega\right)\left(s-\sigma+j\omega\right)}\right|_{s=0}=\mu
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\begin{array}{l}
+b=\left.\dfrac{\mu\omega_{n}^{2}}{\left(s-\sigma+j\omega\right)}\right|_{s=\sigma+j\omega}=\dfrac{\mu\omega_{n}^{2}}{\left(\sigma+j\omega\right)\left(\sigma+j\omega-\sigma+j\omega\right)}=\dfrac{\mu\omega_{n}^{2}}{2}\cdot\dfrac{-\omega^{2}-j\sigma\omega}{\omega^{4}+\omega^{2}\sigma^{2}}\\
+=\dfrac{\mu\omega_{n}^{2}}{\underset{{\scriptstyle \omega_{n}^{2}}}{2\underbrace{\left(\omega^{2}+\sigma^{2}\right)}}}\left(-1-j\dfrac{\sigma}{\omega}\right)=\dfrac{\mu}{2\omega}\left(-\omega-j\sigma\right)
+\end{array}
+\]
+
+\end_inset
+
+Scriviamo il coefficiente 
+\begin_inset Formula $b$
+\end_inset
+
+ in forma esponenziale, sostituendo 
+\begin_inset Formula $\omega$
+\end_inset
+
+ e 
+\begin_inset Formula $\sigma$
+\end_inset
+
+ con le variabili originali:
+\begin_inset Formula 
+\[
+b=\dfrac{\mu}{s\sqrt{1-\xi^{2}}}e^{j\arg\left(-\omega-j\sigma\right)}
+\]
+
+\end_inset
+
+Questo numero si trova nel secondo quadrante sul piano complesso, e il suo
+ argomento vale:
+\begin_inset Formula 
+\[
+\arg\left(-\omega-j\sigma\right)=\arctan\left(\dfrac{\xi\cancel{\omega_{n}}}{\cancel{\omega_{n}}\sqrt{1-\xi^{2}}}\right)+\dfrac{\pi}{2}\implies b=\dfrac{\mu}{s\sqrt{1-\xi^{2}}}e^{j\left(\arccos\left(\xi\right)+\nicefrac{\pi}{2}\right)}
+\]
+
+\end_inset
+
+Il coefficiente 
+\begin_inset Formula $c$
+\end_inset
+
+ è il complesso coniugato di quello appena trovato:
+\begin_inset Formula 
+\[
+c=b^{*}=\dfrac{\mu}{s\sqrt{1-\xi^{2}}}e^{-j\left(\arccos\left(\xi\right)+\nicefrac{\pi}{2}\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Sostituendo nell'espressione dell'uscita si ha
+\begin_inset Formula 
+\[
+Y\left(s\right)=\mu\left[\dfrac{1}{s}+\dfrac{1}{2\sqrt{1-\xi^{2}}}\left(\frac{e^{j\left(\arccos\left(\xi\right)+\nicefrac{\pi}{2}\right)}}{s-\left(\sigma+j\omega\right)}+\frac{e^{-j\left(\arccos\left(\xi\right)+\nicefrac{\pi}{2}\right)}}{s-\left(\sigma-j\omega\right)}\right)\right]
+\]
+
+\end_inset
+
+Antitrasformiamo l'uscita usando 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Antitrasformata-Laplace-poli-complessi-coniugati"
+
+\end_inset
+
+, e otteniamo la seguente espressione:
+\begin_inset Formula 
+\[
+y\left(t\right)=\mu\left[1+\dfrac{\cancel{2}}{\cancel{2}\sqrt{1-\xi^{2}}}e^{-\sigma t}\cdot\cos\left(\omega t+\arccos\left(\xi\right)+\frac{\pi}{2}\right)\right]\text{sca}\left(t\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+=\mu\left[1-\dfrac{e^{-\xi\omega_{n}t}}{\sqrt{1-\xi^{2}}}\cdot\sin\left(\omega_{n}\sqrt{1-\xi^{2}}t+\arccos\left(\xi\right)\right)\right]\text{sca}\left(t\right)\label{eq:Risposta-scalino-ord-2-poli-complessi-coniugati}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La risposta ha valore iniziale e derivata prima nulli nell'origine, poi
+ segue una sovraelongazione e l'uscita segue un andamento oscillante convergente
+ al valore di guadagno, con inviluppo esponenziale 
+\begin_inset Formula $e^{-\xi\omega_{n}t}$
+\end_inset
+
+.
+ Nel caso di smorzamento nullo (
+\begin_inset Formula $\xi=0$
+\end_inset
+
+) le oscillazioni non si attenuano nel tempo, e si ottiene una risposta
+ oscillante limitata (sinusoidale) nel tempo tra 0 e 
+\begin_inset Formula $\mu$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Remark
+Si può controllare che la sovraelongazione dipende solo dallo smorzamento:
+ vale infatti
+\begin_inset Formula 
+\[
+y_{{\scriptscriptstyle \text{MAX}}}=\mu\left(1+e^{\nicefrac{-\xi\pi}{\sqrt{1-\xi^{2}}}}\right)
+\]
+
+\end_inset
+
+La sovraelongazione in percentuale vale 
+\begin_inset Formula $s_{\%}=e^{\nicefrac{-\xi\pi}{\sqrt{1-\xi^{2}}}}\cdot100$
+\end_inset
+
+ (abbiamo usato la definizione enunciata ne 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "subsec:Valori-della-risposta"
+
+\end_inset
+
+); in generale sovraelongazione e smorzamento sono legati da una relazione
+ esponenziale di proporzionalità inversa.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+Sia smorzamento che pulsazione naturale influenzano la velocità con cui
+ le pulsazioni tendono a 0: l'inviluppo esponenziale del movimento è analogo
+ a quello di una risposta del primo ordine, con costante di tempo 
+\begin_inset Formula $T=1/\xi\omega_{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Remark
+Il tempo di assestamento, come nel caso di poli reali, vale 
+\begin_inset Formula $T_{a,\varepsilon}=-\ln\left(\varepsilon\right)/\xi\omega_{n}$
 \end_inset
 
 .

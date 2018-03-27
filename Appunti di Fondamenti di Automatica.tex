@@ -3266,7 +3266,7 @@ uscite non influenzano questa sua proprietà.
 
 Per comodità si usa rappresentare le funzioni di trasferimento, in
 un sistema SISO, secondo delle scritture standard fattorizzate:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
-\textbf{\footnotesize{}Forma di Bode}{\footnotesize{}\index{Bode, forma di@{\footnotesize{}Bode, forma di}}}}[3cm]
+\textbf{\footnotesize{}Forma di Bode}{\footnotesize{}\index{Bode, forma di@{\footnotesize{}Bode, forma di}}}}[2.8cm]
 \begin{equation}
 G\left(s\right)=\dfrac{\rho\cdot\prod_{i}\left(s+z_{i}\right)\prod_{i}\left(s^{2}+2\zeta_{i}\alpha_{n_{i}}s+\alpha_{n_{i}}^{2}\right)}{s^{g}\cdot\prod_{i}\left(s+p_{i}\right)\prod_{i}\left(s^{2}+2\xi_{i}\omega_{n_{i}}s+\omega_{n_{i}}^{2}\right)}\label{eq:Forma-fattorizzata-standard}
 \end{equation}
@@ -3313,9 +3313,11 @@ di equilibrio) e l'ampiezza dell'uscita (di equilibrio);
 \item le \emph{costanti di tempo} $T_{i}=1/p_{i}$ dei poli e $\tau_{i}=1/z_{i}$
 degli zeri sono scalari.
 \end{itemize}
+
+\subsection*{Poli complessi coniugati}
+
 Se rappresentiamo i poli complessi coniugati sul piano di Gauss, appaiono
 evidenti alcune proprietà riguardo pulsazioni naturali e smorzamenti:
-
 preso un polo stabile, esso avrà (risolvendo le radici) $\Re\left(p\right)=-\xi\omega_{n}$,
 $\Im\left(p\right)=\pm\omega_{n}\sqrt{1-\xi^{2}}$; in particolare
 $\omega_{n}$ è la distanza dall'origine di ciascun polo della coppia
@@ -3325,6 +3327,16 @@ forma con l'asse reale è pari a $\xi$, dunque vale $\theta=\arccos\left(\xi\righ
 Da queste osservazioni segue che, a parità di pulsazione $\omega_{n}$
 lo smorzamento $\xi$ è inversamente proporzionale all'angolo $\theta$
 tra le distanze dei due complessi coniugati.
+
+\subsection*{Guadagno generalizzato}
+
+Per sistemi che hanno tipo $g>0$, la grandezza $\mu$ non è ben definita
+(il limite per ottenerla vale $\infty$); si definisce allora il guadagno
+statico generalizzato come:
+\[
+\lm s{+\infty}{s^{g}G\left(s\right)}\qquad\text{per}\,g>0
+\]
+In questo modo si eliminano i poli nell'origine.
 
 \section{Risposta forzata allo scalino}
 
@@ -3355,7 +3367,7 @@ di uno scalino unitario in sistemi asintoticamente stabili del I e
 del II ordine, quindi sistemi con al più due poli (con parte reale
 negativa) e al più uno zero, e nessun polo è nell'origine.
 
-\subsection{Valori iniziale e finale della risposta}
+\subsection{Valori iniziale e finale della risposta\label{subsec:Valori-della-risposta}}
 
 Calcoliamo il valore finale della risposta allo scalino a partire
 dalla trasformata di Laplace dell'uscita, usando la funzione di trasferimento:
@@ -3449,9 +3461,9 @@ antitrasformata:
 \[
 Y\left(s\right)=\dfrac{\mu}{s}-\dfrac{\mu T}{1+Ts}=\mu\left(\dfrac{1}{s}-\dfrac{1}{s+\nicefrac{1}{T}}\right)
 \]
-\[
-\mathscr{L}^{-1}\left[Y\left(s\right)\right]=\mu\left(1-e^{-\nicefrac{t}{T}}\right)\text{sca}\left(t\right)
-\]
+\begin{equation}
+\mathscr{L}^{-1}\left[Y\left(s\right)\right]=\mu\left(1-e^{-\nicefrac{t}{T}}\right)\text{sca}\left(t\right)\label{eq:Risposta-scalino-ord-1}
+\end{equation}
 Le caratteristiche di questa risposta sono le seguenti:
 \begin{itemize}
 \item Valore iniziale nullo al tempo zero ($y\left(0\right)=0$);
@@ -3496,9 +3508,9 @@ raccogliendo i termini di secondo grado dei numeratori:
 \[
 Y\left(s\right)=\mu\left(\dfrac{1}{s}-\dfrac{\mu T_{1}}{\left(T_{1}-T_{2}\right)}\cdot\dfrac{1}{{\scriptstyle \nicefrac{1}{T_{1}}}+s}+\dfrac{\mu T_{2}}{\left(T_{1}-T_{2}\right)}\cdot\dfrac{1}{{\scriptstyle \nicefrac{1}{T_{2}}}+s}\right)
 \]
-\[
-y\left(t\right)=\mathscr{L}^{-1}\left[Y\left(s\right)\right]=\mu\left(1-\dfrac{T_{1}}{T_{1}-T_{2}}e^{-\nicefrac{t}{T_{1}}}+\dfrac{T_{2}}{T_{1}-T_{2}}e^{-\nicefrac{t}{T_{2}}}\right)\text{sca}\left(t\right)
-\]
+\begin{equation}
+y\left(t\right)=\mathscr{L}^{-1}\left[Y\left(s\right)\right]=\mu\left(1-\dfrac{T_{1}}{T_{1}-T_{2}}e^{-\nicefrac{t}{T_{1}}}+\dfrac{T_{2}}{T_{1}-T_{2}}e^{-\nicefrac{t}{T_{2}}}\right)\text{sca}\left(t\right)\label{eq:Risposta-scalino-ord-2}
+\end{equation}
 \begin{rem}
 \label{oss:Velocit=0000E0-della-risposta}Se fosse $T_{1}\gg T_{2}$,
 il polo associato a $T_{1}$ si dice dominante e la risposta si avvicina
@@ -3549,14 +3561,191 @@ la sua antitrasformata:
 \[
 Y\left(s\right)=\dfrac{\mu}{s}-\frac{\mu T}{1+Ts}-\frac{\mu T}{\left(1+Ts\right)^{2}}=\mu\left(\dfrac{1}{s}-\dfrac{1}{\left({\scriptstyle \nicefrac{1}{T}}+s\right)}-\dfrac{1}{T\left({\scriptstyle \nicefrac{1}{T}}+s\right)^{2}}\right)
 \]
-\[
-y\left(t\right)=\mathscr{L}^{-1}\left[Y\left(s\right)\right]=\mu\left(1-e^{-\nicefrac{t}{T}}-\dfrac{1}{T}e^{-\nicefrac{t}{T}}\right)\text{sca}\left(t\right)
-\]
+\begin{equation}
+y\left(t\right)=\mathscr{L}^{-1}\left[Y\left(s\right)\right]=\mu\left(1-e^{-\nicefrac{t}{T}}-\dfrac{1}{T}e^{-\nicefrac{t}{T}}\right)\text{sca}\left(t\right)\label{eq:Risposta-scalino-ord-2-poli-reali-coincidenti}
+\end{equation}
 \begin{rem}
 La velocità di risposta, calcolata in maniera analitica tramite le
 derivate dell'uscita, si ottiene come prima e vale che il tempo di
 assestamento all'$1\%$ è circa $7T$, mentre per il sistema a singolo
 polo questo valore è circa $5T$.
+\end{rem}
+
+\subsection{Sistemi del II ordine con uno zero}
+
+Rimanendo all'interno delle nostre ipotesi, abbiamo due poli reali
+negativi (sistema asintoticamente stabile) e uno zero (il numeratore
+avrà grado 1); la forma generale della funzione di trasferimento sarà
+la seguente:
+\[
+G\left(s\right)=\dfrac{\mu\left(1+\tau s\right)}{\left(1+T_{1}s\right)\left(1+T_{2}s\right)}
+\]
+L'uscita sarà pari alla trasformata dell'ingresso (scalino) per la
+funzione di trasferimento:
+\[
+Y\left(s\right)=\dfrac{\mu\left(1+\tau s\right)}{s\left(1+T_{1}s\right)\left(1+T_{2}s\right)}=\dfrac{a}{s}+\dfrac{b}{1+T_{1}s}+\dfrac{c}{1+T_{2}s}
+\]
+Per calcolare i coefficienti nella riscrittura dell'uscita usiamo
+il metodo (\ref{eq:Metodo-di-Heaviside}):
+\[
+\begin{array}{l}
+a=\left.\dfrac{\mu\left(1+\tau s\right)}{\left(1+T_{1}s\right)\left(1+T_{2}s\right)}\right|_{s=0}=\mu\\
+b=\left.\dfrac{\mu\left(1+\tau s\right)}{\left(1+T_{2}s\right)}\right|_{s=-\nicefrac{1}{T_{1}}}=\dfrac{\mu\left(1-\tau/T_{1}\right)}{-1/T_{1}\left(1-T_{2}/T_{1}\right)}=-\dfrac{\mu T_{1}\left(T_{1}-\tau\right)}{T_{1}-T_{2}}\\
+c=\left.\dfrac{\mu\left(1+\tau s\right)}{\left(1+T_{1}s\right)}\right|_{s=-\nicefrac{1}{T_{2}}}=\dfrac{\mu\left(1-\tau/T_{2}\right)}{-1/T_{2}\left(1-T_{1}/T_{2}\right)}=\dfrac{\mu T_{2}\left(T_{2}-\tau\right)}{T_{1}-T_{2}}
+\end{array}
+\]
+\[
+Y\left(s\right)=\mu\left(\dfrac{1}{s}-\dfrac{\mu\left(T_{1}-\tau\right)}{\left(T_{1}-T_{2}\right)\left(1/T_{1}+s\right)}+\dfrac{\mu\left(T_{2}-\tau\right)}{\left(T_{1}-T_{2}\right)\left(1/T_{2}+s\right)}\right)
+\]
+L'antitrasformata presenta uno scalino e due esponenziali:
+\begin{equation}
+y\left(t\right)=\mu\left(1-\dfrac{T_{1}-\tau}{T_{1}-T_{2}}e^{-\nicefrac{t}{T_{1}}}+\dfrac{T_{2}-\tau}{T_{1}-T_{2}}e^{-\nicefrac{t}{T_{2}}}\right)\text{sca}\left(t\right)\label{eq:Risposta-scalino-ord-2-con-zero}
+\end{equation}
+Ora la funzione di uscita dipende anche dalla costante di tempo dello
+zero; assumiamo che $T_{1}>T_{2}$, per avere la quantità al denominatore
+sempre positiva, e analizziamo il valore dell'uscita rispetto alla
+variazione di $\tau$.\bigskip{}
+
+\noun{$\quad$Zero positivo}
+
+Prendiamo uno zero con parametro $\tau<0$: la costante di tempo sarà
+positiva; nel grafico della risposta compare una \emph{sottoelongazione},
+tanto più marcata quanto più il modulo dello zero tende a 0.
+
+Si può considerare uno zero positivo in prossimità dell'origine come
+un \emph{derivatore puro}, che dà all'uscita un impulso nella prima
+fase del transitorio; si dice anche che questo comportamento è in
+\emph{contro-fase}. Lo stesso comportamento si avrebbe per guadagno
+negativo.
+
+Possiamo calcolare la pendenza nell'origine della risposta usando
+il teorema (\ref{eq:Teorema-valore-iniziale}) sull'uscita:
+\[
+\dot{y}\left(0\right)=\lm s{+\infty}{s^{2}Y\left(s\right)}=\lm s{+\infty}{s^{2}G\left(s\right)\dfrac{1}{s}}=\lm s{+\infty}{s\dfrac{\mu\left(1+\tau s\right)}{\left(1+T_{1}s\right)\left(1+T_{2}s\right)}}=\dfrac{\mu\tau}{T_{1}T_{2}}
+\]
+Notiamo che un guadagno elevato o in prossimità dell'origine ($-\nicefrac{1}{\tau}\ll1\implies\left|\tau\right|\gg0$)
+la pendenza aumenta.
+
+Bisogna precisare che la vicinanza con l'origine di cui abbiamo parlato
+è in realtà da riferirsi alla distanza con i poli negativi, nello
+specifico con quelli dominanti (discuteremo successivamente l'andamento
+asintotico dei sistemi).\bigskip{}
+
+\noun{$\quad$Zero negativo}
+
+Prendiamo uno zero con $\tau>0$: la costante di tempo sarà negativa;
+se essa è maggiore di $-1/T_{1}$, si ha il comportamento simmetrico
+rispetto al caso positivo, col presentarsi di una \emph{sovraelongazione}
+durante il transitorio, tanto maggiore quanto più lo zero è vicino
+all'origine (come prima, se lo zero fosse nell'origine si avrebbe
+un impulso che precede il transitorio); Uno zero reale negativo allora
+velocizza la risposta del sistema.\bigskip{}
+
+\noun{$\quad$Zero nei pressi del polo}
+
+Se si aumenta in modulo $\tau$ spostando lo zero sempre più a sinistra,
+prima o poi esso sarà quasi coincidente col primo polo ($\tau\simeq T_{1}$):
+in un primo momento il transitorio procederà senza elongazioni alla
+velocità $\mu/T_{2}$ stabilita dal polo rimanente.
+
+A seconda della posizione relativa tra lo zero e il polo dominante,
+si ha un \emph{effetto coda} durante il transitorio, ovvero la pendenza
+iniziale è determinata dalla costante di tempo più ``veloce'', seguita
+da un lungo transitorio determinato dal polo più ``lento''.\bigskip{}
+
+\noun{$\quad$Zero cancella un polo}
+
+Quando vale effettivamente $\tau=T_{1}$, si verifica una cancellazione
+zero-polo e la risposta assomiglia a quella di un sistema di ordine
+1 senza zeri.
+
+\bigskip{}
+
+\noun{$\quad$Zero molto piccolo negativo}
+
+Quando vale $\left|\tau\right|\gg0$, la costante di tempo diventa
+trascurabile e il sistema risponde come se non avesse affatto lo zero.\bigskip{}
+
+\subsection{Sistemi del II ordine con poli complessi coniugati}
+
+La forma della funzione di trasferimento in questo caso può essere
+scritta nella seguente forma:
+\[
+G\left(s\right)=\frac{\mu\omega_{n}^{2}}{\left(s^{2}+2\xi\omega_{n}s+\omega_{n}^{2}\right)}\qquad\omega_{n}>0,\,\xi\in\left(0,1\right)
+\]
+In questo modo i poli saranno in
+\[
+p_{1,2}=\overset{\sigma}{\overbrace{-\xi\omega_{n}}}\pm j\overset{\omega}{\overbrace{\sqrt{1-\xi^{2}}}}
+\]
+e per i valori scelti di smorzamento e pulsazione abbiamo due poli
+complessi coniugati con parte reale negativa. Calcoliamo come al solito
+la risposta dell'uscita antitrasformando la sua espressione nel dominio
+di Laplace, dopo averla scritta col metodo di Heaviside:
+\[
+Y\left(s\right)=\frac{\mu\omega_{n}^{2}}{s\left(s-\sigma-j\omega\right)\left(s-\sigma+j\omega\right)}
+\]
+\[
+a=\left.\dfrac{\mu\omega_{n}^{2}}{\left(s-\sigma-j\omega\right)\left(s-\sigma+j\omega\right)}\right|_{s=0}=\mu
+\]
+\[
+\begin{array}{l}
+b=\left.\dfrac{\mu\omega_{n}^{2}}{\left(s-\sigma+j\omega\right)}\right|_{s=\sigma+j\omega}=\dfrac{\mu\omega_{n}^{2}}{\left(\sigma+j\omega\right)\left(\sigma+j\omega-\sigma+j\omega\right)}=\dfrac{\mu\omega_{n}^{2}}{2}\cdot\dfrac{-\omega^{2}-j\sigma\omega}{\omega^{4}+\omega^{2}\sigma^{2}}\\
+=\dfrac{\mu\omega_{n}^{2}}{\underset{{\scriptstyle \omega_{n}^{2}}}{2\underbrace{\left(\omega^{2}+\sigma^{2}\right)}}}\left(-1-j\dfrac{\sigma}{\omega}\right)=\dfrac{\mu}{2\omega}\left(-\omega-j\sigma\right)
+\end{array}
+\]
+Scriviamo il coefficiente $b$ in forma esponenziale, sostituendo
+$\omega$ e $\sigma$ con le variabili originali:
+\[
+b=\dfrac{\mu}{s\sqrt{1-\xi^{2}}}e^{j\arg\left(-\omega-j\sigma\right)}
+\]
+Questo numero si trova nel secondo quadrante sul piano complesso,
+e il suo argomento vale:
+\[
+\arg\left(-\omega-j\sigma\right)=\arctan\left(\dfrac{\xi\cancel{\omega_{n}}}{\cancel{\omega_{n}}\sqrt{1-\xi^{2}}}\right)+\dfrac{\pi}{2}\implies b=\dfrac{\mu}{s\sqrt{1-\xi^{2}}}e^{j\left(\arccos\left(\xi\right)+\nicefrac{\pi}{2}\right)}
+\]
+Il coefficiente $c$ è il complesso coniugato di quello appena trovato:
+\[
+c=b^{*}=\dfrac{\mu}{s\sqrt{1-\xi^{2}}}e^{-j\left(\arccos\left(\xi\right)+\nicefrac{\pi}{2}\right)}
+\]
+
+Sostituendo nell'espressione dell'uscita si ha
+\[
+Y\left(s\right)=\mu\left[\dfrac{1}{s}+\dfrac{1}{2\sqrt{1-\xi^{2}}}\left(\frac{e^{j\left(\arccos\left(\xi\right)+\nicefrac{\pi}{2}\right)}}{s-\left(\sigma+j\omega\right)}+\frac{e^{-j\left(\arccos\left(\xi\right)+\nicefrac{\pi}{2}\right)}}{s-\left(\sigma-j\omega\right)}\right)\right]
+\]
+Antitrasformiamo l'uscita usando (\ref{eq:Antitrasformata-Laplace-poli-complessi-coniugati}),
+e otteniamo la seguente espressione:
+\[
+y\left(t\right)=\mu\left[1+\dfrac{\cancel{2}}{\cancel{2}\sqrt{1-\xi^{2}}}e^{-\sigma t}\cdot\cos\left(\omega t+\arccos\left(\xi\right)+\frac{\pi}{2}\right)\right]\text{sca}\left(t\right)
+\]
+\begin{equation}
+=\mu\left[1-\dfrac{e^{-\xi\omega_{n}t}}{\sqrt{1-\xi^{2}}}\cdot\sin\left(\omega_{n}\sqrt{1-\xi^{2}}t+\arccos\left(\xi\right)\right)\right]\text{sca}\left(t\right)\label{eq:Risposta-scalino-ord-2-poli-complessi-coniugati}
+\end{equation}
+
+La risposta ha valore iniziale e derivata prima nulli nell'origine,
+poi segue una sovraelongazione e l'uscita segue un andamento oscillante
+convergente al valore di guadagno, con inviluppo esponenziale $e^{-\xi\omega_{n}t}$.
+Nel caso di smorzamento nullo ($\xi=0$) le oscillazioni non si attenuano
+nel tempo, e si ottiene una risposta oscillante limitata (sinusoidale)
+nel tempo tra 0 e $\mu$.
+\begin{rem}
+Si può controllare che la sovraelongazione dipende solo dallo smorzamento:
+vale infatti
+\[
+y_{{\scriptscriptstyle \text{MAX}}}=\mu\left(1+e^{\nicefrac{-\xi\pi}{\sqrt{1-\xi^{2}}}}\right)
+\]
+La sovraelongazione in percentuale vale $s_{\%}=e^{\nicefrac{-\xi\pi}{\sqrt{1-\xi^{2}}}}\cdot100$
+(abbiamo usato la definizione enunciata ne \subsecref{Valori-della-risposta});
+in generale sovraelongazione e smorzamento sono legati da una relazione
+esponenziale di proporzionalità inversa.
+\end{rem}
+%
+\begin{rem}
+Sia smorzamento che pulsazione naturale influenzano la velocità con
+cui le pulsazioni tendono a 0: l'inviluppo esponenziale del movimento
+è analogo a quello di una risposta del primo ordine, con costante
+di tempo $T=1/\xi\omega_{n}$.
+
+Il tempo di assestamento, come nel caso di poli reali, vale $T_{a,\varepsilon}=-\ln\left(\varepsilon\right)/\xi\omega_{n}$.
 \end{rem}
 
 \appendix
