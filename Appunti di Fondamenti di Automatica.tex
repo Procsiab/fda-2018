@@ -44,6 +44,7 @@
 \AtBeginDocument{\providecommand\chapref[1]{\ref{chap:#1}}}
 \AtBeginDocument{\providecommand\tabref[1]{\ref{tab:#1}}}
 \AtBeginDocument{\providecommand\subsecref[1]{\ref{subsec:#1}}}
+\AtBeginDocument{\providecommand\figref[1]{\ref{fig:#1}}}
 \newcommand{\noun}[1]{\textsc{#1}}
 %% Because html converters don't know tabularnewline
 \providecommand{\tabularnewline}{\\}
@@ -3422,7 +3423,7 @@ alcuni termini per la nomenclatura e l'analisi di questa risposta:
 \begin{center}
 \includegraphics{\string"Illustrazioni/3_4-2 Risposta allo scalino ordine elevato\string".pdf}
 \par\end{center}
-\captionof{figure}{Risposta allo scalino per sistemi di ordine elevato}%
+\captionof{figure}{Risposta allo scalino per sistemi con 2 poli complessi}\label{fig:Risposta-sistemi-2-ord-complessi-coniugati}%
 \end{minipage}
 \begin{itemize}
 \item Il \emph{tempo di assestamento} $T_{a,\varepsilon}$ è l'istante dopo
@@ -3604,13 +3605,27 @@ y\left(t\right)=\mu\left(1-\dfrac{T_{1}-\tau}{T_{1}-T_{2}}e^{-\nicefrac{t}{T_{1}
 Ora la funzione di uscita dipende anche dalla costante di tempo dello
 zero; assumiamo che $T_{1}>T_{2}$, per avere la quantità al denominatore
 sempre positiva, e analizziamo il valore dell'uscita rispetto alla
-variazione di $\tau$.\bigskip{}
+variazione di $\tau$.
+
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{center}
+\includegraphics{\string"Illustrazioni/3_4-4 Risposta del II ord zero positivo\string".pdf}
+\par\end{center}
+\captionof{figure}{Risposta del 2 ordine con zero reale positivo}\label{fig:Risposta-2-ord-zero-positivo}%
+\end{minipage}%
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{center}
+\includegraphics{\string"Illustrazioni/3_4-5 Risposta del II ord zero negativo\string".pdf}
+\par\end{center}
+\captionof{figure}{Risposta del 2 ordine con zero reale negativo}\label{fig:Risposta-2-ord-zero-negativo}%
+\end{minipage}\bigskip{}
 
 \noun{$\quad$Zero positivo}
 
 Prendiamo uno zero con parametro $\tau<0$: la costante di tempo sarà
-positiva; nel grafico della risposta compare una \emph{sottoelongazione},
-tanto più marcata quanto più il modulo dello zero tende a 0.
+positiva; nel grafico della risposta compare una \emph{sottoelongazione}
+(si veda \figref{Risposta-2-ord-zero-positivo}), tanto più marcata
+quanto più il modulo dello zero tende a 0.
 
 Si può considerare uno zero positivo in prossimità dell'origine come
 un \emph{derivatore puro}, che dà all'uscita un impulso nella prima
@@ -3636,10 +3651,11 @@ asintotico dei sistemi).\bigskip{}
 Prendiamo uno zero con $\tau>0$: la costante di tempo sarà negativa;
 se essa è maggiore di $-1/T_{1}$, si ha il comportamento simmetrico
 rispetto al caso positivo, col presentarsi di una \emph{sovraelongazione}
-durante il transitorio, tanto maggiore quanto più lo zero è vicino
-all'origine (come prima, se lo zero fosse nell'origine si avrebbe
-un impulso che precede il transitorio); Uno zero reale negativo allora
-velocizza la risposta del sistema.\bigskip{}
+(si veda \figref{Risposta-2-ord-zero-negativo}) durante il transitorio,
+tanto maggiore quanto più lo zero è vicino all'origine (come prima,
+se lo zero fosse nell'origine si avrebbe un impulso che precede il
+transitorio); Uno zero reale negativo allora velocizza la risposta
+del sistema.\bigskip{}
 
 \noun{$\quad$Zero nei pressi del polo}
 
@@ -3666,7 +3682,8 @@ zero-polo e la risposta assomiglia a quella di un sistema di ordine
 Quando vale $\left|\tau\right|\gg0$, la costante di tempo diventa
 trascurabile e il sistema risponde come se non avesse affatto lo zero.\bigskip{}
 
-\subsection{Sistemi del II ordine con poli complessi coniugati}
+\subsection{\label{subsec:Sistemi-ord-2-poli-complessi-coniugati}Sistemi del
+II ordine con poli complessi coniugati}
 
 La forma della funzione di trasferimento in questo caso può essere
 scritta nella seguente forma:
@@ -3721,9 +3738,10 @@ y\left(t\right)=\mu\left[1+\dfrac{\cancel{2}}{\cancel{2}\sqrt{1-\xi^{2}}}e^{-\si
 =\mu\left[1-\dfrac{e^{-\xi\omega_{n}t}}{\sqrt{1-\xi^{2}}}\cdot\sin\left(\omega_{n}\sqrt{1-\xi^{2}}t+\arccos\left(\xi\right)\right)\right]\text{sca}\left(t\right)\label{eq:Risposta-scalino-ord-2-poli-complessi-coniugati}
 \end{equation}
 
-La risposta ha valore iniziale e derivata prima nulli nell'origine,
-poi segue una sovraelongazione e l'uscita segue un andamento oscillante
-convergente al valore di guadagno, con inviluppo esponenziale $e^{-\xi\omega_{n}t}$.
+La risposta (mostrata ne \figref{Risposta-sistemi-2-ord-complessi-coniugati})
+ha valore iniziale e derivata prima nulli nell'origine, poi segue
+una sovraelongazione e l'uscita segue un andamento oscillante convergente
+al valore di guadagno, con inviluppo esponenziale $e^{-\xi\omega_{n}t}$.
 Nel caso di smorzamento nullo ($\xi=0$) le oscillazioni non si attenuano
 nel tempo, e si ottiene una risposta oscillante limitata (sinusoidale)
 nel tempo tra 0 e $\mu$.
@@ -3747,6 +3765,179 @@ di tempo $T=1/\xi\omega_{n}$.
 
 Il tempo di assestamento, come nel caso di poli reali, vale $T_{a,\varepsilon}=-\ln\left(\varepsilon\right)/\xi\omega_{n}$.
 \end{rem}
+
+\section{Approssimazione a poli dominanti}
+
+\marginpar{In presenza di zeri o poli con parte reale positiva (instabili) non
+valgono le approssimazioni seguenti}Consideriamo un sistema asintoticamente stabile di ordine maggiore
+del secondo, nel quale \uline{tutte} le singolarità (poli e zeri)
+abbiano parte reale negativa; nel caso i cui alcuni poli o zeri abbiano
+la parte reale in modulo molto maggiore di quella degli altri (la
+costante di tempo associata è molto piccola), possiamo trascurare
+quelle singolarità nell'espressione della risposta allo scalino del
+sistema.
+\begin{example}
+\emph{\label{ese:Approssimazione-polo-dominante}Sia data la seguente
+funzione di trasferimento:}
+\[
+G\left(s\right)=\frac{5}{\left(1+s\right)\left(1+10s\right)\left(\frac{s^{2}}{900}+\frac{s}{30}+1\right)}
+\]
+\emph{$\checkmark$Calcolare la risposta allo scalino del sistema.}
+
+La consegna richiede di calcolare l'uscita dalla funzione di trasferimento
+in risposta allo scalino; osserviamo che si tratta di un sistema del
+$\mathrm{IV}$ ordine, e non vi sono state cancellazioni: sono presenti
+due poli reali ($s_{1}=-1,\,s_{2}=-\frac{1}{10}$) e due poli complessi
+coniugati ($s_{3,4}=-15\pm30\sqrt{\nicefrac{3}{4}}$, per quanto osservato
+ne \subsecref{Sistemi-ord-2-poli-complessi-coniugati}).
+
+Le costanti di tempo associate a ciascun polo saranno rispettivamente:
+\[
+T_{3,4}=\frac{1}{15}\,<\,T_{1}=1\,<\,T_{2}=10
+\]
+Se osserviamo i poli sul piano complesso, il polo più vicino all'origine
+ha la costante di tempo maggiore, ed è proprio il polo dominante ($s_{2}$);
+possiamo trascurare gli altri poli nel calcolo della risposta al sistema,
+ottenendo la seguente funzione di trasferimento
+\[
+G^{\prime}\left(s\right)=\dfrac{5}{\left(1+10s\right)}
+\]
+la cui funzione di uscita ottenuta antitrasformando è
+\[
+y^{\prime}\left(t\right)=\mu\left(-e^{-10t}\right)\text{sca}\left(t\right).
+\]
+\end{example}
+Se avessimo degli zeri con parte reale positiva, al contrario dei
+poli positivi (i quali non possono mai essere trascurati), nel caso
+essi abbiano costante di tempo molto piccola rispetto ai poli dominanti,
+possiamo ignorare il loro contributo nella funzione di trasferimento,
+aspettandoci un andamento qualitativo simile a quelli mostrati ne
+\figref{Risposta-2-ord-zero-positivo} e \figref{Risposta-2-ord-zero-negativo}.\demo
+\begin{example}
+\emph{Prendiamo la funzione di trasferimento dell'Esercizio \ref{ese:Approssimazione-polo-dominante}
+e ipotizziamo che abbia anche uno zero in $s_{z}=1$: $\checkmark$calcolare
+la funzione di uscita in questo caso.}
+
+Osserviamo che il nuovo zero ha parte reale positiva, e la sua costante
+di tempo ($\tau_{z}=1$) è piccola rispetto a quella del polo dominante
+($T_{2}=10$): possiamo approssimare la funzione di trasferimento
+ignorando lo zero; si avrà un andamento in uscita con una sottoelongazione
+dovuta allo zero positivo trascurato, poi delle oscillazioni attorno
+al valore asintotico dovute ai poli complessi coniugati e infine il
+transitorio si stabilirà attorno al valore finale in circa.\demo
+\end{example}
+
+\section{Realizzazione}
+
+La realizzazione è il procedimento analitico che permette di ottenere
+la descrizione di un sistema nella forma standard (\ref{eq:Forma-standard-matrice-LTI})
+a partire dalla sua funzione di trasferimento; il modello trovato
+per il sistema dovrà avere la stessa funzione di trasferimento di
+partenza.
+
+Si sceglie per comodità un sistema nella \emph{forma canonica di raggiungibilità}
+(non ci sono cancellazioni polo-zero), dalla quale è possibile arrivare
+ad equazioni adeguate adottando una sua rappresentazioni equivalente.
+
+Partiamo dalla scrittura generale di una funzione di trasferimento
+di un sistema SISO, immaginando di aver raccolto il termine di grado
+massimo al denominatore:
+\[
+G\left(s\right)=\frac{\beta_{n}s^{n}+\beta_{n-1}s^{n-1}+\ldots+\beta_{0}}{s^{n}+\alpha_{n-1}s^{n-1}+\ldots+\alpha_{0}}
+\]
+Cerchiamo ora delle matrici $A,\,B,\,C,\,D$ tali che valga l'equazione
+(\ref{eq:Funzione-trasferimento}); nel caso più generale $\beta_{n}\neq0$
+e il sistema sarà proprio (non strettamente), quindi anche la matrice
+$D$ sarà non nulla. Cerchiamo di scomporre la funzione di trasferimento
+nella combinazione di $\beta_{n}$ con una funzione strettamente propria,
+ottenendo che $D=\beta_{n}$:
+\[
+G\left(s\right)=\frac{\beta_{n}\left(s^{n}+\alpha_{n-1}s^{n-1}+\ldots+\alpha_{0}\right)+\hat{\beta}_{n-1}s^{n-1}+\hat{\beta}_{n-2}s^{n-2}\ldots+\hat{\beta}_{0}}{s^{n}+\alpha_{n-1}s^{n-1}+\ldots+\alpha_{0}}
+\]
+\[
+=\frac{\beta_{n}s^{n}+\bigl(\overset{\beta_{n-1}}{\overbrace{\beta_{n}\alpha_{n-1}+\hat{\beta}_{n-1}}}\bigr)s^{n-1}+\ldots+\bigl(\overset{\beta_{0}}{\overbrace{\beta_{n}\alpha_{0}+\hat{\beta}_{0}}}\bigr)}{s^{n}+\alpha_{n-1}s^{n-1}+\ldots+\alpha_{0}}
+\]
+Possiamo ricavare in generale da queste relazioni $\hat{\beta}_{i}$
+come 
+\[
+\hat{\beta}_{i}=\beta_{i}-\beta_{i+1}\alpha_{i}
+\]
+La funzione di partenza vale allora
+\[
+G\left(s\right)=\beta_{n}+\frac{\hat{\beta}_{n-1}s^{n-1}+\hat{\beta}_{n-2}s^{n-2}+\ldots+\hat{\beta}_{0}}{s^{n}+\alpha_{n-1}s^{n-1}+\ldots+\alpha_{0}}
+\]
+dove si ha la somma di una costante $\beta_{n}$ con una frazione
+propria, il cui denominatore ha dei coefficienti $\hat{\beta}_{i}$
+che sono funzioni dei coefficienti originali; notiamo per confronto
+con (\ref{eq:Funzione-trasferimento}) che $\beta_{n}=D$.
+
+Nel caso la funzione di trasferimento sia già strettamente propria
+lo è anche il sistema, e la matrice $D$ risulta nulla.
+
+Per trovare una realizzazione dobbiamo operare una scelta per il vettore
+degli stati; il sistema derivante avrà $n$ stati, come il grado del
+denominatore di $G\left(s\right)$:
+\[
+x\left(t\right)=\begin{bmatrix}x_{1}\left(t\right)\\
+\dot{x}_{1}\left(t\right)\\
+\vdots\\
+\frac{\partial^{n-1}x\left(t\right)}{\partial t^{n-1}}
+\end{bmatrix}
+\]
+Questa è una delle infinite possibili scelte, che comporta il seguente
+modello:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Forma canonica di raggiungibilità}{\footnotesize{}\index{Forma canonica di raggiungibilità@{\footnotesize{}Forma canonica di raggiungibilità}}}}[1.8cm]
+\begin{equation}
+\begin{array}{c}
+\dot{x}\left(t\right)=\overset{A}{\overbrace{\begin{bmatrix}0 & 1 & 0 & 0\\
+0 & 0 & 1 & 0\\
+0 & 0 & 0 & 1\\
+-\alpha_{0} & -\alpha_{1} & \cdots & -\alpha_{n-1}
+\end{bmatrix}}}x\left(t\right)+\overset{B}{\overbrace{\begin{bmatrix}0\\
+\vdots\\
+0\\
+1
+\end{bmatrix}}}u\left(t\right)\\
+\\
+y\left(t\right)=\overset{C}{\overbrace{\begin{bmatrix}\hat{\beta}_{0} & \hat{\beta}_{1} & \cdots & \hat{\beta}_{n-1}\end{bmatrix}}}x\left(t\right)+\overset{D}{\overbrace{\beta_{n}}}\cdot u\left(t\right)
+\end{array}\label{eq:Forma-canonica-raggiungibilit=0000E0}
+\end{equation}
+Nella matrice $A$ le prime $n-1$ equazioni di stato sono banali,
+poiché ogni derivata è pari allo stato successivo; essa è chiamata
+forma canonica di raggiungibilità poiché l'ingresso è in grado di
+influenzare l'ultimo stato, mentre gli stati successivi sono suoi
+integratori (l'ingresso influenza tutti gli stati).\bigskip{}
+
+Verifichiamo che da questa forma canonica si riottiene l'equazione
+di partenza; applichiamo la trasformata degli stati ottenendo:
+\[
+\mathscr{L}^{-1}\left[\dot{x}\left(t\right)\right]=\begin{bmatrix}X_{1}\left(s\right)\\
+sX_{1}\left(s\right)\\
+\vdots\\
+s^{n-1}X_{1}\left(s\right)\\
+sX_{n}\left(s\right)
+\end{bmatrix}
+\]
+dove l'ultima equazione di stato vale:
+\[
+sX_{n}\left(s\right)=-\alpha_{0}X_{1}\left(s\right)-\alpha_{1}sX_{1}\left(s\right)+\ldots-\alpha_{n-1}s^{n-1}X_{1}\left(s\right)+U\left(s\right)
+\]
+Il termine $U\left(s\right)$ è dovuto all'1 in ultima posizione della
+matrice colonna $B$; raccogliendo gli $X_{i}\left(s\right)$ a sinistra
+si ottiene:
+\[
+X_{i}\left(s\right)=\frac{s^{i-1}U\left(s\right)}{s^{n}+\alpha_{n-1}s^{n-1}+\ldots+\alpha_{0}}
+\]
+Sostituendo questa espressione dello stato nell'equazione di uscita
+avremo:
+\[
+Y\left(s\right)=C\cdot X\left(s\right)+\beta_{n}U\left(s\right)=\frac{\hat{\beta}_{n-1}s^{n-1}+\hat{\beta}_{n-2}s^{n-2}+\ldots+\hat{\beta}_{0}}{s^{n}+\alpha_{n-1}s^{n-1}+\ldots+\alpha_{0}}U\left(s\right)+\beta_{n}\cdot U\left(s\right)
+\]
+La matrice $C$ è una riga che moltiplicata per $X\left(s\right)$
+dà una somma di termini con stesso denominatore in $\hat{\beta}$
+e $s$, tutti moltiplicati per l'uscita; raccogliendo $U\left(s\right)$
+nella precedente si riottiene la funzione di trasferimento di partenza
+come $G\left(s\right)\cdot U\left(s\right)$.
 
 \appendix
 

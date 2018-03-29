@@ -13248,8 +13248,15 @@ status open
 
 
 \backslash
-captionof{figure}{Risposta allo scalino per sistemi di ordine elevato}
+captionof{figure}{Risposta allo scalino per sistemi con 2 poli complessi}
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Risposta-sistemi-2-ord-complessi-coniugati"
 
 \end_inset
 
@@ -13794,6 +13801,121 @@ Ora la funzione di uscita dipende anche dalla costante di tempo dello zero;
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "50text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/3_4-4 Risposta del II ord zero positivo.pdf
+	display false
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Risposta del 2 ordine con zero reale positivo}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Risposta-2-ord-zero-positivo"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "50text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/3_4-5 Risposta del II ord zero negativo.pdf
+	display false
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Risposta del 2 ordine con zero reale negativo}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Risposta-2-ord-zero-negativo"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \begin_inset VSpace bigskip
 \end_inset
 
@@ -13819,7 +13941,14 @@ Prendiamo uno zero con parametro
 \emph on
 sottoelongazione
 \emph default
-, tanto più marcata quanto più il modulo dello zero tende a 0.
+ (si veda 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:Risposta-2-ord-zero-positivo"
+
+\end_inset
+
+), tanto più marcata quanto più il modulo dello zero tende a 0.
 \end_layout
 
 \begin_layout Standard
@@ -13895,7 +14024,14 @@ Prendiamo uno zero con
 \emph on
 sovraelongazione
 \emph default
- durante il transitorio, tanto maggiore quanto più lo zero è vicino all'origine
+ (si veda 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:Risposta-2-ord-zero-negativo"
+
+\end_inset
+
+) durante il transitorio, tanto maggiore quanto più lo zero è vicino all'origine
  (come prima, se lo zero fosse nell'origine si avrebbe un impulso che precede
  il transitorio); Uno zero reale negativo allora velocizza la risposta del
  sistema.
@@ -14010,6 +14146,12 @@ Quando vale
 \end_layout
 
 \begin_layout Subsection
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Sistemi-ord-2-poli-complessi-coniugati"
+
+\end_inset
+
 Sistemi del II ordine con poli complessi coniugati
 \end_layout
 
@@ -14142,9 +14284,16 @@ y\left(t\right)=\mu\left[1+\dfrac{\cancel{2}}{\cancel{2}\sqrt{1-\xi^{2}}}e^{-\si
 \end_layout
 
 \begin_layout Standard
-La risposta ha valore iniziale e derivata prima nulli nell'origine, poi
- segue una sovraelongazione e l'uscita segue un andamento oscillante convergente
- al valore di guadagno, con inviluppo esponenziale 
+La risposta (mostrata ne 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:Risposta-sistemi-2-ord-complessi-coniugati"
+
+\end_inset
+
+) ha valore iniziale e derivata prima nulli nell'origine, poi segue una
+ sovraelongazione e l'uscita segue un andamento oscillante convergente al
+ valore di guadagno, con inviluppo esponenziale 
 \begin_inset Formula $e^{-\xi\omega_{n}t}$
 \end_inset
 
@@ -14206,6 +14355,529 @@ Sia smorzamento che pulsazione naturale influenzano la velocità con cui
 \begin_layout Remark
 Il tempo di assestamento, come nel caso di poli reali, vale 
 \begin_inset Formula $T_{a,\varepsilon}=-\ln\left(\varepsilon\right)/\xi\omega_{n}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Approssimazione a poli dominanti
+\end_layout
+
+\begin_layout Standard
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+In presenza di zeri o poli con parte reale positiva (instabili) non valgono
+ le approssimazioni seguenti
+\end_layout
+
+\end_inset
+
+Consideriamo un sistema asintoticamente stabile di ordine maggiore del secondo,
+ nel quale 
+\bar under
+tutte
+\bar default
+ le singolarità (poli e zeri) abbiano parte reale negativa; nel caso i cui
+ alcuni poli o zeri abbiano la parte reale in modulo molto maggiore di quella
+ degli altri (la costante di tempo associata è molto piccola), possiamo
+ trascurare quelle singolarità nell'espressione della risposta allo scalino
+ del sistema.
+\end_layout
+
+\begin_layout Example
+
+\emph on
+\begin_inset CommandInset label
+LatexCommand label
+name "ese:Approssimazione-polo-dominante"
+
+\end_inset
+
+Sia data la seguente funzione di trasferimento:
+\emph default
+
+\begin_inset Formula 
+\[
+G\left(s\right)=\frac{5}{\left(1+s\right)\left(1+10s\right)\left(\frac{s^{2}}{900}+\frac{s}{30}+1\right)}
+\]
+
+\end_inset
+
+
+\emph on
+
+\begin_inset Formula $\checkmark$
+\end_inset
+
+Calcolare la risposta allo scalino del sistema.
+\end_layout
+
+\begin_layout Example
+La consegna richiede di calcolare l'uscita dalla funzione di trasferimento
+ in risposta allo scalino; osserviamo che si tratta di un sistema del 
+\begin_inset Formula $\mathrm{IV}$
+\end_inset
+
+ ordine, e non vi sono state cancellazioni: sono presenti due poli reali
+ (
+\begin_inset Formula $s_{1}=-1,\,s_{2}=-\frac{1}{10}$
+\end_inset
+
+) e due poli complessi coniugati (
+\begin_inset Formula $s_{3,4}=-15\pm30\sqrt{\nicefrac{3}{4}}$
+\end_inset
+
+, per quanto osservato ne 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "subsec:Sistemi-ord-2-poli-complessi-coniugati"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Example
+Le costanti di tempo associate a ciascun polo saranno rispettivamente:
+\begin_inset Formula 
+\[
+T_{3,4}=\frac{1}{15}\,<\,T_{1}=1\,<\,T_{2}=10
+\]
+
+\end_inset
+
+Se osserviamo i poli sul piano complesso, il polo più vicino all'origine
+ ha la costante di tempo maggiore, ed è proprio il polo dominante (
+\begin_inset Formula $s_{2}$
+\end_inset
+
+); possiamo trascurare gli altri poli nel calcolo della risposta al sistema,
+ ottenendo la seguente funzione di trasferimento
+\begin_inset Formula 
+\[
+G^{\prime}\left(s\right)=\dfrac{5}{\left(1+10s\right)}
+\]
+
+\end_inset
+
+la cui funzione di uscita ottenuta antitrasformando è
+\begin_inset Formula 
+\[
+y^{\prime}\left(t\right)=\mu\left(-e^{-10t}\right)\text{sca}\left(t\right).
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se avessimo degli zeri con parte reale positiva, al contrario dei poli positivi
+ (i quali non possono mai essere trascurati), nel caso essi abbiano costante
+ di tempo molto piccola rispetto ai poli dominanti, possiamo ignorare il
+ loro contributo nella funzione di trasferimento, aspettandoci un andamento
+ qualitativo simile a quelli mostrati ne 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:Risposta-2-ord-zero-positivo"
+
+\end_inset
+
+ e 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:Risposta-2-ord-zero-negativo"
+
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+demo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+
+\emph on
+Prendiamo la funzione di trasferimento dell'Esercizio 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "ese:Approssimazione-polo-dominante"
+
+\end_inset
+
+ e ipotizziamo che abbia anche uno zero in 
+\begin_inset Formula $s_{z}=1$
+\end_inset
+
+: 
+\begin_inset Formula $\checkmark$
+\end_inset
+
+calcolare la funzione di uscita in questo caso.
+\end_layout
+
+\begin_layout Example
+Osserviamo che il nuovo zero ha parte reale positiva, e la sua costante
+ di tempo (
+\begin_inset Formula $\tau_{z}=1$
+\end_inset
+
+) è piccola rispetto a quella del polo dominante (
+\begin_inset Formula $T_{2}=10$
+\end_inset
+
+): possiamo approssimare la funzione di trasferimento ignorando lo zero;
+ si avrà un andamento in uscita con una sottoelongazione dovuta allo zero
+ positivo trascurato, poi delle oscillazioni attorno al valore asintotico
+ dovute ai poli complessi coniugati e infine il transitorio si stabilirà
+ attorno al valore finale in circa.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+demo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Realizzazione
+\end_layout
+
+\begin_layout Standard
+La realizzazione è il procedimento analitico che permette di ottenere la
+ descrizione di un sistema nella forma standard 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Forma-standard-matrice-LTI"
+
+\end_inset
+
+ a partire dalla sua funzione di trasferimento; il modello trovato per il
+ sistema dovrà avere la stessa funzione di trasferimento di partenza.
+\end_layout
+
+\begin_layout Standard
+Si sceglie per comodità un sistema nella 
+\emph on
+forma canonica di raggiungibilità
+\emph default
+ (non ci sono cancellazioni polo-zero), dalla quale è possibile arrivare
+ ad equazioni adeguate adottando una sua rappresentazioni equivalente.
+\end_layout
+
+\begin_layout Standard
+Partiamo dalla scrittura generale di una funzione di trasferimento di un
+ sistema SISO, immaginando di aver raccolto il termine di grado massimo
+ al denominatore:
+\begin_inset Formula 
+\[
+G\left(s\right)=\frac{\beta_{n}s^{n}+\beta_{n-1}s^{n-1}+\ldots+\beta_{0}}{s^{n}+\alpha_{n-1}s^{n-1}+\ldots+\alpha_{0}}
+\]
+
+\end_inset
+
+Cerchiamo ora delle matrici 
+\begin_inset Formula $A,\,B,\,C,\,D$
+\end_inset
+
+ tali che valga l'equazione 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Funzione-trasferimento"
+
+\end_inset
+
+; nel caso più generale 
+\begin_inset Formula $\beta_{n}\neq0$
+\end_inset
+
+ e il sistema sarà proprio (non strettamente), quindi anche la matrice 
+\begin_inset Formula $D$
+\end_inset
+
+ sarà non nulla.
+ Cerchiamo di scomporre la funzione di trasferimento nella combinazione
+ di 
+\begin_inset Formula $\beta_{n}$
+\end_inset
+
+ con una funzione strettamente propria, ottenendo che 
+\begin_inset Formula $D=\beta_{n}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+G\left(s\right)=\frac{\beta_{n}\left(s^{n}+\alpha_{n-1}s^{n-1}+\ldots+\alpha_{0}\right)+\hat{\beta}_{n-1}s^{n-1}+\hat{\beta}_{n-2}s^{n-2}\ldots+\hat{\beta}_{0}}{s^{n}+\alpha_{n-1}s^{n-1}+\ldots+\alpha_{0}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+=\frac{\beta_{n}s^{n}+\bigl(\overset{\beta_{n-1}}{\overbrace{\beta_{n}\alpha_{n-1}+\hat{\beta}_{n-1}}}\bigr)s^{n-1}+\ldots+\bigl(\overset{\beta_{0}}{\overbrace{\beta_{n}\alpha_{0}+\hat{\beta}_{0}}}\bigr)}{s^{n}+\alpha_{n-1}s^{n-1}+\ldots+\alpha_{0}}
+\]
+
+\end_inset
+
+Possiamo ricavare in generale da queste relazioni 
+\begin_inset Formula $\hat{\beta}_{i}$
+\end_inset
+
+ come 
+\begin_inset Formula 
+\[
+\hat{\beta}_{i}=\beta_{i}-\beta_{i+1}\alpha_{i}
+\]
+
+\end_inset
+
+La funzione di partenza vale allora
+\begin_inset Formula 
+\[
+G\left(s\right)=\beta_{n}+\frac{\hat{\beta}_{n-1}s^{n-1}+\hat{\beta}_{n-2}s^{n-2}+\ldots+\hat{\beta}_{0}}{s^{n}+\alpha_{n-1}s^{n-1}+\ldots+\alpha_{0}}
+\]
+
+\end_inset
+
+dove si ha la somma di una costante 
+\begin_inset Formula $\beta_{n}$
+\end_inset
+
+ con una frazione propria, il cui denominatore ha dei coefficienti 
+\begin_inset Formula $\hat{\beta}_{i}$
+\end_inset
+
+ che sono funzioni dei coefficienti originali; notiamo per confronto con
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Funzione-trasferimento"
+
+\end_inset
+
+ che 
+\begin_inset Formula $\beta_{n}=D$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Nel caso la funzione di trasferimento sia già strettamente propria lo è
+ anche il sistema, e la matrice 
+\begin_inset Formula $D$
+\end_inset
+
+ risulta nulla.
+\end_layout
+
+\begin_layout Standard
+Per trovare una realizzazione dobbiamo operare una scelta per il vettore
+ degli stati; il sistema derivante avrà 
+\begin_inset Formula $n$
+\end_inset
+
+ stati, come il grado del denominatore di 
+\begin_inset Formula $G\left(s\right)$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+x\left(t\right)=\begin{bmatrix}x_{1}\left(t\right)\\
+\dot{x}_{1}\left(t\right)\\
+\vdots\\
+\frac{\partial^{n-1}x\left(t\right)}{\partial t^{n-1}}
+\end{bmatrix}
+\]
+
+\end_inset
+
+Questa è una delle infinite possibili scelte, che comporta il seguente modello:
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "3cm"
+height "1pt"
+
+\end_inset
+
+
+\series bold
+\size footnotesize
+
+\begin_inset Newline newline
+\end_inset
+
+Forma canonica di raggiungibilità
+\series default
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Forma canonica di raggiungibilità
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[1.8cm]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\begin{array}{c}
+\dot{x}\left(t\right)=\overset{A}{\overbrace{\begin{bmatrix}0 & 1 & 0 & 0\\
+0 & 0 & 1 & 0\\
+0 & 0 & 0 & 1\\
+-\alpha_{0} & -\alpha_{1} & \cdots & -\alpha_{n-1}
+\end{bmatrix}}}x\left(t\right)+\overset{B}{\overbrace{\begin{bmatrix}0\\
+\vdots\\
+0\\
+1
+\end{bmatrix}}}u\left(t\right)\\
+\\
+y\left(t\right)=\overset{C}{\overbrace{\begin{bmatrix}\hat{\beta}_{0} & \hat{\beta}_{1} & \cdots & \hat{\beta}_{n-1}\end{bmatrix}}}x\left(t\right)+\overset{D}{\overbrace{\beta_{n}}}\cdot u\left(t\right)
+\end{array}\label{eq:Forma-canonica-raggiungibilità}
+\end{equation}
+
+\end_inset
+
+Nella matrice 
+\begin_inset Formula $A$
+\end_inset
+
+ le prime 
+\begin_inset Formula $n-1$
+\end_inset
+
+ equazioni di stato sono banali, poiché ogni derivata è pari allo stato
+ successivo; essa è chiamata forma canonica di raggiungibilità poiché l'ingresso
+ è in grado di influenzare l'ultimo stato, mentre gli stati successivi sono
+ suoi integratori (l'ingresso influenza tutti gli stati).
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Verifichiamo che da questa forma canonica si riottiene l'equazione di partenza;
+ applichiamo la trasformata degli stati ottenendo:
+\begin_inset Formula 
+\[
+\mathscr{L}^{-1}\left[\dot{x}\left(t\right)\right]=\begin{bmatrix}X_{1}\left(s\right)\\
+sX_{1}\left(s\right)\\
+\vdots\\
+s^{n-1}X_{1}\left(s\right)\\
+sX_{n}\left(s\right)
+\end{bmatrix}
+\]
+
+\end_inset
+
+dove l'ultima equazione di stato vale:
+\begin_inset Formula 
+\[
+sX_{n}\left(s\right)=-\alpha_{0}X_{1}\left(s\right)-\alpha_{1}sX_{1}\left(s\right)+\ldots-\alpha_{n-1}s^{n-1}X_{1}\left(s\right)+U\left(s\right)
+\]
+
+\end_inset
+
+Il termine 
+\begin_inset Formula $U\left(s\right)$
+\end_inset
+
+ è dovuto all'1 in ultima posizione della matrice colonna 
+\begin_inset Formula $B$
+\end_inset
+
+; raccogliendo gli 
+\begin_inset Formula $X_{i}\left(s\right)$
+\end_inset
+
+ a sinistra si ottiene:
+\begin_inset Formula 
+\[
+X_{i}\left(s\right)=\frac{s^{i-1}U\left(s\right)}{s^{n}+\alpha_{n-1}s^{n-1}+\ldots+\alpha_{0}}
+\]
+
+\end_inset
+
+Sostituendo questa espressione dello stato nell'equazione di uscita avremo:
+\begin_inset Formula 
+\[
+Y\left(s\right)=C\cdot X\left(s\right)+\beta_{n}U\left(s\right)=\frac{\hat{\beta}_{n-1}s^{n-1}+\hat{\beta}_{n-2}s^{n-2}+\ldots+\hat{\beta}_{0}}{s^{n}+\alpha_{n-1}s^{n-1}+\ldots+\alpha_{0}}U\left(s\right)+\beta_{n}\cdot U\left(s\right)
+\]
+
+\end_inset
+
+La matrice 
+\begin_inset Formula $C$
+\end_inset
+
+ è una riga che moltiplicata per 
+\begin_inset Formula $X\left(s\right)$
+\end_inset
+
+ dà una somma di termini con stesso denominatore in 
+\begin_inset Formula $\hat{\beta}$
+\end_inset
+
+ e 
+\begin_inset Formula $s$
+\end_inset
+
+, tutti moltiplicati per l'uscita; raccogliendo 
+\begin_inset Formula $U\left(s\right)$
+\end_inset
+
+ nella precedente si riottiene la funzione di trasferimento di partenza
+ come 
+\begin_inset Formula $G\left(s\right)\cdot U\left(s\right)$
 \end_inset
 
 .
