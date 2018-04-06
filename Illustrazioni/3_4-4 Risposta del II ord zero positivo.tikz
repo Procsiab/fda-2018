@@ -1,0 +1,12 @@
+﻿\begin{tikzpicture} [scale=1.5]
+
+% Punti sul grafico
+	\draw[dashdotdotted, color=gray, thick] (0, 1) -- (3, 1);
+	\filldraw (0, 1) circle (1pt)
+		node[left] (Yi) {$\mu$};
+% Assi
+	\draw[->] (-0.2, 0) -- (3, 0) node[right] {$t$};
+	\draw[->] (0, -0.2) -- (0, 1.5) node[above] {$y(t)$};
+% Funzione
+	\draw[scale=1, domain=0:3, smooth, variable=\x, thick] plot ({\x},{1-2*exp(-1.2*\x)+exp(-5*\x))});
+\end{tikzpicture}

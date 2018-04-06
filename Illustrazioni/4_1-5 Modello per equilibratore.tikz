@@ -1,0 +1,18 @@
+﻿
+\begin{circuitikz}[american voltages]
+	% Resistore e induttore
+	\draw (0,0) to [R, l_=\mbox{$R$}, o-*, n=R] (2,0);
+	\draw (2,0) to [L, l_=\mbox{$L$}, *-*, n=L] (4,0);
+	% Trasmissione e flap
+	\draw (6.3,-1) to [twoport, t=Flap] (8,-1);
+	\draw (4,-1) to (4.5,-1) node[tlinestub]{};
+	% Motore
+	\draw (4,-1) node[elmech](motor){M};
+	\draw (motor.north) to [short, i_<=$\scriptstyle i(t)$] (4,0);
+	\draw (motor.south) to [short] (4,-2);
+	% Cortocircuito e massa
+	\draw (4,-2) to [short, *-o] (0,-2);
+	\draw (2,-2) node [ground] {};
+	% Tensione di controllo
+	\draw (0,0) to [open, n=V, v_=$v\left(t\right)$] (0,-2);
+\end{circuitikz}
