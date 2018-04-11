@@ -1,11 +1,11 @@
-%% LyX 2.2.3 created this file.  For more info, see http://www.lyx.org/.
+%% LyX 2.3.0 created this file.  For more info, see http://www.lyx.org/.
 %% Do not edit unless you really know what you are doing.
 \RequirePackage{fix-cm}
 \documentclass[12pt,italian]{amsbook}
 \usepackage[T1]{fontenc}
 \usepackage[latin9]{inputenc}
 \usepackage[a4paper]{geometry}
-\geometry{verbose,tmargin=2cm,bmargin=2.2cm,lmargin=4cm,rmargin=2cm,headheight=2cm,headsep=1cm,footskip=1cm}
+\geometry{verbose,tmargin=2cm,bmargin=2.2cm,lmargin=2cm,rmargin=4cm,headheight=2cm,headsep=1cm,footskip=1cm}
 \setlength{\parskip}{\smallskipamount}
 \setlength{\parindent}{0pt}
 \usepackage{babel}
@@ -13,6 +13,7 @@
 \usepackage{varioref}
 \usepackage{refstyle}
 \usepackage{wrapfig}
+\usepackage{booktabs}
 \usepackage{units}
 \usepackage{textcomp}
 \usepackage{mathrsfs}
@@ -65,25 +66,25 @@
 \numberwithin{figure}{section}
 \numberwithin{table}{section}
 \newenvironment{lyxlist}[1]
-{\begin{list}{}
-{\settowidth{\labelwidth}{#1}
- \setlength{\leftmargin}{\labelwidth}
- \addtolength{\leftmargin}{\labelsep}
- \renewcommand{\makelabel}[1]{##1\hfil}}}
-{\end{list}}
-  \theoremstyle{definition}
+	{\begin{list}{}
+		{\settowidth{\labelwidth}{#1}
+		 \setlength{\leftmargin}{\labelwidth}
+		 \addtolength{\leftmargin}{\labelsep}
+		 \renewcommand{\makelabel}[1]{##1\hfil}}}
+	{\end{list}}
+\theoremstyle{definition}
     \ifx\thechapter\undefined
       \newtheorem{defn}{\protect\definitionname}
     \else
       \newtheorem{defn}{\protect\definitionname}[chapter]
     \fi
-  \theoremstyle{definition}
+\theoremstyle{definition}
     \ifx\thechapter\undefined
       \newtheorem{example}{\protect\examplename}
     \else
       \newtheorem{example}{\protect\examplename}[chapter]
     \fi
-  \theoremstyle{remark}
+\theoremstyle{remark}
     \ifx\thechapter\undefined
       \newtheorem{rem}{\protect\remarkname}
     \else
@@ -91,23 +92,23 @@
     \fi
 \theoremstyle{plain}
     \ifx\thechapter\undefined
-    \newtheorem{thm}{\protect\theoremname}
-  \else
+	    \newtheorem{thm}{\protect\theoremname}
+	  \else
       \newtheorem{thm}{\protect\theoremname}[chapter]
     \fi
-  \theoremstyle{plain}
+\theoremstyle{plain}
     \ifx\thechapter\undefined
-    \newtheorem{cor}{\protect\corollaryname}
-  \else
+  \newtheorem{cor}{\protect\corollaryname}
+\else
       \newtheorem{cor}{\protect\corollaryname}[chapter]
     \fi
-  \theoremstyle{definition}
+\theoremstyle{definition}
     \ifx\thechapter\undefined
       \newtheorem{xca}{\protect\exercisename}
     \else
       \newtheorem{xca}{\protect\exercisename}[chapter]
     \fi
-  \theoremstyle{definition}
+\theoremstyle{definition}
     \ifx\thechapter\undefined
       \newtheorem{sol}{\protect\solutionname}
     \else
@@ -116,7 +117,6 @@
 
 \@ifundefined{date}{}{\date{}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
-\reversemarginpar
 \usepackage{pgfplots}
 \usepackage{caption}
 \captionsetup{font=scriptsize,labelfont=scriptsize}
@@ -138,11 +138,11 @@
 
 \makeatother
 
-  \providecommand{\definitionname}{Definizione}
-  \providecommand{\examplename}{Esempio}
-  \providecommand{\exercisename}{Esercizio}
-  \providecommand{\remarkname}{Osservazione}
 \providecommand{\corollaryname}{Corollario}
+\providecommand{\definitionname}{Definizione}
+\providecommand{\examplename}{Esempio}
+\providecommand{\exercisename}{Esercizio}
+\providecommand{\remarkname}{Osservazione}
 \providecommand{\solutionname}{Soluzione}
 \providecommand{\theoremname}{Teorema}
 
@@ -160,6 +160,7 @@
 \global\long\def\serie#1#2#3{\overset{{\scriptstyle #2}}{\underset{{\scriptstyle #1}}{\sum}}#3}
 
 \global\long\def\somme#1#2#3#4{\underset{{\scriptstyle #1}}{\overset{{\scriptstyle #2}}{\int}}#3d#4}
+
 
 \chapter{Sistemi LTI a tempo continuo}
 
@@ -479,6 +480,7 @@ i principi della dinamica\begin{wrapfigure}{o}{0.3\textwidth}%
 \par\end{centering}
 \caption{Modello per autoveicolo in movimento}
 \end{wrapfigure}%
+
 \begin{example}
 \emph{Sia dato un autoveicolo in movimento tramite la forza di trazione
 del motore $F\left(t\right)$ attraverso le ruote, a cui si oppongono
@@ -532,6 +534,7 @@ Nel prossimo esempio un sistema dinamico di ordine \noun{IV:}\begin{wrapfigure}{
 \par\end{centering}
 \caption{Sistema di due masse con sospensioni}
 \end{wrapfigure}%
+
 \begin{example}
 \label{exa:Due-masse-ammortizzate}\emph{Sia dato un sistema costituito
 da due masse $m_{1}$ e $m_{2}$ ciascuna avente una propria molla
@@ -903,6 +906,7 @@ dello stato:
 \boxed{y^{\prime\prime\prime}\left(t\right)=\alpha_{1}y^{\prime}\left(t\right)+\alpha_{2}y^{\prime\prime}\left(t\right)}
 \]
 
+
 \subsection{Movimento libero e forzato}
 
 Prendiamo un sistema di ordine uno con $a$ e $b$ scalari: avremo
@@ -1119,6 +1123,7 @@ le equazioni nel modo seguente:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnot
 y\left(t\right)=\hat{C}\cdot\hat{x}\left(t\right)+\hat{D}\cdot u\left(t\right)
 \end{cases}\label{eq:Forma-equivalente-matrice-LTI}
 \end{equation}
+
 \begin{rem}
 Per il PSE uno stato è combinazione lineare dello stato precedente
 e questo vale per tutti i movimenti; fissando condizione iniziale
@@ -1254,6 +1259,7 @@ reale in funzione del tempo.\smallskip{}
 \par\end{centering}
 \caption{Circuito RLC con generatore controllato in ingresso}
 \end{wrapfigure}%
+
 \begin{example}
 \label{exa:Circuito-serie_RLC}\emph{Sia dato un circuito formato
 da una maglia con la serie di resistore di valore $R$, condensatore
@@ -1476,6 +1482,7 @@ algebrica $n_{i}>1$ che si ottengono dalla forma di Jordan determinano
 i seguenti andamenti dei modi:\label{eq:Andamento-modi-autovalori-multipli}
 \begin{itemize}
 \item $\lambda_{i}\in\mathbb{R}$ (modi del tipo $te^{\lambda_{i}t}$):\smallskip{}
+
 \begin{itemize}
 \item $\lambda_{i}>0$: modo divergente;
 \item $\lambda_{i}=0$: modo limitato;
@@ -1484,6 +1491,7 @@ i seguenti andamenti dei modi:\label{eq:Andamento-modi-autovalori-multipli}
 \item $\lambda_{i}\in\mathbb{C}$ (autovalori complessi coniugati, modi
 del tipo\\
 $te^{\sigma t}\left(\cos\left(\omega t+\phi\right)+j\sin\left(\omega t+\phi\right)\right)$):\smallskip{}
+
 \begin{itemize}
 \item $\Re\left(\lambda_{i}\right)>0$: modo divergente (esponenziale);
 \item $\Re\left(\lambda_{i}\right)=0$: modo divergente (lineare);
@@ -1498,6 +1506,7 @@ $F\left(t\right)\rightarrow\boxed{1/m}\overset{\ddot{p}\left(t\right)}{\rightarr
 \caption{Schema a blocchi del doppio integratore in questo sistema}
 \label{fig:Schema-doppio-integratore}
 \end{figure}
+
 \begin{example}
 \marginpar{Il sistema nell'esempio con due autovalori coincidenti nulli appartiene
 alla categoria dei \emph{doppi integratori}}\label{exa:Doppio-integratore-carrello}\emph{Consideriamo un carrello
@@ -1633,6 +1642,7 @@ ammettendo che $A$ sia invertibile:
 \overline{y}=\left(-C\cdot A^{-1}\cdot B+D\right)\overline{u}
 \end{cases}
 \]
+
 \begin{example}
 Dall'Esempio \ref{exa:Doppio-integratore-carrello} otteniamo la seguente
 equazione del sistema (notando che $A$ non è invertibile in questo
@@ -2049,6 +2059,7 @@ stato dal valore di equilibrio) l'equilibrio è instabile.
 \centering{}\caption{\label{fig:Funzione-di-stato-metodo-grafico}Funzione di stato analizzata
 col metodo grafico}
 \end{figure}
+
 \begin{example}
 \emph{Sia dato il grafico in figura che indica l'andamento dell'equazione
 di stato in funzione dello stato, in un sistema di ordine 1: $\checkmark$determinare
@@ -2349,6 +2360,7 @@ vale allora:
 y\left(k\right)=C\cdot A^{k}\cdot x_{0}+C\cdot\serie{i=0}{k-1}{A^{k-i-1}\cdot B\cdot u\left(i\right)}+D\cdot u\left(k\right)\label{eq:Movimento-uscita-Lagrange-discreto}
 \end{equation}
 
+
 \section{Comportamento nel tempo discreto}
 
 \subsection{Equilibrio}
@@ -2449,6 +2461,7 @@ otteniamo la rappresentazione equivalente:
 y\left(k\right)=C\cdot T^{-1}\cdot\hat{x}\left(k\right)+D\cdot u\left(k\right)
 \end{array}\label{eq:Rappresentazione-equivalente-discreta}
 \end{equation}
+
 
 \section{Movimenti nel tempo discreto}
 
@@ -2653,8 +2666,7 @@ esposte ne \tabref{Classificazione-movimenti-discreti}; rispetto
 ad essa, per $\left|z_{i}\right|=1$ si hanno modi divergenti, a causa
 del contributo del coefficiente $k$.
 
-\section{Stabilità del sistema\protect\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
-\textbf{\footnotesize{}Movimenti nel tempo discreto}{\footnotesize{}\index{tempo discreto, movimenti@{\footnotesize{}tempo discreto, movimenti}}}}[-9cm]}
+\section{Stabilità del sistema}
 
 \subsection{Condizioni di stabilità in sistemi a tempo discreto}
 
@@ -2663,7 +2675,8 @@ e un movimento perturbato $\tilde{x}\left(k\right)$ a partire da
 $\tilde{x}_{0}=x_{0}+\delta x_{0}$, a parità di ingresso $u\left(k\right)$
 studiamo il comportamento di $\delta x\left(k\right)=\tilde{x}\left(k\right)-x\left(k\right)$;
 con l'equazione (\ref{eq:Formula-di-Lagrange-discreta}) otteniamo
-l'andamento della perturbazione:
+l'andamento della perturbazione:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Movimenti nel tempo discreto}{\footnotesize{}\index{tempo discreto, movimenti@{\footnotesize{}tempo discreto, movimenti}}}}[-8cm]
 \begin{equation}
 A^{k}\left(\tilde{x}_{0}-x_{0}\right)=A^{k}\delta x_{0}\label{eq:Andamento-perturbazione-discreta}
 \end{equation}
@@ -2879,8 +2892,8 @@ e $\overline{x}_{3}\left(\alpha\right)$), tali che $\overline{x}=\begin{bmatrix}
 \end{bmatrix}$ sia uno stato di equilibrio.}
 
 Facendo un passo indietro, classifichiamo il sistema: esso è un sistema
-a tempo discreto, non lineare, del 3\textdegree{} ordine, ha un ingresso,
-stazionario (non abbiamo informazioni sull'uscita nell'ambito dell'esercizio).
+a tempo discreto, non lineare, del 3° ordine, ha un ingresso, stazionario
+(non abbiamo informazioni sull'uscita nell'ambito dell'esercizio).
 
 Per ottenere le condizioni che determinano l'equilibrio, poniamo ciascuna
 equazione di stato pari allo stato corrispondente, sfruttando la (\ref{eq:Condizioni-equilibrio-tempo-discreto}):
@@ -3211,6 +3224,7 @@ osservando che il sistema è SISO:
 G\left(s\right)=\dfrac{Y\left(s\right)}{U\left(s\right)}=\dfrac{1}{ms+\beta}
 \]
 \demo\bigskip{}
+
 \begin{rem}
 Nell'Esempio \ref{exa:Sistema-2ord-cancellazione-polo} viene dato
 un sistema del secondo ordine, che possiede infatti due stati, tuttavia
@@ -3480,6 +3494,7 @@ Le caratteristiche di questa risposta sono le seguenti:
 
 \end{figure}
 
+
 \subsection{Risposta per sistemi del II ordine}
 
 Scriviamo in forma (\ref{eq:Forma-di-Bode}) la funzione di trasferimento,
@@ -3512,6 +3527,7 @@ Y\left(s\right)=\mu\left(\dfrac{1}{s}-\dfrac{\mu T_{1}}{\left(T_{1}-T_{2}\right)
 \begin{equation}
 y\left(t\right)=\mathscr{L}^{-1}\left[Y\left(s\right)\right]=\mu\left(1-\dfrac{T_{1}}{T_{1}-T_{2}}e^{-\nicefrac{t}{T_{1}}}+\dfrac{T_{2}}{T_{1}-T_{2}}e^{-\nicefrac{t}{T_{2}}}\right)\text{sca}\left(t\right)\label{eq:Risposta-scalino-ord-2}
 \end{equation}
+
 \begin{rem}
 \label{oss:Velocit=0000E0-della-risposta}Se fosse $T_{1}\gg T_{2}$,
 il polo associato a $T_{1}$ si dice dominante e la risposta si avvicina
@@ -3565,6 +3581,7 @@ Y\left(s\right)=\dfrac{\mu}{s}-\frac{\mu T}{1+Ts}-\frac{\mu T}{\left(1+Ts\right)
 \begin{equation}
 y\left(t\right)=\mathscr{L}^{-1}\left[Y\left(s\right)\right]=\mu\left(1-e^{-\nicefrac{t}{T}}-\dfrac{1}{T}e^{-\nicefrac{t}{T}}\right)\text{sca}\left(t\right)\label{eq:Risposta-scalino-ord-2-poli-reali-coincidenti}
 \end{equation}
+
 \begin{rem}
 La velocità di risposta, calcolata in maniera analitica tramite le
 derivate dell'uscita, si ottiene come prima e vale che il tempo di
@@ -3681,6 +3698,7 @@ zero-polo e la risposta assomiglia a quella di un sistema di ordine
 
 Quando vale $\left|\tau\right|\gg0$, la costante di tempo diventa
 trascurabile e il sistema risponde come se non avesse affatto lo zero.\bigskip{}
+
 
 \subsection{\label{subsec:Sistemi-ord-2-poli-complessi-coniugati}Sistemi del
 II ordine con poli complessi coniugati}
@@ -3937,7 +3955,1434 @@ La matrice $C$ è una riga che moltiplicata per $X\left(s\right)$
 dà una somma di termini con stesso denominatore in $\hat{\beta}$
 e $s$, tutti moltiplicati per l'uscita; raccogliendo $U\left(s\right)$
 nella precedente si riottiene la funzione di trasferimento di partenza
-come $G\left(s\right)\cdot U\left(s\right)$.
+come $G\left(s\right)\cdot U\left(s\right)$.\bigskip{}
+
+\begin{example}
+\emph{Sia data la seguente funzione di trasferimento:
+\[
+G\left(s\right)=\frac{s^{2}+3s+2}{s^{2}+6s+12}
+\]
+$\checkmark$Si ricavi la realizzazione di un sistema dinamico nella
+forma canonica di raggiungibilità a cui corrisponde questa funzione
+di trasferimento.}
+
+Il grado di numeratore e denominatore è lo stesso, quindi possiamo
+affermare che il sistema sarà proprio non strettamente; la funzione
+di stato inoltre può essere riscritta come la somma di una costante
+per una funzione razionale propria:
+\[
+G\left(s\right)=\frac{s^{2}+6s+12}{s^{2}+6s+12}+\frac{0+\left(3-6\right)s+\left(2-12\right)}{s^{2}+6s+12}=1+\frac{-3s-10}{s^{2}+6s+12}
+\]
+Possiamo ottenere le matrici della forma canonica direttamente da
+(\ref{eq:Forma-canonica-raggiungibilit=0000E0}), osservando la riscrittura
+appena effettuata:
+\end{example}
+\begin{itemize}
+\item Sappiamo che, essendo la funzione di trasferimento propria, vale 
+\[
+D=\beta_{n}=1;
+\]
+\item Il grado del denominatore è pari a 2, quindi la matrice $A$ avrà
+ordine 2; essa avrà nulli tutti gli elementi fino alla penultima riga,
+con degli 1 nella sopra-diagonale principale, mentre nell'ultima riga
+avremo gli inversi dei coefficienti del denominatore a partire da
+quello di grado più basso:
+\[
+A=\begin{bmatrix}0 & 1\\
+-12 & -6
+\end{bmatrix};
+\]
+\item La matrice $B$ è una colonna di 2 elementi, tutti nulli eccetto l'ultimo;
+\item La matrice $C$ è una riga formata dai coefficienti (non invertiti)
+del numeratore a partire da quello di grado più basso
+\[
+C=\begin{bmatrix}-10 & -3\end{bmatrix};
+\]
+\end{itemize}
+La forma (\ref{eq:Forma-standard-matrice-LTI}) di un sistema con
+la funzione di trasferimento assegnata risulta:
+\[
+\begin{cases}
+\dot{x}\left(t\right)=\begin{bmatrix}0 & 1\\
+-12 & -6
+\end{bmatrix}\cdot x\left(t\right)+\begin{bmatrix}0\\
+1
+\end{bmatrix}\cdot u\left(t\right)\\
+\\
+y\left(t\right)=\begin{bmatrix}-10 & -3\end{bmatrix}\cdot x\left(t\right)+u\left(t\right)
+\end{cases}
+\]
+
+Usando la relazione (\ref{eq:Funzione-trasferimento}) si riottiene
+la funzione di trasferimento assegnata dall'esercizio.\demo
+
+\chapter{Schemi a blocchi}
+
+\section{Elementi costitutivi}
+
+Per realizzare delle formalizzazioni matematiche di sistemi interconnessi,
+che siano comode dal punto di vista analitico, si usa il linguaggio
+degli schemi a blocchi. I principali elementi che li costituiscono
+sono:
+
+\begin{table}[!h]
+\begin{centering}
+\begin{tabular}{>{\centering}m{0.3\textwidth}>{\raggedright}m{0.5\textwidth}}
+Rappresentazione & %
+\begin{minipage}[t]{0.5\textwidth}%
+\begin{center}
+Descrizione
+\par\end{center}%
+\end{minipage}\tabularnewline\addlinespace
+\cmidrule{2-2} 
+\includegraphics{\string"Illustrazioni/4_1-1 Sistema\string".pdf} & \emph{Sistema}, dotato di un ingresso $u$ e un'uscita $y$, associato
+a una funzione di trasferimento $G\left(s\right)$;\tabularnewline\addlinespace
+\cmidrule{2-2} 
+\includegraphics{\string"Illustrazioni/4_1-2 Somma\string".pdf} & \emph{Nodo somma}, dotato di almeno due ingressi $u_{1}$ e $u_{2}$
+caratterizzati da un segno $+$ o $-$, e una sola uscita $y=u_{1}-u_{2}$;\tabularnewline\addlinespace
+\cmidrule{2-2} 
+\includegraphics{\string"Illustrazioni/4_1-3 Diramazione\string".pdf} & \emph{Diramazione}, consiste nello sdoppiare un segnale: si rappresenta
+con un ingresso $u$ e almeno due uscita $y_{1}$ e $y_{2}$ pari
+all'ingresso.\tabularnewline\addlinespace
+\end{tabular}
+\par\end{centering}
+\caption{Elementi costitutivi degli schemi a blocchi}
+\label{tab:Elementi-costitutivi-schemi-blocchi}
+\end{table}
+
+\begin{minipage}[c]{0.4\textwidth}%
+\begin{center}
+\includegraphics[scale=0.9]{\string"Illustrazioni/4_1-4 Schema MIMO con blocchi SISO\string".pdf}
+\par\end{center}
+\captionof{figure}{Sistema con più ingressi e uscite rappresentato coi blocchi costitutivi}\label{fig:Sistema-con-pi=0000F9-uscite-blocchi-SISO}%
+\end{minipage}%
+\begin{minipage}[c]{0.6\textwidth}%
+Per semplicità considereremo i sistemi SISO scalari; in presenza di
+un sistema con ingressi e uscite multipli, ci si può ricondurre comunque
+al caso SISO.
+\begin{rem}
+Prendiamo un sistema quadrato che in generale potrebbe avere molti
+ingressi e uscite; nel nostro caso scegliamo un sistema di ordine
+2 (nel dominio di Laplace); se è di ordine due e ha due uscite, la
+matrice di trasferimento ha ordine 2, quindi possiede 4 funzioni di
+trasferimento (ognuna razionale fratta); le uscite del sistema saranno
+legati nel modo seguente: 
+\[
+Y\left(s\right)=\begin{bmatrix}Y_{1}\left(s\right)\\
+Y_{2}\left(s\right)
+\end{bmatrix}=\begin{bmatrix}G_{1,1}\left(s\right) & G_{1,2}\left(s\right)\\
+G_{2,1}\left(s\right) & G_{2,2}\left(s\right)
+\end{bmatrix}\cdot\begin{bmatrix}U_{1}\left(s\right)\\
+U_{2}\left(s\right)
+\end{bmatrix}
+\]
+Lo schema corrispondente, realizzato usando solo i blocchi SISO, è
+ne \figref{Sistema-con-pi=0000F9-uscite-blocchi-SISO}.
+\end{rem}
+%
+\end{minipage}
+
+Lo schema è stato ottenuto rispettando la scrittura delle equazioni
+di uscita, effettuando il prodotto righe per colonne della matrice
+di trasferimento con quella degli ingressi; infatti vale:
+\[
+\begin{cases}
+Y_{1}\left(s\right)=U_{1}\left(s\right)G_{1,1}\left(s\right)+U_{2}\left(s\right)G_{1,2}\left(s\right)\\
+Y_{2}\left(s\right)=U_{1}\left(s\right)G_{2,1}\left(s\right)+U_{2}\left(s\right)G_{2,2}\left(s\right)
+\end{cases}
+\]
+
+Vediamo \marginpar{Per descrivere il modello in esame sarà necessario uno schema per
+la parte elettrica, uno schema per l'attuatore meccanico e uno schema
+per l'aeroplano}un esempio di analisi tramite schema a blocchi di un meccanismo chiamato
+\emph{equilibratore}: negli aeroplani si hanno tre gradi di libertà
+che interessa controllare, le tre rotazioni attorno agli assi dello
+spazio (beccheggio, rollio, imbardata); la superficie mobile degli
+alettoni sulla coda è l'equilibratore.\bigskip{}
+
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{example}
+\emph{Sia dato il modello di circuito per un equilibratore dove: $v\left(t\right)$
+è la tensione di comando (che rappresenta la posizione della cloche);
+la serie di resistore e induttore rappresentano i parametri interni
+del motore $M$ il quale, grazie alla corrente $i\left(t\right)$,
+muove un albero meccanico collegato all'equilibratore; $\checkmark$scrivere
+uno schema a blocchi che descriva il sistema.}
+\end{example}
+%
+\end{minipage}%
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{center}
+\includegraphics[scale=0.8]{\string"Illustrazioni/4_1-5 Modello per equilibratore\string".pdf}
+\par\end{center}
+\captionof{figure}{Modello per equilibratore di un aereo}%
+\end{minipage}\smallskip{}
+
+\marginpar{\noun{(1)}\protect \\
+\noun{Sistema Elettrico}}Cominciamo descrivendo il sistema elettrico, il cui ingresso è la
+tensione di controllo $v\left(t\right)$ e l'uscita la coppia fornita
+dal motore $T\left(t\right)$; in prima approssimazione vale $T=ki\left(t\right)$
+con $k$ una costante caratteristica del motore.
+
+Quando il motore comincia a girare si crea una differenza di tensione
+indicata come forza elettro-motrice, pari in prima approssimazione
+a $\mathscr{E}\left(t\right)=k\dot{\delta}\left(t\right)$, dove $\delta\left(t\right)$
+è l'angolo di rotazione del motore e la sua derivata la velocità angolare
+(per semplicità il motore ha una singola costante caratteristica $k$).
+
+L'equazione di equilibrio elettrico sarà:
+\[
+v\left(t\right)=Ri\left(t\right)+L\frac{\partial i\left(t\right)}{\partial t}+\mathscr{E}\left(t\right)
+\]
+Osserviamo che l'induttanza è l'unico componente dinamico; esplicitiamo
+la derivata rispetto al tempo della corrente, ottenendo:
+\[
+\frac{\partial i\left(t\right)}{\partial t}=\frac{1}{L}\left(v\left(t\right)-Ri\left(t\right)-k\dot{\delta}\left(t\right)\right)\qquad\text{(stato)}
+\]
+\[
+T\left(t\right)=ki\left(t\right)\qquad\text{(uscita)}
+\]
+Anche $\dot{\delta}\left(t\right)$ è un ingresso per il sistema;
+ricaviamo la funzione di trasferimento considerando gli ingressi $v\left(t\right)$,
+$\dot{d}\left(t\right)$ e l'uscita $T\left(t\right)$:
+\[
+sI\left(s\right)=-\frac{R}{L}I\left(s\right)+\frac{1}{L}V\left(s\right)-\frac{k}{L}s\Delta\left(s\right)
+\]
+\[
+\rightarrow I\left(s\right)=\frac{1}{L}\cdot\frac{1}{\left(s+\frac{R}{L}\right)}\cdot V\left(s\right)-\frac{k}{L}\cdot\frac{s}{\left(s+\frac{R}{L}\right)}\cdot\Delta\left(s\right)
+\]
+si ottiene trasformando l'equazione di stato associata a $i\left(t\right)$,
+e considerando che $\mathscr{L}\left[\dot{\delta}\left(t\right)\right]=\Delta\left(s\right)$;
+la trasformata dell'equazione di uscita si può riscrivere come il
+prodotto di $k$ per la trasformata appena ottenuta $I\left(s\right)$:
+\begin{equation}
+T\left(s\right)=kI\left(s\right)=\frac{k}{L}\cdot\frac{1}{\left(s+\frac{R}{L}\right)}\cdot V\left(s\right)-\frac{k^{2}}{L}\cdot\frac{s}{\left(s+\frac{R}{L}\right)}\cdot\Delta\left(s\right)\label{eq:Trasferimento-1-sistema}
+\end{equation}
+Osserviamo che abbiamo le equazioni di un sistema del primo ordine,
+asintoticamente stabile (con polo $-R/L$).
+
+Analizziamo \marginpar{\noun{(2)}\protect \\
+\noun{Sistema Meccanico}}adesso il sistema meccanico che trasferisce la coppia all'equilibratore
+dell'aeroplano; un certo coefficiente di attrito $\beta$ si sviluppa
+tra i cuscinetti e l'asse del motore, con un angolo di rotazione $\delta$
+e una coppia applicata $T$; il sistema ha una sua inerzia alla rotazione
+$J$.
+
+Il sistema ha la seguente equazione di equilibrio:
+\[
+J\ddot{\delta}\left(t\right)+\beta\dot{\delta}\left(t\right)=T\left(t\right)
+\]
+La trasformata di Laplace di questa equazione è:
+\[
+Js^{2}\Delta\left(s\right)+\beta s\Delta\left(s\right)=T\left(s\right)
+\]
+Notiamo che l'ingresso di questo secondo sistema è la coppia (in uscita
+dal sistema (\ref{eq:Trasferimento-1-sistema})), mentre l'uscita
+è l'angolo di rotazione $\Delta$:
+\begin{equation}
+\Delta\left(s\right)=\frac{1}{\left(Js+\beta\right)s}T\left(s\right)\label{eq:Trasferimento-2-sistema}
+\end{equation}
+Abbiamo ottenuto un sistema del secondo ordine (denominatore di grado
+2) con i poli $p_{1}=0,\,p_{2}=\beta/J$, semplicemente stabile con
+un polo nell'origine; intuitivamente l'uscita di questo secondo sistema
+sarà un ingresso in retroazione per il precedente (\ref{eq:Trasferimento-1-sistema}).
+
+Per \marginpar{\noun{(3)}\protect \\
+\noun{Sistema Velivolo}}concludere, analizziamo la meccanica di volo dell'aeroplano; abbiamo
+in ingresso l'angolo $\Delta$ di rotazione dell'equilibratore, inoltre
+il velivolo avrà un centro di massa ${\scriptstyle CM}$, la distanza
+$d$ tra il punto in cui sarà applicata la forza dinamica e il centro
+di massa; muovendo l'alettone si genera una forza $F_{{\scriptscriptstyle \text{D}}}$
+di resistenza aerodinamica e una coppia resistente $M_{{\scriptscriptstyle \text{D}}}$.
+
+Consideriamo il moto rotativo di beccheggio dell'aereo, orientato
+con un angolo di rotazione $\theta$; in generale il velivolo avrà
+un suo momento d'inerzia $J_{{\scriptscriptstyle \text{A}}}$, legato
+a un coefficiente di attrito viscoso $\beta_{{\scriptscriptstyle \text{A}}}$.
+
+L'equazione di equilibrio (in modo simile alla precedente) si ottiene
+come:
+\[
+J_{{\scriptscriptstyle \text{A}}}\ddot{\theta}\left(t\right)+\beta_{{\scriptscriptstyle \text{A}}}\dot{\theta}\left(t\right)=M_{{\scriptscriptstyle \text{D}}}\left(t\right)+dF_{{\scriptscriptstyle \text{D}}}
+\]
+Approssimiamo la coppia e la forza legate all'aerodinamica con una
+proporzione con lo spostamento dell'alettone:
+\[
+\begin{array}{l}
+M_{{\scriptscriptstyle \text{D}}}\left(t\right)=k_{{\scriptscriptstyle A}}\delta\left(t\right)\\
+F_{{\scriptscriptstyle \text{D}}}\left(t\right)=k_{{\scriptscriptstyle B}}\delta\left(t\right)
+\end{array}
+\]
+dove le costanti $k_{{\scriptscriptstyle A,B}}$ sono proprie del
+terzo sistema in esame; sostituendo nella precedente e trasformando
+otteniamo:
+\[
+J_{{\scriptscriptstyle \text{A}}}s^{2}\Theta\left(s\right)+\beta_{{\scriptscriptstyle \text{A}}}s\Theta\left(s\right)=\left(k_{{\scriptscriptstyle A}}+dk_{{\scriptscriptstyle B}}\right)\Delta\left(s\right)
+\]
+L'uscita di interesse è proprio l'angolo di beccheggio dell'aeroplano,
+mentre l'ingresso è la posizione dell'alettone; la funzione di trasferimento
+è:
+\begin{equation}
+\Theta\left(s\right)=\frac{k_{{\scriptscriptstyle A}}+dk_{{\scriptscriptstyle B}}}{\left(J_{{\scriptscriptstyle \text{A}}}s+\beta_{{\scriptscriptstyle \text{A}}}\right)s}\Delta\left(s\right)\label{eq:Trasferimento-3-sistema}
+\end{equation}
+Abbiamo ottenuto un sistema del secondo ordine con i poli $p_{1}=0,\,p_{2}=\beta_{{\scriptscriptstyle \text{A}}}/J_{{\scriptscriptstyle \text{A}}}$,
+semplicemente stabile con un polo nell'origine.
+
+\begin{figure}[!h]
+\begin{raggedright}
+Lo schema a blocchi del sistema complessivo si ottiene dalle funzioni
+di trasferimento (\ref{eq:Trasferimento-1-sistema}), (\ref{eq:Trasferimento-2-sistema})
+e (\ref{eq:Trasferimento-3-sistema}) in forma fattorizzata:
+\par\end{raggedright}
+\begin{centering}
+\includegraphics{\string"Illustrazioni/4_1-6 Schema per equilibratore dell'esercizio\string".pdf}
+\par\end{centering}
+\caption{Schema a blocchi dei 3 sistemi connessi}
+
+\raggedright{}Nella sezione successiva vedremo come interpretare la
+topologia di questo schema, per ottenere una unica funzione di trasferimento
+tra il primo ingresso e l'ultima uscita.\demo
+\end{figure}
+
+
+\section{Regole di elaborazione}
+
+\subsection{Sistemi in serie}
+
+Si tratta di una cascata di due sistemi dinamici $G_{1}\left(s\right)$
+con ingresso $U$ e  $G_{2}\left(s\right)$ con ingresso $U^{\prime}$,
+uscita intermedia del primo sistema; valgono le seguenti regole di
+elaborazione:
+\[
+\begin{cases}
+U^{\text{\ensuremath{\prime}}}\left(s\right)=G_{1}\left(s\right)U\left(s\right)\\
+Y\left(s\right)=G_{2}\left(s\right)U^{\prime}\left(s\right)=G_{2}\left(s\right)G_{1}\left(s\right)U\left(s\right)
+\end{cases}
+\]
+Segue che la funzione di trasferimento complessiva della serie dei
+sistemi è pari al \uline{prodotto} delle loro funzioni di trasferimento:
+\begin{equation}
+G\left(s\right)=G_{2}\left(s\right)G_{1}\left(s\right)=\frac{N_{G_{1}}\left(s\right)\cdot N_{G_{2}}\left(s\right)}{D_{G_{1}}\left(s\right)\cdot D_{G_{2}}\left(s\right)}\label{eq:Sistemi-in-serie}
+\end{equation}
+\begin{minipage}[c]{0.5\textwidth}%
+Nel caso dei sistemi SISO è indifferente scambiare di posto le funzioni
+di trasferimento nel prodotto, mentre nel caso di sistemi MIMO è necessario
+rispettare l'ordine dei blocchi, dall'ultimo al primo della cascata
+(si hanno prodotti di matrici, che non sono commutativi).%
+\end{minipage}%
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{center}
+\includegraphics{\string"Illustrazioni/4_2-1 Sistemi in serie\string".pdf}
+\par\end{center}
+\captionof{figure}{Schema per sistemi in serie}%
+\end{minipage}
+
+I poli della funzione di trasferimento complessiva sono (a meno di
+cancellazioni), rispetto alle singole funzioni, l'unione dei poli
+delle singole funzioni di trasferimento: l'ordine complessivo è infatti
+la somma degli ordini delle funzioni e gli autovalori rimangono inalterati;
+se anche uno solo dei sistemi della serie è instabile, il sistema
+complessivo sarà instabile.
+
+In presenza di cancellazioni critiche (viene cancellato un polo instabile),
+si ottiene un sistema complessivo apparentemente stabile, che ha tuttavia
+dei modi interni instabili.
+
+\subsection{Sistemi in parallelo}
+
+Presentano una diramazione in ingresso, che immette lo stesso valore
+in sistemi con trasferimento differente; le uscite di tali sistemi
+sono raccolte da un nodo somma; valgono le seguenti regole di elaborazione:
+\[
+Y\left(s\right)=G_{1}\left(s\right)U\left(s\right)+G_{2}\left(s\right)U\left(s\right)=\left(G_{1}\left(s\right)+G_{2}\left(s\right)\right)U\left(s\right)
+\]
+Segue che la funzione di trasferimento complessiva del parallelo dei
+sistemi è pari alla \uline{somma} delle loro funzioni di trasferimento:
+\begin{equation}
+G\left(s\right)=G_{1}\left(s\right)+G_{2}\left(s\right)=\frac{N_{G_{1}}\left(s\right)}{D_{G_{1}}\left(s\right)}+\frac{N_{G_{2}}\left(s\right)}{D_{G_{2}}\left(s\right)}=\frac{N_{G_{1}}\left(s\right)\cdot D_{G_{2}}\left(s\right)+N_{G_{2}}\left(s\right)\cdot D_{G_{1}}\left(s\right)}{D_{G_{1}}\left(s\right)\cdot D_{G_{2}}\left(s\right)}\label{eq:Sistemi-in-parallelo}
+\end{equation}
+
+Come nel caso della serie, i poli della funzione di trasferimento
+complessiva (a meno di cancellazioni) sono l'unione dei poli delle
+singole funzioni di trasferimento: l'ordine complessivo è la somma
+degli ordini delle funzioni; se anche uno solo dei sistemi del parallelo
+è instabile, il sistema complessivo sarà instabile.
+
+In presenza di cancellazioni critiche, si ottiene un sistema complessivo
+apparentemente stabile, che ha tuttavia dei modi interni instabili.
+
+\subsection{Sistemi in retroazione}
+
+Presentano un nodo somma che riporta l'uscita di un sistema nell'ingresso
+dell'altro, sommandola all'ingresso esterno; l'uscita del primo sistema
+è inoltre riportata in ingresso al secondo tramite una diramazione;
+a seconda del segno del nodo somma si parla di retroazione negativa
+o positiva; valgono le seguenti regole di elaborazione:
+\[
+\begin{cases}
+U^{\prime}\left(s\right)=U\left(s\right)-G_{2}\left(s\right)Y\left(s\right)\\
+Y\left(s\right)=G_{1}\left(s\right)\cdot U^{\prime}=G_{1}\left(s\right)\cdot\left(U\left(s\right)-G_{2}\left(s\right)Y\left(s\right)\right)
+\end{cases}
+\]
+Riscriviamo la funzione di uscita in forma fattorizzata:
+\[
+1+G_{1}\left(s\right)G_{2}\left(s\right)Y\left(s\right)=G_{1}\left(s\right)U\left(s\right)\rightarrow Y\left(s\right)=\frac{G_{1}\left(s\right)}{1\mp G_{1}\left(s\right)G_{2}\left(s\right)}U\left(s\right)
+\]
+dove il $\mp$ dipende dall'opposto del segno della retroazione (nel
+nostro caso $+$ per retroazione negativa); la regola generale per
+ricavare il trasferimento complessivo consiste nel fare il rapporto
+tra il ramo diretto e la funzione di anello, ovvero il prodotto di
+tutte le funzioni di trasferimento sull'anello di retroazione:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Funzione di trasferimento d'anello}{\footnotesize{}\index{Funzione di trasferimento di anello@{\footnotesize{}Funzione di trasferimento di anello}}}}[-0.2cm]
+\begin{equation}
+L\left(s\right)=G_{1}\left(s\right)\cdot G_{2}\left(s\right)\label{eq:Funzione-trasferimento-di-anello}
+\end{equation}
+Enunciamo la seguente regola generale, per il calcolo della funzione
+di trasferimento:
+\begin{equation}
+G\left(s\right)=\frac{H\left(s\right)}{1\mp L\left(s\right)}\label{eq:Sistemi-in-retroazione}
+\end{equation}
+dove $H\left(s\right)$ è il \emph{ramo diretto}, la serie di sistemi
+tra l'ingresso e l'uscita di $G\left(s\right)$; nel nostro caso abbiamo
+che il ramo diretto vale $G_{1}\left(s\right)$, con retroazione negativa:
+\[
+G\left(s\right)=\frac{G_{1}\left(s\right)}{1+G_{1}\left(s\right)G_{2}\left(s\right)}
+\]
+
+I poli della funzione di trasferimento complessiva si ottengono scrivendo
+la forma fattorizzata rispetto al numeratore e denominatore delle
+funzioni di trasferimento coinvolte nella retroazione:
+\[
+G\left(s\right)=\frac{N_{1}\left(s\right)D_{2}\left(s\right)}{D_{1}\left(s\right)D_{2}\left(s\right)+N_{1}\left(s\right)N_{2}\left(s\right)}
+\]
+In generale non sappiamo se le radici del nuovo denominatore coincidano
+con quelle dei polinomi di partenza; è infatti possibile ricorrere
+alla retroazione per spostare i poli instabili del sistema originario.
+A meno di cancellazioni, l'ordine del sistema complessivo è la somma
+dei gradi dei singoli sistemi.
+
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{center}
+\includegraphics{\string"Illustrazioni/4_2-2 Sistemi in parallelo\string".pdf}
+\par\end{center}
+\captionof{figure}{Schema per sistemi in parallelo}\label{fig:Schema-sistemi-parallelo}%
+\end{minipage}%
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{center}
+\includegraphics{\string"Illustrazioni/4_2-3 Sistemi in retroazione\string".pdf}
+\par\end{center}
+\captionof{figure}{Schema per sistemi in retroazione}\label{fig:Schema-sistemi-retroazione}%
+\end{minipage}
+
+\subsection{Stabilità dei sistemi in retroazione}
+
+Consideriamo un caso generale per la stabilità dei sistemi in retroazione
+(vedi \figref{Schema-sistemi-retroazione}): prendendo due sistemi
+con trasferimento $G_{a}\left(s\right)$ e $G_{b}\left(s\right)$
+chiusi in un anello di retroazione negativa possiamo affermare che,
+in assenza di cancellazioni tra le due funzioni, presi uscita e ingresso
+qualsiasi sull'anello chiuso, scriviamo il trasferimento usando (\ref{eq:Sistemi-in-retroazione}):
+\[
+G\left(s\right)=\frac{N_{H}\left(s\right)}{D_{H}\left(s\right)}\cdot\frac{D_{a}\left(s\right)D_{b}\left(s\right)}{D_{a}\left(s\right)D_{b}\left(s\right)+N_{a}\left(s\right)N_{b}\left(s\right)}
+\]
+dove il denominatore sarà di grado massimo, e il denominatore della
+funzione $H\left(s\right)$ avrà al più tutti i poli della funzione
+$G\left(s\right)$.
+
+In caso di cancellazioni critiche, per una opportuna scelta di ingresso
+e uscita si manifestano dei poli instabili apparenti (la stabilità
+dipende dalla scelta di ingresso e uscita).
+\begin{example}
+\emph{Siano date le seguenti funzioni di trasferimento:
+\[
+G_{1}\left(s\right)=\frac{\left(s+1\right)}{\left(s+2\right)\left(s+3\right)},\qquad G_{2}\left(s\right)=\frac{1}{\left(s+1\right)\left(s+2\right)}
+\]
+$\checkmark$Calcolare il trasferimento di anello del sistema in retroazione
+ne }\figref{Schema-sistemi-retroazione}\emph{ con le due funzioni
+di trasferimento assegnate.}
+
+Calcoliamo la funzione di trasferimento di anello (\ref{eq:Funzione-trasferimento-di-anello}):
+\[
+L\left(s\right)=\frac{1}{\left(s+2\right)^{2}\left(s+3\right)}
+\]
+C'è stata una cancellazione (non critica, è stato cancellato un polo
+negativo reale pari a $-1$); questo si deduce dal fatto che il grado
+del denominatore è inferiore alla somma dei gradi dei denominatori
+di $G_{1}$ e $G_{2}$.
+
+Scriviamo il denominatore della funzione di trasferimento come:
+\[
+1+L\left(s\right)=1+\frac{1}{\left(s+2\right)^{2}\left(s+3\right)}=\frac{1+\left(s+2\right)^{2}\left(s+3\right)}{\left(s+2\right)^{2}\left(s+3\right)}
+\]
+Cerchiamo adesso il ramo diretto $H\left(s\right)$, riscrivendo (\ref{eq:Sistemi-in-retroazione}):
+\[
+G\left(s\right)=H\left(s\right)\cdot\frac{\left(s+2\right)^{2}\left(s+3\right)}{1+\left(s+2\right)^{2}\left(s+3\right)}
+\]
+Dalla scelta di $H\left(s\right)$, quindi di ingresso e uscita, il
+trasferimento della retroazione cambia, perché è avvenuta una cancellazione:
+\end{example}
+\begin{itemize}
+\item Consideriamo $H\left(s\right)=1$\\
+otteniamo il trasferimento $G\left(s\right)=\frac{\left(s+2\right)^{2}\left(s+3\right)}{1+\left(s+2\right)^{2}\left(s+3\right)}$;
+\item Consideriamo $H\left(s\right)=G_{2}\left(s\right)$\\
+otteniamo il trasferimento $G\left(s\right)=\frac{\left(s+2\right)\left(s+3\right)}{1+\left(s+1\right)\left(s+2\right)^{2}\left(s+3\right)}$.
+\end{itemize}
+Notiamo che il grado del denominatore dipende strettamente dalla scelta
+del ramo diretto, in presenza di cancellazioni.
+
+\chapter{Risposta in frequenza}
+
+\section{Risposta alla sinusoide}
+
+Consideriamo un sistema LTI, SISO, stazionario e asintoticamente stabile,
+descritto da (\ref{eq:Forma-standard-matrice-LTI}), con funzione
+di trasferimento (\ref{eq:Funzione-trasferimento}); determiniamo
+la risposta del sistema a un ingresso sinusoidale:
+\[
+u\left(t\right)=\overline{u}\cdot\sin\left(\omega t\right)\cdot\text{sca}\left(t\right)\overset{{\scriptstyle \mathscr{L}}}{\longrightarrow}U\left(s\right)=\frac{\omega}{s^{2}+\omega^{2}}\overline{U}
+\]
+Scriviamo la risposta forzata in funzione dei poli della funzione
+di trasferimento, usando il metodo di Heaviside (\ref{eq:Metodo-di-Heaviside})
+per ottenere i termini dei poli complessi coniugati:
+\[
+Y\left(s\right)=G\left(s\right)\frac{\omega}{s^{2}+\omega^{2}}\overline{U}=\serie{i=1}n{\frac{P_{i}}{s+p_{i}}}+\frac{G\left(j\omega\right)\cancel{\omega}\overline{U}}{\left(s-j\omega\right)2j\cancel{\omega}}-\frac{G\left(-j\omega\right)\cancel{\omega}\overline{U}}{\left(s+j\omega\right)2j\cancel{\omega}}
+\]
+La sua antitrasformata sarà una sommatoria di esponenziali:
+\[
+y\left(t\right)=\left(\serie{i=1}n{P_{i}e^{-p_{i}t}}+\frac{\overline{U}}{2j}G\left(j\omega\right)e^{j\omega t}-\frac{\overline{U}}{2j}G\left(-j\omega\right)e^{-j\omega t}\right)\text{sca}\left(t\right)
+\]
+Osserviamo che la funzione di trasferimento valutata per $s=\pm j\omega$
+è complessa; il suo valore può essere scritto in forma esponenziale:
+\[
+G\left(\pm j\omega\right)=\left|G\left(j\omega\right)\right|\cdot e^{\pm j\arg\left(G\left(j\omega\right)\right)}
+\]
+Scegliamo di valutare la risposta per un tempo $t\rightarrow\infty$,
+che nel sistema asintoticamente stabile considerato fa tendere a zero
+i movimenti dei poli reali negativi, mettendo in evidenza la somma
+di termini complessi coniugati:
+\[
+y\left(t\rightarrow\infty\right)=\left|G\left(j\omega\right)\right|\overline{U}\left(\frac{e^{j\left(\omega t+\arg\left(G\left(j\omega\right)\right)\right)}-e^{-j\left(\omega t+\arg\left(G\left(j\omega\right)\right)\right)}}{2j}\right)\text{sca}\left(t\right)
+\]
+Applicando le formule di Eulero (\ref{eq:Formula-di-Eulero}) al numeratore
+nella parentesi si ottiene:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Risposta all'ingresso sinusoidale}{\footnotesize{}\index{Risposta all'ingresso sinusoidale@{\footnotesize{}Risposta all'ingresso sinusoidale}}}}
+\begin{equation}
+y\left(t\right)=\left|G\left(j\omega\right)\right|\overline{U}\cdot\sin\left(\omega t+\arg\left(G\left(j\omega\right)\right)\right)\text{sca}\left(t\right)\label{eq:Risposta-ingresso-sinusoidale}
+\end{equation}
+Questa uscita ha la stessa pulsazione della sinusoide in ingresso
+ma un'ampiezza alterata dal termine $\left|G\left(j\omega\right)\right|$;
+si osserva anche uno sfasamento di $\arg\left(G\left(j\omega\right)\right)$.
+
+Il risultato appena ottenuto si formalizza come il seguente Teorema
+\ref{thm:Teorema-fondamentale-risposta-frequenza}:
+\begin{thm}
+\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Teorema fondamentale della risposta in frequenza}{\footnotesize{}\index{Risposta in frequenza, teorema fondamentale@{\footnotesize{}Risposta in frequenza, teorema fondamentale}}}}[-0.2cm]\label{thm:Teorema-fondamentale-risposta-frequenza}Se si
+applica a un sistema lineare, stazionario e asintoticamente stabile
+(con funzione di trasferimento $G\left(s\right)$) un ingresso sinusoidale
+$u\left(t\right)=\overline{u}\sin\left(\omega t\right)$, l'uscita
+a transitorio esaurito assume l'andamento (\ref{eq:Risposta-ingresso-sinusoidale})
+indipendentemente dallo stato iniziale.
+\end{thm}
+L'indipendenza dalle condizioni iniziali si ricava dalla sovrapposizione
+degli effetti: l'uscita sarà la somma di movimento libero e forzato,
+e l'asintotica stabilità implica l'annullamento della componente libera.
+La velocità con cui l'uscita assume questa espressione dipende dalle
+costanti di tempo dominanti del sistema (in termini ingegneristici,
+si prende 5 volte la costante di tempo più alta, assumendo tutti i
+transitori esauriti dopo questo tempo).
+
+Il Teorema \ref{thm:Teorema-fondamentale-risposta-frequenza} non
+vale nei casi in cui, tra gli zeri della funzione, è presente il termine
+$s^{2}+\omega^{2}$: esso si cancella nell'equazione di uscita col
+denominatore, annullando di fatto l'uscita. Questa caratteristica
+si chiama \emph{proprietà bloccante degli zeri}.
+
+Definiamo la risposta in frequenza di un sistema come\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Risposta armonica}{\footnotesize{}\index{Risposta armonica@{\footnotesize{}Risposta armonica}}}}[0.5cm]
+\begin{equation}
+\begin{array}{c}
+G\left(j\omega\right)=C\left(j\omega I-A\right)^{-1}B+D\\
+=\left|G\left(j\omega\right)\right|e^{j\arg\left(G\left(j\omega\right)\right)}
+\end{array}\label{eq:Risposta-armonica}
+\end{equation}
+chiamata anche \emph{funzione di risposta armonica}; essa è funzione
+della pulsazione. Questa definizione viene estesa (purché sia applicata
+a un sistema LTI) anche per sistemi MIMO, e sistemi instabili - per
+questi ultimi non valgono più le considerazioni riguardo (\ref{eq:Risposta-ingresso-sinusoidale}).
+
+Prendiamo per esempio la risposta in frequenza associata al ritardo
+di tempo; avremo la funzione di trasferimento $G\left(s\right)=e^{-\tau s}$
+e l'uscita $y\left(t\right)=u\left(t-\tau\right)$. Applicando la
+definizione (\ref{eq:Risposta-armonica}) si ottiene:
+\[
+G\left(j\omega\right)=e^{-\tau j\omega},\qquad\left|G\left(j\omega\right)\right|=1,\qquad\arg\left(G\left(j\omega\right)\right)=-\tau\omega
+\]
+Osserviamo che la funzione di risposta armonica ha modulo unitario
+e fase proporzionale alla pulsazione tramite il ritardo di tempo.
+
+In generale, per una data pulsazione possiamo calcolare (\ref{eq:Risposta-armonica})
+e avere la variazione di ampiezza dell'uscita rispetto all'ingresso;
+per esempio con una sinusoide pura in ingresso al sistema, si valuta
+la funzione di trasferimento in $s=j\omega$ e possiamo calcolare
+direttamente l'uscita. Combinazioni lineari di sinusoidi in ingresso
+corrispondono, per sovrapposizione degli effetti, a una combinazione
+lineare delle uscite, ottenute nel medesimo modo.
+
+\section{Analisi della risposta in frequenza}
+
+\subsection{Segnali esprimibili come serie di Fourier}
+
+Prendiamo\marginpar{Si faccia attenzione alla notazione per gli ingressi: useremo $f\left(t\right)$
+al posto di $u\left(t\right)$ nel resto del capitolo} un segnale periodico con periodo $T$, per cui valga quindi $f\left(t+T\right)=f\left(t\right)$;
+se ipotizziamo $f\left(t+M\right)\neq f\left(t\right)\;\forall M\neq T$
+e definiamo $\omega_{0}=2\pi/T$, allora possiamo associare alla funzione
+del tempo $f\left(t\right)$ dei coefficienti complessi:
+\[
+F_{n}=\frac{1}{T}\somme T{}{f\left(t\right)\cdot e^{-jn\omega_{0}t}}t
+\]
+Se la funzione $f\left(t\right)$ è reale, allora $F_{-n}=F_{n}^{*}$;
+i coefficienti associati $F_{n}$ si chiamano \emph{coefficienti di
+Fourier}.
+
+Esprimiamo la funzione $f\left(t\right)\in\mathbb{R}$ come:
+\[
+f\left(t\right)=F_{0}+\serie{n=1}{\infty}{\left(F_{n}e^{jn\omega_{0}t}+F_{n}^{*}e^{-jn\omega_{0}t}\right)}
+\]
+\begin{equation}
+\overset{{\scriptscriptstyle \text{Eulero}}}{=}F_{0}+2\serie{n=1}{\infty}{\left|F_{n}\right|\cos\left(n\omega_{0}t+\arg\left(F_{n}\right)\right)}\label{eq:Scomposizione-in-serie-di-Fourier}
+\end{equation}
+Questa relazione si chiama \emph{scomposizione in serie di Fourier};
+qualsiasi segnale nel tempo continuo può essere scomposto in una sommatoria
+in generale infinita ma numerabile di cosinusoidi.
+
+Se un segnale nella forma (\ref{eq:Scomposizione-in-serie-di-Fourier})
+l'ingresso di un sistema LTI asintoticamente stabile, l'uscita si
+scrive:
+\[
+y\left(t\right)=Y_{0}+2\serie{n=1}{\infty}{\left|Y_{n}\right|\cos\left(n\omega_{0}t+\arg\left(Y_{n}\right)\right)}
+\]
+dove i coefficienti di Fourier valgono rispettivamente:
+\[
+\begin{array}{c}
+Y_{0}=\left|G\left(0\right)\right|F_{0}=\mu F_{0},\\
+\vdots\\
+\left|Y_{n}\right|=\left|F_{n}\right|\cdot\left|G\left(j\omega_{0}n\right)\right|,\;\arg\left(Y_{n}\right)=\arg\left(F_{n}\right)+\arg\left(G\left(j\omega_{0}n\right)\right)
+\end{array}
+\]
+Osserviamo che il sistema dinamico non altera il contenuto in frequenza
+del segnale di ingresso: il segnale di uscita sarà nella stessa banda
+di frequenze di quello di ingresso; al più saranno alterati modulo
+e fase dei contributi per ciascuna frequenza.
+
+\subsection{Segnali dotati di trasformata di Fourier}
+
+Possiamo considerare la trasformata di Fourier come la serie di Fourier
+in cui le componenti in frequenza sono un'infinità non numerabile;
+se abbiamo un segnale $f\left(t\right)$ definito per $t\in\left(-\infty,\,+\infty\right)$,
+se esiste\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Trasformata di Fourier}{\footnotesize{}\index{Fourier, trasformata di@{\footnotesize{}Fourier, trasformata di}}}}[0.8cm]
+\begin{equation}
+F\left(j\omega\right)=\somme{-\infty}{+\infty}{f\left(t\right)e^{-j\omega t}}t=\mathscr{F}\left[f\left(t\right)\right]\label{eq:Trasformata-di-Fourier}
+\end{equation}
+essa si dice trasformata di Fourier del segnale; tipicamente essa
+si indica col nome di \emph{spettro} in frequenza del segnale.
+
+Se la funzione $f\left(t\right)$ è definita in $\mathbb{R}$, si
+dimostra che $F\left(-j\omega\right)=F^{*}\left(j\omega\right)$;
+inoltre si può esprimere:
+\[
+f\left(t\right)=\frac{1}{\pi}\somme 0{+\infty}{\left|F\left(j\omega\right)\right|\cos\left(\omega t+\arg\left(F\left(j\omega\right)\right)\right)}{\omega}
+\]
+
+\begin{example}
+\emph{Sia dato il seguente segnale:
+\[
+f\left(t\right)=\text{imp}\left(t\right)
+\]
+$\checkmark$Calcolare la trasformata di Fourier del segnale.}
+
+Applichiamo direttamente la definizione (\ref{eq:Trasformata-di-Fourier})
+e scriviamo:
+\[
+F\left(j\omega\right)=\somme{-\infty}{+\infty}{\text{imp}\left(t\right)e^{-j\omega t}}t=e^{-j\omega0}=1
+\]
+Otteniamo questo risultato dalla definizione di impulso, il quale
+è non nullo solo in $t=0$; questo segnale ha un contenuto in frequenza
+costante su qualsiasi banda.
+
+Se questo segnale $f\left(t\right)$ è l'ingresso di un sistema LTI,
+con funzione di trasferimento $G\left(s\right)$, a transitorio esaurito
+avremo, usando (\ref{eq:Scomposizione-in-serie-di-Fourier}):
+\[
+y\left(t\right)=\frac{1}{\pi}\somme 0{+\infty}{\overset{{\scriptstyle \left|Y\left(j\omega\right)\right|}}{\overbrace{\left|G\left(j\omega\right)\right|\left|F\left(j\omega\right)\right|}}\cos\bigl(\omega t+\overset{{\scriptstyle \arg\left(Y\left(j\omega\right)\right)}}{\overbrace{\arg\left(G\left(j\omega\right)\right)+\arg\left(F\left(j\omega\right)\right)}}\bigr)}{\omega}
+\]
+Si osserva un effetto di alterazione del modulo e di sfasamento; a
+fronte di un segnale limitato in banda (la sua trasformata di Fourier
+è non nulla solo per un certo intervallo di $\omega$) l'uscita avrà
+lo stesso contenuto in frequenza, ovvero il sistema dinamico non aggiunge
+componenti di frequenza in uscita al di fuori della banda imposta
+dall'ingresso.\demo
+\end{example}
+\begin{rem}
+Una prima interpretazione che possiamo dare alla funzione di risposta
+armonica (\ref{eq:Risposta-armonica}) è il rapporto tra lo spettro
+(\ref{eq:Trasformata-di-Fourier}) del segnale di ingresso e quello
+di uscita.
+\end{rem}
+Lo spettro di un segnale e legato alla potenza del segnale stesso:
+per esempio, un sistema asintoticamente stabile agisce attenuando
+i modi delle componenti dello spettro alle alte frequenze.
+
+\subsection{Segnali d'ingresso esponenziali}
+
+Immaginiamo di avere l'ingresso $u\left(t\right)=e^{\lambda t}\overline{u}\cdot\text{sca}\left(t\right)$
+con $\lambda>0$ (esponenziale divergente); la sua trasformata di
+Laplace vale:
+\[
+\mathscr{L}\left[u\left(t\right)\right]=U\left(s\right)=\frac{\overline{U}}{s-\lambda}
+\]
+
+e l'uscita sarà pari a $Y\left(s\right)=G\left(s\right)U\left(s\right)$;
+se il sistema è asintoticamente stabile, possiamo esprimere l'uscita
+come:
+\[
+Y\left(s\right)=\serie{i=1}n{\frac{P_{i}}{s-p_{i}}+G\left(\lambda\right)\frac{\overline{U}}{s-\lambda}}
+\]
+Antitrasformando, dopo aver atteso l'esaurimento dei transitori, avremo:
+\[
+y\left(t\right)=G\left(\lambda\right)\overline{U}e^{\lambda t},\quad t\rightarrow\infty
+\]
+L'uscita forzata risulta un esponenziale con stesso esponente dell'ingresso
+e coefficiente $G\left(\lambda\right)$; se ci fosse uno zero in $\lambda$,
+si avrebbe una cancellazione e l'annullamento dell'uscita (di nuovo
+emerge la proprietà bloccante degli zeri). Nel caso di questo esempio,
+uno zero bloccante permette di avere uscita nulla non ostante l'ingresso
+esponenziale arrivi a una ampiezza infinita.
+
+\section{Diagrammi di Bode}
+
+I diagrammi di Bode sono strumenti grafici per valutare l'andamento
+nel tempo della funzione di risposta armonica (\ref{eq:Risposta-armonica}),
+in particolare del suo modulo e della sua fase. Entrambi presentano
+sull'ascissa la pulsazione $\omega$, definita da 0 a $+\infty$;
+per questo asse si utilizza una scala logaritmica in base 10, in modo
+che compaiano a distanza costante (decadi) potenze crescenti di 10.
+
+Spostarsi di una decade sull'asse della pulsazione implica aumentare
+o diminuire la pulsazione di un'ordine di grandezza.
+
+Infine, l'ordinata presenta il modulo o la fase della risposta armonica,
+a seconda del tipo di diagramma.
+
+\subsection{Diagrammi del modulo}
+
+Esso presenta sull'ordinata il modulo della risposta armonica espresso
+in decibel, per il quale vale la relazione:
+\[
+\left|G\left(j\omega\right)\right|_{{\scriptscriptstyle dB}}=20\log_{10}\left|G\left(j\omega\right)\right|
+\]
+\[
+\left|G\left(j\omega\right)\right|=10^{\frac{\left|G\left(j\omega\right)\right|_{{\scriptscriptstyle dB}}}{20}}
+\]
+A meno del fattore 20, anche l'ordinata avrà una scala logaritmica
+in base 10; in particolare, per le proprietà del logaritmo si verifica
+che per $\left|G\left(j\omega\right)\right|=0\,dB$ vale $\left|G\left(j\omega\right)\right|_{{\scriptscriptstyle 10}}=1$;
+per avere un modulo nullo sarebbe necessaria una pulsazione di $\omega=-\infty$. 
+
+\begin{table}[!h]
+\begin{centering}
+\begin{tabular}{cc||cc||cc}
+Decimale & Decibel & Decimale & Decibel & Decimale & Decibel\tabularnewline[\doublerulesep]
+\hline 
+1 & $0\,dB$ & $\sqrt{5}$ & $7\,dB$ & $\sqrt{10}$ & $10\,dB$\tabularnewline[\doublerulesep]
+$\sqrt{2}$ & $3\,dB$ & $\sqrt{6}$ & $7.8\,dB$ & $2\sqrt{5}$ & $13\,dB$\tabularnewline[\doublerulesep]
+$\sqrt{3}$ & $4.8\,dB$ & $\sqrt{7}$ & $8.5\,dB$ & 10 & $20\,dB$\tabularnewline[\doublerulesep]
+2 & $6\,dB$ & $2\sqrt{2}$ & $9\,dB$ & $10\sqrt{10}$ & $30\,dB$\tabularnewline[\doublerulesep]
+\end{tabular}
+\par\end{centering}
+\caption{Conversioni di ampiezze in scala logaritmica}
+\label{tab:Conversioni-di-ampiezze}
+\end{table}
+
+Usando \tabref{Conversioni-di-ampiezze} possiamo vedere dei valori
+notevoli di ampiezze in scala logaritmica e i corrispondenti valori
+decimali (i valori in decibel sono approssimati). 
+
+Per tracciare il diagramma della risposta armonica è necessario conoscere
+l'andamento di quattro elementi fondamentali; per far emergere questa
+caratteristica, è necessario scrivere la funzione di trasferimento
+in forma fattorizzata, in particolare useremo quella di Bode (\ref{eq:Forma-di-Bode}):
+\[
+G\left(s\right)=\frac{\mu}{s^{g}}\cdot\frac{\prod_{i}\left(1+\tau_{i}s\right)\cdot\prod_{i}\left(1+2s\cdot\nicefrac{\zeta_{i}}{\alpha_{ni}}+\nicefrac{s^{2}}{\alpha_{ni}^{2}}\right)}{\prod_{i}\left(1+T_{i}s\right)\cdot\prod_{i}\left(1+2s\cdot\nicefrac{\xi_{i}}{\omega_{ni}}+\nicefrac{s^{2}}{\omega_{ni}^{2}}\right)}
+\]
+Valutando questa funzione per $s=j\omega$ (risposta armonica) ed
+esprimendola in decibel, avremo il logaritmo di una frazione di prodotti,
+che per le proprietà del logaritmo diventa una combinazione lineare:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Risposta armonica in forma di Bode}{\footnotesize{}\index{Risposta armonica in forma di Bode@{\footnotesize{}Risposta armonica in forma di Bode}}}}[1.3cm]
+\begin{equation}
+\begin{array}{c}
+\left|G\left(j\omega\right)\right|_{{\scriptscriptstyle dB}}=20\log_{10}\left(\mu\right)-20g\log_{10}\left(j\omega\right)+\sum_{i}20\log_{10}\left|1+\tau_{i}j\omega\right|\\
+\\
++\sum_{i}20\log_{10}\left|1+2j\omega\frac{\zeta_{i}}{\alpha_{ni}}+\frac{\left(j\omega\right)^{2}}{\alpha_{ni}^{2}}\right|-\sum_{i}20\log_{10}\left|1+T_{i}j\omega\right|\\
+\\
+-\sum_{i}20\log_{10}\left|1+2j\omega\frac{\xi_{i}}{\omega_{ni}}+\frac{\left(j\omega\right)^{2}}{\omega_{ni}^{2}}\right|
+\end{array}\label{eq:Risposta-armonica-forma-Bode}
+\end{equation}
+Questa espressione mette in evidenza il fatto che, per ottenere la
+funzione di risposta armonica in decibel, è necessaria la somma di
+un numero finito (quattro) di andamenti:
+\begin{enumerate}
+\item Guadagno statico: $\mu$;
+\item Poli o zeri nell'origine: $1/s^{g}$;
+\item Poli o zeri reali: $\frac{1}{1+Ts},\,\frac{1}{1+\tau s}$;
+\item Poli o zeri complessi coniugati: $\frac{1}{1+2s\xi/\omega_{n}+s^{2}/\omega_{n}^{2}},\,\frac{1}{1+2s\zeta/\alpha_{n}+s^{2}/\alpha_{n}^{2}}$.
+\end{enumerate}
+\noun{$\qquad$}\textbf{\noun{Guadagno statico}}\\
+Il valore di guadagno è indipendente da $\omega$, e rimane costante;
+il sua andamento è costante e interseca l'asse del modulo in $\left|\mu\right|_{{\scriptscriptstyle dB}}=20\log_{10}\left|\mu\right|$.
+Il segno è determinato dal segno di $\mu$.\medskip{}
+
+\noun{$\qquad$}\textbf{\noun{Poli o zeri nell'origine}}\\
+Prendiamo $G_{p}\left(s\right)=1/s$ per un polo e $G_{z}\left(s\right)=s$
+per uno zero nell'origine; il modulo della risposta armonica vale,
+rispettivamente:
+\[
+\left|G_{p}\left(j\omega\right)\right|_{{\scriptscriptstyle dB}}=20\log_{10}\left(1/\left|\omega\right|\right)=-20\log_{10}\left|\omega\right|
+\]
+\[
+\left|G_{z}\left(j\omega\right)\right|_{{\scriptscriptstyle dB}}=20\log_{10}\left|\omega\right|
+\]
+
+\begin{minipage}[c]{0.5\textwidth}%
+Rappresentiamo sul diagramma di Bode del modulo, in corrispondenza
+di $\omega=1$, una retta che interseca l'asse delle pulsazioni in
+$\omega=1$, con coefficiente angolare che dipende, in generale, dal
+numero di poli e di zeri nell'origine (quindi dal tipo $g$):
+\[
+\left.\frac{\partial}{\partial\omega}\right|_{{\scriptscriptstyle \omega=1}}=-20\cdot g\,dB/\text{dec}
+\]
+La retta scende di $20\,dB$ per ogni decade, per ogni polo nell'origine;
+ne \figref{Bode-modulo-singolarit=0000E0-origine} viene riportata
+la pendenza della retta del modulo rispetto al grado relativo.%
+\end{minipage}%
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{center}
+\includegraphics[scale=0.8]{\string"Illustrazioni/5_3-1 Bode modulo singolarità origine\string".pdf}
+\par\end{center}
+\begin{center}
+\captionof{figure}{Diagramma di Bode del modulo per singolarità nell'origine}\label{fig:Bode-modulo-singolarit=0000E0-origine}
+\par\end{center}%
+\end{minipage}\smallskip{}
+
+\begin{example}
+\emph{\label{exa:Esempio-bode-modulo-somma-grafici}Sia data la seguente
+funzione di trasferimento:}
+\[
+G\left(s\right)=\frac{10}{s}
+\]
+\emph{$\checkmark$Disegnarne il diagramma di Bode del modulo.}
+
+Calcoliamo la risposta armonica:
+\[
+\left|G\left(j\omega\right)\right|=10\cdot\frac{1}{\left|j\omega\right|}\overset{{\scriptscriptstyle dB}}{\longrightarrow}20\log_{10}\left(10\right)+20\log_{10}\left|\frac{1}{j\omega}\right|=20-20\log_{10}\left|j\omega\right|
+\]
+
+\begin{minipage}[c]{0.5\textwidth}%
+Osserviamo che si ottiene esattamente la somma dei contributi del
+termine costante $\left(1\right)$ e del polo nell'origine $\left(2\right)$;
+anche il diagramma di Bode sarà la somma dei grafici di questi due
+andamenti: un guadagno positivo si traduce in una traslazione verso
+l'alto dell'andamento delle singolarità nell'origine.\demo%
+\end{minipage}%
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{center}
+\includegraphics[scale=0.8]{\string"Illustrazioni/5_3-2 Bode modulo polo origine esercizio\string".pdf}
+\par\end{center}
+\captionof{figure}{Diagramma del modulo per la funzione dell'esercizio}%
+\end{minipage}\smallskip{}
+\end{example}
+\noun{$\qquad$}\textbf{\noun{Poli e zeri reali}}\\
+Prendiamo una funzione di trasferimento del tipo $G_{p}\left(s\right)=\frac{1}{1+Ts}$
+per un polo (in $s=-1/T$) e $G_{z}\left(s\right)=\frac{1}{1+\tau s}$
+per uno zero (in $s=-1/\tau$) reali; il modulo della risposta armonica
+vale, rispettivamente:
+\[
+\left|G_{p}\left(j\omega\right)\right|_{{\scriptscriptstyle dB}}=-20\log_{10}\left|1+Tj\omega\right|=-20\log_{10}\sqrt{1+T^{2}\omega^{2}}
+\]
+\[
+\left|G_{z}\left(j\omega\right)\right|_{{\scriptscriptstyle dB}}=20\log_{10}\sqrt{1+T^{2}\omega^{2}}
+\]
+A prescindere dal segno della parte reale del polo o dello zero, la
+risposta armonica non cambia (e nemmeno il diagramma di Bode). Se
+chiamiamo $\omega_{p}=1/\left|T\right|$ e $\omega_{z}=1/\left|\tau\right|$
+il \emph{valore assoluto} del polo e dello zero in $G_{p}\left(s\right)$
+e $G_{z}\left(s\right)$, possiamo tracciare il diagramma normalizzato
+rispetto a $\omega/\omega_{p,z}$ in modo che il polo o lo zero si
+trovino sempre in $\omega/\omega_{p,z}=1$:
+\[
+\left|G_{p,z}\left(j\frac{\omega}{\omega_{p,z}}\right)\right|_{{\scriptscriptstyle dB}}=\mp20\log_{10}\sqrt{1-\left(\frac{\omega}{\omega_{p,z}}\right)^{2}}
+\]
+
+A differenza del diagramma del modulo del guadagno o delle singolarità
+nell'origine, per poli o zeri reali il diagramma tracciato in modo
+asintotico non corrisponde con quello effettivo; possiamo comunque
+conoscere con precisione l'andamento asintotico della risposta armonica:
+\[
+\left|G_{p}\left(j\frac{\omega}{\omega_{p}}\right)\right|_{{\scriptscriptstyle dB}}\simeq\begin{cases}
+-20\log_{10}\left(1\right)=0 & \text{per }\omega/\omega_{p}\ll1\\
+-20\log_{10}\left(\omega/\omega_{p}\right) & \text{per }\omega/\omega_{p}\gg1
+\end{cases}
+\]
+\[
+\left|G_{z}\left(j\frac{\omega}{\omega_{z}}\right)\right|_{{\scriptscriptstyle dB}}\simeq\begin{cases}
+20\log_{10}\left(1\right)=0 & \text{per }\omega/\omega_{z}\ll1\\
+20\log_{10}\left(\omega/\omega_{z}\right) & \text{per }\omega/\omega_{z}\gg1
+\end{cases}
+\]
+Rispetto alla variabile $\omega/\omega_{p,z}$, abbiamo la somma delle
+rette (per polo e per zero) $\mp20\log_{10}\left(\omega/\omega_{p,z}\right)$,
+che risulta nel coefficiente angolare $-20\cdot g\,dB/\text{dec}$
+in dipendenza dal tipo del sistema; mettendo insieme i due asintoti,
+che si incrociano per $\omega/\omega_{p,z}=1$, otteniamo il diagramma
+asintotico.
+
+Il diagramma asintotico avrà errore massimo rispetto a quello effettivo
+nel punto in cui i due asintoti si congiungono; in quel punto la risposta
+armonica vale $20\log_{10}\sqrt{2}=-3\,dB$.
+
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{center}
+\includegraphics[scale=0.8]{\string"Illustrazioni/5_3-3 Bode modulo polo reale\string".pdf}
+\par\end{center}
+\captionof{figure}{Diagramma del modulo per poli reali}%
+\end{minipage} %
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{center}
+\includegraphics[scale=0.8]{\string"Illustrazioni/5_3-4 Bode modulo zero reale\string".pdf}
+\par\end{center}
+\captionof{figure}{Diagramma del modulo per zeri reali}%
+\end{minipage}\bigskip{}
+
+\begin{example}
+\emph{Sia data la seguente funzione di trasferimento:
+\[
+G\left(s\right)=\frac{1}{1+0.1s}
+\]
+$\checkmark$Tracciare il diagramma del modulo.}
+
+Notando che la funzione possiede un polo in $s=10$, e sapendo che
+esso si troverà in $\omega/\omega_{p}=1$, possiamo concludere che
+$\omega_{p}=10$; il diagramma corrispondente è ne \figref{Un-polo-s=00003D10}.
+
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{center}
+\includegraphics[scale=0.8]{\string"Illustrazioni/5_3-5 Bode modulo un polo s=10\string".pdf}
+\par\end{center}
+\captionof{figure}{Diagramma del modulo per un polo in s=10}\label{fig:Un-polo-s=00003D10}%
+\end{minipage}%
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{center}
+\includegraphics[scale=0.8]{\string"Illustrazioni/5_3-6 Bode modulo due poli s=10\string".pdf}
+\par\end{center}
+\captionof{figure}{Diagramma del modulo per due poli in s=10}\label{fig:Due-poli-s=00003D10}%
+\end{minipage}
+
+\marginpar{Grazie all'uso dei decibel, il prodotto del modulo di due singolarità
+è scritto come somma dei coefficienti angolari associati}Se avessimo la funzione $G\left(s\right)=\frac{1}{\left(1+0.1s\right)^{2}}$
+con due poli coincidenti, dovremmo sommare due grafici come quello
+appena ottenuto (vedi \figref{Due-poli-s=00003D10}): in tal caso
+a sinistra di $\omega/\omega_{p}$ il modulo della risposta è nullo,
+mentre a destra esso è rappresentato da una retta con pendenza $-40\,dB/\text{dec}$.
+
+Se avessimo degli zeri invece dei poli appena analizzati, l'esercizio
+sarebbe stato risolto invertendo i grafici del modulo rispetto all'asse
+$\omega$.\demo
+\end{example}
+\noun{$\qquad$}\textbf{\noun{Poli e zeri complessi coniugati}}\\
+Due poli sono complessi coniugati se vale $\xi\in\left(-1,\,1\right)$;
+inoltre assumiamo $\omega>0$. Se $\xi=0$ i poli saranno immaginari
+puri. Avremo una funzione di trasferimento del tipo:
+\[
+G_{p}\left(s\right)=\frac{1}{1+2s\frac{\xi}{\omega_{n}}+\frac{s^{2}}{\omega_{n}^{2}}}
+\]
+la cui risposta armonica vale in modulo:
+\[
+\left|G_{p}\left(j\omega\right)\right|=\left|\frac{1}{1+2j\omega\frac{\xi}{\omega_{n}}-\frac{\omega^{2}}{\omega_{n}^{2}}}\right|\overset{{\scriptscriptstyle dB}}{\longrightarrow}-20\log_{10}\left|1-\left(\frac{\omega}{\omega_{n}}\right)^{2}+j\cdot\frac{2\omega\xi}{\omega_{n}}\right|
+\]
+\[
+=-20\log_{10}\sqrt{\left(1-\left(\omega/\omega_{n}\right)^{2}\right)^{2}+4\xi^{2}\left(\omega/\omega_{n}\right)^{2}}
+\]
+A prescindere dal segno della parte reale, la risposta armonica non
+cambia (possiamo analizzare il modulo dello smorzamento $\left|\xi\right|$).
+Se avessimo voluto condurre questa analisi per due zeri complessi
+coniugati, saremmo giunti allo stesso risultato a meno del segno:
+\[
+\left|G_{z}\left(j\omega\right)\right|_{{\scriptscriptstyle dB}}=20\log_{10}\sqrt{\left(1-\left(\omega/\alpha_{n}\right)^{2}\right)^{2}+4\zeta^{2}\left(\omega/\alpha_{n}\right)^{2}}
+\]
+Se normalizziamo rispetto alla pulsazione propria, otteniamo i seguenti
+asintoti:\marginpar{Abbiamo usato la proprietà dei logaritmi $\log_{a}b^{\alpha}=\alpha\log_{a}b$}\emph{Scrivere
+la sua risposta armonica in forma esponenziale.}
+\[
+\left|G_{p}\left(j\frac{\omega}{\omega_{n}}\right)\right|_{{\scriptscriptstyle dB}}\simeq\begin{cases}
+-20\log_{10}\left(1\right)=0 & \text{per }\omega/\omega_{n}\ll1\\
+-40\log_{10}\left(\omega/\omega_{n}\right) & \text{per }\omega/\omega_{n}\gg1
+\end{cases}
+\]
+\[
+\left|G_{z}\left(j\frac{\omega}{\alpha_{n}}\right)\right|_{{\scriptscriptstyle dB}}\simeq\begin{cases}
+20\log_{10}\left(1\right)=0 & \text{per }\omega/\alpha_{n}\ll1\\
+40\log_{10}\left(\omega/\alpha_{n}\right) & \text{per }\omega/\alpha_{n}\gg1
+\end{cases}
+\]
+Risulta che il diagramma asintotico è uguale a quello di due poli
+o due zeri reali coincidenti; il diagramma effettivo dipende dal valore
+di smorzamento:
+\begin{itemize}
+\item Poli
+\begin{itemize}
+\item per $\left|\xi\right|=1$ si hanno due poli reali coincidenti, con
+pulsazione $\omega_{n}$; il diagramma effettivo avrà distanza di
+$-6\,dB$ dalla pulsazione $\omega/\omega_{n}=1$ (dato che sommiamo
+gli andamenti dei due poli);
+\item per $\left|\xi\right|=0$ si avrebbe un modulo pari a $+\infty\,dB$:
+il diagramma effettivo presenta un asintoto verticale per $\omega/\omega_{n}=1$.
+\end{itemize}
+\item Zeri
+\begin{itemize}
+\item per $\left|\xi\right|=1$ si hanno due zeri reali coincidenti, con
+pulsazione $\alpha_{n}$; il diagramma effettivo avrà distanza di
+$+6\,dB$ dalla pulsazione $\omega/\alpha_{n}=1$ (dato che sommiamo
+gli andamenti dei due zeri);
+\item per $\left|\xi\right|=0$ si avrebbe un modulo pari a $-\infty\,dB$:
+il diagramma effettivo presenta un asintoto verticale per $\omega/\alpha_{n}=1$.\smallskip{}
+\end{itemize}
+\item \marginpar{La pulsazione di risonanza è definita anche per zeri complessi coniugati,
+sostituendo $\alpha_{n}$ a $\omega_{n}$ nell'enunciato}per $\left|\xi\right|\in\left(0,\,1/\sqrt{2}\right)$ il diagramma
+effettivo presenterà un massimo, chiamato \emph{picco di risonanza};
+esso si trova in corrispondenza della \emph{pulsazione di risonanza},
+definita come $\omega_{{\scriptscriptstyle \text{R}}}=\omega_{n}\sqrt{1-2\xi^{2}}$;
+minore è lo smorzamento e più il picco sarà vicino al valore di pulsazione
+naturale della singolarità.
+\end{itemize}
+Ponendoci nel caso $\omega/\omega_{n}=1$ per poli e $\omega/\alpha_{n}=1$
+per zeri, il modulo della risposta vale:
+\[
+\left|G_{p}\left(j\omega_{n}\right)\right|=\frac{1}{2\left|\xi\right|},\quad\left|G_{z}\left(j\alpha_{n}\right)\right|=2\left|\xi\right|
+\]
+
+\begin{rem}
+I sistemi con smorzamento sufficientemente piccolo presentano un picco
+di risonanza, ovvero a fronte di un segnale di ingresso, applicato
+con componente spettrale su determinate frequenze, l'uscita presenterà
+un contenuto in frequenza amplificato attorno a quelle pulsazioni.
+\end{rem}
+%
+\begin{rem}
+Per smorzamento nullo ($\zeta=0$) si hanno due zeri immaginari puri:
+dal diagramma di Bode si vede l'effetto bloccante degli zeri, poiché
+due zeri complessi coniugati di pulsazione $\alpha_{n}$ sono l'inverso
+della trasformata (di Fourier) di una sinusoide di pulsazione $\alpha_{n}$.
+
+In corrispondenza di tale pulsazione, sul diagramma si ha guadagno
+nullo ($-\infty\,dB$), ovvero le frequenze attorno alla pulsazione
+$\alpha_{n}$ sono eliminate dall'uscita; infatti fornendo in ingresso
+una sinusoide pura di pulsazione $\alpha_{n}$, l'uscita sarà nulla.
+\end{rem}
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{center}
+\includegraphics[scale=0.8]{\string"Illustrazioni/5_3-7 Bode modulo poli cc\string".pdf}
+\par\end{center}
+\captionof{figure}{Diagramma del modulo per poli complessi coniugati}%
+\end{minipage}%
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{center}
+\includegraphics[scale=0.8]{\string"Illustrazioni/5_3-8 Bode modulo zeri cc\string".pdf}
+\par\end{center}
+\captionof{figure}{Diagramma del modulo per zeri complessi coniugati}%
+\end{minipage}
+
+\subsection*{Tracciamento del diagramma del modulo\label{subsec:Tracciamento-Bode-modulo}}
+
+Possiamo tracciare il diagramma di Bode del modulo di una funzione
+di trasferimento in due modi: il primo consiste nell'isolare guadagno
+statico e singolarità nell'origine, tracciando i diagrammi del modulo
+di ciascuna singolarità e poi sommandoli assieme per ciascuna pulsazione
+(come è stato fatto nell'Esempio \ref{exa:Esempio-bode-modulo-somma-grafici});
+anche se immediato, esso diventa sconveniente per funzioni con molte
+singolarità.
+
+Il\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Tracciamento del diagramma del modulo}{\footnotesize{}\index{Tracciamento del diagramma del modulo@{\footnotesize{}Tracciamento del diagramma del modulo}}}}[-0.2cm] secondo approccio consiste nei seguenti passi:
+\begin{itemize}
+\item Assumendo $\omega\rightarrow0$, tracciamo l'andamento asintotico
+di $\mu/s^{g}$; questo è sempre possibile, dato che si può scegliere
+una pulsazione iniziale piccola a piacere per la quale il contributo
+delle singolarità si annulla; questa sarà in generale una retta con
+pendenza $-20\cdot g\,dB/\text{dec}$, che passerebbe (in assenza
+di altre singolarità) per $\mu|_{{\scriptscriptstyle dB}}$ in corrispondenza
+di $\omega=1$.
+\item Si aumenta la pulsazione, visitando mano a mano ciascuna singolarità,
+fino a superare l'ultima almeno di una decade:
+\begin{itemize}
+\item Ogni volta che si incontra un polo la pendenza cambia di $-20\,dB/\text{dec}$;
+\item Ogni volta che si incontra uno zero la pendenza cambia di $+20\,dB/\text{dec}$;
+\item La pendenza finale, dopo l'ultima singolarità, sarà pari a $-20\,dB/\text{dec}$
+per il grado relativo della funzione.
+\end{itemize}
+\end{itemize}
+Questo approccio risulta più veloce del precedente, necessita soltanto
+di individuare tutte le singolarità sull'asse delle pulsazioni.
+\begin{example}
+\emph{\label{exa:Bode-modulo-esempio-riepilogo}Sia data la seguente
+funzione di trasferimento:
+\[
+G\left(s\right)=\frac{10\left(1-s\right)\left(1+10s\right)}{s\left(1+0.1s\right)\left(1-\frac{s}{300}+\frac{s^{2}}{90000}\right)}
+\]
+$\checkmark$Tracciare il diagramma asintotico del modulo della funzione.}
+
+Per prima cosa isoliamo il guadagno statico generalizzato, usando
+la definizione (\ref{eq:Teorema-valore-iniziale}):
+\[
+\mu=\lm s0{s^{g}G\left(s\right)}=10=20\,dB
+\]
+Otteniamo questo risultato poiché il tipo del sistema è $g=1$ (un
+polo nell'origine); le singolarità si trovano in corrispondenza dei
+seguenti valori
+\[
+z_{1}=1,\,z_{2}=-1/10,\qquad p_{1}=0,\,p_{2,3}=\{\omega_{n}=300,\,\xi=-1/2\}
+\]
+Per i poli complessi coniugati $p_{2,3}$ abbiamo considerato smorzamento
+e pulsazione naturale, dato che sono gli unici valori determinanti
+sul diagramma del modulo; abbiamo ottenuto la pulsazione dal termine
+fattorizzato in forma di Bode:
+\[
+1+2s\frac{\xi}{\omega_{n}}+\frac{s^{2}}{\omega_{n}^{2}}=1-\frac{s}{300}+\frac{s^{2}}{90000}
+\]
+da cui si ricava direttamente $\omega_{n}=\sqrt{90000}=300$, e impostando
+$\frac{2\xi}{300}={\scriptstyle -}\frac{1}{300}$ si ottiene $2\xi=-1\rightarrow\xi=-1/2$.
+
+Indicando sull'ascissa delle pulsazioni una decade precedente ($10^{-2}$)
+alla singolarità dalla pulsazione più bassa ($z_{2}\rightarrow10^{-1}$),
+e una decade successiva ($10^{3}$) alla singolarità dalla pulsazione
+più elevata ($p_{2,3}\rightarrow300$).
+
+Sull'ordinata è comodo segnare multipli interi di $20\,dB$, mentre
+sull'ascissa si segnano le decadi intermedie all'intervallo prescelto
+e la posizione delle singolarità (indicando gli zeri con $\ocircle$
+e i poli con $\times$).
+
+\begin{figure}[!h]
+\begin{centering}
+\includegraphics[scale=0.8]{\string"Illustrazioni/5_3-9 Bode modulo esercizio 4\string".pdf}
+\par\end{centering}
+\caption{Diagramma del modulo della funzione per l'esempio}
+\end{figure}
+
+Usando il metodo proposto, tracciamo il profilo di una retta che passa
+per $\omega=1,\,\left.\mu\right|_{{\scriptscriptstyle dB}}=20\,dB$,
+con pendenza $-20\,dB/\text{dec}$; questa retta corrisponde con l'andamento
+asintotico del modulo fino alla prima singolarità ($z_{2}$): dal
+momento che si tratta di uno zero, la pendenza cambia di $+20\,dB/\text{dec}$,
+annullandosi; lo zero successivo $z_{1}$, in $\omega=1$, comporta
+un ulteriore aumento della pendenza che diventa $20\,dB/\text{dec}$.
+
+Segue il polo $p_{1}$ in $\omega=10$, che abbassa di nuovo la pendenza
+di $-20\,dB/\text{dec}$, annullandola; infine i poli complessi coniugati
+$p_{2,3}$ in $\omega=300$ abbassano la pendenza di $-40\,dB/\text{dec}$;
+il modulo si azzererà alla decade successiva, in $\omega=3000$. Questo
+viene riconfermato dal fatto che il grado relativo è 2 (numeratore
+del 2° grado e denominatore del 4°).
+
+Il diagramma effettivo differisce per gli errori di $\pm3\,dB$ in
+corrispondenza della pulsazione dei poli e zeri reali ($z_{1},\,z_{2},\,p_{1}$),
+e di $-6\,dB$ in corrispondenza della coppia di poli complessi coniugati
+$p_{2,3}$, in prossimità della quale è presente un picco di risonanza
+(lo smorzamento $\left|\xi\right|=0.5$ è minore del limite di sotto-smorzamento
+$1/\sqrt{2}\simeq0.7$).\demo
+\end{example}
+
+\subsection{Diagrammi della fase}
+
+Una generica funzione di trasferimento valutata come risposta armonica,
+essa può essere espressa nella forma (\ref{eq:Risposta-armonica});
+se essa è il risultato del prodotto di ciascuna singolarità (anch'esse
+espresse in forma esponenziale), allora il modulo della risposata
+armonica sarà il prodotti dei moduli delle singolarità e la fase della
+risposta armonica sarà la somma delle fasi delle singolarità.
+\begin{example}
+\emph{Sia data la seguente funzione di trasferimento:}
+\[
+G\left(s\right)=\frac{1+s}{1+10s}
+\]
+\emph{$\checkmark$Scrivere la sua risposta armonica in forma esponenziale.}
+
+Scomponiamo la frazione in un prodotto di funzioni, poi le esprimiamo
+in forma esponenziale:\marginpar{Abbiamo usato la proprietà della fase $\arg\left(1/a\right)=-\arg\left(a\right)$}
+\[
+G\left(j\omega\right)=\left(1+j\omega\right)\cdot\frac{1}{1+10j\omega}=\left|1+j\omega\right|e^{j\arg\left(1+j\omega\right)}\cdot\left|\left(1+10j\omega\right)^{-1}\right|e^{j\arg\left(1+j\omega\right)^{-1}}
+\]
+\[
+=\left|\frac{1+j\omega}{1+10j\omega}\right|e^{j\left(\arg\left(1+j\omega\right)-\arg\left(1+10j\omega\right)\right)}
+\]
+\demo
+\end{example}
+Nei diagrammi di Bode della fase, essa si esprime in gradi; per passare
+da radianti a gradi richiamiamo la relazione:
+\[
+\arg\left(s\right)\,\text{rad}=\frac{\pi}{180{^\circ}}\arg\left(s\right){^\circ}
+\]
+Esprimendo in forma (\ref{eq:Forma-di-Bode}) la funzione di risposta
+armonica, otteniamo (come prima) l'andamento (\ref{eq:Risposta-armonica-forma-Bode});
+ricaviamo di nuovo quattro elementi, come per i diagrammi del modulo,
+per tracciare i diagrammi della fase.\bigskip{}
+
+$\qquad$\textbf{\noun{Guadagno statico}}\\
+Il guadagno $\mu$ è un numero reale: se lo rappresentiamo sul piano
+complesso, esso sarà sull'asse reale ($\Im\left(\mu\right)=0$): \marginpar{Si prende per convenzione l'angolo negativo in senso antiorario}
+\[
+\begin{cases}
+\arg\left(\mu\right)=0 & \text{per }\mu>0\\
+\arg\left(\mu\right)=-180{^\circ} & \text{per }\mu<0
+\end{cases}
+\]
+Il diagramma di Bode risultante avrà andamento costante a $0{^\circ}$
+o $-180{^\circ}$.\bigskip{}
+
+$\qquad$\textbf{\noun{Poli e zeri nell'origine}}\\
+Prendiamo la funzione di trasferimento $G_{p}\left(s\right)=1/s$;
+la fase della risposta armonica vale:
+\[
+\arg\left[G_{p}\left(j\omega\right)\right]=\arg\left(1/j\omega\right)=-\arg\left(j\omega\right)
+\]
+
+Notiamo che, trattandosi di un polo nell'origine, la fase avrà segno
+negativo in ogni caso (per uno zero nell'origine si avrebbe segno
+positivo); se rappresentiamo il numero $j\omega$ sull'asse dei numeri
+immaginari, dato che nei diagrammi di Bode $\omega>0$, esso sarà
+definito solo sul semiasse immaginario positivo.
+
+Segue che la fase associata sarà costante, $-90{^\circ}$ per un polo
+e $90{^\circ}$ per uno zero (da ricordare il segno meno della fase
+di un polo). In generale si avrà un contributo che dipende dal numero
+di poli e zeri nell'origine, ovvero dal tipo del sistema:
+\[
+\arg\left(1/s^{g}\right)=-\arg\left(s^{g}\right)=-90{^\circ}\cdot g
+\]
+
+$\qquad$\textbf{\noun{Poli e zeri reali}}\\
+Prendiamo la funzione di trasferimento $G_{p}\left(s\right)=$$\frac{1}{1+sT}$
+con un polo reale e $G_{z}\left(s\right)=1+s\tau$ con uno zero reale;
+la risposta armonica vale:
+\[
+\arg\left[G_{p}\left(j\omega\right)\right]=\arg\left(\frac{1}{1+j\omega T}\right)=-\arg\left(1+j\omega T\right)
+\]
+\[
+\arg\left[G_{z}\left(j\omega\right)\right]=\arg\left(1+j\omega\tau\right)
+\]
+Il numero complesso di cui si cerca la fase ha parte reale pari a
+1 e parte immaginaria pari a $\omega T$; se rappresentiamo questo
+numero sul piano complesso, esso si troverà sulla retta perpendicolare
+all'ascissa, passante in $\Re=1$; inoltre a seconda del segno della
+costante di tempo, esso avrà fase positiva o negativa.
+
+Osserviamo che, per $\omega=\pm1/\left|T\right|$, la fase vale $\pm45{^\circ}$,
+in dipendenza dal segno della singolarità, e dalla presenza di un
+polo che inverte il segno della fase. Inoltre per $\omega\rightarrow+\infty$,
+il numero sul piano complesso ha parte immaginaria tendente a $\pm\infty$
+e la sua fase tende a $\pm90{^\circ}$.
+
+Riassumiamo queste considerazioni nelle seguenti approssimazioni asintotiche:
+\[
+\arg\left[G_{p}\left(j\frac{\omega}{\omega_{p}}\right)\right]\simeq\begin{cases}
+-\arg\left(1\right)=0{^\circ} & \text{per }\omega/\omega_{p}\ll1\\
+-\arg\left(j\frac{\omega}{\omega_{p}}\left(\pm T\right)\right)=\mp90{^\circ} & \text{per }\omega/\omega_{p}\gg1
+\end{cases},\,\text{per }T\gtrless0
+\]
+\[
+\arg\left[G_{z}\left(j\frac{\omega}{\omega_{z}}\right)\right]\simeq\begin{cases}
+\arg\left(1\right)=0{^\circ} & \text{per }\omega/\omega_{z}\ll1\\
+\arg\left(j\frac{\omega}{\omega_{p}}\left(\pm\tau\right)\right)=\pm90{^\circ} & \text{per }\omega/\omega_{z}\gg1
+\end{cases},\,\text{per }\tau\gtrless0
+\]
+
+\begin{rem}
+Si ricordi che il segno dei poli e degli zeri è l'inverso di quello
+con cui compaiono fattorizzati nella funzione di trasferimento: per
+esempio la funzione $G\left(s\right)=1+\tau s$ presenta uno zero
+reale negativo, in $s=-1/\tau$ (lo stesso vale per i poli).
+\end{rem}
+L'andamento asintotico ha una discontinuità di salto di $90{^\circ}$
+per $\omega=1$, mentre l'andamento reale ha la forma di un'arcotangente,
+passante per la fase $45{^\circ}$.
+
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{center}
+\includegraphics[scale=0.8]{\string"Illustrazioni/5_3-10 Bode fase poli neg (zeri pos)\string".pdf}
+\par\end{center}
+\captionof{figure}{Diagramma della fase per poli reali negativi e zeri reali positivi}\label{fig:Bode-fase-poli-neg-zeri-pos}%
+\end{minipage}%
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{center}
+\includegraphics[scale=0.8]{\string"Illustrazioni/5_3-11 Bode fase poli pos (zeri neg)\string".pdf}
+\par\end{center}
+\captionof{figure}{Diagramma della fase per zeri reali positivi e zeri reali negativi}\label{fig:Bode-fase-poli-pos-zeri-neg}%
+\end{minipage}\bigskip{}
+
+$\qquad$\textbf{\noun{Poli e zeri complessi coniugati}}\\
+Prendiamo la funzione di trasferimento $G_{p}\left(s\right)=\frac{1}{1+2s\xi/\omega_{n}+s^{2}/\omega_{n}^{2}}$
+con due poli complessi coniugati e $G_{z}\left(s\right)=1+2s\zeta/\alpha_{n}+s^{2}/\alpha_{n}^{2}$
+con due zeri complessi coniugati; la fase della risposta armonica
+vale:
+\[
+\arg\left[G_{p}\left(j\omega\right)\right]=-\arg\left(1+2j\xi\cdot\omega/\omega_{n}-\omega^{2}/\omega_{n}^{2}\right)
+\]
+\[
+\arg\left[G_{z}\left(j\omega\right)\right]=\arg\left(1+2j\zeta\cdot\omega/\alpha_{n}-\omega^{2}/\alpha_{n}^{2}\right)
+\]
+Se rappresentiamo sul piano complesso i numeri immaginari di cui cerchiamo
+la fase, vediamo che il segno dello smorzamento determina l segno
+della fase, inoltre il segno della fase di poli complessi coniugati
+sarà sempre invertito.
+
+Osservando il segno delle singolarità e dello smorzamento giungiamo
+alle seguenti conclusioni:
+\[
+\arg\left[G_{p}\left(j\omega\right)\right]\simeq\begin{cases}
+-\arg\left(1\right)=0\text{°} & \text{per }\omega/\omega_{n}\ll1\\
+-\arg\left(2j\left(\pm\xi\right)\right)=\mp90{^\circ} & \text{per }\omega/\omega_{n}=1\\
+-\arg\left(-\left(\omega/\omega_{n}\right)^{2}\pm2j\xi\omega/\omega_{n}\right)=\mp180{^\circ} & \text{per \ensuremath{\omega}/\ensuremath{\omega_{n}}\ensuremath{\ensuremath{\gg}1}}
+\end{cases},\,\text{per }\xi\gtrless0
+\]
+\[
+\arg\left[G_{z}\left(j\omega\right)\right]\simeq\begin{cases}
+\arg\left(1\right)=0\text{°} & \text{per }\omega/\alpha_{n}\ll1\\
+\arg\left(2j\left(\pm\zeta\right)\right)=\pm90{^\circ} & \text{per }\omega/\alpha_{n}=1\\
+\arg\left(-\left(\omega/\alpha_{n}\right)^{2}\pm2\zeta\omega/\omega_{n}\right)=\pm180{^\circ} & \text{per \ensuremath{\omega}/\ensuremath{\alpha_{n}}\ensuremath{\ensuremath{\gg}1}}
+\end{cases},\,\text{per }\zeta\gtrless0
+\]
+
+Il segno della parte reale di un polo è $-\xi\omega_{n}$: possiamo
+vedere la fase di due poli complessi coniugati con $\xi>0$ come la
+somma dei contributi di due poli reali negativi. Il ragionamento analogo
+vale per gli zeri. In corrispondenza della pulsazione naturale delle
+singolarità, l'andamento effettivo assume fase $\pm90{^\circ}$, in
+generale comportandosi come un'arcotangente.
+
+La curva effettiva si avvicina a quella asintotica mano a mano che
+lo smorzamento si avvicina a zero; per smorzamento nullo l'andamento
+effettivo presenta una discontinuità di salto, di $180{^\circ}$;
+per smorzamento pari a $1$, si ha la somma di due poli reali coincidenti.
+
+Per convenzione si prende per i poli immaginari puri un salto di $-180{^\circ}$,
+e per gli zeri immaginari puri un salto di $+180{^\circ}$.
+
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{center}
+\includegraphics[scale=0.8]{\string"Illustrazioni/5_3-12 Bode fase complessi poli neg (zeri pos)\string".pdf}
+\par\end{center}
+\captionof{figure}{Diagramma della fase per poli complessi coniugati negativi (e zeri positivi)}\label{fig:Bode-fase-complessi-poli-neg-zeri-pos}%
+\end{minipage}%
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{center}
+\includegraphics[scale=0.8]{\string"Illustrazioni/5_3-13 Bode fase complessi poli pos (zeri neg)\string".pdf}
+\par\end{center}
+\captionof{figure}{Diagramma della fase per poli complessi coniugati positivi (e zeri negativi)}\label{fig:Bode-fase-complessi-poli-pos-zeri-neg}%
+\end{minipage}
+
+\subsection*{Tracciamento del diagramma della fase}
+
+Possiamo tracciare il diagramma di Bode della fase di una funzione
+di trasferimento in due modi: il primo consiste nell'isolare guadagno
+statico e singolarità nell'origine, tracciando i diagrammi della fase
+di ciascuna singolarità e poi sommandoli assieme per ciascuna pulsazione;
+anche se immediato, esso diventa sconveniente per funzioni con molte
+singolarità.
+
+Il secondo approccio consiste nei seguenti passi:
+\begin{itemize}
+\item Si parte da una pulsazione molto piccola, tale che sia possibile trascurare
+tutte le singolarità al di fuori dell'origine; per $\omega\rightarrow0$
+il contributo di fase iniziale vale
+\[
+\arg\left(\mu_{0}\right)+90{^\circ}\cdot g
+\]
+ovvero la fase iniziale è determinata dal segno del guadagno statico
+e dal tipo del sistema.
+\item Si procede facendo tendere $\omega$ a $\infty$, visitando la pulsazione
+di ciascuna singolarità; per ogni polo o zero reale si somma $\mp90{^\circ}$
+e per ogni coppia di poli o zeri complessi coniugati si somma $\pm180{^\circ}$,
+a seconda del segno della parte reale.
+\end{itemize}
+\begin{example}
+\emph{In riferimento all'Esempio \ref{exa:Esempio-bode-modulo-somma-grafici},
+$\checkmark$tracciare il diagramma della fase della risposta armonica
+del sistema.}
+
+Riportiamo la funzione di trasferimento, e alcuni dati utili:
+\[
+G\left(s\right)=\frac{10\left(1-s\right)\left(1+10s\right)}{s\left(1+0.1s\right)\left(1-\frac{s}{300}+\frac{s^{2}}{90000}\right)}
+\]
+\[
+\mu=10,\,g=1,\,z_{1}=1,\,z_{2}=-0.1,\,p_{1}=-10,\,p_{2,3}=\left\{ \omega=300,\,\xi=-1/2\right\} 
+\]
+
+Il contenuto di fase iniziale è determinato dal segno positivo del
+guadagno statico: si avrà un contributo $0{^\circ}$; inoltre il polo
+nell'origine ($g=1$) aggiunge un ulteriore contributo iniziale di
+$-90{^\circ}$.
+
+Per $\omega$ crescente incontreremo tutte le singolarità in ordine
+crescente di pulsazione:
+\end{example}
+\begin{itemize}
+\item lo zero $z_{2}$ reale negativo, che comporta un guadagno di fase
+di $+90{^\circ}$ (vedi \figref{Bode-fase-poli-pos-zeri-neg});
+\item lo zero $z_{1}$ reale positivo, che comporta una perdita di fase
+di $-90{^\circ}$ (vedi \figref{Bode-fase-poli-neg-zeri-pos});
+\item il polo $p_{1}$ reale negativo, che comporta una perdita di fase
+di $-90{^\circ}$ (vedi \figref{Bode-fase-poli-neg-zeri-pos});
+\item i poli $p_{2,3}$ complessi coniugati, con parte reale positiva, che
+comportano un guadagno di fase di $+180{^\circ}$ (vedi \figref{Bode-fase-complessi-poli-pos-zeri-neg}).
+\end{itemize}
+\begin{figure}[!h]
+\begin{centering}
+\includegraphics[scale=0.8]{\string"Illustrazioni/5_3-14 Bode fase esercizio 4\string".pdf}
+\par\end{centering}
+\caption{Diagramma della fase della funzione per l'esempio}
+\end{figure}
+\demo
+
+\section{Diagrammi di Bode del ritardo di tempo}
+
+Prendiamo un ritardo di tempo positivo $\tau>0$, e una funzione di
+trasferimento nella forma della risposta armonica, espressa come esponenziale
+$G\left(s\right)=e^{-\tau s}$:
+\[
+G\left(j\omega\right)=e^{-\tau j\omega}
+\]
+Il modulo e la fase di questa espressione valgono:
+\[
+\left|G\left(j\omega\right)\right|=1,\quad\arg\left(G\left(j\omega\right)\right)=-\tau\omega
+\]
+I diagrammi del modulo e della fase del ritardo risultano:
+\begin{itemize}
+\item Il diagramma del modulo costante, di valore 0; esso non influenzerà
+il modulo della funzione ritardata.
+\item Il diagramma della fase un esponenziale divergente a $-\infty$; esso
+passerà per il punto $\omega=\frac{1}{\tau},\,\arg\left(\circ\right)=-\frac{180{^\circ}}{\pi}$.
+\end{itemize}
+Lo sfasamento causato dal ritardo è lineare, tuttavia sul diagramma
+di Bode (dotato di scala logaritmica), esso appare come una esponenziale.
+
+Il ritardo è tanto più influente sulla risposta armonica di un sistema
+quanto più le frequenze su cui agisce sono elevate, rispetto al valore
+del tempo di ritardo $\tau$ (per un valore molto piccolo di ritardo,
+solo frequenze elevate della risposta armonica saranno influenzate).
+
+\section{Diagrammi polari}
+
+...
 
 \appendix
 
@@ -4433,6 +5878,7 @@ molteplicità geometrica vale $g_{2}=1$.
 \end{enumerate}
 In conclusione, abbiamo trovato $g_{1}=1,\,g_{2}=1$\demo\smallskip{}
 
+
 \section{Similitudine e diagonalizzabilità}
 
 La seguente definizione realizza una relazione di equivalenza (riflessiva,
@@ -4468,6 +5914,7 @@ tutti distinti (la molteplicità algebrica e geometrica dei suoi autovalori
 coincidono) $\forall i\in1\ldots n\left(n_{i}=g_{i}\right)$.
 \end{rem}
 \smallskip{}
+
 \begin{xca}
 Ottenere se la seguente matrice è diagonalizzabile, e in tal caso
 ottenere la matrice di trasformazione:\marginpar{$\blacktriangleright$ \emph{Esercizio: diagonalizzabilità di matrice
@@ -4535,8 +5982,8 @@ v_{1}=\left(1,0,0\right),\,\left(0,1,0\right)
 v_{2,1}\\
 v_{3,1}
 \end{bmatrix}=0\rightarrow\begin{cases}
-v_{1,1}=v_{3,1} & {\scriptscriptstyle \text{(1\textdegree riga\ensuremath{\times v_{2}})}}\\
-v_{2,1}=0 & {\scriptscriptstyle \text{(2\textdegree riga\ensuremath{\times v_{2}})}}
+v_{1,1}=v_{3,1} & {\scriptscriptstyle \text{(1°riga\ensuremath{\times v_{2}})}}\\
+v_{2,1}=0 & {\scriptscriptstyle \text{(2°riga\ensuremath{\times v_{2}})}}
 \end{cases}
 \]
 Una possibile scelta per il secondo autospazio è $v_{2}=\left(1,0,1\right)$.
@@ -4574,6 +6021,7 @@ che è proprio la matrice diagonale cercata, con gli autovalori di
 $A$ sulla diagonale principale.\demo
 
 \smallskip{}
+
 \begin{xca}
 Trova (se esiste) la matrice diagonale simile alla seguente matrice:\marginpar{$\blacktriangleright$ \emph{Esercizio: matrice diagonale simile a
 matrice $2\times2$}}
@@ -4667,6 +6115,7 @@ Jordan con un unico blocco di Jordan relativo a un autovalore $\lambda_{1}$
 con $n_{i}=3$.
 
 \smallskip{}
+
 \begin{xca}
 Trova la matrice in forma di Jordan simile alla seguente matrice:\marginpar{$\blacktriangleright$ \emph{Esercizio: matrice $3\times3$ in forma
 di Jordan}}
@@ -4773,11 +6222,9 @@ e^{jb}=\cos\left(b\right)+j\sin\left(b\right)\label{eq:Formula-di-Eulero}
 La (\ref{eq:Formula-di-Eulero}) è molto utile per eseguire il prodotto
 di numeri complessi, riconducendolo alle proprietà delle potenze.
 
-\chapter{Strumenti per analisi nel tempo continuo}
+\chapter{Trasformata di Laplace}
 
-\section{Trasformata di Laplace}
-
-\subsection{Definizione}
+\section{Definizione}
 \begin{defn}
 Sia data una funzione $f\,:\,\mathbb{R}\rightarrow\mathbb{C}$ e definiamo
 una variabile complessa $s=\sigma+j\omega\in\mathbb{C}$; se la funzione\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
@@ -4840,7 +6287,7 @@ qualsiasi. La corrispondenza tra trasformata e antitrasformata di
 Laplace è biunivoca nel caso di funzioni nulle per $t<0$.
 \end{defn}
 
-\subsection{Proprietà\label{subsec:Propriet=0000E0-della-trasformata}}
+\section{Proprietà\label{sec:Propriet=0000E0-della-trasformata}}
 \begin{lyxlist}{00.00.0000}
 \item [{$\mathrm{\left(I\right)}\,\text{\textsc{Linearità}}$\noun{:}}] Prendiamo
 due funzioni $f\left(t\right)$ e $g\left(t\right)$, allora $\forall\alpha\in\mathbb{C},\,\forall\beta\in\mathbb{C}$
@@ -4947,7 +6394,7 @@ allora vale:
 \bigskip{}
 \end{lyxlist}
 
-\subsection{Trasformate notevoli}
+\section{Trasformate notevoli}
 
 L'\textbf{impulso} è un ingresso canonico il cui integrale è non nullo
 solo nell'istante $t=0$; la sua trasformata di Laplace vale
@@ -5022,6 +6469,7 @@ la sua trasformata di Laplace vale:
 \[
 \mathscr{L}\left[\text{par}\left(t\right)\right]=\mathscr{L}\left[\somme 0{\infty}{\text{ram}\left(t\right)}t\right]\overset{{\scriptscriptstyle \left(\mathrm{VI}\right)}}{=}\dfrac{1}{s}\mathscr{L}\left[\text{ram}\left(t\right)\right]=\dfrac{1}{s^{3}}
 \]
+
 \begin{example}
 \emph{Sia dato il seguente movimento forzato di un sistema dinamico
 del I ordine, con coefficiente di stato $\alpha$:
@@ -5080,7 +6528,7 @@ te^{\alpha t}\sin\left(\omega t\right)\cdot\text{sca}\left(t\right)
 \sln{2\omega\left(s-\alpha\right)/\left(\left(s-\alpha\right)^{2}+\omega^{2}\right)^{2}}
 \end{xca}
 
-\subsection{Antitrasformata}
+\section{Antitrasformata}
 
 Poniamoci nel caso di trasformate razionali (\ref{eq:Trasformata-razionale}),
 con coefficienti reali; scegliamo $N\left(s\right)$ e $D\left(s\right)$
@@ -5139,6 +6587,7 @@ corrispondenza di ciascun polo, otteniamo l'antitrasformata come:
 f\left(t\right)=\mathscr{L}^{-1}\left[F\left(s\right)\right]=\mathscr{L}^{-1}\left[\serie{i=1}n{\dfrac{P_{i}}{s+p_{i}}}\right]=\left(\serie{i=1}n{P_{i}\cdot e^{-p_{i}t}}\right)\cdot\text{sca}\left(t\right)\label{eq:Antitrasformata-Laplace-poli-distinti}
 \end{equation}
 \bigskip{}
+
 \begin{example}
 \emph{Sia data la seguente trasformata di Laplace di un segnale:}
 \[
@@ -5186,6 +6635,7 @@ con calcoli analoghi al caso di poli distinti, otteniamo la scrittura:
 \begin{equation}
 \mathscr{L}^{-1}\left[F\left(s\right)\right]=2\left|P_{i}\right|e^{-\sigma_{i}t}\cos\left(\omega_{i}t+\arg\left(P_{i}\right)\right)\label{eq:Antitrasformata-Laplace-poli-complessi-coniugati}
 \end{equation}
+
 \begin{example}
 \emph{\label{exa:Anitrasformata-poli-complessi-coniugati}Sia data
 la seguente trasformata di Laplace:
@@ -5367,5 +6817,5 @@ come:
 \]
 \demo
 \end{example}
-\renewcommand{\chaptername}{}\printindex{}
+\renewcommand{\chaptername}{}\printindex
 \end{document}

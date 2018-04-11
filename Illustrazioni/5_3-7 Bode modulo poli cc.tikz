@@ -1,0 +1,26 @@
+﻿\begin{tikzpicture} [gnuplot def/.append style={prefix={}}]
+	\begin{scope}[xscale=10/3,yscale=10/150]
+		\tikzset {
+			semilog lines/.style={thin, gray},
+			semilog lines 2/.style={semilog lines, gray!40},
+			semilog half lines/.style={semilog lines 2, dashed},
+			semilog label x/.style={semilog lines, below, font=\tiny, color=black},
+			semilog label y/.style={semilog lines, above, font=\tiny, color=black},
+			Bode lines/.style={thick, black}
+		}
+		% Diagramma del modulo (decibel)
+		\UnitedB
+		% Passo di 20dB
+		\OrdBode{20}
+		% Decadi e decibel segnati
+		\semilog{-1}{1}{-40}{20}
+		% Andamento asintotico
+		\BodeGraph[asymp lines, samples = 1000, thick]{-1:1}{\SOAmpAsymp{1}{0.8}{1}}
+		% Andamento effettivo
+		\BodeGraph[black!60, thin, densely dashed]{-1:1}{\SOAmp{1}{1}{1}}
+		\BodeGraph[black!60, thin, densely dashed]{-1:1}{\SOAmp{1}{0.7}{1}}
+		\BodeGraph[black!60, thin, densely dashed]{-1:1}{\SOAmp{1}{0.4}{1}}
+		\BodeGraph[black!60, thin, densely dashed]{-1:1}{\SOAmp{1}{0.2}{1}}
+		\BodeGraph[black!60, thin, densely dashed]{-1:1}{\SOAmp{1}{0.1}{1}}
+	\end{scope}
+\end{tikzpicture}

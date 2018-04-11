@@ -1,0 +1,38 @@
+﻿\begin{tikzpicture} [%
+	gnuplot def/.append style={prefix={}},
+	asintoto/.style={asymp lines, samples = 1000, thick},
+	effettivo/.style={black!60, thin, densely dashed, samples = 1000},
+]
+% Mostra zeri e poli sull'asse delle fasi
+\newcommand{\zero}{\tikz{\draw[thin] (0,0) circle (3pt);}}
+\newcommand{\polo}{$\times$}
+\newcommand{\z}[2]{node[label={[below=15pt]90: $\scriptscriptstyle (z_{#1})$}]() at (#2,0) {\zero}}
+\newcommand{\p}[2]{node[label={[below=15pt]90: $\scriptscriptstyle (p_{#1})$}]() at (#2,0) {\polo}}
+
+	\begin{scope}[xscale=10/3,yscale=10/500]
+		% Imposta colori carta logaritmica
+		\tikzset {%
+			semilog lines/.style={thin, gray},
+			semilog lines 2/.style={semilog lines, gray!40},
+			semilog half lines/.style={semilog lines 2, dashed},
+			semilog label x/.style={semilog lines, below, font=\tiny, color=black},
+			semilog label y/.style={semilog lines, above, font=\tiny, color=black},
+			Bode lines/.style={thick, black}
+		}
+
+		% Diagramma del modulo (decibel)
+		\UniteDegre
+		% Passo di 20dB
+		\OrdBode{90}
+		% Decadi e decibel segnati
+		\semilog{-1}{1}{-90}{90}
+
+		% Andamento asintotico
+		\BodeGraph[asintoto]{-1:1}{-\POArgAsymp{1}{1}}
+		% Andamento effettivo
+		\BodeGraph[effettivo]{-1:1}{-\POArg{1}{1}}
+
+		% Differenza con andamento effettivo
+		\draw[very thin] (-1,45) node()[left] {$\scriptscriptstyle 45$} --++(1,0);
+	\end{scope}
+\end{tikzpicture}

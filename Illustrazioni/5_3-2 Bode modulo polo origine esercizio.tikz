@@ -1,0 +1,21 @@
+﻿\begin{tikzpicture} [gnuplot def/.append style={prefix={}}]
+	\begin{scope}[xscale=10/5,yscale=10/150]
+		\tikzset {
+			semilog lines/.style={thin, gray},
+			semilog lines 2/.style={semilog lines, gray!40},
+			semilog half lines/.style={semilog lines 2, dashed},
+			semilog label x/.style={semilog lines, below, font=\tiny, color=black},
+			semilog label y/.style={semilog lines, above, font=\tiny, color=black},
+			Bode lines/.style={thick, black}
+		}
+		% Diagramma del modulo (decibel)
+		\UnitedB
+		% Passo di 20dB
+		\OrdBode{20}
+		% Decadi e decibel segnati
+		\semilog{-1}{2}{-20}{40}
+		% Funzione
+		\BodeGraph[thick]{-1:2}{\IntAmp{10}}
+		\BodeGraph[thick, dashdotdotted]{-1:1}{\IntAmp{1}}
+	\end{scope}
+\end{tikzpicture}
