@@ -3637,7 +3637,7 @@ variazione di $\tau$.
 \captionof{figure}{Risposta del 2 ordine con zero reale negativo}\label{fig:Risposta-2-ord-zero-negativo}%
 \end{minipage}\bigskip{}
 
-\noun{$\quad$Zero positivo}
+\noun{$\qquad$}\textbf{\noun{Zero positivo}}
 
 Prendiamo uno zero con parametro $\tau<0$: la costante di tempo sarà
 positiva; nel grafico della risposta compare una \emph{sottoelongazione}
@@ -3663,7 +3663,7 @@ Bisogna precisare che la vicinanza con l'origine di cui abbiamo parlato
 specifico con quelli dominanti (discuteremo successivamente l'andamento
 asintotico dei sistemi).\bigskip{}
 
-\noun{$\quad$Zero negativo}
+\noun{$\qquad$}\textbf{\noun{Zero negativo}}
 
 Prendiamo uno zero con $\tau>0$: la costante di tempo sarà negativa;
 se essa è maggiore di $-1/T_{1}$, si ha il comportamento simmetrico
@@ -3674,7 +3674,7 @@ se lo zero fosse nell'origine si avrebbe un impulso che precede il
 transitorio); Uno zero reale negativo allora velocizza la risposta
 del sistema.\bigskip{}
 
-\noun{$\quad$Zero nei pressi del polo}
+\noun{$\qquad$}\textbf{\noun{Zero nei pressi del polo}}
 
 Se si aumenta in modulo $\tau$ spostando lo zero sempre più a sinistra,
 prima o poi esso sarà quasi coincidente col primo polo ($\tau\simeq T_{1}$):
@@ -3686,7 +3686,7 @@ si ha un \emph{effetto coda} durante il transitorio, ovvero la pendenza
 iniziale è determinata dalla costante di tempo più ``veloce'', seguita
 da un lungo transitorio determinato dal polo più ``lento''.\bigskip{}
 
-\noun{$\quad$Zero cancella un polo}
+\noun{$\qquad$}\textbf{\noun{Zero cancella un polo}}
 
 Quando vale effettivamente $\tau=T_{1}$, si verifica una cancellazione
 zero-polo e la risposta assomiglia a quella di un sistema di ordine
@@ -3694,7 +3694,7 @@ zero-polo e la risposta assomiglia a quella di un sistema di ordine
 
 \bigskip{}
 
-\noun{$\quad$Zero molto piccolo negativo}
+\noun{$\qquad$}\textbf{\noun{Zero molto piccolo negativo}}
 
 Quando vale $\left|\tau\right|\gg0$, la costante di tempo diventa
 trascurabile e il sistema risponde come se non avesse affatto lo zero.\bigskip{}
@@ -4695,10 +4695,10 @@ per avere un modulo nullo sarebbe necessaria una pulsazione di $\omega=-\infty$.
 \begin{tabular}{cc||cc||cc}
 Decimale & Decibel & Decimale & Decibel & Decimale & Decibel\tabularnewline[\doublerulesep]
 \hline 
-1 & $0\,dB$ & $\sqrt{5}$ & $7\,dB$ & $\sqrt{10}$ & $10\,dB$\tabularnewline[\doublerulesep]
-$\sqrt{2}$ & $3\,dB$ & $\sqrt{6}$ & $7.8\,dB$ & $2\sqrt{5}$ & $13\,dB$\tabularnewline[\doublerulesep]
-$\sqrt{3}$ & $4.8\,dB$ & $\sqrt{7}$ & $8.5\,dB$ & 10 & $20\,dB$\tabularnewline[\doublerulesep]
-2 & $6\,dB$ & $2\sqrt{2}$ & $9\,dB$ & $10\sqrt{10}$ & $30\,dB$\tabularnewline[\doublerulesep]
+1 & $0\,\text{dB}$ & $\sqrt{5}$ & $7\,\text{dB}$ & $\sqrt{10}$ & $10\,\text{dB}$\tabularnewline[\doublerulesep]
+$\sqrt{2}$ & $3\,\text{dB}$ & $\sqrt{6}$ & $7.8\,\text{dB}$ & $2\sqrt{5}$ & $13\,\text{dB}$\tabularnewline[\doublerulesep]
+$\sqrt{3}$ & $4.8\,\text{dB}$ & $\sqrt{7}$ & $8.5\,\text{dB}$ & 10 & $20\,\text{dB}$\tabularnewline[\doublerulesep]
+2 & $6\,\text{dB}$ & $2\sqrt{2}$ & $9\,\text{dB}$ & $10\sqrt{10}$ & $30\,\text{dB}$\tabularnewline[\doublerulesep]
 \end{tabular}
 \par\end{centering}
 \caption{Conversioni di ampiezze in scala logaritmica}
@@ -4762,9 +4762,9 @@ numero di poli e di zeri nell'origine (quindi dal tipo $g$):
 \[
 \left.\frac{\partial}{\partial\omega}\right|_{{\scriptscriptstyle \omega=1}}=-20\cdot g\,dB/\text{dec}
 \]
-La retta scende di $20\,dB$ per ogni decade, per ogni polo nell'origine;
-ne \figref{Bode-modulo-singolarit=0000E0-origine} viene riportata
-la pendenza della retta del modulo rispetto al grado relativo.%
+La retta scende di $20\,\text{dB}$ per ogni decade, per ogni polo
+nell'origine; ne \figref{Bode-modulo-singolarit=0000E0-origine} viene
+riportata la pendenza della retta del modulo rispetto al grado relativo.%
 \end{minipage}%
 \begin{minipage}[c]{0.5\textwidth}%
 \begin{center}
@@ -4842,14 +4842,14 @@ conoscere con precisione l'andamento asintotico della risposta armonica:
 \]
 Rispetto alla variabile $\omega/\omega_{p,z}$, abbiamo la somma delle
 rette (per polo e per zero) $\mp20\log_{10}\left(\omega/\omega_{p,z}\right)$,
-che risulta nel coefficiente angolare $-20\cdot g\,dB/\text{dec}$
+che risulta nel coefficiente angolare $-20\cdot g\,\text{dB}/\text{dec}$
 in dipendenza dal tipo del sistema; mettendo insieme i due asintoti,
 che si incrociano per $\omega/\omega_{p,z}=1$, otteniamo il diagramma
 asintotico.
 
 Il diagramma asintotico avrà errore massimo rispetto a quello effettivo
 nel punto in cui i due asintoti si congiungono; in quel punto la risposta
-armonica vale $20\log_{10}\sqrt{2}=-3\,dB$.
+armonica vale $20\log_{10}\sqrt{2}=-3\,\text{dB}$.
 
 \begin{minipage}[c]{0.5\textwidth}%
 \begin{center}
@@ -4893,7 +4893,7 @@ $\omega_{p}=10$; il diagramma corrispondente è ne \figref{Un-polo-s=00003D10}.
 con due poli coincidenti, dovremmo sommare due grafici come quello
 appena ottenuto (vedi \figref{Due-poli-s=00003D10}): in tal caso
 a sinistra di $\omega/\omega_{p}$ il modulo della risposta è nullo,
-mentre a destra esso è rappresentato da una retta con pendenza $-40\,dB/\text{dec}$.
+mentre a destra esso è rappresentato da una retta con pendenza $-40\,\text{dB}/\text{dec}$.
 
 Se avessimo degli zeri invece dei poli appena analizzati, l'esercizio
 sarebbe stato risolto invertendo i grafici del modulo rispetto all'asse
@@ -4943,18 +4943,18 @@ di smorzamento:
 \begin{itemize}
 \item per $\left|\xi\right|=1$ si hanno due poli reali coincidenti, con
 pulsazione $\omega_{n}$; il diagramma effettivo avrà distanza di
-$-6\,dB$ dalla pulsazione $\omega/\omega_{n}=1$ (dato che sommiamo
-gli andamenti dei due poli);
-\item per $\left|\xi\right|=0$ si avrebbe un modulo pari a $+\infty\,dB$:
+$-6\,\text{dB}$ dalla pulsazione $\omega/\omega_{n}=1$ (dato che
+sommiamo gli andamenti dei due poli);
+\item per $\left|\xi\right|=0$ si avrebbe un modulo pari a $+\infty\,\text{dB}$:
 il diagramma effettivo presenta un asintoto verticale per $\omega/\omega_{n}=1$.
 \end{itemize}
 \item Zeri
 \begin{itemize}
 \item per $\left|\xi\right|=1$ si hanno due zeri reali coincidenti, con
 pulsazione $\alpha_{n}$; il diagramma effettivo avrà distanza di
-$+6\,dB$ dalla pulsazione $\omega/\alpha_{n}=1$ (dato che sommiamo
-gli andamenti dei due zeri);
-\item per $\left|\xi\right|=0$ si avrebbe un modulo pari a $-\infty\,dB$:
+$+6\,\text{dB}$ dalla pulsazione $\omega/\alpha_{n}=1$ (dato che
+sommiamo gli andamenti dei due zeri);
+\item per $\left|\xi\right|=0$ si avrebbe un modulo pari a $-\infty\,\text{dB}$:
 il diagramma effettivo presenta un asintoto verticale per $\omega/\alpha_{n}=1$.\smallskip{}
 \end{itemize}
 \item \marginpar{La pulsazione di risonanza è definita anche per zeri complessi coniugati,
@@ -4985,7 +4985,7 @@ due zeri complessi coniugati di pulsazione $\alpha_{n}$ sono l'inverso
 della trasformata (di Fourier) di una sinusoide di pulsazione $\alpha_{n}$.
 
 In corrispondenza di tale pulsazione, sul diagramma si ha guadagno
-nullo ($-\infty\,dB$), ovvero le frequenze attorno alla pulsazione
+nullo ($-\infty\,\text{dB}$), ovvero le frequenze attorno alla pulsazione
 $\alpha_{n}$ sono eliminate dall'uscita; infatti fornendo in ingresso
 una sinusoide pura di pulsazione $\alpha_{n}$, l'uscita sarà nulla.
 \end{rem}
@@ -5019,15 +5019,15 @@ Il\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
 di $\mu/s^{g}$; questo è sempre possibile, dato che si può scegliere
 una pulsazione iniziale piccola a piacere per la quale il contributo
 delle singolarità si annulla; questa sarà in generale una retta con
-pendenza $-20\cdot g\,dB/\text{dec}$, che passerebbe (in assenza
+pendenza $-20\cdot g\,\text{dB}/\text{dec}$, che passerebbe (in assenza
 di altre singolarità) per $\mu|_{{\scriptscriptstyle dB}}$ in corrispondenza
 di $\omega=1$.
 \item Si aumenta la pulsazione, visitando mano a mano ciascuna singolarità,
 fino a superare l'ultima almeno di una decade:
 \begin{itemize}
-\item Ogni volta che si incontra un polo la pendenza cambia di $-20\,dB/\text{dec}$;
-\item Ogni volta che si incontra uno zero la pendenza cambia di $+20\,dB/\text{dec}$;
-\item La pendenza finale, dopo l'ultima singolarità, sarà pari a $-20\,dB/\text{dec}$
+\item Ogni volta che si incontra un polo la pendenza cambia di $-20\,\text{dB}/\text{dec}$;
+\item Ogni volta che si incontra uno zero la pendenza cambia di $+20\,\text{dB}/\text{dec}$;
+\item La pendenza finale, dopo l'ultima singolarità, sarà pari a $-20\,\text{dB}/\text{dec}$
 per il grado relativo della funzione.
 \end{itemize}
 \end{itemize}
@@ -5067,10 +5067,10 @@ alla singolarità dalla pulsazione più bassa ($z_{2}\rightarrow10^{-1}$),
 e una decade successiva ($10^{3}$) alla singolarità dalla pulsazione
 più elevata ($p_{2,3}\rightarrow300$).
 
-Sull'ordinata è comodo segnare multipli interi di $20\,dB$, mentre
-sull'ascissa si segnano le decadi intermedie all'intervallo prescelto
-e la posizione delle singolarità (indicando gli zeri con $\ocircle$
-e i poli con $\times$).
+Sull'ordinata è comodo segnare multipli interi di $20\,\text{dB}$,
+mentre sull'ascissa si segnano le decadi intermedie all'intervallo
+prescelto e la posizione delle singolarità (indicando gli zeri con
+$\ocircle$ e i poli con $\times$).
 
 \begin{figure}[!h]
 \begin{centering}
@@ -5080,26 +5080,27 @@ e i poli con $\times$).
 \end{figure}
 
 Usando il metodo proposto, tracciamo il profilo di una retta che passa
-per $\omega=1,\,\left.\mu\right|_{{\scriptscriptstyle dB}}=20\,dB$,
-con pendenza $-20\,dB/\text{dec}$; questa retta corrisponde con l'andamento
-asintotico del modulo fino alla prima singolarità ($z_{2}$): dal
-momento che si tratta di uno zero, la pendenza cambia di $+20\,dB/\text{dec}$,
-annullandosi; lo zero successivo $z_{1}$, in $\omega=1$, comporta
-un ulteriore aumento della pendenza che diventa $20\,dB/\text{dec}$.
+per $\omega=1,\,\left.\mu\right|_{{\scriptscriptstyle dB}}=20\,\text{dB}$,
+con pendenza $-20\,\text{dB}/\text{dec}$; questa retta corrisponde
+con l'andamento asintotico del modulo fino alla prima singolarità
+($z_{2}$): dal momento che si tratta di uno zero, la pendenza cambia
+di $+20\,\text{dB}/\text{dec}$, annullandosi; lo zero successivo
+$z_{1}$, in $\omega=1$, comporta un ulteriore aumento della pendenza
+che diventa $20\,\text{dB}/\text{dec}$.
 
 Segue il polo $p_{1}$ in $\omega=10$, che abbassa di nuovo la pendenza
-di $-20\,dB/\text{dec}$, annullandola; infine i poli complessi coniugati
-$p_{2,3}$ in $\omega=300$ abbassano la pendenza di $-40\,dB/\text{dec}$;
+di $-20\,\text{dB}/\text{dec}$, annullandola; infine i poli complessi
+coniugati $p_{2,3}$ in $\omega=300$ abbassano la pendenza di $-40\,\text{dB}/\text{dec}$;
 il modulo si azzererà alla decade successiva, in $\omega=3000$. Questo
 viene riconfermato dal fatto che il grado relativo è 2 (numeratore
 del 2° grado e denominatore del 4°).
 
-Il diagramma effettivo differisce per gli errori di $\pm3\,dB$ in
-corrispondenza della pulsazione dei poli e zeri reali ($z_{1},\,z_{2},\,p_{1}$),
-e di $-6\,dB$ in corrispondenza della coppia di poli complessi coniugati
-$p_{2,3}$, in prossimità della quale è presente un picco di risonanza
-(lo smorzamento $\left|\xi\right|=0.5$ è minore del limite di sotto-smorzamento
-$1/\sqrt{2}\simeq0.7$).\demo
+Il diagramma effettivo differisce per gli errori di $\pm3\,\text{dB}$
+in corrispondenza della pulsazione dei poli e zeri reali ($z_{1},\,z_{2},\,p_{1}$),
+e di $-6\,\text{dB}$ in corrispondenza della coppia di poli complessi
+coniugati $p_{2,3}$, in prossimità della quale è presente un picco
+di risonanza (lo smorzamento $\left|\xi\right|=0.5$ è minore del
+limite di sotto-smorzamento $1/\sqrt{2}\simeq0.7$).\demo
 \end{example}
 
 \subsection{Diagrammi della fase}
@@ -5380,9 +5381,107 @@ quanto più le frequenze su cui agisce sono elevate, rispetto al valore
 del tempo di ritardo $\tau$ (per un valore molto piccolo di ritardo,
 solo frequenze elevate della risposta armonica saranno influenzate).
 
-\section{Diagrammi polari}
+\section{Diagramma polare}
 
-...
+Il diagramma sul piano complesso del modulo e della fase ricavati
+dai diagrammi di Bode della risposta armonica si chiama diagramma
+polare; esso rappresenta l'andamento di $G\left(j\omega\right)$ per
+$\omega\rightarrow+\infty$, con dominio il semiasse immaginario positivo.
+La curva ottenuta è l'immagine della funzione di risposta armonica,
+in funzione della fase.
+
+Possiamo tracciare questi diagrammi analizzando i diagrammi di Bode
+del modulo e della fase corrispondente, in modo qualitativo; a seguire
+degli esempi per mostrare questo concetto.
+\begin{example}
+\emph{Sia data la seguente funzione di trasferimento:
+\[
+G\left(s\right)=\frac{5}{\left(1+\frac{s}{50}\right)}
+\]
+$\checkmark$Tracciare il diagramma polare della sua risposta armonica.}
+
+Identifichiamo una funzione scritta già nella forma fattorizzata;
+il suo guadagno statico vale $\mu=5$, mentre il suo unico polo reale
+si trova in $p_{1}=-50$; tracciamo i diagrammi di Bode della risposta
+armonica associata:
+
+\begin{minipage}[c]{1\textwidth}%
+\begin{center}
+\includegraphics[scale=0.8]{\string"Illustrazioni/5_4-1 Bode modulo esempio 1\string".pdf}
+\par\end{center}
+\captionof{figure}{Diagramma del modulo}%
+\end{minipage}
+\end{example}
+\begin{minipage}[c]{1\textwidth}%
+\begin{center}
+\includegraphics[scale=0.8]{\string"Illustrazioni/5_4-2 Bode fase esempio 1\string".pdf}
+\par\end{center}
+\captionof{figure}{Diagramma della fase}%
+\end{minipage}
+
+\bigskip{}
+
+Nel diagramma del modulo abbiamo usato il valore del guadagno statico
+in decibel ($\mu|_{{\scriptscriptstyle dB}}=14\,\text{dB}$); i diagrammi
+di Bode si ottengono immediatamente, facendo riferimento ai diagrammi
+della sezione precedente, associati a un polo reale negativo.
+
+Per $\omega$ che si muove da $0$ a $+\infty$, seguiamo l'andamento
+del modulo e della fase sui due diagrammi appena tracciati, ottenendo
+la seguente curva complessa che rappresenta il diagramma polare:
+
+\begin{minipage}[c]{1\textwidth}%
+\begin{center}
+\includegraphics{\string"Illustrazioni/5_4-3 Polare esempio 1\string".pdf}
+\par\end{center}
+\captionof{figure}{Diagramma polare}%
+\end{minipage}\bigskip{}
+
+Per $\omega\ll1$ la fase vale $0{^\circ}$ e il modulo $14\,\text{dB}\simeq5$;
+il modulo rimane entro $14\,\text{db}$ fino a che $\omega=50\,\text{rad}$;
+la fase vale $-45{^\circ}$ e il modulo decresce a $14\,\text{dB}-3\,\text{dB}\simeq5/\sqrt{2}$.
+asintoticamente il modulo tende ad annullarsi (in $-\infty\,\text{dB}$),
+dunque la curva si avvicinerà all'origine con pendenza asintotica
+determinata dal valore finale della fase ($-90{^\circ}$).\demo
+\begin{example}
+\emph{Sia data la seguente funzione di trasferimento:
+\[
+G\left(s\right)=-\frac{5}{s}\cdot\frac{\left(s+1\right)}{\left(1+\frac{s}{100}\right)}
+\]
+$\checkmark$Tracciare il diagramma polare della sua risposta armonica.}
+
+Notiamo la presenza di un polo nell'origine ($g=1$), e per il teorema
+del valore iniziale (\ref{eq:Teorema-valore-iniziale}) il guadagno
+statico vale $\left|\mu\right|=5=14\,\text{dB}$; le singolarità si
+trovano, in $z_{1}=-1$ e $p_{1}=-100$:
+
+\begin{minipage}[c]{1\textwidth}%
+\begin{center}
+\includegraphics[scale=0.8]{\string"Illustrazioni/5_4-4 Bode modulo esempio 2\string".pdf}
+\par\end{center}
+\captionof{figure}{Diagramma del modulo}%
+\end{minipage}
+\end{example}
+\begin{minipage}[c]{1\textwidth}%
+\begin{center}
+\includegraphics[scale=0.8]{\string"Illustrazioni/5_4-5 Bode fase esempio 2\string".pdf}
+\par\end{center}
+\captionof{figure}{Diagramma della fase}%
+\end{minipage}
+
+Per $\omega\rightarrow0$ il modulo tende a $+\infty$, dato il polo
+nell'origine ($g>0$); si parte dall'infinito sul semiasse immaginario
+positivo (data la fase asintotica di $-270{^\circ}$). C'è un intervallo
+di valori in cui la fase si avvicina a $-180{^\circ}$ mentre il modulo
+tende a 5 ($14\,\text{dB}$), dopodiché il modulo tende ad 0 e la
+fase ritorna a $-270{^\circ}$.
+
+\begin{minipage}[c]{1\textwidth}%
+\begin{center}
+\includegraphics[scale=0.9]{\string"Illustrazioni/5_4-6 Polare esempio 2\string".pdf}
+\par\end{center}
+\captionof{figure}{Diagramma polare}%
+\end{minipage}
 
 \appendix
 

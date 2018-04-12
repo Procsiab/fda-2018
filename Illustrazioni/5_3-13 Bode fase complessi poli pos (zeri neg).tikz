@@ -1,7 +1,7 @@
 ﻿\begin{tikzpicture} [%
 	gnuplot def/.append style={prefix={}},
 	asintoto/.style={asymp lines, samples = 1000, thick},
-	effettivo/.style={black!60, thin, densely dashed, samples = 1000},
+	effettivo/.style={black!60, thin, densely dashed, samples = 1000, smooth},
 ]
 % Mostra zeri e poli sull'asse delle fasi
 \newcommand{\zero}{\tikz{\draw[thin] (0,0) circle (3pt);}}

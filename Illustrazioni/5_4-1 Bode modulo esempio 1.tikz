@@ -3,8 +3,15 @@
 	asintoto/.style={samples = 1000, thick, smooth},
 	effettivo/.style={black!60, thin, densely dashed, samples = 1000, smooth},
 ]
-	\begin{scope}[xscale=10/3,yscale=10/150]
-		\tikzset {
+% Mostra zeri e poli sull'asse delle fasi
+\newcommand{\zero}{\tikz{\draw[thin] (0,0) circle (3pt);}}
+\newcommand{\polo}{$\times$}
+\newcommand{\z}[3]{node[label={[below=15pt]90: $\scriptscriptstyle (z_{#1})$}]() at (#2,#3) {\zero}}
+\newcommand{\p}[3]{node[label={[below=15pt]90: $\scriptscriptstyle (p_{#1})$}]() at (#2,#3) {\polo}}
+
+	\begin{scope}[xscale=10/3,yscale=10/110]
+		% Imposta colori carta logaritmica
+		\tikzset {%
 			semilog lines/.style={thin, gray},
 			semilog lines 2/.style={semilog lines, gray!40},
 			semilog half lines/.style={semilog lines 2, dashed},
@@ -12,19 +19,20 @@
 			semilog label y/.style={semilog lines, above, font=\tiny, color=black},
 			Bode lines/.style={thick, black}
 		}
+
 		% Diagramma del modulo (decibel)
 		\UnitedB
 		% Passo di 20dB
 		\OrdBode{20}
 		% Decadi e decibel segnati
-		\semilog{-1}{1}{-20}{40}
+		\semilog{0}{3}{-20}{20}
+
 		% Andamento asintotico
-		\BodeGraph[asintoto]{-1:1}{-\SOAmpAsymp{1}{0.8}{1}}
+		\BodeGraph[asintoto]{0:3}{\POAmpAsymp{5}{0.02}}
+		\draw(0,0) \p{1}{1.7}{-20};
+		\draw(0,14) node[left](){$\scriptscriptstyle 14$}
+			(1.7,-20) node[below=2pt](){$\scriptscriptstyle 50$};
 		% Andamento effettivo
-		\BodeGraph[black!60, thin, densely dashed]{-1:1}{-\SOAmp{1}{1}{1}}
-		\BodeGraph[effettivo]{-1:1}{-\SOAmp{1}{0.7}{1}}
-		\BodeGraph[effettivo]{-1:1}{-\SOAmp{1}{0.4}{1}}
-		\BodeGraph[effettivo]{-1:1}{-\SOAmp{1}{0.2}{1}}
-		\BodeGraph[effettivo]{-1:1}{-\SOAmp{1}{0.1}{1}}
+		\BodeGraph[effettivo]{0:3}{\POAmp{5}{0.02}}
 	\end{scope}
 \end{tikzpicture}

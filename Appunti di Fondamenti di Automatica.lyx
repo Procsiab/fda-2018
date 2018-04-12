@@ -13930,9 +13930,11 @@ name "fig:Risposta-2-ord-zero-negativo"
 \begin_layout Standard
 
 \noun on
-\begin_inset Formula $\quad$
+\begin_inset Formula $\qquad$
 \end_inset
 
+
+\series bold
 Zero positivo
 \end_layout
 
@@ -14009,9 +14011,11 @@ Bisogna precisare che la vicinanza con l'origine di cui abbiamo parlato
 \begin_layout Standard
 
 \noun on
-\begin_inset Formula $\quad$
+\begin_inset Formula $\qquad$
 \end_inset
 
+
+\series bold
 Zero negativo
 \end_layout
 
@@ -14049,9 +14053,11 @@ reference "fig:Risposta-2-ord-zero-negativo"
 \begin_layout Standard
 
 \noun on
-\begin_inset Formula $\quad$
+\begin_inset Formula $\qquad$
 \end_inset
 
+
+\series bold
 Zero nei pressi del polo
 \end_layout
 
@@ -14106,9 +14112,11 @@ lento
 \begin_layout Standard
 
 \noun on
-\begin_inset Formula $\quad$
+\begin_inset Formula $\qquad$
 \end_inset
 
+
+\series bold
 Zero cancella un polo
 \end_layout
 
@@ -14131,9 +14139,11 @@ Quando vale effettivamente
 \begin_layout Standard
 
 \noun on
-\begin_inset Formula $\quad$
+\begin_inset Formula $\qquad$
 \end_inset
 
+
+\series bold
 Zero molto piccolo negativo
 \end_layout
 
@@ -17687,7 +17697,7 @@ Decibel
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $0\,dB$
+\begin_inset Formula $0\,\text{dB}$
 \end_inset
 
 
@@ -17711,7 +17721,7 @@ Decibel
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $7\,dB$
+\begin_inset Formula $7\,\text{dB}$
 \end_inset
 
 
@@ -17735,7 +17745,7 @@ Decibel
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $10\,dB$
+\begin_inset Formula $10\,\text{dB}$
 \end_inset
 
 
@@ -17761,7 +17771,7 @@ Decibel
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $3\,dB$
+\begin_inset Formula $3\,\text{dB}$
 \end_inset
 
 
@@ -17785,7 +17795,7 @@ Decibel
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $7.8\,dB$
+\begin_inset Formula $7.8\,\text{dB}$
 \end_inset
 
 
@@ -17809,7 +17819,7 @@ Decibel
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $13\,dB$
+\begin_inset Formula $13\,\text{dB}$
 \end_inset
 
 
@@ -17835,7 +17845,7 @@ Decibel
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $4.8\,dB$
+\begin_inset Formula $4.8\,\text{dB}$
 \end_inset
 
 
@@ -17859,7 +17869,7 @@ Decibel
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $8.5\,dB$
+\begin_inset Formula $8.5\,\text{dB}$
 \end_inset
 
 
@@ -17880,7 +17890,7 @@ Decibel
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $20\,dB$
+\begin_inset Formula $20\,\text{dB}$
 \end_inset
 
 
@@ -17903,7 +17913,7 @@ Decibel
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $6\,dB$
+\begin_inset Formula $6\,\text{dB}$
 \end_inset
 
 
@@ -17927,7 +17937,7 @@ Decibel
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $9\,dB$
+\begin_inset Formula $9\,\text{dB}$
 \end_inset
 
 
@@ -17951,7 +17961,7 @@ Decibel
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $30\,dB$
+\begin_inset Formula $30\,\text{dB}$
 \end_inset
 
 
@@ -18257,7 +18267,7 @@ Rappresentiamo sul diagramma di Bode del modulo, in corrispondenza di
 \end_inset
 
 La retta scende di 
-\begin_inset Formula $20\,dB$
+\begin_inset Formula $20\,\text{dB}$
 \end_inset
 
  per ogni decade, per ogni polo nell'origine; ne 
@@ -18610,7 +18620,7 @@ Rispetto alla variabile
 \end_inset
 
 , che risulta nel coefficiente angolare 
-\begin_inset Formula $-20\cdot g\,dB/\text{dec}$
+\begin_inset Formula $-20\cdot g\,\text{dB}/\text{dec}$
 \end_inset
 
  in dipendenza dal tipo del sistema; mettendo insieme i due asintoti, che
@@ -18625,7 +18635,7 @@ Rispetto alla variabile
 Il diagramma asintotico avrà errore massimo rispetto a quello effettivo
  nel punto in cui i due asintoti si congiungono; in quel punto la risposta
  armonica vale 
-\begin_inset Formula $20\log_{10}\sqrt{2}=-3\,dB$
+\begin_inset Formula $20\log_{10}\sqrt{2}=-3\,\text{dB}$
 \end_inset
 
 .
@@ -18931,7 +18941,7 @@ noprefix "false"
 
  il modulo della risposta è nullo, mentre a destra esso è rappresentato
  da una retta con pendenza 
-\begin_inset Formula $-40\,dB/\text{dec}$
+\begin_inset Formula $-40\,\text{dB}/\text{dec}$
 \end_inset
 
 .
@@ -19088,7 +19098,7 @@ per
 \end_inset
 
 ; il diagramma effettivo avrà distanza di 
-\begin_inset Formula $-6\,dB$
+\begin_inset Formula $-6\,\text{dB}$
 \end_inset
 
  dalla pulsazione 
@@ -19104,7 +19114,7 @@ per
 \end_inset
 
  si avrebbe un modulo pari a 
-\begin_inset Formula $+\infty\,dB$
+\begin_inset Formula $+\infty\,\text{dB}$
 \end_inset
 
 : il diagramma effettivo presenta un asintoto verticale per 
@@ -19130,7 +19140,7 @@ per
 \end_inset
 
 ; il diagramma effettivo avrà distanza di 
-\begin_inset Formula $+6\,dB$
+\begin_inset Formula $+6\,\text{dB}$
 \end_inset
 
  dalla pulsazione 
@@ -19146,7 +19156,7 @@ per
 \end_inset
 
  si avrebbe un modulo pari a 
-\begin_inset Formula $-\infty\,dB$
+\begin_inset Formula $-\infty\,\text{dB}$
 \end_inset
 
 : il diagramma effettivo presenta un asintoto verticale per 
@@ -19256,7 +19266,7 @@ Per smorzamento nullo (
 \begin_layout Remark
 In corrispondenza di tale pulsazione, sul diagramma si ha guadagno nullo
  (
-\begin_inset Formula $-\infty\,dB$
+\begin_inset Formula $-\infty\,\text{dB}$
 \end_inset
 
 ), ovvero le frequenze attorno alla pulsazione 
@@ -19470,7 +19480,7 @@ Assumendo
 ; questo è sempre possibile, dato che si può scegliere una pulsazione iniziale
  piccola a piacere per la quale il contributo delle singolarità si annulla;
  questa sarà in generale una retta con pendenza 
-\begin_inset Formula $-20\cdot g\,dB/\text{dec}$
+\begin_inset Formula $-20\cdot g\,\text{dB}/\text{dec}$
 \end_inset
 
 , che passerebbe (in assenza di altre singolarità) per 
@@ -19492,7 +19502,7 @@ Si aumenta la pulsazione, visitando mano a mano ciascuna singolarità, fino
 \begin_deeper
 \begin_layout Itemize
 Ogni volta che si incontra un polo la pendenza cambia di 
-\begin_inset Formula $-20\,dB/\text{dec}$
+\begin_inset Formula $-20\,\text{dB}/\text{dec}$
 \end_inset
 
 ;
@@ -19500,7 +19510,7 @@ Ogni volta che si incontra un polo la pendenza cambia di
 
 \begin_layout Itemize
 Ogni volta che si incontra uno zero la pendenza cambia di 
-\begin_inset Formula $+20\,dB/\text{dec}$
+\begin_inset Formula $+20\,\text{dB}/\text{dec}$
 \end_inset
 
 ;
@@ -19508,7 +19518,7 @@ Ogni volta che si incontra uno zero la pendenza cambia di
 
 \begin_layout Itemize
 La pendenza finale, dopo l'ultima singolarità, sarà pari a 
-\begin_inset Formula $-20\,dB/\text{dec}$
+\begin_inset Formula $-20\,\text{dB}/\text{dec}$
 \end_inset
 
  per il grado relativo della funzione.
@@ -19628,7 +19638,7 @@ Indicando sull'ascissa delle pulsazioni una decade precedente (
 
 \begin_layout Example
 Sull'ordinata è comodo segnare multipli interi di 
-\begin_inset Formula $20\,dB$
+\begin_inset Formula $20\,\text{dB}$
 \end_inset
 
 , mentre sull'ascissa si segnano le decadi intermedie all'intervallo prescelto
@@ -19682,11 +19692,11 @@ Diagramma del modulo della funzione per l'esempio
 \begin_layout Example
 Usando il metodo proposto, tracciamo il profilo di una retta che passa per
  
-\begin_inset Formula $\omega=1,\,\left.\mu\right|_{{\scriptscriptstyle dB}}=20\,dB$
+\begin_inset Formula $\omega=1,\,\left.\mu\right|_{{\scriptscriptstyle dB}}=20\,\text{dB}$
 \end_inset
 
 , con pendenza 
-\begin_inset Formula $-20\,dB/\text{dec}$
+\begin_inset Formula $-20\,\text{dB}/\text{dec}$
 \end_inset
 
 ; questa retta corrisponde con l'andamento asintotico del modulo fino alla
@@ -19695,7 +19705,7 @@ Usando il metodo proposto, tracciamo il profilo di una retta che passa per
 \end_inset
 
 ): dal momento che si tratta di uno zero, la pendenza cambia di 
-\begin_inset Formula $+20\,dB/\text{dec}$
+\begin_inset Formula $+20\,\text{dB}/\text{dec}$
 \end_inset
 
 , annullandosi; lo zero successivo 
@@ -19707,7 +19717,7 @@ Usando il metodo proposto, tracciamo il profilo di una retta che passa per
 \end_inset
 
 , comporta un ulteriore aumento della pendenza che diventa 
-\begin_inset Formula $20\,dB/\text{dec}$
+\begin_inset Formula $20\,\text{dB}/\text{dec}$
 \end_inset
 
 .
@@ -19723,7 +19733,7 @@ Segue il polo
 \end_inset
 
 , che abbassa di nuovo la pendenza di 
-\begin_inset Formula $-20\,dB/\text{dec}$
+\begin_inset Formula $-20\,\text{dB}/\text{dec}$
 \end_inset
 
 , annullandola; infine i poli complessi coniugati 
@@ -19735,7 +19745,7 @@ Segue il polo
 \end_inset
 
  abbassano la pendenza di 
-\begin_inset Formula $-40\,dB/\text{dec}$
+\begin_inset Formula $-40\,\text{dB}/\text{dec}$
 \end_inset
 
 ; il modulo si azzererà alla decade successiva, in 
@@ -19749,7 +19759,7 @@ Segue il polo
 
 \begin_layout Example
 Il diagramma effettivo differisce per gli errori di 
-\begin_inset Formula $\pm3\,dB$
+\begin_inset Formula $\pm3\,\text{dB}$
 \end_inset
 
  in corrispondenza della pulsazione dei poli e zeri reali (
@@ -19757,7 +19767,7 @@ Il diagramma effettivo differisce per gli errori di
 \end_inset
 
 ), e di 
-\begin_inset Formula $-6\,dB$
+\begin_inset Formula $-6\,\text{dB}$
 \end_inset
 
  in corrispondenza della coppia di poli complessi coniugati 
@@ -20867,11 +20877,553 @@ Il ritardo è tanto più influente sulla risposta armonica di un sistema quanto
 \end_layout
 
 \begin_layout Section
-Diagrammi polari
+Diagramma polare
 \end_layout
 
 \begin_layout Standard
-...
+Il diagramma sul piano complesso del modulo e della fase ricavati dai diagrammi
+ di Bode della risposta armonica si chiama diagramma polare; esso rappresenta
+ l'andamento di 
+\begin_inset Formula $G\left(j\omega\right)$
+\end_inset
+
+ per 
+\begin_inset Formula $\omega\rightarrow+\infty$
+\end_inset
+
+, con dominio il semiasse immaginario positivo.
+ La curva ottenuta è l'immagine della funzione di risposta armonica, in
+ funzione della fase.
+\end_layout
+
+\begin_layout Standard
+Possiamo tracciare questi diagrammi analizzando i diagrammi di Bode del
+ modulo e della fase corrispondente, in modo qualitativo; a seguire degli
+ esempi per mostrare questo concetto.
+\end_layout
+
+\begin_layout Example
+
+\emph on
+Sia data la seguente funzione di trasferimento:
+\begin_inset Formula 
+\[
+G\left(s\right)=\frac{5}{\left(1+\frac{s}{50}\right)}
+\]
+
+\end_inset
+
+
+\begin_inset Formula $\checkmark$
+\end_inset
+
+Tracciare il diagramma polare della sua risposta armonica.
+\end_layout
+
+\begin_layout Example
+Identifichiamo una funzione scritta già nella forma fattorizzata; il suo
+ guadagno statico vale 
+\begin_inset Formula $\mu=5$
+\end_inset
+
+, mentre il suo unico polo reale si trova in 
+\begin_inset Formula $p_{1}=-50$
+\end_inset
+
+; tracciamo i diagrammi di Bode della risposta armonica associata:
+\end_layout
+
+\begin_layout Example
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "100text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/5_4-1 Bode modulo esempio 1.pdf
+	display false
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Diagramma del modulo}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "100text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/5_4-2 Bode fase esempio 1.pdf
+	display false
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Diagramma della fase}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nel diagramma del modulo abbiamo usato il valore del guadagno statico in
+ decibel (
+\begin_inset Formula $\mu|_{{\scriptscriptstyle dB}}=14\,\text{dB}$
+\end_inset
+
+); i diagrammi di Bode si ottengono immediatamente, facendo riferimento
+ ai diagrammi della sezione precedente, associati a un polo reale negativo.
+\end_layout
+
+\begin_layout Standard
+Per 
+\begin_inset Formula $\omega$
+\end_inset
+
+ che si muove da 
+\begin_inset Formula $0$
+\end_inset
+
+ a 
+\begin_inset Formula $+\infty$
+\end_inset
+
+, seguiamo l'andamento del modulo e della fase sui due diagrammi appena
+ tracciati, ottenendo la seguente curva complessa che rappresenta il diagramma
+ polare:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "100text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/5_4-3 Polare esempio 1.pdf
+	display false
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Diagramma polare}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Per 
+\begin_inset Formula $\omega\ll1$
+\end_inset
+
+ la fase vale 
+\begin_inset Formula $0°$
+\end_inset
+
+ e il modulo 
+\begin_inset Formula $14\,\text{dB}\simeq5$
+\end_inset
+
+; il modulo rimane entro 
+\begin_inset Formula $14\,\text{db}$
+\end_inset
+
+ fino a che 
+\begin_inset Formula $\omega=50\,\text{rad}$
+\end_inset
+
+; la fase vale 
+\begin_inset Formula $-45°$
+\end_inset
+
+ e il modulo decresce a 
+\begin_inset Formula $14\,\text{dB}-3\,\text{dB}\simeq5/\sqrt{2}$
+\end_inset
+
+.
+ asintoticamente il modulo tende ad annullarsi (in 
+\begin_inset Formula $-\infty\,\text{dB}$
+\end_inset
+
+), dunque la curva si avvicinerà all'origine con pendenza asintotica determinata
+ dal valore finale della fase (
+\begin_inset Formula $-90°$
+\end_inset
+
+).
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+demo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+
+\emph on
+Sia data la seguente funzione di trasferimento:
+\begin_inset Formula 
+\[
+G\left(s\right)=-\frac{5}{s}\cdot\frac{\left(s+1\right)}{\left(1+\frac{s}{100}\right)}
+\]
+
+\end_inset
+
+
+\begin_inset Formula $\checkmark$
+\end_inset
+
+Tracciare il diagramma polare della sua risposta armonica.
+\end_layout
+
+\begin_layout Example
+Notiamo la presenza di un polo nell'origine (
+\begin_inset Formula $g=1$
+\end_inset
+
+), e per il teorema del valore iniziale 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Teorema-valore-iniziale"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ il guadagno statico vale 
+\begin_inset Formula $\left|\mu\right|=5=14\,\text{dB}$
+\end_inset
+
+; le singolarità si trovano, in 
+\begin_inset Formula $z_{1}=-1$
+\end_inset
+
+ e 
+\begin_inset Formula $p_{1}=-100$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Example
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "100text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/5_4-4 Bode modulo esempio 2.pdf
+	display false
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Diagramma del modulo}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "100text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/5_4-5 Bode fase esempio 2.pdf
+	display false
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Diagramma della fase}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Per 
+\begin_inset Formula $\omega\rightarrow0$
+\end_inset
+
+ il modulo tende a 
+\begin_inset Formula $+\infty$
+\end_inset
+
+, dato il polo nell'origine (
+\begin_inset Formula $g>0$
+\end_inset
+
+); si parte dall'infinito sul semiasse immaginario positivo (data la fase
+ asintotica di 
+\begin_inset Formula $-270°$
+\end_inset
+
+).
+ C'è un intervallo di valori in cui la fase si avvicina a 
+\begin_inset Formula $-180°$
+\end_inset
+
+ mentre il modulo tende a 5 (
+\begin_inset Formula $14\,\text{dB}$
+\end_inset
+
+), dopodiché il modulo tende ad 0 e la fase ritorna a 
+\begin_inset Formula $-270°$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "100text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/5_4-6 Polare esempio 2.pdf
+	display false
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Diagramma polare}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Chapter

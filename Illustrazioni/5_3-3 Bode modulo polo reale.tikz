@@ -1,4 +1,8 @@
-﻿\begin{tikzpicture} [gnuplot def/.append style={prefix={}}]
+﻿\begin{tikzpicture} [%
+	gnuplot def/.append style={prefix={}},
+	asintoto/.style={samples = 1000, thick, smooth},
+	effettivo/.style={black!60, thin, densely dashed, samples = 1000, smooth},
+]
 	\begin{scope}[xscale=10/3,yscale=10/110]
 		\tikzset {
 			semilog lines/.style={thin, gray},
@@ -15,8 +19,8 @@
 		% Decadi e decibel segnati
 		\semilog{-1}{1}{-20}{20}
 		% Andamento asintotico
-		\BodeGraph[asymp lines, samples = 1000, thick]{-1:1}{\POAmpAsymp{1}{1}}
+		\BodeGraph[asintoto]{-1:1}{\POAmpAsymp{1}{1}}
 		% Andamento effettivo
-		\BodeGraph[thin, densely dashed]{-1:1}{\POAmp{1}{1}}
+		\BodeGraph[effettivo]{-1:1}{\POAmp{1}{1}}
 	\end{scope}
 \end{tikzpicture}

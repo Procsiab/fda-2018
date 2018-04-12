@@ -1,15 +1,15 @@
 ﻿\begin{tikzpicture} [%
 	gnuplot def/.append style={prefix={}},
-	asintoto/.style={samples = 1000, thick, smooth},
-	effettivo/.style={black!60, thin, densely dashed, samples = 1000, smooth},
+	asintoto/.style={asymp lines, samples = 1000, thick},
+	effettivo/.style={black!60, thin, densely dashed, samples = 1000},
 ]
 % Mostra zeri e poli sull'asse delle fasi
 \newcommand{\zero}{\tikz{\draw[thin] (0,0) circle (3pt);}}
 \newcommand{\polo}{$\times$}
-\newcommand{\z}[2]{node[label={[below=15pt]90: $\scriptscriptstyle (z_{#1})$}]() at (#2,0) {\zero}}
-\newcommand{\p}[2]{node[label={[below=15pt]90: $\scriptscriptstyle (p_{#1})$}]() at (#2,0) {\polo}}
+\newcommand{\z}[3]{node[label={[below=15pt]90: $\scriptscriptstyle (z_{#1})$}]() at (#2,#3) {\zero}}
+\newcommand{\p}[3]{node[label={[below=15pt]90: $\scriptscriptstyle (p_{#1})$}]() at (#2,#3) {\polo}}
 
-	\begin{scope}[xscale=10/3,yscale=10/150]
+	\begin{scope}[xscale=10/3,yscale=10/500]
 		% Imposta colori carta logaritmica
 		\tikzset {%
 			semilog lines/.style={thin, gray},
@@ -21,17 +21,17 @@
 		}
 
 		% Diagramma del modulo (decibel)
-		\UnitedB
-		% Passo di 20dB
-		\OrdBode{20}
+		\UniteDegre
+		% Passo di 90°
+		\OrdBode{90}
 		% Decadi e decibel segnati
-		\semilog{-2}{3}{0}{70}
+		\semilog{0}{3}{-180}{90}
 
 		% Andamento asintotico
-		\draw[asintoto] (-2,60) --++ (1,-20) \z{1}{-1} --++(1,0) \z{2}{0} --++(1,+20) \p{1}{1} --++(1,0) --++(0.48,0) \p{2,3}{2.48} --++(0.52,-20.2);
+		\BodeGraph[asintoto]{0:3}{\POArgAsymp{5}{0.02}}
+		\draw(0,0) \p{1}{1.7}{-180};
+		\draw(1.7,-180) node[below=2pt](){$\scriptscriptstyle 50$};
 		% Andamento effettivo
-		\BodeGraph[effettivo]{-2:3}{%
-			\IntAmp{10} + \POAmp{1}{0.1} - \POAmp{1}{-1} - \POAmp{1}{10} + \SOAmp{1}{0.5}{300}
-		}
+		\BodeGraph[effettivo]{0:3}{\POArg{5}{0.02}}
 	\end{scope}
 \end{tikzpicture}

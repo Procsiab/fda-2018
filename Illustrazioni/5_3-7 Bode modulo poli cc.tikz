@@ -1,4 +1,8 @@
-﻿\begin{tikzpicture} [gnuplot def/.append style={prefix={}}]
+﻿\begin{tikzpicture} [%
+	gnuplot def/.append style={prefix={}},
+	asintoto/.style={samples = 1000, thick, smooth},
+	effettivo/.style={black!60, thin, densely dashed, samples = 1000, smooth},
+]
 	\begin{scope}[xscale=10/3,yscale=10/150]
 		\tikzset {
 			semilog lines/.style={thin, gray},
@@ -15,12 +19,12 @@
 		% Decadi e decibel segnati
 		\semilog{-1}{1}{-40}{20}
 		% Andamento asintotico
-		\BodeGraph[asymp lines, samples = 1000, thick]{-1:1}{\SOAmpAsymp{1}{0.8}{1}}
+		\BodeGraph[asintoto]{-1:1}{\SOAmpAsymp{1}{0.8}{1}}
 		% Andamento effettivo
 		\BodeGraph[black!60, thin, densely dashed]{-1:1}{\SOAmp{1}{1}{1}}
-		\BodeGraph[black!60, thin, densely dashed]{-1:1}{\SOAmp{1}{0.7}{1}}
-		\BodeGraph[black!60, thin, densely dashed]{-1:1}{\SOAmp{1}{0.4}{1}}
-		\BodeGraph[black!60, thin, densely dashed]{-1:1}{\SOAmp{1}{0.2}{1}}
-		\BodeGraph[black!60, thin, densely dashed]{-1:1}{\SOAmp{1}{0.1}{1}}
+		\BodeGraph[effettivo]{-1:1}{\SOAmp{1}{0.7}{1}}
+		\BodeGraph[effettivo]{-1:1}{\SOAmp{1}{0.4}{1}}
+		\BodeGraph[effettivo]{-1:1}{\SOAmp{1}{0.2}{1}}
+		\BodeGraph[effettivo]{-1:1}{\SOAmp{1}{0.1}{1}}
 	\end{scope}
 \end{tikzpicture}

@@ -1,0 +1,24 @@
+﻿\begin{tikzpicture} [%
+	gnuplot def/.append style={prefix={}},
+	asintoto/.style={samples = 1000, thick},
+	effettivo/.style={black!60, thin, densely dashed, samples = 1000},
+]
+	\begin{scope}
+		\NyquistGraph[smooth,samples=100, thick, black]{0.2:4}
+			{\IntAmp{5} + \POAmp{1}{0.01} - \POAmp{1}{1}}
+			{-180 + \IntArg{5} + \POArg{1}{0.01} - \POArg{1}{1}}
+	\end{scope}
+
+	% Imposta colori guide grafico
+	\tikzset {%
+		Nyquist lines/.style={thick, black},
+		Nyquist grid/.style={ultra thin,gray},
+		Nyquist label axes/.style={Nyquist grid,font=\tiny},
+		Nyquist label points/.style={font=\tiny},
+		ref points/.style={}
+	}
+	\NyquistGrid*
+
+	\filldraw(-5,0) circle (1pt) node[above left=-1pt]{$\scriptscriptstyle -5$};
+	\filldraw(0,0) circle (1pt);
+\end{tikzpicture}
