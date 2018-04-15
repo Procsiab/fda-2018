@@ -1,0 +1,25 @@
+﻿\begin{tikzpicture} [%
+	gnuplot def/.append style={prefix={}},
+	asintoto/.style={samples = 1000, thick},
+	effettivo/.style={black!60, thin, densely dashed, samples = 1000},
+]
+	\begin{scope}
+		\NyquistGraph[smooth,samples=100, thick, black, scale=2]{-2:3}
+			{\POAmp{20}{1}}
+			{\POArg{20}{1} + \RetArg{1}}
+	\end{scope}
+
+	% Imposta colori guide grafico
+	\tikzset {%
+		Nyquist lines/.style={thick, black},
+		Nyquist grid/.style={ultra thin,gray},
+		Nyquist label axes/.style={Nyquist grid,font=\tiny},
+		Nyquist label points/.style={font=\tiny},
+		ref points/.style={},
+	}
+	\renewcommand{\valgridNx}{10cm}
+	\renewcommand{\valgridNy}{5cm}
+	\NyquistGrid*
+
+	\filldraw(0,0) circle (1pt);
+\end{tikzpicture}

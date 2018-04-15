@@ -20811,6 +20811,12 @@ demo
 \end_layout
 
 \begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Bode-ritardo"
+
+\end_inset
+
 Diagrammi di Bode del ritardo di tempo
 \end_layout
 
@@ -20874,10 +20880,18 @@ Il ritardo è tanto più influente sulla risposta armonica di un sistema quanto
 
  (per un valore molto piccolo di ritardo, solo frequenze elevate della risposta
  armonica saranno influenzate).
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
 Diagramma polare
+\end_layout
+
+\begin_layout Subsection
+Definizione
 \end_layout
 
 \begin_layout Standard
@@ -20965,22 +20979,6 @@ status open
 
 \end_layout
 
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-captionof{figure}{Diagramma del modulo}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \end_inset
 
 
@@ -21012,22 +21010,6 @@ status open
 	filename Illustrazioni/5_4-2 Bode fase esempio 1.pdf
 	display false
 	scale 80
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-captionof{figure}{Diagramma della fase}
-\end_layout
 
 \end_inset
 
@@ -21099,22 +21081,7 @@ status open
 \begin_inset Graphics
 	filename Illustrazioni/5_4-3 Polare esempio 1.pdf
 	display false
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-captionof{figure}{Diagramma polare}
-\end_layout
+	scale 110
 
 \end_inset
 
@@ -21265,22 +21232,6 @@ status open
 
 \end_layout
 
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-captionof{figure}{Diagramma del modulo}
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \end_inset
 
 
@@ -21312,22 +21263,6 @@ status open
 	filename Illustrazioni/5_4-5 Bode fase esempio 2.pdf
 	display false
 	scale 80
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Plain Layout
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-captionof{figure}{Diagramma della fase}
-\end_layout
 
 \end_inset
 
@@ -21374,6 +21309,10 @@ Per
 \end_layout
 
 \begin_layout Standard
+Tracceremo infine il seguente diagramma polare:
+\end_layout
+
+\begin_layout Standard
 \begin_inset Box Frameless
 position "c"
 hor_pos "c"
@@ -21405,6 +21344,308 @@ status open
 
 \end_layout
 
+\end_inset
+
+
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Diagramma polare del ritardo
+\end_layout
+
+\begin_layout Standard
+Mostriamo la forma del diagramma polare del ritardo con il seguente esempio.
+\end_layout
+
+\begin_layout Example
+
+\emph on
+Sia data la seguente funzione di trasferimento:
+\begin_inset Formula 
+\[
+G\left(s\right)=\frac{20}{1+s}e^{-s}
+\]
+
+\end_inset
+
+
+\begin_inset Formula $\checkmark$
+\end_inset
+
+Tracciare il diagramma polare della risposta armonica associata.
+\end_layout
+
+\begin_layout Example
+Individuiamo il guadagno statico 
+\begin_inset Formula $\mu=20$
+\end_inset
+
+ e il tipo 
+\begin_inset Formula $g=0$
+\end_inset
+
+; abbiamo un polo reale negativo in 
+\begin_inset Formula $p_{1}=-1$
+\end_inset
+
+, e un ritardo 
+\begin_inset Formula $\tau=1\,\text{rad}$
+\end_inset
+
+ (ricavato osservando l'esponente della funzione esponenziale).
+\end_layout
+
+\begin_layout Example
+Per ottenere i diagrammi di Bode, basta adottare le considerazioni già fatte
+ ne 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "sec:Bode-ritardo"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, sommando i diagrammi del ritardo a quelli della risposta armonica; il
+ diagramma del modulo non sarà alterato, mentre il diagramma della fase
+ avrà un contributo aggiuntivo di 
+\begin_inset Formula $-\omega$
+\end_inset
+
+ fornito dal ritardo di tempo per 
+\begin_inset Formula $\tau=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "100text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/5_5-1 Bode modulo esempio 3.pdf
+	display false
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "100text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/5_5-2 Bode fase esempio 3.pdf
+	display false
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se avessimo solo il polo, la fase iniziale sarebbe 
+\begin_inset Formula $0°$
+\end_inset
+
+ (
+\begin_inset Formula $\mu>0$
+\end_inset
+
+) ed esso tenderebbe a 
+\begin_inset Formula $-90°$
+\end_inset
+
+ come un'arcotangente, con argomento pari a 
+\begin_inset Formula $-45°$
+\end_inset
+
+ per 
+\begin_inset Formula $\omega=1$
+\end_inset
+
+; tuttavia il ritardo somma un ulteriore contributo di 
+\begin_inset Formula $-1\,\text{rad}\simeq-57.3°$
+\end_inset
+
+, dunque la fase effettiva in 
+\begin_inset Formula $\omega=1$
+\end_inset
+
+ è pari a 
+\begin_inset Formula $-102.3°$
+\end_inset
+
+, con andamento esponenziale (dovuto al contributo del ritardo).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "100text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/5_5-3 Polare esempio 3.pdf
+	display false
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Sistemi a sfasamento minimo
+\end_layout
+
+\begin_layout Standard
+Supponiamo di avere il diagramma di Bode del modulo di una risposta armonica:
+ è possibile tracciare il diagramma della fase?
+\end_layout
+
+\begin_layout Standard
+In generale la risposta è negativa, dal momento che il segno del guadagno
+ e delle singolarità non può essere dedotto dal diagramma modulo; se abbiamo
+ tuttavia un 
+\emph on
+sistema a smorzamento minimo
+\emph default
+, possiamo tracciarne con certezza il diagramma della fase conoscendo quello
+ del modulo:
+\end_layout
+
+\begin_layout Definition
+Chiamiamo a smorzamento minimo un sistema in cui il guadagno è positivo,
+ e tutte le singolarità hanno parte reale positiva.
+\end_layout
+
+\begin_layout Standard
+Analizziamo il seguente esempio per chiarire questo concetto:
+\end_layout
+
+\begin_layout Example
+
+\emph on
+Sia dato il seguente diagramma di Bode del modulo:
+\end_layout
+
+\begin_layout Example
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "100text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/5_6-1 Bode modulo esempio 4.pdf
+	display false
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Plain Layout
 \begin_inset ERT
 status open
@@ -21413,12 +21654,900 @@ status open
 
 
 \backslash
-captionof{figure}{Diagramma polare}
+captionof{figure}{Diagramma del modulo}
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+
+\emph on
+\begin_inset Formula $\checkmark$
+\end_inset
+
+Tracciare il diagramma di Bode della fase della stessa funzione, sapendo
+ che il sistema è a smorzamento minimo.
+\end_layout
+
+\begin_layout Example
+Assumiamo che il guadagno sia pari a 1 (se fosse diversamente, il grafico
+ del modulo avrebbe una traslazione verticale pari al guadagno); isoliamo
+ i punti in cui il diagramma asintotico si spezza: essi saranno in corrispondenz
+a delle singolarità (già indicate sul bordo inferiore del grafico).
+\end_layout
+
+\begin_layout Example
+La pendenza iniziale di 
+\begin_inset Formula $-40\,\text{dB}$
+\end_inset
+
+ denota la presenza di ben 2 zeri nell'origine (vedi 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:Bode-modulo-singolarità-origine"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), i quali determinano una fase iniziale di 
+\begin_inset Formula $+180°$
+\end_inset
+
+; si procede in questo modo, cambiando la fase ogni volta che si incontra
+ un punto in cui sono presenti delle singolarità (la cui natura è determinata
+ osservando come varia la pendenza del diagramma asintotico del modulo).
+ Il grafico risultante per la fase è il seguente:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "100text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/5_6-2 Bode fase esempio 4.pdf
+	display false
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Diagramma della fase}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+demo
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Azione filtrante dei sistemi dinamici
+\end_layout
+
+\begin_layout Standard
+Abbiamo visto che un sistema dinamico LTI, tramite la sua funzione di risposta
+ armonica associata all'uscita, applica una variazione su modulo e fase
+ di ogni componente spettrale in ingresso; possiamo immaginare un processo
+ in cui abbiamo un segnale continuo, iniettato in un sistema dinamico LTI
+ con funzione di trasferimento 
+\begin_inset Formula $G\left(s\right)$
+\end_inset
+
+.
+ Si avrà un certo segnale di uscita, il cui spettro sarà alterato dalla
+ risposta armonica.
+\end_layout
+
+\begin_layout Standard
+In uscita si avrà lo spettro del modulo delle ampiezze del segnale entrante,
+ pesate per il modulo della risposta armonica alla corrispondente pulsazione,
+ e ogni componente della fase sarà sfasata dell'argomento della risposta
+ armonica alla corrispondente pulsazione.
+\end_layout
+
+\begin_layout Standard
+Questa azione di alterazione dello spettro, da parte dei sistemi dinamici,
+ viene definita 
+\emph on
+azione filtrante
+\emph default
+ del sistema; analizzeremo in questa sezione dei modelli rilevanti di filtro.
+\end_layout
+
+\begin_layout Subsection
+Filtro passa-basso
+\end_layout
+
+\begin_layout Standard
+Si tratta di un sistema che tende ad annullare le componenti spettrali superiori
+ a una certa pulsazione; un filtro ideale di questo tipo ha diagramma di
+ Bode del modulo nullo fino a una certa pulsazione 
+\begin_inset Formula $\overline{\omega}$
+\end_inset
+
+, poi esso vale 
+\begin_inset Formula $-\infty$
+\end_inset
+
+ per qualsiasi altra pulsazione; la fase di un filtro ideale è 
+\begin_inset Formula $0°$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Nella pratica non è possibile realizzare una variazione istantanea del modulo,
+ tuttavia possiamo utilizzare un sistema con un singolo polo reale negativo,
+ con la seguente funzione di trasferimento:
+\begin_inset Formula 
+\[
+G\left(s\right)=\frac{1}{1+\left(\frac{s}{\overline{\omega}}\right)}
+\]
+
+\end_inset
+
+Per 
+\begin_inset Formula $\mu=1$
+\end_inset
+
+, 
+\begin_inset Formula $\overline{\omega}>0$
+\end_inset
+
+, il polo si troverà in 
+\begin_inset Formula $s=-\overline{\omega}$
+\end_inset
+
+ e l'andamento del modulo sarà nullo fino al polo, poi decrescente con pendenza
+ 
+\begin_inset Formula $-20\,\text{dB}/\text{dec}$
+\end_inset
+
+; questa è un'approssimazione del I ordine di un filtro passa-basso ideale.
+ Mostriamo un esempio di sistema fisico dotato di questa funzione di trasferimen
+to.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "50text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/5_7-1 Circuito RC passa-basso.pdf
+	display false
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Circuito RC come filtro passa-basso}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "50text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Example
+
+\emph on
+Sia dato il seguente circuito, nel quale l'ingresso è la tensione a vuoto
+ 
+\begin_inset Formula $u\left(t\right)$
+\end_inset
+
+ ai capi della serie del resistore 
+\begin_inset Formula $R$
+\end_inset
+
+ e del condensatore 
+\begin_inset Formula $C$
+\end_inset
+
+; l'uscita è la tensione sul condensatore, 
+\begin_inset Formula $y\left(t\right)$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\checkmark$
+\end_inset
+
+Scrivere la funzione di trasferimento del sistema.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La tensione ai capi della capacità dipende dalla corrente che vi scorre,
+ secondo la legge:
+\begin_inset Formula 
+\[
+\dot{y}\left(t\right)=i\left(t\right)/C
+\]
+
+\end_inset
+
+A sua volta la corrente nel circuito può essere ottenuta dalla legge di
+ Ohm sul resistore:
+\begin_inset Formula 
+\[
+i\left(t\right)=\frac{1}{R}\left(u\left(t\right)-y\left(t\right)\right)
+\]
+
+\end_inset
+
+Possiamo sostituire nell'espressione della tensione sul condensatore, ottenendo:
+\begin_inset Formula 
+\[
+\dot{y}\left(t\right)=\frac{1}{RC}\left(u\left(t\right)-y\left(t\right)\right)
+\]
+
+\end_inset
+
+Trasformiamo questa espressione di uscita nel dominio di Laplace: 
+\begin_inset Formula 
+\[
+\mathscr{L}\left[\dot{y}\left(t\right)\right]=\frac{U\left(s\right)}{RC}-\frac{Y\left(s\right)}{RC}=sY\left(s\right)
+\]
+
+\end_inset
+
+Usando 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Uscita-trasferimento-Laplace"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ raccogliamo 
+\begin_inset Formula $Y\left(s\right)/U\left(s\right)$
+\end_inset
+
+ per scrivere la funzione di trasferimento:
+\begin_inset Formula 
+\[
+G\left(s\right)=\frac{1/RC}{\left(1/RC+s\right)}
+\]
+
+\end_inset
+
+Il guadagno stazionario vale 
+\begin_inset Formula $\mu=1$
+\end_inset
+
+ e si ha un polo in 
+\begin_inset Formula $s=-1/RC$
+\end_inset
+
+.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+demo
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In un filtro reale possiamo individuare l'intervallo di pulsazioni che passano
+ attraverso il filtro, sotto la seguente definizione.
+\end_layout
+
+\begin_layout Definition
+Chiamiamo 
+\emph on
+banda passante
+\emph default
+ di un filtro 
+\emph on
+passa-basso
+\emph default
+ reale un intervallo di pulsazioni entro il quale il modulo dista 
+\begin_inset Formula $\pm3\,\text{dB}$
+\end_inset
+
+ dal valore statico; in modo analitico deve valere:
+\begin_inset Formula 
+\[
+-3\,\text{dB}\simeq\frac{1}{\sqrt{2}}\leq\frac{\left|G\left(j\omega\right)\right|}{\left|G\left(0\right)\right|}\leq\sqrt{2}\simeq+3\,\text{dB}
+\]
+
+\end_inset
+
+ovvero 
+\begin_inset Formula $\omega\in\left(-\infty,\,\overline{\omega}\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Filtro passa-alto
+\end_layout
+
+\begin_layout Standard
+Al contrario del sistema appena analizzato, un filtro passa-alto si comporta
+ in maniera duale, attenuando le componenti spettrali di bassa frequenza
+ lasciando inalterate quelle maggiori di una certa frequenza 
+\begin_inset Formula $\underline{\omega}$
+\end_inset
+
+; il suo diagramma del modulo avrà un andamento pari a 
+\begin_inset Formula $-\infty\,\text{dB}$
+\end_inset
+
+ per 
+\begin_inset Formula $\omega<\underline{\omega}$
+\end_inset
+
+ e 
+\begin_inset Formula $0\,\text{dB}$
+\end_inset
+
+ per 
+\begin_inset Formula $\omega\geq\underline{\omega}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Nella pratica non esistono filtri ideali con questo andamento asintotico,
+ tuttavia si può approssimare al I ordine con un sistema dinamico dotato
+ di uno zero nell'origine e un polo reale negativo.
+\end_layout
+
+\begin_layout Definition
+Chiamiamo 
+\emph on
+banda passante
+\emph default
+ di un filtro 
+\emph on
+passa-alto
+\emph default
+ reale un intervallo di pulsazioni entro il quale il modulo dista 
+\begin_inset Formula $\pm3\,\text{dB}$
+\end_inset
+
+ dal valore finale; in modo analitico deve valere:
+\begin_inset Formula 
+\[
+-3\,\text{dB}\simeq\frac{1}{\sqrt{2}}\leq\frac{\left|G\left(j\omega\right)\right|}{\left|G\left(\infty\right)\right|}\leq\sqrt{2}\simeq+3\,\text{dB}
+\]
+
+\end_inset
+
+ovvero 
+\begin_inset Formula $\omega\in\left[\underline{\omega},\,+\infty\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "50text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Example
+
+\emph on
+Sia dato il seguente circuito, nel quale l'ingresso è la tensione a vuoto
+ 
+\begin_inset Formula $u\left(t\right)$
+\end_inset
+
+ ai capi della serie del resistore 
+\begin_inset Formula $R$
+\end_inset
+
+ e del condensatore 
+\begin_inset Formula $C$
+\end_inset
+
+; l'uscita è la tensione sul resistore, 
+\begin_inset Formula $y\left(t\right)$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\checkmark$
+\end_inset
+
+Scrivere la funzione di trasferimento del sistema.
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "50text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/5_7-2 Circuito RC passa-alto.pdf
+	display false
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Circuito RC come filtro passa-alto}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Scegliamo la tensione sul condensatore come stato 
+\begin_inset Formula $x_{{\scriptscriptstyle \text{C}}}\left(t\right)=u\left(t\right)-y\left(t\right)$
+\end_inset
+
+; la sua derivata vale:
+\begin_inset Formula 
+\[
+\dot{x}_{{\scriptscriptstyle \text{C}}}\left(t\right)=y\left(t\right)/RC
+\]
+
+\end_inset
+
+che può anche essere scritta come
+\begin_inset Formula 
+\[
+\dot{u}\left(t\right)-\dot{y}\left(t\right)=y\left(t\right)/RC
+\]
+
+\end_inset
+
+Trasformiamo questa espressione di uscita:
+\begin_inset Formula 
+\[
+\overset{{\scriptstyle \mathscr{L}}}{\rightarrow}sU\left(s\right)-sY\left(s\right)=Y\left(s\right)/RC
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+G\left(s\right)=\frac{Y\left(s\right)}{U\left(s\right)}=\frac{s}{\left(s+1/RC\right)}
+\]
+
+\end_inset
+
+L'estremo inferiore della banda passante in questo caso è la posizione del
+ polo (
+\begin_inset Formula $s=-1/RC$
+\end_inset
+
+); per filtrare frequenze elevate è possibile scegliere valori piccoli di
+ resistenza e capacità.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+demo
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Filtro passa-banda
+\end_layout
+
+\begin_layout Standard
+Questo
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+Per esempio, il nostro apparato uditivo è un filtro passa-banda tra 
+\begin_inset Formula $20\,\text{Hz}$
+\end_inset
+
+ e 
+\begin_inset Formula $20\,k\text{Hz}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ sistema lascia inalterate le componenti spettrali del segnale di ingresso
+ entro una determinata banda di frequenza; esso si comporterà come un filtro
+ passa alto, attenuando il segnale a pulsazioni inferiori di 
+\begin_inset Formula $\underline{\omega}$
+\end_inset
+
+, e come un filtro passa-basso, attenuando il segnale a pulsazioni superiori
+ di 
+\begin_inset Formula $\overline{\omega}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Definition
+Chiamiamo 
+\emph on
+banda passante
+\emph default
+ di un filtro 
+\emph on
+passa-banda
+\emph default
+ reale un intervallo di pulsazioni entro il quale il modulo dista 
+\begin_inset Formula $\pm3\,\text{dB}$
+\end_inset
+
+ dal valore finale; in modo analitico deve valere 
+\begin_inset Formula $\omega\in\left[\underline{\omega},\,\overline{\omega}\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Trasferimento per approssimazione a poli dominanti
+\end_layout
+
+\begin_layout Standard
+Osserviamo come un'approssimazione al polo dominante influenza i diagrammi
+ di Bode della risposta armonica, attraverso il seguente esempio.
+\end_layout
+
+\begin_layout Example
+
+\emph on
+Sia data la seguente funzione di trasferimento:
+\begin_inset Formula 
+\[
+G\left(s\right)=\frac{10\left(1+s\right)}{\left(1+\frac{s}{10}\right)\left(1+\frac{s}{0.1}\right)}
+\]
+
+\end_inset
+
+
+\begin_inset Formula $\checkmark$
+\end_inset
+
+Approssimare la funzione al polo dominante, e tracciare i diagrammi di Bode
+ della risposta armonica.
+\end_layout
+
+\begin_layout Example
+Identifichiamo il guadagno statico 
+\begin_inset Formula $\mu=10\simeq20\,\text{dB}$
+\end_inset
+
+ e le singolarità in posizione:
+\begin_inset Formula 
+\[
+z_{1}=-1,\,p_{1}=-0.1,\,p_{2}=-10
+\]
+
+\end_inset
+
+La singolarità con maggiore costante di tempo è quella associata al polo
+ 
+\begin_inset Formula $p_{2}$
+\end_inset
+
+; approssimiamo al I ordine la funzione di trasferimento nel modo seguente:
+\begin_inset Formula 
+\[
+G\left(s\right)\sim\hat{G}\left(s\right)=\frac{10}{\left(1+\frac{s}{0.1}\right)}
+\]
+
+\end_inset
+
+Il diagramma approssimato è tracciato con una linea spessa, mentre il diagramma
+ effettivo con una linea tratteggiata (non sono raffigurati gli andamenti
+ asintotici):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "100text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/5_8-1 Bode modulo esempio.pdf
+	display false
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Diagramma del modulo}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "100text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/5_8-2 Bode fase esempio.pdf
+	display false
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Diagramma della fase}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+demo
 \end_layout
 
 \end_inset

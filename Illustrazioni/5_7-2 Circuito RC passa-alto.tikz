@@ -1,0 +1,11 @@
+﻿
+\begin{circuitikz}[american voltages]
+	% Resistore e condensatore
+	\draw (0,0) to [R, l_=\mbox{$R$}, v^={$y\left(t\right)$}, o-*, n=R] (4,0);
+	\draw (4,0) to [C, l_=\mbox{$C$}, v^={$x_{\scriptscriptstyle C}\left(t\right)$}, -*, n=R] (4,-2);
+	% Cortocircuito e massa
+	\draw (4,-2) to [short, *-o] (0,-2);
+	%\draw (2,-2) node [ground] {};
+	% Tensione di controllo
+	\draw (0,0) to [open, n=V, v_={$u\left(t\right)$}] (0,-2);
+\end{circuitikz}
