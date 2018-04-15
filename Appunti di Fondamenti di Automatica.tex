@@ -46,6 +46,7 @@
 \AtBeginDocument{\providecommand\tabref[1]{\ref{tab:#1}}}
 \AtBeginDocument{\providecommand\subsecref[1]{\ref{subsec:#1}}}
 \AtBeginDocument{\providecommand\figref[1]{\ref{fig:#1}}}
+\AtBeginDocument{\providecommand\secref[1]{\ref{sec:#1}}}
 \newcommand{\noun}[1]{\textsc{#1}}
 %% Because html converters don't know tabularnewline
 \providecommand{\tabularnewline}{\\}
@@ -5354,7 +5355,7 @@ comportano un guadagno di fase di $+180{^\circ}$ (vedi \figref{Bode-fase-comples
 \end{figure}
 \demo
 
-\section{Diagrammi di Bode del ritardo di tempo}
+\section{\label{sec:Bode-ritardo}Diagrammi di Bode del ritardo di tempo}
 
 Prendiamo un ritardo di tempo positivo $\tau>0$, e una funzione di
 trasferimento nella forma della risposta armonica, espressa come esponenziale
@@ -5379,9 +5380,11 @@ di Bode (dotato di scala logaritmica), esso appare come una esponenziale.
 Il ritardo è tanto più influente sulla risposta armonica di un sistema
 quanto più le frequenze su cui agisce sono elevate, rispetto al valore
 del tempo di ritardo $\tau$ (per un valore molto piccolo di ritardo,
-solo frequenze elevate della risposta armonica saranno influenzate).
+solo frequenze elevate della risposta armonica saranno influenzate).\pagebreak{}
 
 \section{Diagramma polare}
+
+\subsection{Definizione}
 
 Il diagramma sul piano complesso del modulo e della fase ricavati
 dai diagrammi di Bode della risposta armonica si chiama diagramma
@@ -5408,15 +5411,13 @@ armonica associata:
 \begin{minipage}[c]{1\textwidth}%
 \begin{center}
 \includegraphics[scale=0.8]{\string"Illustrazioni/5_4-1 Bode modulo esempio 1\string".pdf}
-\par\end{center}
-\captionof{figure}{Diagramma del modulo}%
+\par\end{center}%
 \end{minipage}
 \end{example}
 \begin{minipage}[c]{1\textwidth}%
 \begin{center}
 \includegraphics[scale=0.8]{\string"Illustrazioni/5_4-2 Bode fase esempio 1\string".pdf}
-\par\end{center}
-\captionof{figure}{Diagramma della fase}%
+\par\end{center}%
 \end{minipage}
 
 \bigskip{}
@@ -5432,9 +5433,8 @@ la seguente curva complessa che rappresenta il diagramma polare:
 
 \begin{minipage}[c]{1\textwidth}%
 \begin{center}
-\includegraphics{\string"Illustrazioni/5_4-3 Polare esempio 1\string".pdf}
-\par\end{center}
-\captionof{figure}{Diagramma polare}%
+\includegraphics[scale=1.1]{\string"Illustrazioni/5_4-3 Polare esempio 1\string".pdf}
+\par\end{center}%
 \end{minipage}\bigskip{}
 
 Per $\omega\ll1$ la fase vale $0{^\circ}$ e il modulo $14\,\text{dB}\simeq5$;
@@ -5458,15 +5458,13 @@ trovano, in $z_{1}=-1$ e $p_{1}=-100$:
 \begin{minipage}[c]{1\textwidth}%
 \begin{center}
 \includegraphics[scale=0.8]{\string"Illustrazioni/5_4-4 Bode modulo esempio 2\string".pdf}
-\par\end{center}
-\captionof{figure}{Diagramma del modulo}%
+\par\end{center}%
 \end{minipage}
 \end{example}
 \begin{minipage}[c]{1\textwidth}%
 \begin{center}
 \includegraphics[scale=0.8]{\string"Illustrazioni/5_4-5 Bode fase esempio 2\string".pdf}
-\par\end{center}
-\captionof{figure}{Diagramma della fase}%
+\par\end{center}%
 \end{minipage}
 
 Per $\omega\rightarrow0$ il modulo tende a $+\infty$, dato il polo
@@ -5476,12 +5474,320 @@ di valori in cui la fase si avvicina a $-180{^\circ}$ mentre il modulo
 tende a 5 ($14\,\text{dB}$), dopodiché il modulo tende ad 0 e la
 fase ritorna a $-270{^\circ}$.
 
+Tracceremo infine il seguente diagramma polare:
+
 \begin{minipage}[c]{1\textwidth}%
 \begin{center}
 \includegraphics[scale=0.9]{\string"Illustrazioni/5_4-6 Polare esempio 2\string".pdf}
-\par\end{center}
-\captionof{figure}{Diagramma polare}%
+\par\end{center}%
+\end{minipage}\pagebreak{}
+
+\subsection{Diagramma polare del ritardo}
+
+Mostriamo la forma del diagramma polare del ritardo con il seguente
+esempio.
+\begin{example}
+\emph{Sia data la seguente funzione di trasferimento:
+\[
+G\left(s\right)=\frac{20}{1+s}e^{-s}
+\]
+$\checkmark$Tracciare il diagramma polare della risposta armonica
+associata.}
+
+Individuiamo il guadagno statico $\mu=20$ e il tipo $g=0$; abbiamo
+un polo reale negativo in $p_{1}=-1$, e un ritardo $\tau=1\,\text{rad}$
+(ricavato osservando l'esponente della funzione esponenziale).
+
+Per ottenere i diagrammi di Bode, basta adottare le considerazioni
+già fatte ne \secref{Bode-ritardo}, sommando i diagrammi del ritardo
+a quelli della risposta armonica; il diagramma del modulo non sarà
+alterato, mentre il diagramma della fase avrà un contributo aggiuntivo
+di $-\omega$ fornito dal ritardo di tempo per $\tau=1$.
+
+\begin{minipage}[c]{1\textwidth}%
+\begin{center}
+\includegraphics[scale=0.8]{\string"Illustrazioni/5_5-1 Bode modulo esempio 3\string".pdf}
+\par\end{center}%
 \end{minipage}
+\end{example}
+\begin{minipage}[c]{1\textwidth}%
+\begin{center}
+\includegraphics[scale=0.8]{\string"Illustrazioni/5_5-2 Bode fase esempio 3\string".pdf}
+\par\end{center}%
+\end{minipage}\bigskip{}
+
+Se avessimo solo il polo, la fase iniziale sarebbe $0{^\circ}$ ($\mu>0$)
+ed esso tenderebbe a $-90{^\circ}$ come un'arcotangente, con argomento
+pari a $-45{^\circ}$ per $\omega=1$; tuttavia il ritardo somma un
+ulteriore contributo di $-1\,\text{rad}\simeq-57.3{^\circ}$, dunque
+la fase effettiva in $\omega=1$ è pari a $-102.3{^\circ}$, con andamento
+esponenziale (dovuto al contributo del ritardo).
+
+\begin{minipage}[c]{1\textwidth}%
+\begin{center}
+\includegraphics[scale=0.25]{\string"Illustrazioni/5_5-3 Polare esempio 3\string".pdf}
+\par\end{center}%
+\end{minipage}\bigskip{}
+
+
+\section{Sistemi a sfasamento minimo}
+
+Supponiamo di avere il diagramma di Bode del modulo di una risposta
+armonica: è possibile tracciare il diagramma della fase?
+
+In generale la risposta è negativa, dal momento che il segno del guadagno
+e delle singolarità non può essere dedotto dal diagramma modulo; se
+abbiamo tuttavia un \emph{sistema a smorzamento minimo}, possiamo
+tracciarne con certezza il diagramma della fase conoscendo quello
+del modulo:
+\begin{defn}
+Chiamiamo a smorzamento minimo un sistema in cui il guadagno è positivo,
+e tutte le singolarità hanno parte reale positiva.
+\end{defn}
+Analizziamo il seguente esempio per chiarire questo concetto:
+\begin{example}
+\emph{Sia dato il seguente diagramma di Bode del modulo:}
+
+\begin{minipage}[c]{1\textwidth}%
+\begin{center}
+\includegraphics[scale=0.8]{\string"Illustrazioni/5_6-1 Bode modulo esempio 4\string".pdf}
+\par\end{center}
+\captionof{figure}{Diagramma del modulo}%
+\end{minipage}
+
+\emph{$\checkmark$Tracciare il diagramma di Bode della fase della
+stessa funzione, sapendo che il sistema è a smorzamento minimo.}
+
+Assumiamo che il guadagno sia pari a 1 (se fosse diversamente, il
+grafico del modulo avrebbe una traslazione verticale pari al guadagno);
+isoliamo i punti in cui il diagramma asintotico si spezza: essi saranno
+in corrispondenza delle singolarità (già indicate sul bordo inferiore
+del grafico).
+
+La pendenza iniziale di $-40\,\text{dB}$ denota la presenza di ben
+2 zeri nell'origine (vedi \figref{Bode-modulo-singolarit=0000E0-origine}),
+i quali determinano una fase iniziale di $+180{^\circ}$; si procede
+in questo modo, cambiando la fase ogni volta che si incontra un punto
+in cui sono presenti delle singolarità (la cui natura è determinata
+osservando come varia la pendenza del diagramma asintotico del modulo).
+Il grafico risultante per la fase è il seguente:
+\end{example}
+\begin{minipage}[c]{1\textwidth}%
+\begin{center}
+\includegraphics[scale=0.8]{\string"Illustrazioni/5_6-2 Bode fase esempio 4\string".pdf}
+\par\end{center}
+\captionof{figure}{Diagramma della fase}%
+\end{minipage}\demo\bigskip{}
+
+
+\section{Azione filtrante dei sistemi dinamici}
+
+Abbiamo visto che un sistema dinamico LTI, tramite la sua funzione
+di risposta armonica associata all'uscita, applica una variazione
+su modulo e fase di ogni componente spettrale in ingresso; possiamo
+immaginare un processo in cui abbiamo un segnale continuo, iniettato
+in un sistema dinamico LTI con funzione di trasferimento $G\left(s\right)$.
+Si avrà un certo segnale di uscita, il cui spettro sarà alterato dalla
+risposta armonica.
+
+In uscita si avrà lo spettro del modulo delle ampiezze del segnale
+entrante, pesate per il modulo della risposta armonica alla corrispondente
+pulsazione, e ogni componente della fase sarà sfasata dell'argomento
+della risposta armonica alla corrispondente pulsazione.
+
+Questa azione di alterazione dello spettro, da parte dei sistemi dinamici,
+viene definita \emph{azione filtrante} del sistema; analizzeremo in
+questa sezione dei modelli rilevanti di filtro.
+
+\subsection{Filtro passa-basso}
+
+Si tratta di un sistema che tende ad annullare le componenti spettrali
+superiori a una certa pulsazione; un filtro ideale di questo tipo
+ha diagramma di Bode del modulo nullo fino a una certa pulsazione
+$\overline{\omega}$, poi esso vale $-\infty$ per qualsiasi altra
+pulsazione; la fase di un filtro ideale è $0{^\circ}$.
+
+Nella pratica non è possibile realizzare una variazione istantanea
+del modulo, tuttavia possiamo utilizzare un sistema con un singolo
+polo reale negativo, con la seguente funzione di trasferimento:
+\[
+G\left(s\right)=\frac{1}{1+\left(\frac{s}{\overline{\omega}}\right)}
+\]
+Per $\mu=1$, $\overline{\omega}>0$, il polo si troverà in $s=-\overline{\omega}$
+e l'andamento del modulo sarà nullo fino al polo, poi decrescente
+con pendenza $-20\,\text{dB}/\text{dec}$; questa è un'approssimazione
+del I ordine di un filtro passa-basso ideale. Mostriamo un esempio
+di sistema fisico dotato di questa funzione di trasferimento.
+
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{center}
+\includegraphics[scale=0.9]{\string"Illustrazioni/5_7-1 Circuito RC passa-basso\string".pdf}
+\par\end{center}
+\captionof{figure}{Circuito RC come filtro passa-basso}%
+\end{minipage}%
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{example}
+\emph{Sia dato il seguente circuito, nel quale l'ingresso è la tensione
+a vuoto $u\left(t\right)$ ai capi della serie del resistore $R$
+e del condensatore $C$; l'uscita è la tensione sul condensatore,
+$y\left(t\right)$. $\checkmark$Scrivere la funzione di trasferimento
+del sistema.}
+\end{example}
+%
+\end{minipage}
+
+La tensione ai capi della capacità dipende dalla corrente che vi scorre,
+secondo la legge:
+\[
+\dot{y}\left(t\right)=i\left(t\right)/C
+\]
+A sua volta la corrente nel circuito può essere ottenuta dalla legge
+di Ohm sul resistore:
+\[
+i\left(t\right)=\frac{1}{R}\left(u\left(t\right)-y\left(t\right)\right)
+\]
+Possiamo sostituire nell'espressione della tensione sul condensatore,
+ottenendo:
+\[
+\dot{y}\left(t\right)=\frac{1}{RC}\left(u\left(t\right)-y\left(t\right)\right)
+\]
+Trasformiamo questa espressione di uscita nel dominio di Laplace:
+\[
+\mathscr{L}\left[\dot{y}\left(t\right)\right]=\frac{U\left(s\right)}{RC}-\frac{Y\left(s\right)}{RC}=sY\left(s\right)
+\]
+Usando (\ref{eq:Uscita-trasferimento-Laplace}) raccogliamo $Y\left(s\right)/U\left(s\right)$
+per scrivere la funzione di trasferimento:
+\[
+G\left(s\right)=\frac{1/RC}{\left(1/RC+s\right)}
+\]
+Il guadagno stazionario vale $\mu=1$ e si ha un polo in $s=-1/RC$.\demo\bigskip{}
+
+In un filtro reale possiamo individuare l'intervallo di pulsazioni
+che passano attraverso il filtro, sotto la seguente definizione.
+\begin{defn}
+Chiamiamo \emph{banda passante} di un filtro \emph{passa-basso} reale
+un intervallo di pulsazioni entro il quale il modulo dista $\pm3\,\text{dB}$
+dal valore statico; in modo analitico deve valere:
+\[
+-3\,\text{dB}\simeq\frac{1}{\sqrt{2}}\leq\frac{\left|G\left(j\omega\right)\right|}{\left|G\left(0\right)\right|}\leq\sqrt{2}\simeq+3\,\text{dB}
+\]
+ovvero $\omega\in\left(-\infty,\,\overline{\omega}\right]$.
+\end{defn}
+
+\subsection{Filtro passa-alto}
+
+Al contrario del sistema appena analizzato, un filtro passa-alto si
+comporta in maniera duale, attenuando le componenti spettrali di bassa
+frequenza lasciando inalterate quelle maggiori di una certa frequenza
+$\underline{\omega}$; il suo diagramma del modulo avrà un andamento
+pari a $-\infty\,\text{dB}$ per $\omega<\underline{\omega}$ e $0\,\text{dB}$
+per $\omega\geq\underline{\omega}$.
+
+Nella pratica non esistono filtri ideali con questo andamento asintotico,
+tuttavia si può approssimare al I ordine con un sistema dinamico dotato
+di uno zero nell'origine e un polo reale negativo.
+\begin{defn}
+Chiamiamo \emph{banda passante} di un filtro \emph{passa-alto} reale
+un intervallo di pulsazioni entro il quale il modulo dista $\pm3\,\text{dB}$
+dal valore finale; in modo analitico deve valere:
+\[
+-3\,\text{dB}\simeq\frac{1}{\sqrt{2}}\leq\frac{\left|G\left(j\omega\right)\right|}{\left|G\left(\infty\right)\right|}\leq\sqrt{2}\simeq+3\,\text{dB}
+\]
+ovvero $\omega\in\left[\underline{\omega},\,+\infty\right)$.
+\end{defn}
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{example}
+\emph{Sia dato il seguente circuito, nel quale l'ingresso è la tensione
+a vuoto $u\left(t\right)$ ai capi della serie del resistore $R$
+e del condensatore $C$; l'uscita è la tensione sul resistore, $y\left(t\right)$.
+$\checkmark$Scrivere la funzione di trasferimento del sistema.}
+\end{example}
+%
+\end{minipage}%
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{center}
+\includegraphics[scale=0.9]{\string"Illustrazioni/5_7-2 Circuito RC passa-alto\string".pdf}
+\par\end{center}
+\captionof{figure}{Circuito RC come filtro passa-alto}%
+\end{minipage}
+
+Scegliamo la tensione sul condensatore come stato $x_{{\scriptscriptstyle \text{C}}}\left(t\right)=u\left(t\right)-y\left(t\right)$;
+la sua derivata vale:
+\[
+\dot{x}_{{\scriptscriptstyle \text{C}}}\left(t\right)=y\left(t\right)/RC
+\]
+che può anche essere scritta come
+\[
+\dot{u}\left(t\right)-\dot{y}\left(t\right)=y\left(t\right)/RC
+\]
+Trasformiamo questa espressione di uscita:
+\[
+\overset{{\scriptstyle \mathscr{L}}}{\rightarrow}sU\left(s\right)-sY\left(s\right)=Y\left(s\right)/RC
+\]
+\[
+G\left(s\right)=\frac{Y\left(s\right)}{U\left(s\right)}=\frac{s}{\left(s+1/RC\right)}
+\]
+L'estremo inferiore della banda passante in questo caso è la posizione
+del polo ($s=-1/RC$); per filtrare frequenze elevate è possibile
+scegliere valori piccoli di resistenza e capacità.\demo\bigskip{}
+
+
+\subsection{Filtro passa-banda}
+
+Questo\marginpar{Per esempio, il nostro apparato uditivo è un filtro passa-banda tra
+$20\,\text{Hz}$ e $20\,k\text{Hz}$} sistema lascia inalterate le componenti spettrali del segnale di
+ingresso entro una determinata banda di frequenza; esso si comporterà
+come un filtro passa alto, attenuando il segnale a pulsazioni inferiori
+di $\underline{\omega}$, e come un filtro passa-basso, attenuando
+il segnale a pulsazioni superiori di $\overline{\omega}$.
+\begin{defn}
+Chiamiamo \emph{banda passante} di un filtro \emph{passa-banda} reale
+un intervallo di pulsazioni entro il quale il modulo dista $\pm3\,\text{dB}$
+dal valore finale; in modo analitico deve valere $\omega\in\left[\underline{\omega},\,\overline{\omega}\right]$.
+\end{defn}
+
+\section{Trasferimento per approssimazione a poli dominanti}
+
+Osserviamo come un'approssimazione al polo dominante influenza i diagrammi
+di Bode della risposta armonica, attraverso il seguente esempio.
+\begin{example}
+\emph{Sia data la seguente funzione di trasferimento:
+\[
+G\left(s\right)=\frac{10\left(1+s\right)}{\left(1+\frac{s}{10}\right)\left(1+\frac{s}{0.1}\right)}
+\]
+$\checkmark$Approssimare la funzione al polo dominante, e tracciare
+i diagrammi di Bode della risposta armonica.}
+
+Identifichiamo il guadagno statico $\mu=10\simeq20\,\text{dB}$ e
+le singolarità in posizione:
+\[
+z_{1}=-1,\,p_{1}=-0.1,\,p_{2}=-10
+\]
+La singolarità con maggiore costante di tempo è quella associata al
+polo $p_{2}$; approssimiamo al I ordine la funzione di trasferimento
+nel modo seguente:
+\[
+G\left(s\right)\sim\hat{G}\left(s\right)=\frac{10}{\left(1+\frac{s}{0.1}\right)}
+\]
+Il diagramma approssimato è tracciato con una linea spessa, mentre
+il diagramma effettivo con una linea tratteggiata (non sono raffigurati
+gli andamenti asintotici):
+\end{example}
+\begin{minipage}[c]{1\textwidth}%
+\begin{center}
+\includegraphics[scale=0.8]{\string"Illustrazioni/5_8-1 Bode modulo esempio\string".pdf}
+\par\end{center}
+\captionof{figure}{Diagramma del modulo}%
+\end{minipage}
+
+\begin{minipage}[c]{1\textwidth}%
+\begin{center}
+\includegraphics[scale=0.8]{\string"Illustrazioni/5_8-2 Bode fase esempio\string".pdf}
+\par\end{center}
+\captionof{figure}{Diagramma della fase}%
+\end{minipage}
+
+\demo
 
 \appendix
 
