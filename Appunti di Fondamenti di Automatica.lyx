@@ -180,6 +180,13 @@ Modello matematico
 
 \begin_layout Subsection
 Problemi di controllo
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Problemi-di-controllo"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -16279,17 +16286,6 @@ Funzione di trasferimento di anello
 \end_inset
 
 
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-[-0.2cm]
-\end_layout
-
-\end_inset
-
-
 \begin_inset Formula 
 \begin{equation}
 L\left(s\right)=G_{1}\left(s\right)\cdot G_{2}\left(s\right)\label{eq:Funzione-trasferimento-di-anello}
@@ -22553,6 +22549,1127 @@ demo
 \end_inset
 
 
+\end_layout
+
+\begin_layout Chapter
+Analisi dei sistemi di controllo
+\end_layout
+
+\begin_layout Standard
+Richiamiamo di problema di controllo (vedi 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "subsec:Problemi-di-controllo"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+): abbiamo un processo, che consiste in un aspetto fisico di un oggetto
+ di interesse, e un suo andamento desiderato; l'insieme di questi due elementi
+ definisce il problema di controllo.
+\end_layout
+
+\begin_layout Standard
+Il sistema è caratterizzato da un blocco con variabili manipolabili e disturbi
+ (non manipolabili) in ingresso, e variabili controllate in uscita (queste
+ ultime traducono in una grandezza misurabile il funzionamento desiderato).
+\end_layout
+
+\begin_layout Standard
+Risolvere un problema di controllo significa progettare un 
+\emph on
+regolatore
+\emph default
+, ovvero un'altro sistema dinamico che decide quale altro ingresso fornire
+ al processo per ottenere l'andamento desiderato 
+\begin_inset Formula $w\left(t\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Un sistema di controllo è dunque l'insieme di regolatore e processo controllato.
+\end_layout
+
+\begin_layout Section
+Architetture di sistemi di controllo
+\end_layout
+
+\begin_layout Standard
+Vi sono due principali architetture dei sistemi di controllo, classificate
+ in base al fatto che il regolatore sfrutti o meno una stima della variabile
+ 
+\begin_inset Formula $y\left(t\right)$
+\end_inset
+
+; in entrambi i casi analizzeremo sistemi LTI, per i quali vedremo tecniche
+ di progetto model-based, ovvero useremo un modello per il comportamento
+ del sistema (equazioni della Fisica, dati sperimentali, ecc
+\begin_inset Formula $\ldots$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Subsection
+Anello aperto
+\end_layout
+
+\begin_layout Standard
+I sistemi di controllo in anello aperto sono caratterizzati dal regolatore
+ che riceve l'andamento desiderato, e in base alla logica di progettazione
+ definisce l'ingresso da dare al sistema senza conoscere l'andamento effettivo
+ dell'uscita.
+\end_layout
+
+\begin_layout Standard
+Analizziamo il regolatore nel modo seguente: supponiamo che sia data una
+ inversione di un processo 
+\begin_inset Formula $P$
+\end_inset
+
+, definita come
+\begin_inset Formula 
+\[
+P^{-1}\left(y\left(t\right)\right)=u\left(t\right)
+\]
+
+\end_inset
+
+Vorremmo allora la funzione dell'andamento desiderato espressa come 
+\begin_inset Formula $F^{*}\left(w\left(t\right)\right)=y\left(t\right)$
+\end_inset
+
+ che indica il comportamento desiderato; allora un metodo di progettazione
+ consiste nel scrivere la funzione del regolatore rispetto all'andamento
+ desiderato:
+\begin_inset Formula 
+\[
+R\left(w\left(t\right)\right)=u\left(t\right)=P^{-1}\left(F^{*}\left(w\left(t\right)\right)\right)
+\]
+
+\end_inset
+
+da cui riscriviamo 
+\begin_inset Formula $y\left(t\right)$
+\end_inset
+
+ come:
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "3cm"
+height "1pt"
+
+\end_inset
+
+
+\series bold
+\size footnotesize
+
+\begin_inset Newline newline
+\end_inset
+
+Trasferimento in anello aperto
+\series default
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Anello aperto, trasferimento
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[0.2cm]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+y\left(t\right)=P\left(u\left(t\right)\right)=P\left(P^{-1}\left(F^{*}\left(w\left(t\right)\right)\right)\right)=F^{*}\left(w\left(t\right)\right)\label{eq:Trasferimento-anello-aperto}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+Abbiamo mostrato un tipico approccio di 
+\emph on
+inversione dinamica
+\emph default
+, ovvero partendo da un modello 
+\begin_inset Formula $P$
+\end_inset
+
+ del processo, se possiamo calcolarne un'inversione 
+\begin_inset Formula $P^{-1}$
+\end_inset
+
+ tale che 
+\begin_inset Formula $P\left(P^{-1}\left(\square\right)\right)$
+\end_inset
+
+ restituisca l'argomento 
+\begin_inset Formula $\square$
+\end_inset
+
+ dell'inversione, allora è lecito utilizzare 
+\begin_inset Formula $P^{-1}$
+\end_inset
+
+ come regolatore in anello 
+\bar under
+aperto
+\bar default
+.
+\end_layout
+
+\begin_layout Standard
+In generale i sistemi sono non lineari e multi-variabili, ma in molti casi
+ si può semplificare con una linearizzazione (attorno al punto di funzionamento
+ del sistema) il sistema del problema di controllo per ottenerne uno SISO.
+\end_layout
+
+\begin_layout Standard
+Dopo aver scomposto il problema di controllo in più problemi SISO, è possibile
+ esprimere il processo con una funzione di trasferimento 
+\begin_inset Formula $G\left(s\right)$
+\end_inset
+
+ che indica il rapporto tra uscita e ingresso; se il processo è asintoticamente
+ stabile e non presenta zeri a parte reale positiva, possiamo calcolare
+ la sua inversione come 
+\begin_inset Formula $G^{-1}\left(s\right)$
+\end_inset
+
+ e usarla nel regolatore per cancellare la dinamica del sistema e sostituirla
+ col comportamento desiderato 
+\begin_inset Formula $F^{*}\left(s\right)$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{equation}
+R\left(s\right)=G^{-1}\left(s\right)\cdot F^{*}\left(s\right)\label{eq:Regolatore-anello-aperto}
+\end{equation}
+
+\end_inset
+
+Mettendo in cascata questa funzione col sistema, si ottiene esattamente
+ un sistema equivalente per cui il comportamento tra 
+\begin_inset Formula $w\left(t\right)$
+\end_inset
+
+ e 
+\begin_inset Formula $y\left(t\right)$
+\end_inset
+
+ è esattamente 
+\begin_inset Formula $F^{*}\left(s\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Remark
+È richiesto che la funzione 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Regolatore-anello-aperto"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ così ottenuta sia strettamente propria.
+\end_layout
+
+\begin_layout Remark
+Lo svantaggio del controllo in anello aperto è dato dallo scostamento della
+ realtà fisica dal modello su cui è progettata la logica del regolatore:
+ esso non può reagire a casi imprevisti.
+\end_layout
+
+\begin_layout Remark
+Possiamo notare questo limite dalle equazioni, aggiungendo un margine di
+ correttezza di modello 
+\begin_inset Formula $\Delta\left(s\right)$
+\end_inset
+
+; lo schema a blocchi è indicato ne 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:Problema-di-controllo-anello-aperto"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Remark
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/6_1-1 Controllo in anello aperto.pdf
+	display false
+	scale 120
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Problema di controllo in anello aperto
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Problema-di-controllo-anello-aperto"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Remark
+Se applichiamo il regolatore 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Regolatore-anello-aperto"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, otteniamo la seguente equazione di uscita:
+\begin_inset Formula 
+\[
+y\left(t\right)=W\left(s\right)\cdot\left[G^{-1}\left(s\right)F^{*}\left(s\right)G\left(s\right)\right]+W\left(s\right)\cdot\left[G^{-1}\left(s\right)F^{*}\left(s\right)\right]\cdot\Delta\left(s\right)+D\left(s\right)
+\]
+
+\end_inset
+
+Notiamo che l'incertezza è moltiplicata per la funzione del regolatore,
+ dunque è possibile attenuare in parte il suo effetto; tuttavia ciò non
+ può essere fatto senza commettere un errore di approssimazione, inoltre
+ l'effetto del disturbo influenza interamente l'uscita, senza che possa
+ essere attenuato in qualche modo.
+\end_layout
+
+\begin_layout Subsection
+Anello chiuso
+\end_layout
+
+\begin_layout Standard
+I sistemi di controllo in anello chiuso sono caratterizzati dal
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+Dato il basso costo de sensori accurati, e i vantaggi di questa architettura,
+ oggi quasi tutti i sistemi di controllo sono in anello chiuso
+\end_layout
+
+\end_inset
+
+ regolatore che preleva l'informazione sull'andamento dell'uscita e la sfrutta
+ per determinare l'ingresso.
+\end_layout
+
+\begin_layout Standard
+Il regolatore in questo caso esprime l'ingresso controllato come 
+\begin_inset Formula $u\left(t\right)=R\left(w\left(t\right),\,y\left(t\right)\right)$
+\end_inset
+
+: si hanno a disposizione dei sensori (uno degli svantaggi è il doverli
+ predisporre) che informano il regolatore sull'andamento dell'uscita; il
+ regolatore non riceve direttamente in ingresso il valore dell'andamento
+ desiderato ma si tratta di una retroazione negativa, in cui al regolatore
+ arriva la differenza 
+\begin_inset Formula $e\left(t\right)=w\left(t\right)-y\left(t\right)$
+\end_inset
+
+ chiamata 
+\emph on
+errore di inseguimento
+\emph default
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/6_1-2 Controllo in anello chiuso.pdf
+	display false
+	scale 120
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Problema di controllo in anello chiuso
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Problema-di-controllo-anello-chiuso"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Scriviamo la funzione di trasferimento risultante dallo schema a blocchi
+ (vedi 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:Problema-di-controllo-anello-chiuso"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+):
+\begin_inset Formula 
+\[
+Y\left(s\right)=\frac{R\left(s\right)\cdot\left(G\left(s\right)\Delta\left(s\right)\right)}{1+R\left(s\right)\cdot\left(G\left(s\right)\Delta\left(s\right)\right)}W\left(s\right)+\frac{1}{1+R\left(s\right)\cdot\left(G\left(s\right)\Delta\left(s\right)\right)}D\left(s\right)
+\]
+
+\end_inset
+
+Osserviamo che il regolatore ha un primo vantaggio rispetto al caso dell'anello
+ aperto, infatti può avere un effetto sui disturbi dell'uscita, e la funzione
+ di trasferimento del valore desiderato è disaccoppiata da quella del disturbo
+ (possiamo agire su entrambe indipendentemente).
+\end_layout
+
+\begin_layout Standard
+Se trascuriamo momentaneamente l'incertezza di modello 
+\begin_inset Formula $\Delta\left(s\right)$
+\end_inset
+
+, e definiamo la funzione di trasferimento di anello 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Funzione-trasferimento-di-anello"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ come 
+\begin_inset Formula $L\left(s\right)=R\left(s\right)G\left(s\right)$
+\end_inset
+
+, possiamo scrivere l'uscita come:
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "3cm"
+height "1pt"
+
+\end_inset
+
+
+\series bold
+\size footnotesize
+
+\begin_inset Newline newline
+\end_inset
+
+Trasferimento in anello chiuso
+\series default
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Anello chiuso, trasferimento
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[1cm]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+Y\left(s\right)=\overset{{\scriptstyle F\left(s\right)}}{\overbrace{\frac{L\left(s\right)}{1+L\left(s\right)}}}W\left(s\right)+\overset{{\scriptstyle S\left(s\right)}}{\overbrace{\frac{1}{1+L\left(s\right)}}}D\left(s\right)\label{eq:Trasferimento-anello-chiuso}
+\end{equation}
+
+\end_inset
+
+Le funzioni che abbiamo rinominato rispetto al trasferimento di anello sono
+ definite in modo particolare:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $S\left(s\right)$
+\end_inset
+
+ è la funzione di 
+\emph on
+sensitività
+\emph default
+ dell'uscita, che contiene l'informazione sulla sensitività dell'uscita
+ al disturbo; nel progetto di sistemi di controllo si preferisce mantenere
+ piccola questa funzione.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $F\left(s\right)$
+\end_inset
+
+ è la funzione di 
+\emph on
+sensitività complementare
+\emph default
+, dato che 
+\begin_inset Formula $F\left(s\right)+S\left(s\right)=1$
+\end_inset
+
+; idealmente cerchiamo di ottenere questa funzione il più vicino possibile
+ a 1.
+\end_layout
+
+\begin_layout Standard
+Nella pratica si realizzano queste due funzioni in modo che 
+\begin_inset Formula $F\left(s\right)$
+\end_inset
+
+ si comporti come un filtro passa-basso, e la funzione 
+\begin_inset Formula $S\left(s\right)$
+\end_inset
+
+ come un filtro passa-alto; infine, un sistema di controllo in anello chiuso
+ ha un secondo vantaggio, ovvero è possibile alterare la pulsazione dei
+ poli della funzione di trasferimento, in particolare tramite il regolatore
+ è possibile stabilizzare un sistema altrimenti instabile in anello aperto.
+\end_layout
+
+\begin_layout Example
+
+\emph on
+Sia data la seguente funzione di trasferimento:
+\begin_inset Formula 
+\[
+G\left(s\right)=\frac{2}{1-s}
+\]
+
+\end_inset
+
+appartenente al sistema di un problema di controllo in anello chiuso, nel
+ quale utilizziamo un regolatore costante pari a 
+\begin_inset Formula $R\left(s\right)=-10$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\checkmark$
+\end_inset
+
+Calcolare le funzioni di sensitività e di sensitività inversa.
+\end_layout
+
+\begin_layout Standard
+Calcoliamo il valore di 
+\begin_inset Formula $L\left(s\right)=R\left(s\right)\cdot G\left(s\right)=-20/\left(1-s\right)$
+\end_inset
+
+; le due funzioni di sensitività sono dunque pari a:
+\begin_inset Formula 
+\[
+F\left(s\right)=\frac{L\left(s\right)}{1+L\left(s\right)}=\frac{20}{s+19}=\frac{20}{19}\cdot\frac{1}{1+\nicefrac{s}{19}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+S\left(s\right)=1-F\left(s\right)=\frac{s+19-20}{s+19}=\frac{s-1}{s+19}=-\frac{1}{19}\cdot\frac{1-s}{1+\nicefrac{s}{19}}
+\]
+
+\end_inset
+
+Notiamo che il polo del sistema in anello chiuso, dotato di regolatore,
+ si trova in 
+\begin_inset Formula $s=-19$
+\end_inset
+
+, a differenza del polo instabile per 
+\begin_inset Formula $s=1$
+\end_inset
+
+ della funzione di trasferimento assegnata in partenza; inoltre si nota
+ che la funzione di sensitività complementare (
+\begin_inset Formula $F\left(s\right)$
+\end_inset
+
+) ha guadagno circa unitario.
+ Il modulo delle due funzioni sul diagramma di Bode è ne 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:Anello-chiuso-Bode-sensitività-esempio"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+La velocità di risposta del sistema (l'inverso del modulo del polo) può
+ essere determinata dimensionando opportunamente il guadagno del regolatore.
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+demo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "50text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/6_1-3 Bode modulo funzioni sensitività.pdf
+	display false
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Diagramma del modulo delle funzioni di sensitività}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Anello-chiuso-Bode-sensitività-esempio"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "50text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+Vediamo uno schema di riferimento più realistico per lo studio dei problemi
+ di controllo in anello chiuso; il segnale 
+\begin_inset Formula $u\left(t\right)$
+\end_inset
+
+ viene dato in ingresso a un attuatore (blocco indicato con 
+\begin_inset Formula $A\left(s\right)$
+\end_inset
+
+), che traduce un segnale elettrico in una interazione fisica; all'uscita
+ dell'attuatore si sommano dei disturbi di attuazione 
+\begin_inset Formula $d_{{\scriptscriptstyle \text{A}}}$
+\end_inset
+
+ (tipicamente a bassa frequenza).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In generale l'uscita è misurata tramite un trasduttore, che converte una
+ grandezza fisica in un segnale elettrico, sottoposto a disturbi di misura
+ 
+\begin_inset Formula $d_{{\scriptscriptstyle \text{T}}}$
+\end_inset
+
+ (tipicamente ad alta frequenza).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/6_1-4 Controllo in anello chiuso dettagliato.pdf
+	display false
+	scale 120
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Schema a blocchi per problemi di controllo in retroazione
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Con l'algebra degli schemi a blocchi, possiamo ricondurci a uno schema semplific
+ato:
+\end_layout
+
+\begin_layout Itemize
+rimuoviamo
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+Attenzione a non confondere il disturbo di processo 
+\begin_inset Formula $d$
+\end_inset
+
+ (agisce sul valore effettivo dell'uscita) e 
+\begin_inset Formula $n$
+\end_inset
+
+ (viene visto solo dal regolatore), quest'ultimo molto più critico
+\end_layout
+
+\end_inset
+
+ la funzione del trasduttore dall'anello di retroazione, poi moltiplicandola
+ per 
+\begin_inset Formula $R\left(s\right)$
+\end_inset
+
+ e il suo inverso per 
+\begin_inset Formula $\tilde{w}\left(t\right)$
+\end_inset
+
+; 
+\end_layout
+
+\begin_layout Itemize
+accorpiamo attuatore e impianto, spostando il nodo somma a valle dell'impianto
+ (al posto di 
+\begin_inset Formula $G\left(s\right)$
+\end_inset
+
+);
+\end_layout
+
+\begin_layout Itemize
+chiamiamo 
+\begin_inset Formula $n$
+\end_inset
+
+ la variabile del disturbo di misura;
+\end_layout
+
+\begin_layout Itemize
+ignoriamo il trasduttore, che si comporterà come un guadagno statico (filtro
+ passa basso con banda passante molto più grande di qualsiasi pulsazione
+ associata a singolarità);
+\end_layout
+
+\begin_layout Itemize
+accorpiamo tutti i disturbi additivi sull'uscita come disturbi di processo
+ 
+\begin_inset Formula $d\left(t\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Otteniamo lo schema in figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Schema-di-riferimento-controllo"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, che sarà il nostro riferimento per il progetto dei regolatori.
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/6_1-5 Riferimento controllo in anello chiuso.pdf
+	display false
+	scale 120
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Schema-di-riferimento-controllo"
+
+\end_inset
+
+Schema di riferimento per problemi di controllo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Progettazione e requisiti di un sistema di controllo
+\end_layout
+
+\begin_layout Subsection
+Progetto di un sistema di controllo
+\end_layout
+
+\begin_layout Standard
+In generale si compiono i seguenti passaggi preliminari alla progettazione
+ di un sistema di controllo:
+\end_layout
+
+\begin_layout Enumerate
+Descrivere il problema di controllo, individuando le variabili di interesse
+ (ingressi, uscite, disturbi);
+\end_layout
+
+\begin_layout Enumerate
+Ricavare le specifiche da 
+\begin_inset Formula ${\scriptstyle \left(1\right)}$
+\end_inset
+
+, per raggiungere il comportamento desiderato;
+\end_layout
+
+\begin_layout Enumerate
+Formalizzare un modello a partire da 
+\begin_inset Formula ${\scriptstyle \left(1\right)}$
+\end_inset
+
+ e 
+\begin_inset Formula ${\scriptstyle \left(2\right)}$
+\end_inset
+
+ (esso dipende dalle specifiche e rappresenta un'approssimazione del problema);
+\end_layout
+
+\begin_layout Enumerate
+Progettare un regolatore a partire da 
+\begin_inset Formula ${\scriptstyle \left(3\right)}$
+\end_inset
+
+, che possa soddisfare 
+\begin_inset Formula ${\scriptstyle \left(2\right)}$
+\end_inset
+
+ (problema di 
+\emph on
+sintesi
+\emph default
+), oppure stabilire se un regolatore assegnato soddisfa 
+\begin_inset Formula ${\scriptstyle \left(2\right)}$
+\end_inset
+
+ (problema di 
+\emph on
+analisi
+\emph default
+).
+\end_layout
+
+\begin_layout Standard
+Il risultato del progetto sarà una funzione di trasferimento 
+\begin_inset Formula $R\left(s\right)$
+\end_inset
+
+, che può essere discretizzata per essere implementata su un calcolatore.
+\end_layout
+
+\begin_layout Subsection
+Requisiti di un sistema di controllo
+\end_layout
+
+\begin_layout Enumerate
+Stabilità asintotica;
+\end_layout
+
+\begin_layout Enumerate
+Prestazioni statiche (riguardano il sistema una volta esauriti i transitori);
+\end_layout
+
+\begin_layout Enumerate
+Prestazioni dinamiche (velocità di risposta).
+\end_layout
+
+\begin_layout Standard
+Per quanto riguarda la stabilità, un sistema si dice dotato di 
+\emph on
+stabilità nominale
+\emph default
+ quando la sua funzione di trasferimento corrisponde al comportamento del
+ sistema; è necessario inoltre garantire un certo 
+\emph on
+margine di stabilità
+\emph default
+, per esempio prevedendo nell'anello di controllo casi in cui il sistema
+ si comporti diversamente dal modello, rientrando comunque nelle specifiche
+ (idealmente vorremmo un margine di stabilità elevato).
+\end_layout
+
+\begin_layout Standard
+Per quanto riguarda le prestazioni statiche, consideriamo il valore finale
+ dell'uscita al termine di tutti i transitori (
+\begin_inset Formula $t>5T$
+\end_inset
+
+, con 
+\begin_inset Formula $T$
+\end_inset
+
+ associata al polo dominante); consideriamo due tipologie di specifiche:
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Precisione di inseguimento
+\emph default
+ di riferimenti polinomiali (scalino, rampa, parabola), ovvero è richiesto
+ 
+\begin_inset Formula $e\left(t\right)\ll1$
+\end_inset
+
+, si considera inoltre la reiezione di disturbi polinomiali;
+\end_layout
+
+\begin_layout Itemize
+Comportamento a fronte di segnali sinusoidali, rispetto l'ampiezza massima
+ (da amplificare o attenuare) delle 
+\emph on
+oscillazioni di 
+\begin_inset Formula $e\left(t\right)$
+\end_inset
+
+
+\emph default
+ a fronte di 
+\begin_inset Formula $w\left(t\right)$
+\end_inset
+
+, 
+\begin_inset Formula $d\left(t\right)$
+\end_inset
+
+ o 
+\begin_inset Formula $n\left(t\right)$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Standard
+Per quanto riguarda le prestazioni dinamiche, si fa riferimento alla 
+\emph on
+risposta allo scalino
+\emph default
+ 
+\begin_inset Formula $w\left(t\right)=A\cdot\text{sca}\left(t\right)$
+\end_inset
+
+, fissando dei valori limite di tempo di assestamento, tempo di salita e
+ sovraelongazione del movimento.
+\end_layout
+
+\begin_layout Standard
+Per quanto riguarda le prestazioni - statiche o dinamiche - definiremo delle
+ 
+\emph on
+prestazioni nominali
+\emph default
+, legate all'ipotesi che il sistema effettivo si comporti come il modello;
+ in caso contrario si parla di prestazioni robuste, rispetto allo scostamento
+ del modello dalla realtà.
 \end_layout
 
 \begin_layout Chapter

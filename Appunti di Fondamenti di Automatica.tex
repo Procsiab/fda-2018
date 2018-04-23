@@ -167,7 +167,7 @@
 
 \section{Modello matematico}
 
-\subsection{Problemi di controllo}
+\subsection{Problemi di controllo\label{subsec:Problemi-di-controllo}}
 
 Un \emph{problema di controllo} consiste nell'imporre un \emph{funzionamento
 desiderato} a un \emph{processo} assegnato: il processo è dunque l'oggetto
@@ -4334,7 +4334,7 @@ nostro caso $+$ per retroazione negativa); la regola generale per
 ricavare il trasferimento complessivo consiste nel fare il rapporto
 tra il ramo diretto e la funzione di anello, ovvero il prodotto di
 tutte le funzioni di trasferimento sull'anello di retroazione:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
-\textbf{\footnotesize{}Funzione di trasferimento d'anello}{\footnotesize{}\index{Funzione di trasferimento di anello@{\footnotesize{}Funzione di trasferimento di anello}}}}[-0.2cm]
+\textbf{\footnotesize{}Funzione di trasferimento d'anello}{\footnotesize{}\index{Funzione di trasferimento di anello@{\footnotesize{}Funzione di trasferimento di anello}}}}
 \begin{equation}
 L\left(s\right)=G_{1}\left(s\right)\cdot G_{2}\left(s\right)\label{eq:Funzione-trasferimento-di-anello}
 \end{equation}
@@ -5788,6 +5788,315 @@ gli andamenti asintotici):
 \end{minipage}
 
 \demo
+
+\chapter{Analisi dei sistemi di controllo}
+
+Richiamiamo di problema di controllo (vedi \subsecref{Problemi-di-controllo}):
+abbiamo un processo, che consiste in un aspetto fisico di un oggetto
+di interesse, e un suo andamento desiderato; l'insieme di questi due
+elementi definisce il problema di controllo.
+
+Il sistema è caratterizzato da un blocco con variabili manipolabili
+e disturbi (non manipolabili) in ingresso, e variabili controllate
+in uscita (queste ultime traducono in una grandezza misurabile il
+funzionamento desiderato).
+
+Risolvere un problema di controllo significa progettare un \emph{regolatore},
+ovvero un'altro sistema dinamico che decide quale altro ingresso fornire
+al processo per ottenere l'andamento desiderato $w\left(t\right)$.
+
+Un sistema di controllo è dunque l'insieme di regolatore e processo
+controllato.
+
+\section{Architetture di sistemi di controllo}
+
+Vi sono due principali architetture dei sistemi di controllo, classificate
+in base al fatto che il regolatore sfrutti o meno una stima della
+variabile $y\left(t\right)$; in entrambi i casi analizzeremo sistemi
+LTI, per i quali vedremo tecniche di progetto model-based, ovvero
+useremo un modello per il comportamento del sistema (equazioni della
+Fisica, dati sperimentali, ecc$\ldots$).
+
+\subsection{Anello aperto}
+
+I sistemi di controllo in anello aperto sono caratterizzati dal regolatore
+che riceve l'andamento desiderato, e in base alla logica di progettazione
+definisce l'ingresso da dare al sistema senza conoscere l'andamento
+effettivo dell'uscita.
+
+Analizziamo il regolatore nel modo seguente: supponiamo che sia data
+una inversione di un processo $P$, definita come
+\[
+P^{-1}\left(y\left(t\right)\right)=u\left(t\right)
+\]
+Vorremmo allora la funzione dell'andamento desiderato espressa come
+$F^{*}\left(w\left(t\right)\right)=y\left(t\right)$ che indica il
+comportamento desiderato; allora un metodo di progettazione consiste
+nel scrivere la funzione del regolatore rispetto all'andamento desiderato:
+\[
+R\left(w\left(t\right)\right)=u\left(t\right)=P^{-1}\left(F^{*}\left(w\left(t\right)\right)\right)
+\]
+da cui riscriviamo $y\left(t\right)$ come:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Trasferimento in anello aperto}{\footnotesize{}\index{Anello aperto, trasferimento@{\footnotesize{}Anello aperto, trasferimento}}}}[0.2cm]
+\begin{equation}
+y\left(t\right)=P\left(u\left(t\right)\right)=P\left(P^{-1}\left(F^{*}\left(w\left(t\right)\right)\right)\right)=F^{*}\left(w\left(t\right)\right)\label{eq:Trasferimento-anello-aperto}
+\end{equation}
+
+\begin{defn}
+Abbiamo mostrato un tipico approccio di \emph{inversione dinamica},
+ovvero partendo da un modello $P$ del processo, se possiamo calcolarne
+un'inversione $P^{-1}$ tale che $P\left(P^{-1}\left(\square\right)\right)$
+restituisca l'argomento $\square$ dell'inversione, allora è lecito
+utilizzare $P^{-1}$ come regolatore in anello \uline{aperto}.
+\end{defn}
+In generale i sistemi sono non lineari e multi-variabili, ma in molti
+casi si può semplificare con una linearizzazione (attorno al punto
+di funzionamento del sistema) il sistema del problema di controllo
+per ottenerne uno SISO.
+
+Dopo aver scomposto il problema di controllo in più problemi SISO,
+è possibile esprimere il processo con una funzione di trasferimento
+$G\left(s\right)$ che indica il rapporto tra uscita e ingresso; se
+il processo è asintoticamente stabile e non presenta zeri a parte
+reale positiva, possiamo calcolare la sua inversione come $G^{-1}\left(s\right)$
+e usarla nel regolatore per cancellare la dinamica del sistema e sostituirla
+col comportamento desiderato $F^{*}\left(s\right)$:
+\begin{equation}
+R\left(s\right)=G^{-1}\left(s\right)\cdot F^{*}\left(s\right)\label{eq:Regolatore-anello-aperto}
+\end{equation}
+Mettendo in cascata questa funzione col sistema, si ottiene esattamente
+un sistema equivalente per cui il comportamento tra $w\left(t\right)$
+e $y\left(t\right)$ è esattamente $F^{*}\left(s\right)$.
+\begin{rem}
+È richiesto che la funzione (\ref{eq:Regolatore-anello-aperto}) così
+ottenuta sia strettamente propria.
+
+Lo svantaggio del controllo in anello aperto è dato dallo scostamento
+della realtà fisica dal modello su cui è progettata la logica del
+regolatore: esso non può reagire a casi imprevisti.
+
+Possiamo notare questo limite dalle equazioni, aggiungendo un margine
+di correttezza di modello $\Delta\left(s\right)$; lo schema a blocchi
+è indicato ne \figref{Problema-di-controllo-anello-aperto}.
+
+\begin{figure}[!h]
+\begin{centering}
+\includegraphics[scale=1.2]{\string"Illustrazioni/6_1-1 Controllo in anello aperto\string".pdf}
+\par\end{centering}
+\caption{Problema di controllo in anello aperto}
+\label{fig:Problema-di-controllo-anello-aperto}
+\end{figure}
+
+Se applichiamo il regolatore (\ref{eq:Regolatore-anello-aperto}),
+otteniamo la seguente equazione di uscita:
+\[
+y\left(t\right)=W\left(s\right)\cdot\left[G^{-1}\left(s\right)F^{*}\left(s\right)G\left(s\right)\right]+W\left(s\right)\cdot\left[G^{-1}\left(s\right)F^{*}\left(s\right)\right]\cdot\Delta\left(s\right)+D\left(s\right)
+\]
+Notiamo che l'incertezza è moltiplicata per la funzione del regolatore,
+dunque è possibile attenuare in parte il suo effetto; tuttavia ciò
+non può essere fatto senza commettere un errore di approssimazione,
+inoltre l'effetto del disturbo influenza interamente l'uscita, senza
+che possa essere attenuato in qualche modo.
+\end{rem}
+
+\subsection{Anello chiuso}
+
+I sistemi di controllo in anello chiuso sono caratterizzati dal\marginpar{Dato il basso costo de sensori accurati, e i vantaggi di questa architettura,
+oggi quasi tutti i sistemi di controllo sono in anello chiuso} regolatore che preleva l'informazione sull'andamento dell'uscita
+e la sfrutta per determinare l'ingresso.
+
+Il regolatore in questo caso esprime l'ingresso controllato come $u\left(t\right)=R\left(w\left(t\right),\,y\left(t\right)\right)$:
+si hanno a disposizione dei sensori (uno degli svantaggi è il doverli
+predisporre) che informano il regolatore sull'andamento dell'uscita;
+il regolatore non riceve direttamente in ingresso il valore dell'andamento
+desiderato ma si tratta di una retroazione negativa, in cui al regolatore
+arriva la differenza $e\left(t\right)=w\left(t\right)-y\left(t\right)$
+chiamata \emph{errore di inseguimento}.
+
+\begin{figure}[!h]
+\begin{centering}
+\includegraphics[scale=1.2]{\string"Illustrazioni/6_1-2 Controllo in anello chiuso\string".pdf}
+\par\end{centering}
+\caption{Problema di controllo in anello chiuso}
+\label{fig:Problema-di-controllo-anello-chiuso}
+\end{figure}
+
+Scriviamo la funzione di trasferimento risultante dallo schema a blocchi
+(vedi \figref{Problema-di-controllo-anello-chiuso}):
+\[
+Y\left(s\right)=\frac{R\left(s\right)\cdot\left(G\left(s\right)\Delta\left(s\right)\right)}{1+R\left(s\right)\cdot\left(G\left(s\right)\Delta\left(s\right)\right)}W\left(s\right)+\frac{1}{1+R\left(s\right)\cdot\left(G\left(s\right)\Delta\left(s\right)\right)}D\left(s\right)
+\]
+Osserviamo che il regolatore ha un primo vantaggio rispetto al caso
+dell'anello aperto, infatti può avere un effetto sui disturbi dell'uscita,
+e la funzione di trasferimento del valore desiderato è disaccoppiata
+da quella del disturbo (possiamo agire su entrambe indipendentemente).
+
+Se trascuriamo momentaneamente l'incertezza di modello $\Delta\left(s\right)$,
+e definiamo la funzione di trasferimento di anello (\ref{eq:Funzione-trasferimento-di-anello})
+come $L\left(s\right)=R\left(s\right)G\left(s\right)$, possiamo scrivere
+l'uscita come:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Trasferimento in anello chiuso}{\footnotesize{}\index{Anello chiuso, trasferimento@{\footnotesize{}Anello chiuso, trasferimento}}}}[1cm]
+\begin{equation}
+Y\left(s\right)=\overset{{\scriptstyle F\left(s\right)}}{\overbrace{\frac{L\left(s\right)}{1+L\left(s\right)}}}W\left(s\right)+\overset{{\scriptstyle S\left(s\right)}}{\overbrace{\frac{1}{1+L\left(s\right)}}}D\left(s\right)\label{eq:Trasferimento-anello-chiuso}
+\end{equation}
+Le funzioni che abbiamo rinominato rispetto al trasferimento di anello
+sono definite in modo particolare:
+\begin{itemize}
+\item $S\left(s\right)$ è la funzione di \emph{sensitività} dell'uscita,
+che contiene l'informazione sulla sensitività dell'uscita al disturbo;
+nel progetto di sistemi di controllo si preferisce mantenere piccola
+questa funzione.
+\item $F\left(s\right)$ è la funzione di \emph{sensitività complementare},
+dato che $F\left(s\right)+S\left(s\right)=1$; idealmente cerchiamo
+di ottenere questa funzione il più vicino possibile a 1.
+\end{itemize}
+Nella pratica si realizzano queste due funzioni in modo che $F\left(s\right)$
+si comporti come un filtro passa-basso, e la funzione $S\left(s\right)$
+come un filtro passa-alto; infine, un sistema di controllo in anello
+chiuso ha un secondo vantaggio, ovvero è possibile alterare la pulsazione
+dei poli della funzione di trasferimento, in particolare tramite il
+regolatore è possibile stabilizzare un sistema altrimenti instabile
+in anello aperto.
+\begin{example}
+\emph{Sia data la seguente funzione di trasferimento:
+\[
+G\left(s\right)=\frac{2}{1-s}
+\]
+appartenente al sistema di un problema di controllo in anello chiuso,
+nel quale utilizziamo un regolatore costante pari a $R\left(s\right)=-10$.
+$\checkmark$Calcolare le funzioni di sensitività e di sensitività
+inversa.}
+\end{example}
+Calcoliamo il valore di $L\left(s\right)=R\left(s\right)\cdot G\left(s\right)=-20/\left(1-s\right)$;
+le due funzioni di sensitività sono dunque pari a:
+\[
+F\left(s\right)=\frac{L\left(s\right)}{1+L\left(s\right)}=\frac{20}{s+19}=\frac{20}{19}\cdot\frac{1}{1+\nicefrac{s}{19}}
+\]
+\[
+S\left(s\right)=1-F\left(s\right)=\frac{s+19-20}{s+19}=\frac{s-1}{s+19}=-\frac{1}{19}\cdot\frac{1-s}{1+\nicefrac{s}{19}}
+\]
+Notiamo che il polo del sistema in anello chiuso, dotato di regolatore,
+si trova in $s=-19$, a differenza del polo instabile per $s=1$ della
+funzione di trasferimento assegnata in partenza; inoltre si nota che
+la funzione di sensitività complementare ($F\left(s\right)$) ha guadagno
+circa unitario. Il modulo delle due funzioni sul diagramma di Bode
+è ne \figref{Anello-chiuso-Bode-sensitivit=0000E0-esempio}.
+
+La velocità di risposta del sistema (l'inverso del modulo del polo)
+può essere determinata dimensionando opportunamente il guadagno del
+regolatore.\demo
+
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{center}
+\includegraphics[scale=0.9]{\string"Illustrazioni/6_1-3 Bode modulo funzioni sensitività\string".pdf}
+\par\end{center}
+\captionof{figure}{Diagramma del modulo delle funzioni di sensitività}\label{fig:Anello-chiuso-Bode-sensitivit=0000E0-esempio}%
+\end{minipage}%
+\begin{minipage}[c]{0.5\textwidth}%
+Vediamo uno schema di riferimento più realistico per lo studio dei
+problemi di controllo in anello chiuso; il segnale $u\left(t\right)$
+viene dato in ingresso a un attuatore (blocco indicato con $A\left(s\right)$),
+che traduce un segnale elettrico in una interazione fisica; all'uscita
+dell'attuatore si sommano dei disturbi di attuazione $d_{{\scriptscriptstyle \text{A}}}$
+(tipicamente a bassa frequenza).%
+\end{minipage}
+
+In generale l'uscita è misurata tramite un trasduttore, che converte
+una grandezza fisica in un segnale elettrico, sottoposto a disturbi
+di misura $d_{{\scriptscriptstyle \text{T}}}$ (tipicamente ad alta
+frequenza).
+
+\begin{figure}[!h]
+\begin{centering}
+\includegraphics[scale=1.2]{\string"Illustrazioni/6_1-4 Controllo in anello chiuso dettagliato\string".pdf}
+\par\end{centering}
+\caption{Schema a blocchi per problemi di controllo in retroazione}
+\end{figure}
+
+Con l'algebra degli schemi a blocchi, possiamo ricondurci a uno schema
+semplificato:
+\begin{itemize}
+\item rimuoviamo\marginpar{Attenzione a non confondere il disturbo di processo $d$ (agisce sul
+valore effettivo dell'uscita) e $n$ (viene visto solo dal regolatore),
+quest'ultimo molto più critico} la funzione del trasduttore dall'anello di retroazione, poi moltiplicandola
+per $R\left(s\right)$ e il suo inverso per $\tilde{w}\left(t\right)$; 
+\item accorpiamo attuatore e impianto, spostando il nodo somma a valle dell'impianto
+(al posto di $G\left(s\right)$);
+\item chiamiamo $n$ la variabile del disturbo di misura;
+\item ignoriamo il trasduttore, che si comporterà come un guadagno statico
+(filtro passa basso con banda passante molto più grande di qualsiasi
+pulsazione associata a singolarità);
+\item accorpiamo tutti i disturbi additivi sull'uscita come disturbi di
+processo $d\left(t\right)$.
+\end{itemize}
+Otteniamo lo schema in figura \ref{fig:Schema-di-riferimento-controllo},
+che sarà il nostro riferimento per il progetto dei regolatori.
+\begin{figure}[!h]
+\begin{centering}
+\includegraphics[scale=1.2]{\string"Illustrazioni/6_1-5 Riferimento controllo in anello chiuso\string".pdf}
+\par\end{centering}
+\caption{\label{fig:Schema-di-riferimento-controllo}Schema di riferimento
+per problemi di controllo}
+\end{figure}
+
+
+\section{Progettazione e requisiti di un sistema di controllo}
+
+\subsection{Progetto di un sistema di controllo}
+
+In generale si compiono i seguenti passaggi preliminari alla progettazione
+di un sistema di controllo:
+\begin{enumerate}
+\item Descrivere il problema di controllo, individuando le variabili di
+interesse (ingressi, uscite, disturbi);
+\item Ricavare le specifiche da ${\scriptstyle \left(1\right)}$, per raggiungere
+il comportamento desiderato;
+\item Formalizzare un modello a partire da ${\scriptstyle \left(1\right)}$
+e ${\scriptstyle \left(2\right)}$ (esso dipende dalle specifiche
+e rappresenta un'approssimazione del problema);
+\item Progettare un regolatore a partire da ${\scriptstyle \left(3\right)}$,
+che possa soddisfare ${\scriptstyle \left(2\right)}$ (problema di
+\emph{sintesi}), oppure stabilire se un regolatore assegnato soddisfa
+${\scriptstyle \left(2\right)}$ (problema di \emph{analisi}).
+\end{enumerate}
+Il risultato del progetto sarà una funzione di trasferimento $R\left(s\right)$,
+che può essere discretizzata per essere implementata su un calcolatore.
+
+\subsection{Requisiti di un sistema di controllo}
+\begin{enumerate}
+\item Stabilità asintotica;
+\item Prestazioni statiche (riguardano il sistema una volta esauriti i transitori);
+\item Prestazioni dinamiche (velocità di risposta).
+\end{enumerate}
+Per quanto riguarda la stabilità, un sistema si dice dotato di \emph{stabilità
+nominale} quando la sua funzione di trasferimento corrisponde al comportamento
+del sistema; è necessario inoltre garantire un certo \emph{margine
+di stabilità}, per esempio prevedendo nell'anello di controllo casi
+in cui il sistema si comporti diversamente dal modello, rientrando
+comunque nelle specifiche (idealmente vorremmo un margine di stabilità
+elevato).
+
+Per quanto riguarda le prestazioni statiche, consideriamo il valore
+finale dell'uscita al termine di tutti i transitori ($t>5T$, con
+$T$ associata al polo dominante); consideriamo due tipologie di specifiche:
+\begin{itemize}
+\item \emph{Precisione di inseguimento} di riferimenti polinomiali (scalino,
+rampa, parabola), ovvero è richiesto $e\left(t\right)\ll1$, si considera
+inoltre la reiezione di disturbi polinomiali;
+\item Comportamento a fronte di segnali sinusoidali, rispetto l'ampiezza
+massima (da amplificare o attenuare) delle \emph{oscillazioni di $e\left(t\right)$}
+a fronte di $w\left(t\right)$, $d\left(t\right)$ o $n\left(t\right)$;
+\end{itemize}
+Per quanto riguarda le prestazioni dinamiche, si fa riferimento alla
+\emph{risposta allo scalino} $w\left(t\right)=A\cdot\text{sca}\left(t\right)$,
+fissando dei valori limite di tempo di assestamento, tempo di salita
+e sovraelongazione del movimento.
+
+Per quanto riguarda le prestazioni - statiche o dinamiche - definiremo
+delle \emph{prestazioni nominali}, legate all'ipotesi che il sistema
+effettivo si comporti come il modello; in caso contrario si parla
+di prestazioni robuste, rispetto allo scostamento del modello dalla
+realtà.
 
 \appendix
 
