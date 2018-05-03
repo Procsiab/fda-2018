@@ -6398,6 +6398,13 @@ stabilità esterna
 
 \begin_layout Subsection
 Segno degli autovalori
+\begin_inset CommandInset label
+LatexCommand label
+name "subsec:Segno-degli-autovalori"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -20884,6 +20891,13 @@ Il ritardo è tanto più influente sulla risposta armonica di un sistema quanto
 
 \begin_layout Section
 Diagramma polare
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Diagramma-polare"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -23670,6 +23684,506 @@ prestazioni nominali
 , legate all'ipotesi che il sistema effettivo si comporti come il modello;
  in caso contrario si parla di prestazioni robuste, rispetto allo scostamento
  del modello dalla realtà.
+\end_layout
+
+\begin_layout Section
+Criterio di Nyquist per l'asintotica stabilità
+\end_layout
+
+\begin_layout Standard
+Il criterio permette di capire se, dato un sistema in retroazione, esso
+ è stabile, osservando solo le proprietà del trasferimento di anello aperto.
+\end_layout
+
+\begin_layout Subsection
+Stabilità dei sistemi retro-azionati
+\end_layout
+
+\begin_layout Standard
+Consideriamo un sistema dotato di funzione di anello in retroazione negativa
+ e di errore di inseguimento (stiamo semplificando il modello ne 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:Schema-di-riferimento-controllo"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ Poniamoci nel caso di un sistema LTI, per il quale la stabilità è una proprietà
+ strutturale: supponiamo (d'ora in avanti) che nella funzione di trasferimento
+ non vi siano state cancellazioni, o al più esse sono state non critiche.
+\end_layout
+
+\begin_layout Standard
+Sotto queste ipotesi, l'asintotica stabilità in anello chiuso si verifica
+ se e solo se i poli della funzione di trasferimento (
+\begin_inset Formula $1/\left[1+L\left(s\right)\right]$
+\end_inset
+
+) hanno parte reale negativa; esprimendo la funzione come:
+\begin_inset Formula 
+\[
+L\left(s\right)=\frac{N\left(s\right)}{D\left(s\right)}=\frac{1}{1+\frac{N_{{\scriptscriptstyle \text{L}}}\left(s\right)}{D_{{\scriptscriptstyle \text{L}}}\left(s\right)}}=\frac{D_{{\scriptscriptstyle \text{L}}}\left(s\right)}{N_{{\scriptscriptstyle \text{L}}}\left(s\right)+D_{{\scriptscriptstyle \text{L}}}\left(s\right)}
+\]
+
+\end_inset
+
+otteniamo i suoi poli come soluzione dell'equazione
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "3cm"
+height "1pt"
+
+\end_inset
+
+
+\series bold
+\size footnotesize
+
+\begin_inset Newline newline
+\end_inset
+
+Equazione caratteristica
+\series default
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Equazione caratteristica
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[0.2cm]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+N_{{\scriptscriptstyle \text{L}}}\left(s\right)+D_{{\scriptscriptstyle \text{L}}}\left(s\right)=0\quad\left({\scriptstyle =\,1+L\left(s\right)}\right)\label{eq:Equazione-caratteristica-retroazione}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Come già studiato (si veda 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "subsec:Segno-degli-autovalori"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) è possibile determinare la stabilità asintotica studiando il segno di
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Equazione-caratteristica-retroazione"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, applicando per esempio il criterio di Routh 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "thm:Criterio-di-Routh"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+; tuttavia esso non è immediato da applicare per un sistema di ordine elevato
+ e in fase di progetto ogni modifica al trasferimento comporta il dover
+ applicare da capo il criterio.
+\end_layout
+
+\begin_layout Standard
+Dal punto di vista della progettazione, esiste un criterio molto più comodo
+ e diretto (si tratta di un metodo grafico) chiamato 
+\emph on
+criterio di Nyquist
+\emph default
+, che fornisce una condizione necessaria e sufficiente per l'asintotica
+ stabilità di un sistema in anello chiuso.
+\end_layout
+
+\begin_layout Standard
+Per utilizzare il criterio è necessario tracciare prima il 
+\emph on
+diagramma di Nyquist
+\emph default
+.
+\end_layout
+
+\begin_layout Subsection
+Diagramma di Nyquist
+\end_layout
+
+\begin_layout Standard
+Si tratta di un diagramma strettamente legato al diagramma polare (si veda
+ 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "sec:Diagramma-polare"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+): esso è l'immagine, attraverso la funzione di trasferimento 
+\begin_inset Formula $L\left(s\right)$
+\end_inset
+
+, di un percorso chiuso sul piano complesso.
+ Il diagramma consiste in un percorso chiamato cammino di Nyquist, il quale
+ comprende la curva orientata formata dal semiasse immaginario positivo,
+ una chiusura (a semicerchio) verso l'asse immaginario a 
+\begin_inset Formula $-\infty$
+\end_inset
+
+, e infine il semiasse immaginario negativo.
+\end_layout
+
+\begin_layout Standard
+Se non vi sono singolarità nell'origine si ha anche 
+\begin_inset Formula $\omega=0$
+\end_inset
+
+ nel diagramma polare, altrimenti per singolarità sull'asse immaginario
+ (poli o zeri nell'origine oppure immaginari puri) il cammino vi passa attorno
+ con semicirconferenze di raggio infinitesimo.
+\end_layout
+
+\begin_layout Standard
+Sostituendo alla variabile 
+\begin_inset Formula $s$
+\end_inset
+
+ nella funzione di anello i punti del cammino di Nyquist, si ottengono i
+ corrispondenti punti sul diagramma di Nyquist; dato che il cammino è chiuso,
+ anche il diagramma di Nyquist sarà sempre una curva chiusa (se si ha un
+ tratto del diagramma aperto, si tracciano a partire da esso tanti semicerchi
+ da 180° pari al numero di poli nell'origine).
+\end_layout
+
+\begin_layout Remark
+Un tratto del diagramma di Nyquist corrisponde esattamente al diagramma
+ polare, in particolare il tratto immaginario positivo; in aggiunta, vi
+ è la chiusura all'infinito e il tratto per numeri immaginari puri con parte
+ reale negativa (
+\begin_inset Formula $\omega<0$
+\end_inset
+
+).
+ Per quanto riguarda questo ultimo tratto, esso è il simmetrico del primo
+ tratto rispetto alla parte immaginaria, ottenuto come
+\begin_inset Formula 
+\[
+\overset{{\scriptstyle \omega>0}}{\overbrace{L\left(j\omega\right)}}=\bigl(\overset{{\scriptstyle \omega<0}}{\overbrace{L\left(j\omega^{*}\right)}}\bigr)^{*}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Criterio di Nyquist
+\end_layout
+
+\begin_layout Standard
+Gli autovalori del sistema in anello chiuso sono le soluzioni dell'equazione
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Equazione-caratteristica-retroazione"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, ovvero i valori di 
+\begin_inset Formula $s$
+\end_inset
+
+ tali che 
+\begin_inset Formula $L\left(s\right)=-1$
+\end_inset
+
+; tale punto è chiamato 
+\emph on
+punto critico
+\emph default
+ sul diagramma di Nyquist.
+\end_layout
+
+\begin_layout Standard
+Se chiamiamo 
+\begin_inset Formula $P$
+\end_inset
+
+ il numero di poli con parte reale positiva della funzione di trasferimento
+ in anello aperto (corrispondono a modi divergenti), e 
+\begin_inset Formula $N$
+\end_inset
+
+ il numero di giri orientati che il diagramma di Nyquist compie attorno
+ al punto critico (hanno segno positivo se percorsi in senso antiorario).
+\end_layout
+
+\begin_layout Standard
+Inoltre diremo che 
+\begin_inset Formula $N$
+\end_inset
+
+ non è ben definito se il diagramma passa per il punto critico.
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "3cm"
+height "1pt"
+
+\end_inset
+
+
+\series bold
+\size footnotesize
+
+\begin_inset Newline newline
+\end_inset
+
+Criterio di Nyquist
+\series default
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Criterio di Nyquist
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[-0.3cm]
+\end_layout
+
+\end_inset
+
+Una condizione necessaria e sufficiente per l'asintotica stabilità di un
+ sistema LTI in retroazione, è che 
+\begin_inset Formula $N$
+\end_inset
+
+ sia ben definito e valga 
+\begin_inset Formula $N=P$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Remark
+Se 
+\begin_inset Formula $N$
+\end_inset
+
+ non è ben definito allora il sistema in anello chiuso presenta uno o più
+ poli nell'origine.
+ Se 
+\begin_inset Formula $N<P$
+\end_inset
+
+, allora 
+\begin_inset Formula $P-N$
+\end_inset
+
+ è il numero di poli con parte reale positiva (instabili) in anello chiuso.
+\end_layout
+
+\begin_layout Subsection
+Applicazioni del criterio
+\end_layout
+
+\begin_layout Subsubsection*
+Sistemi con guadagno variabile
+\end_layout
+
+\begin_layout Standard
+Nell'anello di retroazione avremo un blocco 
+\begin_inset Formula $k$
+\end_inset
+
+ con un guadagno statico scalare e controllabile (possiamo considerarlo
+ un rudimentale regolatore); studiamo la stabilità al variare di 
+\begin_inset Formula $k$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Variando il modulo di 
+\begin_inset Formula $k$
+\end_inset
+
+, il diagramma di Nyquist viene dilatato o compresso, mentre invertendo
+ il segno di 
+\begin_inset Formula $k$
+\end_inset
+
+ si ha un a traslazione del diagramma di 180°.
+ Un trucco grafico per ottenere un diagramma qualitativo dilatato o compresso,
+ consiste nel moltiplicare la scala degli assi per lo stesso guadagno 
+\begin_inset Formula $k$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Per studiare la stabilità con 
+\begin_inset Formula $k\in\mathbb{R}$
+\end_inset
+
+, prendiamo il diagramma di Nyquist con 
+\begin_inset Formula $k=1$
+\end_inset
+
+ e consideriamo il punto critico mobile 
+\begin_inset Formula $-1/k$
+\end_inset
+
+; individuiamo sull'asse reale degli intervalli contraddistinti dal numero
+ di rotazioni compiute dal diagramma attorno al punto critico mobile.
+\end_layout
+
+\begin_layout Standard
+Dopo aver calcolato il numero di rotazioni 
+\begin_inset Formula $N_{k}$
+\end_inset
+
+ per ciascun intervallo e averlo confrontato con 
+\begin_inset Formula $P$
+\end_inset
+
+, otteniamo i valori di 
+\begin_inset Formula $k$
+\end_inset
+
+ associati a ciascun intervallo passando al reciproco.
+\end_layout
+
+\begin_layout Subsubsection*
+Prestazioni contro stabilità in retroazione
+\end_layout
+
+\begin_layout Standard
+Consideriamo un sistema di controllo come nel modello di figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Schema-di-riferimento-controllo"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, nel quale il regolatore sia un guadagno statico 
+\begin_inset Formula $k$
+\end_inset
+
+; la funzione di anello risulta 
+\begin_inset Formula $L\left(s\right)=k\cdot G\left(s\right)$
+\end_inset
+
+, mentre le funzioni di sensitività sono rispettivamente:
+\begin_inset Formula 
+\[
+F\left(s\right)=\frac{Y\left(s\right)}{w\left(s\right)}=\frac{k\cdot G\left(s\right)}{1+k\cdot G\left(s\right)}\overset{{\scriptscriptstyle k\rightarrow+\infty}}{\longrightarrow}1
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+S\left(s\right)=\frac{E\left(s\right)}{D\left(s\right)}=-\frac{1}{1+k\cdot G\left(s\right)}\overset{{\scriptscriptstyle k\rightarrow+\infty}}{\longrightarrow}0
+\]
+
+\end_inset
+
+Idealmente vorremmo gli andamenti indicati per 
+\begin_inset Formula $k\rightarrow+\infty$
+\end_inset
+
+, ovvero che per un guadagno molto elevato il sistema abbia prestazioni
+ altrettanto elevate, essendo in grado di inseguire qualsiasi riferimento
+ e annullare ogni disturbo.
+\end_layout
+
+\begin_layout Standard
+Applicando tuttavia il criterio di Nyquist, notiamo che a furia di aumentare
+ il guadagno (partiamo da una situazione di asintotica stabilità) vi sarà
+ un valore di 
+\begin_inset Formula $k$
+\end_inset
+
+ per cui il diagramma di Nyquist passa per il punto critico, rendendo il
+ sistema instabile; per avere un aumento di prestazioni bisogna spingere
+ il sistema al limite della stabilità.
 \end_layout
 
 \begin_layout Chapter

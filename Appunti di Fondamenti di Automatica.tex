@@ -1804,7 +1804,7 @@ di ingressi limitati nel tempo, anche le uscite saranno limitate nel
 tempo.
 \end{enumerate}
 
-\subsection{Segno degli autovalori}
+\subsection{Segno degli autovalori\label{subsec:Segno-degli-autovalori}}
 
 Sappiamo che gli autovalori della matrice di stato sono i valori per
 cui vale la Definizione \ref{def:Autovalore} e risolvono (\ref{eq:Polinomio-caratteristico});
@@ -5382,7 +5382,7 @@ quanto più le frequenze su cui agisce sono elevate, rispetto al valore
 del tempo di ritardo $\tau$ (per un valore molto piccolo di ritardo,
 solo frequenze elevate della risposta armonica saranno influenzate).\pagebreak{}
 
-\section{Diagramma polare}
+\section{Diagramma polare\label{sec:Diagramma-polare}}
 
 \subsection{Definizione}
 
@@ -6097,6 +6097,157 @@ delle \emph{prestazioni nominali}, legate all'ipotesi che il sistema
 effettivo si comporti come il modello; in caso contrario si parla
 di prestazioni robuste, rispetto allo scostamento del modello dalla
 realtà.
+
+\section{Criterio di Nyquist per l'asintotica stabilità}
+
+Il criterio permette di capire se, dato un sistema in retroazione,
+esso è stabile, osservando solo le proprietà del trasferimento di
+anello aperto.
+
+\subsection{Stabilità dei sistemi retro-azionati}
+
+Consideriamo un sistema dotato di funzione di anello in retroazione
+negativa e di errore di inseguimento (stiamo semplificando il modello
+ne \figref{Schema-di-riferimento-controllo}). Poniamoci nel caso
+di un sistema LTI, per il quale la stabilità è una proprietà strutturale:
+supponiamo (d'ora in avanti) che nella funzione di trasferimento non
+vi siano state cancellazioni, o al più esse sono state non critiche.
+
+Sotto queste ipotesi, l'asintotica stabilità in anello chiuso si verifica
+se e solo se i poli della funzione di trasferimento ($1/\left[1+L\left(s\right)\right]$)
+hanno parte reale negativa; esprimendo la funzione come:
+\[
+L\left(s\right)=\frac{N\left(s\right)}{D\left(s\right)}=\frac{1}{1+\frac{N_{{\scriptscriptstyle \text{L}}}\left(s\right)}{D_{{\scriptscriptstyle \text{L}}}\left(s\right)}}=\frac{D_{{\scriptscriptstyle \text{L}}}\left(s\right)}{N_{{\scriptscriptstyle \text{L}}}\left(s\right)+D_{{\scriptscriptstyle \text{L}}}\left(s\right)}
+\]
+otteniamo i suoi poli come soluzione dell'equazione\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Equazione caratteristica}{\footnotesize{}\index{Equazione caratteristica@{\footnotesize{}Equazione caratteristica}}}}[0.2cm]
+\begin{equation}
+N_{{\scriptscriptstyle \text{L}}}\left(s\right)+D_{{\scriptscriptstyle \text{L}}}\left(s\right)=0\quad\left({\scriptstyle =\,1+L\left(s\right)}\right)\label{eq:Equazione-caratteristica-retroazione}
+\end{equation}
+
+Come già studiato (si veda \subsecref{Segno-degli-autovalori}) è
+possibile determinare la stabilità asintotica studiando il segno di
+(\ref{eq:Equazione-caratteristica-retroazione}), applicando per esempio
+il criterio di Routh (\ref{thm:Criterio-di-Routh}); tuttavia esso
+non è immediato da applicare per un sistema di ordine elevato e in
+fase di progetto ogni modifica al trasferimento comporta il dover
+applicare da capo il criterio.
+
+Dal punto di vista della progettazione, esiste un criterio molto più
+comodo e diretto (si tratta di un metodo grafico) chiamato \emph{criterio
+di Nyquist}, che fornisce una condizione necessaria e sufficiente
+per l'asintotica stabilità di un sistema in anello chiuso.
+
+Per utilizzare il criterio è necessario tracciare prima il \emph{diagramma
+di Nyquist}.
+
+\subsection{Diagramma di Nyquist}
+
+Si tratta di un diagramma strettamente legato al diagramma polare
+(si veda \secref{Diagramma-polare}): esso è l'immagine, attraverso
+la funzione di trasferimento $L\left(s\right)$, di un percorso chiuso
+sul piano complesso. Il diagramma consiste in un percorso chiamato
+cammino di Nyquist, il quale comprende la curva orientata formata
+dal semiasse immaginario positivo, una chiusura (a semicerchio) verso
+l'asse immaginario a $-\infty$, e infine il semiasse immaginario
+negativo.
+
+Se non vi sono singolarità nell'origine si ha anche $\omega=0$ nel
+diagramma polare, altrimenti per singolarità sull'asse immaginario
+(poli o zeri nell'origine oppure immaginari puri) il cammino vi passa
+attorno con semicirconferenze di raggio infinitesimo.
+
+Sostituendo alla variabile $s$ nella funzione di anello i punti del
+cammino di Nyquist, si ottengono i corrispondenti punti sul diagramma
+di Nyquist; dato che il cammino è chiuso, anche il diagramma di Nyquist
+sarà sempre una curva chiusa (se si ha un tratto del diagramma aperto,
+si tracciano a partire da esso tanti semicerchi da 180° pari al numero
+di poli nell'origine).
+\begin{rem}
+Un tratto del diagramma di Nyquist corrisponde esattamente al diagramma
+polare, in particolare il tratto immaginario positivo; in aggiunta,
+vi è la chiusura all'infinito e il tratto per numeri immaginari puri
+con parte reale negativa ($\omega<0$). Per quanto riguarda questo
+ultimo tratto, esso è il simmetrico del primo tratto rispetto alla
+parte immaginaria, ottenuto come
+\[
+\overset{{\scriptstyle \omega>0}}{\overbrace{L\left(j\omega\right)}}=\bigl(\overset{{\scriptstyle \omega<0}}{\overbrace{L\left(j\omega^{*}\right)}}\bigr)^{*}
+\]
+\end{rem}
+
+\subsection{Criterio di Nyquist}
+
+Gli autovalori del sistema in anello chiuso sono le soluzioni dell'equazione
+(\ref{eq:Equazione-caratteristica-retroazione}), ovvero i valori
+di $s$ tali che $L\left(s\right)=-1$; tale punto è chiamato \emph{punto
+critico} sul diagramma di Nyquist.
+
+Se chiamiamo $P$ il numero di poli con parte reale positiva della
+funzione di trasferimento in anello aperto (corrispondono a modi divergenti),
+e $N$ il numero di giri orientati che il diagramma di Nyquist compie
+attorno al punto critico (hanno segno positivo se percorsi in senso
+antiorario).
+
+Inoltre diremo che $N$ non è ben definito se il diagramma passa per
+il punto critico.
+\begin{thm}
+\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Criterio di Nyquist}{\footnotesize{}\index{Criterio di Nyquist@{\footnotesize{}Criterio di Nyquist}}}}[-0.3cm]Una condizione necessaria e sufficiente per l'asintotica
+stabilità di un sistema LTI in retroazione, è che $N$ sia ben definito
+e valga $N=P$.
+\end{thm}
+\begin{rem}
+Se $N$ non è ben definito allora il sistema in anello chiuso presenta
+uno o più poli nell'origine. Se $N<P$, allora $P-N$ è il numero
+di poli con parte reale positiva (instabili) in anello chiuso.
+\end{rem}
+
+\subsection{Applicazioni del criterio}
+
+\subsubsection*{Sistemi con guadagno variabile}
+
+Nell'anello di retroazione avremo un blocco $k$ con un guadagno statico
+scalare e controllabile (possiamo considerarlo un rudimentale regolatore);
+studiamo la stabilità al variare di $k$.
+
+Variando il modulo di $k$, il diagramma di Nyquist viene dilatato
+o compresso, mentre invertendo il segno di $k$ si ha un a traslazione
+del diagramma di 180°. Un trucco grafico per ottenere un diagramma
+qualitativo dilatato o compresso, consiste nel moltiplicare la scala
+degli assi per lo stesso guadagno $k$.
+
+Per studiare la stabilità con $k\in\mathbb{R}$, prendiamo il diagramma
+di Nyquist con $k=1$ e consideriamo il punto critico mobile $-1/k$;
+individuiamo sull'asse reale degli intervalli contraddistinti dal
+numero di rotazioni compiute dal diagramma attorno al punto critico
+mobile.
+
+Dopo aver calcolato il numero di rotazioni $N_{k}$ per ciascun intervallo
+e averlo confrontato con $P$, otteniamo i valori di $k$ associati
+a ciascun intervallo passando al reciproco.
+
+\subsubsection*{Prestazioni contro stabilità in retroazione}
+
+Consideriamo un sistema di controllo come nel modello di figura \ref{fig:Schema-di-riferimento-controllo},
+nel quale il regolatore sia un guadagno statico $k$; la funzione
+di anello risulta $L\left(s\right)=k\cdot G\left(s\right)$, mentre
+le funzioni di sensitività sono rispettivamente:
+\[
+F\left(s\right)=\frac{Y\left(s\right)}{w\left(s\right)}=\frac{k\cdot G\left(s\right)}{1+k\cdot G\left(s\right)}\overset{{\scriptscriptstyle k\rightarrow+\infty}}{\longrightarrow}1
+\]
+\[
+S\left(s\right)=\frac{E\left(s\right)}{D\left(s\right)}=-\frac{1}{1+k\cdot G\left(s\right)}\overset{{\scriptscriptstyle k\rightarrow+\infty}}{\longrightarrow}0
+\]
+Idealmente vorremmo gli andamenti indicati per $k\rightarrow+\infty$,
+ovvero che per un guadagno molto elevato il sistema abbia prestazioni
+altrettanto elevate, essendo in grado di inseguire qualsiasi riferimento
+e annullare ogni disturbo.
+
+Applicando tuttavia il criterio di Nyquist, notiamo che a furia di
+aumentare il guadagno (partiamo da una situazione di asintotica stabilità)
+vi sarà un valore di $k$ per cui il diagramma di Nyquist passa per
+il punto critico, rendendo il sistema instabile; per avere un aumento
+di prestazioni bisogna spingere il sistema al limite della stabilità.
 
 \appendix
 
