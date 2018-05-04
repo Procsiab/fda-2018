@@ -21590,6 +21590,12 @@ status open
 \end_layout
 
 \begin_layout Section
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Sistemi-a-sfasamento-minimo"
+
+\end_inset
+
 Sistemi a sfasamento minimo
 \end_layout
 
@@ -23974,6 +23980,13 @@ Inoltre diremo che
 \end_layout
 
 \begin_layout Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:Criterio-di-Nyquist"
+
+\end_inset
+
+
 \begin_inset Marginal
 status collapsed
 
@@ -24184,6 +24197,451 @@ Applicando tuttavia il criterio di Nyquist, notiamo che a furia di aumentare
  per cui il diagramma di Nyquist passa per il punto critico, rendendo il
  sistema instabile; per avere un aumento di prestazioni bisogna spingere
  il sistema al limite della stabilità.
+\end_layout
+
+\begin_layout Subsection
+Condizioni sufficienti per la stabilità asintotica
+\end_layout
+
+\begin_layout Standard
+Supponiamo che non vi siano poli instabili, con parte reale positiva (
+\begin_inset Formula $P=0$
+\end_inset
+
+):
+\end_layout
+
+\begin_layout Enumerate
+Se vale 
+\begin_inset Formula $\left|L\left(j\omega\right)\right|<1\,\forall\omega\in\mathbb{R}$
+\end_inset
+
+, allora il diagramma di Nyquist è interamente contenuto nella circonferenza
+ di raggio unitario (non potrà incrociare o girare attorno al punto).
+\end_layout
+
+\begin_layout Enumerate
+Se vale 
+\begin_inset Formula $\left|\arg\left(j\omega\right)\right|<\pi\,\forall\omega\in\mathbb{R}$
+\end_inset
+
+, il diagramma di Nyquist non passerà per il punto critico né girerà mai
+ attorno ad esso.
+\end_layout
+
+\begin_layout Standard
+Le precedenti ipotesi, verificandosi, determinano l'asintotica stabilità
+ del sistema, e si dimostrano usando il Teorema 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:Criterio-di-Nyquist"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Prendiamo un sistema con ritardo di tempo 
+\begin_inset Formula $\tau>0$
+\end_inset
+
+; nel dominio di Laplace esso avrà un andamento con coefficiente 
+\begin_inset Formula $e^{-\tau s}$
+\end_inset
+
+, la cui corrispondente risposta armonica vale 
+\begin_inset Formula $e^{-\tau j\omega}$
+\end_inset
+
+; il ritardo di fase introdotto è pari a 
+\begin_inset Formula $\arg\left(e^{-\tau j\omega}\right)=-\tau\omega$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Possiamo anche in questo caso sfruttare il criterio di Nyquist, e le due
+ ipotesi appena enunciate (tenendo conto dello sfasamento dovuto al ritardo).
+\end_layout
+
+\begin_layout Section
+Margini di stabilità
+\end_layout
+
+\begin_layout Standard
+Fino ad ora abbiamo considerato la stabilità di un sistema di controllo
+ nelle cosiddette 
+\emph on
+condizioni nominali
+\emph default
+, ovvero avendo nota con certezza la funzione di trasferimento.
+ Nella pratica vi è sempre un grado di approssimazione nella costruzione
+ dei modelli, e questo comporta un grado di incertezza nella funzione di
+ trasferimento.
+\end_layout
+
+\begin_layout Subsection
+Margine di stabilità vettoriale
+\end_layout
+
+\begin_layout Standard
+Prendiamo il diagramma polare di una funzione di trasferimento; per semplicità
+ ci poniamo nel caso 
+\begin_inset Formula $P=0$
+\end_inset
+
+, e cerchiamo eventuali tratti del diagramma di Nyquist che girano attorno
+ al punto critico.
+\end_layout
+
+\begin_layout Standard
+Rispetto alla risposta in frequenza (nominale), l'andamento effettivo sul
+ diagramma polare si trova all'interno di una certa banda di incertezza
+ (centrata sull'andamento nominale); si hanno condizioni critiche quando
+ la banda di incertezza comprende il punto critico.
+\end_layout
+
+\begin_layout Definition
+La distanza tra il punto 
+\begin_inset Formula $-1,\,j0$
+\end_inset
+
+ e la curva 
+\begin_inset Formula $L\left(j\omega\right)$
+\end_inset
+
+ si chiama margine di stabilità vettoriale e si indica con 
+\begin_inset Formula $\Delta n$
+\end_inset
+
+; questo valore determina la massima ampiezza che la banda di incertezza
+ può assumere.
+\end_layout
+
+\begin_layout Standard
+Per ciascuna pulsazione si ha il valore di incertezza 
+\begin_inset Formula $\Delta\left(j\omega\right)$
+\end_inset
+
+, il quale è rappresentato da un cerchio attorno a ciascun punto del diagramma;
+ il suo raggio non deve mai superare il valore di 
+\begin_inset Formula $\Delta n$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Margine di guadagno
+\end_layout
+
+\begin_layout Standard
+Immaginiamo di avere un diagramma di Nyquist nel quale esiste un valore
+ di 
+\begin_inset Formula $\omega$
+\end_inset
+
+ per cui la fase valga 
+\begin_inset Formula $-180°$
+\end_inset
+
+, ovvero 
+\begin_inset Formula $L\left(j\omega\pi\right)$
+\end_inset
+
+, e indichiamo la fase di tale punto
+\begin_inset Formula 
+\begin{equation}
+\omega_{\pi}=\arg\left(L\left(j\omega\pi\right)\right)\label{eq:Margine-di-guadagno}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+Il valore di guadagno che, moltiplicato per la funzione di trasferimento,
+ fa sì che il punto 
+\begin_inset Formula $L\left(j\omega\pi\right)$
+\end_inset
+
+ si sovrapponga al punto critico si chiama 
+\emph on
+margine di guadagno
+\emph default
+; in generale possiamo indicarlo come 
+\begin_inset Formula $k_{{\scriptscriptstyle \text{m}}}=1/L\left(j\omega\pi\right)$
+\end_inset
+
+, che sarebbe il modulo della distanza dal punto in 
+\begin_inset Formula $\omega_{\pi}$
+\end_inset
+
+ al punto critico.
+\end_layout
+
+\begin_layout Standard
+Nel caso di una funzione di trasferimento la cui fase non raggiunge mai
+ i 180°, essa avrà margine di guadagno infinito.
+\end_layout
+
+\begin_layout Subsection
+Margine di fase
+\end_layout
+
+\begin_layout Standard
+Prendiamo una funzione di trasferimento che abbia diagramma di Nyquist che
+ abbia un punto in comune con la circonferenza di raggio unitario; chiamiamo
+ la pulsazione di tale punto 
+\emph on
+pulsazione critica
+\emph default
+, definita come:
+\begin_inset Formula 
+\begin{equation}
+\omega_{{\scriptscriptstyle \text{C}}}\coloneqq\left|L\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)\right|=1\label{eq:Margine-di-fase}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Definition
+La distanza angolare dal punto in 
+\begin_inset Formula $\omega_{{\scriptscriptstyle \text{C}}}$
+\end_inset
+
+ al punto critico si chiama 
+\emph on
+margine di fase
+\emph default
+; se chiamiamo la fase della funzione di risposta armonica ruotata alla
+ pulsazione critica 
+\begin_inset Formula $\phi_{{\scriptscriptstyle \text{C}}}=\arg\left(L\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)\right)$
+\end_inset
+
+, indichiamo il margine di fase come:
+\begin_inset Formula 
+\[
+\phi_{{\scriptscriptstyle \text{m}}}=180°-\phi_{{\scriptscriptstyle \text{C}}}
+\]
+
+\end_inset
+
+Se vale che 
+\begin_inset Formula $\left|L\left(j\omega\right)\right|<1\,\forall\omega\in\mathbb{R}$
+\end_inset
+
+, allora il margine di fase è infinito.
+\end_layout
+
+\begin_layout Standard
+In presenza di un ritardo di tempo, il margine di fase vale 
+\begin_inset Formula $\phi_{{\scriptscriptstyle \text{m}}}=180°-\tau\omega_{{\scriptscriptstyle \text{C}}}$
+\end_inset
+
+, da cui si ricava che il massimo ritardo tollerabile (in radianti) vale
+ 
+\begin_inset Formula $\tau_{{\scriptscriptstyle \text{MAX}}}=\phi_{{\scriptscriptstyle \text{m}}}/\omega_{{\scriptscriptstyle \text{C}}}$
+\end_inset
+
+.
+ Possiamo allora interpretare il margine di fase anche come il massimo ritardo
+ ammissibile prima di avere instabilità.
+\end_layout
+
+\begin_layout Subsection
+Casi particolari
+\end_layout
+
+\begin_layout Standard
+Possiamo incontrare dei casi nei quali il margine di guadagno o di fase
+ è molto elevato, mentre l'altro è piccolo; allora è necessario usare entrambi
+ i criteri per discutere la stabilità di un sistema.
+ Si noti che esistono anche casi in cui, non ostante entrambi i margini
+ siano elevati, il sistema sia comunque al limite della stabilità (in particolar
+e nel caso di poli risonanti per piccole frequenze).
+\end_layout
+
+\begin_layout Standard
+In presenza di più valori per i quali valgono le condizioni 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Margine-di-guadagno"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ e/o 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Margine-di-fase"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, dobbiamo scegliere il più critico (quello che sul diagramma di Nyquist
+ sia più prossimo al punto critico).
+\end_layout
+
+\begin_layout Section
+Criterio di Bode
+\end_layout
+
+\begin_layout Standard
+Per applicare questo criterio è necessario verificare tre ipotesi preliminari:
+\end_layout
+
+\begin_layout Enumerate
+la funzione di trasferimento in anello aperto non abbia poli con parte reale
+ positiva (
+\begin_inset Formula $P=0$
+\end_inset
+
+);
+\end_layout
+
+\begin_layout Enumerate
+il diagramma di Bode del modulo della risposta armonica, attraversi una
+ sola volta l'asse a 
+\begin_inset Formula $0\,\text{dB}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+la funzione di trasferimento sia strettamente propria (per 
+\begin_inset Formula $\omega\rightarrow+\infty$
+\end_inset
+
+ il modulo tende a zero).
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "3cm"
+height "1pt"
+
+\end_inset
+
+
+\series bold
+\size footnotesize
+
+\begin_inset Newline newline
+\end_inset
+
+Criterio di Bode
+\series default
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Criterio di Bode
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Una volta verificate le tre ipotesi precedenti, si può dire che un sistema
+ LTI in retroazione è asintoticamente stabile se e solo se:
+\end_layout
+
+\begin_layout Theorem
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Itemize
+il guadagno statico è positivo (
+\begin_inset Formula $\mu>0$
+\end_inset
+
+);
+\end_layout
+
+\begin_layout Itemize
+il margine di fase è positivo (
+\begin_inset Formula $\phi_{{\scriptscriptstyle \text{m}}}>0$
+\end_inset
+
+).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Questo criterio è un'applicazione in un caso semplificato del criterio di
+ Nyquist che ci solleva dal tracciare il diagramma di Nyquist.
+\end_layout
+
+\begin_layout Corollary
+Se il sistema è anche a sfasamento minimo (guadagno sempre positivo e diagramma
+ della fase ottenibile direttamente da quello del modulo, si veda 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "sec:Sistemi-a-sfasamento-minimo"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), esso è asintoticamente stabile se la sua pendenza finale è maggiore di
+ 
+\begin_inset Formula $-60\,\text{dB}/\text{dec}$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Chapter

@@ -5530,7 +5530,7 @@ esponenziale (dovuto al contributo del ritardo).
 \end{minipage}\bigskip{}
 
 
-\section{Sistemi a sfasamento minimo}
+\section{\label{sec:Sistemi-a-sfasamento-minimo}Sistemi a sfasamento minimo}
 
 Supponiamo di avere il diagramma di Bode del modulo di una risposta
 armonica: è possibile tracciare il diagramma della fase?
@@ -6191,7 +6191,7 @@ antiorario).
 Inoltre diremo che $N$ non è ben definito se il diagramma passa per
 il punto critico.
 \begin{thm}
-\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\label{thm:Criterio-di-Nyquist}\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
 \textbf{\footnotesize{}Criterio di Nyquist}{\footnotesize{}\index{Criterio di Nyquist@{\footnotesize{}Criterio di Nyquist}}}}[-0.3cm]Una condizione necessaria e sufficiente per l'asintotica
 stabilità di un sistema LTI in retroazione, è che $N$ sia ben definito
 e valga $N=P$.
@@ -6248,6 +6248,155 @@ aumentare il guadagno (partiamo da una situazione di asintotica stabilità)
 vi sarà un valore di $k$ per cui il diagramma di Nyquist passa per
 il punto critico, rendendo il sistema instabile; per avere un aumento
 di prestazioni bisogna spingere il sistema al limite della stabilità.
+
+\subsection{Condizioni sufficienti per la stabilità asintotica}
+
+Supponiamo che non vi siano poli instabili, con parte reale positiva
+($P=0$):
+\begin{enumerate}
+\item Se vale $\left|L\left(j\omega\right)\right|<1\,\forall\omega\in\mathbb{R}$,
+allora il diagramma di Nyquist è interamente contenuto nella circonferenza
+di raggio unitario (non potrà incrociare o girare attorno al punto).
+\item Se vale $\left|\arg\left(j\omega\right)\right|<\pi\,\forall\omega\in\mathbb{R}$,
+il diagramma di Nyquist non passerà per il punto critico né girerà
+mai attorno ad esso.
+\end{enumerate}
+Le precedenti ipotesi, verificandosi, determinano l'asintotica stabilità
+del sistema, e si dimostrano usando il Teorema \ref{thm:Criterio-di-Nyquist}.
+
+~
+
+Prendiamo un sistema con ritardo di tempo $\tau>0$; nel dominio di
+Laplace esso avrà un andamento con coefficiente $e^{-\tau s}$, la
+cui corrispondente risposta armonica vale $e^{-\tau j\omega}$; il
+ritardo di fase introdotto è pari a $\arg\left(e^{-\tau j\omega}\right)=-\tau\omega$.
+
+Possiamo anche in questo caso sfruttare il criterio di Nyquist, e
+le due ipotesi appena enunciate (tenendo conto dello sfasamento dovuto
+al ritardo).
+
+\section{Margini di stabilità}
+
+Fino ad ora abbiamo considerato la stabilità di un sistema di controllo
+nelle cosiddette \emph{condizioni nominali}, ovvero avendo nota con
+certezza la funzione di trasferimento. Nella pratica vi è sempre un
+grado di approssimazione nella costruzione dei modelli, e questo comporta
+un grado di incertezza nella funzione di trasferimento.
+
+\subsection{Margine di stabilità vettoriale}
+
+Prendiamo il diagramma polare di una funzione di trasferimento; per
+semplicità ci poniamo nel caso $P=0$, e cerchiamo eventuali tratti
+del diagramma di Nyquist che girano attorno al punto critico.
+
+Rispetto alla risposta in frequenza (nominale), l'andamento effettivo
+sul diagramma polare si trova all'interno di una certa banda di incertezza
+(centrata sull'andamento nominale); si hanno condizioni critiche quando
+la banda di incertezza comprende il punto critico.
+\begin{defn}
+La distanza tra il punto $-1,\,j0$ e la curva $L\left(j\omega\right)$
+si chiama margine di stabilità vettoriale e si indica con $\Delta n$;
+questo valore determina la massima ampiezza che la banda di incertezza
+può assumere.
+\end{defn}
+Per ciascuna pulsazione si ha il valore di incertezza $\Delta\left(j\omega\right)$,
+il quale è rappresentato da un cerchio attorno a ciascun punto del
+diagramma; il suo raggio non deve mai superare il valore di $\Delta n$.
+
+\subsection{Margine di guadagno}
+
+Immaginiamo di avere un diagramma di Nyquist nel quale esiste un valore
+di $\omega$ per cui la fase valga $-180{^\circ}$, ovvero $L\left(j\omega\pi\right)$,
+e indichiamo la fase di tale punto
+\begin{equation}
+\omega_{\pi}=\arg\left(L\left(j\omega\pi\right)\right)\label{eq:Margine-di-guadagno}
+\end{equation}
+
+\begin{defn}
+Il valore di guadagno che, moltiplicato per la funzione di trasferimento,
+fa sì che il punto $L\left(j\omega\pi\right)$ si sovrapponga al punto
+critico si chiama \emph{margine di guadagno}; in generale possiamo
+indicarlo come $k_{{\scriptscriptstyle \text{m}}}=1/L\left(j\omega\pi\right)$,
+che sarebbe il modulo della distanza dal punto in $\omega_{\pi}$
+al punto critico.
+\end{defn}
+Nel caso di una funzione di trasferimento la cui fase non raggiunge
+mai i 180°, essa avrà margine di guadagno infinito.
+
+\subsection{Margine di fase}
+
+Prendiamo una funzione di trasferimento che abbia diagramma di Nyquist
+che abbia un punto in comune con la circonferenza di raggio unitario;
+chiamiamo la pulsazione di tale punto \emph{pulsazione critica}, definita
+come:
+\begin{equation}
+\omega_{{\scriptscriptstyle \text{C}}}\coloneqq\left|L\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)\right|=1\label{eq:Margine-di-fase}
+\end{equation}
+
+\begin{defn}
+La distanza angolare dal punto in $\omega_{{\scriptscriptstyle \text{C}}}$
+al punto critico si chiama \emph{margine di fase}; se chiamiamo la
+fase della funzione di risposta armonica ruotata alla pulsazione critica
+$\phi_{{\scriptscriptstyle \text{C}}}=\arg\left(L\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)\right)$,
+indichiamo il margine di fase come:
+\[
+\phi_{{\scriptscriptstyle \text{m}}}=180{^\circ}-\phi_{{\scriptscriptstyle \text{C}}}
+\]
+Se vale che $\left|L\left(j\omega\right)\right|<1\,\forall\omega\in\mathbb{R}$,
+allora il margine di fase è infinito.
+\end{defn}
+In presenza di un ritardo di tempo, il margine di fase vale $\phi_{{\scriptscriptstyle \text{m}}}=180{^\circ}-\tau\omega_{{\scriptscriptstyle \text{C}}}$,
+da cui si ricava che il massimo ritardo tollerabile (in radianti)
+vale $\tau_{{\scriptscriptstyle \text{MAX}}}=\phi_{{\scriptscriptstyle \text{m}}}/\omega_{{\scriptscriptstyle \text{C}}}$.
+Possiamo allora interpretare il margine di fase anche come il massimo
+ritardo ammissibile prima di avere instabilità.
+
+\subsection{Casi particolari}
+
+Possiamo incontrare dei casi nei quali il margine di guadagno o di
+fase è molto elevato, mentre l'altro è piccolo; allora è necessario
+usare entrambi i criteri per discutere la stabilità di un sistema.
+Si noti che esistono anche casi in cui, non ostante entrambi i margini
+siano elevati, il sistema sia comunque al limite della stabilità (in
+particolare nel caso di poli risonanti per piccole frequenze).
+
+In presenza di più valori per i quali valgono le condizioni (\ref{eq:Margine-di-guadagno})
+e/o (\ref{eq:Margine-di-fase}), dobbiamo scegliere il più critico
+(quello che sul diagramma di Nyquist sia più prossimo al punto critico).
+
+\section{Criterio di Bode}
+
+Per applicare questo criterio è necessario verificare tre ipotesi
+preliminari:
+\begin{enumerate}
+\item la funzione di trasferimento in anello aperto non abbia poli con parte
+reale positiva ($P=0$);
+\item il diagramma di Bode del modulo della risposta armonica, attraversi
+una sola volta l'asse a $0\,\text{dB}$;
+\item la funzione di trasferimento sia strettamente propria (per $\omega\rightarrow+\infty$
+il modulo tende a zero).
+\end{enumerate}
+\begin{thm}
+\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Criterio di Bode}{\footnotesize{}\index{Criterio di Bode@{\footnotesize{}Criterio di Bode}}}}Una volta verificate le tre ipotesi precedenti, si può dire che un
+sistema LTI in retroazione è asintoticamente stabile se e solo se:
+
+\begin{minipage}[t]{1\columnwidth}%
+\begin{itemize}
+\item il guadagno statico è positivo ($\mu>0$);
+\item il margine di fase è positivo ($\phi_{{\scriptscriptstyle \text{m}}}>0$).
+\end{itemize}
+%
+\end{minipage}
+\end{thm}
+Questo criterio è un'applicazione in un caso semplificato del criterio
+di Nyquist che ci solleva dal tracciare il diagramma di Nyquist.
+\begin{cor}
+Se il sistema è anche a sfasamento minimo (guadagno sempre positivo
+e diagramma della fase ottenibile direttamente da quello del modulo,
+si veda \secref{Sistemi-a-sfasamento-minimo}), esso è asintoticamente
+stabile se la sua pendenza finale è maggiore di $-60\,\text{dB}/\text{dec}$.
+\end{cor}
 
 \appendix
 
