@@ -2857,7 +2857,7 @@ dell'equilibrio. Come per i sistemi lineari, valgono i risultati sulla
 stabilità asintotica e sul modulo degli autovalori della matrice di
 stato $A$. In particolare enunciamo i seguenti teoremi:
 \begin{thm}
-Lo stato di equilibrio $\overline{x}$ elativo all'ingresso $\overline{u}$
+Lo stato di equilibrio $\overline{x}$ relativo all'ingresso $\overline{u}$
 per un sistema non lineare della forma (\ref{eq:Forma-standard-matrice-LTI-discreto}),
 si dice asintoticamente stabile se tutti gli autovalori della matrice
 di stato A del sistema (\ref{eq:Forma-linearizzata-tempo-discreto})
@@ -4431,7 +4431,7 @@ otteniamo il trasferimento $G\left(s\right)=\frac{\left(s+2\right)\left(s+3\righ
 Notiamo che il grado del denominatore dipende strettamente dalla scelta
 del ramo diretto, in presenza di cancellazioni.
 
-\chapter{Risposta in frequenza}
+\chapter{Risposta in frequenza\label{chap:Risposta-in-frequenza}}
 
 \section{Risposta alla sinusoide}
 
@@ -6231,7 +6231,7 @@ a ciascun intervallo passando al reciproco.
 Consideriamo un sistema di controllo come nel modello di figura \ref{fig:Schema-di-riferimento-controllo},
 nel quale il regolatore sia un guadagno statico $k$; la funzione
 di anello risulta $L\left(s\right)=k\cdot G\left(s\right)$, mentre
-le funzioni di sensitività sono rispettivamente:
+le funzioni di sensitività sono rispettivamente
 \[
 F\left(s\right)=\frac{Y\left(s\right)}{w\left(s\right)}=\frac{k\cdot G\left(s\right)}{1+k\cdot G\left(s\right)}\overset{{\scriptscriptstyle k\rightarrow+\infty}}{\longrightarrow}1
 \]
@@ -6397,6 +6397,242 @@ e diagramma della fase ottenibile direttamente da quello del modulo,
 si veda \secref{Sistemi-a-sfasamento-minimo}), esso è asintoticamente
 stabile se la sua pendenza finale è maggiore di $-60\,\text{dB}/\text{dec}$.
 \end{cor}
+
+\section{Prestazioni statiche}
+
+\subsection{Risposta degli ingressi di interesse}
+
+Mentre la stabilità riguarda le proprietà interne del sistema, le
+prestazioni riguardano il comportamento degli ingressi e delle uscite;
+individuiamo ingressi e \marginpar{La variabile di comando è l'ingresso all'impianto ma potrebbe essere
+limitata dalla specifica: infatti essa è legata all'energia consumata
+dal sistema per funzionare}uscite sul modello di sistema in retroazione (si veda \figref{Schema-di-riferimento-controllo}),
+e analizziamo i rispettivi movimenti con l'algebra degli schemi a
+blocchi:
+\begin{itemize}
+\item le uscite di interesse sono l'uscita del sistema $Y\left(s\right)$
+a valle di disturbi, l'errore di inseguimento $E\left(s\right)$ come
+differenza tra andamento desiderato e uscita, il comando $U\left(s\right)$
+che il regolatore applica all'impianto;
+\item gli ingressi di interesse sono i segnali che arrivano dall'esterno,
+ovvero l'ingresso desiderato $W\left(s\right)$, il disturbo di processo
+$D\left(s\right)$ e il disturbo di misura $N\left(s\right)$.
+\end{itemize}
+Le funzioni di trasferimento tra ingressi e uscite individuati si
+ottengono a partire dalle funzioni di sensitività (\ref{eq:Trasferimento-anello-chiuso}):
+\begin{equation}
+F\left(s\right)=\frac{L\left(s\right)}{1+L\left(s\right)},\qquad S\left(s\right)=\frac{1}{1+L\left(s\right)},\qquad Q\left(s\right)=\frac{R\left(s\right)}{1+L\left(s\right)}\label{eq:Funzioni-di-sensitivit=0000E0}
+\end{equation}
+dove la funzione $Q\left(s\right)$ è la sensitività del comando.
+
+Utilizzando l'algebra degli schemi a blocchi (dalla figura \ref{fig:Schema-di-riferimento-controllo}),
+costruiamo la relazione matriciale che lega i tre ingressi con le
+uscite che stiamo analizzando, semplificando i risultati tramite le
+formule (\ref{eq:Funzioni-di-sensitivit=0000E0}):
+\begin{equation}
+\begin{bmatrix}Y\left(s\right)\\
+E\left(s\right)\\
+U\left(s\right)
+\end{bmatrix}=\begin{bmatrix}F\left(s\right) & S\left(s\right) & -F\left(s\right)\\
+S\left(s\right) & -S\left(s\right) & F\left(s\right)\\
+Q\left(s\right) & -Q\left(s\right) & -Q\left(s\right)
+\end{bmatrix}\cdot\begin{bmatrix}W\left(s\right)\\
+D\left(s\right)\\
+N\left(s\right)
+\end{bmatrix}\label{eq:Movimenti-ingressi-anello-chiuso}
+\end{equation}
+Tramite le tre funzioni di trasferimento ottenute, studiamo le prestazioni
+statiche del sistema in base all'influenza che la funzione di anello
+ha su tali funzioni. Analizziamo ora la risposta in frequenza di tali
+ingressi per usare gli strumenti appresi (si veda \chapref{Risposta-in-frequenza})
+e analizzare i loro andamenti:
+\begin{itemize}
+\item l'andamento desiderato $W\left(s\right)$ ha una banda limitata a
+bassa frequenza ($\omega\in\left[0,\,\overline{\omega}_{w}\right]$),
+dato che tipicamente si vuole ottenere un certo comportamento dal
+sistema per un periodo di tempo non infinitesimo;
+\item il disturbo di processo $D\left(s\right)$ ha una banda limitata a
+bassa frequenza ($\omega\in\left[0,\,\overline{\omega}_{d}\right]$),
+dato che questi segnali sono disturbi dovuti al sistema fisico, che
+agisce filtrando le alte frequenze;
+\item il disturbo di misura $N\left(s\right)$ ha una banda limitata ad
+alte frequenze ($\omega\in\left[\underline{\omega}_{n},\,\overline{\omega}_{n}\right]$
+con $\overline{\omega}_{n}\rightarrow+\infty$); per avere un sistema
+progettato correttamente $\underline{\omega}_{n}$ deve essere a frequenze
+maggiori della più alta pulsazione contenente il segnale di riferimento
+($\overline{\omega}_{d}$).
+\end{itemize}
+In assenza ideale di disturbi di misura ($F\left(s\right)=1,\,S\left(s\right)=0$)
+l'uscita vale esattamente come il riferimento e il disturbo non ha
+effetto su di essa. Nella pratica si progetta il sistema di controllo
+in anello chiuso in modo che $F\left(s\right)$ sia un filtro passa
+basso, per rigettare i disturbi di misura; invece, la funzione $S\left(s\right)$
+viene dimensionata come un filtro passa alto (per attenuare il disturbo
+di processo sulle pulsazioni contenenti il segnale di riferimento),
+con banda passante vicina a quella di $F\left(s\right)$.
+\begin{rem}
+Da ora in avanti assumeremo che il sistema in esame sia asintoticamente
+stabile in anello chiuso (è necessario fare attenzione, dato che i
+calcoli e le analisi che vedremo possono essere effettuati prescindendo
+la stabilità del sistema); inoltre, in questa sezione analizzeremo
+le prestazioni per un tempo molto elevato, a transitori esauriti (condizioni
+statiche).
+\end{rem}
+
+\subsection{Ingressi polinomiali nel tempo}
+
+Gli ingressi polinomiali in esame sono quelli canonici già visti (scalino,
+rampa, parabola); le loro trasformate di Laplace sono della forma
+$A/s^{n}$, dove $n-1$ è il grado del polinomio nel dominio del tempo:
+\[
+A\cdot\text{sca}\left(s\right)=A\overset{{\scriptstyle \mathscr{L}}}{\longrightarrow}\frac{A}{s},\:A\cdot\text{ram}\left(s\right)=At\overset{{\scriptstyle \mathscr{L}}}{\longrightarrow}\frac{A}{s^{2}},\:A\cdot\text{par}\left(s\right)=\frac{A}{2}t^{2}\overset{{\scriptstyle \mathscr{L}}}{\longrightarrow}\frac{A}{s^{3}}
+\]
+A fronte di questi segnali, per definire le prestazioni di accuratezza
+statica, si fa riferimento al valore dell'errore di inseguimento $e\left(t\right)=w\left(t\right)-y\left(t\right)$;
+definiamo il seguente:
+\begin{equation}
+\left|e_{\infty}\right|\coloneqq\lm t{\infty}{\left|e\left(t\right)\right|}\label{eq:Errore-inseguimento-stazionario}
+\end{equation}
+Il limite a infinito determina l'analisi in regime stazionario; tipicamente
+nelle specifiche si chiede che il valore $\left|e_{\infty}\right|$
+sia minore di una certa soglia, a fronte di un ingresso polinomiale.
+
+Considerando che il sistema è supposto asintoticamente stabile, possiamo
+analizzare la specifica col teorema del valore finale; consideriamo
+il valore dell'errore di inseguimento rispetto all'andamento desiderato:
+\[
+E\left(s\right)=S\left(s\right)\cdot W\left(s\right)=\frac{1}{1+L\left(s\right)}\cdot\frac{A}{s^{n}}
+\]
+applichiamo (\ref{eq:Teorema-valore-finale}) sostituendo $E\left(s\right)$
+con la precedente in (\ref{eq:Errore-inseguimento-stazionario}):
+\[
+\left|e_{\infty}\right|=\lm s0{\left|sE\left(s\right)\right|}=\lm s0{\left|\frac{sA}{\left(1+L\left(s\right)\right)s^{n}}\right|}
+\]
+Semplifichiamo la precedente espressione scrivendo la funzione di
+anello come $L\left(s\right)=\frac{\mu}{s^{g}}L^{\prime}\left(s\right)$
+tale che $L^{\prime}\left(s\right)\underset{s\rightarrow0}{\sim}1$:
+\[
+=\lm s0{\left|\frac{sA}{\left(1+\mu/s^{g}\right)s^{n}}\right|}=\lm s0{\biggl|\underset{{\scriptstyle S\left(s\rightarrow0\right)}}{\text{\ensuremath{\underbrace{\frac{s^{g}}{s^{g}+\mu}}}}}\cdot\underset{{\scriptstyle W\left(s\rightarrow0\right)}}{\underbrace{s\frac{A}{s^{n}}}}\biggr|}
+\]
+La stessa espressione si ottiene osservando l'ingresso del disturbo
+di misura rispetto all'errore di inseguimento (dalle relazioni (\ref{eq:Movimenti-ingressi-anello-chiuso}));
+analizziamo questo limite per gli ingressi polinomiali canonici (facendo
+variare $g$ da 0 a 3):
+
+\begin{table}[!h]
+\begin{centering}
+\begin{tabular}{cccc}
+ & $A/s$ & $A/s^{2}$ & $A/s^{3}$\tabularnewline
+\noalign{\vskip\doublerulesep}
+$g=0$ & $\left|\frac{A}{1+\mu}\right|$ & $+\infty$ & $+\infty$\tabularnewline
+\noalign{\vskip\doublerulesep}
+$g=1$ & 0 & $\left|\frac{A}{\mu}\right|$ & $+\infty$\tabularnewline
+\noalign{\vskip\doublerulesep}
+$g=2$ & 0 & 0 & $\left|\frac{A}{\mu}\right|$\tabularnewline
+\noalign{\vskip\doublerulesep}
+$g=3$ & 0 & 0 & 0\tabularnewline
+\noalign{\vskip\doublerulesep}
+\end{tabular}
+\par\end{centering}
+\caption{Prestazioni statiche per ingressi canonici polinomiali}
+\label{tab:Prestazioni-statiche}
+\end{table}
+
+La tabella \ref{tab:Prestazioni-statiche} presenta 0 nelle celle
+in cui l'inseguimento dell'andamento desiderato è perfetto, mentre
+in caso di errore di inseguimento finito si ha una dipendenza inversa
+dal guadagno; allora conoscendo guadagno e tipo del sistema (che possiamo
+ottenere osservando la funzione di anello del sistema) possiamo avere
+una stima dell'errore di inseguimento (che è una prestazione del sistema
+in anello chiuso).
+
+In effetti, aggiungendo poli nell'origine (aumentando il tipo del
+sistema) si raggiunge un inseguimento sempre migliore; un gran numero
+di poli nell'origine provoca tuttavia uno sfasamento in partenza negativo
+($-90{^\circ}$ per ciascun polo nell'origine), che sarebbe necessario
+recuperare per avere un margine di fase positivo ed evitare l'instabilità.
+
+\subsection{Ingressi limitati in banda}
+
+In questo tipo di analisi si osserva l'attenuazione in ampiezza che
+il sistema di controllo opera sull'ingresso: per il teorema della
+risposta armonica (\ref{eq:Risposta-armonica}), a fronte di un ingresso
+limitato in banda (nel caso di asintotica stabilità) si avrà un'uscita
+anch'essa limitata in banda ma con ampiezza modulata.
+
+Ricaviamo l'ampiezza dell'uscita a transitorio esaurito dalle relazioni
+(\ref{eq:Movimenti-ingressi-anello-chiuso}):
+\begin{enumerate}
+\item $y\left(t\right)=A\left|F\left(j\omega\right)\right|$ per $w\left(t\right)$
+e $n\left(t\right)$, se sono della forma $A\sin\left(\omega t\right)$,
+perché la funzione di trasferimento tra $W\left(s\right),\,N\left(s\right),\,Y\left(s\right)$
+è la sensitività complementare $F\left(s\right)$;
+\item $y\left(t\right)=A\left|S\left(j\omega\right)\right|$ per $d\left(t\right)$,
+se è della forma $A\sin\left(\omega t\right)$.
+\end{enumerate}
+Se vogliamo conoscere questi valori di modulo, ai quali corrisponde
+l'uscita per un certo intervallo di frequenze, rispetto alla funzione
+di anello, dobbiamo studiare il comportamento delle funzioni di trasferimento
+al variare della funzione di anello.
+
+Cominciamo da $\mathrm{{\scriptstyle \left(1\right)}}$, analizzando
+il suo modulo tramite il diagramma $\square$: per $\omega\rightarrow0$
+il modulo della funzione di anello sarà molto elevato, dato che per
+garantire buone prestazioni con ingressi polinomiali si inseriscono
+poli nell'origine o si usa un guadagno elevato; per realizzare la
+funzione di anello, è necessario che essa sia anche strettamente propria
+(quindi per $\omega\rightarrow+\infty$ la funzione di anello tende
+ad annullarsi).
+
+Rispetto al valore di pulsazione critica $\omega_{c}$ (intersezione
+tra l'andamento di $L\left(s\right)$ e l'asse $0\,\text{dB}$), per
+valori di pulsazione minori di essa il modulo di $L\left(s\right)$
+è elevato, mentre è molto piccolo per pulsazioni maggiori di quella
+critica.
+
+In modo analitico possiamo scrivere, rispetto alla risposta armonica
+della funzione $F\left(s\right)$: 
+\[
+\left|F\left(j\omega\right)\right|=\left|\frac{L\left(j\omega\right)}{1+L\left(j\omega\right)}\right|=\frac{\left|L\left(j\omega\right)\right|}{1+\left|L\left(j\omega\right)\right|}\underset{{\scriptstyle \omega\ll\omega_{\text{C}}}}{\sim}1
+\]
+dato che il modulo della funzione di anello è molto grande per pulsazioni
+piccole (rispetto a quella critica); analogamente otteniamo che:
+\[
+\left|F\left(j\omega\right)\right|\underset{{\scriptstyle \omega\gg\omega_{\text{C}}}}{\sim}\left|L\left(j\omega\right)\right|
+\]
+dato che il modulo della funzione di anello tende a un infinitesimo
+per pulsazioni grandi (rispetto a quella critica); approssimiamo la
+funzione di sensitività complementare coi valori asintotici ottenuti
+rispetto alla pulsazione critica.
+
+Dato che abbiamo interesse a inseguire l'ingresso $w\left(t\right)$
+dell'andamento desiderato, vorremmo che la rispettiva pulsazione $\overline{\omega}_{w}$
+fosse in corrispondenza di $F\left(s\right)$ con modulo circa unitario
+(quindi cerchiamo di ottenere $\overline{\omega}_{w}<\omega_{{\scriptscriptstyle \text{C}}}$);
+per quanto riguarda il disturbo di misura, vorremmo che avesse una
+banda di frequenze molto maggiore di $\omega_{{\scriptscriptstyle \text{C}}}$,
+in modo da avere alta attenuazione per tali disturbi.
+
+Consideriamo $\mathrm{{\scriptstyle \left(2\right)}}$, analizzando
+il suo modulo tramite il diagramma $\square$: il discorso è analogo
+al precedente, infatti viene utilizzata la sensitività $S\left(s\right)$
+mentre il comportamento del modulo della funzione di anello è il medesimo;
+rispetto alla pulsazione critica otteniamo:
+\[
+\left|S\left(j\omega\right)\right|=\left|\frac{1}{1+L\left(j\omega\right)}\right|=\frac{1}{1+\left|L\left(j\omega\right)\right|}\underset{{\scriptstyle \omega\ll\omega_{\text{C}}}}{\sim}\frac{1}{\left|L\left(j\omega\right)\right|}
+\]
+dato che in tal caso il modulo della funzione di anello è molto grande;
+analogamente vale che:
+\[
+\left|S\left(j\omega\right)\right|\underset{{\scriptstyle \omega\gg\omega_{\text{C}}}}{\sim}1
+\]
+dato che in tal caso il modulo di $L\left(s\right)$ tende ad annullarsi.
+
+Per attenuare i disturbi di processo $d\left(t\right)$, vorremmo
+che la rispettiva pulsazione $\overline{\omega}_{d}$ fosse molto
+minore della pulsazione critica $\omega_{{\scriptscriptstyle \text{C}}}$:
+in questo modo il modulo di $S\left(s\right)$ sarebbe molto piccolo;
+l'attenuazione in tal caso vale $1/\left|L\left(s\right)\right|$.
 
 \appendix
 

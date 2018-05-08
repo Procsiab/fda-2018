@@ -11201,7 +11201,7 @@ Lo stato di equilibrio
 \begin_inset Formula $\overline{x}$
 \end_inset
 
- elativo all'ingresso 
+ relativo all'ingresso 
 \begin_inset Formula $\overline{u}$
 \end_inset
 
@@ -16677,6 +16677,13 @@ Notiamo che il grado del denominatore dipende strettamente dalla scelta
 
 \begin_layout Chapter
 Risposta in frequenza
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Risposta-in-frequenza"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -24162,7 +24169,7 @@ noprefix "false"
 \begin_inset Formula $L\left(s\right)=k\cdot G\left(s\right)$
 \end_inset
 
-, mentre le funzioni di sensitività sono rispettivamente:
+, mentre le funzioni di sensitività sono rispettivamente
 \begin_inset Formula 
 \[
 F\left(s\right)=\frac{Y\left(s\right)}{w\left(s\right)}=\frac{k\cdot G\left(s\right)}{1+k\cdot G\left(s\right)}\overset{{\scriptscriptstyle k\rightarrow+\infty}}{\longrightarrow}1
@@ -24639,6 +24646,916 @@ noprefix "false"
 ), esso è asintoticamente stabile se la sua pendenza finale è maggiore di
  
 \begin_inset Formula $-60\,\text{dB}/\text{dec}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Prestazioni statiche
+\end_layout
+
+\begin_layout Subsection
+Risposta degli ingressi di interesse
+\end_layout
+
+\begin_layout Standard
+Mentre la stabilità riguarda le proprietà interne del sistema, le prestazioni
+ riguardano il comportamento degli ingressi e delle uscite; individuiamo
+ ingressi e 
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+La variabile di comando è l'ingresso all'impianto ma potrebbe essere limitata
+ dalla specifica: infatti essa è legata all'energia consumata dal sistema
+ per funzionare
+\end_layout
+
+\end_inset
+
+uscite sul modello di sistema in retroazione (si veda 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:Schema-di-riferimento-controllo"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), e analizziamo i rispettivi movimenti con l'algebra degli schemi a blocchi:
+\end_layout
+
+\begin_layout Itemize
+le uscite di interesse sono l'uscita del sistema 
+\begin_inset Formula $Y\left(s\right)$
+\end_inset
+
+ a valle di disturbi, l'errore di inseguimento 
+\begin_inset Formula $E\left(s\right)$
+\end_inset
+
+ come differenza tra andamento desiderato e uscita, il comando 
+\begin_inset Formula $U\left(s\right)$
+\end_inset
+
+ che il regolatore applica all'impianto;
+\end_layout
+
+\begin_layout Itemize
+gli ingressi di interesse sono i segnali che arrivano dall'esterno, ovvero
+ l'ingresso desiderato 
+\begin_inset Formula $W\left(s\right)$
+\end_inset
+
+, il disturbo di processo 
+\begin_inset Formula $D\left(s\right)$
+\end_inset
+
+ e il disturbo di misura 
+\begin_inset Formula $N\left(s\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Le funzioni di trasferimento tra ingressi e uscite individuati si ottengono
+ a partire dalle funzioni di sensitività 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Trasferimento-anello-chiuso"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{equation}
+F\left(s\right)=\frac{L\left(s\right)}{1+L\left(s\right)},\qquad S\left(s\right)=\frac{1}{1+L\left(s\right)},\qquad Q\left(s\right)=\frac{R\left(s\right)}{1+L\left(s\right)}\label{eq:Funzioni-di-sensitività}
+\end{equation}
+
+\end_inset
+
+dove la funzione 
+\begin_inset Formula $Q\left(s\right)$
+\end_inset
+
+ è la sensitività del comando.
+\end_layout
+
+\begin_layout Standard
+Utilizzando l'algebra degli schemi a blocchi (dalla figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Schema-di-riferimento-controllo"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), costruiamo la relazione matriciale che lega i tre ingressi con le uscite
+ che stiamo analizzando, semplificando i risultati tramite le formule 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Funzioni-di-sensitività"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{equation}
+\begin{bmatrix}Y\left(s\right)\\
+E\left(s\right)\\
+U\left(s\right)
+\end{bmatrix}=\begin{bmatrix}F\left(s\right) & S\left(s\right) & -F\left(s\right)\\
+S\left(s\right) & -S\left(s\right) & F\left(s\right)\\
+Q\left(s\right) & -Q\left(s\right) & -Q\left(s\right)
+\end{bmatrix}\cdot\begin{bmatrix}W\left(s\right)\\
+D\left(s\right)\\
+N\left(s\right)
+\end{bmatrix}\label{eq:Movimenti-ingressi-anello-chiuso}
+\end{equation}
+
+\end_inset
+
+Tramite le tre funzioni di trasferimento ottenute, studiamo le prestazioni
+ statiche del sistema in base all'influenza che la funzione di anello ha
+ su tali funzioni.
+ Analizziamo ora la risposta in frequenza di tali ingressi per usare gli
+ strumenti appresi (si veda 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "chap:Risposta-in-frequenza"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) e analizzare i loro andamenti:
+\end_layout
+
+\begin_layout Itemize
+l'andamento desiderato 
+\begin_inset Formula $W\left(s\right)$
+\end_inset
+
+ ha una banda limitata a bassa frequenza (
+\begin_inset Formula $\omega\in\left[0,\,\overline{\omega}_{w}\right]$
+\end_inset
+
+), dato che tipicamente si vuole ottenere un certo comportamento dal sistema
+ per un periodo di tempo non infinitesimo;
+\end_layout
+
+\begin_layout Itemize
+il disturbo di processo 
+\begin_inset Formula $D\left(s\right)$
+\end_inset
+
+ ha una banda limitata a bassa frequenza (
+\begin_inset Formula $\omega\in\left[0,\,\overline{\omega}_{d}\right]$
+\end_inset
+
+), dato che questi segnali sono disturbi dovuti al sistema fisico, che agisce
+ filtrando le alte frequenze;
+\end_layout
+
+\begin_layout Itemize
+il disturbo di misura 
+\begin_inset Formula $N\left(s\right)$
+\end_inset
+
+ ha una banda limitata ad alte frequenze (
+\begin_inset Formula $\omega\in\left[\underline{\omega}_{n},\,\overline{\omega}_{n}\right]$
+\end_inset
+
+ con 
+\begin_inset Formula $\overline{\omega}_{n}\rightarrow+\infty$
+\end_inset
+
+); per avere un sistema progettato correttamente 
+\begin_inset Formula $\underline{\omega}_{n}$
+\end_inset
+
+ deve essere a frequenze maggiori della più alta pulsazione contenente il
+ segnale di riferimento (
+\begin_inset Formula $\overline{\omega}_{d}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+In assenza ideale di disturbi di misura (
+\begin_inset Formula $F\left(s\right)=1,\,S\left(s\right)=0$
+\end_inset
+
+) l'uscita vale esattamente come il riferimento e il disturbo non ha effetto
+ su di essa.
+ Nella pratica si progetta il sistema di controllo in anello chiuso in modo
+ che 
+\begin_inset Formula $F\left(s\right)$
+\end_inset
+
+ sia un filtro passa basso, per rigettare i disturbi di misura; invece,
+ la funzione 
+\begin_inset Formula $S\left(s\right)$
+\end_inset
+
+ viene dimensionata come un filtro passa alto (per attenuare il disturbo
+ di processo sulle pulsazioni contenenti il segnale di riferimento), con
+ banda passante vicina a quella di 
+\begin_inset Formula $F\left(s\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Remark
+Da ora in avanti assumeremo che il sistema in esame sia asintoticamente
+ stabile in anello chiuso (è necessario fare attenzione, dato che i calcoli
+ e le analisi che vedremo possono essere effettuati prescindendo la stabilità
+ del sistema); inoltre, in questa sezione analizzeremo le prestazioni per
+ un tempo molto elevato, a transitori esauriti (condizioni statiche).
+\end_layout
+
+\begin_layout Subsection
+Ingressi polinomiali nel tempo
+\end_layout
+
+\begin_layout Standard
+Gli ingressi polinomiali in esame sono quelli canonici già visti (scalino,
+ rampa, parabola); le loro trasformate di Laplace sono della forma 
+\begin_inset Formula $A/s^{n}$
+\end_inset
+
+, dove 
+\begin_inset Formula $n-1$
+\end_inset
+
+ è il grado del polinomio nel dominio del tempo:
+\begin_inset Formula 
+\[
+A\cdot\text{sca}\left(s\right)=A\overset{{\scriptstyle \mathscr{L}}}{\longrightarrow}\frac{A}{s},\:A\cdot\text{ram}\left(s\right)=At\overset{{\scriptstyle \mathscr{L}}}{\longrightarrow}\frac{A}{s^{2}},\:A\cdot\text{par}\left(s\right)=\frac{A}{2}t^{2}\overset{{\scriptstyle \mathscr{L}}}{\longrightarrow}\frac{A}{s^{3}}
+\]
+
+\end_inset
+
+A fronte di questi segnali, per definire le prestazioni di accuratezza statica,
+ si fa riferimento al valore dell'errore di inseguimento 
+\begin_inset Formula $e\left(t\right)=w\left(t\right)-y\left(t\right)$
+\end_inset
+
+; definiamo il seguente:
+\begin_inset Formula 
+\begin{equation}
+\left|e_{\infty}\right|\coloneqq\lm t{\infty}{\left|e\left(t\right)\right|}\label{eq:Errore-inseguimento-stazionario}
+\end{equation}
+
+\end_inset
+
+Il limite a infinito determina l'analisi in regime stazionario; tipicamente
+ nelle specifiche si chiede che il valore 
+\begin_inset Formula $\left|e_{\infty}\right|$
+\end_inset
+
+ sia minore di una certa soglia, a fronte di un ingresso polinomiale.
+\end_layout
+
+\begin_layout Standard
+Considerando che il sistema è supposto asintoticamente stabile, possiamo
+ analizzare la specifica col teorema del valore finale; consideriamo il
+ valore dell'errore di inseguimento rispetto all'andamento desiderato:
+\begin_inset Formula 
+\[
+E\left(s\right)=S\left(s\right)\cdot W\left(s\right)=\frac{1}{1+L\left(s\right)}\cdot\frac{A}{s^{n}}
+\]
+
+\end_inset
+
+applichiamo 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Teorema-valore-finale"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ sostituendo 
+\begin_inset Formula $E\left(s\right)$
+\end_inset
+
+ con la precedente in 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Errore-inseguimento-stazionario"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\left|e_{\infty}\right|=\lm s0{\left|sE\left(s\right)\right|}=\lm s0{\left|\frac{sA}{\left(1+L\left(s\right)\right)s^{n}}\right|}
+\]
+
+\end_inset
+
+Semplifichiamo la precedente espressione scrivendo la funzione di anello
+ come 
+\begin_inset Formula $L\left(s\right)=\frac{\mu}{s^{g}}L^{\prime}\left(s\right)$
+\end_inset
+
+ tale che 
+\begin_inset Formula $L^{\prime}\left(s\right)\underset{s\rightarrow0}{\sim}1$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+=\lm s0{\left|\frac{sA}{\left(1+\mu/s^{g}\right)s^{n}}\right|}=\lm s0{\biggl|\underset{{\scriptstyle S\left(s\rightarrow0\right)}}{\text{\ensuremath{\underbrace{\frac{s^{g}}{s^{g}+\mu}}}}}\cdot\underset{{\scriptstyle W\left(s\rightarrow0\right)}}{\underbrace{s\frac{A}{s^{n}}}}\biggr|}
+\]
+
+\end_inset
+
+La stessa espressione si ottiene osservando l'ingresso del disturbo di misura
+ rispetto all'errore di inseguimento (dalle relazioni 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Movimenti-ingressi-anello-chiuso"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+); analizziamo questo limite per gli ingressi polinomiali canonici (facendo
+ variare 
+\begin_inset Formula $g$
+\end_inset
+
+ da 0 a 3):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top" width="0pt">
+<row interlinespace="default">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $A/s$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $A/s^{2}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $A/s^{3}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="default">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $g=0$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left|\frac{A}{1+\mu}\right|$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $+\infty$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $+\infty$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="default">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $g=1$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left|\frac{A}{\mu}\right|$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $+\infty$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="default">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $g=2$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\left|\frac{A}{\mu}\right|$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="default">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $g=3$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Prestazioni statiche per ingressi canonici polinomiali
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Prestazioni-statiche"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La tabella 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Prestazioni-statiche"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ presenta 0 nelle celle in cui l'inseguimento dell'andamento desiderato
+ è perfetto, mentre in caso di errore di inseguimento finito si ha una dipendenz
+a inversa dal guadagno; allora conoscendo guadagno e tipo del sistema (che
+ possiamo ottenere osservando la funzione di anello del sistema) possiamo
+ avere una stima dell'errore di inseguimento (che è una prestazione del
+ sistema in anello chiuso).
+\end_layout
+
+\begin_layout Standard
+In effetti, aggiungendo poli nell'origine (aumentando il tipo del sistema)
+ si raggiunge un inseguimento sempre migliore; un gran numero di poli nell'origi
+ne provoca tuttavia uno sfasamento in partenza negativo (
+\begin_inset Formula $-90°$
+\end_inset
+
+ per ciascun polo nell'origine), che sarebbe necessario recuperare per avere
+ un margine di fase positivo ed evitare l'instabilità.
+\end_layout
+
+\begin_layout Subsection
+Ingressi limitati in banda
+\end_layout
+
+\begin_layout Standard
+In questo tipo di analisi si osserva l'attenuazione in ampiezza che il sistema
+ di controllo opera sull'ingresso: per il teorema della risposta armonica
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Risposta-armonica"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, a fronte di un ingresso limitato in banda (nel caso di asintotica stabilità)
+ si avrà un'uscita anch'essa limitata in banda ma con ampiezza modulata.
+\end_layout
+
+\begin_layout Standard
+Ricaviamo l'ampiezza dell'uscita a transitorio esaurito dalle relazioni
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Movimenti-ingressi-anello-chiuso"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $y\left(t\right)=A\left|F\left(j\omega\right)\right|$
+\end_inset
+
+ per 
+\begin_inset Formula $w\left(t\right)$
+\end_inset
+
+ e 
+\begin_inset Formula $n\left(t\right)$
+\end_inset
+
+, se sono della forma 
+\begin_inset Formula $A\sin\left(\omega t\right)$
+\end_inset
+
+, perché la funzione di trasferimento tra 
+\begin_inset Formula $W\left(s\right),\,N\left(s\right),\,Y\left(s\right)$
+\end_inset
+
+ è la sensitività complementare 
+\begin_inset Formula $F\left(s\right)$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $y\left(t\right)=A\left|S\left(j\omega\right)\right|$
+\end_inset
+
+ per 
+\begin_inset Formula $d\left(t\right)$
+\end_inset
+
+, se è della forma 
+\begin_inset Formula $A\sin\left(\omega t\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Se vogliamo conoscere questi valori di modulo, ai quali corrisponde l'uscita
+ per un certo intervallo di frequenze, rispetto alla funzione di anello,
+ dobbiamo studiare il comportamento delle funzioni di trasferimento al variare
+ della funzione di anello.
+\end_layout
+
+\begin_layout Standard
+Cominciamo da 
+\begin_inset Formula $\mathrm{{\scriptstyle \left(1\right)}}$
+\end_inset
+
+, analizzando il suo modulo tramite il diagramma 
+\begin_inset Formula $\square$
+\end_inset
+
+: per 
+\begin_inset Formula $\omega\rightarrow0$
+\end_inset
+
+ il modulo della funzione di anello sarà molto elevato, dato che per garantire
+ buone prestazioni con ingressi polinomiali si inseriscono poli nell'origine
+ o si usa un guadagno elevato; per realizzare la funzione di anello, è necessari
+o che essa sia anche strettamente propria (quindi per 
+\begin_inset Formula $\omega\rightarrow+\infty$
+\end_inset
+
+ la funzione di anello tende ad annullarsi).
+\end_layout
+
+\begin_layout Standard
+Rispetto al valore di pulsazione critica 
+\begin_inset Formula $\omega_{c}$
+\end_inset
+
+ (intersezione tra l'andamento di 
+\begin_inset Formula $L\left(s\right)$
+\end_inset
+
+ e l'asse 
+\begin_inset Formula $0\,\text{dB}$
+\end_inset
+
+), per valori di pulsazione minori di essa il modulo di 
+\begin_inset Formula $L\left(s\right)$
+\end_inset
+
+ è elevato, mentre è molto piccolo per pulsazioni maggiori di quella critica.
+\end_layout
+
+\begin_layout Standard
+In modo analitico possiamo scrivere, rispetto alla risposta armonica della
+ funzione 
+\begin_inset Formula $F\left(s\right)$
+\end_inset
+
+: 
+\begin_inset Formula 
+\[
+\left|F\left(j\omega\right)\right|=\left|\frac{L\left(j\omega\right)}{1+L\left(j\omega\right)}\right|=\frac{\left|L\left(j\omega\right)\right|}{1+\left|L\left(j\omega\right)\right|}\underset{{\scriptstyle \omega\ll\omega_{\text{C}}}}{\sim}1
+\]
+
+\end_inset
+
+dato che il modulo della funzione di anello è molto grande per pulsazioni
+ piccole (rispetto a quella critica); analogamente otteniamo che:
+\begin_inset Formula 
+\[
+\left|F\left(j\omega\right)\right|\underset{{\scriptstyle \omega\gg\omega_{\text{C}}}}{\sim}\left|L\left(j\omega\right)\right|
+\]
+
+\end_inset
+
+dato che il modulo della funzione di anello tende a un infinitesimo per
+ pulsazioni grandi (rispetto a quella critica); approssimiamo la funzione
+ di sensitività complementare coi valori asintotici ottenuti rispetto alla
+ pulsazione critica.
+\end_layout
+
+\begin_layout Standard
+Dato che abbiamo interesse a inseguire l'ingresso 
+\begin_inset Formula $w\left(t\right)$
+\end_inset
+
+ dell'andamento desiderato, vorremmo che la rispettiva pulsazione 
+\begin_inset Formula $\overline{\omega}_{w}$
+\end_inset
+
+ fosse in corrispondenza di 
+\begin_inset Formula $F\left(s\right)$
+\end_inset
+
+ con modulo circa unitario (quindi cerchiamo di ottenere 
+\begin_inset Formula $\overline{\omega}_{w}<\omega_{{\scriptscriptstyle \text{C}}}$
+\end_inset
+
+); per quanto riguarda il disturbo di misura, vorremmo che avesse una banda
+ di frequenze molto maggiore di 
+\begin_inset Formula $\omega_{{\scriptscriptstyle \text{C}}}$
+\end_inset
+
+, in modo da avere alta attenuazione per tali disturbi.
+\end_layout
+
+\begin_layout Standard
+Consideriamo 
+\begin_inset Formula $\mathrm{{\scriptstyle \left(2\right)}}$
+\end_inset
+
+, analizzando il suo modulo tramite il diagramma 
+\begin_inset Formula $\square$
+\end_inset
+
+: il discorso è analogo al precedente, infatti viene utilizzata la sensitività
+ 
+\begin_inset Formula $S\left(s\right)$
+\end_inset
+
+ mentre il comportamento del modulo della funzione di anello è il medesimo;
+ rispetto alla pulsazione critica otteniamo:
+\begin_inset Formula 
+\[
+\left|S\left(j\omega\right)\right|=\left|\frac{1}{1+L\left(j\omega\right)}\right|=\frac{1}{1+\left|L\left(j\omega\right)\right|}\underset{{\scriptstyle \omega\ll\omega_{\text{C}}}}{\sim}\frac{1}{\left|L\left(j\omega\right)\right|}
+\]
+
+\end_inset
+
+dato che in tal caso il modulo della funzione di anello è molto grande;
+ analogamente vale che:
+\begin_inset Formula 
+\[
+\left|S\left(j\omega\right)\right|\underset{{\scriptstyle \omega\gg\omega_{\text{C}}}}{\sim}1
+\]
+
+\end_inset
+
+dato che in tal caso il modulo di 
+\begin_inset Formula $L\left(s\right)$
+\end_inset
+
+ tende ad annullarsi.
+\end_layout
+
+\begin_layout Standard
+Per attenuare i disturbi di processo 
+\begin_inset Formula $d\left(t\right)$
+\end_inset
+
+, vorremmo che la rispettiva pulsazione 
+\begin_inset Formula $\overline{\omega}_{d}$
+\end_inset
+
+ fosse molto minore della pulsazione critica 
+\begin_inset Formula $\omega_{{\scriptscriptstyle \text{C}}}$
+\end_inset
+
+: in questo modo il modulo di 
+\begin_inset Formula $S\left(s\right)$
+\end_inset
+
+ sarebbe molto piccolo; l'attenuazione in tal caso vale 
+\begin_inset Formula $1/\left|L\left(s\right)\right|$
 \end_inset
 
 .
