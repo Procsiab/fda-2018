@@ -148,12 +148,15 @@
 \providecommand{\theoremname}{Teorema}
 
 \begin{document}
+\newgeometry{margin=1cm}
 
 \title{Appunti di Fondamenti di Automatica}
 
 \author{Lorenzo Prosseda, a.a. 2017-2018}
 
 \maketitle
+\restoregeometry
+
 \tableofcontents{}
 
 \global\long\def\lm#1#2#3{\underset{{\scriptstyle #1\rightarrow#2}}{\lim}#3}
@@ -6174,6 +6177,46 @@ parte immaginaria, ottenuto come
 \overset{{\scriptstyle \omega>0}}{\overbrace{L\left(j\omega\right)}}=\bigl(\overset{{\scriptstyle \omega<0}}{\overbrace{L\left(j\omega^{*}\right)}}\bigr)^{*}
 \]
 \end{rem}
+\begin{example}
+\emph{Sia data la seguente funzione di trasferimento:
+\[
+L\left(s\right)=\frac{1}{s\left(1+s\right)}
+\]
+}
+
+\emph{$\checkmark$Tracciare il diagramma di Nyquist associato.}
+
+Cominciamo ricavando i diagrammi di Bode, osservando prima che il
+guadagno statico vale $\mu=1$, e sono presenti due poli ($p_{1}=0,\,p_{2}=-1$):
+\end{example}
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{center}
+\includegraphics[scale=0.9]{\string"Illustrazioni/6_2-1 Bode modulo esempio\string".pdf}
+\par\end{center}
+\captionof{figure}{Diagramma di Bode del modulo}%
+\end{minipage}%
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{center}
+\includegraphics[scale=0.9]{\string"Illustrazioni/6_2-2 Bode fase esempio\string".pdf}
+\par\end{center}
+\captionof{figure}{Diagramma di Bode della fase}%
+\end{minipage}
+
+Il diagramma di Nyquist si ricava direttamente dal diagramma polare,
+cambiando il segno della parte immaginaria e aggiungendo eventuali
+semicerchi per chiudere il cammino; infatti il diagramma polare si
+costruisce partendo con un'angolazione di $-90{^\circ}$ (parallela
+rispetto al semiasse immaginario negativo) e poi mano a mano che la
+pulsazione aumenta, il modulo diventa infinitesimo e la fase decresce
+asintoticamente a $-180{^\circ}$:
+
+\begin{figure}[!h]
+\begin{centering}
+\includegraphics[scale=0.9]{\string"Illustrazioni/6_2-3 Diagramma Nyquist esempio\string".pdf}
+\par\end{centering}
+\caption{Diagramma di Nyquist}
+\end{figure}
+\demo
 
 \subsection{Criterio di Nyquist}
 
@@ -6378,8 +6421,9 @@ il modulo tende a zero).
 \end{enumerate}
 \begin{thm}
 \marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
-\textbf{\footnotesize{}Criterio di Bode}{\footnotesize{}\index{Criterio di Bode@{\footnotesize{}Criterio di Bode}}}}Una volta verificate le tre ipotesi precedenti, si può dire che un
-sistema LTI in retroazione è asintoticamente stabile se e solo se:
+\textbf{\footnotesize{}Criterio di Bode}{\footnotesize{}\index{Criterio di Bode@{\footnotesize{}Criterio di Bode}}}}\label{thm:Creiterio-di-bode}Una volta verificate le tre ipotesi
+precedenti, si può dire che un sistema LTI in retroazione è asintoticamente
+stabile se e solo se:
 
 \begin{minipage}[t]{1\columnwidth}%
 \begin{itemize}
@@ -6575,25 +6619,38 @@ l'uscita per un certo intervallo di frequenze, rispetto alla funzione
 di anello, dobbiamo studiare il comportamento delle funzioni di trasferimento
 al variare della funzione di anello.
 
-Cominciamo da $\mathrm{{\scriptstyle \left(1\right)}}$, analizzando
-il suo modulo tramite il diagramma $\square$: per $\omega\rightarrow0$
-il modulo della funzione di anello sarà molto elevato, dato che per
-garantire buone prestazioni con ingressi polinomiali si inseriscono
-poli nell'origine o si usa un guadagno elevato; per realizzare la
-funzione di anello, è necessario che essa sia anche strettamente propria
-(quindi per $\omega\rightarrow+\infty$ la funzione di anello tende
-ad annullarsi).
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{center}
+\includegraphics[scale=0.85]{\string"Illustrazioni/6_6-1 Funzione di anello rispetto sensitività inversa\string".pdf}
+\par\end{center}
+\captionof{figure}{Precisione rispetto alla funzione di sensitività inversa}\label{fig:Precisione-rispetto-sensitivit=0000E0-inversa}%
+\end{minipage}%
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{center}
+\includegraphics[scale=0.85]{\string"Illustrazioni/6_6-2 Funzione di anello rispetto sensitività\string".pdf}
+\par\end{center}
+\captionof{figure}{Precisione rispetto alla funzione di sensitività}\label{fig:Precisione-rispetto-sensitivit=0000E0}%
+\end{minipage}
 
-Rispetto al valore di pulsazione critica $\omega_{c}$ (intersezione
-tra l'andamento di $L\left(s\right)$ e l'asse $0\,\text{dB}$), per
-valori di pulsazione minori di essa il modulo di $L\left(s\right)$
+Cominciamo da $\mathrm{{\scriptstyle \left(1\right)}}$, analizzando
+il suo modulo tramite \figref{Precisione-rispetto-sensitivit=0000E0-inversa}:
+per $\omega\rightarrow0$ il modulo della funzione di anello sarà
+molto elevato, dato che per garantire buone prestazioni con ingressi
+polinomiali si inseriscono poli nell'origine o si usa un guadagno
+elevato; per realizzare la funzione di anello, è necessario che essa
+sia anche strettamente propria (quindi per $\omega\rightarrow+\infty$
+la funzione di anello tende ad annullarsi).
+
+Rispetto al valore di pulsazione critica $\omega_{{\scriptscriptstyle \text{C}}}$
+(intersezione tra l'andamento di $L\left(s\right)$ e l'asse $0\,\text{dB}$),
+per valori di pulsazione minori di essa il modulo di $L\left(s\right)$
 è elevato, mentre è molto piccolo per pulsazioni maggiori di quella
 critica.
 
 In modo analitico possiamo scrivere, rispetto alla risposta armonica
 della funzione $F\left(s\right)$: 
 \[
-\left|F\left(j\omega\right)\right|=\left|\frac{L\left(j\omega\right)}{1+L\left(j\omega\right)}\right|=\frac{\left|L\left(j\omega\right)\right|}{1+\left|L\left(j\omega\right)\right|}\underset{{\scriptstyle \omega\ll\omega_{\text{C}}}}{\sim}1
+\left|F\left(j\omega\right)\right|=\left|\frac{L\left(j\omega\right)}{1+L\left(j\omega\right)}\right|=\frac{\left|L\left(j\omega\right)\right|}{1+\left|L\left(j\omega\right)\right|}\underset{{\scriptstyle \omega\ll\omega_{{\scriptscriptstyle \text{C}}}}}{\sim}1
 \]
 dato che il modulo della funzione di anello è molto grande per pulsazioni
 piccole (rispetto a quella critica); analogamente otteniamo che:
@@ -6614,10 +6671,10 @@ banda di frequenze molto maggiore di $\omega_{{\scriptscriptstyle \text{C}}}$,
 in modo da avere alta attenuazione per tali disturbi.
 
 Consideriamo $\mathrm{{\scriptstyle \left(2\right)}}$, analizzando
-il suo modulo tramite il diagramma $\square$: il discorso è analogo
-al precedente, infatti viene utilizzata la sensitività $S\left(s\right)$
-mentre il comportamento del modulo della funzione di anello è il medesimo;
-rispetto alla pulsazione critica otteniamo:
+il suo modulo tramite \figref{Precisione-rispetto-sensitivit=0000E0}:
+il discorso è analogo al precedente, infatti viene utilizzata la sensitività
+$S\left(s\right)$ mentre il comportamento del modulo della funzione
+di anello è il medesimo; rispetto alla pulsazione critica otteniamo:
 \[
 \left|S\left(j\omega\right)\right|=\left|\frac{1}{1+L\left(j\omega\right)}\right|=\frac{1}{1+\left|L\left(j\omega\right)\right|}\underset{{\scriptstyle \omega\ll\omega_{\text{C}}}}{\sim}\frac{1}{\left|L\left(j\omega\right)\right|}
 \]
@@ -6633,6 +6690,219 @@ che la rispettiva pulsazione $\overline{\omega}_{d}$ fosse molto
 minore della pulsazione critica $\omega_{{\scriptscriptstyle \text{C}}}$:
 in questo modo il modulo di $S\left(s\right)$ sarebbe molto piccolo;
 l'attenuazione in tal caso vale $1/\left|L\left(s\right)\right|$.
+
+\section{Prestazioni dinamiche}
+
+L'analisi delle prestazioni dinamiche riguarda la risposta armonica
+del sistema a fronte di un ingresso a scalino; prendiamo dunque $w\left(t\right)=\text{sca}\left(t\right)$
+e analizziamo il comportamento della funzione di anello.
+
+La funzione di trasferimento che, dato $w\left(t\right)$, permette
+di ottenere il movimento dell'uscita, è $F\left(s\right)$; infatti
+$Y\left(s\right)=F\left(s\right)W\left(s\right)$, e inoltre conosciamo
+già l'andamento asintotico della funzione $F\left(s\right)$ (si veda
+\figref{Precisione-rispetto-sensitivit=0000E0-inversa}); tuttavia
+non conosciamo il suo comportamento nell'intorno della pulsazione
+critica $\omega_{{\scriptscriptstyle \text{C}}}$.
+
+Possiamo ottenere l'andamento di $F\left(j\omega\right)$ per $\omega\simeq\omega_{{\scriptscriptstyle \text{C}}}$
+adottando un modello della funzione di anello: assumiamo che essa
+si comporti come una funzione con due poli complessi coniugati (\ref{eq:Risposta-scalino-ord-2-poli-complessi-coniugati}),
+come un modello di filtro passa-basso del secondo ordine:
+\[
+M\left(s\right)=\frac{\omega_{n}^{2}}{s^{2}+2\xi\omega_{n}s+\omega_{n}^{2}}
+\]
+Questo modello di comportamento in anello chiuso è una prima approssimazione,
+poiché in un sistema di controllo reale l'ordine può essere molto
+superiore al secondo, tuttavia qualitativamente il suo comportamento
+è quello di un filtro passa-basso.
+
+Cominciamo la nostra analisi calcolando $F\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)$,
+partendo dalle seguenti riscritture:
+\[
+\left|F\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)\right|=\left|\frac{L\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)}{1+L\left(\omega_{{\scriptscriptstyle \text{C}}}\right)}\right|=\frac{\left|L\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)\right|}{\left|1+L\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)\right|}=\ldots
+\]
+Dato che alla pulsazione critica corrisponde un guadagno unitario
+($0\,\text{dB}$), possiamo scrivere $L\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)=1\cdot e^{j\phi_{{\scriptscriptstyle \text{C}}}}$
+dove si ha $\phi_{{\scriptscriptstyle \text{C}}}=\arg\left(L\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)\right)$:
+\[
+\ldots=\frac{\left|e^{j\phi_{{\scriptscriptstyle \text{C}}}}\right|}{\left|1+e^{j\phi_{{\scriptscriptstyle \text{C}}}}\right|}=\frac{1}{\sqrt{\left(1+\cos\phi_{{\scriptscriptstyle \text{C}}}\right)^{2}+\left(\sin\phi_{{\scriptscriptstyle \text{C}}}\right)^{2}}}
+\]
+\[
+=\frac{1}{\sqrt{1+2\cos\phi_{{\scriptscriptstyle \text{C}}}+\cos\phi_{{\scriptscriptstyle \text{C}}}^{2}+\sin^{2}\phi_{{\scriptscriptstyle \text{C}}}}}=\frac{1}{\sqrt{2\left(1+\cos\phi_{{\scriptscriptstyle \text{C}}}\right)}}
+\]
+dove al numeratore il modulo vale proprio 1, e al denominatore abbiamo
+usato le formule (\ref{eq:Formula-di-Eulero}) sviluppando il prodotto.
+
+Consideriamo il piano dei numeri complessi: all'interno delle nostre
+ipotesi di stabilità ($P=0$) il margine di fase sarà positivo, e
+tracciando la congiungente di $L\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)$
+con l'origine, otteniamo l'angolo opposto pari a $\phi_{m}$; osserviamo
+che, nella nostra costruzione, $\cos\phi_{{\scriptscriptstyle \text{C}}}=-\cos\phi_{m}$.
+
+Riprendendo l'uguaglianza precedente, scriveremo:
+\[
+\left|F\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)\right|=\ldots=\frac{1}{\sqrt{2\left(1+\cos\phi_{{\scriptscriptstyle \text{C}}}\right)}}
+\]
+Questa relazione può ulteriormente essere semplificata costruendo
+un triangolo nel primo quadrante utilizzando l'angolo $\phi_{m}$
+e la circonferenza di raggio unitario; avremo un triangolo isoscele
+con angoli alla base pari a $90{^\circ}-\phi_{m}/2$.
+
+Tracciando l'altezza che cadde sull'asse reale positivo nel punto
+$h$ (vale $\sin\phi_{m}$), otteniamo un ulteriore rettangolo con
+angoli alla base $90{^\circ}$ e $90{^\circ}-\phi_{m}/2$, dunque
+il suo angolo al vertice vale $\phi_{m}/2$; la base del primo rettangolo
+(da 0 a 1) è suddivisa in due segmenti dall'altezza, nel punto $h$:
+il primo (da 0 a $h$) vale $\cos\phi_{m}$.
+
+Il segmento di base (il minore) del triangolo isoscele vale:
+\[
+a=\sqrt{\sin^{2}\phi_{m}+\left(1-\cos\phi_{m}\right)^{2}}=\sqrt{2\left(1-\cos\phi_{m}\right)}
+\]
+Consideriamo adesso il seno dell'angolo al vertice del secondo triangolo
+($\phi_{m}/2$):
+\[
+\sin\frac{\phi_{m}}{2}=\frac{1-\cos\phi_{m}}{\sqrt{2\left(1-\cos\phi_{m}\right)}}=\frac{\sqrt{2}}{2}\sqrt{1-\cos\phi_{m}}
+\]
+Sostituendo nell'espressione del modulo della funzione di sensitività
+otteniamo:
+\begin{equation}
+\left|F\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)\right|=\frac{1}{2\sin\frac{\phi_{m}}{2}}\label{eq:Modulo-risposta-pulsazione-critica-retroazione}
+\end{equation}
+Ora confrontiamo questo valore del modulo con quello della risposta
+del nostro modello in $\omega=\omega_{n}\simeq\omega_{{\scriptscriptstyle \text{C}}}$:
+\begin{equation}
+\left|M\left(j\omega_{n}\right)\right|=\left|\frac{\omega_{{\scriptscriptstyle \text{C}}}^{2}}{\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)^{2}+2j\omega_{{\scriptscriptstyle \text{C}}}^{2}\xi+\omega_{{\scriptscriptstyle \text{C}}}^{2}}\right|=\frac{1}{2\xi}\label{eq:Modulo-risposta-pulsazione-naturale-prototipo}
+\end{equation}
+
+Utilizzando (\ref{eq:Modulo-risposta-pulsazione-critica-retroazione})
+e (\ref{eq:Modulo-risposta-pulsazione-naturale-prototipo}) otteniamo
+la seguente relazione:
+\[
+\frac{1}{2\xi}\simeq\frac{1}{2\sin\frac{\phi_{m}}{2}}\underset{{\scriptstyle \phi_{m}\ll1}}{\longrightarrow}\xi\simeq\frac{\phi_{m}}{2}
+\]
+dove abbiamo ulteriormente semplificato il seno ipotizzando di avere
+un angolo molto piccolo; supponendo inoltre di esprimere in gradi
+il margine di fase, la precedente vale:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Smorzamento in anello chiuso}{\footnotesize{}\index{Smorzamento in anello chiuso@{\footnotesize{}Smorzamento in anello chiuso}}}}[0.5cm]
+\begin{equation}
+\xi\simeq\frac{\phi_{m}\left[{^\circ}\right]}{2}\cdot\frac{\pi}{180{^\circ}}\simeq\boxed{\frac{\phi_{m}\left[\text{°}\right]}{100}}\label{eq:Smorzamento-anello-chiuso-gradi}
+\end{equation}
+
+La relazione (\ref{eq:Smorzamento-anello-chiuso-gradi}) permette
+di conoscere lo smorzamento a partire dal margine di fase; grazie
+ad esso possiamo ottenere la sovraelongazione e la costante di tempo
+del sistema di partenza in anello chiuso:
+\begin{equation}
+s_{\%}=e^{-\xi\pi/\sqrt{1-\xi^{2}}},\qquad T=1/\xi\omega_{n}\label{eq:Sovraelongazione-e-costante-tempo-rispetto-smorzamento}
+\end{equation}
+Si noti che il margine di fase può essere calcolato direttamente dalla
+funzione di anello aperto $L\left(s\right)$.
+\begin{rem}
+Dato che per un valore di smorzamento $\xi>0.65$ l'andamento non
+ha risonanza (come se ci fosse un singolo polo reale dominante), possiamo
+affermare che: 
+\[
+\phi_{m}>65{^\circ}\implies s_{\%}=0\,\land\,T\sim\dfrac{1}{\omega_{{\scriptscriptstyle C}}}
+\]
+Se invece il margine di fase è inferiore ai $65{^\circ}$, il sistema
+si comporta come un filtro passa basso del secondo ordine, con pulsazione
+naturale circa pari a quella critica ($\omega_{n}\simeq\omega_{{\scriptscriptstyle C}}$)
+e il suo smorzamento è dato da (\ref{eq:Smorzamento-anello-chiuso-gradi}).
+Si ricorda che queste ipotesi valgono solo per condizioni di asintotica
+stabilità (in particolare $\phi_{m}>0$).
+\end{rem}
+\begin{example}
+\emph{Sia dato il diagramma a blocchi in figura \ref{fig:Diagramma-blocchi-esempio-6_7},
+in cui la funzione di trasferimento vale $L\left(s\right)=\frac{8\left(s+1\right)}{s\left(s/10+1\right)\left(s/100+1\right)}$}
+\end{example}
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{center}
+\includegraphics[scale=0.9]{\string"Illustrazioni/6_7-1 Schema a blocchi esempio\string".pdf}
+\par\end{center}
+\captionof{figure}{Schema a blocchi}\label{fig:Diagramma-blocchi-esempio-6_7}%
+\end{minipage}%
+\begin{minipage}[c]{0.5\textwidth}%
+\emph{Sappiamo che il contenuto in frequenza di $d\left(t\right)$
+è contenuto nella banda $\omega\in\left[0,\,5\right]$, mentre il
+contenuto in frequenza di $n\left(t\right)$ è contenuto nella banda
+$\omega\in\left[10^{3},\,10^{4}\right]$; $\checkmark$Analizzare
+la stabilità e le prestazioni (statiche e dinamiche) del sistema in
+anello chiuso.}%
+\end{minipage}
+
+Cominciamo valutando la stabilità asintotica: potremmo utilizzare
+il criterio di Nyquist, tuttavia è utile provare a controllare le
+ipotesi del criterio di Bode strada facendo, e nel caso applicarlo.
+
+La funzione di anello ha un guadagno statico pari a $\mu=8\simeq18\,\text{dB}$,
+mentre il tipo del sistema vale $g=1$ (un polo nell'origine); le
+singolarità si trovano in $z_{1}=-1,\,p_{1}=-10,\,p_{2}=-100$; notiamo
+che la prima ipotesi per il criterio di Bode è soddisfatta (nessun
+polo reale negativo in anello aperto, $P=0$, e la funzione $L\left(s\right)$
+è strettamente propria).
+
+\begin{figure}[!h]
+\begin{centering}
+\includegraphics[scale=0.9]{\string"Illustrazioni/6_7-2 Bode modulo esempio\string".pdf}\\
+\includegraphics[scale=0.9]{\string"Illustrazioni/6_7-3 Bode fase esempio\string".pdf}
+\par\end{centering}
+\caption{Diagrammi di Bode}
+\end{figure}
+
+Nel diagramma del modulo possiamo individuare la pulsazione critica
+dove $\left|M\left(j\omega\right)\right|=0\,\text{dB}$, e indichiamo
+tale punto con $\omega_{{\scriptscriptstyle \text{C}}}$, il suo valore
+è circa 65; notiamo inoltre che il guadagno statico è positivo (un'altra
+ipotesi per utilizzare il criterio di Bode). Infine, dal diagramma
+della fase ricaviamo la fase della pulsazione critica (per calcolare
+il margine di fase):
+\[
+\phi_{{\scriptscriptstyle \text{C}}}=\arg\left(L\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)\right)=\arg\left(8\right)+\arg\left(1+j65\right)-\arg\left(j65\right)
+\]
+\[
+-\arg\left(1+j0.65\right)-\arg\left(1+j6.5\right)\simeq0{^\circ}+90{^\circ}-90{^\circ}-81{^\circ}-33{^\circ}=114{^\circ}
+\]
+Segue dalla definizione (\ref{eq:Margine-di-fase}) che
+\[
+\phi_{m}=180-\left|\phi_{{\scriptscriptstyle \text{C}}}\right|=66{^\circ}
+\]
+questo risultato verifica anche l'ultima ipotesi per il criterio di
+Bode ($\phi_{m}>0$), permettendoci di applicarlo (possiamo affermare
+che il sistema è asintoticamente stabile, si veda il Teorema \ref{thm:Creiterio-di-bode}).
+
+Per valutare le prestazioni dobbiamo osservare la posizione delle
+bande dei disturbi rispetto al diagramma del modulo:
+\begin{itemize}
+\item Prestazioni statiche per ingressi limitati in banda
+\begin{itemize}
+\item il disturbo di processo $d\left(t\right)$ ha componenti \uline{al
+più} a frequenza $\overline{\omega}_{d}=5\,\text{rad}$: esso avrà
+in corrispondenza di tale valore un'attenuazione di $-18\,\text{dB}$;
+\item il disturbo di misura $n\left(t\right)$ ha componenti \uline{almeno}
+a frequenza $\overline{\omega}_{n}=10^{3}\,\text{rad}$: esso avrà
+in corrispondenza di tale valore un'attenuazione di $-42\,\text{dB}$;
+\end{itemize}
+\item Prestazioni dinamiche per ingressi polinomiali (si ricordi che $g=1$)
+\begin{itemize}
+\item con ingressi pari a $A\cdot\text{sca}\left(t\right)$ l'errore di
+inseguimento vale $\left|e_{\infty}\right|=0$;
+\item con ingressi pari a $A\cdot\text{ram}\left(t\right)$ l'errore di
+inseguimento vale $\left|e_{\infty}\right|=\left|A\right|/8$;
+\item con ingressi pari a $A\cdot\text{sca}\left(t\right)$ l'errore di
+inseguimento vale $\left|e_{\infty}\right|=\infty$;
+\end{itemize}
+\item Prestazioni dinamiche (a fronte di uno scalino di riferimento di ampiezza
+$w\left(\infty\right)$)
+\begin{itemize}
+\item col margine di fase ottenuto ($\phi_{m}=66{^\circ}$) il sistema si
+comporta come se avesse un polo dominante reale; abbiamo $s_{\%}=0$
+e $T\simeq1/65\,\text{s}$, quindi la risposta raggiungerà il $99\%$
+del valore di regime in $5T=0.075\,\text{s}$.
+\end{itemize}
+\end{itemize}
+\demo
 
 \appendix
 
@@ -7530,7 +7800,7 @@ Chiamiamo \emph{formula di antitrasformazione} la funzione inversa
 della trasformata di Laplace, definita come\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
 \textbf{\footnotesize{}Antitrasformata di Laplace}{\footnotesize{}\index{Laplace, antitrasformata continua@{\footnotesize{}Laplace, antitrasformata continua}}}}[0.7cm]
 \begin{equation}
-\mathscr{L}^{-1}\left[F\left(s\right)\right]=f\left(t\right)=\dfrac{1}{2\pi j}\somme{\sigma-j\infty}{\sigma+j\infty}{F\left(s\right)e^{st}}s\label{eq:Antitrasformata-Laplace}
+\mathscr{L}^{-1}\left[F\left(s\right)\right]=f\left(t\right)=\dfrac{1}{2\pi j}\cdot\lm{\omega}{+\infty}{\somme{\sigma-j\omega}{\sigma+j\omega}{F\left(s\right)e^{st}}s}\label{eq:Antitrasformata-Laplace}
 \end{equation}
 dove agli estremi di integrazione si ha $\sigma>\overline{\sigma},\,\sigma\in\mathbb{R}$
 qualsiasi. La corrispondenza tra trasformata e antitrasformata di

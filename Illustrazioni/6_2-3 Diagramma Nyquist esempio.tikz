@@ -1,0 +1,46 @@
+﻿\begin{tikzpicture} [%
+	gnuplot def/.append style={prefix={}},
+	asintoto/.style={samples = 1000, thick},
+	effettivo/.style={black!60, thin, densely dashed, samples = 1000},
+]
+	% Draw the lines at multiples of pi/12
+	\foreach \ang in {0,...,31} {
+		%\draw [lightgray] (0,0) -- (\ang * 180 / 16:4);
+	}
+	
+	% Add the labels at multiples of pi/4
+	\foreach \ang/\lab/\dir in {
+	   0/0/right,
+	   1/{\pi/4}/{above right},
+	   2/{\pi/2}/above,
+	   3/{3\pi/4}/{above left},
+	   4/{\pi}/left,
+	   5/{5\pi/4}/{below left},
+	   7/{7\pi/4}/{below right},
+	   6/{3\pi/2}/below} {
+	   \draw [black!50] (0,0) -- (\ang * 180 / 4:4.1);
+	   \node at (\ang * 180 / 4:4.2) [\dir] {\scriptsize $\lab$};
+	}
+
+	% Concentric circles and radius labels
+	\foreach \s in {0, 1, 2, 3} {
+	   %\draw [lightgray] (0,0) circle (\s + 0.5);
+	   \draw [black!50] (0,0) circle (\s);
+	   \node at (\s, 0) [below right] {\scriptsize $\s$};
+	}
+	
+	% The double-lined circle around the whole diagram
+	\draw [style=double] (0,0) circle (4);
+
+	\begin{scope}
+		\NyquistGraph[smooth,samples=100, thick, black, scale=2]{-0.34:3}
+			{\IntAmp{1} + \POAmp{1}{1}}
+			{\IntArg{1} + \POArg{1}{1}}
+		\NyquistGraph[smooth,samples=100, thick, black, scale=2]{-0.34:3}
+			{\IntAmp{1} + \POAmp{1}{1}}
+			{-\IntArg{1} - \POArg{1}{1}}
+	\end{scope}
+
+	\filldraw(-1,0) circle (1pt) node [below] {$\scriptstyle -1$};
+	\draw [dashed] (114:4) arc [start angle=90,end angle=-90,x radius=3.6,y radius=3.64];
+\end{tikzpicture}

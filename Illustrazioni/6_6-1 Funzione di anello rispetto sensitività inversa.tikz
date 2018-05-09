@@ -1,0 +1,15 @@
+﻿\begin{tikzpicture} [scale=1.5]
+%\overline{\omega}_{w}
+% Punti sul grafico
+	\filldraw (2.5,0) circle (1pt) node[below] (wc) {$\omega_{{\scriptscriptstyle C}}$};
+	\filldraw (1,0) circle (1pt) node[below] (ww) {$\overline{\omega}_{w}$};
+	\filldraw (3.5,0) circle (1pt) node[above] (wn1) {$\underline{\omega}_{n}$};
+	\filldraw (4.5,0) circle (1pt) node[above] (wn2) {$\overline{\omega}_{n}$};
+% Assi
+	\draw[->] (-0.2, 0) -- (5, 0) node[right] {$\omega$};
+	\draw[->] (0, -1) -- (0, 1.5) node[above] {$|\circ|\;\scriptstyle dB$};
+
+% Funzioni
+	\draw[thick] (0, 0) -- ++(2.5,0) -- ++(2.5, -1) node [near end, below left=-1pt] {$|F(j\omega)|$};
+	\draw[densely dashed, gray] (0, 1) -- (5, -1) node [near start, above=7pt, black] {$|L(j\omega)|$};
+\end{tikzpicture}

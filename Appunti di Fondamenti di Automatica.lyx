@@ -128,6 +128,22 @@ theorems-ams-chap-bytype
 
 \begin_body
 
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+newgeometry{margin=1cm}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Title
 Appunti di Fondamenti di Automatica
 \end_layout
@@ -135,6 +151,22 @@ Appunti di Fondamenti di Automatica
 \begin_layout Author
 Lorenzo Prosseda, a.a.
  2017-2018
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+restoregeometry
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -23933,6 +23965,211 @@ Un tratto del diagramma di Nyquist corrisponde esattamente al diagramma
 
 \end_layout
 
+\begin_layout Example
+
+\emph on
+Sia data la seguente funzione di trasferimento:
+\begin_inset Formula 
+\[
+L\left(s\right)=\frac{1}{s\left(1+s\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+
+\emph on
+\begin_inset Formula $\checkmark$
+\end_inset
+
+Tracciare il diagramma di Nyquist associato.
+\end_layout
+
+\begin_layout Example
+Cominciamo ricavando i diagrammi di Bode, osservando prima che il guadagno
+ statico vale 
+\begin_inset Formula $\mu=1$
+\end_inset
+
+, e sono presenti due poli (
+\begin_inset Formula $p_{1}=0,\,p_{2}=-1$
+\end_inset
+
+):
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "50text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/6_2-1 Bode modulo esempio.pdf
+	display false
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Diagramma di Bode del modulo}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "50text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/6_2-2 Bode fase esempio.pdf
+	display false
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Diagramma di Bode della fase}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Il diagramma di Nyquist si ricava direttamente dal diagramma polare, cambiando
+ il segno della parte immaginaria e aggiungendo eventuali semicerchi per
+ chiudere il cammino; infatti il diagramma polare si costruisce partendo
+ con un'angolazione di 
+\begin_inset Formula $-90°$
+\end_inset
+
+ (parallela rispetto al semiasse immaginario negativo) e poi mano a mano
+ che la pulsazione aumenta, il modulo diventa infinitesimo e la fase decresce
+ asintoticamente a 
+\begin_inset Formula $-180°$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/6_2-3 Diagramma Nyquist esempio.pdf
+	display false
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Diagramma di Nyquist
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+demo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Criterio di Nyquist
 \end_layout
@@ -24579,6 +24816,13 @@ Criterio di Bode
 
 
 \end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:Creiterio-di-bode"
 
 \end_inset
 
@@ -25402,12 +25646,135 @@ Se vogliamo conoscere questi valori di modulo, ai quali corrisponde l'uscita
 \end_layout
 
 \begin_layout Standard
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "50text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/6_6-1 Funzione di anello rispetto sensitività inversa.pdf
+	display false
+	scale 85
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Precisione rispetto alla funzione di sensitività inversa}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Precisione-rispetto-sensitività-inversa"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "50text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/6_6-2 Funzione di anello rispetto sensitività.pdf
+	display false
+	scale 85
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Precisione rispetto alla funzione di sensitività}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Precisione-rispetto-sensitività"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Cominciamo da 
 \begin_inset Formula $\mathrm{{\scriptstyle \left(1\right)}}$
 \end_inset
 
-, analizzando il suo modulo tramite il diagramma 
-\begin_inset Formula $\square$
+, analizzando il suo modulo tramite 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:Precisione-rispetto-sensitività-inversa"
+plural "false"
+caps "false"
+noprefix "false"
+
 \end_inset
 
 : per 
@@ -25426,7 +25793,7 @@ o che essa sia anche strettamente propria (quindi per
 
 \begin_layout Standard
 Rispetto al valore di pulsazione critica 
-\begin_inset Formula $\omega_{c}$
+\begin_inset Formula $\omega_{{\scriptscriptstyle \text{C}}}$
 \end_inset
 
  (intersezione tra l'andamento di 
@@ -25453,7 +25820,7 @@ In modo analitico possiamo scrivere, rispetto alla risposta armonica della
 : 
 \begin_inset Formula 
 \[
-\left|F\left(j\omega\right)\right|=\left|\frac{L\left(j\omega\right)}{1+L\left(j\omega\right)}\right|=\frac{\left|L\left(j\omega\right)\right|}{1+\left|L\left(j\omega\right)\right|}\underset{{\scriptstyle \omega\ll\omega_{\text{C}}}}{\sim}1
+\left|F\left(j\omega\right)\right|=\left|\frac{L\left(j\omega\right)}{1+L\left(j\omega\right)}\right|=\frac{\left|L\left(j\omega\right)\right|}{1+\left|L\left(j\omega\right)\right|}\underset{{\scriptstyle \omega\ll\omega_{{\scriptscriptstyle \text{C}}}}}{\sim}1
 \]
 
 \end_inset
@@ -25503,8 +25870,14 @@ Consideriamo
 \begin_inset Formula $\mathrm{{\scriptstyle \left(2\right)}}$
 \end_inset
 
-, analizzando il suo modulo tramite il diagramma 
-\begin_inset Formula $\square$
+, analizzando il suo modulo tramite 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:Precisione-rispetto-sensitività"
+plural "false"
+caps "false"
+noprefix "false"
+
 \end_inset
 
 : il discorso è analogo al precedente, infatti viene utilizzata la sensitività
@@ -25559,6 +25932,855 @@ Per attenuare i disturbi di processo
 \end_inset
 
 .
+\end_layout
+
+\begin_layout Section
+Prestazioni dinamiche
+\end_layout
+
+\begin_layout Standard
+L'analisi delle prestazioni dinamiche riguarda la risposta armonica del
+ sistema a fronte di un ingresso a scalino; prendiamo dunque 
+\begin_inset Formula $w\left(t\right)=\text{sca}\left(t\right)$
+\end_inset
+
+ e analizziamo il comportamento della funzione di anello.
+\end_layout
+
+\begin_layout Standard
+La funzione di trasferimento che, dato 
+\begin_inset Formula $w\left(t\right)$
+\end_inset
+
+, permette di ottenere il movimento dell'uscita, è 
+\begin_inset Formula $F\left(s\right)$
+\end_inset
+
+; infatti 
+\begin_inset Formula $Y\left(s\right)=F\left(s\right)W\left(s\right)$
+\end_inset
+
+, e inoltre conosciamo già l'andamento asintotico della funzione 
+\begin_inset Formula $F\left(s\right)$
+\end_inset
+
+ (si veda 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:Precisione-rispetto-sensitività-inversa"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+); tuttavia non conosciamo il suo comportamento nell'intorno della pulsazione
+ critica 
+\begin_inset Formula $\omega_{{\scriptscriptstyle \text{C}}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Possiamo ottenere l'andamento di 
+\begin_inset Formula $F\left(j\omega\right)$
+\end_inset
+
+ per 
+\begin_inset Formula $\omega\simeq\omega_{{\scriptscriptstyle \text{C}}}$
+\end_inset
+
+ adottando un modello della funzione di anello: assumiamo che essa si comporti
+ come una funzione con due poli complessi coniugati 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Risposta-scalino-ord-2-poli-complessi-coniugati"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, come un modello di filtro passa-basso del secondo ordine:
+\begin_inset Formula 
+\[
+M\left(s\right)=\frac{\omega_{n}^{2}}{s^{2}+2\xi\omega_{n}s+\omega_{n}^{2}}
+\]
+
+\end_inset
+
+Questo modello di comportamento in anello chiuso è una prima approssimazione,
+ poiché in un sistema di controllo reale l'ordine può essere molto superiore
+ al secondo, tuttavia qualitativamente il suo comportamento è quello di
+ un filtro passa-basso.
+\end_layout
+
+\begin_layout Standard
+Cominciamo la nostra analisi calcolando 
+\begin_inset Formula $F\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)$
+\end_inset
+
+, partendo dalle seguenti riscritture:
+\begin_inset Formula 
+\[
+\left|F\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)\right|=\left|\frac{L\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)}{1+L\left(\omega_{{\scriptscriptstyle \text{C}}}\right)}\right|=\frac{\left|L\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)\right|}{\left|1+L\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)\right|}=\ldots
+\]
+
+\end_inset
+
+Dato che alla pulsazione critica corrisponde un guadagno unitario (
+\begin_inset Formula $0\,\text{dB}$
+\end_inset
+
+), possiamo scrivere 
+\begin_inset Formula $L\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)=1\cdot e^{j\phi_{{\scriptscriptstyle \text{C}}}}$
+\end_inset
+
+ dove si ha 
+\begin_inset Formula $\phi_{{\scriptscriptstyle \text{C}}}=\arg\left(L\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)\right)$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\ldots=\frac{\left|e^{j\phi_{{\scriptscriptstyle \text{C}}}}\right|}{\left|1+e^{j\phi_{{\scriptscriptstyle \text{C}}}}\right|}=\frac{1}{\sqrt{\left(1+\cos\phi_{{\scriptscriptstyle \text{C}}}\right)^{2}+\left(\sin\phi_{{\scriptscriptstyle \text{C}}}\right)^{2}}}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+=\frac{1}{\sqrt{1+2\cos\phi_{{\scriptscriptstyle \text{C}}}+\cos\phi_{{\scriptscriptstyle \text{C}}}^{2}+\sin^{2}\phi_{{\scriptscriptstyle \text{C}}}}}=\frac{1}{\sqrt{2\left(1+\cos\phi_{{\scriptscriptstyle \text{C}}}\right)}}
+\]
+
+\end_inset
+
+dove al numeratore il modulo vale proprio 1, e al denominatore abbiamo usato
+ le formule 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Formula-di-Eulero"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ sviluppando il prodotto.
+\end_layout
+
+\begin_layout Standard
+Consideriamo il piano dei numeri complessi: all'interno delle nostre ipotesi
+ di stabilità (
+\begin_inset Formula $P=0$
+\end_inset
+
+) il margine di fase sarà positivo, e tracciando la congiungente di 
+\begin_inset Formula $L\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)$
+\end_inset
+
+ con l'origine, otteniamo l'angolo opposto pari a 
+\begin_inset Formula $\phi_{m}$
+\end_inset
+
+; osserviamo che, nella nostra costruzione, 
+\begin_inset Formula $\cos\phi_{{\scriptscriptstyle \text{C}}}=-\cos\phi_{m}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Riprendendo l'uguaglianza precedente, scriveremo:
+\begin_inset Formula 
+\[
+\left|F\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)\right|=\ldots=\frac{1}{\sqrt{2\left(1+\cos\phi_{{\scriptscriptstyle \text{C}}}\right)}}
+\]
+
+\end_inset
+
+Questa relazione può ulteriormente essere semplificata costruendo un triangolo
+ nel primo quadrante utilizzando l'angolo 
+\begin_inset Formula $\phi_{m}$
+\end_inset
+
+ e la circonferenza di raggio unitario; avremo un triangolo isoscele con
+ angoli alla base pari a 
+\begin_inset Formula $90°-\phi_{m}/2$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Tracciando l'altezza che cadde sull'asse reale positivo nel punto 
+\begin_inset Formula $h$
+\end_inset
+
+ (vale 
+\begin_inset Formula $\sin\phi_{m}$
+\end_inset
+
+), otteniamo un ulteriore rettangolo con angoli alla base 
+\begin_inset Formula $90°$
+\end_inset
+
+ e 
+\begin_inset Formula $90°-\phi_{m}/2$
+\end_inset
+
+, dunque il suo angolo al vertice vale 
+\begin_inset Formula $\phi_{m}/2$
+\end_inset
+
+; la base del primo rettangolo (da 0 a 1) è suddivisa in due segmenti dall'altez
+za, nel punto 
+\begin_inset Formula $h$
+\end_inset
+
+: il primo (da 0 a 
+\begin_inset Formula $h$
+\end_inset
+
+) vale 
+\begin_inset Formula $\cos\phi_{m}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Il segmento di base (il minore) del triangolo isoscele vale:
+\begin_inset Formula 
+\[
+a=\sqrt{\sin^{2}\phi_{m}+\left(1-\cos\phi_{m}\right)^{2}}=\sqrt{2\left(1-\cos\phi_{m}\right)}
+\]
+
+\end_inset
+
+Consideriamo adesso il seno dell'angolo al vertice del secondo triangolo
+ (
+\begin_inset Formula $\phi_{m}/2$
+\end_inset
+
+):
+\begin_inset Formula 
+\[
+\sin\frac{\phi_{m}}{2}=\frac{1-\cos\phi_{m}}{\sqrt{2\left(1-\cos\phi_{m}\right)}}=\frac{\sqrt{2}}{2}\sqrt{1-\cos\phi_{m}}
+\]
+
+\end_inset
+
+Sostituendo nell'espressione del modulo della funzione di sensitività otteniamo:
+\begin_inset Formula 
+\begin{equation}
+\left|F\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)\right|=\frac{1}{2\sin\frac{\phi_{m}}{2}}\label{eq:Modulo-risposta-pulsazione-critica-retroazione}
+\end{equation}
+
+\end_inset
+
+Ora confrontiamo questo valore del modulo con quello della risposta del
+ nostro modello in 
+\begin_inset Formula $\omega=\omega_{n}\simeq\omega_{{\scriptscriptstyle \text{C}}}$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{equation}
+\left|M\left(j\omega_{n}\right)\right|=\left|\frac{\omega_{{\scriptscriptstyle \text{C}}}^{2}}{\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)^{2}+2j\omega_{{\scriptscriptstyle \text{C}}}^{2}\xi+\omega_{{\scriptscriptstyle \text{C}}}^{2}}\right|=\frac{1}{2\xi}\label{eq:Modulo-risposta-pulsazione-naturale-prototipo}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Utilizzando 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Modulo-risposta-pulsazione-critica-retroazione"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ e 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Modulo-risposta-pulsazione-naturale-prototipo"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ otteniamo la seguente relazione:
+\begin_inset Formula 
+\[
+\frac{1}{2\xi}\simeq\frac{1}{2\sin\frac{\phi_{m}}{2}}\underset{{\scriptstyle \phi_{m}\ll1}}{\longrightarrow}\xi\simeq\frac{\phi_{m}}{2}
+\]
+
+\end_inset
+
+dove abbiamo ulteriormente semplificato il seno ipotizzando di avere un
+ angolo molto piccolo; supponendo inoltre di esprimere in gradi il margine
+ di fase, la precedente vale:
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "3cm"
+height "1pt"
+
+\end_inset
+
+
+\series bold
+\size footnotesize
+
+\begin_inset Newline newline
+\end_inset
+
+Smorzamento in anello chiuso
+\series default
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Smorzamento in anello chiuso
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[0.5cm]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\xi\simeq\frac{\phi_{m}\left[°\right]}{2}\cdot\frac{\pi}{180°}\simeq\boxed{\frac{\phi_{m}\left[\text{°}\right]}{100}}\label{eq:Smorzamento-anello-chiuso-gradi}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La relazione 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Smorzamento-anello-chiuso-gradi"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ permette di conoscere lo smorzamento a partire dal margine di fase; grazie
+ ad esso possiamo ottenere la sovraelongazione e la costante di tempo del
+ sistema di partenza in anello chiuso:
+\begin_inset Formula 
+\begin{equation}
+s_{\%}=e^{-\xi\pi/\sqrt{1-\xi^{2}}},\qquad T=1/\xi\omega_{n}\label{eq:Sovraelongazione-e-costante-tempo-rispetto-smorzamento}
+\end{equation}
+
+\end_inset
+
+Si noti che il margine di fase può essere calcolato direttamente dalla funzione
+ di anello aperto 
+\begin_inset Formula $L\left(s\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Remark
+Dato che per un valore di smorzamento 
+\begin_inset Formula $\xi>0.65$
+\end_inset
+
+ l'andamento non ha risonanza (come se ci fosse un singolo polo reale dominante)
+, possiamo affermare che: 
+\begin_inset Formula 
+\[
+\phi_{m}>65°\implies s_{\%}=0\,\land\,T\sim\dfrac{1}{\omega_{{\scriptscriptstyle C}}}
+\]
+
+\end_inset
+
+Se invece il margine di fase è inferiore ai 
+\begin_inset Formula $65°$
+\end_inset
+
+, il sistema si comporta come un filtro passa basso del secondo ordine,
+ con pulsazione naturale circa pari a quella critica (
+\begin_inset Formula $\omega_{n}\simeq\omega_{{\scriptscriptstyle C}}$
+\end_inset
+
+) e il suo smorzamento è dato da 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Smorzamento-anello-chiuso-gradi"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Si ricorda che queste ipotesi valgono solo per condizioni di asintotica
+ stabilità (in particolare 
+\begin_inset Formula $\phi_{m}>0$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Example
+
+\emph on
+Sia dato il diagramma a blocchi in figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Diagramma-blocchi-esempio-6_7"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, in cui la funzione di trasferimento vale 
+\begin_inset Formula $L\left(s\right)=\frac{8\left(s+1\right)}{s\left(s/10+1\right)\left(s/100+1\right)}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "50text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/6_7-1 Schema a blocchi esempio.pdf
+	display false
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Schema a blocchi}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Diagramma-blocchi-esempio-6_7"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "50text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+
+\emph on
+Sappiamo che il contenuto in frequenza di 
+\begin_inset Formula $d\left(t\right)$
+\end_inset
+
+ è contenuto nella banda 
+\begin_inset Formula $\omega\in\left[0,\,5\right]$
+\end_inset
+
+, mentre il contenuto in frequenza di 
+\begin_inset Formula $n\left(t\right)$
+\end_inset
+
+ è contenuto nella banda 
+\begin_inset Formula $\omega\in\left[10^{3},\,10^{4}\right]$
+\end_inset
+
+; 
+\begin_inset Formula $\checkmark$
+\end_inset
+
+Analizzare la stabilità e le prestazioni (statiche e dinamiche) del sistema
+ in anello chiuso.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Cominciamo valutando la stabilità asintotica: potremmo utilizzare il criterio
+ di Nyquist, tuttavia è utile provare a controllare le ipotesi del criterio
+ di Bode strada facendo, e nel caso applicarlo.
+\end_layout
+
+\begin_layout Standard
+La funzione di anello ha un guadagno statico pari a 
+\begin_inset Formula $\mu=8\simeq18\,\text{dB}$
+\end_inset
+
+, mentre il tipo del sistema vale 
+\begin_inset Formula $g=1$
+\end_inset
+
+ (un polo nell'origine); le singolarità si trovano in 
+\begin_inset Formula $z_{1}=-1,\,p_{1}=-10,\,p_{2}=-100$
+\end_inset
+
+; notiamo che la prima ipotesi per il criterio di Bode è soddisfatta (nessun
+ polo reale negativo in anello aperto, 
+\begin_inset Formula $P=0$
+\end_inset
+
+, e la funzione 
+\begin_inset Formula $L\left(s\right)$
+\end_inset
+
+ è strettamente propria).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/6_7-2 Bode modulo esempio.pdf
+	display false
+	scale 90
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename Illustrazioni/6_7-3 Bode fase esempio.pdf
+	display false
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Diagrammi di Bode
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nel diagramma del modulo possiamo individuare la pulsazione critica dove
+ 
+\begin_inset Formula $\left|M\left(j\omega\right)\right|=0\,\text{dB}$
+\end_inset
+
+, e indichiamo tale punto con 
+\begin_inset Formula $\omega_{{\scriptscriptstyle \text{C}}}$
+\end_inset
+
+, il suo valore è circa 65; notiamo inoltre che il guadagno statico è positivo
+ (un'altra ipotesi per utilizzare il criterio di Bode).
+ Infine, dal diagramma della fase ricaviamo la fase della pulsazione critica
+ (per calcolare il margine di fase):
+\begin_inset Formula 
+\[
+\phi_{{\scriptscriptstyle \text{C}}}=\arg\left(L\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)\right)=\arg\left(8\right)+\arg\left(1+j65\right)-\arg\left(j65\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+-\arg\left(1+j0.65\right)-\arg\left(1+j6.5\right)\simeq0°+90°-90°-81°-33°=114°
+\]
+
+\end_inset
+
+Segue dalla definizione 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Margine-di-fase"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ che
+\begin_inset Formula 
+\[
+\phi_{m}=180-\left|\phi_{{\scriptscriptstyle \text{C}}}\right|=66°
+\]
+
+\end_inset
+
+questo risultato verifica anche l'ultima ipotesi per il criterio di Bode
+ (
+\begin_inset Formula $\phi_{m}>0$
+\end_inset
+
+), permettendoci di applicarlo (possiamo affermare che il sistema è asintoticame
+nte stabile, si veda il Teorema 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:Creiterio-di-bode"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Per valutare le prestazioni dobbiamo osservare la posizione delle bande
+ dei disturbi rispetto al diagramma del modulo:
+\end_layout
+
+\begin_layout Itemize
+Prestazioni statiche per ingressi limitati in banda
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+il disturbo di processo 
+\begin_inset Formula $d\left(t\right)$
+\end_inset
+
+ ha componenti 
+\bar under
+al più
+\bar default
+ a frequenza 
+\begin_inset Formula $\overline{\omega}_{d}=5\,\text{rad}$
+\end_inset
+
+: esso avrà in corrispondenza di tale valore un'attenuazione di 
+\begin_inset Formula $-18\,\text{dB}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+il disturbo di misura 
+\begin_inset Formula $n\left(t\right)$
+\end_inset
+
+ ha componenti 
+\bar under
+almeno
+\bar default
+ a frequenza 
+\begin_inset Formula $\overline{\omega}_{n}=10^{3}\,\text{rad}$
+\end_inset
+
+: esso avrà in corrispondenza di tale valore un'attenuazione di 
+\begin_inset Formula $-42\,\text{dB}$
+\end_inset
+
+;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Prestazioni dinamiche per ingressi polinomiali (si ricordi che 
+\begin_inset Formula $g=1$
+\end_inset
+
+)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+con ingressi pari a 
+\begin_inset Formula $A\cdot\text{sca}\left(t\right)$
+\end_inset
+
+ l'errore di inseguimento vale 
+\begin_inset Formula $\left|e_{\infty}\right|=0$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+con ingressi pari a 
+\begin_inset Formula $A\cdot\text{ram}\left(t\right)$
+\end_inset
+
+ l'errore di inseguimento vale 
+\begin_inset Formula $\left|e_{\infty}\right|=\left|A\right|/8$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+con ingressi pari a 
+\begin_inset Formula $A\cdot\text{sca}\left(t\right)$
+\end_inset
+
+ l'errore di inseguimento vale 
+\begin_inset Formula $\left|e_{\infty}\right|=\infty$
+\end_inset
+
+;
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Prestazioni dinamiche (a fronte di uno scalino di riferimento di ampiezza
+ 
+\begin_inset Formula $w\left(\infty\right)$
+\end_inset
+
+)
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+col margine di fase ottenuto (
+\begin_inset Formula $\phi_{m}=66°$
+\end_inset
+
+) il sistema si comporta come se avesse un polo dominante reale; abbiamo
+ 
+\begin_inset Formula $s_{\%}=0$
+\end_inset
+
+ e 
+\begin_inset Formula $T\simeq1/65\,\text{s}$
+\end_inset
+
+, quindi la risposta raggiungerà il 
+\begin_inset Formula $99\%$
+\end_inset
+
+ del valore di regime in 
+\begin_inset Formula $5T=0.075\,\text{s}$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+demo
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Chapter
@@ -29068,7 +30290,7 @@ status open
 
 \begin_inset Formula 
 \begin{equation}
-\mathscr{L}^{-1}\left[F\left(s\right)\right]=f\left(t\right)=\dfrac{1}{2\pi j}\somme{\sigma-j\infty}{\sigma+j\infty}{F\left(s\right)e^{st}}s\label{eq:Antitrasformata-Laplace}
+\mathscr{L}^{-1}\left[F\left(s\right)\right]=f\left(t\right)=\dfrac{1}{2\pi j}\cdot\lm{\omega}{+\infty}{\somme{\sigma-j\omega}{\sigma+j\omega}{F\left(s\right)e^{st}}s}\label{eq:Antitrasformata-Laplace}
 \end{equation}
 
 \end_inset
