@@ -7156,7 +7156,10 @@ per $\omega=1$ (modulo $8\,\text{dB}$) con quello per $\omega=10^{-3}$
 (modulo $68\,\text{dB}$, non raffigurato) rappresenta il vincolo
 $\mathrm{{\scriptstyle \left(1\right)}}$ e $\mathrm{{\scriptstyle \left(2\right)}}$
 sul guadagno statico (è stato convertito $5/2=2.5\simeq8\,\text{dB}$,
-considerando che $g=1$, ovvero un polo nell'origine).
+considerando che $g=1$, ovvero un polo nell'origine); è necessario
+soddisfare questo vincolo solamente per $\omega\rightarrow0$, in
+particolare da una decade prima della singolarità a frequenza più
+bassa.
 
 Il vincolo $\mathrm{{\scriptstyle \left(5\right)}}$ sulla pulsazione
 critica è rappresentato dal rettangolo punteggiato attorno all'asse
@@ -7166,7 +7169,7 @@ singolarità, valutando la fase sul relativo diagramma o in modo analitico.
 
 \demo
 
-\section{Progetto: metodo per inversione}
+\section{Sintesi: metodo per inversione}
 
 Se prendiamo una funzione di anello desiderata $L^{*}\left(s\right)$
 che soddisfi le specifiche, sapendo che essa è la cascata di regolatore
@@ -7217,7 +7220,7 @@ soddisfatto:
 \hspace*{-1.6cm}%
 \begin{minipage}[c]{1\columnwidth}%
 \begin{center}
-\includegraphics[scale=0.8]{\string"Illustrazioni/7_1-4 Bode modulo vincoli esempio\string".pdf}
+\includegraphics[scale=0.8]{\string"Illustrazioni/7_2-1 Bode modulo vincoli esempio\string".pdf}
 \par\end{center}
 \captionof{figure}{Modulo della funzione di anello desiderata}%
 \end{minipage}\bigskip{}
@@ -7252,7 +7255,7 @@ di anello dell'Esempio \ref{exa:Regolatore-Cruise-control}
 
 \begin{minipage}[c]{1\columnwidth}%
 \begin{center}
-\includegraphics[scale=0.8]{\string"Illustrazioni/7_1-5 Bode fase esempio\string".pdf}
+\includegraphics[scale=0.8]{\string"Illustrazioni/7_2-2 Bode fase esempio\string".pdf}
 \par\end{center}
 \captionof{figure}{Diagramma della fase della funzione di anello desiderata}%
 \end{minipage}\bigskip{}
@@ -7261,7 +7264,7 @@ Infine, ecco come appare il diagramma di Bode del modulo del regolatore:
 
 \begin{minipage}[c]{1\columnwidth}%
 \begin{center}
-\includegraphics[scale=0.8]{\string"Illustrazioni/7_1-6 Bode modulo regolatore esempio\string".pdf}
+\includegraphics[scale=0.8]{\string"Illustrazioni/7_2-3 Bode modulo regolatore esempio\string".pdf}
 \par\end{center}
 \captionof{figure}{Diagramma del modulo del regolatore}%
 \end{minipage}\bigskip{}
@@ -7278,6 +7281,114 @@ di attraversamento (per non compromettere il margine di fase) che
 rendano negativo e molto piccolo il modulo del regolatore per le alte
 frequenze. Di nuovo sottolineiamo l'importanza di progettare un regolatore
 strettamente proprio.
+
+\section{Sintesi: metodo per iterazioni}
+
+Riprendiamo i vincoli dovuti alle specifiche dell'Esempio \ref{exa:Cruise-control};
+per applicare l'approccio cosiddetto per iterazioni, scomponiamo il
+regolatore nel modo seguente:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Progetto del regolatore per iterazioni}{\footnotesize{}\index{Progetto del regolatore per iterazioni@{\footnotesize{}Progetto del regolatore per iterazioni}}}}[0.5cm]
+\begin{equation}
+R\left(s\right)=\overset{{\scriptstyle \text{statico}}}{\overbrace{R_{1}\left(s\right)}}\cdot\overset{{\scriptstyle \text{dinamico}}}{\overbrace{R_{2}\left(s\right)}}\label{eq:Regolatore-con-metodo-iterazioni}
+\end{equation}
+Le due componenti del regolatore serviranno rispettivamente a garantire
+le prestazioni statiche e dinamiche richieste dalle specifiche; supponendo
+di stabilizzare il sistema ottenendo il margine di fase desiderato,
+cerchiamo $R_{1}\left(s\right)$ per soddisfare le specifiche sul
+tipo ($\overline{g}$) e sul guadagno ($\overline{\mu}$).
+
+Nello specifico, scriveremo il \emph{regolatore statico} come $R_{1}=\mu_{{\scriptscriptstyle \text{R}}}/s^{g_{\text{R}}}$
+(rapporto tra guadagno del regolatore e $s$ elevato al numero di
+poli nell'origine del regolatore), e valgono le seguenti relazioni:
+\begin{itemize}
+\item rispetto al numero poli $n_{{\scriptscriptstyle \text{G}}}$ nell'origine
+di $G\left(s\right)$, il tipo della funzione di anello vale $g=g_{{\scriptscriptstyle \text{R}}}+n_{{\scriptscriptstyle \text{G}}}$;
+\item rispetto al guadagno $\mu_{{\scriptscriptstyle \text{G}}}$ della
+funzione $G\left(s\right)$, il guadagno della funzione di anello
+vale $\mu=\mu_{{\scriptscriptstyle \text{R}}}+\mu_{{\scriptscriptstyle \text{G}}}$.
+\end{itemize}
+Per progettare il regolatore dinamico, prima di tutto inseriamo il
+regolatore statico nell'anello, ricavando una prima funzione di anello
+$L_{1}\left(s\right)=R_{1}\left(s\right)\cdot G\left(s\right)$; poi
+tracciamo il diagramma di Bode del modulo di tale funzione, aggiungendo
+nel regolatore dinamico $R_{2}\left(s\right)$ le singolarità necessarie
+a far sì che il modulo di $L_{1}\left(s\right)$ rispetti i vincoli
+imposti dalle specifiche.
+\begin{example}
+\emph{Facendo riferimento al sistema nell'Esempio \ref{exa:Cruise-control},
+$\checked$si progetti un regolatore che soddisfi le specifiche, utilizzando
+il metodo per iterazioni.}
+
+Individuiamo innanzitutto il tipo della funzione di anello: da specifica
+vale $g=1=g_{{\scriptscriptstyle \text{R}}}+n_{{\scriptscriptstyle \text{G}}}$;
+osservando anche che $n_{{\scriptscriptstyle \text{G}}}=0$ (la funzione
+$G\left(s\right)$ non ha poli nell'origine), ricaviamo $g_{{\scriptscriptstyle \text{R}}}=1$.
+
+Il guadagno del regolatore si ottiene da quello dell'impianto tramite
+la relazione precedente (e il valore ottenuto dal teorema del valore
+iniziale $\mu_{{\scriptscriptstyle \text{G}}}=14$) $\mu=14\mu_{{\scriptscriptstyle \text{R}}}\geq2.5$
+da cui $\mu_{{\scriptscriptstyle \text{R}}}\simeq0.17$ (per avere
+un certo margine useremo il valore $\mu_{{\scriptscriptstyle \text{R}}}\simeq0.25$).
+
+Possiamo scrivere la parte statica del regolatore come $R_{1}=\dfrac{\mu_{{\scriptscriptstyle \text{R}}}}{s^{g_{\text{R}}}}=\dfrac{0.25}{s}$.
+
+La funzione di anello comprensiva del regolatore statico vale
+\[
+L_{1}\left(s\right)=R_{1}\left(s\right)\cdot G\left(s\right)=\dfrac{0.25}{s}\cdot\dfrac{14}{\left(1+s/5\right)\left(1+s/0.02\right)}
+\]
+il guadagno di tale funzione è pari a $\mu_{{\scriptscriptstyle \text{L}_{1}}}=3.5\simeq11\,\text{dB}$
+e il diagramma di Bode del modulo è in figura \ref{fig:Bode-modulo-L1-esempio}.
+\end{example}
+\begin{minipage}[c]{1\columnwidth}%
+\begin{center}
+\includegraphics{\string"Illustrazioni/7_3-1 Bode modulo L1 esempio\string".pdf}
+\par\end{center}
+\captionof{figure}{Diagramma del modulo della funzione $L_1(s)$}\label{fig:Bode-modulo-L1-esempio}%
+\end{minipage}\bigskip{}
+
+Se raffigurassimo direttamente $\left|L_{1}\left(j\omega\right)\right|$
+ci accorgeremo che essa non soddisfa il vincolo sulla pulsazione critica
+($\omega_{{\scriptscriptstyle \text{C}}}$ troppo piccola) e la pendenza
+di attraversamento è di $-40\,\text{dB}/\text{dec}$, quindi il margine
+di fase sarà prossimo allo 0; il sistema sarà asintoticamente stabile
+ma vicino all'instabilità.
+
+Inseriamo delle singolarità costruendo $R_{2}\left(s\right)$ in modo
+da rendere più stabile la funzione di anello:
+\begin{enumerate}
+\item Inseriamo uno zero ($z_{1}$) per cancellare il polo in $\omega=0.02$;
+la pulsazione critica ricavata da $\left|L_{1}\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)\right|=1$
+vale circa $\omega_{{\scriptscriptstyle \text{C}}}\simeq1.6$, e il
+margine di fase corrispondente vale circa $\phi_{m}\simeq50{^\circ}$,
+che non soddisfa le specifiche (margine di fase almeno $62{^\circ}$).
+\item Inseriamo uno zero ($z_{2}$) per cancellare l'altro polo in $\omega=5$.
+\item Inseriamo due poli di chiusura ($p_{3},\,p_{4}$) nel regolatore in
+$\omega=50$ e $\omega=100$, per renderlo strettamente proprio, facendo
+attenzione che la loro distanza dalla pulsazione critica sia tale
+da garantire che, la diminuzione di fase dovuta ai poli, non faccia
+decrescere troppo il margine di fase.
+\end{enumerate}
+Il regolatore dinamico ottenuto è $R_{2}\left(s\right)=\frac{\left(1+s/0.02\right)\left(1+s/5\right)}{\left(1+s/50\right)\left(1+s/100\right)}$,
+dalle 4 singolarità inserite; il regolatore complessivo è dato da:
+\[
+R\left(s\right)=\underset{{\scriptstyle R_{1}\left(s\right)}}{\underbrace{\frac{0.25}{s}}}\cdot\underset{{\scriptstyle R_{2}\left(s\right)}}{\underbrace{\frac{\left(1+s/0.02\right)\left(1+s/5\right)}{\left(1+s/50\right)\left(1+s/100\right)}}}
+\]
+\demo
+
+Il regolatore ottenuto col metodo per iterazioni ha meno singolarità
+di quello ottenuto per inversione, anche se questo non è rilevante
+per un sistema di controllo discreto realizzato su un calcolatore,
+nel quale le singolarità sono righe di codice, ma ha un peso in termini
+di componenti ed energia quando ad esempio la funzione del regolatore
+viene realizzata da un circuito analogico.
+
+Il grosso vantaggio di questo metodo di sintesi è la possibilità di
+costruire regolatori anche per funzioni di anello con zeri a parte
+reale positiva: tracciando il modulo della funzione di anello iniziale
+(nella quale possono essere presenti zeri a parte reale positiva)
+possiamo cercare di stabilizzarla, considerando che la pulsazione
+di attraversamento è limitata superiormente dalla fase del primo zero
+instabile.
 
 \appendix
 

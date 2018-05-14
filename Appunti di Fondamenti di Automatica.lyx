@@ -27792,7 +27792,12 @@ La linea diagonale tratteggiata e punteggiata che congiunge il punto per
 \begin_inset Formula $g=1$
 \end_inset
 
-, ovvero un polo nell'origine).
+, ovvero un polo nell'origine); è necessario soddisfare questo vincolo solamente
+ per 
+\begin_inset Formula $\omega\rightarrow0$
+\end_inset
+
+, in particolare da una decade prima della singolarità a frequenza più bassa.
 \end_layout
 
 \begin_layout Standard
@@ -27831,7 +27836,7 @@ demo
 \end_layout
 
 \begin_layout Section
-Progetto: metodo per inversione
+Sintesi: metodo per inversione
 \end_layout
 
 \begin_layout Standard
@@ -28063,7 +28068,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename Illustrazioni/7_1-4 Bode modulo vincoli esempio.pdf
+	filename Illustrazioni/7_2-1 Bode modulo vincoli esempio.pdf
 	display false
 	scale 80
 
@@ -28220,7 +28225,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename Illustrazioni/7_1-5 Bode fase esempio.pdf
+	filename Illustrazioni/7_2-2 Bode fase esempio.pdf
 	display false
 	scale 80
 
@@ -28281,7 +28286,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename Illustrazioni/7_1-6 Bode modulo regolatore esempio.pdf
+	filename Illustrazioni/7_2-3 Bode modulo regolatore esempio.pdf
 	display false
 	scale 80
 
@@ -28343,6 +28348,457 @@ poli di chiusura
  piccolo il modulo del regolatore per le alte frequenze.
  Di nuovo sottolineiamo l'importanza di progettare un regolatore strettamente
  proprio.
+\end_layout
+
+\begin_layout Section
+Sintesi: metodo per iterazioni
+\end_layout
+
+\begin_layout Standard
+Riprendiamo i vincoli dovuti alle specifiche dell'Esempio 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:Cruise-control"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+; per applicare l'approccio cosiddetto per iterazioni, scomponiamo il regolatore
+ nel modo seguente:
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "3cm"
+height "1pt"
+
+\end_inset
+
+
+\series bold
+\size footnotesize
+
+\begin_inset Newline newline
+\end_inset
+
+Progetto del regolatore per iterazioni
+\series default
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Progetto del regolatore per iterazioni
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[0.5cm]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+R\left(s\right)=\overset{{\scriptstyle \text{statico}}}{\overbrace{R_{1}\left(s\right)}}\cdot\overset{{\scriptstyle \text{dinamico}}}{\overbrace{R_{2}\left(s\right)}}\label{eq:Regolatore-con-metodo-iterazioni}
+\end{equation}
+
+\end_inset
+
+Le due componenti del regolatore serviranno rispettivamente a garantire
+ le prestazioni statiche e dinamiche richieste dalle specifiche; supponendo
+ di stabilizzare il sistema ottenendo il margine di fase desiderato, cerchiamo
+ 
+\begin_inset Formula $R_{1}\left(s\right)$
+\end_inset
+
+ per soddisfare le specifiche sul tipo (
+\begin_inset Formula $\overline{g}$
+\end_inset
+
+) e sul guadagno (
+\begin_inset Formula $\overline{\mu}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Nello specifico, scriveremo il 
+\emph on
+regolatore statico
+\emph default
+ come 
+\begin_inset Formula $R_{1}=\mu_{{\scriptscriptstyle \text{R}}}/s^{g_{\text{R}}}$
+\end_inset
+
+ (rapporto tra guadagno del regolatore e 
+\begin_inset Formula $s$
+\end_inset
+
+ elevato al numero di poli nell'origine del regolatore), e valgono le seguenti
+ relazioni:
+\end_layout
+
+\begin_layout Itemize
+rispetto al numero poli 
+\begin_inset Formula $n_{{\scriptscriptstyle \text{G}}}$
+\end_inset
+
+ nell'origine di 
+\begin_inset Formula $G\left(s\right)$
+\end_inset
+
+, il tipo della funzione di anello vale 
+\begin_inset Formula $g=g_{{\scriptscriptstyle \text{R}}}+n_{{\scriptscriptstyle \text{G}}}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+rispetto al guadagno 
+\begin_inset Formula $\mu_{{\scriptscriptstyle \text{G}}}$
+\end_inset
+
+ della funzione 
+\begin_inset Formula $G\left(s\right)$
+\end_inset
+
+, il guadagno della funzione di anello vale 
+\begin_inset Formula $\mu=\mu_{{\scriptscriptstyle \text{R}}}+\mu_{{\scriptscriptstyle \text{G}}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Per progettare il regolatore dinamico, prima di tutto inseriamo il regolatore
+ statico nell'anello, ricavando una prima funzione di anello 
+\begin_inset Formula $L_{1}\left(s\right)=R_{1}\left(s\right)\cdot G\left(s\right)$
+\end_inset
+
+; poi tracciamo il diagramma di Bode del modulo di tale funzione, aggiungendo
+ nel regolatore dinamico 
+\begin_inset Formula $R_{2}\left(s\right)$
+\end_inset
+
+ le singolarità necessarie a far sì che il modulo di 
+\begin_inset Formula $L_{1}\left(s\right)$
+\end_inset
+
+ rispetti i vincoli imposti dalle specifiche.
+\end_layout
+
+\begin_layout Example
+
+\emph on
+Facendo riferimento al sistema nell'Esempio 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:Cruise-control"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, 
+\begin_inset Formula $\checked$
+\end_inset
+
+si progetti un regolatore che soddisfi le specifiche, utilizzando il metodo
+ per iterazioni.
+\end_layout
+
+\begin_layout Example
+Individuiamo innanzitutto il tipo della funzione di anello: da specifica
+ vale 
+\begin_inset Formula $g=1=g_{{\scriptscriptstyle \text{R}}}+n_{{\scriptscriptstyle \text{G}}}$
+\end_inset
+
+; osservando anche che 
+\begin_inset Formula $n_{{\scriptscriptstyle \text{G}}}=0$
+\end_inset
+
+ (la funzione 
+\begin_inset Formula $G\left(s\right)$
+\end_inset
+
+ non ha poli nell'origine), ricaviamo 
+\begin_inset Formula $g_{{\scriptscriptstyle \text{R}}}=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+Il guadagno del regolatore si ottiene da quello dell'impianto tramite la
+ relazione precedente (e il valore ottenuto dal teorema del valore iniziale
+ 
+\begin_inset Formula $\mu_{{\scriptscriptstyle \text{G}}}=14$
+\end_inset
+
+) 
+\begin_inset Formula $\mu=14\mu_{{\scriptscriptstyle \text{R}}}\geq2.5$
+\end_inset
+
+ da cui 
+\begin_inset Formula $\mu_{{\scriptscriptstyle \text{R}}}\simeq0.17$
+\end_inset
+
+ (per avere un certo margine useremo il valore 
+\begin_inset Formula $\mu_{{\scriptscriptstyle \text{R}}}\simeq0.25$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Example
+Possiamo scrivere la parte statica del regolatore come 
+\begin_inset Formula $R_{1}=\dfrac{\mu_{{\scriptscriptstyle \text{R}}}}{s^{g_{\text{R}}}}=\dfrac{0.25}{s}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+La funzione di anello comprensiva del regolatore statico vale
+\begin_inset Formula 
+\[
+L_{1}\left(s\right)=R_{1}\left(s\right)\cdot G\left(s\right)=\dfrac{0.25}{s}\cdot\dfrac{14}{\left(1+s/5\right)\left(1+s/0.02\right)}
+\]
+
+\end_inset
+
+il guadagno di tale funzione è pari a 
+\begin_inset Formula $\mu_{{\scriptscriptstyle \text{L}_{1}}}=3.5\simeq11\,\text{dB}$
+\end_inset
+
+ e il diagramma di Bode del modulo è in figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Bode-modulo-L1-esempio"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/7_3-1 Bode modulo L1 esempio.pdf
+	display false
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Diagramma del modulo della funzione $L_1(s)$}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Bode-modulo-L1-esempio"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se raffigurassimo direttamente 
+\begin_inset Formula $\left|L_{1}\left(j\omega\right)\right|$
+\end_inset
+
+ ci accorgeremo che essa non soddisfa il vincolo sulla pulsazione critica
+ (
+\begin_inset Formula $\omega_{{\scriptscriptstyle \text{C}}}$
+\end_inset
+
+ troppo piccola) e la pendenza di attraversamento è di 
+\begin_inset Formula $-40\,\text{dB}/\text{dec}$
+\end_inset
+
+, quindi il margine di fase sarà prossimo allo 0; il sistema sarà asintoticament
+e stabile ma vicino all'instabilità.
+\end_layout
+
+\begin_layout Standard
+Inseriamo delle singolarità costruendo 
+\begin_inset Formula $R_{2}\left(s\right)$
+\end_inset
+
+ in modo da rendere più stabile la funzione di anello:
+\end_layout
+
+\begin_layout Enumerate
+Inseriamo uno zero (
+\begin_inset Formula $z_{1}$
+\end_inset
+
+) per cancellare il polo in 
+\begin_inset Formula $\omega=0.02$
+\end_inset
+
+; la pulsazione critica ricavata da 
+\begin_inset Formula $\left|L_{1}\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)\right|=1$
+\end_inset
+
+ vale circa 
+\begin_inset Formula $\omega_{{\scriptscriptstyle \text{C}}}\simeq1.6$
+\end_inset
+
+, e il margine di fase corrispondente vale circa 
+\begin_inset Formula $\phi_{m}\simeq50°$
+\end_inset
+
+, che non soddisfa le specifiche (margine di fase almeno 
+\begin_inset Formula $62°$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Enumerate
+Inseriamo uno zero (
+\begin_inset Formula $z_{2}$
+\end_inset
+
+) per cancellare l'altro polo in 
+\begin_inset Formula $\omega=5$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Inseriamo due poli di chiusura (
+\begin_inset Formula $p_{3},\,p_{4}$
+\end_inset
+
+) nel regolatore in 
+\begin_inset Formula $\omega=50$
+\end_inset
+
+ e 
+\begin_inset Formula $\omega=100$
+\end_inset
+
+, per renderlo strettamente proprio, facendo attenzione che la loro distanza
+ dalla pulsazione critica sia tale da garantire che, la diminuzione di fase
+ dovuta ai poli, non faccia decrescere troppo il margine di fase.
+\end_layout
+
+\begin_layout Standard
+Il regolatore dinamico ottenuto è 
+\begin_inset Formula $R_{2}\left(s\right)=\frac{\left(1+s/0.02\right)\left(1+s/5\right)}{\left(1+s/50\right)\left(1+s/100\right)}$
+\end_inset
+
+, dalle 4 singolarità inserite; il regolatore complessivo è dato da:
+\begin_inset Formula 
+\[
+R\left(s\right)=\underset{{\scriptstyle R_{1}\left(s\right)}}{\underbrace{\frac{0.25}{s}}}\cdot\underset{{\scriptstyle R_{2}\left(s\right)}}{\underbrace{\frac{\left(1+s/0.02\right)\left(1+s/5\right)}{\left(1+s/50\right)\left(1+s/100\right)}}}
+\]
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+demo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Il regolatore ottenuto col metodo per iterazioni ha meno singolarità di
+ quello ottenuto per inversione, anche se questo non è rilevante per un
+ sistema di controllo discreto realizzato su un calcolatore, nel quale le
+ singolarità sono righe di codice, ma ha un peso in termini di componenti
+ ed energia quando ad esempio la funzione del regolatore viene realizzata
+ da un circuito analogico.
+\end_layout
+
+\begin_layout Standard
+Il grosso vantaggio di questo metodo di sintesi è la possibilità di costruire
+ regolatori anche per funzioni di anello con zeri a parte reale positiva:
+ tracciando il modulo della funzione di anello iniziale (nella quale possono
+ essere presenti zeri a parte reale positiva) possiamo cercare di stabilizzarla,
+ considerando che la pulsazione di attraversamento è limitata superiormente
+ dalla fase del primo zero instabile.
 \end_layout
 
 \begin_layout Chapter
