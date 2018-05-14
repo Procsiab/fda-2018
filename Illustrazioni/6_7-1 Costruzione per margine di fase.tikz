@@ -1,0 +1,24 @@
+﻿\begin{tikzpicture} [scale=1.5]
+
+% Punti sul grafico
+% 	\draw[dashdotdotted, color=gray, thick] (0, 1) -- (3, 1);
+% 	\filldraw (0, 1) circle (1pt)
+% 		node[left] (Yi) {$\mu$};
+
+% Assi
+	\draw[->] (-1.6, 0) -- (1.3, 0) node[right] {$\Re$};
+	\draw[->] (0, -1.6) -- (0, 1.3) node[above] {$\Im$};
+% Circonferenza e punto critico
+	\draw [dashed, color=gray] circle [radius=1cm];
+	\filldraw (-1, 0) circle (1pt) node[above left=-2pt] (critic) {$\scriptstyle -1$};
+% Funzione
+	\draw[scale=1, domain=-1.2:0, smooth, variable=\x, thick] plot ({\x},{-\x*\x))});
+% Archi
+	\draw [->] (-1,0) arc [start angle=180,end angle=218,x radius=1,y radius=1]
+		node [midway, below left=-4pt] {$\phi_m$};
+	\draw [densely dotted] (218:1) -- (38:1);
+	\draw [->] (0.5,0) arc [start angle=0,end angle=38,x radius=0.5,y radius=0.5]
+		node [midway, right] {$\phi_m$};
+	\draw [->] (0.6,0) arc [start angle=0,end angle=-142,x radius=0.6,y radius=0.6]
+		node [midway, below right=-2pt] {$\phi_{{\scriptscriptstyle C}}$};
+\end{tikzpicture}

@@ -1,0 +1,47 @@
+﻿\begin{tikzpicture} [%
+	gnuplot def/.append style={prefix={}},
+	asintoto/.style={samples = 1000, thick},
+	effettivo/.style={black!60, thin, densely dashed, samples = 1000, smooth},
+]
+% Mostra zeri e poli sull'asse delle fasi
+\newcommand{\zero}{\tikz{\draw[thin] (0,0) circle (3pt);}}
+\newcommand{\polo}{$\times$}
+\newcommand{\z}[3]{node[label={[below=15pt]90: $\scriptscriptstyle (z_{#1})$}]() at (#2,#3) {\zero}}
+\newcommand{\p}[3]{node[label={[below=15pt]90: $\scriptscriptstyle (p_{#1})$}]() at (#2,#3) {\polo}}
+
+	\begin{scope}[xscale=10/3,yscale=10/500]
+		% Imposta colori carta logaritmica
+		\tikzset {%
+			semilog lines/.style={thin, gray},
+			semilog lines 2/.style={semilog lines, gray!40},
+			semilog half lines/.style={semilog lines 2, dashed},
+			semilog label x/.style={semilog lines, below, font=\tiny, color=black},
+			semilog label y/.style={semilog lines, above, font=\tiny, color=black},
+			Bode lines/.style={thick, black}
+		}
+		% Diagramma del modulo (decibel)
+		\UniteDegre
+		% Passo di 90°
+		\OrdBode{90}
+		% Decadi e decibel segnati
+		\semilog{-3}{3}{-270}{0}
+		
+		% Andamento asintotico
+		\draw [asintoto] (-3, -90) --++ (1, 0) --++ (0, -90) --++ (1, 0) --++ (0, 90) --++ (2, 0) --++ (0, -90) --++ (2, 0);
+		% Andamento effettivo
+		\BodeGraph[effettivo]{-3:3}{%
+			\IntArg{10} + \POArg{1}{100} - \POArg{1}{10} + \POArg{1}{0.1}
+		}
+
+		% Singolarità
+		\draw(0,0) \p{1}{-2}{-270}
+			\z{1}{-1}{-270}
+			\p{2}{1}{-270};
+
+		% Fase critica
+		\filldraw (0, -101) ellipse [x radius=0.01,y radius=1.5];
+		\draw (-3, -101) --++ (3, 0) node [left, pos=0] {$\scriptscriptstyle -101$};
+		\node at (0, -270) [below=8pt] {$\scriptstyle \phi_C$};
+
+	\end{scope}
+\end{tikzpicture}

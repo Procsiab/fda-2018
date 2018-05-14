@@ -1,0 +1,38 @@
+﻿\begin{tikzpicture} [scale=3]
+
+% Assi
+	\draw[->] (-0.2, 0) -- (1.3, 0) node[right] {$\Re$};
+	\draw[->] (0, -0.2) -- (0, 1.3) node[above] {$\Im$};
+% Circonferenza
+	\draw [color=lightgray, dashed] (1,0) arc [start angle=0,end angle=90,x radius=1,y radius=1];
+	\filldraw (1, 0) circle (0.3pt);
+	\filldraw (0, 1) circle (0.3pt) node (one) [left] {$\scriptstyle 1$};
+% Margine di fase
+	\draw [densely dotted] (0, 0) -- (38:1);
+	\draw [->] (0.2,0) arc [start angle=0,end angle=38,x radius=0.2,y radius=0.2]
+		node [above left=-3pt] {$\phi_m$};
+% Altezza
+	\draw (38:1) -| (0.79, 0) node (h) [above left=-2pt, black] {$\scriptstyle h$};
+% Base
+	\draw (38:1) -- (1, 0);
+	\draw [decorate, decoration={brace, amplitude=10pt}, gray] (38:1) -- (1, 0)
+		node [black, pos=0.43, right=9pt] {$\scriptstyle a$};
+% Angoli isosceli
+	\draw [double] (38:0.9) arc [start angle=-142,end angle=-71,x radius=0.1,y radius=0.1]
+		node [above left=2pt] {$\scriptstyle 90^\circ - \phi_m/2$};
+	\draw [double] (0.9, 0) arc [start angle=180,end angle=109,x radius=0.1,y radius=0.1];
+% Angolo al vertice
+	\tikzset{
+	    triple/.style args={[#1] in [#2] in [#3]}{
+	        #1,preaction={preaction={draw,#3},draw,#2}
+	    }
+	}
+	\draw [triple={[line width=0.5pt,black] in [line width=1.5pt,white] in [line width=2.5pt,black]}]
+		(0.79, 0.45) arc [start angle=275,end angle=294,x radius=0.16,y radius=0.16]
+		node [very near start, below left=-2pt] {$\scriptstyle \phi_m/2$};
+% Segmenti semiasse reale
+	\draw [decorate, decoration={brace, amplitude=5pt}, gray] (0.79, 0) -- (0, 0)
+		node [black, pos=0.5, below=4pt] {$\scriptstyle \cos{\phi_m}$};
+	\draw [decorate, decoration={brace, amplitude=5pt}, gray] (1, 0) -- (0.79, 0)
+		node [black, pos=0.5, below=4pt] {$\scriptstyle 1-\cos{\phi_m}$};
+\end{tikzpicture}

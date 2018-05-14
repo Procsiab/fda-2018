@@ -5968,7 +5968,7 @@ G\left(s\right)=\frac{2}{1-s}
 appartenente al sistema di un problema di controllo in anello chiuso,
 nel quale utilizziamo un regolatore costante pari a $R\left(s\right)=-10$.
 $\checkmark$Calcolare le funzioni di sensitività e di sensitività
-inversa.}
+complementare.}
 \end{example}
 Calcoliamo il valore di $L\left(s\right)=R\left(s\right)\cdot G\left(s\right)=-20/\left(1-s\right)$;
 le due funzioni di sensitività sono dunque pari a:
@@ -6623,7 +6623,7 @@ al variare della funzione di anello.
 \begin{center}
 \includegraphics[scale=0.85]{\string"Illustrazioni/6_6-1 Funzione di anello rispetto sensitività inversa\string".pdf}
 \par\end{center}
-\captionof{figure}{Precisione rispetto alla funzione di sensitività inversa}\label{fig:Precisione-rispetto-sensitivit=0000E0-inversa}%
+\captionof{figure}{Precisione rispetto alla funzione di sensitività complementare}\label{fig:Precisione-rispetto-sensitivit=0000E0-inversa}%
 \end{minipage}%
 \begin{minipage}[c]{0.5\textwidth}%
 \begin{center}
@@ -6740,6 +6740,19 @@ tracciando la congiungente di $L\left(j\omega_{{\scriptscriptstyle \text{C}}}\ri
 con l'origine, otteniamo l'angolo opposto pari a $\phi_{m}$; osserviamo
 che, nella nostra costruzione, $\cos\phi_{{\scriptscriptstyle \text{C}}}=-\cos\phi_{m}$.
 
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{center}
+\includegraphics[scale=1.1]{\string"Illustrazioni/6_7-1 Costruzione per margine di fase\string".pdf}
+\par\end{center}
+\captionof{figure}{Costruzione per il margine di fase}%
+\end{minipage}%
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{center}
+\includegraphics[scale=1.1]{\string"Illustrazioni/6_7-2 Costruzione per angoli interni\string".pdf}
+\par\end{center}
+\captionof{figure}{Costruzione per gli angoli interni}%
+\end{minipage}
+
 Riprendendo l'uguaglianza precedente, scriveremo:
 \[
 \left|F\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)\right|=\ldots=\frac{1}{\sqrt{2\left(1+\cos\phi_{{\scriptscriptstyle \text{C}}}\right)}}
@@ -6819,7 +6832,7 @@ in cui la funzione di trasferimento vale $L\left(s\right)=\frac{8\left(s+1\right
 \end{example}
 \begin{minipage}[c]{0.5\textwidth}%
 \begin{center}
-\includegraphics[scale=0.9]{\string"Illustrazioni/6_7-1 Schema a blocchi esempio\string".pdf}
+\includegraphics[scale=0.9]{\string"Illustrazioni/6_7-3 Schema a blocchi esempio\string".pdf}
 \par\end{center}
 \captionof{figure}{Schema a blocchi}\label{fig:Diagramma-blocchi-esempio-6_7}%
 \end{minipage}%
@@ -6845,8 +6858,8 @@ polo reale negativo in anello aperto, $P=0$, e la funzione $L\left(s\right)$
 
 \begin{figure}[!h]
 \begin{centering}
-\includegraphics[scale=0.9]{\string"Illustrazioni/6_7-2 Bode modulo esempio\string".pdf}\\
-\includegraphics[scale=0.9]{\string"Illustrazioni/6_7-3 Bode fase esempio\string".pdf}
+\includegraphics[scale=0.9]{\string"Illustrazioni/6_7-4 Bode modulo esempio\string".pdf}\\
+\includegraphics[scale=0.9]{\string"Illustrazioni/6_7-5 Bode fase esempio\string".pdf}
 \par\end{centering}
 \caption{Diagrammi di Bode}
 \end{figure}
@@ -6872,6 +6885,7 @@ questo risultato verifica anche l'ultima ipotesi per il criterio di
 Bode ($\phi_{m}>0$), permettendoci di applicarlo (possiamo affermare
 che il sistema è asintoticamente stabile, si veda il Teorema \ref{thm:Creiterio-di-bode}).
 
+\begin{minipage}[t]{1\columnwidth}%
 Per valutare le prestazioni dobbiamo osservare la posizione delle
 bande dei disturbi rispetto al diagramma del modulo:
 \begin{itemize}
@@ -6902,7 +6916,368 @@ e $T\simeq1/65\,\text{s}$, quindi la risposta raggiungerà il $99\%$
 del valore di regime in $5T=0.075\,\text{s}$.
 \end{itemize}
 \end{itemize}
+%
+\end{minipage}
+
 \demo
+
+\section{Limiti alle prestazioni}
+
+\subsection{Zeri reali positivi}
+
+In presenza di zeri a parte reale positiva nella funzione di anello,
+necessariamente la pulsazione naturale dovrà essere minore della pulsazione
+di tali singolarità; questo limite strutturale influenza la velocità
+di risposta del sistema.
+
+Osserviamo per prima cosa che gli zeri della funzione di sensitività
+complementare coincidono con quelli della funzione di anello, ovvero:
+\[
+L\left(s\right)=\frac{\boxed{N_{L}\left(s\right)}}{D_{L}\left(s\right)},\quad F\left(s\right)=\frac{N_{L}\left(s\right)/D_{L}\left(s\right)}{1+N_{L}\left(s\right)/D_{L}\left(s\right)}=\frac{\boxed{N_{L}\left(s\right)}}{N_{L}\left(s\right)+D_{L}\left(s\right)}
+\]
+Se abbiamo uno zero a parte reale positiva nella funzione di anello,
+esso sarà presente anche nella funzione di sensitività complementare;
+non è possibile cancellare questo zero (cancellazione critica) nel
+regolatore, che altrimenti risulterebbe instabile.
+
+\marginpar{Si noti che inserire uno zero a parte reale positiva nel regolatore
+(al di fuori degli zeri dell'impianto) è un grave errore di progetto}Inoltre, nel diagramma del modulo della funzione di anello, lo zero
+a parte reale positiva fornisce pendenza di $+20\,\text{db}/\text{dec}$,
+quindi per avere qualche attraversamento (in particolare perché esista
+$\omega_{{\scriptscriptstyle \text{C}}}$) è necessario avere almeno
+2 poli con parte reale negativa; il contributo di fase dello zero
+positivo è di $-90{^\circ}$, questo provoca un margine di fase negativo,
+comportando l'instabilità del sistema in anello chiuso.
+
+Ammettiamo un attraversamento al più in un intorno dello zero, dove
+la perdita di fase vale circa $-45{^\circ}$; in conclusione, uno
+zero con parte reale positiva impone dei limiti nel progetto del regolatore
+(bisogna evitare di cancellarlo, e il margine di fase deve rimanere
+positivo).
+
+\subsection{Sensitività del comando}
+
+Facendo riferimento al modello in figura \ref{fig:Schema-di-riferimento-controllo},
+otteniamo la trasforma del segnale di controllo $u\left(t\right)$
+nel dominio di Laplace:
+\[
+U\left(s\right)=\underset{{\scriptstyle Q\left(s\right)}}{\underbrace{\frac{R\left(s\right)}{1+L\left(s\right)}}}W\left(s\right)-\frac{R\left(s\right)}{1+L\left(s\right)}N\left(s\right)-\frac{R\left(s\right)}{1+L\left(s\right)}D\left(s\right)
+\]
+dove $Q\left(s\right)$ è la funzione \emph{sensitività del comando};
+consideriamo l'effetto dei disturbi di misura sul modulo di questa
+funzione:
+\[
+\left|Q\left(j\omega\right)\right|=\frac{\left|R\left(j\omega\right)\right|}{\left|1+R\left(j\omega\right)G\left(j\omega\right)\right|}
+\]
+nella precedente abbiamo sostituito $L\left(s\right)=R\left(s\right)G\left(s\right)$
+e separato il modulo su numeratore e denominatore.
+
+Se $\omega\ll\omega_{{\scriptscriptstyle \text{C}}}$ il modulo di
+$Q\left(s\right)$ vale l'inverso del modulo della risposta armonica
+dell'impianto ($1/\left|G\left(j\omega\right)\right|$); quando invece
+$\omega\gg\omega_{{\scriptscriptstyle \text{C}}}$ il modulo di $Q\left(s\right)$
+vale come il modulo della risposta della funzione del regolatore ($\left|R\left(j\omega\right)\right|$).
+
+Prendendo un disturbo di misura in alta frequenza e un regolatore
+bi-proprio (stesso numero di poli e zeri, pendenza finale nulla sul
+diagramma del modulo), è opportuno aggiungere uno o più \emph{poli
+di chiusura} (a frequenze elevate, intorno a $\underline{\omega}_{n}$),
+rendendo il regolatore strettamente proprio, ovvero in grado di filtrare
+i disturbi di misura sulla variabile di comando alle alte frequenze.
+
+\chapter{Progetto e sintesi dei sistemi di controllo}
+
+Assumendo che la definizione delle specifiche e la modellazione siano
+già state completate, vedremo come progettare dei regolatori per sistemi
+SISO; la progettazione consiste in due fasi: nella prima si traducono
+le specifiche in vincoli sul modulo della risposta della funzione
+di anello, mentre nella seconda si progetta il regolatore tale che
+la funzione di anello soddisfi i vincoli stabiliti. Ipotizziamo d'ora
+in avanti di poter sempre applicare il criterio di Bode almeno al
+termine della fase di progetto.
+
+\section{Progetto: traduzione delle specifiche}
+
+Se valgono le ipotesi del criterio di Bode, bisogna ottenere (per
+quanto riguarda la funzione di anello) guadagno statico e margine
+di fase positivi ($\mu>0,\,\phi_{m}>0$); per quanto riguarda la precisione
+statica, ricaviamo vincoli su tipo (per ottenere il valore di errore
+di inseguimento desiderato) e guadagno della funzione di anello a
+fronte di ingressi polinomiali specificati ($g>\underline{g},\,\mu>\underline{\mu}$).
+
+Per ingressi limitati in banda, le specifiche riguardano il livello
+di attenuazione garantito in una certa banda; esse sono tradotte in
+vincoli sul modulo della funzione di anello entro certi intervalli
+di frequenze ($\left|L\left(j\overline{\omega}_{d}\right)\right|\geq\left(\underline{L}_{d}\right)^{-1}$
+per disturbi di processo, $\left|L\left(j\underline{\omega}_{n}\right)\right|\geq\left(\underline{L}_{n}\right)^{-1}$
+per disturbi di misura).
+
+\begin{minipage}[c]{0.5\textwidth}%
+Le specifiche per le prestazioni dinamiche riguardano sovraelongazione
+e velocità di risposta; esse si traducono in vincoli sul margine di
+fase e pulsazione critica ($\phi_{m}\geq\underline{\phi},\,\omega_{{\scriptscriptstyle \text{C}}}\geq\omega_{{\scriptscriptstyle \text{C}},x}$).
+
+Le specifiche tradotte nei vincoli come descritto, possono essere
+mappate sul diagramma di Bode del modulo della funzione di anello,
+nel modo seguente (eccetto il margine di fase, che va ricavato dal
+diagramma della fase in corrispondenza della pulsazione critica):
+si veda \figref{Vincoli-tradotti-sul-diagramma-del-modulo}%
+\end{minipage}%
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{center}
+\includegraphics[scale=1.2]{\string"Illustrazioni/7_1-1 Vincoli tradotti sul diagramma del modulo\string".pdf}
+\par\end{center}
+\captionof{figure}{Vincoli sulle specifiche del regolatore}\label{fig:Vincoli-tradotti-sul-diagramma-del-modulo}%
+\end{minipage}
+\begin{example}
+\emph{\label{exa:Cruise-control}Si voglia progettare il sistema Cruise
+Control per un autoveicolo con le seguenti caratteristiche:}
+\end{example}
+\begin{itemize}
+\item massa $m=1500\,\text{kg}$;
+\item tempo per accelerare da $0\,\text{km}/\text{h}$ a $100\,\text{km}/\text{h}$
+$t_{0-100}=10\,\text{s}$;
+\item accelerazione (ricavata da $t_{0-100}$) $a\simeq2.7\,\text{m}/\text{s}$;
+\item forza di trazione $F_{{\scriptscriptstyle \text{T}}}=m\cdot a=4050\,\text{N}$;
+\item coefficiente di resistenza dinamica $\beta=29$.
+\end{itemize}
+\emph{$\checked$Ricavare il modello del sistema (facoltativo) e $\checked$tradurre
+le specifiche (elencate successivamente) in vincoli sulla funzione
+di anello.}
+
+$\checked$Possiamo ricavare un modello per il sistema impostando
+l'equazione del moto come segue:
+\[
+m\cdot\dot{v}\left(t\right)+\beta\left(t\right)\cdot v\left(t\right)=F_{{\scriptscriptstyle \text{T}}}\left(t\right)
+\]
+Raccogliendo la trasformata di Laplace della velocità nella precedente,
+otteniamo:
+\[
+\left(s\cdot m+\beta\right)Y\left(s\right)=F_{{\scriptscriptstyle \text{T}}}\left(s\right)\,\rightarrow\,Y\left(s\right)=\frac{1}{\left(s\cdot m+\beta\right)}F_{{\scriptscriptstyle \text{T}}}\left(s\right)
+\]
+Questa modello rappresenta l'interazione tra la forza di trazione
+e la velocità: introduciamo ora un ulteriore modello per mostrare
+l'interazione tra l'ingresso di tensione ($u\left(t\right)\in\left[0,\,10\,\text{V}\right]$)
+alla centralina elettrica e la forza di trazione generata:
+\[
+F_{{\scriptscriptstyle \text{T}}}\left(s\right)=\frac{4050}{10}\cdot\frac{1}{0.2s+1}U\left(s\right)
+\]
+
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{center}
+\includegraphics[scale=1.1]{\string"Illustrazioni/7_1-2 Schema a blocchi\string".pdf}
+\par\end{center}
+\captionof{figure}{Schema a blocchi}\label{fig:Schema a blocchi esercizio 7.1}%
+\end{minipage}%
+\begin{minipage}[c]{0.5\textwidth}%
+Otterremo lo schema a blocchi in figura \ref{fig:Schema a blocchi esercizio 7.1}
+per il trasferimento, da cui possiamo scrivere la funzione di trasferimento:
+\[
+G\left(s\right)=\frac{405}{\left(0.2s+1\right)\left(1500s+29\right)}
+\]
+%
+\end{minipage}
+
+\emph{Il sistema di controllo dovrà rispettare le seguenti specifiche:}
+\begin{enumerate}
+\item Impostando una velocità costante, il veicolo deve raggiungere tale
+velocità; allora $\left|e_{\infty}\right|=0$ con andamento desiderato
+$w\left(t\right)=\text{sca}\left(t\right)$.
+\item Aumentando la velocità desiderata di $5\,\text{km}/\text{h}$ in un
+secondo, il veicolo deve seguire l'incremento con errore costante
+al più di $2\,\text{km}/\text{h}$; allora $\left|e_{\infty}\right|\leq2\,\text{km}/\text{h}$
+con andamento desiderato $w\left(t\right)=5\cdot\text{ram}\left(t\right)$.
+\item Variazioni dolci di pendenza della strada non devono influenzare la
+velocità raggiunta; allora l'attenuazione del disturbo di processo
+deve valere $d\left(t\right)\leq-20\,\text{dB}$ per $\overline{\omega}_{d}\in\left[0.001,\,0\right]$.
+\item La velocità misurata da sensori di rotazione delle ruote deve avere
+un'attenuazione per i disturbi di misura $n\left(t\right)\leq-20\,\text{dB}$
+per $\underline{\omega}_{n}\in\left[10^{2},\,10^{3}\right]$.
+\item La velocità effettiva deve impiegare al più $10\,\text{s}$ per raggiungere
+quella desiderata; allora il tempo di assestamento deve valere $T_{0.1\%}<10\,\text{s}$.
+\item Impostando una velocità desiderata di $100\,\text{km}/\text{h}$,
+la velocità effettiva durante il transitorio dovrà mantenersi inferiore
+ai $108\,\text{km}/\text{h}$; allora la sovraelongazione percentuale
+deve valere $s_{\%}<8\%$.
+\end{enumerate}
+$\checked$Traduciamo le precedenti specifiche in vincoli sulla funzione
+di anello $G\left(s\right)$:
+\begin{enumerate}
+\item $g\geq1$, si veda \tabref{Prestazioni-statiche};
+\item si potrebbe soddisfare la specifica in modo conservativo ponendo $g\geq2$;
+tuttavia possiamo porre $g=1$ e impostare la relazione 
+\[
+\left|e_{\infty}\right|=5/\mu\leq2\,\text{m}/\text{s}\rightarrow\mu\geq5/2;
+\]
+\item $\left|L\left(j\omega\right)\right|\geq20\,\text{dB}$ per $\omega\in\left[0.001,\,0\right]$;
+\item $\left|L\left(j\omega\right)\right|\leq20\,\text{dB}$ per $\omega\in\left[10^{2},\,10^{3}\right]$;
+\item dato che la sovraelongazione ha un ruolo nella specifica dello smorzamento
+e lo smorzamento nella specifica della costante di tempo, possiamo
+risolvere le specifiche $\mathrm{{\scriptstyle \left(5\right)}}$
+e $\mathrm{{\scriptstyle \left(6\right)}}$ nei due modi seguenti:
+\begin{enumerate}
+\item Immaginiamo che la specifica sia soddisfatta dalla relazione
+\[
+s_{\%}=e^{-\xi\pi/\sqrt{1-\xi^{2}}}\leq8\%\rightarrow\xi\geq0.62
+\]
+usando l'approssimazione (\ref{eq:Smorzamento-anello-chiuso-gradi})
+possiamo affermare che, data la precedente, il margine di fase vale
+$\phi_{m}\geq62{^\circ}$.\\
+La costante di tempo, da (\ref{eq:Sovraelongazione-e-costante-tempo-rispetto-smorzamento}),
+deve essere tale che
+\[
+T_{0.1\%}=5T<10\,\text{s}\rightarrow\frac{5}{0.62\cdot\omega_{{\scriptscriptstyle \text{C}}}}<10\rightarrow\omega_{{\scriptscriptstyle \text{C}}}>\frac{0.5}{0.62}\simeq0.8\,\text{rad}/\text{s}.
+\]
+\item In alternativa possiamo assumere che il margine di fase debba valere
+$\phi_{m}>65{^\circ}$, e il sistema si comporterà come se avesse
+polo dominante reale: in queste condizioni $T=1/\omega_{{\scriptscriptstyle \text{C}}},$e
+applicando gli stessi passaggi del punto precedente si ricava $\omega_{{\scriptscriptstyle \text{C}}}>0.5$.
+\end{enumerate}
+\end{enumerate}
+I vincoli così ottenuti possono essere tracciati sul diagramma di
+Bode del modulo nel modo seguente:
+
+\begin{figure}[!h]
+\begin{centering}
+\includegraphics[scale=0.8]{\string"Illustrazioni/7_1-3 Bode vincoli esempio\string".pdf}
+\par\end{centering}
+\caption{Vincoli tradotti sul diagramma del modulo}
+\end{figure}
+
+Notiamo che nel diagramma abbiamo l'attenuazione dei disturbi di processo
+a bassa frequenza secondo il vincolo $\mathrm{{\scriptstyle \left(3\right)}}$,
+e l'attenuazione dei disturbi di misura ad alta frequenza secondo
+il vincolo $\mathrm{{\scriptstyle \left(4\right)}}$; questi due vincoli
+sono rappresentati dalle linee diagonali che cancellano due bande
+di frequenze dal diagramma.
+
+La linea diagonale tratteggiata e punteggiata che congiunge il punto
+per $\omega=1$ (modulo $8\,\text{dB}$) con quello per $\omega=10^{-3}$
+(modulo $68\,\text{dB}$, non raffigurato) rappresenta il vincolo
+$\mathrm{{\scriptstyle \left(1\right)}}$ e $\mathrm{{\scriptstyle \left(2\right)}}$
+sul guadagno statico (è stato convertito $5/2=2.5\simeq8\,\text{dB}$,
+considerando che $g=1$, ovvero un polo nell'origine).
+
+Il vincolo $\mathrm{{\scriptstyle \left(5\right)}}$ sulla pulsazione
+critica è rappresentato dal rettangolo punteggiato attorno all'asse
+$0\,\text{dB}$ fino al punto in $\omega=0.8$; infine per soddisfare
+il margine di fase dovremo osservare la perdita di fase dovuta alle
+singolarità, valutando la fase sul relativo diagramma o in modo analitico.
+
+\demo
+
+\section{Progetto: metodo per inversione}
+
+Se prendiamo una funzione di anello desiderata $L^{*}\left(s\right)$
+che soddisfi le specifiche, sapendo che essa è la cascata di regolatore
+e impianto ($L^{*}\left(s\right)=R\left(s\right)\cdot G\left(s\right)$,
+si veda \figref{Schema-di-riferimento-controllo}), progettiamo il
+regolatore (definiamo la sua funzione di trasferimento) come:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Progetto del regolatore per inversione}{\footnotesize{}\index{Progetto del regolatore per inversione@{\footnotesize{}Progetto del regolatore per inversione}}}}[-0.3cm]
+\begin{equation}
+R\left(s\right)=L^{*}\left(s\right)/G\left(s\right)\label{eq:Regolatore-con-inversione}
+\end{equation}
+
+Questo metodo si può applicare solo se nella funzione $G\left(s\right)$
+sono \uline{assenti} zeri reali positivi: in caso contrario, invertendola
+i suoi zeri diventano poli del regolatori, portando a cancellazioni
+critiche (e dunque all'instabilità del regolatore!).
+
+Inoltre è necessario che la funzione di trasferimento desiderata sia
+realizzabile, ovvero propria o meglio strettamente propria, quindi
+il suo grado relativo deve essere almeno uguale al grado di $G\left(s\right)$.
+\begin{example}
+\emph{\label{exa:Regolatore-Cruise-control}Facendo riferimento al
+sistema nell'Esempio \ref{exa:Cruise-control}, $\checked$si progetti
+un regolatore che soddisfi le specifiche, utilizzando il metodo per
+inversione.}
+
+La funzione di trasferimento del sistema non presenta zeri, dunque
+possiamo applicare sicuramente il metodo per inversione, potendo invertire
+la funzione senza introdurre zeri instabili.
+
+La funzione di trasferimento desiderata sarà costruita nel modo seguente:
+\[
+L^{*}\left(s\right)=\frac{10}{s}\cdot\frac{\left(1+s/0.1\right)}{\left(1+s/0.01\right)}\frac{1}{\left(1+s/10\right)}
+\]
+dove abbiamo usato direttamente $\mu=10$ per soddisfare il requisito
+sul guadagno statico; poi inseriamo un polo in $\omega=10^{-2}$ per
+attraversare l'asse $0\,\text{dB}$ in prossimità del limite per $\omega_{{\scriptscriptstyle \text{C}}}\geq0.8$,
+ma così facendo la pulsazione di attraversamento si abbassa troppo
+e il margine di fase in quel punto : è necessario inserire uno zero
+alla decade successiva ($\omega=10^{-1}$) per ottenere infine un
+attraversamento in prossimità di $\omega=1$.
+
+Invertendo la funzione così strutturata otterremmo più zeri che poli,
+quindi inseriamo un \emph{polo di chiusura} una decade dopo la pulsazione
+critica ($\omega=10^{1}$) per non compromettere il margine di fase.
+Il diagramma di Bode del modulo tracciato rispetto ai vincoli risulta
+soddisfatto:
+\end{example}
+\hspace*{-1.6cm}%
+\begin{minipage}[c]{1\columnwidth}%
+\begin{center}
+\includegraphics[scale=0.8]{\string"Illustrazioni/7_1-4 Bode modulo vincoli esempio\string".pdf}
+\par\end{center}
+\captionof{figure}{Modulo della funzione di anello desiderata}%
+\end{minipage}\bigskip{}
+
+Progettiamo infine il regolatore effettuando l'inversione descritta
+in (\ref{eq:Regolatore-con-inversione}), ottenendo la seguente forma
+fattorizzata:
+\[
+R\left(s\right)=\frac{0.7}{s}\cdot\frac{\left(1+s/0.1\right)\left(1+s/5\right)\left(1+s/0.02\right)}{\left(1+s/0.01\right)\left(1+s/10\right)}
+\]
+Il metodo utilizzato cancella i poli della funzione di anello con
+gli zeri inseriti dal regolatore, sostituendo alla dinamica quella
+desiderata; in particolare, abbiamo un regolatore del terzo ordine.
+
+Rimane solo da controllare che il margine di fase soddisfi le specifiche:
+il metodo analitico prevede di sostituire $s=j$ nella funzione di
+anello per ottenere $\phi_{{\scriptscriptstyle \text{C}}}$ e poi
+sottrarlo a 180° ($\phi_{m}=180{^\circ}-\phi_{{\scriptscriptstyle \text{C}}}$);
+tuttavia osserviamo che il nostro sistema regolatore è a sfasamento
+minimo (guadagno positivo e singolarità con parte reale negativa,
+ad almeno una decade di distanza tra loro), quindi il valore della
+fase può essere dedotto osservando la pendenza del diagramma del modulo.
+In particolare si vede che nel punto $\omega_{{\scriptscriptstyle \text{C}}}\simeq1$
+la pendenza con cui si attraversa l'asse $0\,\text{dB}$ è di $-20\,\text{dB}/\text{dec}$,
+quindi $\phi_{{\scriptscriptstyle \text{C}}}=-90{^\circ}$ e il margine
+di fase vale $\phi_{m}=90{^\circ}$ (soddisfacendo la specifica $\mathrm{{\scriptstyle \left(5\right)}}$).
+
+\demo
+
+Per completezza mostriamo il diagramma della fase associato alla funzione
+di anello dell'Esempio \ref{exa:Regolatore-Cruise-control}
+
+\begin{minipage}[c]{1\columnwidth}%
+\begin{center}
+\includegraphics[scale=0.8]{\string"Illustrazioni/7_1-5 Bode fase esempio\string".pdf}
+\par\end{center}
+\captionof{figure}{Diagramma della fase della funzione di anello desiderata}%
+\end{minipage}\bigskip{}
+
+Infine, ecco come appare il diagramma di Bode del modulo del regolatore:
+
+\begin{minipage}[c]{1\columnwidth}%
+\begin{center}
+\includegraphics[scale=0.8]{\string"Illustrazioni/7_1-6 Bode modulo regolatore esempio\string".pdf}
+\par\end{center}
+\captionof{figure}{Diagramma del modulo del regolatore}%
+\end{minipage}\bigskip{}
+
+La funzione di sensitività del comando $Q\left(s\right)$ è qualitativamente
+analoga al modulo della funzione del regolatore $R\left(s\right)$
+per pulsazioni maggiori di quella critica; notiamo che i disturbi
+in alta frequenza sul comando sono addirittura amplificati, dato che
+il modulo del regolatore si stabilizza su un valore maggiore di $+1$.
+
+Per ovviare a questo problema, è opportuno inserire dei \emph{poli
+di chiusura}, ovvero dei poli distanti più di una decade dalla pulsazione
+di attraversamento (per non compromettere il margine di fase) che
+rendano negativo e molto piccolo il modulo del regolatore per le alte
+frequenze. Di nuovo sottolineiamo l'importanza di progettare un regolatore
+strettamente proprio.
 
 \appendix
 

@@ -1,0 +1,23 @@
+﻿\begin{tikzpicture} [scale=1.5]
+
+% Assi e punto
+	\draw[->] (-0.3, 0) -- (2.5, 0) node[right] {$\scriptstyle \omega$};
+	\draw[->] (0, -0.3) -- (0, 1.8) node[above] {$\scriptstyle dB$};
+	\filldraw (1, 0) circle (0.6pt) node (one) [below] {$\scriptscriptstyle 1$};
+	\filldraw (1.5, 0) circle (0.6pt) node (one) [below] {$\scriptstyle \omega_{\scriptscriptstyle C}$};
+% Vincolo guadagno
+	\draw [dashdotted] (0, 1.5) --++ (-50:1.5) 
+		node [midway, above] {$\scriptscriptstyle \mu$};
+% Vincolo banda ingressi
+	\fill [pattern = north west lines, pattern color=gray]
+		(0, 0.6) rectangle (0.7, -0.3);
+	\draw [dashed] (0, 0.6) --++ (0.7, 0) 
+		node (one) [left, pos=0] {$\scriptstyle \underline{L}_{d}$};
+	\draw [dashed] (0.7, 0.6) --++ (0, -0.9) 
+		node (one) [below] {$\scriptstyle \overline{\omega}_{d}$};
+% Vincolo errore di misura
+	\fill [pattern = north east lines, pattern color=gray]
+		(2, 1) rectangle (2.45, -0.3);
+	\draw [dashed] (2, 1) --++ (0, -1.3) 
+		node (one) [below] {$\scriptstyle \underline{\omega}_{n}$};
+\end{tikzpicture}

@@ -23219,7 +23219,7 @@ appartenente al sistema di un problema di controllo in anello chiuso, nel
 \begin_inset Formula $\checkmark$
 \end_inset
 
-Calcolare le funzioni di sensitività e di sensitività inversa.
+Calcolare le funzioni di sensitività e di sensitività complementare.
 \end_layout
 
 \begin_layout Standard
@@ -25685,7 +25685,8 @@ status open
 
 
 \backslash
-captionof{figure}{Precisione rispetto alla funzione di sensitività inversa}
+captionof{figure}{Precisione rispetto alla funzione di sensitività complementare
+}
 \end_layout
 
 \end_inset
@@ -26093,6 +26094,109 @@ Consideriamo il piano dei numeri complessi: all'interno delle nostre ipotesi
 \end_layout
 
 \begin_layout Standard
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "50text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/6_7-1 Costruzione per margine di fase.pdf
+	display false
+	scale 110
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Costruzione per il margine di fase}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "50text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/6_7-2 Costruzione per angoli interni.pdf
+	display false
+	scale 110
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Costruzione per gli angoli interni}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 Riprendendo l'uguaglianza precedente, scriveremo:
 \begin_inset Formula 
 \[
@@ -26403,7 +26507,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename Illustrazioni/6_7-1 Schema a blocchi esempio.pdf
+	filename Illustrazioni/6_7-3 Schema a blocchi esempio.pdf
 	display false
 	scale 90
 
@@ -26530,7 +26634,7 @@ status open
 \noindent
 \align center
 \begin_inset Graphics
-	filename Illustrazioni/6_7-2 Bode modulo esempio.pdf
+	filename Illustrazioni/6_7-4 Bode modulo esempio.pdf
 	display false
 	scale 90
 
@@ -26542,7 +26646,7 @@ status open
 
 
 \begin_inset Graphics
-	filename Illustrazioni/6_7-3 Bode fase esempio.pdf
+	filename Illustrazioni/6_7-5 Bode fase esempio.pdf
 	display false
 	scale 90
 
@@ -26635,6 +26739,25 @@ noprefix "false"
 \end_layout
 
 \begin_layout Standard
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
 Per valutare le prestazioni dobbiamo osservare la posizione delle bande
  dei disturbi rispetto al diagramma del modulo:
 \end_layout
@@ -26767,6 +26890,11 @@ col margine di fase ottenuto (
 \end_layout
 
 \end_deeper
+\end_inset
+
+
+\end_layout
+
 \begin_layout Standard
 \begin_inset ERT
 status open
@@ -26781,6 +26909,1440 @@ demo
 \end_inset
 
 
+\end_layout
+
+\begin_layout Section
+Limiti alle prestazioni
+\end_layout
+
+\begin_layout Subsection
+Zeri reali positivi
+\end_layout
+
+\begin_layout Standard
+In presenza di zeri a parte reale positiva nella funzione di anello, necessariam
+ente la pulsazione naturale dovrà essere minore della pulsazione di tali
+ singolarità; questo limite strutturale influenza la velocità di risposta
+ del sistema.
+\end_layout
+
+\begin_layout Standard
+Osserviamo per prima cosa che gli zeri della funzione di sensitività complementa
+re coincidono con quelli della funzione di anello, ovvero:
+\begin_inset Formula 
+\[
+L\left(s\right)=\frac{\boxed{N_{L}\left(s\right)}}{D_{L}\left(s\right)},\quad F\left(s\right)=\frac{N_{L}\left(s\right)/D_{L}\left(s\right)}{1+N_{L}\left(s\right)/D_{L}\left(s\right)}=\frac{\boxed{N_{L}\left(s\right)}}{N_{L}\left(s\right)+D_{L}\left(s\right)}
+\]
+
+\end_inset
+
+Se abbiamo uno zero a parte reale positiva nella funzione di anello, esso
+ sarà presente anche nella funzione di sensitività complementare; non è
+ possibile cancellare questo zero (cancellazione critica) nel regolatore,
+ che altrimenti risulterebbe instabile.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+Si noti che inserire uno zero a parte reale positiva nel regolatore (al
+ di fuori degli zeri dell'impianto) è un grave errore di progetto
+\end_layout
+
+\end_inset
+
+Inoltre, nel diagramma del modulo della funzione di anello, lo zero a parte
+ reale positiva fornisce pendenza di 
+\begin_inset Formula $+20\,\text{db}/\text{dec}$
+\end_inset
+
+, quindi per avere qualche attraversamento (in particolare perché esista
+ 
+\begin_inset Formula $\omega_{{\scriptscriptstyle \text{C}}}$
+\end_inset
+
+) è necessario avere almeno 2 poli con parte reale negativa; il contributo
+ di fase dello zero positivo è di 
+\begin_inset Formula $-90°$
+\end_inset
+
+, questo provoca un margine di fase negativo, comportando l'instabilità
+ del sistema in anello chiuso.
+\end_layout
+
+\begin_layout Standard
+Ammettiamo un attraversamento al più in un intorno dello zero, dove la perdita
+ di fase vale circa 
+\begin_inset Formula $-45°$
+\end_inset
+
+; in conclusione, uno zero con parte reale positiva impone dei limiti nel
+ progetto del regolatore (bisogna evitare di cancellarlo, e il margine di
+ fase deve rimanere positivo).
+\end_layout
+
+\begin_layout Subsection
+Sensitività del comando
+\end_layout
+
+\begin_layout Standard
+Facendo riferimento al modello in figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Schema-di-riferimento-controllo"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, otteniamo la trasforma del segnale di controllo 
+\begin_inset Formula $u\left(t\right)$
+\end_inset
+
+ nel dominio di Laplace:
+\begin_inset Formula 
+\[
+U\left(s\right)=\underset{{\scriptstyle Q\left(s\right)}}{\underbrace{\frac{R\left(s\right)}{1+L\left(s\right)}}}W\left(s\right)-\frac{R\left(s\right)}{1+L\left(s\right)}N\left(s\right)-\frac{R\left(s\right)}{1+L\left(s\right)}D\left(s\right)
+\]
+
+\end_inset
+
+dove 
+\begin_inset Formula $Q\left(s\right)$
+\end_inset
+
+ è la funzione 
+\emph on
+sensitività del comando
+\emph default
+; consideriamo l'effetto dei disturbi di misura sul modulo di questa funzione:
+\begin_inset Formula 
+\[
+\left|Q\left(j\omega\right)\right|=\frac{\left|R\left(j\omega\right)\right|}{\left|1+R\left(j\omega\right)G\left(j\omega\right)\right|}
+\]
+
+\end_inset
+
+nella precedente abbiamo sostituito 
+\begin_inset Formula $L\left(s\right)=R\left(s\right)G\left(s\right)$
+\end_inset
+
+ e separato il modulo su numeratore e denominatore.
+\end_layout
+
+\begin_layout Standard
+Se 
+\begin_inset Formula $\omega\ll\omega_{{\scriptscriptstyle \text{C}}}$
+\end_inset
+
+ il modulo di 
+\begin_inset Formula $Q\left(s\right)$
+\end_inset
+
+ vale l'inverso del modulo della risposta armonica dell'impianto (
+\begin_inset Formula $1/\left|G\left(j\omega\right)\right|$
+\end_inset
+
+); quando invece 
+\begin_inset Formula $\omega\gg\omega_{{\scriptscriptstyle \text{C}}}$
+\end_inset
+
+ il modulo di 
+\begin_inset Formula $Q\left(s\right)$
+\end_inset
+
+ vale come il modulo della risposta della funzione del regolatore (
+\begin_inset Formula $\left|R\left(j\omega\right)\right|$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Prendendo un disturbo di misura in alta frequenza e un regolatore bi-proprio
+ (stesso numero di poli e zeri, pendenza finale nulla sul diagramma del
+ modulo), è opportuno aggiungere uno o più 
+\emph on
+poli di chiusura
+\emph default
+ (a frequenze elevate, intorno a 
+\begin_inset Formula $\underline{\omega}_{n}$
+\end_inset
+
+), rendendo il regolatore strettamente proprio, ovvero in grado di filtrare
+ i disturbi di misura sulla variabile di comando alle alte frequenze.
+\end_layout
+
+\begin_layout Chapter
+Progetto e sintesi dei sistemi di controllo
+\end_layout
+
+\begin_layout Standard
+Assumendo che la definizione delle specifiche e la modellazione siano già
+ state completate, vedremo come progettare dei regolatori per sistemi SISO;
+ la progettazione consiste in due fasi: nella prima si traducono le specifiche
+ in vincoli sul modulo della risposta della funzione di anello, mentre nella
+ seconda si progetta il regolatore tale che la funzione di anello soddisfi
+ i vincoli stabiliti.
+ Ipotizziamo d'ora in avanti di poter sempre applicare il criterio di Bode
+ almeno al termine della fase di progetto.
+\end_layout
+
+\begin_layout Section
+Progetto: traduzione delle specifiche
+\end_layout
+
+\begin_layout Standard
+Se valgono le ipotesi del criterio di Bode, bisogna ottenere (per quanto
+ riguarda la funzione di anello) guadagno statico e margine di fase positivi
+ (
+\begin_inset Formula $\mu>0,\,\phi_{m}>0$
+\end_inset
+
+); per quanto riguarda la precisione statica, ricaviamo vincoli su tipo
+ (per ottenere il valore di errore di inseguimento desiderato) e guadagno
+ della funzione di anello a fronte di ingressi polinomiali specificati (
+\begin_inset Formula $g>\underline{g},\,\mu>\underline{\mu}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Per ingressi limitati in banda, le specifiche riguardano il livello di attenuazi
+one garantito in una certa banda; esse sono tradotte in vincoli sul modulo
+ della funzione di anello entro certi intervalli di frequenze (
+\begin_inset Formula $\left|L\left(j\overline{\omega}_{d}\right)\right|\geq\left(\underline{L}_{d}\right)^{-1}$
+\end_inset
+
+ per disturbi di processo, 
+\begin_inset Formula $\left|L\left(j\underline{\omega}_{n}\right)\right|\geq\left(\underline{L}_{n}\right)^{-1}$
+\end_inset
+
+ per disturbi di misura).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "50text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+Le specifiche per le prestazioni dinamiche riguardano sovraelongazione e
+ velocità di risposta; esse si traducono in vincoli sul margine di fase
+ e pulsazione critica (
+\begin_inset Formula $\phi_{m}\geq\underline{\phi},\,\omega_{{\scriptscriptstyle \text{C}}}\geq\omega_{{\scriptscriptstyle \text{C}},x}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Plain Layout
+Le specifiche tradotte nei vincoli come descritto, possono essere mappate
+ sul diagramma di Bode del modulo della funzione di anello, nel modo seguente
+ (eccetto il margine di fase, che va ricavato dal diagramma della fase in
+ corrispondenza della pulsazione critica): si veda 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:Vincoli-tradotti-sul-diagramma-del-modulo"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "50text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/7_1-1 Vincoli tradotti sul diagramma del modulo.pdf
+	display false
+	scale 120
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Vincoli sulle specifiche del regolatore}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Vincoli-tradotti-sul-diagramma-del-modulo"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+
+\emph on
+\begin_inset CommandInset label
+LatexCommand label
+name "exa:Cruise-control"
+
+\end_inset
+
+Si voglia progettare il sistema Cruise Control per un autoveicolo con le
+ seguenti caratteristiche:
+\end_layout
+
+\begin_layout Itemize
+massa 
+\begin_inset Formula $m=1500\,\text{kg}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+tempo per accelerare da 
+\begin_inset Formula $0\,\text{km}/\text{h}$
+\end_inset
+
+ a 
+\begin_inset Formula $100\,\text{km}/\text{h}$
+\end_inset
+
+ 
+\begin_inset Formula $t_{0-100}=10\,\text{s}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+accelerazione (ricavata da 
+\begin_inset Formula $t_{0-100}$
+\end_inset
+
+) 
+\begin_inset Formula $a\simeq2.7\,\text{m}/\text{s}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+forza di trazione 
+\begin_inset Formula $F_{{\scriptscriptstyle \text{T}}}=m\cdot a=4050\,\text{N}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+coefficiente di resistenza dinamica 
+\begin_inset Formula $\beta=29$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\begin_inset Formula $\checked$
+\end_inset
+
+Ricavare il modello del sistema (facoltativo) e 
+\begin_inset Formula $\checked$
+\end_inset
+
+tradurre le specifiche (elencate successivamente) in vincoli sulla funzione
+ di anello.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\checked$
+\end_inset
+
+Possiamo ricavare un modello per il sistema impostando l'equazione del moto
+ come segue:
+\begin_inset Formula 
+\[
+m\cdot\dot{v}\left(t\right)+\beta\left(t\right)\cdot v\left(t\right)=F_{{\scriptscriptstyle \text{T}}}\left(t\right)
+\]
+
+\end_inset
+
+Raccogliendo la trasformata di Laplace della velocità nella precedente,
+ otteniamo:
+\begin_inset Formula 
+\[
+\left(s\cdot m+\beta\right)Y\left(s\right)=F_{{\scriptscriptstyle \text{T}}}\left(s\right)\,\rightarrow\,Y\left(s\right)=\frac{1}{\left(s\cdot m+\beta\right)}F_{{\scriptscriptstyle \text{T}}}\left(s\right)
+\]
+
+\end_inset
+
+Questa modello rappresenta l'interazione tra la forza di trazione e la velocità:
+ introduciamo ora un ulteriore modello per mostrare l'interazione tra l'ingresso
+ di tensione (
+\begin_inset Formula $u\left(t\right)\in\left[0,\,10\,\text{V}\right]$
+\end_inset
+
+) alla centralina elettrica e la forza di trazione generata:
+\begin_inset Formula 
+\[
+F_{{\scriptscriptstyle \text{T}}}\left(s\right)=\frac{4050}{10}\cdot\frac{1}{0.2s+1}U\left(s\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "50text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/7_1-2 Schema a blocchi.pdf
+	display false
+	scale 110
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Schema a blocchi}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Schema a blocchi esercizio 7.1"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "50text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+Otterremo lo schema a blocchi in figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Schema a blocchi esercizio 7.1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ per il trasferimento, da cui possiamo scrivere la funzione di trasferimento:
+\begin_inset Formula 
+\[
+G\left(s\right)=\frac{405}{\left(0.2s+1\right)\left(1500s+29\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+Il sistema di controllo dovrà rispettare le seguenti specifiche:
+\end_layout
+
+\begin_layout Enumerate
+Impostando una velocità costante, il veicolo deve raggiungere tale velocità;
+ allora 
+\begin_inset Formula $\left|e_{\infty}\right|=0$
+\end_inset
+
+ con andamento desiderato 
+\begin_inset Formula $w\left(t\right)=\text{sca}\left(t\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Aumentando la velocità desiderata di 
+\begin_inset Formula $5\,\text{km}/\text{h}$
+\end_inset
+
+ in un secondo, il veicolo deve seguire l'incremento con errore costante
+ al più di 
+\begin_inset Formula $2\,\text{km}/\text{h}$
+\end_inset
+
+; allora 
+\begin_inset Formula $\left|e_{\infty}\right|\leq2\,\text{km}/\text{h}$
+\end_inset
+
+ con andamento desiderato 
+\begin_inset Formula $w\left(t\right)=5\cdot\text{ram}\left(t\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Variazioni dolci di pendenza della strada non devono influenzare la velocità
+ raggiunta; allora l'attenuazione del disturbo di processo deve valere 
+\begin_inset Formula $d\left(t\right)\leq-20\,\text{dB}$
+\end_inset
+
+ per 
+\begin_inset Formula $\overline{\omega}_{d}\in\left[0.001,\,0\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+La velocità misurata da sensori di rotazione delle ruote deve avere un'attenuazi
+one per i disturbi di misura 
+\begin_inset Formula $n\left(t\right)\leq-20\,\text{dB}$
+\end_inset
+
+ per 
+\begin_inset Formula $\underline{\omega}_{n}\in\left[10^{2},\,10^{3}\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+La velocità effettiva deve impiegare al più 
+\begin_inset Formula $10\,\text{s}$
+\end_inset
+
+ per raggiungere quella desiderata; allora il tempo di assestamento deve
+ valere 
+\begin_inset Formula $T_{0.1\%}<10\,\text{s}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Impostando una velocità desiderata di 
+\begin_inset Formula $100\,\text{km}/\text{h}$
+\end_inset
+
+, la velocità effettiva durante il transitorio dovrà mantenersi inferiore
+ ai 
+\begin_inset Formula $108\,\text{km}/\text{h}$
+\end_inset
+
+; allora la sovraelongazione percentuale deve valere 
+\begin_inset Formula $s_{\%}<8\%$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\checked$
+\end_inset
+
+Traduciamo le precedenti specifiche in vincoli sulla funzione di anello
+ 
+\begin_inset Formula $G\left(s\right)$
+\end_inset
+
+:
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $g\geq1$
+\end_inset
+
+, si veda 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "tab:Prestazioni-statiche"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+si potrebbe soddisfare la specifica in modo conservativo ponendo 
+\begin_inset Formula $g\geq2$
+\end_inset
+
+; tuttavia possiamo porre 
+\begin_inset Formula $g=1$
+\end_inset
+
+ e impostare la relazione 
+\begin_inset Formula 
+\[
+\left|e_{\infty}\right|=5/\mu\leq2\,\text{m}/\text{s}\rightarrow\mu\geq5/2;
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left|L\left(j\omega\right)\right|\geq20\,\text{dB}$
+\end_inset
+
+ per 
+\begin_inset Formula $\omega\in\left[0.001,\,0\right]$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\left|L\left(j\omega\right)\right|\leq20\,\text{dB}$
+\end_inset
+
+ per 
+\begin_inset Formula $\omega\in\left[10^{2},\,10^{3}\right]$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Enumerate
+dato che la sovraelongazione ha un ruolo nella specifica dello smorzamento
+ e lo smorzamento nella specifica della costante di tempo, possiamo risolvere
+ le specifiche 
+\begin_inset Formula $\mathrm{{\scriptstyle \left(5\right)}}$
+\end_inset
+
+ e 
+\begin_inset Formula $\mathrm{{\scriptstyle \left(6\right)}}$
+\end_inset
+
+ nei due modi seguenti:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Immaginiamo che la specifica sia soddisfatta dalla relazione
+\begin_inset Formula 
+\[
+s_{\%}=e^{-\xi\pi/\sqrt{1-\xi^{2}}}\leq8\%\rightarrow\xi\geq0.62
+\]
+
+\end_inset
+
+usando l'approssimazione 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Smorzamento-anello-chiuso-gradi"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ possiamo affermare che, data la precedente, il margine di fase vale 
+\begin_inset Formula $\phi_{m}\geq62°$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+La costante di tempo, da 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Sovraelongazione-e-costante-tempo-rispetto-smorzamento"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, deve essere tale che
+\begin_inset Formula 
+\[
+T_{0.1\%}=5T<10\,\text{s}\rightarrow\frac{5}{0.62\cdot\omega_{{\scriptscriptstyle \text{C}}}}<10\rightarrow\omega_{{\scriptscriptstyle \text{C}}}>\frac{0.5}{0.62}\simeq0.8\,\text{rad}/\text{s}.
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+In alternativa possiamo assumere che il margine di fase debba valere 
+\begin_inset Formula $\phi_{m}>65°$
+\end_inset
+
+, e il sistema si comporterà come se avesse polo dominante reale: in queste
+ condizioni 
+\begin_inset Formula $T=1/\omega_{{\scriptscriptstyle \text{C}}},$
+\end_inset
+
+e applicando gli stessi passaggi del punto precedente si ricava 
+\begin_inset Formula $\omega_{{\scriptscriptstyle \text{C}}}>0.5$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+I vincoli così ottenuti possono essere tracciati sul diagramma di Bode del
+ modulo nel modo seguente:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/7_1-3 Bode vincoli esempio.pdf
+	display false
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Vincoli tradotti sul diagramma del modulo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Notiamo che nel diagramma abbiamo l'attenuazione dei disturbi di processo
+ a bassa frequenza secondo il vincolo 
+\begin_inset Formula $\mathrm{{\scriptstyle \left(3\right)}}$
+\end_inset
+
+, e l'attenuazione dei disturbi di misura ad alta frequenza secondo il vincolo
+ 
+\begin_inset Formula $\mathrm{{\scriptstyle \left(4\right)}}$
+\end_inset
+
+; questi due vincoli sono rappresentati dalle linee diagonali che cancellano
+ due bande di frequenze dal diagramma.
+\end_layout
+
+\begin_layout Standard
+La linea diagonale tratteggiata e punteggiata che congiunge il punto per
+ 
+\begin_inset Formula $\omega=1$
+\end_inset
+
+ (modulo 
+\begin_inset Formula $8\,\text{dB}$
+\end_inset
+
+) con quello per 
+\begin_inset Formula $\omega=10^{-3}$
+\end_inset
+
+ (modulo 
+\begin_inset Formula $68\,\text{dB}$
+\end_inset
+
+, non raffigurato) rappresenta il vincolo 
+\begin_inset Formula $\mathrm{{\scriptstyle \left(1\right)}}$
+\end_inset
+
+ e 
+\begin_inset Formula $\mathrm{{\scriptstyle \left(2\right)}}$
+\end_inset
+
+ sul guadagno statico (è stato convertito 
+\begin_inset Formula $5/2=2.5\simeq8\,\text{dB}$
+\end_inset
+
+, considerando che 
+\begin_inset Formula $g=1$
+\end_inset
+
+, ovvero un polo nell'origine).
+\end_layout
+
+\begin_layout Standard
+Il vincolo 
+\begin_inset Formula $\mathrm{{\scriptstyle \left(5\right)}}$
+\end_inset
+
+ sulla pulsazione critica è rappresentato dal rettangolo punteggiato attorno
+ all'asse 
+\begin_inset Formula $0\,\text{dB}$
+\end_inset
+
+ fino al punto in 
+\begin_inset Formula $\omega=0.8$
+\end_inset
+
+; infine per soddisfare il margine di fase dovremo osservare la perdita
+ di fase dovuta alle singolarità, valutando la fase sul relativo diagramma
+ o in modo analitico.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+demo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Progetto: metodo per inversione
+\end_layout
+
+\begin_layout Standard
+Se prendiamo una funzione di anello desiderata 
+\begin_inset Formula $L^{*}\left(s\right)$
+\end_inset
+
+ che soddisfi le specifiche, sapendo che essa è la cascata di regolatore
+ e impianto (
+\begin_inset Formula $L^{*}\left(s\right)=R\left(s\right)\cdot G\left(s\right)$
+\end_inset
+
+, si veda 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:Schema-di-riferimento-controllo"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), progettiamo il regolatore (definiamo la sua funzione di trasferimento)
+ come:
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "3cm"
+height "1pt"
+
+\end_inset
+
+
+\series bold
+\size footnotesize
+
+\begin_inset Newline newline
+\end_inset
+
+Progetto del regolatore per inversione
+\series default
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Progetto del regolatore per inversione
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[-0.3cm]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+R\left(s\right)=L^{*}\left(s\right)/G\left(s\right)\label{eq:Regolatore-con-inversione}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Questo metodo si può applicare solo se nella funzione 
+\begin_inset Formula $G\left(s\right)$
+\end_inset
+
+ sono 
+\bar under
+assenti
+\bar default
+ zeri reali positivi: in caso contrario, invertendola i suoi zeri diventano
+ poli del regolatori, portando a cancellazioni critiche (e dunque all'instabilit
+à del regolatore!).
+\end_layout
+
+\begin_layout Standard
+Inoltre è necessario che la funzione di trasferimento desiderata sia realizzabil
+e, ovvero propria o meglio strettamente propria, quindi il suo grado relativo
+ deve essere almeno uguale al grado di 
+\begin_inset Formula $G\left(s\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+
+\emph on
+\begin_inset CommandInset label
+LatexCommand label
+name "exa:Regolatore-Cruise-control"
+
+\end_inset
+
+Facendo riferimento al sistema nell'Esempio 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:Cruise-control"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, 
+\begin_inset Formula $\checked$
+\end_inset
+
+si progetti un regolatore che soddisfi le specifiche, utilizzando il metodo
+ per inversione.
+\end_layout
+
+\begin_layout Example
+La funzione di trasferimento del sistema non presenta zeri, dunque possiamo
+ applicare sicuramente il metodo per inversione, potendo invertire la funzione
+ senza introdurre zeri instabili.
+\end_layout
+
+\begin_layout Example
+La funzione di trasferimento desiderata sarà costruita nel modo seguente:
+\begin_inset Formula 
+\[
+L^{*}\left(s\right)=\frac{10}{s}\cdot\frac{\left(1+s/0.1\right)}{\left(1+s/0.01\right)}\frac{1}{\left(1+s/10\right)}
+\]
+
+\end_inset
+
+dove abbiamo usato direttamente 
+\begin_inset Formula $\mu=10$
+\end_inset
+
+ per soddisfare il requisito sul guadagno statico; poi inseriamo un polo
+ in 
+\begin_inset Formula $\omega=10^{-2}$
+\end_inset
+
+ per attraversare l'asse 
+\begin_inset Formula $0\,\text{dB}$
+\end_inset
+
+ in prossimità del limite per 
+\begin_inset Formula $\omega_{{\scriptscriptstyle \text{C}}}\geq0.8$
+\end_inset
+
+, ma così facendo la pulsazione di attraversamento si abbassa troppo e il
+ margine di fase in quel punto : è necessario inserire uno zero alla decade
+ successiva (
+\begin_inset Formula $\omega=10^{-1}$
+\end_inset
+
+) per ottenere infine un attraversamento in prossimità di 
+\begin_inset Formula $\omega=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+Invertendo la funzione così strutturata otterremmo più zeri che poli, quindi
+ inseriamo un 
+\emph on
+polo di chiusura
+\emph default
+ una decade dopo la pulsazione critica (
+\begin_inset Formula $\omega=10^{1}$
+\end_inset
+
+) per non compromettere il margine di fase.
+ Il diagramma di Bode del modulo tracciato rispetto ai vincoli risulta soddisfat
+to:
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{-1.6cm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/7_1-4 Bode modulo vincoli esempio.pdf
+	display false
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Modulo della funzione di anello desiderata}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Progettiamo infine il regolatore effettuando l'inversione descritta in 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Regolatore-con-inversione"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, ottenendo la seguente forma fattorizzata:
+\begin_inset Formula 
+\[
+R\left(s\right)=\frac{0.7}{s}\cdot\frac{\left(1+s/0.1\right)\left(1+s/5\right)\left(1+s/0.02\right)}{\left(1+s/0.01\right)\left(1+s/10\right)}
+\]
+
+\end_inset
+
+Il metodo utilizzato cancella i poli della funzione di anello con gli zeri
+ inseriti dal regolatore, sostituendo alla dinamica quella desiderata; in
+ particolare, abbiamo un regolatore del terzo ordine.
+\end_layout
+
+\begin_layout Standard
+Rimane solo da controllare che il margine di fase soddisfi le specifiche:
+ il metodo analitico prevede di sostituire 
+\begin_inset Formula $s=j$
+\end_inset
+
+ nella funzione di anello per ottenere 
+\begin_inset Formula $\phi_{{\scriptscriptstyle \text{C}}}$
+\end_inset
+
+ e poi sottrarlo a 180° (
+\begin_inset Formula $\phi_{m}=180°-\phi_{{\scriptscriptstyle \text{C}}}$
+\end_inset
+
+); tuttavia osserviamo che il nostro sistema regolatore è a sfasamento minimo
+ (guadagno positivo e singolarità con parte reale negativa, ad almeno una
+ decade di distanza tra loro), quindi il valore della fase può essere dedotto
+ osservando la pendenza del diagramma del modulo.
+ In particolare si vede che nel punto 
+\begin_inset Formula $\omega_{{\scriptscriptstyle \text{C}}}\simeq1$
+\end_inset
+
+ la pendenza con cui si attraversa l'asse 
+\begin_inset Formula $0\,\text{dB}$
+\end_inset
+
+ è di 
+\begin_inset Formula $-20\,\text{dB}/\text{dec}$
+\end_inset
+
+, quindi 
+\begin_inset Formula $\phi_{{\scriptscriptstyle \text{C}}}=-90°$
+\end_inset
+
+ e il margine di fase vale 
+\begin_inset Formula $\phi_{m}=90°$
+\end_inset
+
+ (soddisfacendo la specifica 
+\begin_inset Formula $\mathrm{{\scriptstyle \left(5\right)}}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+demo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Per completezza mostriamo il diagramma della fase associato alla funzione
+ di anello dell'Esempio 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "exa:Regolatore-Cruise-control"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/7_1-5 Bode fase esempio.pdf
+	display false
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Diagramma della fase della funzione di anello desiderata}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Infine, ecco come appare il diagramma di Bode del modulo del regolatore:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/7_1-6 Bode modulo regolatore esempio.pdf
+	display false
+	scale 80
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Diagramma del modulo del regolatore}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La funzione di sensitività del comando 
+\begin_inset Formula $Q\left(s\right)$
+\end_inset
+
+ è qualitativamente analoga al modulo della funzione del regolatore 
+\begin_inset Formula $R\left(s\right)$
+\end_inset
+
+ per pulsazioni maggiori di quella critica; notiamo che i disturbi in alta
+ frequenza sul comando sono addirittura amplificati, dato che il modulo
+ del regolatore si stabilizza su un valore maggiore di 
+\begin_inset Formula $+1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Per ovviare a questo problema, è opportuno inserire dei 
+\emph on
+poli di chiusura
+\emph default
+, ovvero dei poli distanti più di una decade dalla pulsazione di attraversamento
+ (per non compromettere il margine di fase) che rendano negativo e molto
+ piccolo il modulo del regolatore per le alte frequenze.
+ Di nuovo sottolineiamo l'importanza di progettare un regolatore strettamente
+ proprio.
 \end_layout
 
 \begin_layout Chapter
