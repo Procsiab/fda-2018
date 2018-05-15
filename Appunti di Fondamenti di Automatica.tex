@@ -929,7 +929,7 @@ dal valore di $a$ nel seguente modo
 \item per $a<0$ si ha un andamento esponenziale decrescente;
 \item per $a=0$ si ha un andamento costante.
 \end{itemize}
-Considerando il caso $a=0$, ci chiediamo quanto velocemente il movimento
+Considerando il caso $a<0$, ci chiediamo quanto velocemente il movimento
 libero converga a zero, ovvero quando $x\left(t\right)=\varepsilon x_{0}$
 con $\varepsilon\in\left(0,1\right)$ molto piccolo.
 
@@ -1175,7 +1175,7 @@ ottenuto tramite la matrice di diagonalizzazione, ottengo l'equazione
 del modello:
 \[
 \begin{cases}
-\dot{\hat{x}}\left(t\right)=A_{{\scriptscriptstyle \text{D}}}\cdot x\left(t\right)+T_{{\scriptscriptstyle \text{D}}}\cdot Bu\left(t\right)\\
+\dot{\hat{x}}\left(t\right)=A_{{\scriptscriptstyle \text{D}}}\cdot\hat{x}\left(t\right)+T_{{\scriptscriptstyle \text{D}}}\cdot Bu\left(t\right)\\
 y\left(t\right)=C\cdot T_{{\scriptscriptstyle \text{D}}}^{-1}\cdot\hat{x}\left(t\right)+D\cdot u\left(t\right)
 \end{cases}
 \]
@@ -1242,17 +1242,17 @@ complessi coniugati; otterremo dei termini del tipo:
 \left(a_{i}+jb_{i}\right)e^{\left(\sigma_{i}+j\omega_{i}\right)t}+\left(a_{i}-jb_{i}\right)e^{\left(\sigma_{i}-j\omega_{i}\right)t}
 \]
 Se chiamiamo il modulo del coefficiente complesso $m_{p}=\left|a_{i}\pm jb_{i}\right|$
-e la sua fase $\phi_{p}=\text{arg}\left(a_{i}\pm jb_{i}\right)$,
+e la sua fase $\varphi_{p}=\text{arg}\left(a_{i}\pm jb_{i}\right)$,
 possiamo riscrivere la precedente come:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
 \textbf{\footnotesize{}Modo oscillante}{\footnotesize{}\index{Modo oscillante@{\footnotesize{}Modo oscillante}}}}[1.5cm]
 \[
-m_{p}e^{j\phi_{p}}\cdot e^{\left(\sigma_{i}+j\omega_{i}\right)t}+m_{p}e^{-j\phi_{p}}\cdot e^{\left(\sigma_{i}-jw_{i}\right)t}
+m_{p}e^{j\varphi_{p}}\cdot e^{\left(\sigma_{i}+j\omega_{i}\right)t}+m_{p}e^{-j\varphi_{p}}\cdot e^{\left(\sigma_{i}-jw_{i}\right)t}
 \]
 \begin{equation}
-=m_{p}e^{\sigma_{i}t}\cdot\left(e^{j\left(\omega_{i}t+\phi_{p}\right)}+e^{-j\left(\omega_{i}t-\phi_{p}\right)}\right)=\boxed{m_{p}e^{\sigma_{i}t}\cdot2\cos\left(\omega_{i}t+\phi_{p}\right)}\label{eq:Modo-oscillante}
+=m_{p}e^{\sigma_{i}t}\cdot\left(e^{j\left(\omega_{i}t+\varphi_{p}\right)}+e^{-j\left(\omega_{i}t-\varphi_{p}\right)}\right)=\boxed{m_{p}e^{\sigma_{i}t}\cdot2\cos\left(\omega_{i}t+\varphi_{p}\right)}\label{eq:Modo-oscillante}
 \end{equation}
 dove nella seconda uguaglianza è stata utilizzata la (\ref{eq:Formula-di-Eulero})
-ottenendo $e^{\left(\omega_{i}t\pm\phi_{p}\right)}=\cos\left(\omega_{i}t\pm\phi_{p}\right)+j\sin\left(\omega_{i}t\pm\phi_{p}\right)$.
+ottenendo $e^{\left(\omega_{i}t\pm\varphi_{p}\right)}=\cos\left(\omega_{i}t\pm\varphi_{p}\right)+j\sin\left(\omega_{i}t\pm\varphi_{p}\right)$.
 Chiamiamo modo oscillante l'espressione (\ref{eq:Modo-oscillante}),
 anche se in modo improprio dato che si tratta della combinazione lineare
 di due modi (la coppia di complessi coniugati); esso presenta un andamento
@@ -1410,12 +1410,12 @@ Anche in questo caso è corretta l'espressione per $x\left(t\right)=e^{A\cdot t}x
 ottenuta nel caso precedente; per facilitare la scrittura del primo
 stato, definiamo i seguenti:
 \[
-m_{p}=\left|\dfrac{x_{0,1}}{2}-\dfrac{j}{2\omega}\left(\sigma x_{0,1}-\dfrac{1}{L}x_{0,2}\right)\right|,\quad\phi_{p}=\text{arg}\left(\dfrac{x_{0,1}}{2}-\dfrac{j}{2\omega}\left(\sigma x_{0,1}-\dfrac{1}{L}x_{0,2}\right)\right)
+m_{p}=\left|\dfrac{x_{0,1}}{2}-\dfrac{j}{2\omega}\left(\sigma x_{0,1}-\dfrac{1}{L}x_{0,2}\right)\right|,\quad\varphi_{p}=\text{arg}\left(\dfrac{x_{0,1}}{2}-\dfrac{j}{2\omega}\left(\sigma x_{0,1}-\dfrac{1}{L}x_{0,2}\right)\right)
 \]
 Dopo aver messo in coordinate polari i coefficienti tramite le due
 precedenti, si ottiene:
 \[
-x_{1}\left(t\right)=m_{p}e^{\sigma t}\cdot2\cos\left(\omega t+\phi_{p}\right)
+x_{1}\left(t\right)=m_{p}e^{\sigma t}\cdot2\cos\left(\omega t+\varphi_{p}\right)
 \]
 Viene riconfermato il risultato (\ref{eq:Modo-oscillante}).
 
@@ -1494,7 +1494,7 @@ i seguenti andamenti dei modi:\label{eq:Andamento-modi-autovalori-multipli}
 \end{itemize}
 \item $\lambda_{i}\in\mathbb{C}$ (autovalori complessi coniugati, modi
 del tipo\\
-$te^{\sigma t}\left(\cos\left(\omega t+\phi\right)+j\sin\left(\omega t+\phi\right)\right)$):\smallskip{}
+$te^{\sigma t}\left(\cos\left(\omega t+\varphi\right)+j\sin\left(\omega t+\varphi\right)\right)$):\smallskip{}
 
 \begin{itemize}
 \item $\Re\left(\lambda_{i}\right)>0$: modo divergente (esponenziale);
@@ -1811,20 +1811,20 @@ tempo.
 
 Sappiamo che gli autovalori della matrice di stato sono i valori per
 cui vale la Definizione \ref{def:Autovalore} e risolvono (\ref{eq:Polinomio-caratteristico});
-chiamiamo tale polinomio $\phi\left(\lambda\right)=0$, che in generale
-ha grado pari all'ordine della matrice da cui deriva (nel nostro caso
-ha grado pari all'ordine di $A$).
+chiamiamo tale polinomio $\varphi\left(\lambda\right)=0$, che in
+generale ha grado pari all'ordine della matrice da cui deriva (nel
+nostro caso ha grado pari all'ordine di $A$).
 
 Possiamo scrivere tale polinomio come
 \begin{equation}
-\phi\left(\lambda\right)=\phi_{0}\lambda^{n}+\phi_{1}\lambda^{n-1}+\ldots+\phi_{n}\label{eq:Polinomio-caratteristico-Routh}
+\varphi\left(\lambda\right)=\varphi_{0}\lambda^{n}+\varphi_{1}\lambda^{n-1}+\ldots+\varphi_{n}\label{eq:Polinomio-caratteristico-Routh}
 \end{equation}
 Studiamo il segno della parte reale delle soluzioni di tale polinomio,
 osservando i suoi coefficienti; enunciamo su questa base il seguente:
 \begin{thm}
 \label{thm:Criterio-segni-concordi-autovalori}Se il sistema della
 forma (\ref{eq:Forma-standard-matrice-LTI}) è asintoticamente stabile,
-allora i coefficienti del suo polinomio caratteristico $\phi_{i},\,i\in0\ldots n$
+allora i coefficienti del suo polinomio caratteristico $\varphi_{i},\,i\in0\ldots n$
 hanno tutti lo stesso segno.
 \end{thm}
 \begin{cor}
@@ -1844,8 +1844,8 @@ si basa sulla seguente \emph{tabella di Routh}, costruita a partire
 dal polinomio caratteristico nella forma (\ref{eq:Polinomio-caratteristico-Routh}):
 \begin{equation}
 \begin{array}{cccccc}
-\phi_{0} & \phi_{2} & \phi_{4} & \cdots & \phi_{n-1} & 0\\
-\phi_{1} & \phi_{3} & \phi_{5} & \cdots & \phi_{n} & 0\\
+\varphi_{0} & \varphi_{2} & \varphi_{4} & \cdots & \varphi_{n-1} & 0\\
+\varphi_{1} & \varphi_{3} & \varphi_{5} & \cdots & \varphi_{n} & 0\\
 \vdots & \vdots & \vdots & \ddots & 0 & \vdots\\
 h_{1} & h_{2} & h_{3} & \vdots & \vdots & \vdots\\
 k_{1} & k_{2} & k_{3} & \vdots & \vdots & \vdots\\
@@ -1882,7 +1882,7 @@ con parte reale positiva (i quali generano modi instabili).\bigskip{}
 \emph{Sia dato il seguente polinomio caratteristico della matrice
 di stato di un sistema LTI di ordine 5
 \[
-\phi\left(\lambda\right)=\lambda^{5}+15\lambda^{4}+85\lambda^{3}+225\lambda^{2}+274\lambda+120
+\varphi\left(\lambda\right)=\lambda^{5}+15\lambda^{4}+85\lambda^{3}+225\lambda^{2}+274\lambda+120
 \]
 $\checkmark$Verificare la stabilità dei movimenti del sistema.}
 
@@ -1923,7 +1923,7 @@ sono variabili; è possibile calcolare il polinomio caratteristico
 rispetto a tali parametri: $\checkmark$si valuti dunque la stabilità
 del sistema col seguente polinomio caratteristico di stato}
 \[
-\phi\left(\lambda\right)=\lambda^{3}+\left(2+\beta\right)\lambda^{2}+\left(1+2\beta\right)\lambda+\alpha+\beta
+\varphi\left(\lambda\right)=\lambda^{3}+\left(2+\beta\right)\lambda^{2}+\left(1+2\beta\right)\lambda+\alpha+\beta
 \]
 
 Grazie al Teorema \ref{thm:Criterio-di-Routh} possiamo compilare
@@ -2529,20 +2529,20 @@ Nel caso di autovalori reali, dobbiamo distinguere i seguenti casi:
 ovvero il corrispettivo con la parte immaginaria di segno opposto}Nel caso di valori complessi coniugati i modi sono sempre $z_{1,2}=\left(\sigma\pm j\omega\right)^{k}$;
 per la loro analisi adottiamo la rappresentazione polare:
 \[
-\rho=\sqrt{\sigma^{2}+\omega^{2}},\;\phi=\arg\left(z_{i}\right)
+\rho=\sqrt{\sigma^{2}+\omega^{2}},\;\varphi=\arg\left(z_{i}\right)
 \]
-da cui gli autovalori valgono $z_{1,2}=\rho e^{\pm j\phi}$ e i modi
-$z_{1,2}^{k}=\rho^{k}e^{\pm jk\phi}$; questi modi saranno sempre
-combinati, nel movimento complessivo, con dei coefficienti $\alpha$
-anch'essi complessi coniugati, in generale nella forma $\alpha=\rho_{\alpha}e^{j\phi_{\alpha}}$.
+da cui gli autovalori valgono $z_{1,2}=\rho e^{\pm j\varphi}$ e i
+modi $z_{1,2}^{k}=\rho^{k}e^{\pm jk\varphi}$; questi modi saranno
+sempre combinati, nel movimento complessivo, con dei coefficienti
+$\alpha$ anch'essi complessi coniugati, in generale nella forma $\alpha=\rho_{\alpha}e^{j\varphi_{\alpha}}$.
 
 La combinazione lineare dei modi associati agli autovalori complessi
 coniugati è:
 \[
-x_{{\scriptscriptstyle \text{L}}}\left(k\right)=\alpha z_{1}+\alpha^{*}z_{2}=\rho_{\alpha}\rho^{k}e^{j\left(k\phi+\phi_{\alpha}\right)}+\rho_{\alpha}\rho^{k}e^{-j\left(k\phi+\phi_{\alpha}\right)}
+x_{{\scriptscriptstyle \text{L}}}\left(k\right)=\alpha z_{1}+\alpha^{*}z_{2}=\rho_{\alpha}\rho^{k}e^{j\left(k\varphi+\varphi_{\alpha}\right)}+\rho_{\alpha}\rho^{k}e^{-j\left(k\varphi+\varphi_{\alpha}\right)}
 \]
 \begin{equation}
-=\rho_{\alpha}\rho^{k}\left(e^{j\left(k\phi+\phi_{\alpha}\right)}+e^{-j\left(k\phi+\phi_{\alpha}\right)}\right)\overset{{\scriptscriptstyle \text{Eulero}}}{=}\boxed{2\rho_{\alpha}\rho^{k}\cos\left(k\phi+\phi_{\alpha}\right)}\label{eq:Movimento-libero-discreto-complesso}
+=\rho_{\alpha}\rho^{k}\left(e^{j\left(k\varphi+\varphi_{\alpha}\right)}+e^{-j\left(k\varphi+\varphi_{\alpha}\right)}\right)\overset{{\scriptscriptstyle \text{Eulero}}}{=}\boxed{2\rho_{\alpha}\rho^{k}\cos\left(k\varphi+\varphi_{\alpha}\right)}\label{eq:Movimento-libero-discreto-complesso}
 \end{equation}
 dove abbiamo usato la (\ref{eq:Formula-di-Eulero}) nell'ultima uguaglianza,
 e i coefficienti in pedice $_{\alpha}$ sono dipendenti dalle condizioni
@@ -2568,10 +2568,10 @@ Cominciamo calcolando gli autovalori di $A$:
 \end{vmatrix}=0\rightarrow z^{2}-2z+2=0\rightarrow z_{1,2}=1\pm j
 \]
 Per questi due autovalori complessi coniugati abbiamo $\rho=\sqrt{2}$
-e $\phi=\pi/4$. Il movimento associato alla combinazione lineare
+e $\varphi=\pi/4$. Il movimento associato alla combinazione lineare
 di questi due modi sarà nella forma (\ref{eq:Movimento-libero-discreto-complesso}):
 \[
-\rho_{\alpha}2\left(\sqrt{2}\right)^{k}\cos\left(k\dfrac{\pi}{4}+\phi_{\alpha}\right)
+\rho_{\alpha}2\left(\sqrt{2}\right)^{k}\cos\left(k\dfrac{\pi}{4}+\varphi_{\alpha}\right)
 \]
 Una possibile scelta per la matrice di trasformazione, presi autovettori
 associati a $z_{1,2}$ con base canonica unitaria, è la seguente:
@@ -2746,12 +2746,12 @@ e $\overline{y}$;
 
 Il polinomio caratteristico di una matrice permette di trovare i suoi
 autovalori: se definiamo tale polinomio per i sistemi a tempo discreto
-come $\phi\left(z\right)$, gli autovalori associati si trovano a
-partire da $\phi\left(z\right)=0$; scrivendo il polinomio nella forma
-di combinazione lineare di autovalori $z_{i}$ e coefficienti $\phi_{i}$
-avremo
+come $\varphi\left(z\right)$, gli autovalori associati si trovano
+a partire da $\varphi\left(z\right)=0$; scrivendo il polinomio nella
+forma di combinazione lineare di autovalori $z_{i}$ e coefficienti
+$\varphi_{i}$ avremo
 \begin{equation}
-\phi\left(z\right)=\phi_{0}z^{n}+\phi_{1}z^{n-1}+\ldots+\phi_{n}\label{eq:Polinomio-caratteristico-discreto}
+\varphi\left(z\right)=\varphi_{0}z^{n}+\varphi_{1}z^{n-1}+\ldots+\varphi_{n}\label{eq:Polinomio-caratteristico-discreto}
 \end{equation}
 Enunciamo un criterio che fornisce una condizione necessaria e sufficiente
 per stabilire la stabilità asintotica di un sistema a tempo discreto;
@@ -2760,7 +2760,7 @@ dal polinomio caratteristico della matrice di stato, scritto nella
 forma (\ref{eq:Polinomio-caratteristico-discreto}):
 \begin{equation}
 \begin{array}{ccccccc}
-\phi_{0} & \phi_{1} & \phi_{2} & \ldots & \phi_{n-1} & \phi_{n} & 0\\
+\varphi_{0} & \varphi_{1} & \varphi_{2} & \ldots & \varphi_{n-1} & \varphi_{n} & 0\\
 h_{0} & h_{1} & h_{2} & \ldots & h_{\nu} & 0 & 0\\
 \ell_{1} & \ell_{2} & \ldots & \ell_{\nu-1} & 0 & 0 & 0
 \end{array}\label{eq:Tabella-di-Jury}
@@ -2790,7 +2790,7 @@ hanno segno concorde.
 \emph{Consideriamo un sistema dinamico a tempo discreto, col seguente
 polinomio caratteristico:
 \[
-\phi\left(z\right)=z^{2}+\alpha z+\beta
+\varphi\left(z\right)=z^{2}+\alpha z+\beta
 \]
 $\checkmark$Studiare per quali valori di $\alpha$ e $\beta$ il
 sistema è stabile.}
@@ -3340,11 +3340,11 @@ evidenti alcune proprietà riguardo pulsazioni naturali e smorzamenti:
 preso un polo stabile, esso avrà (risolvendo le radici) $\Re\left(p\right)=-\xi\omega_{n}$,
 $\Im\left(p\right)=\pm\omega_{n}\sqrt{1-\xi^{2}}$; in particolare
 $\omega_{n}$ è la distanza dall'origine di ciascun polo della coppia
-coniugata, mentre il coseno dell'angolo $\theta$ che questa distanza
-forma con l'asse reale è pari a $\xi$, dunque vale $\theta=\arccos\left(\xi\right)$.
+coniugata, mentre il coseno dell'angolo $\vartheta$ che questa distanza
+forma con l'asse reale è pari a $\xi$, dunque vale $\vartheta=\arccos\left(\xi\right)$.
 
 Da queste osservazioni segue che, a parità di pulsazione $\omega_{n}$
-lo smorzamento $\xi$ è inversamente proporzionale all'angolo $\theta$
+lo smorzamento $\xi$ è inversamente proporzionale all'angolo $\vartheta$
 tra le distanze dei due complessi coniugati.
 
 \subsection*{Guadagno generalizzato}
@@ -3583,7 +3583,7 @@ la sua antitrasformata:
 Y\left(s\right)=\dfrac{\mu}{s}-\frac{\mu T}{1+Ts}-\frac{\mu T}{\left(1+Ts\right)^{2}}=\mu\left(\dfrac{1}{s}-\dfrac{1}{\left({\scriptstyle \nicefrac{1}{T}}+s\right)}-\dfrac{1}{T\left({\scriptstyle \nicefrac{1}{T}}+s\right)^{2}}\right)
 \]
 \begin{equation}
-y\left(t\right)=\mathscr{L}^{-1}\left[Y\left(s\right)\right]=\mu\left(1-e^{-\nicefrac{t}{T}}-\dfrac{1}{T}e^{-\nicefrac{t}{T}}\right)\text{sca}\left(t\right)\label{eq:Risposta-scalino-ord-2-poli-reali-coincidenti}
+y\left(t\right)=\mathscr{L}^{-1}\left[Y\left(s\right)\right]=\mu\left(1-e^{-\nicefrac{t}{T}}-\dfrac{t}{T}e^{-\nicefrac{t}{T}}\right)\text{sca}\left(t\right)\label{eq:Risposta-scalino-ord-2-poli-reali-coincidenti}
 \end{equation}
 
 \begin{rem}
@@ -3617,7 +3617,7 @@ c=\left.\dfrac{\mu\left(1+\tau s\right)}{\left(1+T_{1}s\right)}\right|_{s=-\nice
 \end{array}
 \]
 \[
-Y\left(s\right)=\mu\left(\dfrac{1}{s}-\dfrac{\mu\left(T_{1}-\tau\right)}{\left(T_{1}-T_{2}\right)\left(1/T_{1}+s\right)}+\dfrac{\mu\left(T_{2}-\tau\right)}{\left(T_{1}-T_{2}\right)\left(1/T_{2}+s\right)}\right)
+Y\left(s\right)=\mu\left(\dfrac{1}{s}-\dfrac{\left(T_{1}-\tau\right)}{\left(T_{1}-T_{2}\right)\left(1/T_{1}+s\right)}+\dfrac{\left(T_{2}-\tau\right)}{\left(T_{1}-T_{2}\right)\left(1/T_{2}+s\right)}\right)
 \]
 L'antitrasformata presenta uno scalino e due esponenziali:
 \begin{equation}
@@ -4200,14 +4200,14 @@ di massa; muovendo l'alettone si genera una forza $F_{{\scriptscriptstyle \text{
 di resistenza aerodinamica e una coppia resistente $M_{{\scriptscriptstyle \text{D}}}$.
 
 Consideriamo il moto rotativo di beccheggio dell'aereo, orientato
-con un angolo di rotazione $\theta$; in generale il velivolo avrà
+con un angolo di rotazione $\vartheta$; in generale il velivolo avrà
 un suo momento d'inerzia $J_{{\scriptscriptstyle \text{A}}}$, legato
 a un coefficiente di attrito viscoso $\beta_{{\scriptscriptstyle \text{A}}}$.
 
 L'equazione di equilibrio (in modo simile alla precedente) si ottiene
 come:
 \[
-J_{{\scriptscriptstyle \text{A}}}\ddot{\theta}\left(t\right)+\beta_{{\scriptscriptstyle \text{A}}}\dot{\theta}\left(t\right)=M_{{\scriptscriptstyle \text{D}}}\left(t\right)+dF_{{\scriptscriptstyle \text{D}}}
+J_{{\scriptscriptstyle \text{A}}}\ddot{\vartheta}\left(t\right)+\beta_{{\scriptscriptstyle \text{A}}}\dot{\vartheta}\left(t\right)=M_{{\scriptscriptstyle \text{D}}}\left(t\right)+dF_{{\scriptscriptstyle \text{D}}}
 \]
 Approssimiamo la coppia e la forza legate all'aerodinamica con una
 proporzione con lo spostamento dell'alettone:
@@ -4221,13 +4221,13 @@ dove le costanti $k_{{\scriptscriptstyle A,B}}$ sono proprie del
 terzo sistema in esame; sostituendo nella precedente e trasformando
 otteniamo:
 \[
-J_{{\scriptscriptstyle \text{A}}}s^{2}\Theta\left(s\right)+\beta_{{\scriptscriptstyle \text{A}}}s\Theta\left(s\right)=\left(k_{{\scriptscriptstyle A}}+dk_{{\scriptscriptstyle B}}\right)\Delta\left(s\right)
+J_{{\scriptscriptstyle \text{A}}}s^{2}\vartheta\left(s\right)+\beta_{{\scriptscriptstyle \text{A}}}s\vartheta\left(s\right)=\left(k_{{\scriptscriptstyle A}}+dk_{{\scriptscriptstyle B}}\right)\Delta\left(s\right)
 \]
 L'uscita di interesse è proprio l'angolo di beccheggio dell'aeroplano,
 mentre l'ingresso è la posizione dell'alettone; la funzione di trasferimento
 è:
 \begin{equation}
-\Theta\left(s\right)=\frac{k_{{\scriptscriptstyle A}}+dk_{{\scriptscriptstyle B}}}{\left(J_{{\scriptscriptstyle \text{A}}}s+\beta_{{\scriptscriptstyle \text{A}}}\right)s}\Delta\left(s\right)\label{eq:Trasferimento-3-sistema}
+\vartheta\left(s\right)=\frac{k_{{\scriptscriptstyle A}}+dk_{{\scriptscriptstyle B}}}{\left(J_{{\scriptscriptstyle \text{A}}}s+\beta_{{\scriptscriptstyle \text{A}}}\right)s}\Delta\left(s\right)\label{eq:Trasferimento-3-sistema}
 \end{equation}
 Abbiamo ottenuto un sistema del secondo ordine con i poli $p_{1}=0,\,p_{2}=\beta_{{\scriptscriptstyle \text{A}}}/J_{{\scriptscriptstyle \text{A}}}$,
 semplicemente stabile con un polo nell'origine.
@@ -4726,7 +4726,7 @@ che per le proprietà del logaritmo diventa una combinazione lineare:\marginpar{\
 \textbf{\footnotesize{}Risposta armonica in forma di Bode}{\footnotesize{}\index{Risposta armonica in forma di Bode@{\footnotesize{}Risposta armonica in forma di Bode}}}}[1.3cm]
 \begin{equation}
 \begin{array}{c}
-\left|G\left(j\omega\right)\right|_{{\scriptscriptstyle dB}}=20\log_{10}\left(\mu\right)-20g\log_{10}\left(j\omega\right)+\sum_{i}20\log_{10}\left|1+\tau_{i}j\omega\right|\\
+\left|G\left(j\omega\right)\right|_{{\scriptscriptstyle dB}}=20\log_{10}\left|\mu\right|-20g\log_{10}\left|j\omega\right|+\sum_{i}20\log_{10}\left|1+\tau_{i}j\omega\right|\\
 \\
 +\sum_{i}20\log_{10}\left|1+2j\omega\frac{\zeta_{i}}{\alpha_{ni}}+\frac{\left(j\omega\right)^{2}}{\alpha_{ni}^{2}}\right|-\sum_{i}20\log_{10}\left|1+T_{i}j\omega\right|\\
 \\
@@ -4815,7 +4815,7 @@ vale, rispettivamente:
 \left|G_{p}\left(j\omega\right)\right|_{{\scriptscriptstyle dB}}=-20\log_{10}\left|1+Tj\omega\right|=-20\log_{10}\sqrt{1+T^{2}\omega^{2}}
 \]
 \[
-\left|G_{z}\left(j\omega\right)\right|_{{\scriptscriptstyle dB}}=20\log_{10}\sqrt{1+T^{2}\omega^{2}}
+\left|G_{z}\left(j\omega\right)\right|_{{\scriptscriptstyle dB}}=20\log_{10}\sqrt{1+\tau^{2}\omega^{2}}
 \]
 A prescindere dal segno della parte reale del polo o dello zero, la
 risposta armonica non cambia (e nemmeno il diagramma di Bode). Se
@@ -4925,8 +4925,7 @@ coniugati, saremmo giunti allo stesso risultato a meno del segno:
 \left|G_{z}\left(j\omega\right)\right|_{{\scriptscriptstyle dB}}=20\log_{10}\sqrt{\left(1-\left(\omega/\alpha_{n}\right)^{2}\right)^{2}+4\zeta^{2}\left(\omega/\alpha_{n}\right)^{2}}
 \]
 Se normalizziamo rispetto alla pulsazione propria, otteniamo i seguenti
-asintoti:\marginpar{Abbiamo usato la proprietà dei logaritmi $\log_{a}b^{\alpha}=\alpha\log_{a}b$}\emph{Scrivere
-la sua risposta armonica in forma esponenziale.}
+asintoti:\marginpar{Abbiamo usato la proprietà dei logaritmi $\log_{a}b^{\alpha}=\alpha\log_{a}b$}
 \[
 \left|G_{p}\left(j\frac{\omega}{\omega_{n}}\right)\right|_{{\scriptscriptstyle dB}}\simeq\begin{cases}
 -20\log_{10}\left(1\right)=0 & \text{per }\omega/\omega_{n}\ll1\\
@@ -4954,11 +4953,11 @@ il diagramma effettivo presenta un asintoto verticale per $\omega/\omega_{n}=1$.
 \end{itemize}
 \item Zeri
 \begin{itemize}
-\item per $\left|\xi\right|=1$ si hanno due zeri reali coincidenti, con
+\item per $\left|\zeta\right|=1$ si hanno due zeri reali coincidenti, con
 pulsazione $\alpha_{n}$; il diagramma effettivo avrà distanza di
 $+6\,\text{dB}$ dalla pulsazione $\omega/\alpha_{n}=1$ (dato che
 sommiamo gli andamenti dei due zeri);
-\item per $\left|\xi\right|=0$ si avrebbe un modulo pari a $-\infty\,\text{dB}$:
+\item per $\left|\zeta\right|=0$ si avrebbe un modulo pari a $-\infty\,\text{dB}$:
 il diagramma effettivo presenta un asintoto verticale per $\omega/\alpha_{n}=1$.\smallskip{}
 \end{itemize}
 \item \marginpar{La pulsazione di risonanza è definita anche per zeri complessi coniugati,
@@ -5927,7 +5926,7 @@ chiamata \emph{errore di inseguimento}.
 Scriviamo la funzione di trasferimento risultante dallo schema a blocchi
 (vedi \figref{Problema-di-controllo-anello-chiuso}):
 \[
-Y\left(s\right)=\frac{R\left(s\right)\cdot\left(G\left(s\right)\Delta\left(s\right)\right)}{1+R\left(s\right)\cdot\left(G\left(s\right)\Delta\left(s\right)\right)}W\left(s\right)+\frac{1}{1+R\left(s\right)\cdot\left(G\left(s\right)\Delta\left(s\right)\right)}D\left(s\right)
+Y\left(s\right)=\frac{R\left(s\right)\cdot\left(G\left(s\right)+\Delta\left(s\right)\right)}{1+R\left(s\right)\cdot\left(G\left(s\right)+\Delta\left(s\right)\right)}W\left(s\right)+\frac{1}{1+R\left(s\right)\cdot\left(G\left(s\right)+\Delta\left(s\right)\right)}D\left(s\right)
 \]
 Osserviamo che il regolatore ha un primo vantaggio rispetto al caso
 dell'anello aperto, infatti può avere un effetto sui disturbi dell'uscita,
@@ -6380,17 +6379,17 @@ come:
 La distanza angolare dal punto in $\omega_{{\scriptscriptstyle \text{C}}}$
 al punto critico si chiama \emph{margine di fase}; se chiamiamo la
 fase della funzione di risposta armonica ruotata alla pulsazione critica
-$\phi_{{\scriptscriptstyle \text{C}}}=\arg\left(L\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)\right)$,
+$\varphi_{{\scriptscriptstyle \text{C}}}=\arg\left(L\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)\right)$,
 indichiamo il margine di fase come:
 \[
-\phi_{{\scriptscriptstyle \text{m}}}=180{^\circ}-\phi_{{\scriptscriptstyle \text{C}}}
+\varphi_{{\scriptscriptstyle \text{m}}}=180{^\circ}-\varphi_{{\scriptscriptstyle \text{C}}}
 \]
 Se vale che $\left|L\left(j\omega\right)\right|<1\,\forall\omega\in\mathbb{R}$,
 allora il margine di fase è infinito.
 \end{defn}
-In presenza di un ritardo di tempo, il margine di fase vale $\phi_{{\scriptscriptstyle \text{m}}}=180{^\circ}-\tau\omega_{{\scriptscriptstyle \text{C}}}$,
+In presenza di un ritardo di tempo, il margine di fase vale $\varphi_{{\scriptscriptstyle \text{m}}}=180{^\circ}-\tau\omega_{{\scriptscriptstyle \text{C}}}$,
 da cui si ricava che il massimo ritardo tollerabile (in radianti)
-vale $\tau_{{\scriptscriptstyle \text{MAX}}}=\phi_{{\scriptscriptstyle \text{m}}}/\omega_{{\scriptscriptstyle \text{C}}}$.
+vale $\tau_{{\scriptscriptstyle \text{MAX}}}=\varphi_{{\scriptscriptstyle \text{m}}}/\omega_{{\scriptscriptstyle \text{C}}}$.
 Possiamo allora interpretare il margine di fase anche come il massimo
 ritardo ammissibile prima di avere instabilità.
 
@@ -6428,7 +6427,7 @@ stabile se e solo se:
 \begin{minipage}[t]{1\columnwidth}%
 \begin{itemize}
 \item il guadagno statico è positivo ($\mu>0$);
-\item il margine di fase è positivo ($\phi_{{\scriptscriptstyle \text{m}}}>0$).
+\item il margine di fase è positivo ($\varphi_{{\scriptscriptstyle \text{m}}}>0$).
 \end{itemize}
 %
 \end{minipage}
@@ -6723,13 +6722,13 @@ partendo dalle seguenti riscritture:
 \left|F\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)\right|=\left|\frac{L\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)}{1+L\left(\omega_{{\scriptscriptstyle \text{C}}}\right)}\right|=\frac{\left|L\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)\right|}{\left|1+L\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)\right|}=\ldots
 \]
 Dato che alla pulsazione critica corrisponde un guadagno unitario
-($0\,\text{dB}$), possiamo scrivere $L\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)=1\cdot e^{j\phi_{{\scriptscriptstyle \text{C}}}}$
-dove si ha $\phi_{{\scriptscriptstyle \text{C}}}=\arg\left(L\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)\right)$:
+($0\,\text{dB}$), possiamo scrivere $L\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)=1\cdot e^{j\varphi_{{\scriptscriptstyle \text{C}}}}$
+dove si ha $\varphi_{{\scriptscriptstyle \text{C}}}=\arg\left(L\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)\right)$:
 \[
-\ldots=\frac{\left|e^{j\phi_{{\scriptscriptstyle \text{C}}}}\right|}{\left|1+e^{j\phi_{{\scriptscriptstyle \text{C}}}}\right|}=\frac{1}{\sqrt{\left(1+\cos\phi_{{\scriptscriptstyle \text{C}}}\right)^{2}+\left(\sin\phi_{{\scriptscriptstyle \text{C}}}\right)^{2}}}
+\ldots=\frac{\left|e^{j\varphi_{{\scriptscriptstyle \text{C}}}}\right|}{\left|1+e^{j\varphi_{{\scriptscriptstyle \text{C}}}}\right|}=\frac{1}{\sqrt{\left(1+\cos\varphi_{{\scriptscriptstyle \text{C}}}\right)^{2}+\left(\sin\varphi_{{\scriptscriptstyle \text{C}}}\right)^{2}}}
 \]
 \[
-=\frac{1}{\sqrt{1+2\cos\phi_{{\scriptscriptstyle \text{C}}}+\cos\phi_{{\scriptscriptstyle \text{C}}}^{2}+\sin^{2}\phi_{{\scriptscriptstyle \text{C}}}}}=\frac{1}{\sqrt{2\left(1+\cos\phi_{{\scriptscriptstyle \text{C}}}\right)}}
+=\frac{1}{\sqrt{1+2\cos\varphi_{{\scriptscriptstyle \text{C}}}+\cos\varphi_{{\scriptscriptstyle \text{C}}}^{2}+\sin^{2}\varphi_{{\scriptscriptstyle \text{C}}}}}=\frac{1}{\sqrt{2\left(1+\cos\varphi_{{\scriptscriptstyle \text{C}}}\right)}}
 \]
 dove al numeratore il modulo vale proprio 1, e al denominatore abbiamo
 usato le formule (\ref{eq:Formula-di-Eulero}) sviluppando il prodotto.
@@ -6737,8 +6736,8 @@ usato le formule (\ref{eq:Formula-di-Eulero}) sviluppando il prodotto.
 Consideriamo il piano dei numeri complessi: all'interno delle nostre
 ipotesi di stabilità ($P=0$) il margine di fase sarà positivo, e
 tracciando la congiungente di $L\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)$
-con l'origine, otteniamo l'angolo opposto pari a $\phi_{m}$; osserviamo
-che, nella nostra costruzione, $\cos\phi_{{\scriptscriptstyle \text{C}}}=-\cos\phi_{m}$.
+con l'origine, otteniamo l'angolo opposto pari a $\varphi_{m}$; osserviamo
+che, nella nostra costruzione, $\cos\varphi_{{\scriptscriptstyle \text{C}}}=-\cos\varphi_{m}$.
 
 \begin{minipage}[c]{0.5\textwidth}%
 \begin{center}
@@ -6755,33 +6754,33 @@ che, nella nostra costruzione, $\cos\phi_{{\scriptscriptstyle \text{C}}}=-\cos\p
 
 Riprendendo l'uguaglianza precedente, scriveremo:
 \[
-\left|F\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)\right|=\ldots=\frac{1}{\sqrt{2\left(1+\cos\phi_{{\scriptscriptstyle \text{C}}}\right)}}
+\left|F\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)\right|=\ldots=\frac{1}{\sqrt{2\left(1+\cos\varphi_{{\scriptscriptstyle \text{C}}}\right)}}
 \]
 Questa relazione può ulteriormente essere semplificata costruendo
-un triangolo nel primo quadrante utilizzando l'angolo $\phi_{m}$
+un triangolo nel primo quadrante utilizzando l'angolo $\varphi_{m}$
 e la circonferenza di raggio unitario; avremo un triangolo isoscele
-con angoli alla base pari a $90{^\circ}-\phi_{m}/2$.
+con angoli alla base pari a $90{^\circ}-\varphi_{m}/2$.
 
 Tracciando l'altezza che cadde sull'asse reale positivo nel punto
-$h$ (vale $\sin\phi_{m}$), otteniamo un ulteriore rettangolo con
-angoli alla base $90{^\circ}$ e $90{^\circ}-\phi_{m}/2$, dunque
-il suo angolo al vertice vale $\phi_{m}/2$; la base del primo rettangolo
-(da 0 a 1) è suddivisa in due segmenti dall'altezza, nel punto $h$:
-il primo (da 0 a $h$) vale $\cos\phi_{m}$.
+$h$ (vale $\sin\varphi_{m}$), otteniamo un ulteriore rettangolo
+con angoli alla base $90{^\circ}$ e $90{^\circ}-\varphi_{m}/2$,
+dunque il suo angolo al vertice vale $\varphi_{m}/2$; la base del
+primo rettangolo (da 0 a 1) è suddivisa in due segmenti dall'altezza,
+nel punto $h$: il primo (da 0 a $h$) vale $\cos\varphi_{m}$.
 
 Il segmento di base (il minore) del triangolo isoscele vale:
 \[
-a=\sqrt{\sin^{2}\phi_{m}+\left(1-\cos\phi_{m}\right)^{2}}=\sqrt{2\left(1-\cos\phi_{m}\right)}
+a=\sqrt{\sin^{2}\varphi_{m}+\left(1-\cos\varphi_{m}\right)^{2}}=\sqrt{2\left(1-\cos\varphi_{m}\right)}
 \]
 Consideriamo adesso il seno dell'angolo al vertice del secondo triangolo
-($\phi_{m}/2$):
+($\varphi_{m}/2$):
 \[
-\sin\frac{\phi_{m}}{2}=\frac{1-\cos\phi_{m}}{\sqrt{2\left(1-\cos\phi_{m}\right)}}=\frac{\sqrt{2}}{2}\sqrt{1-\cos\phi_{m}}
+\sin\frac{\varphi_{m}}{2}=\frac{1-\cos\varphi_{m}}{\sqrt{2\left(1-\cos\varphi_{m}\right)}}=\frac{\sqrt{2}}{2}\sqrt{1-\cos\varphi_{m}}
 \]
 Sostituendo nell'espressione del modulo della funzione di sensitività
 otteniamo:
 \begin{equation}
-\left|F\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)\right|=\frac{1}{2\sin\frac{\phi_{m}}{2}}\label{eq:Modulo-risposta-pulsazione-critica-retroazione}
+\left|F\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)\right|=\frac{1}{2\sin\frac{\varphi_{m}}{2}}\label{eq:Modulo-risposta-pulsazione-critica-retroazione}
 \end{equation}
 Ora confrontiamo questo valore del modulo con quello della risposta
 del nostro modello in $\omega=\omega_{n}\simeq\omega_{{\scriptscriptstyle \text{C}}}$:
@@ -6793,14 +6792,14 @@ Utilizzando (\ref{eq:Modulo-risposta-pulsazione-critica-retroazione})
 e (\ref{eq:Modulo-risposta-pulsazione-naturale-prototipo}) otteniamo
 la seguente relazione:
 \[
-\frac{1}{2\xi}\simeq\frac{1}{2\sin\frac{\phi_{m}}{2}}\underset{{\scriptstyle \phi_{m}\ll1}}{\longrightarrow}\xi\simeq\frac{\phi_{m}}{2}
+\frac{1}{2\xi}\simeq\frac{1}{2\sin\frac{\varphi_{m}}{2}}\underset{{\scriptstyle \varphi_{m}\ll1}}{\longrightarrow}\xi\simeq\frac{\varphi_{m}}{2}
 \]
 dove abbiamo ulteriormente semplificato il seno ipotizzando di avere
 un angolo molto piccolo; supponendo inoltre di esprimere in gradi
 il margine di fase, la precedente vale:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
 \textbf{\footnotesize{}Smorzamento in anello chiuso}{\footnotesize{}\index{Smorzamento in anello chiuso@{\footnotesize{}Smorzamento in anello chiuso}}}}[0.5cm]
 \begin{equation}
-\xi\simeq\frac{\phi_{m}\left[{^\circ}\right]}{2}\cdot\frac{\pi}{180{^\circ}}\simeq\boxed{\frac{\phi_{m}\left[\text{°}\right]}{100}}\label{eq:Smorzamento-anello-chiuso-gradi}
+\xi\simeq\frac{\varphi_{m}\left[{^\circ}\right]}{2}\cdot\frac{\pi}{180{^\circ}}\simeq\boxed{\frac{\varphi_{m}\left[\text{°}\right]}{100}}\label{eq:Smorzamento-anello-chiuso-gradi}
 \end{equation}
 
 La relazione (\ref{eq:Smorzamento-anello-chiuso-gradi}) permette
@@ -6817,14 +6816,14 @@ Dato che per un valore di smorzamento $\xi>0.65$ l'andamento non
 ha risonanza (come se ci fosse un singolo polo reale dominante), possiamo
 affermare che: 
 \[
-\phi_{m}>65{^\circ}\implies s_{\%}=0\,\land\,T\sim\dfrac{1}{\omega_{{\scriptscriptstyle C}}}
+\varphi_{m}>65{^\circ}\implies s_{\%}=0\,\land\,T\sim\dfrac{1}{\omega_{{\scriptscriptstyle C}}}
 \]
 Se invece il margine di fase è inferiore ai $65{^\circ}$, il sistema
 si comporta come un filtro passa basso del secondo ordine, con pulsazione
 naturale circa pari a quella critica ($\omega_{n}\simeq\omega_{{\scriptscriptstyle C}}$)
 e il suo smorzamento è dato da (\ref{eq:Smorzamento-anello-chiuso-gradi}).
 Si ricorda che queste ipotesi valgono solo per condizioni di asintotica
-stabilità (in particolare $\phi_{m}>0$).
+stabilità (in particolare $\varphi_{m}>0$).
 \end{rem}
 \begin{example}
 \emph{Sia dato il diagramma a blocchi in figura \ref{fig:Diagramma-blocchi-esempio-6_7},
@@ -6872,17 +6871,17 @@ ipotesi per utilizzare il criterio di Bode). Infine, dal diagramma
 della fase ricaviamo la fase della pulsazione critica (per calcolare
 il margine di fase):
 \[
-\phi_{{\scriptscriptstyle \text{C}}}=\arg\left(L\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)\right)=\arg\left(8\right)+\arg\left(1+j65\right)-\arg\left(j65\right)
+\varphi_{{\scriptscriptstyle \text{C}}}=\arg\left(L\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)\right)=\arg\left(8\right)+\arg\left(1+j65\right)-\arg\left(j65\right)
 \]
 \[
 -\arg\left(1+j0.65\right)-\arg\left(1+j6.5\right)\simeq0{^\circ}+90{^\circ}-90{^\circ}-81{^\circ}-33{^\circ}=114{^\circ}
 \]
 Segue dalla definizione (\ref{eq:Margine-di-fase}) che
 \[
-\phi_{m}=180-\left|\phi_{{\scriptscriptstyle \text{C}}}\right|=66{^\circ}
+\varphi_{m}=180-\left|\varphi_{{\scriptscriptstyle \text{C}}}\right|=66{^\circ}
 \]
 questo risultato verifica anche l'ultima ipotesi per il criterio di
-Bode ($\phi_{m}>0$), permettendoci di applicarlo (possiamo affermare
+Bode ($\varphi_{m}>0$), permettendoci di applicarlo (possiamo affermare
 che il sistema è asintoticamente stabile, si veda il Teorema \ref{thm:Creiterio-di-bode}).
 
 \begin{minipage}[t]{1\columnwidth}%
@@ -6910,8 +6909,8 @@ inseguimento vale $\left|e_{\infty}\right|=\infty$;
 \item Prestazioni dinamiche (a fronte di uno scalino di riferimento di ampiezza
 $w\left(\infty\right)$)
 \begin{itemize}
-\item col margine di fase ottenuto ($\phi_{m}=66{^\circ}$) il sistema si
-comporta come se avesse un polo dominante reale; abbiamo $s_{\%}=0$
+\item col margine di fase ottenuto ($\varphi_{m}=66{^\circ}$) il sistema
+si comporta come se avesse un polo dominante reale; abbiamo $s_{\%}=0$
 e $T\simeq1/65\,\text{s}$, quindi la risposta raggiungerà il $99\%$
 del valore di regime in $5T=0.075\,\text{s}$.
 \end{itemize}
@@ -7000,10 +6999,10 @@ termine della fase di progetto.
 
 Se valgono le ipotesi del criterio di Bode, bisogna ottenere (per
 quanto riguarda la funzione di anello) guadagno statico e margine
-di fase positivi ($\mu>0,\,\phi_{m}>0$); per quanto riguarda la precisione
-statica, ricaviamo vincoli su tipo (per ottenere il valore di errore
-di inseguimento desiderato) e guadagno della funzione di anello a
-fronte di ingressi polinomiali specificati ($g>\underline{g},\,\mu>\underline{\mu}$).
+di fase positivi ($\mu>0,\,\varphi_{m}>0$); per quanto riguarda la
+precisione statica, ricaviamo vincoli su tipo (per ottenere il valore
+di errore di inseguimento desiderato) e guadagno della funzione di
+anello a fronte di ingressi polinomiali specificati ($g>\underline{g},\,\mu>\underline{\mu}$).
 
 Per ingressi limitati in banda, le specifiche riguardano il livello
 di attenuazione garantito in una certa banda; esse sono tradotte in
@@ -7015,7 +7014,7 @@ per disturbi di misura).
 \begin{minipage}[c]{0.5\textwidth}%
 Le specifiche per le prestazioni dinamiche riguardano sovraelongazione
 e velocità di risposta; esse si traducono in vincoli sul margine di
-fase e pulsazione critica ($\phi_{m}\geq\underline{\phi},\,\omega_{{\scriptscriptstyle \text{C}}}\geq\omega_{{\scriptscriptstyle \text{C}},x}$).
+fase e pulsazione critica ($\varphi_{m}\geq\underline{\varphi},\,\omega_{{\scriptscriptstyle \text{C}}}\geq\omega_{{\scriptscriptstyle \text{C}},x}$).
 
 Le specifiche tradotte nei vincoli come descritto, possono essere
 mappate sul diagramma di Bode del modulo della funzione di anello,
@@ -7122,14 +7121,14 @@ s_{\%}=e^{-\xi\pi/\sqrt{1-\xi^{2}}}\leq8\%\rightarrow\xi\geq0.62
 \]
 usando l'approssimazione (\ref{eq:Smorzamento-anello-chiuso-gradi})
 possiamo affermare che, data la precedente, il margine di fase vale
-$\phi_{m}\geq62{^\circ}$.\\
+$\varphi_{m}\geq62{^\circ}$.\\
 La costante di tempo, da (\ref{eq:Sovraelongazione-e-costante-tempo-rispetto-smorzamento}),
 deve essere tale che
 \[
 T_{0.1\%}=5T<10\,\text{s}\rightarrow\frac{5}{0.62\cdot\omega_{{\scriptscriptstyle \text{C}}}}<10\rightarrow\omega_{{\scriptscriptstyle \text{C}}}>\frac{0.5}{0.62}\simeq0.8\,\text{rad}/\text{s}.
 \]
 \item In alternativa possiamo assumere che il margine di fase debba valere
-$\phi_{m}>65{^\circ}$, e il sistema si comporterà come se avesse
+$\varphi_{m}>65{^\circ}$, e il sistema si comporterà come se avesse
 polo dominante reale: in queste condizioni $T=1/\omega_{{\scriptscriptstyle \text{C}}},$e
 applicando gli stessi passaggi del punto precedente si ricava $\omega_{{\scriptscriptstyle \text{C}}}>0.5$.
 \end{enumerate}
@@ -7237,16 +7236,17 @@ desiderata; in particolare, abbiamo un regolatore del terzo ordine.
 
 Rimane solo da controllare che il margine di fase soddisfi le specifiche:
 il metodo analitico prevede di sostituire $s=j$ nella funzione di
-anello per ottenere $\phi_{{\scriptscriptstyle \text{C}}}$ e poi
-sottrarlo a 180° ($\phi_{m}=180{^\circ}-\phi_{{\scriptscriptstyle \text{C}}}$);
+anello per ottenere $\varphi_{{\scriptscriptstyle \text{C}}}$ e poi
+sottrarlo a 180° ($\varphi_{m}=180{^\circ}-\varphi_{{\scriptscriptstyle \text{C}}}$);
 tuttavia osserviamo che il nostro sistema regolatore è a sfasamento
 minimo (guadagno positivo e singolarità con parte reale negativa,
 ad almeno una decade di distanza tra loro), quindi il valore della
 fase può essere dedotto osservando la pendenza del diagramma del modulo.
 In particolare si vede che nel punto $\omega_{{\scriptscriptstyle \text{C}}}\simeq1$
 la pendenza con cui si attraversa l'asse $0\,\text{dB}$ è di $-20\,\text{dB}/\text{dec}$,
-quindi $\phi_{{\scriptscriptstyle \text{C}}}=-90{^\circ}$ e il margine
-di fase vale $\phi_{m}=90{^\circ}$ (soddisfacendo la specifica $\mathrm{{\scriptstyle \left(5\right)}}$).
+quindi $\varphi_{{\scriptscriptstyle \text{C}}}=-90{^\circ}$ e il
+margine di fase vale $\varphi_{m}=90{^\circ}$ (soddisfacendo la specifica
+$\mathrm{{\scriptstyle \left(5\right)}}$).
 
 \demo
 
@@ -7359,7 +7359,7 @@ da rendere più stabile la funzione di anello:
 \item Inseriamo uno zero ($z_{1}$) per cancellare il polo in $\omega=0.02$;
 la pulsazione critica ricavata da $\left|L_{1}\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)\right|=1$
 vale circa $\omega_{{\scriptscriptstyle \text{C}}}\simeq1.6$, e il
-margine di fase corrispondente vale circa $\phi_{m}\simeq50{^\circ}$,
+margine di fase corrispondente vale circa $\varphi_{m}\simeq50{^\circ}$,
 che non soddisfa le specifiche (margine di fase almeno $62{^\circ}$).
 \item Inseriamo uno zero ($z_{2}$) per cancellare l'altro polo in $\omega=5$.
 \item Inseriamo due poli di chiusura ($p_{3},\,p_{4}$) nel regolatore in
@@ -7694,7 +7694,7 @@ per $v\neq0$; questo si verifica se e solo se \marginpar{\rule[0.5ex]{3cm}{1pt}\
 \begin{equation}
 \det\left(\lambda I-A\right)=0\label{eq:Polinomio-caratteristico}
 \end{equation}
-Il (\ref{eq:Polinomio-caratteristico}), che indichiamo come $\phi\left(\lambda\right)=0$,
+Il (\ref{eq:Polinomio-caratteristico}), che indichiamo come $\varphi\left(\lambda\right)=0$,
 ha per soluzioni $\lambda_{i}\in\mathbb{C}$ le quali sono gli autovalori
 della matrice $A$.
 
@@ -7710,7 +7710,7 @@ tra gli autovalori di una matrice, e si indica con $n_{i}$; possiamo
 scrivere le soluzioni di (\ref{eq:Polinomio-caratteristico}) rispetto
 alla molteplicità algebrica:
 \[
-\phi\left(\lambda\right)=\overset{{\scriptstyle \mu_{n}}}{\underset{{\scriptstyle i=1}}{\prod}}\left(\lambda-\lambda_{i}\right)^{n_{i}}
+\varphi\left(\lambda\right)=\overset{{\scriptstyle \mu_{n}}}{\underset{{\scriptstyle i=1}}{\prod}}\left(\lambda-\lambda_{i}\right)^{n_{i}}
 \]
 Si verifica che il numero $\mu_{n}$ di autovalori distinti deve corrispondere
 al rango della matrice.
@@ -8197,9 +8197,9 @@ Ogni numero complesso possiede un complesso coniugato, che ha la stessa
 parte reale e la parte immaginaria cambiata di segno ($\overline{s}=a-jb$).
 
 I numero complessi ammettono anche la rappresentazione in forma trigonometrica
-(modulo e fase) sul piano di Gauss: $s=\rho\left(\cos\left(\phi\right)+j\sin\left(\phi\right)\right)$,
-dove $\rho$ è la distanza del numero dall'origine e $\phi$ è l'angolo
-che questa distanza forma con l'asse orizzontale.
+(modulo e fase) sul piano di Gauss: $s=\rho\left(\cos\left(\varphi\right)+j\sin\left(\varphi\right)\right)$,
+dove $\rho$ è la distanza del numero dall'origine e $\varphi$ è
+l'angolo che questa distanza forma con l'asse orizzontale.
 \end{defn}
 \begin{rem}
 Per passare da una rappresentazione algebrica a una trigonometrica
@@ -8208,7 +8208,7 @@ si usano le seguenti considerazioni:
 \rho=\sqrt{a^{2}+b^{2}}
 \]
 \[
-\phi=\text{arg}\left(s\right)\coloneqq\begin{cases}
+\varphi=\text{arg}\left(s\right)\coloneqq\begin{cases}
 \arctan\left(\dfrac{b}{a}\right) & a>0\\
 \arctan\left(\dfrac{b}{a}\right)+\pi & a<0\\
 \dfrac{\pi}{2} & a=0\land b>0\\
@@ -8497,10 +8497,10 @@ Essendo $f\left(t\right)$ razionale e con più poli che zeri, possiamo
 applicare il Teorema \ref{eq:Teorema-valore-iniziale} e il Teorema
 \ref{eq:Teorema-valore-finale}:
 \[
-f\left(0\right)\overset{{\scriptscriptstyle \left(\mathrm{VIII}\right)}}{=}\lm s{+\infty}{\dfrac{s}{s\left(s-\alpha\right)}}=\lm s{+\infty}{\dfrac{1}{s-\alpha}}\rightarrow1
+f\left(0\right)\overset{{\scriptscriptstyle \left(\mathrm{VIII}\right)}}{=}\lm s{+\infty}{\dfrac{s}{s\left(s-\alpha\right)}}=\lm s{+\infty}{\dfrac{1}{s-\alpha}}\rightarrow0
 \]
 \[
-\lm t{+\infty}{f\left(t\right)}\overset{{\scriptscriptstyle \left(IX\right)}}{=}\lm s0{\dfrac{s}{s\left(s-\alpha\right)}}=\lm s0{\dfrac{1}{s-\alpha}}\rightarrow\dfrac{1}{\alpha}
+\lm t{+\infty}{f\left(t\right)}\overset{{\scriptscriptstyle \left(\mathrm{IX}\right)}}{=}\lm s0{\dfrac{s}{s\left(s-\alpha\right)}}=\lm s0{\dfrac{1}{s-\alpha}}\rightarrow\dfrac{1}{\alpha}
 \]
 dove nella seconda uguaglianza si è posto $\alpha<0$ come da ipotesi
 del Teorema \ref{eq:Teorema-valore-finale}.\demo
