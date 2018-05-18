@@ -1,0 +1,22 @@
+﻿\begin{tikzpicture} [scale=2]
+
+% Assi
+	\draw[-latex] (-0.2, 0) -- (2.2, 0) node[right] {$t$};
+	\draw[-latex] (0, -0.2) -- (0, 1.5) node[above] {$w(t)$};
+
+% Funzione
+	\draw[scale=1, domain=0:2.2, smooth, variable=\x, thick, gray] plot ({\x},{0.98-exp(-2*(\x*\x*\x+0.01))});
+% Saturazione
+	\draw [dashed] (0.16, 0) -- ++(40:2.3);
+
+% Uscita
+	\draw[densely dotted] (0, 1) -- (2.2, 1);
+	\filldraw (0, 1) circle (0.5pt)
+		node[left] (Yi) {$y(t)$};
+% Cambiamento di segno
+	\draw[dotted] (1.36, 1) -- ++(0, -1);
+	\filldraw (1.36, 0) circle (0.5pt)
+		node[below] {$t_s$};
+	\draw [latex-latex](0.97,1) -++(0,-0.32)node[midway, left] {$\scriptstyle e(t)>0$};
+	\draw [latex-latex](1.7,1) -++(0,0.3)node[midway, right] {$\scriptstyle e(t)<0$};
+\end{tikzpicture}

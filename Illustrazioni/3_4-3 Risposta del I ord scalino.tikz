@@ -10,8 +10,8 @@
 	\draw[dotted] (0.5, 1) -- ++(0, -1) node[below] {$T$};
 	\draw[dotted] (1.1, 0.9) -- ++(0, -0.9) node[below] {$T_{a,\varepsilon}$};
 % Assi
-	\draw[->] (-0.2, 0) -- (2.2, 0) node[right] {$t$};
-	\draw[->] (0, -0.2) -- (0, 1.5) node[above] {$y(t)$};
+	\draw[-latex] (-0.2, 0) -- (2.2, 0) node[right] {$t$};
+	\draw[-latex] (0, -0.2) -- (0, 1.5) node[above] {$y(t)$};
 % Funzione
 	\draw[scale=1, domain=0:2.2, smooth, variable=\x, thick] plot ({\x},{1-exp(-2*\x)});
 \end{tikzpicture}

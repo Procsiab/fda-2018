@@ -1,7 +1,7 @@
 ﻿\begin{tikzpicture} [scale=1.5]
 % Assi
-	\draw[->] (-0.5, 0) -- (3, 0) node[right] {$t$};
-	\draw[->] (0, -0.5) -- (0, 2) node[above] {$k (t)$};
+	\draw[-latex] (-0.5, 0) -- (3, 0) node[right] {$t$};
+	\draw[-latex] (0, -0.5) -- (0, 2) node[above] {$k (t)$};
 % Funzione
 	\draw[scale=0.5, domain=-0.5:5, smooth, variable=\x, gray] plot ({\x}, {1+e^(-\x)});
 % Punti sul grafico

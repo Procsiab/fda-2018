@@ -6,8 +6,8 @@
 % 		node[left] (Yi) {$\mu$};
 
 % Assi
-	\draw[->] (-1.6, 0) -- (1.3, 0) node[right] {$\Re$};
-	\draw[->] (0, -1.6) -- (0, 1.3) node[above] {$\Im$};
+	\draw[-latex] (-1.6, 0) -- (1.3, 0) node[right] {$\Re$};
+	\draw[-latex] (0, -1.6) -- (0, 1.3) node[above] {$\Im$};
 % Circonferenza e punto critico
 	\draw [dashed, color=gray] circle [radius=1cm];
 	\filldraw (-1, 0) circle (1pt) node[above left=-2pt] (critic) {$\scriptstyle -1$};

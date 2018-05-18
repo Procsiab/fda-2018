@@ -6351,14 +6351,14 @@ Immaginiamo di avere un diagramma di Nyquist nel quale esiste un valore
 di $\omega$ per cui la fase valga $-180{^\circ}$, ovvero $L\left(j\omega\pi\right)$,
 e indichiamo la fase di tale punto
 \begin{equation}
-\omega_{\pi}=\arg\left(L\left(j\omega\pi\right)\right)\label{eq:Margine-di-guadagno}
+\omega_{\pi}=\arg\left(L\left(j\omega_{\pi}\right)\right)\label{eq:Margine-di-guadagno}
 \end{equation}
 
 \begin{defn}
 Il valore di guadagno che, moltiplicato per la funzione di trasferimento,
-fa sì che il punto $L\left(j\omega\pi\right)$ si sovrapponga al punto
-critico si chiama \emph{margine di guadagno}; in generale possiamo
-indicarlo come $k_{{\scriptscriptstyle \text{m}}}=1/L\left(j\omega\pi\right)$,
+fa sì che il punto $L\left(j\omega_{\pi}\right)$ si sovrapponga al
+punto critico si chiama \emph{margine di guadagno}; in generale possiamo
+indicarlo come $k_{{\scriptscriptstyle \text{m}}}=1\slash\left|L\left(j\omega_{\pi}\right)\right|$,
 che sarebbe il modulo della distanza dal punto in $\omega_{\pi}$
 al punto critico.
 \end{defn}
@@ -6382,7 +6382,7 @@ fase della funzione di risposta armonica ruotata alla pulsazione critica
 $\varphi_{{\scriptscriptstyle \text{C}}}=\arg\left(L\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)\right)$,
 indichiamo il margine di fase come:
 \[
-\varphi_{{\scriptscriptstyle \text{m}}}=180{^\circ}-\varphi_{{\scriptscriptstyle \text{C}}}
+\varphi_{{\scriptscriptstyle \text{m}}}=180{^\circ}-\left|\varphi_{{\scriptscriptstyle \text{C}}}\right|
 \]
 Se vale che $\left|L\left(j\omega\right)\right|<1\,\forall\omega\in\mathbb{R}$,
 allora il margine di fase è infinito.
@@ -6528,7 +6528,7 @@ Gli ingressi polinomiali in esame sono quelli canonici già visti (scalino,
 rampa, parabola); le loro trasformate di Laplace sono della forma
 $A/s^{n}$, dove $n-1$ è il grado del polinomio nel dominio del tempo:
 \[
-A\cdot\text{sca}\left(s\right)=A\overset{{\scriptstyle \mathscr{L}}}{\longrightarrow}\frac{A}{s},\:A\cdot\text{ram}\left(s\right)=At\overset{{\scriptstyle \mathscr{L}}}{\longrightarrow}\frac{A}{s^{2}},\:A\cdot\text{par}\left(s\right)=\frac{A}{2}t^{2}\overset{{\scriptstyle \mathscr{L}}}{\longrightarrow}\frac{A}{s^{3}}
+A\cdot\text{sca}\left(t\right)=A\overset{{\scriptstyle \mathscr{L}}}{\longrightarrow}\frac{A}{s},\:A\cdot\text{ram}\left(t\right)=At\overset{{\scriptstyle \mathscr{L}}}{\longrightarrow}\frac{A}{s^{2}},\:A\cdot\text{par}\left(t\right)=\frac{A}{2}t^{2}\overset{{\scriptstyle \mathscr{L}}}{\longrightarrow}\frac{A}{s^{3}}
 \]
 A fronte di questi segnali, per definire le prestazioni di accuratezza
 statica, si fa riferimento al valore dell'errore di inseguimento $e\left(t\right)=w\left(t\right)-y\left(t\right)$;
@@ -7287,7 +7287,7 @@ strettamente proprio.
 Riprendiamo i vincoli dovuti alle specifiche dell'Esempio \ref{exa:Cruise-control};
 per applicare l'approccio cosiddetto per iterazioni, scomponiamo il
 regolatore nel modo seguente:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
-\textbf{\footnotesize{}Progetto del regolatore per iterazioni}{\footnotesize{}\index{Progetto del regolatore per iterazioni@{\footnotesize{}Progetto del regolatore per iterazioni}}}}[1cm]
+\textbf{\footnotesize{}Progetto del regolatore per iterazioni}{\footnotesize{}\index{Progetto del regolatore per iterazioni@{\footnotesize{}Progetto del regolatore per iterazioni}}}}[0.7cm]
 \begin{equation}
 R\left(s\right)=\overset{{\scriptstyle \text{statico}}}{\overbrace{R_{1}\left(s\right)}}\cdot\overset{{\scriptstyle \text{dinamico}}}{\overbrace{R_{2}\left(s\right)}}\label{eq:Regolatore-con-metodo-iterazioni}
 \end{equation}
@@ -7389,6 +7389,590 @@ reale positiva: tracciando il modulo della funzione di anello iniziale
 possiamo cercare di stabilizzarla, considerando che la pulsazione
 di attraversamento è limitata superiormente dalla fase del primo zero
 instabile.
+
+\chapter{Regolatori standard industriali (PID)}
+
+\section{Definizione}
+
+\subsection{Forma standard}
+
+Per\marginpar{La sigla PID sta per proporzionale, integrale e derivativa, i tre
+tipi di azioni coinvolti nel segnale di comando} avere l'intuizione del funzionamento del regolatore PID, ragioniamo
+prendendo come esempio un esperimento di controllo della posizione:
+prendiamo un carrello di massa $m$, fermo in posizione $x_{0}$,
+e vogliamo spostarlo in posizione $x_{{\scriptscriptstyle \text{F}}}$
+(lungo una retta); il nostro ingresso $u\left(t\right)$ sia la forza
+con cui possiamo spingere il carrello.
+
+Se la posizione corrente è rappresentata da $x\left(t\right)$, l'errore
+di inseguimento vale $e\left(t\right)=x_{{\scriptscriptstyle \text{F}}}-x\left(t\right)$;
+in queste condizioni, applicare un regolatore industriale standard
+si traduce nell'utilizzo di tre tipi di azione per agire sul comando:
+\begin{itemize}
+\item \noun{Azione }\textbf{\noun{P}}\noun{roporzionale} $k_{{\scriptscriptstyle \text{P}}}\cdot e\left(t\right)$,
+nel nostro caso riguarda la forza iniziale applicata al carrello,
+direttamente proporzionale alla distanza di $x_{0}$ da $x_{{\scriptscriptstyle \text{F}}}$;
+questo tipo di azione non tiene conto per esempio della massa del
+carrello.
+\item \noun{Azione }\textbf{\noun{I}}\noun{ntegrale} $k_{{\scriptscriptstyle \text{I}}}\cdot\somme{t_{0}}t{e\left(\tau\right)}{\tau}$,
+nel nostro caso la forza iniziale, dipendente dalla distanza dalla
+destinazione, viene aumentata sempre di più se non riesce a mettere
+in movimento il carrello; in pratica l'uscita aumenta in relazione
+all'errore di inseguimento - se esso rimane costante l'integrale crescerà
+nel tempo.
+\item \noun{Azione }\textbf{\noun{D}}\noun{erivativa} $k_{{\scriptscriptstyle \text{D}}}\dfrac{\partial e\left(t\right)}{\partial t}$,
+nel nostro caso a seconda della distanza dal punto finale $x_{{\scriptscriptstyle \text{F}}}$
+(determinata dall'errore di inseguimento $e\left(t\right)$) dovremo
+frenare il carrello in modo più o meno forte, per terminare il suo
+movimento proprio in $x\left(t\right)=x_{{\scriptscriptstyle \text{F}}}$.
+\end{itemize}
+L'uscita ha infine la seguente espressione:
+\begin{equation}
+u\left(t\right)=k_{{\scriptscriptstyle \text{P}}}\cdot e\left(t\right)+k_{{\scriptscriptstyle \text{I}}}\cdot\somme{t_{0}}t{e\left(\tau\right)}{\tau}+k_{{\scriptscriptstyle \text{D}}}\dfrac{\partial e\left(t\right)}{\partial t}\label{eq:Somma-contributi-PID}
+\end{equation}
+
+Utilizzando la trasformazione nel domini di Laplace, studiamo un segnale
+di risposta dello stesso tipo di (\ref{eq:Somma-contributi-PID}),
+per trovare la unzione del regolatore corrispondente:
+\[
+\mathscr{L}\left[u\left(t\right)\right]=U\left(s\right)=k_{{\scriptscriptstyle \text{P}}}E\left(s\right)+k_{{\scriptscriptstyle \text{I}}}\frac{E\left(s\right)}{s}+k_{{\scriptscriptstyle \text{D}}}sE\left(s\right)
+\]
+\[
+=\overset{{\scriptstyle R\left(s\right)}}{\overbrace{\frac{k_{{\scriptscriptstyle \text{D}}}s^{2}+k_{{\scriptscriptstyle \text{P}}}s+k_{{\scriptscriptstyle \text{I}}}}{s}}}E\left(s\right)
+\]
+Notiamo che la funzione del regolatore così ottenuta non è realizzabile,
+perché il suo numeratore ha due zeri e al denominatore ha un solo
+polo ($g<0$). Studiamo ulteriormente questo caso ideale, effettuando
+una riscrittura per la funzione $R\left(s\right)$:
+\[
+R\left(s\right)=k_{{\scriptscriptstyle \text{P}}}\left(1+\frac{k_{{\scriptscriptstyle \text{I}}}}{k_{{\scriptscriptstyle P}}s}+\frac{k_{{\scriptscriptstyle \text{D}}}s}{k_{{\scriptscriptstyle \text{P}}}}\right)=k_{{\scriptscriptstyle \text{P}}}\left(1+\frac{1}{T_{{\scriptscriptstyle \text{I}}}s}+T_{{\scriptscriptstyle \text{D}}}s\right)=\ldots
+\]
+Nella precedente relazione abbiamo usato due nuove costanti definite
+come segue:
+\begin{itemize}
+\item Tempo integrale $T_{{\scriptscriptstyle \text{I}}}=k_{{\scriptscriptstyle \text{P}}}/k_{{\scriptscriptstyle \text{I}}}$;
+\item Tempo derivativo $T_{{\scriptscriptstyle \text{D}}}=k_{{\scriptscriptstyle \text{D}}}/k_{{\scriptscriptstyle \text{P}}}$.
+\end{itemize}
+Raccogliamo nella funzione del regolatore ottenendo:
+\[
+\dots=\frac{k_{{\scriptscriptstyle \text{P}}}}{T_{{\scriptscriptstyle \text{I}}}}\left(\frac{T_{{\scriptscriptstyle \text{D}}}T_{{\scriptscriptstyle \text{I}}}s^{2}+T_{{\scriptscriptstyle \text{I}}}s+1}{s}\right)
+\]
+La funzione del regolatore non risulta ancora realizzabile; per permetterlo,
+si aggiunge un polo di chiusura nell'azione derivativa, nel modo seguente:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Forma ISA per regolatore PID}{\footnotesize{}\index{Regolatore PID, forma ISA}}}[0.6cm]
+\begin{equation}
+R_{{\scriptscriptstyle \text{PID}}}\left(s\right)=k_{{\scriptscriptstyle \text{P}}}\left(1+\frac{1}{T_{{\scriptscriptstyle \text{I}}}s}+\frac{T_{{\scriptscriptstyle \text{D}}}s}{1+\frac{T_{{\scriptscriptstyle \text{D}}}}{N}s}\right)\label{eq:Forma-ISA-regolatore-PID}
+\end{equation}
+dove\marginpar{La sigla ISA sta per International Society of Automation (società
+internazionale dell'automazione)} $N\gg1$ per garantire costante di tempo piccola, per avere il polo
+in alta frequenza. La funzione di trasferimento del regolatore PID
+in forma fattorizzata si ricava nel modo seguente:
+\begin{equation}
+R_{{\scriptscriptstyle \text{PID}}}\left(s\right)=\frac{k_{{\scriptscriptstyle \text{P}}}}{T_{{\scriptscriptstyle \text{I}}}}\left(\frac{T_{{\scriptscriptstyle \text{D}}}T_{{\scriptscriptstyle \text{I}}}\left(1+\frac{1}{N}\right)s^{2}+\left(T_{{\scriptscriptstyle \text{I}}}+\frac{T_{{\scriptscriptstyle \text{D}}}}{N}\right)s+1}{s\left(1+\frac{T_{{\scriptscriptstyle \text{D}}}}{N}s\right)}\right)\label{eq:Forma-fattorizzata-regolatore-PID}
+\end{equation}
+Possiamo usare il teorema del valore iniziale su (\ref{eq:Forma-fattorizzata-regolatore-PID})
+per ottenere il guadagno statico $\mu_{{\scriptscriptstyle \text{PID}}}=k_{{\scriptscriptstyle \text{P}}}/T_{{\scriptscriptstyle \text{I}}}$;
+possiamo realizzare questo regolatore che possiede due zeri (soluzioni
+del numeratore), un polo nell'origine e un polo di chiusura ad alta
+frequenza (per $s=-N/T_{{\scriptscriptstyle \text{D}}}$).
+
+\subsection{Taratura analitica}
+
+Le costanti $T_{{\scriptscriptstyle \text{D},\text{I}}},\,k_{{\scriptscriptstyle \text{P}}}$
+e $N$ che compaiono nelle forme (\ref{eq:Forma-ISA-regolatore-PID})
+e (\ref{eq:Forma-fattorizzata-regolatore-PID}), sono costanti di
+\emph{taratura}, che determinano il comportamento del regolatore (la
+frequenza dei suoi zeri o del suo polo di chiusura); vediamo un esempio
+nel quale, a partire dalla funzione di trasferimento, cerchiamo di
+ricavare le costanti di un controllore PID.
+\begin{example}
+\emph{Sia data la seguente funzione di un controllore PID:
+\[
+R_{{\scriptscriptstyle \text{PID}}}\left(s\right)=\frac{\left(1+s\right)\left(1+s/10\right)}{s\left(1+s/100\right)}
+\]
+$\checked$Ricavare le costanti di taratura del regolatore.}
+\end{example}
+I diagrammi di Bode si ricavano facilmente (si veda \figref{Diagrammi-di-Bode-es-8_1})
+osservando che: il guadagno statico è unitario ($\mu=1$); per quanto
+riguarda il modulo, il polo nell'origine fornisce una pendenza di
+$-20\,\text{dB}/\text{dec}$ fino al primo zero in $\omega=10^{0}$,
+che aumenta la pendenza a $0\,\text{dB}/\text{dec}$ fino al secondo
+zero; il polo di chiusura annulla di nuovo la pendenza, terminando
+in alta frequenza con un guadagno positivo.
+
+Per quanto riguarda la fase, il contributo iniziale è $-90{^\circ}$
+(dato che $\mu>0$), e la fase finale è determinata dalla presenza
+di due zeri e un polo ($0{^\circ}$ facendo la somma dei contributi).
+
+\begin{figure}[!h]
+\begin{centering}
+\includegraphics[scale=0.9]{\string"Illustrazioni/8_1-1 Bode modulo esempio\string".pdf}
+\par\end{centering}
+\begin{centering}
+\includegraphics[scale=0.9]{\string"Illustrazioni/8_1-2 Bode fase esempio\string".pdf}
+\par\end{centering}
+\caption{\label{fig:Diagrammi-di-Bode-es-8_1}Diagrammi di Bode}
+\end{figure}
+
+Calcoliamo ora i valori delle costanti che permettono al regolatore
+di avere questo andamento; per farlo svolgiamo i prodotti delle singolarità
+raccolte nella funzione del regolatore e per sostituzione ricaviamo
+tutte le costanti:
+\[
+R_{{\scriptscriptstyle \text{PID}}}\left(s\right)=\frac{\frac{s^{2}}{10}+\frac{11}{10}s+1}{s\left(1+s/100\right)}
+\]
+Applichiamo i vincoli che conosciamo, come quello sul guadagno statico
+o per confronto con la forma (\ref{eq:Forma-fattorizzata-regolatore-PID}):
+\[
+\mu=\frac{k_{{\scriptscriptstyle \text{P}}}}{T_{{\scriptscriptstyle \text{I}}}}=1,\:\frac{T_{{\scriptscriptstyle \text{D}}}}{N}=\frac{1}{100},\:T_{{\scriptscriptstyle \text{D}}}T_{{\scriptscriptstyle \text{I}}}\left(1+\frac{1}{N}\right)=\frac{1}{10},\:\left(T_{{\scriptscriptstyle \text{I}}}+\frac{T_{{\scriptscriptstyle \text{D}}}}{N}\right)=\frac{11}{10}
+\]
+Sostituendo e risolvendo le precedenti otteniamo:
+\[
+T_{{\scriptscriptstyle \text{I}}}=1.09,\:T_{{\scriptscriptstyle \text{D}}}=0.0817,\:k_{{\scriptscriptstyle \text{P}}}=1.09,\:N=8.17
+\]
+\demo
+
+La procedura di sostituzione per ottenere le costanti, usata nell'esempio,
+rappresenta un primo metodo di taratura.
+
+I regolatori PID sono i più completi, e hanno delle sottoclassi caratterizzate
+nei modi indicati in tabella \ref{tab:Sottoclassi-del-regolatore-PID}.
+
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{center}
+\bigskip{}
+\begin{tabular}{cc}
+P & $R\left(s\right)=k_{{\scriptscriptstyle \text{P}}}$\tabularnewline
+\noalign{\vskip\doublerulesep}
+I & $R\left(s\right)=\dfrac{k_{{\scriptscriptstyle \text{I}}}}{s}$\tabularnewline
+\noalign{\vskip\doublerulesep}
+PI & $R\left(s\right)=\dfrac{k_{\text{P}}}{T_{{\scriptscriptstyle \text{I}}}}\left(\dfrac{1+T_{{\scriptscriptstyle \text{I}}}s}{s}\right)$\tabularnewline
+\noalign{\vskip\doublerulesep}
+PD & $R\left(s\right)=\dfrac{\left(\left(1+\frac{{\scriptstyle 1}}{{\scriptstyle N}}\right)T_{{\scriptscriptstyle \text{D}}}s+1\right)}{1+\frac{{\scriptstyle T_{{\scriptscriptstyle \text{D}}}}}{{\scriptstyle N}}s}$\tabularnewline
+\noalign{\vskip\doublerulesep}
+\end{tabular}
+\par\end{center}
+\captionof{table}{Sottoclassi del regolatore PID}\label{tab:Sottoclassi-del-regolatore-PID}%
+\end{minipage}%
+\begin{minipage}[c]{0.5\textwidth}%
+Non si utilizza nello standard industriale un regolatore D, dotato
+solo di azione derivativa; invece i regolatori PI sono quelli più
+diffusi, dato che comprendono un polo nell'origine (permette inseguimento
+asintotico di riferimenti costanti, si veda \tabref{Prestazioni-statiche}),
+un guadagno regolabile per modificare la pulsazione critica del sistema
+e uno zero col quale si può recuperare fase (e soddisfare i vincoli
+sul margine di fase).%
+\end{minipage}
+
+\medskip{}
+Il regolatore PD può essere utilizzato quando l'impianto ha già un
+polo nell'origine, tipicamente per migliorare il margine di fase senza
+introdurre ulteriori poli nell'origine.
+
+\section{Aspetti realizzativi}
+
+Formalizziamo la struttura interna di un regolatore PID in uno schema
+a blocchi, per poterla analizzare nelle sotto-sezioni successive:
+
+\begin{figure}[!h]
+\begin{centering}
+\includegraphics[scale=1.1]{\string"Illustrazioni/8_2-1 Controllo in anello chiuso regolatore PID\string".pdf}
+\par\end{centering}
+\caption{Schema a blocchi per controllo in anello chiuso con regolatore PID}
+\end{figure}
+
+\bigskip{}
+
+
+\subsection{Limite dell'azione derivativa}
+
+Se prendiamo un sistema strettamente proprio, è impossibile che l'uscita
+abbia delle discontinuità di salto; anche se abbiamo uno scalino in
+ingresso, l'uscita sarà comunque filtrata dalle dinamiche del sistema
+(come succede con la risposta armonica per un sistema asintoticamente
+stabile). Il segnale di riferimento $w\left(t\right)$ invece, è stabilito
+dall'operatore che interagisce col regolatore cambiando il punto di
+lavoro dell'impianto.
+
+Se immaginiamo che il sistema stia lavorando secondo un certo inseguimento
+di valore desiderato, e improvvisamente quest'ultimo cambia per una
+interazione dell'operatore, il segnale di errore di inseguimento ha
+un salto, e dopo un transitorio esso tenderà nuovamente a 0.
+
+\begin{figure}[!h]
+\begin{centering}
+\includegraphics[scale=1.1]{\string"Illustrazioni/8_2-2 Limitazione azione derivativa\string".pdf}
+\par\end{centering}
+\caption{Limitazione dell'azione derivativa, con derivazione dell'uscita}
+\end{figure}
+
+Il problema di avere uno scalino come errore di inseguimento si verifica
+quando questo segnale è l'ingresso di un blocco derivatore (come nel
+caso di un regolatore PID): la derivata dello scalino infatti è l'impulso,
+che sarà usato come segnale di comando e arriverà all'impianto; a
+lungo andare, gli attuatori dell'impianto subiranno dei danni a causa
+degli impulsi di segnale ricevuti.
+
+Escludendo i casi in cui il riferimento non sia costante (interazioni
+con l'operatore, in generale poco frequenti e $w\left(t\right)$ è
+costante per la maggior parte del tempo), vale la relazione:
+\[
+\dot{e}\left(t\right)=\dot{w}\left(t\right)-\dot{y}\left(t\right)=-\dot{y}\left(t\right)
+\]
+Risulta dunque equivalente (quando $w\left(t\right)$ è costante)
+usare come ingresso del blocco derivativo l'uscita in retroazione
+negativa (poi sommata con segno invertito sul segnale di comando $u\left(t\right)$)
+piuttosto che l'errore di inseguimento; derivando l'uscita $y\left(t\right)$
+si ha il vantaggio che i transitori di $w\left(t\right)$ vengono
+ignorati dal blocco derivativo, dal quale non usciranno più degli
+impulsi diretti all'impianto.
+
+\subsection{Desaturazione dell'azione integrale}
+
+Questo aspetto realizzativo riguarda tutti i sistemi di controllo,
+in particolare la non linearità dell'ingresso dell'impianto: in un
+sistema fisico, la variabile di comando calcolata dal regolatore non
+può essere arbitrariamente grande o piccola, essa è soggetta al fenomeno
+di saturazione, descritto dalla seguente funzione:
+\[
+u_{{\scriptscriptstyle \text{SAT}}}\left(t\right)=\begin{cases}
+u\left(t\right) & \text{per }u\left(t\right)\in\left[\underline{u},\,\overline{u}\right]\\
+\overline{u} & \text{per }u\left(t\right)>\overline{u}\\
+\underline{u} & \text{per }u\left(t\right)<\underline{u}
+\end{cases}
+\]
+L'effetto di saturazione viene rappresentato dalla presenza di un
+blocco di saturazione in cascata col sistema da controllare, nello
+schema a blocchi. Quando il valore di comando in uscita dal regolatore
+supera il valore massimo o minimo di saturazione ($\underline{u},\,\overline{u}$),
+l'attuatore non è in grado di fornire tale valore in uscita.
+
+\begin{figure}[!h]
+\begin{centering}
+\includegraphics[scale=1.1]{\string"Illustrazioni/8_2-3 Saturazione del segnale di controllo\string".pdf}
+\par\end{centering}
+\caption{Saturazione del segnale di comando}
+\end{figure}
+
+Se immaginiamo che il comando $w\left(t\right)$ abbia l'andamento
+(linea continua) in figura \ref{fig:Andamento-desiderato-rispetto-saturazione},
+con un'accelerazione iniziale che lo porta a convergere asintoticamente
+al valore di uscita statica $y\left(t\right)$; il segnale di comando
+senza saturazione (linea continua in figura \ref{fig:Segnale-controllo-rispetto-saturazione})
+avrà una sovraelongazione iniziale e poi diminuirà fino ad annullarsi.
+
+In presenza di saturazione, l'andamento desiderato cresce in modo
+costante (cambia anche l'andamento dell'errore di inseguimento, non
+più esponenziale); il segnale di comando $u\left(t\right)$ a monte
+della saturazione continuerà a crescere, mentre il segnale effettivo
+$u_{{\scriptscriptstyle \text{SAT}}}\left(t\right)$ rimane costante
+al valore massimo o minimo di saturazione. L'azione integrale continua
+a far crescere il segnale di comando $u\left(t\right)$ a monte fino
+a che il segno dell'errore di inseguimento $e\left(t\right)$ cambia:
+questo accade quando l'andamento desiderato $w\left(t\right)$ supera
+l'uscita $y\left(t\right)$; viene integrato un segnale negativo e
+il comando effettivo comincia a decrescere.
+
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{center}
+\includegraphics{\string"Illustrazioni/8_2-4 Andamento desiderato rispetto saturazione\string".pdf}
+\par\end{center}
+\captionof{figure}{Andamento desiderato, rispetto saturazione}\label{fig:Andamento-desiderato-rispetto-saturazione}%
+\end{minipage}%
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{center}
+\includegraphics{\string"Illustrazioni/8_2-5 Segnale di controllo effettivo rispetto saturazione\string".pdf}
+\par\end{center}
+\captionof{figure}{Segnale di controllo effettivo, rispetto saturazione}\label{fig:Segnale-controllo-rispetto-saturazione}%
+\end{minipage}
+
+Quando il segnale a monte $u\left(t\right)$ torna al di sotto del
+valore di saturazione, $u_{{\scriptscriptstyle \text{SAT}}}\left(t\right)$
+comincia a decrescere, dato che l'andamento desiderato $w\left(t\right)$
+è ormai maggiore dell'uscita $y\left(t\right)$; di questo passo si
+arriva alla saturazione sul valore $\underline{u}$.
+
+Dato che, rispetto al segnale di controllo, l'uscita $y\left(t\right)$
+reagisce correggendosi, questo fenomeno porta a un andamento oscillante
+fino addirittura a destabilizzare il sistema.
+
+Per ovviare a questo effetto si usa uno schema implementativo differente
+per il blocco integratore: in assenza di saturazione il comportamento
+dovrà essere analogo a quello dello schema in figura \ref{fig:Desaturazione-dell'azione-integrale};
+quando la saturazione agisce, si da in ingresso al regolatore la differenza
+tra il comando a monte e il valore di saturazione, per evitare che
+il blocco integratore si carichi infinitamente oltre la soglia di
+saturazione.
+
+\begin{figure}[!h]
+\begin{centering}
+\includegraphics[scale=1.1]{\string"Illustrazioni/8_2-6 Desaturazione dell'azione integrale\string".pdf}
+\par\end{centering}
+\caption{Desaturazione dell'azione integrale, con anello di retroazione sul
+blocco di saturazione}
+\label{fig:Desaturazione-dell'azione-integrale}
+\end{figure}
+
+L'azione\marginpar{Si noti che l'anello di desaturazione dell'azione integrale può essere
+impiegato anche in regolatori non PID, per compensare la saturazione
+di uno o più integratori (poli nell'origine)} integrale viene implementata con un anello di retroazione positiva
+dove il ramo diretto presenta il blocco di saturazione, e il ramo
+di retroazione presenta un polo.
+
+Se il segnale di controllo $u\left(t\right)$ è entro l'intervallo
+di saturazione, l'anello di retroazione con l'azione integrale vale
+1; in particolare la funzione di trasferimento di anello in questo
+caso è data da:
+\[
+L\left(s\right)=\frac{1}{1-\frac{1}{1+T_{{\scriptscriptstyle \text{I}}}s}}=\frac{1}{\frac{1+T_{{\scriptscriptstyle \text{I}}}s-1}{1+T_{{\scriptscriptstyle \text{I}}}s}}=\frac{1+T_{{\scriptscriptstyle \text{I}}}s}{T_{{\scriptscriptstyle \text{I}}}s}
+\]
+Notiamo che continuiamo ad avere la stessa struttura che in assenza
+del blocco di saturazione, con un polo nell'origine e uno zero.
+
+Se ora poniamo il segnale in ingresso al blocco di saturazione $u\left(t\right)>\overline{u}$,
+esso è riportato in ingresso e sommato al segnale entrante; questo
+corrisponde a scaricare l'azione integrale per tutto il tempo in cui
+$e\left(t\right)>0$.
+
+\section{Metodi di taratura automatica}
+
+Introduciamo dei metodi analitici più mirati del semplice confronto
+algebrico, per calcolare le costanti di taratura di un regolatore
+PID. Questi metodi valgono sia in anello chiuso che in anello aperto:
+nel primo caso si comincia col guadagno proporzionale $k_{{\scriptscriptstyle \text{P}}}$
+e poi si analizzano i grafici della risposta; nel secondo caso viene
+fornito uno scalino in ingresso al sistema, e poi si registrano le
+grandezze sulla risposta a scalino.
+
+\subsection{Metodi in anello aperto}
+
+In anello aperto, i metodi di taratura sono validi per sistemi con
+impianto del tipo del tipo:
+\[
+G\left(s\right)=\frac{\mu}{1+Ts}e^{-t/T}
+\]
+Consideriamo solo sistemi asintoticamente stabili in anello aperto;
+lo scalino determina una risposta come quella in figura \ref{fig:Taratura-ispezione-grafico}:
+abbiamo un ritardo che rallenta la salita dell'esponenziale, che dopo
+$T$ secondi arriva al valore di regime ($T+\tau$ rispetto all'origine);
+se lo scalino usato è unitario, il valore di regime dell'uscita è
+pari al guadagno ($y_{\infty}=\mu$).
+
+Le costanti di taratura possono essere tutte stimate dai parametri
+legati alla risposta allo scalino in anello aperto; infatti tracciando
+il grafico della risposta otteniamo:
+\begin{itemize}
+\item il ritardo $\tau$ come l'intervallo di tempo tra l'ingresso dello
+scalino e l'inizio del transitorio esponenziale;
+\item il tempo di assestamento $T$ come derivata della risposta in $y\left(\tau\right)$;
+\item il guadagno statico come rapporto tra il valore di assestamento e
+l'ampiezza dello scalino iniettato ($y_{\infty}/A$,).
+\end{itemize}
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{center}
+\includegraphics{\string"Illustrazioni/8_3-1 Taratura per ispezione del grafico\string".pdf}
+\par\end{center}
+\captionof{figure}{Taratura per ispezione del grafico}\label{fig:Taratura-ispezione-grafico}%
+\end{minipage}%
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{center}
+\includegraphics{\string"Illustrazioni/8_3-2 Taratura per analisi integrale\string".pdf}
+\par\end{center}
+\captionof{figure}{Taratura per analisi integrale}\label{fig:Taratura-analisi-integrale}%
+\end{minipage}
+
+Possiamo ottenere una stima più accurata dei tempi usando un secondo
+metodo basato sull'integrazione di aree: otteniamo comunque il guadagno
+statico come appena mostrato; tuttavia misuriamo $T$ e $\tau$ usando
+le due aree $S_{1}$ (tra la curva della risposta e il valore di regime)
+e $S_{2}$ (tra la curva della risposta e la retta $x=y\left(T+\tau\right)$).
+
+Sapendo che, a partire dall'istante $\tau$, la risposta ha la forma
+$y\left(t\right)=y_{\infty}\left(1-e^{-t/T}\right)$; svolgendo l'integrale
+tra $\tau$ e $T+\tau$ di $y\left(t\right)$ appenda definito, otteniamo
+proprio $S_{2}$:
+\[
+S_{2}=\somme{\tau}{T+\tau}{y\left(t\right)}t=\somme{\tau}{T+\tau}{y_{\infty}\left(1-e^{-t/T}\right)}t=\frac{y_{\infty}T}{e}
+\]
+L'area $S_{1}$ è invece pari a:
+\[
+S_{1}=\somme 0{+\infty}{\mu}t-\somme 0{+\infty}{y\left(t\right)}t=\ldots=y_{\infty}\left(T+\tau\right)
+\]
+Usiamo infine l'espressione delle due aree per ottenere i parametri
+temporali della risposta:
+\[
+T=\frac{eS_{2}}{y_{\infty}},\quad\tau=\frac{S_{1}}{y_{\infty}}-T
+\]
+
+
+\subsection{Regole di taratura di Ziegler \& Nichols}
+
+~
+
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{center}
+\bigskip{}
+\begin{tabular}{cccc}
+ & $k_{{\scriptscriptstyle \text{P}}}$ & $T_{{\scriptscriptstyle \text{I}}}$ & $T_{{\scriptscriptstyle \text{D}}}$\tabularnewline
+\noalign{\vskip\doublerulesep}
+P & $\frac{T}{\mu\tau}$ & $\backslash$ & $\backslash$\tabularnewline
+\noalign{\vskip\doublerulesep}
+PI & $\frac{0.9T}{\mu\tau}$ & $3\tau$ & $\backslash$\tabularnewline
+\noalign{\vskip\doublerulesep}
+PID & $\frac{1.2T}{\mu\tau}$ & $\frac{2\tau}{\mu}$ & $0.5\tau$\tabularnewline
+\noalign{\vskip\doublerulesep}
+\end{tabular}
+\par\end{center}
+\captionof{table}{Regole di taratura di Z\&N}%
+\end{minipage}%
+\begin{minipage}[c]{0.5\textwidth}%
+Queste regole permettono di sfruttare i parametri delle risposte allo
+scalino calcolati nella sotto-sezione precedente per tarare un regolatore
+P, PI o PID che abbia la stessa risposta.%
+\end{minipage}
+
+Vediamo un esempio di applicazione dei metodi di taratura appena introdotti.
+\begin{example}
+\emph{Sia dato un sistema con funzione di trasferimento:
+\[
+G\left(s\right)=\frac{5}{s\left(s+5\right)}
+\]
+Tarare un regolatore PID in modo da ottenere $\left|e_{\infty}\right|=0$
+con riferimento $w\left(t\right)=\text{sca}\left(t\right)$, tempo
+di assestamento della risposta $T_{a,0.05}<0.3$, e margine di fase
+$\varphi_{m}>70{^\circ}$.}
+
+In questo caso dobbiamo tenere a mente le limitazioni che un regolatore
+PID pone sulle singolarità (due zeri, un polo nell'origine e uno di
+chiusura); risulta più agevole la sintesi per iterazioni del regolatore,
+scegliendo in ordine la frequenza di ciascuna singolarità.
+
+Per prima cosa poniamo la funzione di trasferimento in forma fattorizzata
+di Bode:
+\[
+G\left(s\right)=\frac{1}{s\left(1+\frac{s}{5}\right)}
+\]
+da cui otteniamo il guadagno statico $\mu=1$.
+
+La specifica sull'errore di inseguimento nullo per lo scalino prevede
+$g=1$ e $\mu>0$; la specifica sul tempo di assestamento può essere
+risolta considerando che il margine di fase richiesto è maggiore di
+65°, dunque vale:
+\[
+T_{a,0.05}\simeq3T\simeq\frac{3}{\omega_{{\scriptscriptstyle \text{C}}}}<0.3\,\rightarrow\,\omega_{{\scriptscriptstyle \text{C}}}>10
+\]
+
+Osservando l'impianto $G\left(s\right)$ da controllare, notiamo che
+ha già un polo nell'origine: useremo un regolatore PD, che non introduce
+ulteriori poli nell'origine (per soddisfare il vincolo sull'errore
+di inseguimento bisogna mantenere $g=1$); per il guadagno, basta
+prenderlo positivo, quindi per il momento scegliamo $\mu=1$.
+
+Per progettare il regolatore per tentativi, dobbiamo definire la sua
+componente statica e quella dinamica:
+\[
+R\left(s\right)=R_{1}\left(s\right)\cdot R_{2}\left(s\right)=1\cdot R_{2}\left(s\right)
+\]
+Abbiamo ottenuto $R_{1}\left(s\right)=1$ dalle considerazioni appena
+fatte sul guadagno statico; col guadagno unitario come regolatore
+statico, la funzione di anello è pari all'impianto (polo nell'origine
+e in $\omega=5$); dal diagramma di Bode del modulo osserviamo che
+il vincolo sulla pulsazione di attraversamento non viene soddisfatto;
+dal diagramma di fase osserviamo tuttavia che, con un attraversamento
+a bassa frequenza abbiamo margine di fase più elevato.
+\end{example}
+\begin{figure}[!h]
+\begin{centering}
+\hspace*{0.8cm}\includegraphics[scale=0.9]{\string"Illustrazioni/8_3-3 Bode modulo vincoli esempio\string".pdf}
+\par\end{centering}
+\begin{centering}
+\includegraphics[scale=0.9]{\string"Illustrazioni/8_3-4 Bode fase esempio\string".pdf}
+\par\end{centering}
+\caption{Diagrammi di Bode}
+\end{figure}
+
+Per aumentare il valore della pulsazione critica possiamo agire sul
+guadagno (rimasto vincolato solo dal segno positivo), per esempio
+aumentandolo a $+20\,\text{dB}=10$; tuttavia, la nuova pulsazione
+di attraversamento è molto vicina al vincolo, ed essendosi spostata
+verso le alte frequenze causa una diminuzione del margine di fase.
+
+Con un regolatore PD possiamo piazzare uno zero e un polo: con lo
+zero cancelliamo il polo in $\omega=5$, ottenendo sia una pulsazione
+di attraversamento fuori dal vincolo, che un margine di fase prossimo
+a 90°; inoltre usiamo il polo in alta frequenza come chiusura:
+\[
+R_{2}\left(s\right)=10\frac{\left(1+\frac{s}{5}\right)}{\left(1+\frac{s}{100}\right)}
+\]
+La funzione del regolatore vale $R\left(s\right)=R_{2}\left(s\right)$;
+nel caso di regolatore PD abbiamo (da (\ref{eq:Forma-ISA-regolatore-PID}),
+ignorando l'azione integrale) la relazione:
+\[
+R_{{\scriptscriptstyle \text{PD}}}\left(s\right)=10\frac{\left(1+\frac{s}{5}\right)}{\left(1+\frac{s}{100}\right)}=k_{{\scriptscriptstyle \text{P}}}\left(1+\frac{T_{{\scriptscriptstyle \text{D}}}s}{1+\frac{T_{{\scriptscriptstyle \text{D}}}}{N}s}\right)=k_{{\scriptscriptstyle \text{P}}}\frac{1+\left(\frac{T_{{\scriptscriptstyle \text{D}}}}{N}+T_{{\scriptscriptstyle \text{D}}}\right)s}{1+\left(\frac{T_{{\scriptscriptstyle \text{D}}}}{N}\right)s}
+\]
+Per confronto con (\ref{eq:Forma-fattorizzata-regolatore-PID}) ricaviamo
+le costanti di taratura dall'ultima delle precedenti:
+\begin{itemize}
+\item per affinità col guadagno statico $k_{{\scriptscriptstyle \text{P}}}=10$;
+\item per confronto $T_{{\scriptscriptstyle \text{D}}}+\frac{T_{{\scriptscriptstyle \text{D}}}}{N}=\frac{1}{5}$;
+\item per confronto $\frac{T_{{\scriptscriptstyle \text{D}}}}{N}=\frac{1}{100}$;
+\end{itemize}
+Mettendo a sistema le relazioni ottenute ricaviamo le rimanenti costanti:
+\[
+\begin{cases}
+T_{{\scriptscriptstyle \text{D}}}+0.01=0.2\\
+N=100T_{{\scriptscriptstyle \text{D}}}
+\end{cases}\Rightarrow\begin{cases}
+T_{{\scriptscriptstyle \text{D}}}=0.19\\
+N=19
+\end{cases}
+\]
+\demo
+
+\chapter{Sistemi di controllo digitale}
+
+Al giorno d'oggi praticamente tutti i sistemi di controllo sono implementati
+su un circuito dotato di memoria e capacità di calcolo digitale; questo
+ha dei vantaggi in termini di ripetibilità e uniformità delle misure,
+oltre alla possibilità di implementare logiche di controllo complesse.
+
+In generale si ha una \emph{macchina a stati}, che realizza la logica
+digitale; essa calcola l'andamento desiderato, che viene collegato
+all'ingresso del regolatore, il quale calcola l'ingresso vero e proprio
+(analogico) dell'impianto; dall'impianto possono arrivare uscite multiple,
+in generale collegate al regolatore e alla macchina a stati. L'operatore
+interagisce con la logica digitale tramite una interfaccia HMI\marginpar{La sigla HMI sta per Human-Machine Interface, ovvero interfaccia uomo-macchina},
+inoltre è possibile che la logica o il regolatore siano connessi a
+Internet, ecc$\ldots$
+
+\section{Struttura di riferimento}
+
+Ci limiteremo a studiare il seguente caso particolare di sistema di
+controllo digitale:
+
+\begin{figure}[!h]
+\begin{centering}
+\includegraphics[scale=1.1]{\string"Illustrazioni/9_1-1 Sistema di controllo digitale\string".pdf}
+\par\end{centering}
+\caption{Sistema di controllo digitale (di riferimento)}
+\label{fig:Sistema-controllo-digitale}
+\end{figure}
+Le\marginpar{Riguardo le sigle dei convertitori: A/D sta per convertitore da analogico
+a digitale, e D/A per convertitore da digitale ad analogico} variabili segnate come $x^{*}\left(k\right)$ sono definite nel tempo
+discreto: l'andamento desiderato è tipicamente generato dalla logica
+digitale, dunque è indicato come un segnale discreto; esso è confrontato
+con una versione a tempo discreto dell'uscita vincolata.
+
+Poi abbiamo un regolatore digitale (nella pratica un sistema dinamico
+a tempo discreto), collegato con un convertitore D/A per iniettare
+nell'impianto un segnale di comando continuo; infine l'uscita è collegata
+a un convertitore A/D, che permette di confrontare il segnale a tempo
+continuo con l'andamento desiderato per generare l'errore di inseguimento
+discreto.
+
+Il convertitore A/D è detto \emph{campionatore}, mentre il convertitore
+D/A è detto \emph{mantenitore}; insieme al \emph{regolatore digitale},
+questi tre componenti costituiscono un sistema di controllo digitale.
 
 \appendix
 

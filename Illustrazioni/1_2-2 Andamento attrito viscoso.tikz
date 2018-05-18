@@ -1,7 +1,7 @@
 ﻿\begin{tikzpicture} [scale=1.5]
 % Assi
-	\draw[->] (-1.5, 0) -- (1.5, 0) node[right] {$t$};
-	\draw[->] (0, -0.5) -- (0, 3) node[above] {$\beta (t)$};
+	\draw[-latex] (-1.5, 0) -- (1.5, 0) node[right] {$t$};
+	\draw[-latex] (0, -0.5) -- (0, 3) node[above] {$\beta (t)$};
 % Funzione
 	\draw[scale=0.5, domain=-2.3:2.3, smooth, variable=\x, gray] plot ({\x}, {cosh(\x)});
 % Punti sul grafico

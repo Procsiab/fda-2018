@@ -1,0 +1,30 @@
+﻿\begin{tikzpicture} [scale=2]
+
+% Assi
+	\draw[-latex] (-0.2, 0) -- (2.2, 0) node[right] {$t$};
+	\draw[-latex] (0, -0.2) -- (0, 1.5) node[above] {$u(t)$};
+
+% Funzione comando
+	\draw[scale=1, domain=0:2.2, smooth, variable=\x, thick] 
+		plot ({\x},{1-2*exp(-5*\x*\x*\x)+exp(-\x*\x)});
+
+% Funzione saturazione
+	\draw[scale=1, domain=0:0.7, smooth, variable=\x, thick, gray, dashed]
+		plot ({\x},{0.99-2*exp(-4.8*\x*\x*\x)+exp(-\x*\x)})
+		-- ++ (0.52, 0);
+	\draw[scale=1, domain=1.22:2.2, smooth, variable=\x, thick, gray, dashed]
+		plot ({\x},{0.99-2*exp(-4.8*\x*\x*\x)+exp(-\x*\x)});
+
+	\draw[gray, dashdotted] (0.69, 1.2) -- ++ (70:0.8) -- ++ (-70:0.8);
+
+% Valore di saturazione
+	\draw[densely dotted] (0, 1.2) -- (2.2, 1.2);
+	\filldraw (0, 1.2) circle (0.5pt)
+		node[left] (Yi) {$\overline{u}$};
+
+% Istante cambio segno errore inseguimento
+	\draw[densely dotted] (0.96, 1.95) -- ++ (0, -1.95);
+	\filldraw (0.96, 0) circle (0.5pt)
+		node[below] (Yi) {$t_s$};
+
+\end{tikzpicture}

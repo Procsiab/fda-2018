@@ -24604,7 +24604,7 @@ Immaginiamo di avere un diagramma di Nyquist nel quale esiste un valore
 , e indichiamo la fase di tale punto
 \begin_inset Formula 
 \begin{equation}
-\omega_{\pi}=\arg\left(L\left(j\omega\pi\right)\right)\label{eq:Margine-di-guadagno}
+\omega_{\pi}=\arg\left(L\left(j\omega_{\pi}\right)\right)\label{eq:Margine-di-guadagno}
 \end{equation}
 
 \end_inset
@@ -24615,7 +24615,7 @@ Immaginiamo di avere un diagramma di Nyquist nel quale esiste un valore
 \begin_layout Definition
 Il valore di guadagno che, moltiplicato per la funzione di trasferimento,
  fa sì che il punto 
-\begin_inset Formula $L\left(j\omega\pi\right)$
+\begin_inset Formula $L\left(j\omega_{\pi}\right)$
 \end_inset
 
  si sovrapponga al punto critico si chiama 
@@ -24623,7 +24623,7 @@ Il valore di guadagno che, moltiplicato per la funzione di trasferimento,
 margine di guadagno
 \emph default
 ; in generale possiamo indicarlo come 
-\begin_inset Formula $k_{{\scriptscriptstyle \text{m}}}=1/L\left(j\omega\pi\right)$
+\begin_inset Formula $k_{{\scriptscriptstyle \text{m}}}=1\slash\left|L\left(j\omega_{\pi}\right)\right|$
 \end_inset
 
 , che sarebbe il modulo della distanza dal punto in 
@@ -24677,7 +24677,7 @@ margine di fase
 , indichiamo il margine di fase come:
 \begin_inset Formula 
 \[
-\varphi_{{\scriptscriptstyle \text{m}}}=180°-\varphi_{{\scriptscriptstyle \text{C}}}
+\varphi_{{\scriptscriptstyle \text{m}}}=180°-\left|\varphi_{{\scriptscriptstyle \text{C}}}\right|
 \]
 
 \end_inset
@@ -25145,7 +25145,7 @@ Gli ingressi polinomiali in esame sono quelli canonici già visti (scalino,
  è il grado del polinomio nel dominio del tempo:
 \begin_inset Formula 
 \[
-A\cdot\text{sca}\left(s\right)=A\overset{{\scriptstyle \mathscr{L}}}{\longrightarrow}\frac{A}{s},\:A\cdot\text{ram}\left(s\right)=At\overset{{\scriptstyle \mathscr{L}}}{\longrightarrow}\frac{A}{s^{2}},\:A\cdot\text{par}\left(s\right)=\frac{A}{2}t^{2}\overset{{\scriptstyle \mathscr{L}}}{\longrightarrow}\frac{A}{s^{3}}
+A\cdot\text{sca}\left(t\right)=A\overset{{\scriptstyle \mathscr{L}}}{\longrightarrow}\frac{A}{s},\:A\cdot\text{ram}\left(t\right)=At\overset{{\scriptstyle \mathscr{L}}}{\longrightarrow}\frac{A}{s^{2}},\:A\cdot\text{par}\left(t\right)=\frac{A}{2}t^{2}\overset{{\scriptstyle \mathscr{L}}}{\longrightarrow}\frac{A}{s^{3}}
 \]
 
 \end_inset
@@ -28407,7 +28407,7 @@ status open
 
 \begin_layout Plain Layout
 
-[1cm]
+[0.7cm]
 \end_layout
 
 \end_inset
@@ -28795,6 +28795,2344 @@ Il grosso vantaggio di questo metodo di sintesi è la possibilità di costruire
  essere presenti zeri a parte reale positiva) possiamo cercare di stabilizzarla,
  considerando che la pulsazione di attraversamento è limitata superiormente
  dalla fase del primo zero instabile.
+\end_layout
+
+\begin_layout Chapter
+Regolatori standard industriali (PID)
+\end_layout
+
+\begin_layout Section
+Definizione
+\end_layout
+
+\begin_layout Subsection
+Forma standard
+\end_layout
+
+\begin_layout Standard
+Per
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+La sigla PID sta per proporzionale, integrale e derivativa, i tre tipi di
+ azioni coinvolti nel segnale di comando
+\end_layout
+
+\end_inset
+
+ avere l'intuizione del funzionamento del regolatore PID, ragioniamo prendendo
+ come esempio un esperimento di controllo della posizione: prendiamo un
+ carrello di massa 
+\begin_inset Formula $m$
+\end_inset
+
+, fermo in posizione 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+, e vogliamo spostarlo in posizione 
+\begin_inset Formula $x_{{\scriptscriptstyle \text{F}}}$
+\end_inset
+
+ (lungo una retta); il nostro ingresso 
+\begin_inset Formula $u\left(t\right)$
+\end_inset
+
+ sia la forza con cui possiamo spingere il carrello.
+\end_layout
+
+\begin_layout Standard
+Se la posizione corrente è rappresentata da 
+\begin_inset Formula $x\left(t\right)$
+\end_inset
+
+, l'errore di inseguimento vale 
+\begin_inset Formula $e\left(t\right)=x_{{\scriptscriptstyle \text{F}}}-x\left(t\right)$
+\end_inset
+
+; in queste condizioni, applicare un regolatore industriale standard si
+ traduce nell'utilizzo di tre tipi di azione per agire sul comando:
+\end_layout
+
+\begin_layout Itemize
+
+\noun on
+Azione 
+\series bold
+P
+\series default
+roporzionale
+\noun default
+ 
+\begin_inset Formula $k_{{\scriptscriptstyle \text{P}}}\cdot e\left(t\right)$
+\end_inset
+
+, nel nostro caso riguarda la forza iniziale applicata al carrello, direttamente
+ proporzionale alla distanza di 
+\begin_inset Formula $x_{0}$
+\end_inset
+
+ da 
+\begin_inset Formula $x_{{\scriptscriptstyle \text{F}}}$
+\end_inset
+
+; questo tipo di azione non tiene conto per esempio della massa del carrello.
+\end_layout
+
+\begin_layout Itemize
+
+\noun on
+Azione 
+\series bold
+I
+\series default
+ntegrale
+\noun default
+ 
+\begin_inset Formula $k_{{\scriptscriptstyle \text{I}}}\cdot\somme{t_{0}}t{e\left(\tau\right)}{\tau}$
+\end_inset
+
+, nel nostro caso la forza iniziale, dipendente dalla distanza dalla destinazion
+e, viene aumentata sempre di più se non riesce a mettere in movimento il
+ carrello; in pratica l'uscita aumenta in relazione all'errore di inseguimento
+ - se esso rimane costante l'integrale crescerà nel tempo.
+\end_layout
+
+\begin_layout Itemize
+
+\noun on
+Azione 
+\series bold
+D
+\series default
+erivativa
+\noun default
+ 
+\begin_inset Formula $k_{{\scriptscriptstyle \text{D}}}\dfrac{\partial e\left(t\right)}{\partial t}$
+\end_inset
+
+, nel nostro caso a seconda della distanza dal punto finale 
+\begin_inset Formula $x_{{\scriptscriptstyle \text{F}}}$
+\end_inset
+
+ (determinata dall'errore di inseguimento 
+\begin_inset Formula $e\left(t\right)$
+\end_inset
+
+) dovremo frenare il carrello in modo più o meno forte, per terminare il
+ suo movimento proprio in 
+\begin_inset Formula $x\left(t\right)=x_{{\scriptscriptstyle \text{F}}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+L'uscita ha infine la seguente espressione:
+\begin_inset Formula 
+\begin{equation}
+u\left(t\right)=k_{{\scriptscriptstyle \text{P}}}\cdot e\left(t\right)+k_{{\scriptscriptstyle \text{I}}}\cdot\somme{t_{0}}t{e\left(\tau\right)}{\tau}+k_{{\scriptscriptstyle \text{D}}}\dfrac{\partial e\left(t\right)}{\partial t}\label{eq:Somma-contributi-PID}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Utilizzando la trasformazione nel domini di Laplace, studiamo un segnale
+ di risposta dello stesso tipo di 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Somma-contributi-PID"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, per trovare la unzione del regolatore corrispondente:
+\begin_inset Formula 
+\[
+\mathscr{L}\left[u\left(t\right)\right]=U\left(s\right)=k_{{\scriptscriptstyle \text{P}}}E\left(s\right)+k_{{\scriptscriptstyle \text{I}}}\frac{E\left(s\right)}{s}+k_{{\scriptscriptstyle \text{D}}}sE\left(s\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+=\overset{{\scriptstyle R\left(s\right)}}{\overbrace{\frac{k_{{\scriptscriptstyle \text{D}}}s^{2}+k_{{\scriptscriptstyle \text{P}}}s+k_{{\scriptscriptstyle \text{I}}}}{s}}}E\left(s\right)
+\]
+
+\end_inset
+
+Notiamo che la funzione del regolatore così ottenuta non è realizzabile,
+ perché il suo numeratore ha due zeri e al denominatore ha un solo polo
+ (
+\begin_inset Formula $g<0$
+\end_inset
+
+).
+ Studiamo ulteriormente questo caso ideale, effettuando una riscrittura
+ per la funzione 
+\begin_inset Formula $R\left(s\right)$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+R\left(s\right)=k_{{\scriptscriptstyle \text{P}}}\left(1+\frac{k_{{\scriptscriptstyle \text{I}}}}{k_{{\scriptscriptstyle P}}s}+\frac{k_{{\scriptscriptstyle \text{D}}}s}{k_{{\scriptscriptstyle \text{P}}}}\right)=k_{{\scriptscriptstyle \text{P}}}\left(1+\frac{1}{T_{{\scriptscriptstyle \text{I}}}s}+T_{{\scriptscriptstyle \text{D}}}s\right)=\ldots
+\]
+
+\end_inset
+
+Nella precedente relazione abbiamo usato due nuove costanti definite come
+ segue:
+\end_layout
+
+\begin_layout Itemize
+Tempo integrale 
+\begin_inset Formula $T_{{\scriptscriptstyle \text{I}}}=k_{{\scriptscriptstyle \text{P}}}/k_{{\scriptscriptstyle \text{I}}}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+Tempo derivativo 
+\begin_inset Formula $T_{{\scriptscriptstyle \text{D}}}=k_{{\scriptscriptstyle \text{D}}}/k_{{\scriptscriptstyle \text{P}}}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Raccogliamo nella funzione del regolatore ottenendo:
+\begin_inset Formula 
+\[
+\dots=\frac{k_{{\scriptscriptstyle \text{P}}}}{T_{{\scriptscriptstyle \text{I}}}}\left(\frac{T_{{\scriptscriptstyle \text{D}}}T_{{\scriptscriptstyle \text{I}}}s^{2}+T_{{\scriptscriptstyle \text{I}}}s+1}{s}\right)
+\]
+
+\end_inset
+
+La funzione del regolatore non risulta ancora realizzabile; per permetterlo,
+ si aggiunge un polo di chiusura nell'azione derivativa, nel modo seguente:
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "3cm"
+height "1pt"
+
+\end_inset
+
+
+\series bold
+\size footnotesize
+
+\begin_inset Newline newline
+\end_inset
+
+Forma ISA per regolatore PID
+\series default
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+Regolatore PID, forma ISA
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[0.6cm]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+R_{{\scriptscriptstyle \text{PID}}}\left(s\right)=k_{{\scriptscriptstyle \text{P}}}\left(1+\frac{1}{T_{{\scriptscriptstyle \text{I}}}s}+\frac{T_{{\scriptscriptstyle \text{D}}}s}{1+\frac{T_{{\scriptscriptstyle \text{D}}}}{N}s}\right)\label{eq:Forma-ISA-regolatore-PID}
+\end{equation}
+
+\end_inset
+
+dove
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+La sigla ISA sta per International Society of Automation (società internazionale
+ dell'automazione)
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Formula $N\gg1$
+\end_inset
+
+ per garantire costante di tempo piccola, per avere il polo in alta frequenza.
+ La funzione di trasferimento del regolatore PID in forma fattorizzata si
+ ricava nel modo seguente:
+\begin_inset Formula 
+\begin{equation}
+R_{{\scriptscriptstyle \text{PID}}}\left(s\right)=\frac{k_{{\scriptscriptstyle \text{P}}}}{T_{{\scriptscriptstyle \text{I}}}}\left(\frac{T_{{\scriptscriptstyle \text{D}}}T_{{\scriptscriptstyle \text{I}}}\left(1+\frac{1}{N}\right)s^{2}+\left(T_{{\scriptscriptstyle \text{I}}}+\frac{T_{{\scriptscriptstyle \text{D}}}}{N}\right)s+1}{s\left(1+\frac{T_{{\scriptscriptstyle \text{D}}}}{N}s\right)}\right)\label{eq:Forma-fattorizzata-regolatore-PID}
+\end{equation}
+
+\end_inset
+
+Possiamo usare il teorema del valore iniziale su 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Forma-fattorizzata-regolatore-PID"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ per ottenere il guadagno statico 
+\begin_inset Formula $\mu_{{\scriptscriptstyle \text{PID}}}=k_{{\scriptscriptstyle \text{P}}}/T_{{\scriptscriptstyle \text{I}}}$
+\end_inset
+
+; possiamo realizzare questo regolatore che possiede due zeri (soluzioni
+ del numeratore), un polo nell'origine e un polo di chiusura ad alta frequenza
+ (per 
+\begin_inset Formula $s=-N/T_{{\scriptscriptstyle \text{D}}}$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Subsection
+Taratura analitica
+\end_layout
+
+\begin_layout Standard
+Le costanti 
+\begin_inset Formula $T_{{\scriptscriptstyle \text{D},\text{I}}},\,k_{{\scriptscriptstyle \text{P}}}$
+\end_inset
+
+ e 
+\begin_inset Formula $N$
+\end_inset
+
+ che compaiono nelle forme 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Forma-ISA-regolatore-PID"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ e 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Forma-fattorizzata-regolatore-PID"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, sono costanti di 
+\emph on
+taratura
+\emph default
+, che determinano il comportamento del regolatore (la frequenza dei suoi
+ zeri o del suo polo di chiusura); vediamo un esempio nel quale, a partire
+ dalla funzione di trasferimento, cerchiamo di ricavare le costanti di un
+ controllore PID.
+\end_layout
+
+\begin_layout Example
+
+\emph on
+Sia data la seguente funzione di un controllore PID:
+\begin_inset Formula 
+\[
+R_{{\scriptscriptstyle \text{PID}}}\left(s\right)=\frac{\left(1+s\right)\left(1+s/10\right)}{s\left(1+s/100\right)}
+\]
+
+\end_inset
+
+
+\begin_inset Formula $\checked$
+\end_inset
+
+Ricavare le costanti di taratura del regolatore.
+\end_layout
+
+\begin_layout Standard
+I diagrammi di Bode si ricavano facilmente (si veda 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:Diagrammi-di-Bode-es-8_1"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) osservando che: il guadagno statico è unitario (
+\begin_inset Formula $\mu=1$
+\end_inset
+
+); per quanto riguarda il modulo, il polo nell'origine fornisce una pendenza
+ di 
+\begin_inset Formula $-20\,\text{dB}/\text{dec}$
+\end_inset
+
+ fino al primo zero in 
+\begin_inset Formula $\omega=10^{0}$
+\end_inset
+
+, che aumenta la pendenza a 
+\begin_inset Formula $0\,\text{dB}/\text{dec}$
+\end_inset
+
+ fino al secondo zero; il polo di chiusura annulla di nuovo la pendenza,
+ terminando in alta frequenza con un guadagno positivo.
+\end_layout
+
+\begin_layout Standard
+Per quanto riguarda la fase, il contributo iniziale è 
+\begin_inset Formula $-90°$
+\end_inset
+
+ (dato che 
+\begin_inset Formula $\mu>0$
+\end_inset
+
+), e la fase finale è determinata dalla presenza di due zeri e un polo (
+\begin_inset Formula $0°$
+\end_inset
+
+ facendo la somma dei contributi).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/8_1-1 Bode modulo esempio.pdf
+	display false
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/8_1-2 Bode fase esempio.pdf
+	display false
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Diagrammi-di-Bode-es-8_1"
+
+\end_inset
+
+Diagrammi di Bode
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Calcoliamo ora i valori delle costanti che permettono al regolatore di avere
+ questo andamento; per farlo svolgiamo i prodotti delle singolarità raccolte
+ nella funzione del regolatore e per sostituzione ricaviamo tutte le costanti:
+\begin_inset Formula 
+\[
+R_{{\scriptscriptstyle \text{PID}}}\left(s\right)=\frac{\frac{s^{2}}{10}+\frac{11}{10}s+1}{s\left(1+s/100\right)}
+\]
+
+\end_inset
+
+Applichiamo i vincoli che conosciamo, come quello sul guadagno statico o
+ per confronto con la forma 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Forma-fattorizzata-regolatore-PID"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\mu=\frac{k_{{\scriptscriptstyle \text{P}}}}{T_{{\scriptscriptstyle \text{I}}}}=1,\:\frac{T_{{\scriptscriptstyle \text{D}}}}{N}=\frac{1}{100},\:T_{{\scriptscriptstyle \text{D}}}T_{{\scriptscriptstyle \text{I}}}\left(1+\frac{1}{N}\right)=\frac{1}{10},\:\left(T_{{\scriptscriptstyle \text{I}}}+\frac{T_{{\scriptscriptstyle \text{D}}}}{N}\right)=\frac{11}{10}
+\]
+
+\end_inset
+
+Sostituendo e risolvendo le precedenti otteniamo:
+\begin_inset Formula 
+\[
+T_{{\scriptscriptstyle \text{I}}}=1.09,\:T_{{\scriptscriptstyle \text{D}}}=0.0817,\:k_{{\scriptscriptstyle \text{P}}}=1.09,\:N=8.17
+\]
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+demo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+La procedura di sostituzione per ottenere le costanti, usata nell'esempio,
+ rappresenta un primo metodo di taratura.
+\end_layout
+
+\begin_layout Standard
+I regolatori PID sono i più completi, e hanno delle sottoclassi caratterizzate
+ nei modi indicati in tabella 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Sottoclassi-del-regolatore-PID"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "50text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top" width="0pt">
+<row interlinespace="default">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+P
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $R\left(s\right)=k_{{\scriptscriptstyle \text{P}}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="default">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+I
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $R\left(s\right)=\dfrac{k_{{\scriptscriptstyle \text{I}}}}{s}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="default">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+PI
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $R\left(s\right)=\dfrac{k_{\text{P}}}{T_{{\scriptscriptstyle \text{I}}}}\left(\dfrac{1+T_{{\scriptscriptstyle \text{I}}}s}{s}\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="default">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+PD
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $R\left(s\right)=\dfrac{\left(\left(1+\frac{{\scriptstyle 1}}{{\scriptstyle N}}\right)T_{{\scriptscriptstyle \text{D}}}s+1\right)}{1+\frac{{\scriptstyle T_{{\scriptscriptstyle \text{D}}}}}{{\scriptstyle N}}s}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{table}{Sottoclassi del regolatore PID}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Sottoclassi-del-regolatore-PID"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "50text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+Non si utilizza nello standard industriale un regolatore D, dotato solo
+ di azione derivativa; invece i regolatori PI sono quelli più diffusi, dato
+ che comprendono un polo nell'origine (permette inseguimento asintotico
+ di riferimenti costanti, si veda 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "tab:Prestazioni-statiche"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), un guadagno regolabile per modificare la pulsazione critica del sistema
+ e uno zero col quale si può recuperare fase (e soddisfare i vincoli sul
+ margine di fase).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace medskip
+\end_inset
+
+Il regolatore PD può essere utilizzato quando l'impianto ha già un polo
+ nell'origine, tipicamente per migliorare il margine di fase senza introdurre
+ ulteriori poli nell'origine.
+\end_layout
+
+\begin_layout Section
+Aspetti realizzativi
+\end_layout
+
+\begin_layout Standard
+Formalizziamo la struttura interna di un regolatore PID in uno schema a
+ blocchi, per poterla analizzare nelle sotto-sezioni successive:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/8_2-1 Controllo in anello chiuso regolatore PID.pdf
+	display false
+	scale 110
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Schema a blocchi per controllo in anello chiuso con regolatore PID
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Limite dell'azione derivativa
+\end_layout
+
+\begin_layout Standard
+Se prendiamo un sistema strettamente proprio, è impossibile che l'uscita
+ abbia delle discontinuità di salto; anche se abbiamo uno scalino in ingresso,
+ l'uscita sarà comunque filtrata dalle dinamiche del sistema (come succede
+ con la risposta armonica per un sistema asintoticamente stabile).
+ Il segnale di riferimento 
+\begin_inset Formula $w\left(t\right)$
+\end_inset
+
+ invece, è stabilito dall'operatore che interagisce col regolatore cambiando
+ il punto di lavoro dell'impianto.
+\end_layout
+
+\begin_layout Standard
+Se immaginiamo che il sistema stia lavorando secondo un certo inseguimento
+ di valore desiderato, e improvvisamente quest'ultimo cambia per una interazione
+ dell'operatore, il segnale di errore di inseguimento ha un salto, e dopo
+ un transitorio esso tenderà nuovamente a 0.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/8_2-2 Limitazione azione derivativa.pdf
+	display false
+	scale 110
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Limitazione dell'azione derivativa, con derivazione dell'uscita
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Il problema di avere uno scalino come errore di inseguimento si verifica
+ quando questo segnale è l'ingresso di un blocco derivatore (come nel caso
+ di un regolatore PID): la derivata dello scalino infatti è l'impulso, che
+ sarà usato come segnale di comando e arriverà all'impianto; a lungo andare,
+ gli attuatori dell'impianto subiranno dei danni a causa degli impulsi di
+ segnale ricevuti.
+\end_layout
+
+\begin_layout Standard
+Escludendo i casi in cui il riferimento non sia costante (interazioni con
+ l'operatore, in generale poco frequenti e 
+\begin_inset Formula $w\left(t\right)$
+\end_inset
+
+ è costante per la maggior parte del tempo), vale la relazione:
+\begin_inset Formula 
+\[
+\dot{e}\left(t\right)=\dot{w}\left(t\right)-\dot{y}\left(t\right)=-\dot{y}\left(t\right)
+\]
+
+\end_inset
+
+Risulta dunque equivalente (quando 
+\begin_inset Formula $w\left(t\right)$
+\end_inset
+
+ è costante) usare come ingresso del blocco derivativo l'uscita in retroazione
+ negativa (poi sommata con segno invertito sul segnale di comando 
+\begin_inset Formula $u\left(t\right)$
+\end_inset
+
+) piuttosto che l'errore di inseguimento; derivando l'uscita 
+\begin_inset Formula $y\left(t\right)$
+\end_inset
+
+ si ha il vantaggio che i transitori di 
+\begin_inset Formula $w\left(t\right)$
+\end_inset
+
+ vengono ignorati dal blocco derivativo, dal quale non usciranno più degli
+ impulsi diretti all'impianto.
+\end_layout
+
+\begin_layout Subsection
+Desaturazione dell'azione integrale
+\end_layout
+
+\begin_layout Standard
+Questo aspetto realizzativo riguarda tutti i sistemi di controllo, in particolar
+e la non linearità dell'ingresso dell'impianto: in un sistema fisico, la
+ variabile di comando calcolata dal regolatore non può essere arbitrariamente
+ grande o piccola, essa è soggetta al fenomeno di saturazione, descritto
+ dalla seguente funzione:
+\begin_inset Formula 
+\[
+u_{{\scriptscriptstyle \text{SAT}}}\left(t\right)=\begin{cases}
+u\left(t\right) & \text{per }u\left(t\right)\in\left[\underline{u},\,\overline{u}\right]\\
+\overline{u} & \text{per }u\left(t\right)>\overline{u}\\
+\underline{u} & \text{per }u\left(t\right)<\underline{u}
+\end{cases}
+\]
+
+\end_inset
+
+L'effetto di saturazione viene rappresentato dalla presenza di un blocco
+ di saturazione in cascata col sistema da controllare, nello schema a blocchi.
+ Quando il valore di comando in uscita dal regolatore supera il valore massimo
+ o minimo di saturazione (
+\begin_inset Formula $\underline{u},\,\overline{u}$
+\end_inset
+
+), l'attuatore non è in grado di fornire tale valore in uscita.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/8_2-3 Saturazione del segnale di controllo.pdf
+	display false
+	scale 110
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Saturazione del segnale di comando
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Se immaginiamo che il comando 
+\begin_inset Formula $w\left(t\right)$
+\end_inset
+
+ abbia l'andamento (linea continua) in figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Andamento-desiderato-rispetto-saturazione"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, con un'accelerazione iniziale che lo porta a convergere asintoticamente
+ al valore di uscita statica 
+\begin_inset Formula $y\left(t\right)$
+\end_inset
+
+; il segnale di comando senza saturazione (linea continua in figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Segnale-controllo-rispetto-saturazione"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) avrà una sovraelongazione iniziale e poi diminuirà fino ad annullarsi.
+\end_layout
+
+\begin_layout Standard
+In presenza di saturazione, l'andamento desiderato cresce in modo costante
+ (cambia anche l'andamento dell'errore di inseguimento, non più esponenziale);
+ il segnale di comando 
+\begin_inset Formula $u\left(t\right)$
+\end_inset
+
+ a monte della saturazione continuerà a crescere, mentre il segnale effettivo
+ 
+\begin_inset Formula $u_{{\scriptscriptstyle \text{SAT}}}\left(t\right)$
+\end_inset
+
+ rimane costante al valore massimo o minimo di saturazione.
+ L'azione integrale continua a far crescere il segnale di comando 
+\begin_inset Formula $u\left(t\right)$
+\end_inset
+
+ a monte fino a che il segno dell'errore di inseguimento 
+\begin_inset Formula $e\left(t\right)$
+\end_inset
+
+ cambia: questo accade quando l'andamento desiderato 
+\begin_inset Formula $w\left(t\right)$
+\end_inset
+
+ supera l'uscita 
+\begin_inset Formula $y\left(t\right)$
+\end_inset
+
+; viene integrato un segnale negativo e il comando effettivo comincia a
+ decrescere.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "50text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/8_2-4 Andamento desiderato rispetto saturazione.pdf
+	display false
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Andamento desiderato, rispetto saturazione}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Andamento-desiderato-rispetto-saturazione"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "50text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/8_2-5 Segnale di controllo effettivo rispetto saturazione.pdf
+	display false
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Segnale di controllo effettivo, rispetto saturazione}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Segnale-controllo-rispetto-saturazione"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Quando il segnale a monte 
+\begin_inset Formula $u\left(t\right)$
+\end_inset
+
+ torna al di sotto del valore di saturazione, 
+\begin_inset Formula $u_{{\scriptscriptstyle \text{SAT}}}\left(t\right)$
+\end_inset
+
+ comincia a decrescere, dato che l'andamento desiderato 
+\begin_inset Formula $w\left(t\right)$
+\end_inset
+
+ è ormai maggiore dell'uscita 
+\begin_inset Formula $y\left(t\right)$
+\end_inset
+
+; di questo passo si arriva alla saturazione sul valore 
+\begin_inset Formula $\underline{u}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Dato che, rispetto al segnale di controllo, l'uscita 
+\begin_inset Formula $y\left(t\right)$
+\end_inset
+
+ reagisce correggendosi, questo fenomeno porta a un andamento oscillante
+ fino addirittura a destabilizzare il sistema.
+\end_layout
+
+\begin_layout Standard
+Per ovviare a questo effetto si usa uno schema implementativo differente
+ per il blocco integratore: in assenza di saturazione il comportamento dovrà
+ essere analogo a quello dello schema in figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Desaturazione-dell'azione-integrale"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+; quando la saturazione agisce, si da in ingresso al regolatore la differenza
+ tra il comando a monte e il valore di saturazione, per evitare che il blocco
+ integratore si carichi infinitamente oltre la soglia di saturazione.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/8_2-6 Desaturazione dell'azione integrale.pdf
+	display false
+	scale 110
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Desaturazione dell'azione integrale, con anello di retroazione sul blocco
+ di saturazione
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Desaturazione-dell'azione-integrale"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+L'azione
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+Si noti che l'anello di desaturazione dell'azione integrale può essere impiegato
+ anche in regolatori non PID, per compensare la saturazione di uno o più
+ integratori (poli nell'origine)
+\end_layout
+
+\end_inset
+
+ integrale viene implementata con un anello di retroazione positiva dove
+ il ramo diretto presenta il blocco di saturazione, e il ramo di retroazione
+ presenta un polo.
+\end_layout
+
+\begin_layout Standard
+Se il segnale di controllo 
+\begin_inset Formula $u\left(t\right)$
+\end_inset
+
+ è entro l'intervallo di saturazione, l'anello di retroazione con l'azione
+ integrale vale 1; in particolare la funzione di trasferimento di anello
+ in questo caso è data da:
+\begin_inset Formula 
+\[
+L\left(s\right)=\frac{1}{1-\frac{1}{1+T_{{\scriptscriptstyle \text{I}}}s}}=\frac{1}{\frac{1+T_{{\scriptscriptstyle \text{I}}}s-1}{1+T_{{\scriptscriptstyle \text{I}}}s}}=\frac{1+T_{{\scriptscriptstyle \text{I}}}s}{T_{{\scriptscriptstyle \text{I}}}s}
+\]
+
+\end_inset
+
+Notiamo che continuiamo ad avere la stessa struttura che in assenza del
+ blocco di saturazione, con un polo nell'origine e uno zero.
+\end_layout
+
+\begin_layout Standard
+Se ora poniamo il segnale in ingresso al blocco di saturazione 
+\begin_inset Formula $u\left(t\right)>\overline{u}$
+\end_inset
+
+, esso è riportato in ingresso e sommato al segnale entrante; questo corrisponde
+ a scaricare l'azione integrale per tutto il tempo in cui 
+\begin_inset Formula $e\left(t\right)>0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Metodi di taratura automatica
+\end_layout
+
+\begin_layout Standard
+Introduciamo dei metodi analitici più mirati del semplice confronto algebrico,
+ per calcolare le costanti di taratura di un regolatore PID.
+ Questi metodi valgono sia in anello chiuso che in anello aperto: nel primo
+ caso si comincia col guadagno proporzionale 
+\begin_inset Formula $k_{{\scriptscriptstyle \text{P}}}$
+\end_inset
+
+ e poi si analizzano i grafici della risposta; nel secondo caso viene fornito
+ uno scalino in ingresso al sistema, e poi si registrano le grandezze sulla
+ risposta a scalino.
+\end_layout
+
+\begin_layout Subsection
+Metodi in anello aperto
+\end_layout
+
+\begin_layout Standard
+In anello aperto, i metodi di taratura sono validi per sistemi con impianto
+ del tipo del tipo:
+\begin_inset Formula 
+\[
+G\left(s\right)=\frac{\mu}{1+Ts}e^{-t/T}
+\]
+
+\end_inset
+
+Consideriamo solo sistemi asintoticamente stabili in anello aperto; lo scalino
+ determina una risposta come quella in figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Taratura-ispezione-grafico"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+: abbiamo un ritardo che rallenta la salita dell'esponenziale, che dopo
+ 
+\begin_inset Formula $T$
+\end_inset
+
+ secondi arriva al valore di regime (
+\begin_inset Formula $T+\tau$
+\end_inset
+
+ rispetto all'origine); se lo scalino usato è unitario, il valore di regime
+ dell'uscita è pari al guadagno (
+\begin_inset Formula $y_{\infty}=\mu$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Le costanti di taratura possono essere tutte stimate dai parametri legati
+ alla risposta allo scalino in anello aperto; infatti tracciando il grafico
+ della risposta otteniamo:
+\end_layout
+
+\begin_layout Itemize
+il ritardo 
+\begin_inset Formula $\tau$
+\end_inset
+
+ come l'intervallo di tempo tra l'ingresso dello scalino e l'inizio del
+ transitorio esponenziale;
+\end_layout
+
+\begin_layout Itemize
+il tempo di assestamento 
+\begin_inset Formula $T$
+\end_inset
+
+ come derivata della risposta in 
+\begin_inset Formula $y\left(\tau\right)$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+il guadagno statico come rapporto tra il valore di assestamento e l'ampiezza
+ dello scalino iniettato (
+\begin_inset Formula $y_{\infty}/A$
+\end_inset
+
+,).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "50text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/8_3-1 Taratura per ispezione del grafico.pdf
+	display false
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Taratura per ispezione del grafico}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Taratura-ispezione-grafico"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "50text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/8_3-2 Taratura per analisi integrale.pdf
+	display false
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Taratura per analisi integrale}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Taratura-analisi-integrale"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Possiamo ottenere una stima più accurata dei tempi usando un secondo metodo
+ basato sull'integrazione di aree: otteniamo comunque il guadagno statico
+ come appena mostrato; tuttavia misuriamo 
+\begin_inset Formula $T$
+\end_inset
+
+ e 
+\begin_inset Formula $\tau$
+\end_inset
+
+ usando le due aree 
+\begin_inset Formula $S_{1}$
+\end_inset
+
+ (tra la curva della risposta e il valore di regime) e 
+\begin_inset Formula $S_{2}$
+\end_inset
+
+ (tra la curva della risposta e la retta 
+\begin_inset Formula $x=y\left(T+\tau\right)$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Sapendo che, a partire dall'istante 
+\begin_inset Formula $\tau$
+\end_inset
+
+, la risposta ha la forma 
+\begin_inset Formula $y\left(t\right)=y_{\infty}\left(1-e^{-t/T}\right)$
+\end_inset
+
+; svolgendo l'integrale tra 
+\begin_inset Formula $\tau$
+\end_inset
+
+ e 
+\begin_inset Formula $T+\tau$
+\end_inset
+
+ di 
+\begin_inset Formula $y\left(t\right)$
+\end_inset
+
+ appenda definito, otteniamo proprio 
+\begin_inset Formula $S_{2}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+S_{2}=\somme{\tau}{T+\tau}{y\left(t\right)}t=\somme{\tau}{T+\tau}{y_{\infty}\left(1-e^{-t/T}\right)}t=\frac{y_{\infty}T}{e}
+\]
+
+\end_inset
+
+L'area 
+\begin_inset Formula $S_{1}$
+\end_inset
+
+ è invece pari a:
+\begin_inset Formula 
+\[
+S_{1}=\somme 0{+\infty}{\mu}t-\somme 0{+\infty}{y\left(t\right)}t=\ldots=y_{\infty}\left(T+\tau\right)
+\]
+
+\end_inset
+
+Usiamo infine l'espressione delle due aree per ottenere i parametri temporali
+ della risposta:
+\begin_inset Formula 
+\[
+T=\frac{eS_{2}}{y_{\infty}},\quad\tau=\frac{S_{1}}{y_{\infty}}-T
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Regole di taratura di Ziegler & Nichols
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "50text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<column alignment="center" valignment="top" width="0pt">
+<row interlinespace="default">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $k_{{\scriptscriptstyle \text{P}}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $T_{{\scriptscriptstyle \text{I}}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $T_{{\scriptscriptstyle \text{D}}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="default">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+P
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{T}{\mu\tau}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\backslash$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\backslash$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="default">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+PI
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{0.9T}{\mu\tau}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $3\tau$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\backslash$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row interlinespace="default">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+PID
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{1.2T}{\mu\tau}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\frac{2\tau}{\mu}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $0.5\tau$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{table}{Regole di taratura di Z
+\backslash
+&N}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "50text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+Queste regole permettono di sfruttare i parametri delle risposte allo scalino
+ calcolati nella sotto-sezione precedente per tarare un regolatore P, PI
+ o PID che abbia la stessa risposta.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Vediamo un esempio di applicazione dei metodi di taratura appena introdotti.
+\end_layout
+
+\begin_layout Example
+
+\emph on
+Sia dato un sistema con funzione di trasferimento:
+\begin_inset Formula 
+\[
+G\left(s\right)=\frac{5}{s\left(s+5\right)}
+\]
+
+\end_inset
+
+Tarare un regolatore PID in modo da ottenere 
+\begin_inset Formula $\left|e_{\infty}\right|=0$
+\end_inset
+
+ con riferimento 
+\begin_inset Formula $w\left(t\right)=\text{sca}\left(t\right)$
+\end_inset
+
+, tempo di assestamento della risposta 
+\begin_inset Formula $T_{a,0.05}<0.3$
+\end_inset
+
+, e margine di fase 
+\begin_inset Formula $\varphi_{m}>70°$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+In questo caso dobbiamo tenere a mente le limitazioni che un regolatore
+ PID pone sulle singolarità (due zeri, un polo nell'origine e uno di chiusura);
+ risulta più agevole la sintesi per iterazioni del regolatore, scegliendo
+ in ordine la frequenza di ciascuna singolarità.
+\end_layout
+
+\begin_layout Example
+Per prima cosa poniamo la funzione di trasferimento in forma fattorizzata
+ di Bode:
+\begin_inset Formula 
+\[
+G\left(s\right)=\frac{1}{s\left(1+\frac{s}{5}\right)}
+\]
+
+\end_inset
+
+da cui otteniamo il guadagno statico 
+\begin_inset Formula $\mu=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+La specifica sull'errore di inseguimento nullo per lo scalino prevede 
+\begin_inset Formula $g=1$
+\end_inset
+
+ e 
+\begin_inset Formula $\mu>0$
+\end_inset
+
+; la specifica sul tempo di assestamento può essere risolta considerando
+ che il margine di fase richiesto è maggiore di 65°, dunque vale:
+\begin_inset Formula 
+\[
+T_{a,0.05}\simeq3T\simeq\frac{3}{\omega_{{\scriptscriptstyle \text{C}}}}<0.3\,\rightarrow\,\omega_{{\scriptscriptstyle \text{C}}}>10
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+Osservando l'impianto 
+\begin_inset Formula $G\left(s\right)$
+\end_inset
+
+ da controllare, notiamo che ha già un polo nell'origine: useremo un regolatore
+ PD, che non introduce ulteriori poli nell'origine (per soddisfare il vincolo
+ sull'errore di inseguimento bisogna mantenere 
+\begin_inset Formula $g=1$
+\end_inset
+
+); per il guadagno, basta prenderlo positivo, quindi per il momento scegliamo
+ 
+\begin_inset Formula $\mu=1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+Per progettare il regolatore per tentativi, dobbiamo definire la sua componente
+ statica e quella dinamica:
+\begin_inset Formula 
+\[
+R\left(s\right)=R_{1}\left(s\right)\cdot R_{2}\left(s\right)=1\cdot R_{2}\left(s\right)
+\]
+
+\end_inset
+
+Abbiamo ottenuto 
+\begin_inset Formula $R_{1}\left(s\right)=1$
+\end_inset
+
+ dalle considerazioni appena fatte sul guadagno statico; col guadagno unitario
+ come regolatore statico, la funzione di anello è pari all'impianto (polo
+ nell'origine e in 
+\begin_inset Formula $\omega=5$
+\end_inset
+
+); dal diagramma di Bode del modulo osserviamo che il vincolo sulla pulsazione
+ di attraversamento non viene soddisfatto; dal diagramma di fase osserviamo
+ tuttavia che, con un attraversamento a bassa frequenza abbiamo margine
+ di fase più elevato.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{0.8cm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename Illustrazioni/8_3-3 Bode modulo vincoli esempio.pdf
+	display false
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/8_3-4 Bode fase esempio.pdf
+	display false
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Diagrammi di Bode
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Per aumentare il valore della pulsazione critica possiamo agire sul guadagno
+ (rimasto vincolato solo dal segno positivo), per esempio aumentandolo a
+ 
+\begin_inset Formula $+20\,\text{dB}=10$
+\end_inset
+
+; tuttavia, la nuova pulsazione di attraversamento è molto vicina al vincolo,
+ ed essendosi spostata verso le alte frequenze causa una diminuzione del
+ margine di fase.
+\end_layout
+
+\begin_layout Standard
+Con un regolatore PD possiamo piazzare uno zero e un polo: con lo zero cancellia
+mo il polo in 
+\begin_inset Formula $\omega=5$
+\end_inset
+
+, ottenendo sia una pulsazione di attraversamento fuori dal vincolo, che
+ un margine di fase prossimo a 90°; inoltre usiamo il polo in alta frequenza
+ come chiusura:
+\begin_inset Formula 
+\[
+R_{2}\left(s\right)=10\frac{\left(1+\frac{s}{5}\right)}{\left(1+\frac{s}{100}\right)}
+\]
+
+\end_inset
+
+La funzione del regolatore vale 
+\begin_inset Formula $R\left(s\right)=R_{2}\left(s\right)$
+\end_inset
+
+; nel caso di regolatore PD abbiamo (da 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Forma-ISA-regolatore-PID"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, ignorando l'azione integrale) la relazione:
+\begin_inset Formula 
+\[
+R_{{\scriptscriptstyle \text{PD}}}\left(s\right)=10\frac{\left(1+\frac{s}{5}\right)}{\left(1+\frac{s}{100}\right)}=k_{{\scriptscriptstyle \text{P}}}\left(1+\frac{T_{{\scriptscriptstyle \text{D}}}s}{1+\frac{T_{{\scriptscriptstyle \text{D}}}}{N}s}\right)=k_{{\scriptscriptstyle \text{P}}}\frac{1+\left(\frac{T_{{\scriptscriptstyle \text{D}}}}{N}+T_{{\scriptscriptstyle \text{D}}}\right)s}{1+\left(\frac{T_{{\scriptscriptstyle \text{D}}}}{N}\right)s}
+\]
+
+\end_inset
+
+Per confronto con 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Forma-fattorizzata-regolatore-PID"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ ricaviamo le costanti di taratura dall'ultima delle precedenti:
+\end_layout
+
+\begin_layout Itemize
+per affinità col guadagno statico 
+\begin_inset Formula $k_{{\scriptscriptstyle \text{P}}}=10$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+per confronto 
+\begin_inset Formula $T_{{\scriptscriptstyle \text{D}}}+\frac{T_{{\scriptscriptstyle \text{D}}}}{N}=\frac{1}{5}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Itemize
+per confronto 
+\begin_inset Formula $\frac{T_{{\scriptscriptstyle \text{D}}}}{N}=\frac{1}{100}$
+\end_inset
+
+;
+\end_layout
+
+\begin_layout Standard
+Mettendo a sistema le relazioni ottenute ricaviamo le rimanenti costanti:
+\begin_inset Formula 
+\[
+\begin{cases}
+T_{{\scriptscriptstyle \text{D}}}+0.01=0.2\\
+N=100T_{{\scriptscriptstyle \text{D}}}
+\end{cases}\Rightarrow\begin{cases}
+T_{{\scriptscriptstyle \text{D}}}=0.19\\
+N=19
+\end{cases}
+\]
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+demo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Chapter
+Sistemi di controllo digitale
+\end_layout
+
+\begin_layout Standard
+Al giorno d'oggi praticamente tutti i sistemi di controllo sono implementati
+ su un circuito dotato di memoria e capacità di calcolo digitale; questo
+ ha dei vantaggi in termini di ripetibilità e uniformità delle misure, oltre
+ alla possibilità di implementare logiche di controllo complesse.
+\end_layout
+
+\begin_layout Standard
+In generale si ha una 
+\emph on
+macchina a stati
+\emph default
+, che realizza la logica digitale; essa calcola l'andamento desiderato,
+ che viene collegato all'ingresso del regolatore, il quale calcola l'ingresso
+ vero e proprio (analogico) dell'impianto; dall'impianto possono arrivare
+ uscite multiple, in generale collegate al regolatore e alla macchina a
+ stati.
+ L'operatore interagisce con la logica digitale tramite una interfaccia
+ HMI
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+La sigla HMI sta per Human-Machine Interface, ovvero interfaccia uomo-macchina
+\end_layout
+
+\end_inset
+
+, inoltre è possibile che la logica o il regolatore siano connessi a Internet,
+ ecc
+\begin_inset Formula $\ldots$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Struttura di riferimento
+\end_layout
+
+\begin_layout Standard
+Ci limiteremo a studiare il seguente caso particolare di sistema di controllo
+ digitale:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/9_1-1 Sistema di controllo digitale.pdf
+	display false
+	scale 110
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Sistema di controllo digitale (di riferimento)
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Sistema-controllo-digitale"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Le
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+Riguardo le sigle dei convertitori: A/D sta per convertitore da analogico
+ a digitale, e D/A per convertitore da digitale ad analogico
+\end_layout
+
+\end_inset
+
+ variabili segnate come 
+\begin_inset Formula $x^{*}\left(k\right)$
+\end_inset
+
+ sono definite nel tempo discreto: l'andamento desiderato è tipicamente
+ generato dalla logica digitale, dunque è indicato come un segnale discreto;
+ esso è confrontato con una versione a tempo discreto dell'uscita vincolata.
+\end_layout
+
+\begin_layout Standard
+Poi abbiamo un regolatore digitale (nella pratica un sistema dinamico a
+ tempo discreto), collegato con un convertitore D/A per iniettare nell'impianto
+ un segnale di comando continuo; infine l'uscita è collegata a un convertitore
+ A/D, che permette di confrontare il segnale a tempo continuo con l'andamento
+ desiderato per generare l'errore di inseguimento discreto.
+\end_layout
+
+\begin_layout Standard
+Il convertitore A/D è detto 
+\emph on
+campionatore
+\emph default
+, mentre il convertitore D/A è detto 
+\emph on
+mantenitore
+\emph default
+; insieme al 
+\emph on
+regolatore digitale
+\emph default
+, questi tre componenti costituiscono un sistema di controllo digitale.
 \end_layout
 
 \begin_layout Chapter
