@@ -1,8 +1,8 @@
 ﻿\begin{tikzpicture} [scale=3]
 
 % Assi
-	\draw[-latex] (-0.2, 0) -- (1.3, 0) node[right] {$\Re$};
-	\draw[-latex] (0, -0.2) -- (0, 1.3) node[above] {$\Im$};
+	\draw[-latex, gray] (-0.2, 0) -- (1.3, 0) node[right, black] {$\Re$};
+	\draw[-latex, gray] (0, -0.2) -- (0, 1.3) node[above, black] {$\Im$};
 % Circonferenza
 	\draw [color=lightgray, dashed] (1,0) arc [start angle=0,end angle=90,x radius=1,y radius=1];
 	\filldraw (1, 0) circle (0.3pt);

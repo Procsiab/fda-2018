@@ -1,0 +1,29 @@
+﻿\begin{tikzpicture} [yscale=2, xscale=0.25]
+
+% Assi
+	\draw[-latex, gray] (-1, 1) -- (21, 1) node[right, black] {$\omega T_s [$rad$]$};
+	\draw[-latex, gray] (0, -0.2) -- (0, 1.5) node[above, black] {$\frac{\left|H_{{\scriptscriptstyle ZOH}}\left(j\omega\right)\right|}{T_{s}}[$dB$]$};
+
+% Istanti
+	\draw [dotted, gray] (6.28, 1) --++  (0, -1.2);
+	\draw (6.28, 1.05) --++ (0, -0.1)
+		node [pos=0, above] {$\omega_s T_s$};
+	\draw [dotted, gray] (12.56, 1) --++  (0, -1.2);
+	\draw (12.56, 1.05) --++ (0, -0.1)
+		node [pos=0, above] {$2\omega_s T_s$};
+	\draw [dotted, gray] (18.84, 1) --++  (0, -1.2);
+	\draw (18.84, 1.05) --++ (0, -0.1)
+		node [pos=0, above] {$3\omega_s T_s$};
+
+% Funzione
+	\def \Ts {1}
+	\draw[domain=0.01:20, samples=1000, smooth, variable=\x, thick] 
+		plot ({\x},{ abs( sin(deg(\x)*(\Ts/2)) / (\x*\Ts/2) ) });
+	\filldraw (0, 1) ellipse [x radius=0.1,y radius=0.015] node[above left] {$\scriptstyle0$};
+
+% Approssimazione bassa frequenza
+	\draw (3.1, 1.05) --++ (0, -0.1)
+		node [pos=0, above] {$\frac{\omega_s T_s}{2}$};
+	\draw (0, 0.64) --++ (3.1, 0);
+	\filldraw (0, 0.64) ellipse [x radius=0.1,y radius=0.015] node[left] {$a$};
+\end{tikzpicture}

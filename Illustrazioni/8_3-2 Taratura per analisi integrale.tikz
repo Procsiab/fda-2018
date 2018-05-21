@@ -1,8 +1,8 @@
 ﻿\begin{tikzpicture} [scale=2]
 
 % Assi
-	\draw[-latex] (-0.2, 0) -- (2.2, 0) node[right] {$t$};
-	\draw[-latex] (0, -0.2) -- (0, 1.5) node[above] {$y(t)$};
+	\draw[-latex, gray] (-0.2, 0) -- (2.2, 0) node[right, black] {$t$};
+	\draw[-latex, gray] (0, -0.2) -- (0, 1.5) node[above, black] {$y(t)$};
 
 % S2
 	\fill [pattern = north west lines, pattern color=gray, domain=0:1.3, variable=\x, smooth]

@@ -1,9 +1,9 @@
 ﻿\begin{tikzpicture} [scale=1]
 % Assi
-	\draw[-latex] (-1.5, 0) -- (2.5, 0) node[right] {$x$};
-	\draw[-latex] (0, -1) -- (0, 1) node[above] {$\dot x$};
+	\draw[-latex, gray] (-1.5, 0) -- (2.5, 0) node[right, black] {$x$};
+	\draw[-latex, gray] (0, -1) -- (0, 1) node[above, black] {$\dot x$};
 % Funzione
-	\draw[scale=0.33, domain=-4:6, smooth, variable=\x, gray] plot ({\x}, {cos(\x r))});
+	\draw[scale=0.33, domain=-4:6, smooth, variable=\x, thick] plot ({\x}, {cos(\x r))});
 % Punti sul grafico
 	\filldraw (-pi/6, 0) circle (1pt)
 		node[above] (x1) {$\scriptstyle \overline{x}_1$};

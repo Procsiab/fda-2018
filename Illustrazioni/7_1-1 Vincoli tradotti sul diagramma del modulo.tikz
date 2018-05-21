@@ -1,8 +1,8 @@
 ﻿\begin{tikzpicture} [scale=1.5]
 
 % Assi e punto
-	\draw[-latex] (-0.3, 0) -- (2.5, 0) node[right] {$\scriptstyle \omega$};
-	\draw[-latex] (0, -0.3) -- (0, 1.8) node[above] {$\scriptstyle dB$};
+	\draw[-latex, gray] (-0.3, 0) -- (2.5, 0) node[right, black] {$\scriptstyle \omega$};
+	\draw[-latex, gray] (0, -0.3) -- (0, 1.8) node[above, black] {$\scriptstyle dB$};
 	\filldraw (1, 0) circle (0.6pt) node (one) [below] {$\scriptscriptstyle 1$};
 	\filldraw (1.5, 0) circle (0.6pt) node (one) [below] {$\scriptstyle \omega_{\scriptscriptstyle C}$};
 % Vincolo guadagno

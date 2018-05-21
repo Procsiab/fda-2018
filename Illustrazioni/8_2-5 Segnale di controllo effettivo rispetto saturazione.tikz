@@ -1,8 +1,8 @@
 ﻿\begin{tikzpicture} [scale=2]
 
 % Assi
-	\draw[-latex] (-0.2, 0) -- (2.2, 0) node[right] {$t$};
-	\draw[-latex] (0, -0.2) -- (0, 1.5) node[above] {$u(t)$};
+	\draw[-latex, gray] (-0.2, 0) -- (2.2, 0) node[right, black] {$t$};
+	\draw[-latex, gray] (0, -0.2) -- (0, 1.5) node[above, black] {$u(t)$};
 
 % Funzione comando
 	\draw[scale=1, domain=0:2.2, smooth, variable=\x, thick] 

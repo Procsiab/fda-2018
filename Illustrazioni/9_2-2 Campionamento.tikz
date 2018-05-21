@@ -1,0 +1,23 @@
+﻿\begin{tikzpicture} [scale=2]
+
+% Assi
+	\draw[-latex, gray] (-0.2, 0) -- (2.2, 0) node[right, black] {$t,\, k$};
+	\draw[-latex, gray] (0, -0.2) -- (0, 1.5) node[above, black] {$y(t)$};
+	\filldraw (0, 0) circle (0.5pt) node[below left] {$0$};
+
+% Istanti
+	\foreach \x in {1,...,4}
+      \draw (\x/2.27, 0.05) --++ (0, -0.1)
+			node [below] {$\x$};
+	\draw [latex-latex] (1.332, 0.1) --++ (0.444, 0)
+		node [midway, above] {$T_s$};
+
+% Funzione
+	\draw[scale=1, domain=0:2.2, smooth, variable=\x, thick] 
+		plot ({\x},{0.98-exp(-2*(\x*\x*\x+0.01))});
+	\filldraw (0.444, 0.16) circle(0.5pt);
+	\filldraw (0.888, 0.74) circle(0.5pt);
+	\filldraw (1.332, 0.97) circle(0.5pt);
+	\filldraw (1.776, 0.98) circle(0.5pt);
+
+\end{tikzpicture}

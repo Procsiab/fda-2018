@@ -1,13 +1,8 @@
 ﻿\begin{tikzpicture} [scale=1.5]
 
-% Punti sul grafico
-% 	\draw[dashdotdotted, color=gray, thick] (0, 1) -- (3, 1);
-% 	\filldraw (0, 1) circle (1pt)
-% 		node[left] (Yi) {$\mu$};
-
 % Assi
-	\draw[-latex] (-1.6, 0) -- (1.3, 0) node[right] {$\Re$};
-	\draw[-latex] (0, -1.6) -- (0, 1.3) node[above] {$\Im$};
+	\draw[-latex, gray] (-1.6, 0) -- (1.3, 0) node[right, black] {$\Re$};
+	\draw[-latex, gray] (0, -1.6) -- (0, 1.3) node[above, black] {$\Im$};
 % Circonferenza e punto critico
 	\draw [dashed, color=gray] circle [radius=1cm];
 	\filldraw (-1, 0) circle (1pt) node[above left=-2pt] (critic) {$\scriptstyle -1$};

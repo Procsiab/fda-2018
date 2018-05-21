@@ -1,11 +1,11 @@
 ﻿\begin{tikzpicture} [scale=2]
 
 % Assi
-	\draw[-latex] (-0.2, 0) -- (2.2, 0) node[right] {$t$};
-	\draw[-latex] (0, -0.2) -- (0, 1.5) node[above] {$w(t)$};
+	\draw[-latex, gray] (-0.2, 0) -- (2.2, 0) node[right, black] {$t$};
+	\draw[-latex, gray] (0, -0.2) -- (0, 1.5) node[above, black] {$w(t)$};
 
 % Funzione
-	\draw[scale=1, domain=0:2.2, smooth, variable=\x, thick, gray] plot ({\x},{0.98-exp(-2*(\x*\x*\x+0.01))});
+	\draw[scale=1, domain=0:2.2, smooth, variable=\x, thick] plot ({\x},{0.98-exp(-2*(\x*\x*\x+0.01))});
 % Saturazione
 	\draw [dashed] (0.16, 0) -- ++(40:2.3);
 

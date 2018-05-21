@@ -1,0 +1,26 @@
+﻿\begin{tikzpicture} [scale=2]
+
+% Assi
+	\draw[-latex, gray] (-0.2, 0) -- (2.2, 0) node[right, black] {$t,\, k$};
+	\draw[-latex, gray] (0, -0.2) -- (0, 1.5) node[above, black] {$u^*(k),\,u(t)$};
+	\filldraw (0, 0) circle (0.5pt) node[below left] {$0$};
+
+% Istanti
+	\foreach \x in {1,...,4}
+      \draw (\x/2.27, 0.05) --++ (0, -0.1)
+			node [below] {$\x$};
+	\draw [latex-latex] (1.332, 0.1) --++ (0.444, 0)
+		node [midway, above] {$T_s$};
+
+% Funzione
+	\draw[thick] (0, 0) --++ (0.444, 0);
+	\filldraw (0.444, 0.16) circle(0.5pt);
+	\draw[thick] (0.444, 0.16) --++ (0.444, 0);
+	\filldraw (0.888, 0.74) circle(0.5pt);
+	\draw[thick] (0.888, 0.74) --++ (0.444, 0);
+	\filldraw (1.332, 0.97) circle(0.5pt);
+	\draw[thick] (1.332, 0.97)  --++ (0.444, 0);
+	\filldraw (1.776, 0.98) circle(0.5pt);
+	\draw[thick] (1.776, 0.98) --++ (0.444, 0);
+
+\end{tikzpicture}

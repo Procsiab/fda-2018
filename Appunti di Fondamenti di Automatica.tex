@@ -2231,14 +2231,14 @@ ponendo lo stato $x\left(t\right)=i\left(t\right)$ (compare la derivata
 della corrente in $v_{{\scriptscriptstyle L}}\left(t\right)$). Nel
 passaggio dal mondo analogico a quello digitale discreto c'è l'operazione
 di \emph{campionamento}, ovvero l'acquisizione di un segnale a intervalli
-regolari: questi intervalli di tempo sono chiamati \emph{passo} di
-campionamento ($T_{s}$).
+regolari: questi intervalli di tempo sono chiamati \emph{periodi}
+di campionamento ($T_{s}$).
 
 Facciamo un'approssimazione a tempo discreto del sistema, considerando
-per ogni passo di campionamento lo stato del sistema in quell'istante,
+per ogni periodo di campionamento lo stato del sistema in quell'istante,
 in cui iniettiamo un ingresso costante fino all'istante successivo;
 potremo così risolvere il movimento del sistema (per esempio integrando
-per un passo di campionamento con la (\ref{eq:Formula-di-Lagrange})).
+per un periodo di campionamento con la (\ref{eq:Formula-di-Lagrange})).
 Partendo da $x\left(k\right)$, calcoliamo il movimento del sistema
 dall'istante successivo $k+1$ come:
 \[
@@ -2278,8 +2278,8 @@ approssimando la derivata nel tempo continuo come una differenza finita:
 \[
 \dot{x}\left(t\right)=\dfrac{\partial x\left(t\right)}{\partial d}\simeq\dfrac{x\left(k+1\right)-x\left(k\right)}{T_{s}}
 \]
-Questa approssimazione è valida nella misura in cui il passo di campionamento
-ha dimensione adeguata rispetto alla velocità del sistema.
+Questa approssimazione è valida nella misura in cui il periodo di
+campionamento ha dimensione adeguata rispetto alla velocità del sistema.
 
 Sostituendo questa equazione in quella a tempo continuo del sistema
 possiamo ottenere un modello discretizzato; riprendendo l'Esempio
@@ -3488,7 +3488,8 @@ Le caratteristiche di questa risposta sono le seguenti:
 \item Valore iniziale nullo al tempo zero ($y\left(0\right)=0$);
 \item Valore iniziale della derivata prima pari a $\lm s{+\infty}{s^{2}\dfrac{\mu}{1+Ts}\cdot\dfrac{1}{s}}=\dfrac{\mu}{T}$
 (pendenza nella tangente nell'origine);
-\item Tempo di assestamento in $\varepsilon$ pari a $T_{a,\varepsilon}\Rightarrow y\left(T_{a,\varepsilon}\right)=\mu\left(1-\varepsilon\right)=\mu\left(1-e^{-\nicefrac{T_{a}}{T}}\right)\text{sca}\left(t\right)\rightarrow e^{-\nicefrac{T_{a}}{T}}=\varepsilon\rightarrow\boxed{T_{a}=-T\ln\left(\varepsilon\right)}$.
+\item Tempo di assestamento in $\varepsilon$ pari a $T_{a,\varepsilon}\Rightarrow y\left(T_{a,\varepsilon}\right)=\mu\left(1-\varepsilon\right)$\\
+$=\mu\left(1-e^{-\nicefrac{T_{a}}{T}}\right)\text{sca}\left(t\right)\rightarrow e^{-\nicefrac{T_{a}}{T}}=\varepsilon\rightarrow\boxed{T_{a}=-T\ln\left(\varepsilon\right)}$.
 \end{itemize}
 \begin{figure}[!h]
 \begin{centering}
@@ -7034,8 +7035,8 @@ Control per un autoveicolo con le seguenti caratteristiche:}
 \end{example}
 \begin{itemize}
 \item massa $m=1500\,\text{kg}$;
-\item tempo per accelerare da $0\,\text{km}/\text{h}$ a $100\,\text{km}/\text{h}$
-$t_{0-100}=10\,\text{s}$;
+\item tempo $t_{0-100}=10\,\text{s}$ per accelerare da $0\,\text{km}/\text{h}$
+a $100\,\text{km}/\text{h}$;
 \item accelerazione (ricavata da $t_{0-100}$) $a\simeq2.7\,\text{m}/\text{s}$;
 \item forza di trazione $F_{{\scriptscriptstyle \text{T}}}=m\cdot a=4050\,\text{N}$;
 \item coefficiente di resistenza dinamica $\beta=29$.
@@ -7088,7 +7089,7 @@ al più di $2\,\text{km}/\text{h}$; allora $\left|e_{\infty}\right|\leq2\,\text{k
 con andamento desiderato $w\left(t\right)=5\cdot\text{ram}\left(t\right)$.
 \item Variazioni dolci di pendenza della strada non devono influenzare la
 velocità raggiunta; allora l'attenuazione del disturbo di processo
-deve valere $d\left(t\right)\leq-20\,\text{dB}$ per $\overline{\omega}_{d}\in\left[0.001,\,0\right]$.
+deve valere $d\left(t\right)\leq-20\,\text{dB}$ per $\overline{\omega}_{d}\in\left[0,\,0.001\right]$.
 \item La velocità misurata da sensori di rotazione delle ruote deve avere
 un'attenuazione per i disturbi di misura $n\left(t\right)\leq-20\,\text{dB}$
 per $\underline{\omega}_{n}\in\left[10^{2},\,10^{3}\right]$.
@@ -7108,8 +7109,8 @@ tuttavia possiamo porre $g=1$ e impostare la relazione
 \[
 \left|e_{\infty}\right|=5/\mu\leq2\,\text{m}/\text{s}\rightarrow\mu\geq5/2;
 \]
-\item $\left|L\left(j\omega\right)\right|\geq20\,\text{dB}$ per $\omega\in\left[0.001,\,0\right]$;
-\item $\left|L\left(j\omega\right)\right|\leq20\,\text{dB}$ per $\omega\in\left[10^{2},\,10^{3}\right]$;
+\item $\left|L\left(j\omega\right)\right|\geq20\,\text{dB}$ per $\omega\in\left[0,\,0.001\right]$;
+\item $\left|L\left(j\omega\right)\right|\leq-20\,\text{dB}$ per $\omega\in\left[10^{2},\,10^{3}\right]$;
 \item dato che la sovraelongazione ha un ruolo nella specifica dello smorzamento
 e lo smorzamento nella specifica della costante di tempo, possiamo
 risolvere le specifiche $\mathrm{{\scriptstyle \left(5\right)}}$
@@ -7973,6 +7974,402 @@ discreto.
 Il convertitore A/D è detto \emph{campionatore}, mentre il convertitore
 D/A è detto \emph{mantenitore}; insieme al \emph{regolatore digitale},
 questi tre componenti costituiscono un sistema di controllo digitale.
+
+\section{Campionatore (A/D)}
+
+\subsection{Quantizzazione}
+
+La prima operazione che il campionatore compie sul segnale è la quantizzazione:
+immaginando di essere all'istante di tempo $t$, abbiamo la variabile
+continua $y\left(t\right)$ in ingresso e la variabile discreta $y^{*}\left(k\right)$
+in uscita; la tensione massima e minima misurabili dal campionatore
+determinano la sua \emph{dinamica} $D=V_{{\scriptscriptstyle \text{MAX}}}-V_{{\scriptscriptstyle \text{MIN}}}$
+(poniamo $D=10V$), e dato che nel dominio digitale si ha un certo
+numero $N$ di \emph{bit} per rappresentare un numero (poniamo $N=12$
+nel nostro esempio), allora avremo in uscita dal campionatore $y^{*}\left(k\right)=2^{N}$
+possibili \emph{livelli} (nel nostro esempio $2^{12}=4096$).
+
+Ciascun livello avrà un'ampiezza, chiamata risoluzione, pari a $\Delta V=D/2^{N}$;
+la risoluzione introduce sempre un \emph{errore di quantizzazione},
+che possiamo considerare come un disturbo di misura pari a $\frac{1}{2}\Delta V$.
+
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{center}
+\includegraphics{\string"Illustrazioni/9_2-1 Quantizzazione\string".pdf}
+\par\end{center}
+\captionof{figure}{Effetto della quantizzazione sui livelli}%
+\end{minipage}%
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{center}
+\includegraphics{\string"Illustrazioni/9_2-2 Campionamento\string".pdf}
+\par\end{center}
+\captionof{figure}{Istanti di campionamento discreti}%
+\end{minipage}
+
+\subsection{Campionamento}
+
+L'azione di campionamento prevede la scelta di un periodo di campionamento
+$T_{s}$, da cui si ottiene la pulsazione di campionamento $\omega_{s}=2\pi/T_{s}$;
+questo intervallo di tempo lega il tempo continuo a quello discreto,
+tramite la relazione $k_{\alpha}=\alpha T_{s}$ (per esempio il secondo
+istante discreto $k_{2}$ vale $2T_{s}$ nel tempo continuo).
+
+Il campionamento quindi permette di prelevare il segnale a intervalli
+regolari di tempo; questo causa una perdita di informazioni sul segnale,
+tra un istante di campionamento $k_{\alpha}$ e il successivo $k_{\alpha+1}$,
+manifestando il fenomeno dell'\emph{aliasing} quando si cerca di ricostruire
+il segnale di partenza usando i campioni.
+
+Infatti a partire dai campioni ci sono infiniti segnali ricostruibili
+a partire da essi: prendiamo un segnale $f\left(t\right)$ nel tempo
+continuo, e la sua trasformata di Fourier $\mathscr{F}\left[f\left(t\right)\right]=F\left(j\omega\right)$;
+si dimostra che la trasformata di Fourier del segnale campionato è
+pari a:
+\begin{equation}
+\mathscr{F}\left[f^{*}\left(t\right)\right]=\frac{1}{T_{s}}\serie{h=-\infty}{+\infty}{F\left(j\left(\omega+h\omega_{s}\right)\right)}\quad h\in\mathbb{Z}\label{eq:Spettro-segnale-campionato-rispetto-originale}
+\end{equation}
+dove nella sommatoria si ha lo spettro del segnale originale ($F\left(j\omega\right)$),
+ripetuto e traslato (nella frequenza) di multipli interi della pulsazione
+di campionamento; questo è lo spettro del segnale campionato. Vediamo
+un esempio grafico per comprendere questa relazione.
+\begin{example}
+Sia dato un segnale $f\left(t\right)$ limitato in banda, la cui trasformata
+di Fourier è un numero complesso, il cui modulo ha pulsazione $\omega\in\left[\omega_{{\scriptscriptstyle \text{MIN}}},\,\omega_{{\scriptscriptstyle \text{MAX}}}\right]$.
+Se $\omega_{s}$ è in prossimità della banda del segnale $f\left(t\right)$,
+i termini dello spettro del segnale campionato si sovrappongono tra
+loro attorno ai multipli di $\omega_{s}$.
+
+Per la relazione (\ref{eq:Spettro-segnale-campionato-rispetto-originale}),
+dovremo sommare tutti questi termini (spettri tratteggiati, nella
+figura \ref{fig:Aliasing}) per ricostruire lo spettro del segnale
+dai campioni; questo spettro avrà dei nuovi valori in prossimità dei
+multipli di $\omega_{s}$, non presenti nello spettro del segnale
+originale (fenomeno chiamato \emph{aliasing}).\demo
+\end{example}
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{center}
+\includegraphics[scale=0.9]{\string"Illustrazioni/9_2-3 Aliasing\string".pdf}
+\par\end{center}
+\captionof{figure}{Aliasing dello spettro}\label{fig:Aliasing}%
+\end{minipage}%
+\begin{minipage}[c]{0.5\textwidth}%
+Per evitare il fenomeno dell'aliasing, è necessario avere una pulsazione
+di campionamento almeno doppia rispetto la massima frequenza dello
+spettro del segnale da campionare (per evitare che lo spettro si sovrapponga
+in prossimità delle $\omega_{s}$); questa considerazione è riassunta
+nel seguente teorema del campionamento.%
+\end{minipage}
+\begin{thm}
+\label{thm:Teorema-del-campionamento}Se\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Teorema del campionamento}{\footnotesize{}\index{Teorema del campionamento@{\footnotesize{}Teorema del campionamento}}}} la massima banda del contenuto in frequenza che vogliamo campionare
+è minore o uguale alla metà della pulsazione di campionamento ($\omega_{{\scriptscriptstyle \text{MAX}}}\leq\frac{1}{2}\omega_{s}$),
+allora è possibile ricostruire il segnale $f\left(t\right)$ a partire
+dai campioni $f^{*}\left(k\right)=f\left(kT_{s}\right)$. Chiamiamo
+\emph{pulsazione di Nyquist} il valore $\omega_{N}\coloneqq\frac{1}{2}\omega_{s}$.
+\end{thm}
+In breve, se campioniamo un segnale limitato in banda che poi vorremo
+ricostruire, allora la pulsazione di Nyquist dovrà essere maggiore
+della banda del segnale; dato che nel mondo fisico i segnali non sono
+limitati in banda, la prima cosa che si fa nel convertitore A/D è
+filtrare passa-basso il segnale con una banda passante $\omega_{f}$(pulsazione
+di filtro); chiamiamo filtro anti-aliasing tale filtro.
+
+Scegliamo sempre di dimensionare il filtro anti-aliasing e il convertitore
+A/D in modo da avere 
+\[
+\omega_{f}>\omega_{{\scriptscriptstyle \text{MAX}}}\land\omega_{s}>2\omega_{f}
+\]
+per verificare il teorema \ref{thm:Teorema-del-campionamento} e filtrare
+le frequenze troppo alte dello spettro del segnale.
+
+\section{Mantenitore (D/A)}
+
+\subsection{Risposta armonica del mantenitore}
+
+~
+
+\begin{minipage}[c]{0.5\textwidth}%
+Anche se esistono tipi differenti di mantenitore, analizzeremo solo
+il cosiddetto mantenitore di ordine zero, indicandolo con la sigla
+\emph{ZOH} (Zero Order Hold). Questo blocco si occupa di fornire,
+sotto forma di costante, il valore precedentemente letto nel tempo
+discreto, ``mantenendolo'' costante per tutta la durata di ciascun
+periodo di campionamento (si veda \figref{Mantenimento-segnale-discreto}).%
+\end{minipage}%
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{center}
+\includegraphics{\string"Illustrazioni/9_3-1 Mantenimento\string".pdf}
+\par\end{center}
+\captionof{figure}{Mantenimento del segnale discreto nel tempo continuo}\label{fig:Mantenimento-segnale-discreto}%
+\end{minipage}
+
+Analizziamo il comportamento della risposta in frequenza del mantenitore:
+consideriamo il segnale $u^{*}\left(k\right)$ come un treno di impulsi
+nel tempo; ciascuno di essi è moltiplicato per un segnale del tipo
+\[
+f_{{\scriptscriptstyle \text{ZOH}}}\left(t\right)=\left\{ 1\,\text{se }t\in\left[0,\,T_{s}\right],\,0\,\text{se }t<0\lor t>T_{s}\right\} 
+\]
+In generale il segnale di comando in uscita dal mantenitore sarà la
+convoluzione dei segnali di comando discreti con i segnali appena
+definiti:
+\[
+u\left(t\right)=u^{*}\left(t\right)\cdot kf_{{\scriptscriptstyle \text{ZOH}}}\left(t\right)
+\]
+
+Consideriamo quindi il mantenitore come una funzione di trasferimento
+con trasformata di Laplace pari a quella del segnale $f_{{\scriptscriptstyle \text{ZOH}}}\left(t\right)$:
+\[
+\mathscr{L}\left[f_{{\scriptscriptstyle \text{ZOH}}}\left(t\right)\right]=\mathscr{L}\left[\text{sca}\left(t\right)-\text{sca}\left(t-T_{s}\right)\right]=\frac{1}{s}-\frac{e^{-T_{s}s}}{s}=\boxed{\frac{1-e^{-T_{s}s}}{s}=H_{{\scriptscriptstyle \text{ZOH}}}\left(s\right)}
+\]
+Per comprendere l'impatto sul sistema di controllo della funzione
+di trasferimento del blocco ZOH, calcoliamo la sua risposta in frequenza
+\[
+H_{{\scriptscriptstyle \text{ZOH}}}\left(j\omega\right)=\frac{1-e^{-T_{s}j\omega}}{j\omega}=e^{-j\omega T_{s}/2}\,\frac{e^{j\omega T_{s}/2}-e^{-j\omega T_{s}/2}}{j\omega}
+\]
+\[
+=e^{-j\omega T_{s}/2}\,\underset{{\scriptstyle \sin\left(\omega T_{s}/2\right)}}{\underbrace{\frac{e^{j\omega T_{s}/2}-e^{-j\omega T_{s}/2}}{2j}}}\cdot\frac{2T_{s}}{\omega T_{s}}=e^{-j\omega T_{s}/2}\,\frac{\sin\left(\omega T_{s}/2\right)}{\omega T_{s}/2}T_{s}
+\]
+Siamo interessati al modulo e alla fase della precedente:
+\[
+\left|H_{{\scriptscriptstyle \text{ZOH}}}\left(j\omega\right)\right|=T_{s}\left|\frac{\sin\left(\omega T_{s}/2\right)}{\omega T_{s}/2}\right|
+\]
+\[
+\arg\left(H_{{\scriptscriptstyle \text{ZOH}}}\left(j\omega\right)\right)=-\omega\frac{T_{s}}{2}+\arg\left(\sin\left(\omega T_{s}/2\right)\right)
+\]
+Osserviamo che il primo termine della fase corrisponde a una perdita
+lineare di fase, più un secondo contributo di fase oscillante a causa
+del seno (semplifichiamo il denominatore dato che abbiamo solo quantità
+positive); per quanto riguarda il modulo, abbiamo una funzione della
+forma $\left|\frac{\sin x}{x}\right|$. I diagrammi di Bode di $H_{{\scriptscriptstyle \text{ZOH}}}\left(j\omega\right)$
+sono in figura \ref{fig:Bode-risposta-mantenitore}; in entrambi la
+pulsazione è normalizzata rispetto a quella di campionamento, mentre
+il modulo è normalizzato sul periodo di campionamento.
+
+\hspace*{-0.5cm}%
+\begin{minipage}[t]{1\columnwidth}%
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{center}
+\includegraphics{\string"Illustrazioni/9_3-2 Bode modulo risposta mantenitore\string".pdf}
+\par\end{center}%
+\end{minipage}%
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{center}
+\includegraphics{\string"Illustrazioni/9_3-3 Bode fase risposta mantenitore\string".pdf}
+\par\end{center}%
+\end{minipage}
+
+\captionof{figure}{Diagrammi di Bode della risposta del mantenitore}\label{fig:Bode-risposta-mantenitore}%
+\end{minipage}
+
+\subsection{Modulo}
+
+Il valore del modulo dipende sostanzialmente dalla pulsazione $\omega$
+con quella di campionamento $\omega_{s}$: quando $\omega=\omega_{s}\left(kT_{s}\right)$
+abbiamo il seno di $2\pi$ (pari a $0=-\infty\,\text{dB}$), e il
+diagramma si ripete per valori sempre più piccoli del modulo, per
+ogni multiplo $k$-esimo della pulsazione di campionamento; quando
+$\omega\rightarrow0$ abbiamo il seno che tende a $1=0\,\text{dB}$.
+
+Calcoliamo il valore esatto per $\omega=\frac{\omega T_{s}}{2}$,
+per determinare l'errore che commettiamo assumendo che l'andamento
+del modulo sia approssimabile a quello di un filtro passa basso del
+primo ordine:\marginpar{Ricordiamo che abbiamo definito il periodo di campionamento rispetto
+alla pulsazione come $T_{s}=\frac{2\pi}{\omega_{s}}$, da cui $T_{s}\omega_{s}=2\pi$}
+\[
+a=H_{{\scriptscriptstyle \text{ZOH}}}\left(j\frac{\omega_{s}T_{s}}{2}\right)=\frac{\sin\left(\frac{\omega_{s}T_{s}}{4}\right)}{\omega_{s}T_{s}/4}=\frac{\sin\left(\pi/2\right)}{\pi/2}=\frac{2}{\pi}\simeq-3\,\text{dB}
+\]
+
+Notiamo che il valore $\omega_{s}/2$ corrisponde proprio alla pulsazione
+di Nyquist $\omega_{N}\sim a/T_{s}$: possiamo quindi ignorare il
+trasferimento alle frequenze più alte, dato che il nostro sistema
+(se ben progettato) lavora a pulsazioni molto più basse; deduciamo
+una prima osservazione:
+\begin{center}
+\begin{minipage}[t]{0.8\columnwidth}%
+\begin{rem}
+Il mantenitore in bassa frequenza è assimilabile a un filtro passa
+basso, con banda passante $\omega_{s}/2$.
+\end{rem}
+%
+\end{minipage}
+\par\end{center}
+
+\subsection{Fase}
+
+Il valore della fase dipende dai due contributi: lineare pari a $-\omega T_{s}/2$,
+che diminuisce la fase di $-k\pi\,\text{rad}=-k180{^\circ}$ per ogni
+istante al quale $\omega=\omega_{s}\left(kT_{s}\right)$; periodico
+pari a $\sin\left(\omega T_{s}/2\right)$, che determina un andamento
+decrescente proporzionale a $\omega$ (quando $\omega=\omega_{s}$
+la fase vale $-\pi$).
+
+Calcoliamo il valore esatto per $\omega=\frac{\omega_{s}T_{s}}{2}$,
+per determinare l'errore che commettiamo assumendo che l'andamento
+della fase sia approssimabile a quello di un filtro passa basso del
+primo ordine:
+\[
+b=\arg\left(H_{{\scriptscriptstyle \text{ZOH}}}\left(j\frac{\omega_{s}T_{s}}{2}\right)\right)=-\frac{\omega_{s}T_{s}}{4}=-\frac{\pi}{2}\,\text{rad}=-90{^\circ}
+\]
+Notiamo che, al contrario del modulo, la fase è molto minore di quella
+che avrebbe un filtro passa basso in corrispondenza della banda passante
+($-45{^\circ}$); se dimensioniamo il convertitore in modo da avere
+$\omega_{s}>2\omega_{f}$, allora siamo interessati solo all'andamento
+a bassa frequenza della risposta di $H_{{\scriptscriptstyle \text{ZOH}}}\left(j\omega\right)$.
+
+Un'approssimazione ragionevole per il mantenitore in bassa frequenza
+è la seguente:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Risposta in bassa frequenza del ZOH}{\footnotesize{}\index{Risposta in bassa frequenza del ZOH@{\footnotesize{}Risposta in bassa frequenza del ZOH}}}}[0.2cm]
+\begin{equation}
+H_{{\scriptscriptstyle \text{ZOH}}}\left(s\rightarrow0\right)=\hat{H}_{{\scriptscriptstyle \text{ZOH}}}\left(s\right)=e^{-sT_{s}/2}T_{s}\label{eq:Risposta-mantenitore-bassa-frequenza}
+\end{equation}
+deduciamo quindi una seconda osservazione:
+\begin{center}
+\begin{minipage}[t]{0.8\columnwidth}%
+\begin{rem}
+L'effetto fisico del mantenitore è quello di produrre un ritardo pari
+alla metà del periodo di campionamento $T_{s}$.
+\end{rem}
+%
+\end{minipage}
+\par\end{center}
+
+\subsection{Prestazioni del mantenitore}
+
+Consideriamo il segnale $u^{*}\left(k\right)$; la sua trasformata
+di Fourier vale (usando l'equazione (\ref{eq:Spettro-segnale-campionato-rispetto-originale})):
+\[
+\mathscr{F}\left[u^{*}\left(k\right)\right]=U^{*}\left(j\omega\right)=\frac{1}{T_{s}}\serie{h=-\infty}{+\infty}{U\left(j\left(\omega+h\omega_{s}\right)\right)}
+\]
+Moltiplichiamo ora lo spettro del segnale entrante nel mantenitore
+($\mathscr{F}\left[u^{*}\left(k\right)\right]$) per la funzione di
+risposta armonica (\ref{eq:Risposta-mantenitore-bassa-frequenza}),
+per ottenere lo spettro del segnale in uscita dal mantenitore ($\mathscr{F}\left[u\left(t\right)\right]$):
+\[
+\mathscr{F}\left[u\left(t\right)\right]=\frac{1}{\cancel{T_{s}}}U\left(j\omega\right)\cdot e^{-j\omega T_{s}/2}\cancel{T_{s}}
+\]
+dove abbiamo supposto la pulsazione di campionamento $\omega_{s}$
+almeno doppia rispetto alla banda passante del filtro anti-aliasing
+($\omega_{s}$) - in pratica non si verificano fenomeni di aliasing
+entro le nostre ipotesi. La forma dello spettro in uscita è quella
+dello spettro in ingresso ($U\left(j\omega\right)$) con un ritardo
+pari a $T_{s}/2$ ($e^{-j\omega T_{s}/2}$), proprio come ipotizzato
+per approssimazione.
+\begin{center}
+\begin{minipage}[t]{0.8\columnwidth}%
+\begin{rem}
+In generale, preso un segnale $f\left(t\right)$ in ingresso a un
+convertitore A/D (campionatore), si ottiene in uscita un segnale discreto
+$f^{*}\left(t\right)$, che collegato in ingresso a un convertitore
+D/A (mantenitore) viene ricostruito in uscita come $\tilde{f}\left(t\right)$;
+i segnali $f\left(t\right)$ e $\tilde{f}\left(t\right)$ sono sfasati
+nel tempo di $T_{s}/2$.
+\end{rem}
+%
+\end{minipage}
+\par\end{center}
+
+\section{Progetto del regolatore digitale}
+
+Il regolatore digitale $R^{*}\left(k\right)$ è un blocco che prende
+in ingresso l'errore di inseguimento nel tempo discreto ($e^{*}\left(k\right)$),
+e ha in uscita il segnale di comando digitale $u^{*}\left(k\right)$.
+
+Supponiamo scalari l'errore di inseguimento e il segnale di comando,
+e che il regolatore sia un sistema LTI a tempo discreto; indichiamo
+con $x_{R}^{*}$ gli stati interni del regolatore.
+
+Una prima rappresentazione per il regolatore può essere scritta sotto
+queste ipotesi (usando (\ref{eq:Modello-standard-sistemi-tempo-discreto}))
+come:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Modello per regolatore digitale}{\footnotesize{}\index{Regolatore digitale, modello@{\footnotesize{}Regolatore digitale, modello}}}}[0.4cm]
+\begin{equation}
+\begin{cases}
+x_{R}^{*}\left(k+1\right)=A_{R}^{*}\cdot x_{R}^{*}\left(k\right)+B_{R}^{*}\cdot e^{*}\left(k\right)\\
+u^{*}\left(k\right)=C_{R}^{*}\cdot x_{R}^{*}\left(k\right)+D_{R}^{*}\cdot e^{*}\left(k\right)
+\end{cases}\label{eq:Modello-regolatore-digitale}
+\end{equation}
+
+Ipotizziamo di avere già sintetizzato un regolatore nel tempo continuo:
+la sua trasposizione nel tempo discreto secondo il modello (\ref{eq:Modello-regolatore-digitale})
+prende il nome di \emph{progetto del regolatore nel tempo discreto},
+e coinvolge le seguenti attività:
+\begin{enumerate}
+\item Scelta del periodo di campionamento (e quindi della pulsazione di
+campionamento);
+\item Valutazione dell'effetto della pulsazione di campionamento sul sistema,
+e riprogettare $R\left(s\right)$ se necessario (in molti casi non
+è possibile scegliere liberamente il periodo di campionamento);
+\item Ricavare le equazioni di $R^{*}\left(k\right)$.
+\end{enumerate}
+
+\subsection{Periodo di campionamento}
+
+Se il regolatore è progettato a dovere in anello chiuso, la funzione
+di sensitività complementare $\left|F\left(j\omega\right)\right|$
+sarà come un filtro passa-basso con banda passante pari alla pulsazione
+critica ($\omega_{{\scriptscriptstyle \text{C}}}$); vogliamo che
+la pulsazione di taglio del filtro anti-aliasing sia a più di una
+decade di distanza da quella critica, per evitare che il filtro diminuisca
+il margine di fase (in pratica prendiamo $\omega_{f}\gg\omega_{{\scriptscriptstyle \text{C}}}$);
+scegliamo la pulsazione di campionamento in base al Teorema \ref{thm:Teorema-del-campionamento},
+ponendola pari a $\omega_{s}\gg2\omega_{f}$.
+
+Una regola empirica che riassume le considerazioni appena fatte, è
+la seguente:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Vincoli sulla pulsazione di campionamento}{\footnotesize{}\index{Mantenitore, vincoli sulla pulsazione di campionamento}}}
+\begin{equation}
+\alpha\omega_{{\scriptscriptstyle \text{C}}}<\omega_{s}<10\alpha\omega_{{\scriptscriptstyle \text{C}}}\quad\alpha\in\left[5,\,10\right]\label{eq:Vincoli-pulsazione-campionamento}
+\end{equation}
+Nel dominio del tempo, vale la precedente scritta rispetto al periodo
+di campionamento; ricaviamo la relazione dal tempo di assestamento
+all'1\%:
+\[
+T_{a,0.01}=5T\simeq\frac{5}{\omega_{{\scriptscriptstyle \text{C}}}}\rightarrow\omega_{{\scriptscriptstyle \text{C}}}=\frac{5}{T_{a,0.01}}
+\]
+Sapendo inoltre che $\omega_{s}=2\pi/T_{s}$, possiamo scrivere i
+vincoli sulla pulsazione (\ref{eq:Vincoli-pulsazione-campionamento})
+nel dominio dei tempi (e non delle fasi):
+\[
+\frac{5\alpha}{T_{a,0.01}}<\frac{2\pi}{T_{s}}<\frac{50\alpha}{T_{a,0.01}}
+\]
+dove se $\alpha=2\pi$, la precedente relazione diventa (invertendo
+per esplicitare $T_{s}$):\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Vincoli sul periodo di campionamento}{\footnotesize{}\index{Mantenitore, vincoli sul periodo di campionamento}}}[0.2cm]
+\begin{equation}
+\frac{T_{a,0.01}}{50}<T_{s}<\frac{T_{a,0.01}}{5}\label{eq:Vincoli-periodo-campionamento}
+\end{equation}
+In pratica, in un transitorio di risposta a uno scalino, vogliamo
+acquisire dai 5 ai 50 campioni per rispettare la specifica sul tempo
+di assestamento.
+
+\subsection{Effetto del campionamento sul sistema}
+
+L'effetto del passo di campionamento sul sistema di controllo è quello
+di un ritardo nell'anello di retroazione: se la funzione di anello
+del controllore analogico era $L\left(s\right)=R\left(s\right)\cdot G\left(s\right)$,
+per il controllore digitale la funzione di anello sarà
+\[
+L^{\prime}\left(s\right)=e^{-sT_{s}/2}\,R\left(s\right)\cdot G\left(s\right)
+\]
+Il termine aggiuntivo del ritardo non avrà effetto sul modulo (avendo
+modulo unitario), mentre comporterà uno sfasamento (rispetto a $L\left(s\right)$)
+pari a:
+\[
+\Delta\varphi=\arg\left(e^{-j\omega T_{s}/2}\right)=-\frac{T_{s}}{2}\omega\overset{{\scriptstyle T_{s}=2\pi/\omega_{s}}}{\longrightarrow}-\pi\frac{\omega}{\omega_{s}}
+\]
+Ci interessa valutare lo sfasamento in corrispondenza della pulsazione
+critica, per $\omega=\omega_{{\scriptscriptstyle \text{C}}}$; esso
+sarà determinato dalla precedente:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Sfasamento critico del mantenitore}{\footnotesize{}\index{Mantenitore, sfasamento critico}}}
+\begin{equation}
+\Delta\varphi_{{\scriptscriptstyle \text{C}}}=\arg\left(e^{-j\omega_{\text{c}}T_{s}/2}\right)=-\pi\frac{\omega_{{\scriptscriptstyle \text{C}}}}{\omega_{s}}\label{eq:Sfasamento-critico-del-mantenitore}
+\end{equation}
+Segue che il margine di fase per un sistema di controllo digitale
+discreto vale 
+\begin{equation}
+\varphi_{m}^{*}=\varphi_{m}+\Delta\varphi_{{\scriptscriptstyle \text{C}}}\label{eq:Margine-fase-controllo-digitale}
+\end{equation}
+
 
 \appendix
 

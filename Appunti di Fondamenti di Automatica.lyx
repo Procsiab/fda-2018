@@ -8715,7 +8715,7 @@ campionamento
 , ovvero l'acquisizione di un segnale a intervalli regolari: questi intervalli
  di tempo sono chiamati 
 \emph on
-passo
+periodi
 \emph default
  di campionamento (
 \begin_inset Formula $T_{s}$
@@ -8726,10 +8726,10 @@ passo
 
 \begin_layout Standard
 Facciamo un'approssimazione a tempo discreto del sistema, considerando per
- ogni passo di campionamento lo stato del sistema in quell'istante, in cui
- iniettiamo un ingresso costante fino all'istante successivo; potremo così
- risolvere il movimento del sistema (per esempio integrando per un passo
- di campionamento con la 
+ ogni periodo di campionamento lo stato del sistema in quell'istante, in
+ cui iniettiamo un ingresso costante fino all'istante successivo; potremo
+ così risolvere il movimento del sistema (per esempio integrando per un
+ periodo di campionamento con la 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:Formula-di-Lagrange"
@@ -8868,7 +8868,7 @@ reference "eq:Formula-di-Eulero"
 
 \end_inset
 
-Questa approssimazione è valida nella misura in cui il passo di campionamento
+Questa approssimazione è valida nella misura in cui il periodo di campionamento
  ha dimensione adeguata rispetto alla velocità del sistema.
 \end_layout
 
@@ -13471,7 +13471,15 @@ Tempo di assestamento in
 \end_inset
 
  pari a 
-\begin_inset Formula $T_{a,\varepsilon}\Rightarrow y\left(T_{a,\varepsilon}\right)=\mu\left(1-\varepsilon\right)=\mu\left(1-e^{-\nicefrac{T_{a}}{T}}\right)\text{sca}\left(t\right)\rightarrow e^{-\nicefrac{T_{a}}{T}}=\varepsilon\rightarrow\boxed{T_{a}=-T\ln\left(\varepsilon\right)}$
+\begin_inset Formula $T_{a,\varepsilon}\Rightarrow y\left(T_{a,\varepsilon}\right)=\mu\left(1-\varepsilon\right)$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $=\mu\left(1-e^{-\nicefrac{T_{a}}{T}}\right)\text{sca}\left(t\right)\rightarrow e^{-\nicefrac{T_{a}}{T}}=\varepsilon\rightarrow\boxed{T_{a}=-T\ln\left(\varepsilon\right)}$
 \end_inset
 
 .
@@ -27251,16 +27259,16 @@ massa
 \end_layout
 
 \begin_layout Itemize
-tempo per accelerare da 
+tempo 
+\begin_inset Formula $t_{0-100}=10\,\text{s}$
+\end_inset
+
+ per accelerare da 
 \begin_inset Formula $0\,\text{km}/\text{h}$
 \end_inset
 
  a 
 \begin_inset Formula $100\,\text{km}/\text{h}$
-\end_inset
-
- 
-\begin_inset Formula $t_{0-100}=10\,\text{s}$
 \end_inset
 
 ;
@@ -27497,7 +27505,7 @@ Variazioni dolci di pendenza della strada non devono influenzare la velocità
 \end_inset
 
  per 
-\begin_inset Formula $\overline{\omega}_{d}\in\left[0.001,\,0\right]$
+\begin_inset Formula $\overline{\omega}_{d}\in\left[0,\,0.001\right]$
 \end_inset
 
 .
@@ -27600,14 +27608,14 @@ si potrebbe soddisfare la specifica in modo conservativo ponendo
 \end_inset
 
  per 
-\begin_inset Formula $\omega\in\left[0.001,\,0\right]$
+\begin_inset Formula $\omega\in\left[0,\,0.001\right]$
 \end_inset
 
 ;
 \end_layout
 
 \begin_layout Enumerate
-\begin_inset Formula $\left|L\left(j\omega\right)\right|\leq20\,\text{dB}$
+\begin_inset Formula $\left|L\left(j\omega\right)\right|\leq-20\,\text{dB}$
 \end_inset
 
  per 
@@ -31133,6 +31141,1736 @@ mantenitore
 regolatore digitale
 \emph default
 , questi tre componenti costituiscono un sistema di controllo digitale.
+\end_layout
+
+\begin_layout Section
+Campionatore (A/D)
+\end_layout
+
+\begin_layout Subsection
+Quantizzazione
+\end_layout
+
+\begin_layout Standard
+La prima operazione che il campionatore compie sul segnale è la quantizzazione:
+ immaginando di essere all'istante di tempo 
+\begin_inset Formula $t$
+\end_inset
+
+, abbiamo la variabile continua 
+\begin_inset Formula $y\left(t\right)$
+\end_inset
+
+ in ingresso e la variabile discreta 
+\begin_inset Formula $y^{*}\left(k\right)$
+\end_inset
+
+ in uscita; la tensione massima e minima misurabili dal campionatore determinano
+ la sua 
+\emph on
+dinamica
+\emph default
+ 
+\begin_inset Formula $D=V_{{\scriptscriptstyle \text{MAX}}}-V_{{\scriptscriptstyle \text{MIN}}}$
+\end_inset
+
+ (poniamo 
+\begin_inset Formula $D=10V$
+\end_inset
+
+), e dato che nel dominio digitale si ha un certo numero 
+\begin_inset Formula $N$
+\end_inset
+
+ di 
+\emph on
+bit
+\emph default
+ per rappresentare un numero (poniamo 
+\begin_inset Formula $N=12$
+\end_inset
+
+ nel nostro esempio), allora avremo in uscita dal campionatore 
+\begin_inset Formula $y^{*}\left(k\right)=2^{N}$
+\end_inset
+
+ possibili 
+\emph on
+livelli
+\emph default
+ (nel nostro esempio 
+\begin_inset Formula $2^{12}=4096$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Ciascun livello avrà un'ampiezza, chiamata risoluzione, pari a 
+\begin_inset Formula $\Delta V=D/2^{N}$
+\end_inset
+
+; la risoluzione introduce sempre un 
+\emph on
+errore di quantizzazione
+\emph default
+, che possiamo considerare come un disturbo di misura pari a 
+\begin_inset Formula $\frac{1}{2}\Delta V$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "50text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/9_2-1 Quantizzazione.pdf
+	display false
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Effetto della quantizzazione sui livelli}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "50text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/9_2-2 Campionamento.pdf
+	display false
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Istanti di campionamento discreti}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Campionamento
+\end_layout
+
+\begin_layout Standard
+L'azione di campionamento prevede la scelta di un periodo di campionamento
+ 
+\begin_inset Formula $T_{s}$
+\end_inset
+
+, da cui si ottiene la pulsazione di campionamento 
+\begin_inset Formula $\omega_{s}=2\pi/T_{s}$
+\end_inset
+
+; questo intervallo di tempo lega il tempo continuo a quello discreto, tramite
+ la relazione 
+\begin_inset Formula $k_{\alpha}=\alpha T_{s}$
+\end_inset
+
+ (per esempio il secondo istante discreto 
+\begin_inset Formula $k_{2}$
+\end_inset
+
+ vale 
+\begin_inset Formula $2T_{s}$
+\end_inset
+
+ nel tempo continuo).
+\end_layout
+
+\begin_layout Standard
+Il campionamento quindi permette di prelevare il segnale a intervalli regolari
+ di tempo; questo causa una perdita di informazioni sul segnale, tra un
+ istante di campionamento 
+\begin_inset Formula $k_{\alpha}$
+\end_inset
+
+ e il successivo 
+\begin_inset Formula $k_{\alpha+1}$
+\end_inset
+
+, manifestando il fenomeno dell'
+\emph on
+aliasing
+\emph default
+ quando si cerca di ricostruire il segnale di partenza usando i campioni.
+\end_layout
+
+\begin_layout Standard
+Infatti a partire dai campioni ci sono infiniti segnali ricostruibili a
+ partire da essi: prendiamo un segnale 
+\begin_inset Formula $f\left(t\right)$
+\end_inset
+
+ nel tempo continuo, e la sua trasformata di Fourier 
+\begin_inset Formula $\mathscr{F}\left[f\left(t\right)\right]=F\left(j\omega\right)$
+\end_inset
+
+; si dimostra che la trasformata di Fourier del segnale campionato è pari
+ a:
+\begin_inset Formula 
+\begin{equation}
+\mathscr{F}\left[f^{*}\left(t\right)\right]=\frac{1}{T_{s}}\serie{h=-\infty}{+\infty}{F\left(j\left(\omega+h\omega_{s}\right)\right)}\quad h\in\mathbb{Z}\label{eq:Spettro-segnale-campionato-rispetto-originale}
+\end{equation}
+
+\end_inset
+
+dove nella sommatoria si ha lo spettro del segnale originale (
+\begin_inset Formula $F\left(j\omega\right)$
+\end_inset
+
+), ripetuto e traslato (nella frequenza) di multipli interi della pulsazione
+ di campionamento; questo è lo spettro del segnale campionato.
+ Vediamo un esempio grafico per comprendere questa relazione.
+\end_layout
+
+\begin_layout Example
+Sia dato un segnale 
+\begin_inset Formula $f\left(t\right)$
+\end_inset
+
+ limitato in banda, la cui trasformata di Fourier è un numero complesso,
+ il cui modulo ha pulsazione 
+\begin_inset Formula $\omega\in\left[\omega_{{\scriptscriptstyle \text{MIN}}},\,\omega_{{\scriptscriptstyle \text{MAX}}}\right]$
+\end_inset
+
+.
+ Se 
+\begin_inset Formula $\omega_{s}$
+\end_inset
+
+ è in prossimità della banda del segnale 
+\begin_inset Formula $f\left(t\right)$
+\end_inset
+
+, i termini dello spettro del segnale campionato si sovrappongono tra loro
+ attorno ai multipli di 
+\begin_inset Formula $\omega_{s}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Example
+Per la relazione 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Spettro-segnale-campionato-rispetto-originale"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, dovremo sommare tutti questi termini (spettri tratteggiati, nella figura
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Aliasing"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) per ricostruire lo spettro del segnale dai campioni; questo spettro avrà
+ dei nuovi valori in prossimità dei multipli di 
+\begin_inset Formula $\omega_{s}$
+\end_inset
+
+, non presenti nello spettro del segnale originale (fenomeno chiamato 
+\emph on
+aliasing
+\emph default
+).
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+demo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "50text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/9_2-3 Aliasing.pdf
+	display false
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Aliasing dello spettro}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Aliasing"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "50text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+Per evitare il fenomeno dell'aliasing, è necessario avere una pulsazione
+ di campionamento almeno doppia rispetto la massima frequenza dello spettro
+ del segnale da campionare (per evitare che lo spettro si sovrapponga in
+ prossimità delle 
+\begin_inset Formula $\omega_{s}$
+\end_inset
+
+); questa considerazione è riassunta nel seguente teorema del campionamento.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Theorem
+\begin_inset CommandInset label
+LatexCommand label
+name "thm:Teorema-del-campionamento"
+
+\end_inset
+
+Se
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "3cm"
+height "1pt"
+
+\end_inset
+
+
+\series bold
+\size footnotesize
+
+\begin_inset Newline newline
+\end_inset
+
+Teorema del campionamento
+\series default
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Teorema del campionamento
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ la massima banda del contenuto in frequenza che vogliamo campionare è minore
+ o uguale alla metà della pulsazione di campionamento (
+\begin_inset Formula $\omega_{{\scriptscriptstyle \text{MAX}}}\leq\frac{1}{2}\omega_{s}$
+\end_inset
+
+), allora è possibile ricostruire il segnale 
+\begin_inset Formula $f\left(t\right)$
+\end_inset
+
+ a partire dai campioni 
+\begin_inset Formula $f^{*}\left(k\right)=f\left(kT_{s}\right)$
+\end_inset
+
+.
+ Chiamiamo 
+\emph on
+pulsazione di Nyquist
+\emph default
+ il valore 
+\begin_inset Formula $\omega_{N}\coloneqq\frac{1}{2}\omega_{s}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In breve, se campioniamo un segnale limitato in banda che poi vorremo ricostruir
+e, allora la pulsazione di Nyquist dovrà essere maggiore della banda del
+ segnale; dato che nel mondo fisico i segnali non sono limitati in banda,
+ la prima cosa che si fa nel convertitore A/D è filtrare passa-basso il
+ segnale con una banda passante 
+\begin_inset Formula $\omega_{f}$
+\end_inset
+
+(pulsazione di filtro); chiamiamo filtro anti-aliasing tale filtro.
+\end_layout
+
+\begin_layout Standard
+Scegliamo sempre di dimensionare il filtro anti-aliasing e il convertitore
+ A/D in modo da avere 
+\begin_inset Formula 
+\[
+\omega_{f}>\omega_{{\scriptscriptstyle \text{MAX}}}\land\omega_{s}>2\omega_{f}
+\]
+
+\end_inset
+
+per verificare il teorema 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:Teorema-del-campionamento"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ e filtrare le frequenze troppo alte dello spettro del segnale.
+\end_layout
+
+\begin_layout Section
+Mantenitore (D/A)
+\end_layout
+
+\begin_layout Subsection
+Risposta armonica del mantenitore
+\end_layout
+
+\begin_layout Standard
+\begin_inset space ~
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "50text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+Anche se esistono tipi differenti di mantenitore, analizzeremo solo il cosiddett
+o mantenitore di ordine zero, indicandolo con la sigla 
+\emph on
+ZOH
+\emph default
+ (Zero Order Hold).
+ Questo blocco si occupa di fornire, sotto forma di costante, il valore
+ precedentemente letto nel tempo discreto, 
+\begin_inset Quotes eld
+\end_inset
+
+mantenendolo
+\begin_inset Quotes erd
+\end_inset
+
+ costante per tutta la durata di ciascun periodo di campionamento (si veda
+ 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:Mantenimento-segnale-discreto"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "50text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/9_3-1 Mantenimento.pdf
+	display false
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Mantenimento del segnale discreto nel tempo continuo}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Mantenimento-segnale-discreto"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Analizziamo il comportamento della risposta in frequenza del mantenitore:
+ consideriamo il segnale 
+\begin_inset Formula $u^{*}\left(k\right)$
+\end_inset
+
+ come un treno di impulsi nel tempo; ciascuno di essi è moltiplicato per
+ un segnale del tipo
+\begin_inset Formula 
+\[
+f_{{\scriptscriptstyle \text{ZOH}}}\left(t\right)=\left\{ 1\,\text{se }t\in\left[0,\,T_{s}\right],\,0\,\text{se }t<0\lor t>T_{s}\right\} 
+\]
+
+\end_inset
+
+In generale il segnale di comando in uscita dal mantenitore sarà la convoluzione
+ dei segnali di comando discreti con i segnali appena definiti:
+\begin_inset Formula 
+\[
+u\left(t\right)=u^{*}\left(t\right)\cdot kf_{{\scriptscriptstyle \text{ZOH}}}\left(t\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Consideriamo quindi il mantenitore come una funzione di trasferimento con
+ trasformata di Laplace pari a quella del segnale 
+\begin_inset Formula $f_{{\scriptscriptstyle \text{ZOH}}}\left(t\right)$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\mathscr{L}\left[f_{{\scriptscriptstyle \text{ZOH}}}\left(t\right)\right]=\mathscr{L}\left[\text{sca}\left(t\right)-\text{sca}\left(t-T_{s}\right)\right]=\frac{1}{s}-\frac{e^{-T_{s}s}}{s}=\boxed{\frac{1-e^{-T_{s}s}}{s}=H_{{\scriptscriptstyle \text{ZOH}}}\left(s\right)}
+\]
+
+\end_inset
+
+Per comprendere l'impatto sul sistema di controllo della funzione di trasferimen
+to del blocco ZOH, calcoliamo la sua risposta in frequenza
+\begin_inset Formula 
+\[
+H_{{\scriptscriptstyle \text{ZOH}}}\left(j\omega\right)=\frac{1-e^{-T_{s}j\omega}}{j\omega}=e^{-j\omega T_{s}/2}\,\frac{e^{j\omega T_{s}/2}-e^{-j\omega T_{s}/2}}{j\omega}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+=e^{-j\omega T_{s}/2}\,\underset{{\scriptstyle \sin\left(\omega T_{s}/2\right)}}{\underbrace{\frac{e^{j\omega T_{s}/2}-e^{-j\omega T_{s}/2}}{2j}}}\cdot\frac{2T_{s}}{\omega T_{s}}=e^{-j\omega T_{s}/2}\,\frac{\sin\left(\omega T_{s}/2\right)}{\omega T_{s}/2}T_{s}
+\]
+
+\end_inset
+
+Siamo interessati al modulo e alla fase della precedente:
+\begin_inset Formula 
+\[
+\left|H_{{\scriptscriptstyle \text{ZOH}}}\left(j\omega\right)\right|=T_{s}\left|\frac{\sin\left(\omega T_{s}/2\right)}{\omega T_{s}/2}\right|
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\arg\left(H_{{\scriptscriptstyle \text{ZOH}}}\left(j\omega\right)\right)=-\omega\frac{T_{s}}{2}+\arg\left(\sin\left(\omega T_{s}/2\right)\right)
+\]
+
+\end_inset
+
+Osserviamo che il primo termine della fase corrisponde a una perdita lineare
+ di fase, più un secondo contributo di fase oscillante a causa del seno
+ (semplifichiamo il denominatore dato che abbiamo solo quantità positive);
+ per quanto riguarda il modulo, abbiamo una funzione della forma 
+\begin_inset Formula $\left|\frac{\sin x}{x}\right|$
+\end_inset
+
+.
+ I diagrammi di Bode di 
+\begin_inset Formula $H_{{\scriptscriptstyle \text{ZOH}}}\left(j\omega\right)$
+\end_inset
+
+ sono in figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Bode-risposta-mantenitore"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+; in entrambi la pulsazione è normalizzata rispetto a quella di campionamento,
+ mentre il modulo è normalizzato sul periodo di campionamento.
+\end_layout
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+hspace*{-0.5cm}
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "50text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/9_3-2 Bode modulo risposta mantenitore.pdf
+	display false
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "50text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/9_3-3 Bode fase risposta mantenitore.pdf
+	display false
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Diagrammi di Bode della risposta del mantenitore}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Bode-risposta-mantenitore"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Modulo
+\end_layout
+
+\begin_layout Standard
+Il valore del modulo dipende sostanzialmente dalla pulsazione 
+\begin_inset Formula $\omega$
+\end_inset
+
+ con quella di campionamento 
+\begin_inset Formula $\omega_{s}$
+\end_inset
+
+: quando 
+\begin_inset Formula $\omega=\omega_{s}\left(kT_{s}\right)$
+\end_inset
+
+ abbiamo il seno di 
+\begin_inset Formula $2\pi$
+\end_inset
+
+ (pari a 
+\begin_inset Formula $0=-\infty\,\text{dB}$
+\end_inset
+
+), e il diagramma si ripete per valori sempre più piccoli del modulo, per
+ ogni multiplo 
+\begin_inset Formula $k$
+\end_inset
+
+-esimo della pulsazione di campionamento; quando 
+\begin_inset Formula $\omega\rightarrow0$
+\end_inset
+
+ abbiamo il seno che tende a 
+\begin_inset Formula $1=0\,\text{dB}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Calcoliamo il valore esatto per 
+\begin_inset Formula $\omega=\frac{\omega T_{s}}{2}$
+\end_inset
+
+, per determinare l'errore che commettiamo assumendo che l'andamento del
+ modulo sia approssimabile a quello di un filtro passa basso del primo ordine:
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+Ricordiamo che abbiamo definito il periodo di campionamento rispetto alla
+ pulsazione come 
+\begin_inset Formula $T_{s}=\frac{2\pi}{\omega_{s}}$
+\end_inset
+
+, da cui 
+\begin_inset Formula $T_{s}\omega_{s}=2\pi$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+a=H_{{\scriptscriptstyle \text{ZOH}}}\left(j\frac{\omega_{s}T_{s}}{2}\right)=\frac{\sin\left(\frac{\omega_{s}T_{s}}{4}\right)}{\omega_{s}T_{s}/4}=\frac{\sin\left(\pi/2\right)}{\pi/2}=\frac{2}{\pi}\simeq-3\,\text{dB}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Notiamo che il valore 
+\begin_inset Formula $\omega_{s}/2$
+\end_inset
+
+ corrisponde proprio alla pulsazione di Nyquist 
+\begin_inset Formula $\omega_{N}\sim a/T_{s}$
+\end_inset
+
+: possiamo quindi ignorare il trasferimento alle frequenze più alte, dato
+ che il nostro sistema (se ben progettato) lavora a pulsazioni molto più
+ basse; deduciamo una prima osservazione:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "80col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Remark
+Il mantenitore in bassa frequenza è assimilabile a un filtro passa basso,
+ con banda passante 
+\begin_inset Formula $\omega_{s}/2$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Fase
+\end_layout
+
+\begin_layout Standard
+Il valore della fase dipende dai due contributi: lineare pari a 
+\begin_inset Formula $-\omega T_{s}/2$
+\end_inset
+
+, che diminuisce la fase di 
+\begin_inset Formula $-k\pi\,\text{rad}=-k180°$
+\end_inset
+
+ per ogni istante al quale 
+\begin_inset Formula $\omega=\omega_{s}\left(kT_{s}\right)$
+\end_inset
+
+; periodico pari a 
+\begin_inset Formula $\sin\left(\omega T_{s}/2\right)$
+\end_inset
+
+, che determina un andamento decrescente proporzionale a 
+\begin_inset Formula $\omega$
+\end_inset
+
+ (quando 
+\begin_inset Formula $\omega=\omega_{s}$
+\end_inset
+
+ la fase vale 
+\begin_inset Formula $-\pi$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Calcoliamo il valore esatto per 
+\begin_inset Formula $\omega=\frac{\omega_{s}T_{s}}{2}$
+\end_inset
+
+, per determinare l'errore che commettiamo assumendo che l'andamento della
+ fase sia approssimabile a quello di un filtro passa basso del primo ordine:
+\begin_inset Formula 
+\[
+b=\arg\left(H_{{\scriptscriptstyle \text{ZOH}}}\left(j\frac{\omega_{s}T_{s}}{2}\right)\right)=-\frac{\omega_{s}T_{s}}{4}=-\frac{\pi}{2}\,\text{rad}=-90°
+\]
+
+\end_inset
+
+Notiamo che, al contrario del modulo, la fase è molto minore di quella che
+ avrebbe un filtro passa basso in corrispondenza della banda passante (
+\begin_inset Formula $-45°$
+\end_inset
+
+); se dimensioniamo il convertitore in modo da avere 
+\begin_inset Formula $\omega_{s}>2\omega_{f}$
+\end_inset
+
+, allora siamo interessati solo all'andamento a bassa frequenza della risposta
+ di 
+\begin_inset Formula $H_{{\scriptscriptstyle \text{ZOH}}}\left(j\omega\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Un'approssimazione ragionevole per il mantenitore in bassa frequenza è la
+ seguente:
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "3cm"
+height "1pt"
+
+\end_inset
+
+
+\series bold
+\size footnotesize
+
+\begin_inset Newline newline
+\end_inset
+
+Risposta in bassa frequenza del ZOH
+\series default
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Risposta in bassa frequenza del ZOH
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[0.2cm]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+H_{{\scriptscriptstyle \text{ZOH}}}\left(s\rightarrow0\right)=\hat{H}_{{\scriptscriptstyle \text{ZOH}}}\left(s\right)=e^{-sT_{s}/2}T_{s}\label{eq:Risposta-mantenitore-bassa-frequenza}
+\end{equation}
+
+\end_inset
+
+deduciamo quindi una seconda osservazione:
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "80col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Remark
+L'effetto fisico del mantenitore è quello di produrre un ritardo pari alla
+ metà del periodo di campionamento 
+\begin_inset Formula $T_{s}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Prestazioni del mantenitore
+\end_layout
+
+\begin_layout Standard
+Consideriamo il segnale 
+\begin_inset Formula $u^{*}\left(k\right)$
+\end_inset
+
+; la sua trasformata di Fourier vale (usando l'equazione 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Spettro-segnale-campionato-rispetto-originale"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+):
+\begin_inset Formula 
+\[
+\mathscr{F}\left[u^{*}\left(k\right)\right]=U^{*}\left(j\omega\right)=\frac{1}{T_{s}}\serie{h=-\infty}{+\infty}{U\left(j\left(\omega+h\omega_{s}\right)\right)}
+\]
+
+\end_inset
+
+Moltiplichiamo ora lo spettro del segnale entrante nel mantenitore (
+\begin_inset Formula $\mathscr{F}\left[u^{*}\left(k\right)\right]$
+\end_inset
+
+) per la funzione di risposta armonica 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Risposta-mantenitore-bassa-frequenza"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, per ottenere lo spettro del segnale in uscita dal mantenitore (
+\begin_inset Formula $\mathscr{F}\left[u\left(t\right)\right]$
+\end_inset
+
+):
+\begin_inset Formula 
+\[
+\mathscr{F}\left[u\left(t\right)\right]=\frac{1}{\cancel{T_{s}}}U\left(j\omega\right)\cdot e^{-j\omega T_{s}/2}\cancel{T_{s}}
+\]
+
+\end_inset
+
+dove abbiamo supposto la pulsazione di campionamento 
+\begin_inset Formula $\omega_{s}$
+\end_inset
+
+ almeno doppia rispetto alla banda passante del filtro anti-aliasing (
+\begin_inset Formula $\omega_{s}$
+\end_inset
+
+) - in pratica non si verificano fenomeni di aliasing entro le nostre ipotesi.
+ La forma dello spettro in uscita è quella dello spettro in ingresso (
+\begin_inset Formula $U\left(j\omega\right)$
+\end_inset
+
+) con un ritardo pari a 
+\begin_inset Formula $T_{s}/2$
+\end_inset
+
+ (
+\begin_inset Formula $e^{-j\omega T_{s}/2}$
+\end_inset
+
+), proprio come ipotizzato per approssimazione.
+\end_layout
+
+\begin_layout Standard
+\noindent
+\align center
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "80col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Remark
+In generale, preso un segnale 
+\begin_inset Formula $f\left(t\right)$
+\end_inset
+
+ in ingresso a un convertitore A/D (campionatore), si ottiene in uscita
+ un segnale discreto 
+\begin_inset Formula $f^{*}\left(t\right)$
+\end_inset
+
+, che collegato in ingresso a un convertitore D/A (mantenitore) viene ricostruit
+o in uscita come 
+\begin_inset Formula $\tilde{f}\left(t\right)$
+\end_inset
+
+; i segnali 
+\begin_inset Formula $f\left(t\right)$
+\end_inset
+
+ e 
+\begin_inset Formula $\tilde{f}\left(t\right)$
+\end_inset
+
+ sono sfasati nel tempo di 
+\begin_inset Formula $T_{s}/2$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Progetto del regolatore digitale
+\end_layout
+
+\begin_layout Standard
+Il regolatore digitale 
+\begin_inset Formula $R^{*}\left(k\right)$
+\end_inset
+
+ è un blocco che prende in ingresso l'errore di inseguimento nel tempo discreto
+ (
+\begin_inset Formula $e^{*}\left(k\right)$
+\end_inset
+
+), e ha in uscita il segnale di comando digitale 
+\begin_inset Formula $u^{*}\left(k\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Supponiamo scalari l'errore di inseguimento e il segnale di comando, e che
+ il regolatore sia un sistema LTI a tempo discreto; indichiamo con 
+\begin_inset Formula $x_{R}^{*}$
+\end_inset
+
+ gli stati interni del regolatore.
+\end_layout
+
+\begin_layout Standard
+Una prima rappresentazione per il regolatore può essere scritta sotto queste
+ ipotesi (usando 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Modello-standard-sistemi-tempo-discreto"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+) come:
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "3cm"
+height "1pt"
+
+\end_inset
+
+
+\series bold
+\size footnotesize
+
+\begin_inset Newline newline
+\end_inset
+
+Modello per regolatore digitale
+\series default
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+
+\size footnotesize
+Regolatore digitale, modello
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[0.4cm]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\begin{cases}
+x_{R}^{*}\left(k+1\right)=A_{R}^{*}\cdot x_{R}^{*}\left(k\right)+B_{R}^{*}\cdot e^{*}\left(k\right)\\
+u^{*}\left(k\right)=C_{R}^{*}\cdot x_{R}^{*}\left(k\right)+D_{R}^{*}\cdot e^{*}\left(k\right)
+\end{cases}\label{eq:Modello-regolatore-digitale}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Ipotizziamo di avere già sintetizzato un regolatore nel tempo continuo:
+ la sua trasposizione nel tempo discreto secondo il modello 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Modello-regolatore-digitale"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ prende il nome di 
+\emph on
+progetto del regolatore nel tempo discreto
+\emph default
+, e coinvolge le seguenti attività:
+\end_layout
+
+\begin_layout Enumerate
+Scelta del periodo di campionamento (e quindi della pulsazione di campionamento)
+;
+\end_layout
+
+\begin_layout Enumerate
+Valutazione dell'effetto della pulsazione di campionamento sul sistema,
+ e riprogettare 
+\begin_inset Formula $R\left(s\right)$
+\end_inset
+
+ se necessario (in molti casi non è possibile scegliere liberamente il periodo
+ di campionamento);
+\end_layout
+
+\begin_layout Enumerate
+Ricavare le equazioni di 
+\begin_inset Formula $R^{*}\left(k\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Subsection
+Periodo di campionamento
+\end_layout
+
+\begin_layout Standard
+Se il regolatore è progettato a dovere in anello chiuso, la funzione di
+ sensitività complementare 
+\begin_inset Formula $\left|F\left(j\omega\right)\right|$
+\end_inset
+
+ sarà come un filtro passa-basso con banda passante pari alla pulsazione
+ critica (
+\begin_inset Formula $\omega_{{\scriptscriptstyle \text{C}}}$
+\end_inset
+
+); vogliamo che la pulsazione di taglio del filtro anti-aliasing sia a più
+ di una decade di distanza da quella critica, per evitare che il filtro
+ diminuisca il margine di fase (in pratica prendiamo 
+\begin_inset Formula $\omega_{f}\gg\omega_{{\scriptscriptstyle \text{C}}}$
+\end_inset
+
+); scegliamo la pulsazione di campionamento in base al Teorema 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "thm:Teorema-del-campionamento"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, ponendola pari a 
+\begin_inset Formula $\omega_{s}\gg2\omega_{f}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Una regola empirica che riassume le considerazioni appena fatte, è la seguente:
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "3cm"
+height "1pt"
+
+\end_inset
+
+
+\series bold
+\size footnotesize
+
+\begin_inset Newline newline
+\end_inset
+
+Vincoli sulla pulsazione di campionamento
+\series default
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+Mantenitore, vincoli sulla pulsazione di campionamento
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\alpha\omega_{{\scriptscriptstyle \text{C}}}<\omega_{s}<10\alpha\omega_{{\scriptscriptstyle \text{C}}}\quad\alpha\in\left[5,\,10\right]\label{eq:Vincoli-pulsazione-campionamento}
+\end{equation}
+
+\end_inset
+
+Nel dominio del tempo, vale la precedente scritta rispetto al periodo di
+ campionamento; ricaviamo la relazione dal tempo di assestamento all'1%:
+\begin_inset Formula 
+\[
+T_{a,0.01}=5T\simeq\frac{5}{\omega_{{\scriptscriptstyle \text{C}}}}\rightarrow\omega_{{\scriptscriptstyle \text{C}}}=\frac{5}{T_{a,0.01}}
+\]
+
+\end_inset
+
+Sapendo inoltre che 
+\begin_inset Formula $\omega_{s}=2\pi/T_{s}$
+\end_inset
+
+, possiamo scrivere i vincoli sulla pulsazione 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Vincoli-pulsazione-campionamento"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ nel dominio dei tempi (e non delle fasi):
+\begin_inset Formula 
+\[
+\frac{5\alpha}{T_{a,0.01}}<\frac{2\pi}{T_{s}}<\frac{50\alpha}{T_{a,0.01}}
+\]
+
+\end_inset
+
+dove se 
+\begin_inset Formula $\alpha=2\pi$
+\end_inset
+
+, la precedente relazione diventa (invertendo per esplicitare 
+\begin_inset Formula $T_{s}$
+\end_inset
+
+):
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "3cm"
+height "1pt"
+
+\end_inset
+
+
+\series bold
+\size footnotesize
+
+\begin_inset Newline newline
+\end_inset
+
+Vincoli sul periodo di campionamento
+\series default
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+Mantenitore, vincoli sul periodo di campionamento
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[0.2cm]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\frac{T_{a,0.01}}{50}<T_{s}<\frac{T_{a,0.01}}{5}\label{eq:Vincoli-periodo-campionamento}
+\end{equation}
+
+\end_inset
+
+In pratica, in un transitorio di risposta a uno scalino, vogliamo acquisire
+ dai 5 ai 50 campioni per rispettare la specifica sul tempo di assestamento.
+\end_layout
+
+\begin_layout Subsection
+Effetto del campionamento sul sistema
+\end_layout
+
+\begin_layout Standard
+L'effetto del passo di campionamento sul sistema di controllo è quello di
+ un ritardo nell'anello di retroazione: se la funzione di anello del controllore
+ analogico era 
+\begin_inset Formula $L\left(s\right)=R\left(s\right)\cdot G\left(s\right)$
+\end_inset
+
+, per il controllore digitale la funzione di anello sarà
+\begin_inset Formula 
+\[
+L^{\prime}\left(s\right)=e^{-sT_{s}/2}\,R\left(s\right)\cdot G\left(s\right)
+\]
+
+\end_inset
+
+Il termine aggiuntivo del ritardo non avrà effetto sul modulo (avendo modulo
+ unitario), mentre comporterà uno sfasamento (rispetto a 
+\begin_inset Formula $L\left(s\right)$
+\end_inset
+
+) pari a:
+\begin_inset Formula 
+\[
+\Delta\varphi=\arg\left(e^{-j\omega T_{s}/2}\right)=-\frac{T_{s}}{2}\omega\overset{{\scriptstyle T_{s}=2\pi/\omega_{s}}}{\longrightarrow}-\pi\frac{\omega}{\omega_{s}}
+\]
+
+\end_inset
+
+Ci interessa valutare lo sfasamento in corrispondenza della pulsazione critica,
+ per 
+\begin_inset Formula $\omega=\omega_{{\scriptscriptstyle \text{C}}}$
+\end_inset
+
+; esso sarà determinato dalla precedente:
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "3cm"
+height "1pt"
+
+\end_inset
+
+
+\series bold
+\size footnotesize
+
+\begin_inset Newline newline
+\end_inset
+
+Sfasamento critico del mantenitore
+\series default
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+Mantenitore, sfasamento critico
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\Delta\varphi_{{\scriptscriptstyle \text{C}}}=\arg\left(e^{-j\omega_{\text{c}}T_{s}/2}\right)=-\pi\frac{\omega_{{\scriptscriptstyle \text{C}}}}{\omega_{s}}\label{eq:Sfasamento-critico-del-mantenitore}
+\end{equation}
+
+\end_inset
+
+Segue che il margine di fase per un sistema di controllo digitale discreto
+ vale 
+\begin_inset Formula 
+\begin{equation}
+\varphi_{m}^{*}=\varphi_{m}+\Delta\varphi_{{\scriptscriptstyle \text{C}}}\label{eq:Margine-fase-controllo-digitale}
+\end{equation}
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Chapter
