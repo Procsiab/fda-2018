@@ -1,0 +1,27 @@
+﻿\begin{tikzpicture} [scale=2.5]
+
+% Assi
+	\draw[-latex, gray] (-0.2, 0) -- (1.6, 0) node[above, black] {$t$};
+	\draw[-latex, gray] (0, -0.2) -- (0, 1.1) node[right, black] {$f(t)$};
+
+% S2
+	\fill [pattern = crosshatch dots, pattern color=gray, domain=0.5:1.3, variable=\x, smooth]
+      (0.5, 0) -- plot ({\x}, {0.98-exp(-2*(\x*\x*\x+0.01))})
+      -- (1.3, 0) -- cycle;
+
+% Cambiamento di segno
+	\filldraw (0.5, 0) circle (0.5pt) node[below] {$kT_s$};
+	\filldraw (1.3, 0) circle (0.5pt) node[below] {$(k+1)T_S$};
+	\draw [dotted] (1.3, 0) -- ++ (0, 0.97);
+	\draw [dotted] (0.5, 0) -- ++ (0, 0.97);
+
+% Eulero avanti
+	\fill [pattern = north east lines, pattern color=gray]
+      (0.5, 0) rectangle (1.3, 0.97);
+	\draw (1.3, 0.97) circle(0.5pt) circle(1pt) --++ (-0.8, 0);
+
+% Funzione
+	\draw[scale=1, domain=0:1.5, smooth, variable=\x, thick]
+		plot ({\x},{0.98-exp(-2*(\x*\x*\x+0.01))});
+
+\end{tikzpicture}

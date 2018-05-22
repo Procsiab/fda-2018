@@ -32510,7 +32510,7 @@ height "1pt"
 \begin_inset Newline newline
 \end_inset
 
-Modello per regolatore digitale
+Modello discreto per regolatore digitale
 \series default
 
 \begin_inset Index idx
@@ -32546,7 +32546,7 @@ status open
 \begin{cases}
 x_{R}^{*}\left(k+1\right)=A_{R}^{*}\cdot x_{R}^{*}\left(k\right)+B_{R}^{*}\cdot e^{*}\left(k\right)\\
 u^{*}\left(k\right)=C_{R}^{*}\cdot x_{R}^{*}\left(k\right)+D_{R}^{*}\cdot e^{*}\left(k\right)
-\end{cases}\label{eq:Modello-regolatore-digitale}
+\end{cases}\label{eq:Modello-discreto-regolatore-digitale}
 \end{equation}
 
 \end_inset
@@ -32559,7 +32559,7 @@ Ipotizziamo di avere già sintetizzato un regolatore nel tempo continuo:
  la sua trasposizione nel tempo discreto secondo il modello 
 \begin_inset CommandInset ref
 LatexCommand eqref
-reference "eq:Modello-regolatore-digitale"
+reference "eq:Modello-discreto-regolatore-digitale"
 plural "false"
 caps "false"
 noprefix "false"
@@ -32866,6 +32866,1061 @@ Segue che il margine di fase per un sistema di controllo digitale discreto
 \begin_inset Formula 
 \begin{equation}
 \varphi_{m}^{*}=\varphi_{m}+\Delta\varphi_{{\scriptscriptstyle \text{C}}}\label{eq:Margine-fase-controllo-digitale}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Discretizzazione del regolatore digitale
+\end_layout
+
+\begin_layout Standard
+Per ricavare il regolatore a tempo discreto dobbiamo partire dall'equazione
+ di un regolatore a tempo continuo, dalla quale ricaviamo un'equazione ricorsiva
+ dell'uscita (segnale di comando) nel tempo discreto; il modo più agevole
+ per ricavare questa equazione è usare lo strumento matematico della 
+\emph on
+trasformata 
+\emph default
+z, l'analogo nel tempo discreto della trasformata di Laplace.
+\end_layout
+
+\begin_layout Subsection
+Trasformata zeta
+\end_layout
+
+\begin_layout Standard
+Si tratta della trasformazione matematica che permette di passare da un
+ segnale reale nel tempo continuo a una sua trasformata nel dominio della
+ cosiddetta variabile 
+\emph on
+z
+\emph default
+ (analogo a tempo discreto della variabile 
+\emph on
+s
+\emph default
+).
+\end_layout
+
+\begin_layout Standard
+Dato un segnale 
+\begin_inset Formula $f^{*}\left(k\right),\,k\in\mathbb{Z}$
+\end_inset
+
+, la sua trasformata è definita come:
+\begin_inset Formula 
+\[
+\mathcal{Z}\left[f^{*}\left(k\right)\right]=F^{*}\left(z\right)\coloneqq\serie{k=0}{+\infty}{f^{*}\left(k\right)z^{-k}}
+\]
+
+\end_inset
+
+con z variabile complessa, e la trasformata è indicata con la lettera maiuscola;
+ in analogia con la trasformata di Laplace (si veda 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Trasformata-Laplace"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), abbiamo una sommatoria (invece dell'integrale) e moltiplichiamo il segnale
+ iniziale per 
+\begin_inset Formula $z^{.k}$
+\end_inset
+
+ (invece di moltiplicare per l'esponenziale).
+\end_layout
+
+\begin_layout Standard
+Senza entrare nei dettagli (siamo interessati solo a una specifica proprietà,
+ per la discretizzazione del regolatore digitale a tempo continuo), per
+ la trasformata z valgono tutte le proprietà che abbiamo introdotto sulla
+ trasformata di Laplace (si veda 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "chap:Trasformata-di-Laplace"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), infatti è un operatore lineare, è invertibile e soprattutto vale la seguente
+ proprietà (analoga alla derivazione in Laplace):
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "3cm"
+height "1pt"
+
+\end_inset
+
+
+\series bold
+\size footnotesize
+
+\begin_inset Newline newline
+\end_inset
+
+Ritardo e Anticipo nella trasformata z
+\series default
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+Trasformata z, ritardo e anticipo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[0.4cm]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\begin{array}{c}
+\mathcal{Z}\left[f^{*}\left(k+a\right)\right]=z^{a}\mathcal{Z}\left[f^{*}\left(k\right)\right]=z^{a}F^{*}\left(z\right)\\
+\\
+\mathcal{Z}\left[f^{*}\left(k-b\right)\right]=z^{-b}\mathcal{Z}\left[f^{*}\left(k\right)\right]=z^{-b}F^{*}\left(z\right)
+\end{array}\label{eq:Trasformata-z-ritardo-e-anticipo}
+\end{equation}
+
+\end_inset
+
+Osserviamo che, moltiplicare per 
+\begin_inset Formula $z^{a}$
+\end_inset
+
+ un segnale nel dominio della variabile z equivale a traslarlo in avanti
+ (ritardarlo) di 
+\begin_inset Formula $a$
+\end_inset
+
+ passi nel tempo discreto, e moltiplicare per 
+\begin_inset Formula $z^{-b}$
+\end_inset
+
+ lo stesso segnale nel dominio di z equivale a traslarlo indietro (anticiparlo)
+ di 
+\begin_inset Formula $b$
+\end_inset
+
+ passi nel tempo discreto.
+\end_layout
+
+\begin_layout Subsection
+Trasferimento del regolatore digitale
+\end_layout
+
+\begin_layout Standard
+Riprendiamo le equazioni 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Modello-discreto-regolatore-digitale"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ per il regolatore digitale nel tempo continuo; utilizzando la trasformata
+ zeta, possiamo ricavare da queste equazioni (nel dominio del tempo) la
+ relazione ingresso-uscita del regolatore, quindi la funzione di trasferimento
+ (nel dominio di z).
+ Applichiamo la proprietà 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Trasformata-z-ritardo-e-anticipo"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ effettuando la trasformata zeta delle equazioni 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Modello-discreto-regolatore-digitale"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\begin{cases}
+zX_{R}^{*}\left(z\right)=A_{R}^{*}X_{R}^{*}\left(z\right)+B_{R}^{*}E^{*}\left(z\right)\\
+U^{*}\left(z\right)=C_{R}^{*}X_{R}^{*}\left(z\right)+D_{R}^{*}E^{*}\left(z\right)
+\end{cases}
+\]
+
+\end_inset
+
+a questo punto risolviamo l'equazione di stato rispetto alla trasformata
+ dello stato:
+\begin_inset Formula 
+\[
+\left(zI-A_{R}^{*}\right)X_{R}^{*}\left(z\right)=B_{R}^{*}\left(z\right)E^{*}\left(z\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+X_{R}^{*}\left(z\right)=\left(zI-A_{R}^{*}\right)^{-1}B_{R}^{*}E^{*}\left(z\right)
+\]
+
+\end_inset
+
+sostituiamo l'espressione ottenuta per 
+\begin_inset Formula $X_{R}^{*}$
+\end_inset
+
+ nell'equazione di uscita:
+\begin_inset Formula 
+\[
+U^{*}\left(z\right)=\left[C_{R}^{*}\left(zI-A_{R}^{*}\right)^{-1}B_{R}^{*}+D_{R}^{*}\right]E^{*}\left(z\right)
+\]
+
+\end_inset
+
+l'espressione moltiplicata per l'errore di inseguimento è la funzione di
+ trasferimento del regolatore discreto nel dominio di z:
+\begin_inset Formula 
+\begin{equation}
+R^{*}\left(z\right)=C_{R}^{*}\left(zI-A_{R}^{*}\right)^{-1}B_{R}^{*}+D_{R}^{*}\label{eq:Trasferimento-regolatore-nel-dominio-z}
+\end{equation}
+
+\end_inset
+
+Dal punto di vista matematico, è la stessa espressione che avevamo ricavato
+ nel tempo continuo (si veda 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Funzione-trasferimento"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+); su di essa valgono le stesse proprietà, in particolare si tratta di una
+ funzione razionale, rapporto di polinomi a coefficienti reali, e per costruzion
+e sarà almeno propria.
+\end_layout
+
+\begin_layout Standard
+Inoltre l'inversione 
+\begin_inset Formula $\left(zI-A_{R}^{*}\right)^{-1}$
+\end_inset
+
+ comporta la divisione per il suo determinante e, trattandosi del polinomio
+ caratteristico 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Polinomio-caratteristico"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, se il regolatore è asintoticamente stabile, tutte le radici al denominatore
+ di 
+\begin_inset Formula $R^{*}\left(z\right)$
+\end_inset
+
+ avranno parte reale negativa.
+ Avendo una funzione di trasferimento costruita in questo modo, nel dominio
+ di z, è molto facile ricavare da essa un'equazione ricorsiva che permetta
+ di calcolare il comando.
+\end_layout
+
+\begin_layout Standard
+In generale la funzione del regolatore avrà una forma del tipo:
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "3cm"
+height "1pt"
+
+\end_inset
+
+
+\series bold
+\size footnotesize
+
+\begin_inset Newline newline
+\end_inset
+
+Funzione del regolatore discreto in z
+\series default
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+Regolatore discreto, trasferimento in z
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[0.1cm]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+R^{*}\left(z\right)=\frac{\beta_{m}z^{m}+\beta_{m-1}z^{m-1}+\ldots+\beta_{0}}{\alpha_{n}z^{n}+\alpha_{n-1}z^{n-1}+\ldots+\alpha_{0}}=\frac{U^{*}\left(z\right)}{E^{*}\left(z\right)}\label{eq:Regolatore-in-z-rispetto-errore-e-comando}
+\end{equation}
+
+\end_inset
+
+dove 
+\begin_inset Formula $n$
+\end_inset
+
+ è il numero degli stati del regolatore, e 
+\begin_inset Formula $m\leq n$
+\end_inset
+
+; possiamo calcolare il comando riscrivendo l'equazione senza i denominatori:
+\begin_inset Formula 
+\[
+E^{*}\left(z\right)\cdot\left(\beta_{m}z^{m}+\beta_{m-1}z^{m-1}+\ldots+\beta_{0}\right)=U^{*}\left(z\right)\cdot\left(\alpha_{n}z^{n}+\alpha_{n-1}z^{n-1}+\ldots+\alpha_{0}\right)
+\]
+
+\end_inset
+
+A questo punto antitrasformiamo, svolgendo il prodotto; otterremo una somma
+ di segnali di errore e di comando sfasati nel tempo.
+\end_layout
+
+\begin_layout Example
+
+\emph on
+Sia data la seguente funzione di un regolatore discreto nel dominio di z:
+\begin_inset Formula 
+\[
+R^{*}\left(z\right)=\frac{z+5}{z-0.5}
+\]
+
+\end_inset
+
+
+\begin_inset Formula $\checked$
+\end_inset
+
+Ricavare un'equazione ricorsiva che implementi il regolatore nel dominio
+ del tempo.
+\end_layout
+
+\begin_layout Example
+Usando la relazione 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Regolatore-in-z-rispetto-errore-e-comando"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ possiamo scrivere, in funzione del comando:
+\begin_inset Formula 
+\[
+U^{*}\left(z\right)=\frac{z+5}{z-0.5}E^{*}\left(z\right)\,\rightarrow\,\left(z-0.5\right)U^{*}\left(z\right)=\left(z-0.5\right)E^{*}\left(z\right)
+\]
+
+\end_inset
+
+Svolgiamo il prodotto e antitrasformiamo:
+\begin_inset Formula 
+\[
+u^{*}\left(k+1\right)-0.5u^{*}\left(k\right)=e^{*}\left(k+1\right)+5e^{*}\left(k\right)
+\]
+
+\end_inset
+
+Spostiamo a destra tutti i termini eccetto quelli col valore del comando
+ al passo più recente, poi ritardiamo tutti gli istanti in modo da avere
+ al più dei segnali in 
+\begin_inset Formula $k-b$
+\end_inset
+
+ con 
+\begin_inset Formula $b\in\mathbb{N}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+u^{*}\left(k\right)=0.5u^{*}\left(k-1\right)+e^{*}\left(k\right)+5e^{*}\left(k-1\right)
+\]
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+demo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Realizzazione del regolatore digitale
+\end_layout
+
+\begin_layout Standard
+Il vantaggio di usare la trasformata z è evidente quando si deve realizzare
+ il regolatore digitale: se sappiamo calcolare la funzione di trasferimento
+ nel dominio di z, riusciamo agevolmente a ricavare l'equazione ricorsiva
+ del comando; non passeremo attraverso una realizzazione del regolatore
+ tramite variabili di stato, ma vedremo un metodo per ottenere direttamente
+ 
+\begin_inset Formula $R^{*}\left(z\right)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Torniamo nel dominio del tempo e partiamo dal regolatore a tempo continuo
+ scritto rispetto alle sue variabili di stato:
+\begin_inset Formula 
+\[
+\begin{cases}
+\dot{x}_{R}\left(t\right)=A_{R}x_{R}\left(t\right)+B_{R}e\left(t\right)\\
+u\left(t\right)=C_{R}x_{R}\left(t\right)+D_{R}e\left(t\right)
+\end{cases}
+\]
+
+\end_inset
+
+A partire da questa scrittura possiamo calcolare infinite realizzazioni
+ (esistono infinite matrici 
+\begin_inset Formula $A_{R},\,B_{R},\,C_{R},\,D_{R}$
+\end_inset
+
+ che condividono la stessa funzione di trasferimento 
+\begin_inset Formula $R\left(s\right)$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+Supponiamo di calcolare una realizzazione a partire dalla funzione di trasferime
+nto del regolatore in forma canonica di raggiungibilità; integriamo l'equazione
+ di stato del regolatore (consideriamo dopo l'equazione algebrica di uscita),
+ tra un istante 
+\begin_inset Formula $t$
+\end_inset
+
+ e un istante 
+\begin_inset Formula $T_{s}+t$
+\end_inset
+
+, con 
+\begin_inset Formula $T_{s}$
+\end_inset
+
+ il periodo di campionamento:
+\begin_inset Formula 
+\[
+\somme{kT_{s}}{\left(k+1\right)T_{s}}{\dot{x}_{R}\left(t\right)}t=\somme{kT_{s}}{\left(k+1\right)T_{s}}{A_{R}\,x_{R}\left(t\right)}t+\somme{kT_{s}}{\left(k+1\right)T_{s}}{B_{R}\,e\left(t\right)}t
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+x_{R}\left(\left(k+1\right)T_{s}\right)-x_{R}\left(kT_{s}\right)=A_{R}\somme{kT_{s}}{\left(k+1\right)T_{s}}{x_{R}\left(t\right)}t+B_{R}\somme{kT_{s}}{\left(k+1\right)T_{s}}{e\left(t\right)}t
+\]
+
+\end_inset
+
+Da
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+Possiamo passare dal tempo continuo a quello discreto tramite la relazione
+ 
+\begin_inset Formula $f\left(kT_{s}\right)=f^{*}\left(k\right)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ questa espressione integrale vogliamo arrivare a una relazione che abbia
+ lo stato al passo 
+\begin_inset Formula $k+1$
+\end_inset
+
+ definito come una combinazione lineare dello stato e dell'ingresso al passo
+ 
+\begin_inset Formula $k$
+\end_inset
+
+; tuttavia non possiamo semplificare direttamente gli integrali della forma
+ 
+\begin_inset Formula $\int_{kT_{s}}^{\left(k+1\right)T_{s}}f\left(t\right)dt$
+\end_inset
+
+.
+ Ricerchiamo quindi un'approssimazione lineare di integrali di questo tipo;
+ in generale abbiamo tre metodi di approssimazione a disposizione:
+\series bold
+\noun on
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="3">
+<features tabularvalignment="top">
+<column alignment="center" valignment="top">
+<column alignment="left" valignment="top" width="0pt">
+<column alignment="left" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "33text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\series bold
+\noun on
+Eulero in avanti
+\series default
+\noun default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename Illustrazioni/9_5-1 Eulero avanti.pdf
+	display false
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+\somme{kT_{s}}{\left(k+1\right)T_{s}}{f\left(t\right)}t\sim T_{s}f^{*}\left(k\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "33text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\series bold
+\noun on
+Eulero all'indietro
+\series default
+\noun default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename Illustrazioni/9_5-2 Eulero indietro.pdf
+	display false
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+\somme{kT_{s}}{\left(k+1\right)T_{s}}{f\left(t\right)}t\sim T_{s}f^{*}\left(k+1\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "33text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+
+\series bold
+\noun on
+Tustin (trapezi)
+\series default
+\noun default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename Illustrazioni/9_5-3 Tustin.pdf
+	display false
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Formula 
+\[
+\somme{kT_{s}}{\left(k+1\right)T_{s}}{f\left(t\right)}t\sim\frac{f^{*}\left(k+1\right)+f^{*}\left(k\right)}{2}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Metodi di approssimazione lineare per integrale}
+\end_layout
+
+\end_inset
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Metodi-approssimazione-lineare-integrale"
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+I metodi di approssimazione proposti in figura 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Metodi-approssimazione-lineare-integrale"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ possono essere riassunti nella seguente formula:
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "3cm"
+height "1pt"
+
+\end_inset
+
+
+\series bold
+\size footnotesize
+
+\begin_inset Newline newline
+\end_inset
+
+Approssimazione lineare per l'integrale
+\series default
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+Approssimazione lineare per l'integrale
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[0.5cm]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+\somme{kT_{s}}{\left(k+1\right)T_{s}}{f\left(t\right)}t\simeq T_{s}\left[\left(1-\alpha\right)f^{*}\left(k\right)+\alpha f^{*}\left(k+1\right)\right],\;\alpha\in\left[0,\,0.5,\,1\right]\label{eq:Metodi-approssimazione-lineare}
+\end{equation}
+
+\end_inset
+
+nella precedente abbiamo Eulero in avanti per 
+\begin_inset Formula $\alpha=0$
+\end_inset
+
+, Eulero all'indietro per 
+\begin_inset Formula $\alpha=1$
+\end_inset
+
+ e il metodo di Tustin per 
+\begin_inset Formula $\alpha=0.5$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+Sostituiamo nell'integrale dell'equazione di stato del regolatore:
+\begin_inset Formula 
+\[
+x_{R}\left(\left(k+1\right)T_{s}\right)-x_{R}\left(kT_{s}\right)=A_{R}T_{s}\left[\left(1-\alpha\right)x_{R}\left(kT_{s}\right)+\alpha x_{R}\left(\left(k+1\right)T_{s}\right)\right]
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
++B_{R}T_{s}\left[\left(1-\alpha\right)e\left(kT_{s}\right)+\alpha e\left(\left(k+1\right)T_{s}\right)\right]
+\]
+
+\end_inset
+
+che nel dominio del tempo discreto equivale a:
+\begin_inset Formula 
+\[
+x_{R}^{*}\left(k+1\right)-x_{R}^{*}\left(k\right)=A_{R}T_{s}\left[\left(1-\alpha\right)x_{R}^{*}\left(k\right)+\alpha x_{R}^{*}\left(k+1\right)\right]
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
++B_{R}T_{s}\left[\left(1-\alpha\right)e^{*}\left(k\right)+\alpha e^{*}\left(k+1\right)\right]
+\]
+
+\end_inset
+
+Adesso applichiamo la trasformata z all'equazione, effettuando anche i raccoglim
+enti:
+\begin_inset Formula 
+\[
+\left(z-1\right)X_{R}^{*}\left(z\right)=T_{s}\left(1-\alpha+\alpha z\right)\left(A_{R}X_{R}^{*}\left(z\right)+B_{R}E^{*}\left(z\right)\right)
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{z-1}{T_{s}\left(1-\alpha+\alpha z\right)}X_{R}^{*}\left(z\right)=A_{R}X_{R}^{*}+B_{R}X_{R}^{*}
+\]
+
+\end_inset
+
+Notiamo che nell'ultima relazione abbiamo le matrici di stato a tempo continuo
+ ma i segnali a tempo discreto nel dominio di 
+\begin_inset Formula $z$
+\end_inset
+
+; la differenza sostanziale con la forma analoga a tempo continuo è il termine
+ derivante dall'approssimazione integrale.
+\end_layout
+
+\begin_layout Standard
+Per calcolare la funzione di trasferimento del comando a tempo discreto
+ (sarà la funzione tra errore e stato) abbiamo:
+\begin_inset Formula 
+\[
+X_{R}^{*}\left(z\right)=\biggl(\underset{\varhexstar}{\underbrace{\frac{1}{T_{s}}\cdot\frac{z-1}{\left(1-\alpha+\alpha z\right)}}}I-A_{R}\biggr)^{-1}B_{R}\,E^{*}\left(z\right)
+\]
+
+\end_inset
+
+Di nuovo in analogia con la forma a tempo continuo, consideriamo il termine
+ 
+\begin_inset Formula $\varhexstar$
+\end_inset
+
+ come l'approssimazione della variabile 
+\begin_inset Formula $s$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+L'equazione di uscita si ottiene applicando l'equazione di stato:
+\begin_inset Formula 
+\begin{equation}
+U^{*}\left(z\right)=C_{R}\left[\biggl(\frac{1}{T_{s}}\cdot\frac{z-1}{\left(1-\alpha+\alpha z\right)}I-A_{R}\biggr)^{-1}B_{R}+D_{R}\right]E^{*}\left(z\right)\label{eq:Equazione-uscita-dominio-z}
+\end{equation}
+
+\end_inset
+
+La relazione appena ottenuta corrisponde alla funzione del regolatore a
+ tempo continuo, valutata per 
+\begin_inset Formula $s=\frac{1}{T_{s}}\cdot\frac{z-1}{\left(1-\alpha+\alpha z\right)}$
+\end_inset
+
+; possiamo concludere che, per passare dalla funzione del regolatore a tempo
+ continuo a quella a tempo discreto (nel dominio di z), useremo la seguente
+ relazione:
+\begin_inset Marginal
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset CommandInset line
+LatexCommand rule
+offset "0.5ex"
+width "3cm"
+height "1pt"
+
+\end_inset
+
+
+\series bold
+\size footnotesize
+
+\begin_inset Newline newline
+\end_inset
+
+Relazione tra regolatore continuo e discreto
+\series default
+
+\begin_inset Index idx
+status open
+
+\begin_layout Plain Layout
+Regolatore discreto, relazione con regolatore continuo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[-0.1cm]
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula 
+\begin{equation}
+R\left(\frac{1}{T_{s}}\cdot\frac{z-1}{\left(1-\alpha+\alpha z\right)}\right)\simeq R^{*}\left(z\right)\label{eq:Relazione-regolatore-continuo-con-discreto}
 \end{equation}
 
 \end_inset
@@ -36067,6 +37122,13 @@ reference "eq:Formula-di-Eulero"
 
 \begin_layout Chapter
 Trasformata di Laplace
+\begin_inset CommandInset label
+LatexCommand label
+name "chap:Trasformata-di-Laplace"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section

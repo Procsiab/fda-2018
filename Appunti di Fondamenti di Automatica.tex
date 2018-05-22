@@ -8281,16 +8281,16 @@ con $x_{R}^{*}$ gli stati interni del regolatore.
 Una prima rappresentazione per il regolatore può essere scritta sotto
 queste ipotesi (usando (\ref{eq:Modello-standard-sistemi-tempo-discreto}))
 come:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
-\textbf{\footnotesize{}Modello per regolatore digitale}{\footnotesize{}\index{Regolatore digitale, modello@{\footnotesize{}Regolatore digitale, modello}}}}[0.4cm]
+\textbf{\footnotesize{}Modello discreto per regolatore digitale}{\footnotesize{}\index{Regolatore digitale, modello@{\footnotesize{}Regolatore digitale, modello}}}}[0.4cm]
 \begin{equation}
 \begin{cases}
 x_{R}^{*}\left(k+1\right)=A_{R}^{*}\cdot x_{R}^{*}\left(k\right)+B_{R}^{*}\cdot e^{*}\left(k\right)\\
 u^{*}\left(k\right)=C_{R}^{*}\cdot x_{R}^{*}\left(k\right)+D_{R}^{*}\cdot e^{*}\left(k\right)
-\end{cases}\label{eq:Modello-regolatore-digitale}
+\end{cases}\label{eq:Modello-discreto-regolatore-digitale}
 \end{equation}
 
 Ipotizziamo di avere già sintetizzato un regolatore nel tempo continuo:
-la sua trasposizione nel tempo discreto secondo il modello (\ref{eq:Modello-regolatore-digitale})
+la sua trasposizione nel tempo discreto secondo il modello (\ref{eq:Modello-discreto-regolatore-digitale})
 prende il nome di \emph{progetto del regolatore nel tempo discreto},
 e coinvolge le seguenti attività:
 \begin{enumerate}
@@ -8368,6 +8368,274 @@ Segue che il margine di fase per un sistema di controllo digitale
 discreto vale 
 \begin{equation}
 \varphi_{m}^{*}=\varphi_{m}+\Delta\varphi_{{\scriptscriptstyle \text{C}}}\label{eq:Margine-fase-controllo-digitale}
+\end{equation}
+
+
+\section{Discretizzazione del regolatore digitale}
+
+Per ricavare il regolatore a tempo discreto dobbiamo partire dall'equazione
+di un regolatore a tempo continuo, dalla quale ricaviamo un'equazione
+ricorsiva dell'uscita (segnale di comando) nel tempo discreto; il
+modo più agevole per ricavare questa equazione è usare lo strumento
+matematico della \emph{trasformata }z, l'analogo nel tempo discreto
+della trasformata di Laplace.
+
+\subsection{Trasformata zeta}
+
+Si tratta della trasformazione matematica che permette di passare
+da un segnale reale nel tempo continuo a una sua trasformata nel dominio
+della cosiddetta variabile \emph{z} (analogo a tempo discreto della
+variabile \emph{s}).
+
+Dato un segnale $f^{*}\left(k\right),\,k\in\mathbb{Z}$, la sua trasformata
+è definita come:
+\[
+\mathcal{Z}\left[f^{*}\left(k\right)\right]=F^{*}\left(z\right)\coloneqq\serie{k=0}{+\infty}{f^{*}\left(k\right)z^{-k}}
+\]
+con z variabile complessa, e la trasformata è indicata con la lettera
+maiuscola; in analogia con la trasformata di Laplace (si veda (\ref{eq:Trasformata-Laplace})),
+abbiamo una sommatoria (invece dell'integrale) e moltiplichiamo il
+segnale iniziale per $z^{.k}$ (invece di moltiplicare per l'esponenziale).
+
+Senza entrare nei dettagli (siamo interessati solo a una specifica
+proprietà, per la discretizzazione del regolatore digitale a tempo
+continuo), per la trasformata z valgono tutte le proprietà che abbiamo
+introdotto sulla trasformata di Laplace (si veda \chapref{Trasformata-di-Laplace}),
+infatti è un operatore lineare, è invertibile e soprattutto vale la
+seguente proprietà (analoga alla derivazione in Laplace):\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Ritardo e Anticipo nella trasformata z}{\footnotesize{}\index{Trasformata z, ritardo e anticipo}}}[0.4cm]
+\begin{equation}
+\begin{array}{c}
+\mathcal{Z}\left[f^{*}\left(k+a\right)\right]=z^{a}\mathcal{Z}\left[f^{*}\left(k\right)\right]=z^{a}F^{*}\left(z\right)\\
+\\
+\mathcal{Z}\left[f^{*}\left(k-b\right)\right]=z^{-b}\mathcal{Z}\left[f^{*}\left(k\right)\right]=z^{-b}F^{*}\left(z\right)
+\end{array}\label{eq:Trasformata-z-ritardo-e-anticipo}
+\end{equation}
+Osserviamo che, moltiplicare per $z^{a}$ un segnale nel dominio della
+variabile z equivale a traslarlo in avanti (ritardarlo) di $a$ passi
+nel tempo discreto, e moltiplicare per $z^{-b}$ lo stesso segnale
+nel dominio di z equivale a traslarlo indietro (anticiparlo) di $b$
+passi nel tempo discreto.
+
+\subsection{Trasferimento del regolatore digitale}
+
+Riprendiamo le equazioni (\ref{eq:Modello-discreto-regolatore-digitale})
+per il regolatore digitale nel tempo continuo; utilizzando la trasformata
+zeta, possiamo ricavare da queste equazioni (nel dominio del tempo)
+la relazione ingresso-uscita del regolatore, quindi la funzione di
+trasferimento (nel dominio di z). Applichiamo la proprietà (\ref{eq:Trasformata-z-ritardo-e-anticipo})
+effettuando la trasformata zeta delle equazioni (\ref{eq:Modello-discreto-regolatore-digitale}):
+\[
+\begin{cases}
+zX_{R}^{*}\left(z\right)=A_{R}^{*}X_{R}^{*}\left(z\right)+B_{R}^{*}E^{*}\left(z\right)\\
+U^{*}\left(z\right)=C_{R}^{*}X_{R}^{*}\left(z\right)+D_{R}^{*}E^{*}\left(z\right)
+\end{cases}
+\]
+a questo punto risolviamo l'equazione di stato rispetto alla trasformata
+dello stato:
+\[
+\left(zI-A_{R}^{*}\right)X_{R}^{*}\left(z\right)=B_{R}^{*}\left(z\right)E^{*}\left(z\right)
+\]
+\[
+X_{R}^{*}\left(z\right)=\left(zI-A_{R}^{*}\right)^{-1}B_{R}^{*}E^{*}\left(z\right)
+\]
+sostituiamo l'espressione ottenuta per $X_{R}^{*}$ nell'equazione
+di uscita:
+\[
+U^{*}\left(z\right)=\left[C_{R}^{*}\left(zI-A_{R}^{*}\right)^{-1}B_{R}^{*}+D_{R}^{*}\right]E^{*}\left(z\right)
+\]
+l'espressione moltiplicata per l'errore di inseguimento è la funzione
+di trasferimento del regolatore discreto nel dominio di z:
+\begin{equation}
+R^{*}\left(z\right)=C_{R}^{*}\left(zI-A_{R}^{*}\right)^{-1}B_{R}^{*}+D_{R}^{*}\label{eq:Trasferimento-regolatore-nel-dominio-z}
+\end{equation}
+Dal punto di vista matematico, è la stessa espressione che avevamo
+ricavato nel tempo continuo (si veda (\ref{eq:Funzione-trasferimento}));
+su di essa valgono le stesse proprietà, in particolare si tratta di
+una funzione razionale, rapporto di polinomi a coefficienti reali,
+e per costruzione sarà almeno propria.
+
+Inoltre l'inversione $\left(zI-A_{R}^{*}\right)^{-1}$ comporta la
+divisione per il suo determinante e, trattandosi del polinomio caratteristico
+(\ref{eq:Polinomio-caratteristico}), se il regolatore è asintoticamente
+stabile, tutte le radici al denominatore di $R^{*}\left(z\right)$
+avranno parte reale negativa. Avendo una funzione di trasferimento
+costruita in questo modo, nel dominio di z, è molto facile ricavare
+da essa un'equazione ricorsiva che permetta di calcolare il comando.
+
+In generale la funzione del regolatore avrà una forma del tipo:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Funzione del regolatore discreto in z}{\footnotesize{}\index{Regolatore discreto, trasferimento in z}}}[0.1cm]
+\begin{equation}
+R^{*}\left(z\right)=\frac{\beta_{m}z^{m}+\beta_{m-1}z^{m-1}+\ldots+\beta_{0}}{\alpha_{n}z^{n}+\alpha_{n-1}z^{n-1}+\ldots+\alpha_{0}}=\frac{U^{*}\left(z\right)}{E^{*}\left(z\right)}\label{eq:Regolatore-in-z-rispetto-errore-e-comando}
+\end{equation}
+dove $n$ è il numero degli stati del regolatore, e $m\leq n$; possiamo
+calcolare il comando riscrivendo l'equazione senza i denominatori:
+\[
+E^{*}\left(z\right)\cdot\left(\beta_{m}z^{m}+\beta_{m-1}z^{m-1}+\ldots+\beta_{0}\right)=U^{*}\left(z\right)\cdot\left(\alpha_{n}z^{n}+\alpha_{n-1}z^{n-1}+\ldots+\alpha_{0}\right)
+\]
+A questo punto antitrasformiamo, svolgendo il prodotto; otterremo
+una somma di segnali di errore e di comando sfasati nel tempo.
+\begin{example}
+\emph{Sia data la seguente funzione di un regolatore discreto nel
+dominio di z:
+\[
+R^{*}\left(z\right)=\frac{z+5}{z-0.5}
+\]
+$\checked$Ricavare un'equazione ricorsiva che implementi il regolatore
+nel dominio del tempo.}
+
+Usando la relazione (\ref{eq:Regolatore-in-z-rispetto-errore-e-comando})
+possiamo scrivere, in funzione del comando:
+\[
+U^{*}\left(z\right)=\frac{z+5}{z-0.5}E^{*}\left(z\right)\,\rightarrow\,\left(z-0.5\right)U^{*}\left(z\right)=\left(z-0.5\right)E^{*}\left(z\right)
+\]
+Svolgiamo il prodotto e antitrasformiamo:
+\[
+u^{*}\left(k+1\right)-0.5u^{*}\left(k\right)=e^{*}\left(k+1\right)+5e^{*}\left(k\right)
+\]
+Spostiamo a destra tutti i termini eccetto quelli col valore del comando
+al passo più recente, poi ritardiamo tutti gli istanti in modo da
+avere al più dei segnali in $k-b$ con $b\in\mathbb{N}$:
+\[
+u^{*}\left(k\right)=0.5u^{*}\left(k-1\right)+e^{*}\left(k\right)+5e^{*}\left(k-1\right)
+\]
+\demo
+\end{example}
+
+\subsection{Realizzazione del regolatore digitale}
+
+Il vantaggio di usare la trasformata z è evidente quando si deve realizzare
+il regolatore digitale: se sappiamo calcolare la funzione di trasferimento
+nel dominio di z, riusciamo agevolmente a ricavare l'equazione ricorsiva
+del comando; non passeremo attraverso una realizzazione del regolatore
+tramite variabili di stato, ma vedremo un metodo per ottenere direttamente
+$R^{*}\left(z\right)$.
+
+Torniamo nel dominio del tempo e partiamo dal regolatore a tempo continuo
+scritto rispetto alle sue variabili di stato:
+\[
+\begin{cases}
+\dot{x}_{R}\left(t\right)=A_{R}x_{R}\left(t\right)+B_{R}e\left(t\right)\\
+u\left(t\right)=C_{R}x_{R}\left(t\right)+D_{R}e\left(t\right)
+\end{cases}
+\]
+A partire da questa scrittura possiamo calcolare infinite realizzazioni
+(esistono infinite matrici $A_{R},\,B_{R},\,C_{R},\,D_{R}$ che condividono
+la stessa funzione di trasferimento $R\left(s\right)$).
+
+Supponiamo di calcolare una realizzazione a partire dalla funzione
+di trasferimento del regolatore in forma canonica di raggiungibilità;
+integriamo l'equazione di stato del regolatore (consideriamo dopo
+l'equazione algebrica di uscita), tra un istante $t$ e un istante
+$T_{s}+t$, con $T_{s}$ il periodo di campionamento:
+\[
+\somme{kT_{s}}{\left(k+1\right)T_{s}}{\dot{x}_{R}\left(t\right)}t=\somme{kT_{s}}{\left(k+1\right)T_{s}}{A_{R}\,x_{R}\left(t\right)}t+\somme{kT_{s}}{\left(k+1\right)T_{s}}{B_{R}\,e\left(t\right)}t
+\]
+\[
+x_{R}\left(\left(k+1\right)T_{s}\right)-x_{R}\left(kT_{s}\right)=A_{R}\somme{kT_{s}}{\left(k+1\right)T_{s}}{x_{R}\left(t\right)}t+B_{R}\somme{kT_{s}}{\left(k+1\right)T_{s}}{e\left(t\right)}t
+\]
+Da\marginpar{Possiamo passare dal tempo continuo a quello discreto tramite la relazione
+$f\left(kT_{s}\right)=f^{*}\left(k\right)$} questa espressione integrale vogliamo arrivare a una relazione che
+abbia lo stato al passo $k+1$ definito come una combinazione lineare
+dello stato e dell'ingresso al passo $k$; tuttavia non possiamo semplificare
+direttamente gli integrali della forma $\int_{kT_{s}}^{\left(k+1\right)T_{s}}f\left(t\right)dt$.
+Ricerchiamo quindi un'approssimazione lineare di integrali di questo
+tipo; in generale abbiamo tre metodi di approssimazione a disposizione:\textbf{\noun{\bigskip{}
+}}
+
+\begin{minipage}[t]{1\textwidth}%
+\begin{tabular}[t]{cll}
+\begin{minipage}[t]{0.33\textwidth}%
+\begin{center}
+\textbf{\noun{Eulero in avanti}}\\
+\includegraphics{\string"Illustrazioni/9_5-1 Eulero avanti\string".pdf}
+\par\end{center}
+\[
+\somme{kT_{s}}{\left(k+1\right)T_{s}}{f\left(t\right)}t\sim T_{s}f^{*}\left(k\right)
+\]
+%
+\end{minipage} & %
+\begin{minipage}[t]{0.33\textwidth}%
+\begin{center}
+\textbf{\noun{Eulero all'indietro}}\\
+\includegraphics{\string"Illustrazioni/9_5-2 Eulero indietro\string".pdf}
+\par\end{center}
+\[
+\somme{kT_{s}}{\left(k+1\right)T_{s}}{f\left(t\right)}t\sim T_{s}f^{*}\left(k+1\right)
+\]
+%
+\end{minipage} & %
+\begin{minipage}[t]{0.33\textwidth}%
+\begin{center}
+\textbf{\noun{Tustin (trapezi)}}\\
+\includegraphics{\string"Illustrazioni/9_5-3 Tustin\string".pdf}
+\par\end{center}
+\[
+\somme{kT_{s}}{\left(k+1\right)T_{s}}{f\left(t\right)}t\sim\frac{f^{*}\left(k+1\right)+f^{*}\left(k\right)}{2}
+\]
+%
+\end{minipage}\tabularnewline
+\end{tabular}
+
+\captionof{figure}{Metodi di approssimazione lineare per integrale}\label{fig:Metodi-approssimazione-lineare-integrale}%
+\end{minipage}
+
+I metodi di approssimazione proposti in figura \ref{fig:Metodi-approssimazione-lineare-integrale}
+possono essere riassunti nella seguente formula:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Approssimazione lineare per l'integrale}{\footnotesize{}\index{Approssimazione lineare per l'integrale}}}[0.5cm]
+\begin{equation}
+\somme{kT_{s}}{\left(k+1\right)T_{s}}{f\left(t\right)}t\simeq T_{s}\left[\left(1-\alpha\right)f^{*}\left(k\right)+\alpha f^{*}\left(k+1\right)\right],\;\alpha\in\left[0,\,0.5,\,1\right]\label{eq:Metodi-approssimazione-lineare}
+\end{equation}
+nella precedente abbiamo Eulero in avanti per $\alpha=0$, Eulero
+all'indietro per $\alpha=1$ e il metodo di Tustin per $\alpha=0.5$.
+
+Sostituiamo nell'integrale dell'equazione di stato del regolatore:
+\[
+x_{R}\left(\left(k+1\right)T_{s}\right)-x_{R}\left(kT_{s}\right)=A_{R}T_{s}\left[\left(1-\alpha\right)x_{R}\left(kT_{s}\right)+\alpha x_{R}\left(\left(k+1\right)T_{s}\right)\right]
+\]
+\[
++B_{R}T_{s}\left[\left(1-\alpha\right)e\left(kT_{s}\right)+\alpha e\left(\left(k+1\right)T_{s}\right)\right]
+\]
+che nel dominio del tempo discreto equivale a:
+\[
+x_{R}^{*}\left(k+1\right)-x_{R}^{*}\left(k\right)=A_{R}T_{s}\left[\left(1-\alpha\right)x_{R}^{*}\left(k\right)+\alpha x_{R}^{*}\left(k+1\right)\right]
+\]
+\[
++B_{R}T_{s}\left[\left(1-\alpha\right)e^{*}\left(k\right)+\alpha e^{*}\left(k+1\right)\right]
+\]
+Adesso applichiamo la trasformata z all'equazione, effettuando anche
+i raccoglimenti:
+\[
+\left(z-1\right)X_{R}^{*}\left(z\right)=T_{s}\left(1-\alpha+\alpha z\right)\left(A_{R}X_{R}^{*}\left(z\right)+B_{R}E^{*}\left(z\right)\right)
+\]
+\[
+\frac{z-1}{T_{s}\left(1-\alpha+\alpha z\right)}X_{R}^{*}\left(z\right)=A_{R}X_{R}^{*}+B_{R}X_{R}^{*}
+\]
+Notiamo che nell'ultima relazione abbiamo le matrici di stato a tempo
+continuo ma i segnali a tempo discreto nel dominio di $z$; la differenza
+sostanziale con la forma analoga a tempo continuo è il termine derivante
+dall'approssimazione integrale.
+
+Per calcolare la funzione di trasferimento del comando a tempo discreto
+(sarà la funzione tra errore e stato) abbiamo:
+\[
+X_{R}^{*}\left(z\right)=\biggl(\underset{\varhexstar}{\underbrace{\frac{1}{T_{s}}\cdot\frac{z-1}{\left(1-\alpha+\alpha z\right)}}}I-A_{R}\biggr)^{-1}B_{R}\,E^{*}\left(z\right)
+\]
+Di nuovo in analogia con la forma a tempo continuo, consideriamo il
+termine $\varhexstar$ come l'approssimazione della variabile $s$.
+
+L'equazione di uscita si ottiene applicando l'equazione di stato:
+\begin{equation}
+U^{*}\left(z\right)=C_{R}\left[\biggl(\frac{1}{T_{s}}\cdot\frac{z-1}{\left(1-\alpha+\alpha z\right)}I-A_{R}\biggr)^{-1}B_{R}+D_{R}\right]E^{*}\left(z\right)\label{eq:Equazione-uscita-dominio-z}
+\end{equation}
+La relazione appena ottenuta corrisponde alla funzione del regolatore
+a tempo continuo, valutata per $s=\frac{1}{T_{s}}\cdot\frac{z-1}{\left(1-\alpha+\alpha z\right)}$;
+possiamo concludere che, per passare dalla funzione del regolatore
+a tempo continuo a quella a tempo discreto (nel dominio di z), useremo
+la seguente relazione:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+\textbf{\footnotesize{}Relazione tra regolatore continuo e discreto}{\footnotesize{}\index{Regolatore discreto, relazione con regolatore continuo}}}[-0.1cm]
+\begin{equation}
+R\left(\frac{1}{T_{s}}\cdot\frac{z-1}{\left(1-\alpha+\alpha z\right)}\right)\simeq R^{*}\left(z\right)\label{eq:Relazione-regolatore-continuo-con-discreto}
 \end{equation}
 
 
@@ -9209,7 +9477,7 @@ e^{jb}=\cos\left(b\right)+j\sin\left(b\right)\label{eq:Formula-di-Eulero}
 La (\ref{eq:Formula-di-Eulero}) è molto utile per eseguire il prodotto
 di numeri complessi, riconducendolo alle proprietà delle potenze.
 
-\chapter{Trasformata di Laplace}
+\chapter{Trasformata di Laplace\label{chap:Trasformata-di-Laplace}}
 
 \section{Definizione}
 \begin{defn}
