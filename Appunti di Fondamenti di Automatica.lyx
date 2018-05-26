@@ -16044,7 +16044,7 @@ Schema a blocchi dei 3 sistemi connessi
 \noindent
 \align left
 Nella sezione successiva vedremo come interpretare la topologia di questo
- schema, per ottenere una unica funzione di trasferimento tra il primo ingresso
+ schema, per ottenere un'unica funzione di trasferimento tra il primo ingresso
  e l'ultima uscita.
 \begin_inset ERT
 status open
