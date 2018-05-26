@@ -502,7 +502,7 @@ name "subsec:Processi-a-tempo-continuo"
 \end_layout
 
 \begin_layout Standard
-Un processo a tempo continuo presenta un'uscita (
+Un processo a tempo continuo presenta una uscita (
 \begin_inset Formula $y\left(t\right)$
 \end_inset
 
