@@ -502,7 +502,7 @@ name "subsec:Processi-a-tempo-continuo"
 \end_layout
 
 \begin_layout Standard
-Un processo a tempo continuo presenta una una uscita (
+Un processo a tempo continuo presenta una uscita (
 \begin_inset Formula $y\left(t\right)$
 \end_inset
 
@@ -5617,7 +5617,7 @@ Se
  è priva di autovalori nulli allora essa è invertibile, e a fronte di qualsiasi
  ingresso costante troviamo sempre uno e un solo stato di equilibrio; dall'equaz
 ione di stato si ottiene 
-\begin_inset Formula $\overline{x}=A^{-1}\cdot B\cdot\overline{u}$
+\begin_inset Formula $\overline{x}=-A^{-1}\cdot B\cdot\overline{u}$
 \end_inset
 
 .
@@ -5646,7 +5646,7 @@ Dalle precedenti considerazioni scriviamo le equazioni di equilibrio del
 \begin_inset Formula 
 \[
 \begin{cases}
-\overline{x}=A^{-1}\cdot B\cdot\overline{u}\\
+\overline{x}=-A^{-1}\cdot B\cdot\overline{u}\\
 \overline{y}=\left(-C\cdot A^{-1}\cdot B+D\right)\overline{u}
 \end{cases}
 \]
