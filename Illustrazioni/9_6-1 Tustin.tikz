@@ -1,0 +1,15 @@
+﻿\begin{tikzpicture} [scale=2.5]
+
+% Assi
+	\draw[-latex, gray] (-1, 0) -- (1, 0) node[above, black] {$t$};
+	\draw[-latex, gray] (0, -1) -- (0, 1) node[right, black] {$f(t)$};
+
+% S2
+	\fill [pattern = crosshatch dots, pattern color=gray]
+		(0, 0) circle(0.6cm);
+
+% Funzione
+	\draw [thick] (0, 0) circle(0.6cm);
+	\draw (-0.6, 0) node[below left=-2pt] {$\scriptstyle -1$};
+
+\end{tikzpicture}

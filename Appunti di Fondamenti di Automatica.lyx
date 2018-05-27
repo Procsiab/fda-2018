@@ -5790,7 +5790,7 @@ status open
 \begin_layout Plain Layout
 
 \size footnotesize
-impulso, risposta al
+Impulso, risposta al
 \end_layout
 
 \end_inset
@@ -6043,7 +6043,7 @@ status open
 \begin_layout Plain Layout
 
 \size footnotesize
-stabilità del sistema, Teorema
+Stabilità del sistema, Teorema
 \end_layout
 
 \end_inset
@@ -6165,7 +6165,7 @@ status open
 \begin_layout Plain Layout
 
 \size footnotesize
-asintotica stabilità, Teorema
+Asintotica stabilità, Teorema
 \end_layout
 
 \end_inset
@@ -6254,7 +6254,7 @@ status open
 \begin_layout Plain Layout
 
 \size footnotesize
-instabilità, Teorema
+Instabilità, Teorema
 \end_layout
 
 \end_inset
@@ -8172,7 +8172,7 @@ status open
 \begin_layout Plain Layout
 
 \size footnotesize
-tempo discreto, equazioni di processo
+Tempo discreto, equazioni di processo
 \end_layout
 
 \end_inset
@@ -9249,7 +9249,7 @@ status open
 \begin_layout Plain Layout
 
 \size footnotesize
-tempo discreto, equilibrio
+Tempo discreto, equilibrio
 \end_layout
 
 \end_inset
@@ -10463,7 +10463,7 @@ status open
 \begin_layout Plain Layout
 
 \size footnotesize
-tempo discreto, movimenti
+Tempo discreto, movimenti
 \end_layout
 
 \end_inset
@@ -29063,6 +29063,8 @@ Forma ISA per regolatore PID
 status open
 
 \begin_layout Plain Layout
+
+\size footnotesize
 Regolatore PID, forma ISA
 \end_layout
 
@@ -32672,6 +32674,8 @@ Vincoli sulla pulsazione di campionamento
 status open
 
 \begin_layout Plain Layout
+
+\size footnotesize
 Mantenitore, vincoli sulla pulsazione di campionamento
 \end_layout
 
@@ -32756,6 +32760,8 @@ Vincoli sul periodo di campionamento
 status open
 
 \begin_layout Plain Layout
+
+\size footnotesize
 Mantenitore, vincoli sul periodo di campionamento
 \end_layout
 
@@ -32866,7 +32872,7 @@ Mantenitore, sfasamento critico
 
 \begin_inset Formula 
 \begin{equation}
-\Delta\varphi_{{\scriptscriptstyle \text{C}}}=\arg\left(e^{-j\omega_{\text{c}}T_{s}/2}\right)=-\pi\frac{\omega_{{\scriptscriptstyle \text{C}}}}{\omega_{s}}\label{eq:Sfasamento-critico-del-mantenitore}
+\Delta\varphi_{{\scriptscriptstyle \text{C}}}=\arg\left(e^{-j\omega_{\text{c}}T_{s}/2}\right)=-\pi\frac{\omega_{{\scriptscriptstyle \text{C}}}}{\omega_{s}}=-\frac{T_{s}}{2}\omega_{{\scriptscriptstyle \text{C}}}\label{eq:Sfasamento-critico-del-mantenitore}
 \end{equation}
 
 \end_inset
@@ -32990,6 +32996,8 @@ Ritardo e Anticipo nella trasformata z
 status open
 
 \begin_layout Plain Layout
+
+\size footnotesize
 Trasformata z, ritardo e anticipo
 \end_layout
 
@@ -33203,6 +33211,8 @@ Funzione del regolatore discreto in z
 status open
 
 \begin_layout Plain Layout
+
+\size footnotesize
 Regolatore discreto, trasferimento in z
 \end_layout
 
@@ -33738,7 +33748,9 @@ Approssimazione lineare per l'integrale
 status open
 
 \begin_layout Plain Layout
-Approssimazione lineare per l'integrale
+
+\size footnotesize
+Approssimazione per l'integrale
 \end_layout
 
 \end_inset
@@ -33881,7 +33893,7 @@ La relazione appena ottenuta corrisponde alla funzione del regolatore a
  continuo a quella a tempo discreto (nel dominio di z), useremo la seguente
  relazione:
 \begin_inset Marginal
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset CommandInset line
@@ -33906,6 +33918,8 @@ Relazione tra regolatore continuo e discreto
 status open
 
 \begin_layout Plain Layout
+
+\size footnotesize
 Regolatore discreto, relazione con regolatore continuo
 \end_layout
 
@@ -33922,7 +33936,7 @@ status open
 
 \begin_layout Plain Layout
 
-[-0.1cm]
+[0.2cm]
 \end_layout
 
 \end_inset
@@ -33932,6 +33946,579 @@ status open
 \begin{equation}
 R\left(\frac{1}{T_{s}}\cdot\frac{z-1}{\left(1-\alpha+\alpha z\right)}\right)\simeq R^{*}\left(z\right)\label{eq:Relazione-regolatore-continuo-con-discreto}
 \end{equation}
+
+\end_inset
+
+
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Example
+
+\emph on
+Sia dato il seguente regolatore nel tempo continuo:
+\begin_inset Formula 
+\[
+R\left(s\right)=10\frac{\left(1+s/5\right)}{\left(1+s/100\right)}
+\]
+
+\end_inset
+
+sapendo che vale 
+\begin_inset Formula $\omega_{{\scriptscriptstyle \text{C}}}\simeq10$
+\end_inset
+
+ e 
+\begin_inset Formula $\varphi_{m}\simeq78°$
+\end_inset
+
+, soddisfare le seguenti richieste:
+\emph default
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100col%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+
+\emph on
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="left" valignment="top" width="90text%">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\begin_inset Formula $\qquad\checked$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+scegliere un periodo di campionamento per realizzare il sistema di controllo
+ digitale;
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\begin_inset Formula $\qquad\checked$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+valutare la perdita di margine di fase dovuta alla frequenza di campionamento;
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+\begin_inset Formula $\qquad\checked$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\emph on
+discretizzare il regolatore e scrivere l'equazione ricorsiva per il calcolo
+ di 
+\begin_inset Formula $u^{*}\left(k\right)$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\checked$
+\end_inset
+
+Scegliamo la pulsazione di campionamento adeguata adottando la regola empirica
+ 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Vincoli-pulsazione-campionamento"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, da cui segue:
+\begin_inset Formula 
+\[
+50<\omega_{s}<10^{5}
+\]
+
+\end_inset
+
+Prendiamo il valore 
+\begin_inset Formula $\omega_{s}=300$
+\end_inset
+
+, da cui ricaviamo il periodo di campionamento come:
+\begin_inset Formula 
+\[
+T_{s}=2\pi/\omega_{s}\simeq0.021
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\checked$
+\end_inset
+
+Per conoscere la perdita di margine di fase applichiamo la formula 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Sfasamento-critico-del-mantenitore"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+, rispetto al periodo 
+\begin_inset Formula $T_{s}$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+\Delta\varphi_{{\scriptscriptstyle C}}=-\frac{T_{s}}{2}\omega_{{\scriptscriptstyle \text{C}}}=-\frac{0.021\cdot10}{2}=-0.105\,\text{rad}\simeq6.02°
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula $\checked$
+\end_inset
+
+Usando la relazione 
+\begin_inset CommandInset ref
+LatexCommand eqref
+reference "eq:Relazione-regolatore-continuo-con-discreto"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ possiamo ottenere direttamente il regolatore nel tempo discreto dall'equazione
+ nel dominio di Laplace; scegliamo di usare il metodo di approssimazione
+ di Eulero in avanti (si veda 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:Metodi-approssimazione-lineare-integrale"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+), quindi poniamo 
+\begin_inset Formula $\alpha=0$
+\end_inset
+
+ e otteniamo:
+\begin_inset Formula 
+\[
+R^{*}\left(z\right)=R\left(\frac{1}{T_{s}}\left(z-1\right)\right)=10\frac{\left(1+\frac{1}{5T_{s}}\left(z-1\right)\right)}{\left(1+\frac{1}{100T_{s}}\left(z-1\right)\right)}=10\frac{\frac{1}{5T_{s}}\left(5T_{s}+z-1\right)}{\frac{1}{100T}\left(100T_{s}+z-1\right)}
+\]
+
+\end_inset
+
+
+\begin_inset Formula 
+\[
+=200\frac{z-\left(1-5\cdot0.02\right)}{z-\left(1-100\cdot0.02\right)}=\boxed{200\frac{z-0.9}{z-1}=\frac{U^{*}\left(z\right)}{E^{*}\left(z\right)}}
+\]
+
+\end_inset
+
+Ora ricaviamo l'equazione ricorsiva nel dominio del tempo, antitrasformando
+ da 
+\begin_inset Formula $z$
+\end_inset
+
+ a 
+\begin_inset Formula $k$
+\end_inset
+
+ il regolatore discreto:
+\begin_inset Formula 
+\[
+\begin{array}{c}
+xU^{*}\left(z\right)+U^{*}\left(z\right)=200zE^{*}\left(z\right)-180E^{*}\left(z\right)\\
+\\
+\overset{{\scriptstyle \mathscr{Z}^{-1}}}{\longrightarrow}u^{*}\left(k+1\right)=-u^{*}\left(k\right)+200e^{*}\left(k+1\right)-180e^{*}\left(k\right)\\
+\\
+u^{*}\left(k\right)=-u^{*}\left(k-1\right)+200e^{*}\left(k\right)-180e^{*}\left(k-1\right)
+\end{array}
+\]
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+demo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Mappatura dei poli nel dominio di zeta
+\end_layout
+
+\begin_layout Standard
+Poniamoci sul piano complesso, nel dominio della variabile 
+\begin_inset Formula $s$
+\end_inset
+
+: la regione di asintotica stabilità a tempo continuo è il semipiano sinistro,
+ dove compariranno i poli a parte reale negativa; per il dominio di 
+\begin_inset Formula $z$
+\end_inset
+
+ possiamo avere i seguenti casi, a seconda del metodo di approssimazione
+ adottato nella discretizzazione; infatti non è detto che un polo a parte
+ reale negativa abbia in 
+\begin_inset Formula $z$
+\end_inset
+
+ una immagine nella regione di asintotica stabilità (circonferenza di raggio
+ unitario):
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Eulero in avanti.
+
+\emph default
+ Un polo viene mappato sul semipiano sinistro, anche al di fuori della circonfer
+enza di raggio unitario, o anche in corrispondenza del punto 
+\begin_inset Formula $-1+j0$
+\end_inset
+
+, rendendo il polo semplicemente stabile;
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Eulero all'indietro.
+
+\emph default
+ Un polo viene mappato nella circonferenza di diametro unitario, con centro
+ in 
+\begin_inset Formula $1/2+j0$
+\end_inset
+
+, anche se il polo ha parte reale negativa;
+\end_layout
+
+\begin_layout Enumerate
+
+\emph on
+Tustin (trapezi).
+
+\emph default
+ Un polo viene mappato esattamente nella circonferenza di raggio unitario;
+ nella pratica si usa solo il metodo dei trapezi, dato che preserva tutte
+ le proprietà di stabilità dei poli.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "100text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="3">
+<features tabularvalignment="top">
+<column alignment="center" valignment="top">
+<column alignment="left" valignment="top" width="0pt">
+<column alignment="left" valignment="top" width="0pt">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "33text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/9_6-1 Eulero avanti.pdf
+	display false
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula ${\scriptstyle \left(1\right)\,\text{Eulero in avanti}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="left" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "33text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/9_6-1 Eulero indietro.pdf
+	display false
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula ${\scriptstyle \left(2\right)\,\text{Eulero all'indietro}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "t"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "33text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Illustrazioni/9_6-1 Tustin.pdf
+	display false
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula ${\scriptstyle \left(3\right)\,\text{Tustin}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+captionof{figure}{Mappatura dei poli nel dominio di zeta}
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
