@@ -243,7 +243,7 @@ anche in presenza dei disturbi.
 
 \subsection{Processi a tempo continuo\label{subsec:Processi-a-tempo-continuo}}
 
-Un processo a tempo continuo presenta una una uscita ($y\left(t\right)$)
+Un processo a tempo continuo presenta una uscita ($y\left(t\right)$)
 e due possibili ingressi: manipolabili ($u\left(t\right)$) e non
 manipolabili ($d\left(t\right)$); un modello per questo sistema è
 dato dalla Definizione \defref{modello-matematico}.
@@ -1633,7 +1633,7 @@ questa equazione ammette una e una sola soluzione quando $A$ è invertibile:
 \begin{itemize}
 \item Se $A$ è priva di autovalori nulli allora essa è invertibile, e a
 fronte di qualsiasi ingresso costante troviamo sempre uno e un solo
-stato di equilibrio; dall'equazione di stato si ottiene $\overline{x}=A^{-1}\cdot B\cdot\overline{u}$.
+stato di equilibrio; dall'equazione di stato si ottiene $\overline{x}=-A^{-1}\cdot B\cdot\overline{u}$.
 \item Se $A$ non è invertibile almeno un autovalore è nullo e bisogna risolvere
 $A\cdot\overline{x}=-B\cdot\overline{u}$.
 \end{itemize}
@@ -1642,7 +1642,7 @@ del sistema rispetto ai valori iniziali e alle uscite di equilibrio,
 ammettendo che $A$ sia invertibile:
 \[
 \begin{cases}
-\overline{x}=A^{-1}\cdot B\cdot\overline{u}\\
+\overline{x}=-A^{-1}\cdot B\cdot\overline{u}\\
 \overline{y}=\left(-C\cdot A^{-1}\cdot B+D\right)\overline{u}
 \end{cases}
 \]
@@ -4245,7 +4245,7 @@ e (\ref{eq:Trasferimento-3-sistema}) in forma fattorizzata:
 \caption{Schema a blocchi dei 3 sistemi connessi}
 
 \raggedright{}Nella sezione successiva vedremo come interpretare la
-topologia di questo schema, per ottenere una unica funzione di trasferimento
+topologia di questo schema, per ottenere un'unica funzione di trasferimento
 tra il primo ingresso e l'ultima uscita.\demo
 \end{figure}
 
