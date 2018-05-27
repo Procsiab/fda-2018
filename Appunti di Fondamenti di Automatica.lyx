@@ -914,6 +914,17 @@ Processo a tempo continuo, modello
 \end_inset
 
 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[0.2cm]
+\end_layout
+
+\end_inset
+
+
 \begin_inset Formula 
 \begin{equation}
 \begin{cases}
@@ -7936,7 +7947,7 @@ reference "eq:Forma-linearizzata-sistema-LTI"
 
 \end_inset
 
- ha parte reale negativa.
+ ha parte reale positiva.
 \end_layout
 
 \begin_layout Standard
@@ -24908,21 +24919,20 @@ Risposta degli ingressi di interesse
 \end_layout
 
 \begin_layout Standard
-Mentre la stabilità riguarda le proprietà interne del sistema, le prestazioni
- riguardano il comportamento degli ingressi e delle uscite; individuiamo
- ingressi e 
+Mentre
 \begin_inset Marginal
 status collapsed
 
 \begin_layout Plain Layout
 La variabile di comando è l'ingresso all'impianto ma potrebbe essere limitata
- dalla specifica: infatti essa è legata all'energia consumata dal sistema
- per funzionare
+ dalla specifica: essa è legata all'energia consumata dal sistema per funzionare
 \end_layout
 
 \end_inset
 
-uscite sul modello di sistema in retroazione (si veda 
+ la stabilità riguarda le proprietà interne del sistema, le prestazioni
+ riguardano il comportamento degli ingressi e delle uscite; individuiamo
+ ingressi e uscite sul modello di sistema in retroazione (si veda 
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "fig:Schema-di-riferimento-controllo"
