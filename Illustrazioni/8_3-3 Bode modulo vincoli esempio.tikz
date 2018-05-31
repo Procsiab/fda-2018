@@ -27,7 +27,7 @@
 		\semilog{-1}{2}{-40}{20}
 
 	% Asse 0 dB
-		\draw [thick] (-1, 0) --++ (3, 0);
+		\draw [thick, gray] (-1, 0) --++ (3, 0);
 	% Vincoli pulsazione critica
 		\fill [pattern = crosshatch dots, pattern color=gray]
 		(-1, -2) rectangle (1, 2);

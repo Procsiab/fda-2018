@@ -27,7 +27,7 @@
 		\semilog{-1}{2}{-270}{0}
 
 	% Asse 0 dB
-		\draw [thick] (-1, 0) --++ (3, 0);
+		\draw [thick, gray] (-1, 0) --++ (3, 0);
 
 	% Andamento asintotico
  		\BodeGraph[asintoto]{-1:2}{%

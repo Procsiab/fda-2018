@@ -8017,18 +8017,19 @@ La stabilità degli equilibri individuati è determinata dal segno della funzion
 
 \begin_deeper
 \begin_layout Itemize
-se la funzione decresce a destra e cresce a sinistra (riporta lo stato sul
- valore di equilibrio) l'equilibrio è asintoticamente stabile;
+se la funzione è negativa a destra e positiva a sinistra (riporta lo stato
+ sul valore di equilibrio) l'equilibrio è asintoticamente stabile;
 \end_layout
 
 \begin_layout Itemize
-se la funzione cresce o decresce sia a destra che a sinistra, l'equilibrio
- è stabile semplicemente;
+se la funzione è positiva a destra e negativa a sinistra (allontana lo stato
+ dal valore di equilibrio) l'equilibrio è instabile;
 \end_layout
 
 \begin_layout Itemize
-se la funzione cresce a destra e decresce a sinistra (allontana lo stato
- dal valore di equilibrio) l'equilibrio è instabile.
+se la funzione presenta un o o più intervalli di punti in cui la derivata
+ si annulla (la funzione risulta costante), l'equilibrio è stabile semplicemente
+ in ciascuno di quegli intervalli.
 \end_layout
 
 \end_deeper
