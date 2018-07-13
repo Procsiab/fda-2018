@@ -126,6 +126,7 @@
 \usepackage{imakeidx}
 \usepackage{amsmath}
 \usepackage{wrapfig}
+\usepackage{hyphenat}
 
 \renewcommand{\marginpar}[1]{\marginnote{\footnotesize #1}}
 \setlength\marginparsep{0.3cm}
@@ -257,7 +258,7 @@ equazioni) che li rappresentano:
 \begin{lyxlist}{00.00.0000}
 \item [{Statico/Dinamico:}] la presenza del solo ingresso nella funzione
 di uscita del sistema lo classifica come statico; si dirà invece dinamico
-se presenta delle variabili di stato (vedi Esempio \exaref{maglia-rc}).
+se presenta delle variabili di stato (si veda Esempio \exaref{maglia-rc}).
 \item [{Lineare:}] tutte le equazioni del modello sono combinazioni lineari
 delle variabili di stato e degli ingressi.
 \item [{Proprio:}] l'ingresso figura nell'equazione di uscita; altrimenti,
@@ -532,13 +533,16 @@ y\left(t\right)=x_{2}\left(t\right)
 Rispetto al modello precedente è cambiato l'ordine (secondo) mentre
 le altre caratteristiche sono immutate.\demo
 \end{example}
-Nel prossimo esempio un sistema dinamico di ordine \noun{IV:}\begin{wrapfigure}{o}{0.45\textwidth}%
-\begin{centering}
-\includegraphics[scale=1.5]{\string"Illustrazioni/1_2-5 Sistema due masse sospensioni\string".pdf}
-\par\end{centering}
-\caption{Sistema di due masse con sospensioni}
-\end{wrapfigure}%
+Nel prossimo esempio un sistema dinamico di ordine \noun{IV:}
 
+\emph{}%
+\begin{minipage}[c]{0.5\textwidth}%
+\begin{center}
+\includegraphics[scale=1.2]{\string"Illustrazioni/1_2-5 Sistema due masse sospensioni\string".pdf}
+\par\end{center}
+\captionof{figure}{Sistema di due masse con sospensioni}%
+\end{minipage}\emph{}%
+\begin{minipage}[c]{0.5\textwidth}%
 \begin{example}
 \label{exa:Due-masse-ammortizzate}\emph{Sia dato un sistema costituito
 da due masse $m_{1}$ e $m_{2}$ ciascuna avente una propria molla
@@ -546,8 +550,12 @@ di costante $k_{1}$ e $k_{2}$ e un proprio ammortizzatore di coefficiente
 di attrito $\beta_{1}$ e $\beta_{2}$; le due masse sono collegate
 in serie a un vincolo - rispettivamente $m_{1}$ è collegata al vincolo
 e $m_{2}$ è collegata a $m_{1}$ - e la loro posizione rispetto a
-quella di riposo è data da $p_{1}\left(t\right)$ e $p_{2}\left(t\right)$;
-si possa esercitare una forza su ciascuna massa in modo longitudinale
+quella di riposo è data da $p_{1}\left(t\right)$ e $p_{2}\left(t\right)$;}
+\end{example}
+%
+\end{minipage}
+
+\emph{si possa esercitare una forza su ciascuna massa in modo longitudinale
 rispetto al sistema (rispettivamente $F_{1}\left(t\right)$ e $F_{2}\left(t\right)$).
 $\checkmark$Si scriva un modello per misurare la posizione nel tempo
 delle due masse.}
@@ -616,7 +624,6 @@ Si tratta di un sistema dinamico del quarto ordine, lineare (le equazioni
 di stato e di uscita non hanno termini quadratici), stazionario, MIMO
 (due ingressi e due uscite), strettamente proprio (nell'equazione
 di uscita non compare l'ingresso).\demo
-\end{example}
 
 \subsection{Modello standard per processi LTI}
 
@@ -760,7 +767,8 @@ Se anche in presenza di una perturbazione si osserva una convergenza
 del movimento a quello nominale si parla di
 \begin{defn}
 \label{def:Stabilit=0000E0-asintotica}Un movimento si dice \emph{asintoticamente
-stabile} se soddisfa la Definizione \ref{def:Stabilit=0000E0} e vale
+stabile} se soddisfa la Defini\-zione \ref{def:Stabilit=0000E0}
+e vale
 \[
 \lm t{\infty}{\left\Vert \tilde{x}\left(t\right)-x\left(t\right)\right\Vert =0}
 \]
@@ -810,10 +818,9 @@ come
 Si tratta dell'equazione analitica del movimento dello stato in forma
 chiusa; notando che compaiono degli esponenziali con esponente sempre
 minore di zero (il tempo $t$ e i valori di $R$ e $C$ sono positivi)
-possiamo affermare che la precedente tende per $t\rightarrow\infty$
-a $\overline{u}$, che è il valore del movimento nominale: il movimento
-converge a quello nominale in modo asintotico, in particolare (dalla
-Definizione \ref{def:Stabilit=0000E0})
+possiamo affermare che la precedente tende a $\overline{u}$ per $t\rightarrow\infty$,
+che è il valore del movimento nominale: il movimento converge a quello
+nominale in modo asintotico, in particolare (dalla Definizione \ref{def:Stabilit=0000E0})
 \[
 \left\Vert x\left(t\right)-\tilde{x}\left(t\right)\right\Vert =\left\Vert \overline{x}-\tilde{x}_{0}e^{-\nicefrac{1}{RC}t}-(1-e^{-\nicefrac{1}{RC}t})\overline{u}\right\Vert 
 \]
@@ -960,7 +967,7 @@ $t_{0}=0,\,\overline{u}>0,\,x_{0}=0$. Sono ammissibili due procedimenti:
 Dall'integrale di convoluzione al secondo addendo di (\ref{eq:Formula-di-Lagrange})
 otteniamo (portando le costanti fuori dall'integrale)
 \[
-x\left(t\right)=\somme 0t{e^{a\left(t-\tau\right)}b\overline{u}\text{sca}\left(\tau\right)}{\tau}=e^{at}b\overline{u}\somme 0t{e^{-a\tau}\text{sca}\left(\tau\right)}{\tau}
+x\left(t\right)=\somme 0t{e^{a\left(t-\tau\right)}b\overline{u}\cdot\text{sca}\left(\tau\right)}{\tau}=e^{at}b\overline{u}\somme 0t{e^{-a\tau}\text{sca}\left(\tau\right)}{\tau}
 \]
 Tra gli estremi di integrazione $\text{sca}\left(\tau\right)$ vale
 $1$\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
@@ -996,7 +1003,7 @@ di contributi: condizione iniziale $\overline{x}$ e $u\left(t\right)=\text{sca}\
 e condizione iniziale $x_{0}-\overline{x}$.\\
 Per il primo contributo, essendo il sistema in equilibrio per ipotesi,
 il movimento vale $x\left(t\right)=\overline{x}$. Per il secondo
-contributo considero
+contributo consideriamo
 \[
 \begin{cases}
 x_{0}^{\prime}=\overline{x}, & u^{\prime}\left(t\right)=\overline{u}\cdot\text{sca}\left(t\right)\\
@@ -1111,7 +1118,7 @@ considerazioni appena fatte:
 
 L'equazione di uscita sarà di conseguenza
 \[
-y\left(t\right)=C\cdot x\left(t\right)+D\cdot u\left(t\right)\rightarrow y\left(t\right)=C\cdot T^{-1}\hat{x}\left(t\right)+Du\left(t\right)
+y\left(t\right)=Cx\left(t\right)+Du\left(t\right)\rightarrow y\left(t\right)=C\cdot T^{-1}\hat{x}\left(t\right)+Du\left(t\right)
 \]
 Il sistema che si ottiene è LTI della stessa forma di quello originale
 (\ref{eq:Forma-standard-matrice-LTI}) ma con i coefficienti matriciali
@@ -1145,7 +1152,7 @@ potremmo adottare una rappresentazione equivalente nella quale $\hat{A}$
 gli altri elementi sono nulli); questo facilita l'uso della (\ref{eq:Formula-di-Lagrange})
 poiché l'esponenziale di una matrice diagonale si ricava facilmente.
 
-Si nota che qualsiasi movimento dello stato di un sistema LTI è combinazione
+Si noti che qualsiasi movimento dello stato di un sistema LTI è combinazione
 lineare di un numero piccolo di movimenti possibili, tanti quanti
 gli autovalori della matrice $A$ della rappresentazione.
 \end{rem}
@@ -1171,7 +1178,7 @@ tra la matrice e la sua diagonale nei modi seguenti:
 T_{{\scriptscriptstyle \text{D}}}^{-1}\cdot A_{{\scriptscriptstyle \text{D}}}=A\cdot T_{{\scriptscriptstyle \text{D}}}^{-1}\rightarrow A=T_{{\scriptscriptstyle \text{D}}}^{-1}\cdot A_{{\scriptscriptstyle \text{D}}}\cdot T_{{\scriptscriptstyle \text{D}}}\rightarrow A_{{\scriptscriptstyle \text{D}}}=T_{{\scriptscriptstyle \text{D}}}\cdot A\cdot T_{{\scriptscriptstyle \text{D}}}^{-1}
 \]
 Se scegliamo un nuovo stato $\hat{x}\left(t\right)=T_{{\scriptscriptstyle \text{D}}}\cdot x\left(t\right)$
-ottenuto tramite la matrice di diagonalizzazione, ottengo l'equazione
+ottenuto tramite la matrice di diagonalizzazione, otteniamo l'equazione
 del modello:
 \[
 \begin{cases}
@@ -1220,9 +1227,9 @@ una coppia di autovalori complessi coniugati):\marginpar{\rule[0.5ex]{3cm}{1pt}\
 \begin{itemize}
 \item $\lambda_{i}\in\mathbb{\mathbb{R}}$
 \begin{itemize}
-\item $\lambda_{i}<0$: modo convergenti;
-\item $\lambda_{i}=0$: modo costanti;
-\item $\lambda_{i}>0$: modo divergenti.
+\item $\lambda_{i}<0$: modo convergente;
+\item $\lambda_{i}=0$: modo costante;
+\item $\lambda_{i}>0$: modo divergente.
 \end{itemize}
 \item $\lambda_{i}\in\mathbb{C}$
 \begin{itemize}
@@ -1333,7 +1340,7 @@ la funzione $e^{A\cdot t}x_{0}$, dalla (\ref{eq:Movimento-libero}).\bigskip{}
 
 \noun{Autovalori reali e distinti} ($R^{2}C>4L$):
 
-In questo caso vale $\lambda_{1},\,\lambda_{2}\in\mathbb{R}\land\lambda_{1}\neq\lambda_{2}$
+In questo caso vale $\lambda_{1},\,\lambda_{2}\in\mathbb{R}\,\land\,\lambda_{1}\neq\lambda_{2}$
 dunque avendo autovalori distinti la matrice $A$ è diagonalizzabile;
 gli autovettori associati a tali autovalori sono:
 \[
@@ -1355,7 +1362,7 @@ L\lambda_{2} & L\lambda_{1}
 La matrice di stato sarà dunque simile a una matrice diagonale $A_{{\scriptscriptstyle \text{D}}}$
 con gli stessi autovalori:\marginpar{D'ora in avanti si presti molta attenzione al pedice $_{D}$ alle
 matrici: le relazioni che seguono sfruttano le proprietà di similitudine
-e diagonalizzabilità de \chapref{Richiami-di-Geometria}}
+e diagonalizzabilità de \chapref{Richiami-di-Geometria}}[-1cm]
 \[
 A=\overset{{\scriptstyle T_{{\scriptscriptstyle \text{D}}}^{-1}}}{\overbrace{\begin{bmatrix}1 & 1\\
 L\lambda_{2} & L\lambda_{1}
@@ -1387,7 +1394,7 @@ La precedente ha due componenti siccome lo stato ha due componenti.
 I suoi coefficienti sono una combinazione lineare dei coefficienti
 dello stato iniziale e degli elementi della matrice di trasformazione.
 Il movimento avrà un andamento sempre convergente: dall'espressione
-degli autovalori ricavata inizialmente si ricava
+degli autovalori ottenuta inizialmente si ricava
 \[
 \lambda_{1,2}=-\dfrac{R}{2L}\left(1\pm\sqrt{1-\dfrac{4L}{R^{2}C}}\right)<0
 \]
@@ -1513,12 +1520,13 @@ $F\left(t\right)\rightarrow\boxed{1/m}\overset{\ddot{p}\left(t\right)}{\rightarr
 
 \begin{example}
 \marginpar{Il sistema nell'esempio con due autovalori coincidenti nulli appartiene
-alla categoria dei \emph{doppi integratori}}\label{exa:Doppio-integratore-carrello}\emph{Consideriamo un carrello
-di massa $m$ che si muova lungo una superficie priva di attrito con
-una traiettoria rettilinea; la sua posizione è data da $p\left(t\right)$
-mentre ad esso è applicata una forza esterna $F\left(t\right)$. $\checkmark$Scrivere
-un modello per questo sistema in cui si misuri la posizione e $\checkmark$stabilirne
-l'andamento dei modi.}
+alla categoria dei \emph{doppi integratori}}[-0.6cm]\label{exa:Doppio-integratore-carrello}\emph{Consideriamo
+un carrello di massa $m$ che si muova lungo una superficie priva
+di attrito con una traiettoria rettilinea; la sua posizione è data
+da $p\left(t\right)$ mentre ad esso è applicata una forza esterna
+$F\left(t\right)$. $\checkmark$Scrivere un modello per questo sistema
+in cui si misuri la posizione e $\checkmark$stabilirne l'andamento
+dei modi.}
 
 Si ricava facilmente l'equazione della dinamica del sistema:
 \[
@@ -2130,7 +2138,7 @@ può essere visto come
 \]
 con $\alpha\left(k\right)$ la domanda, $\beta\left(k\right)$ il
 comportamento degli acquirenti, $p\left(k\right)$ il prezzo ($\alpha,\,\beta>0$);
-la politica di prezzo è definito da
+la politica di prezzo è definita da
 \[
 p\left(k+1\right)=p\left(k\right)+\gamma\left(k\right)\cdot\left(s_{0}\left(k\right)-s\left(k\right)\right)+\delta\left(k\right)\cdot v\left(t\right)
 \]
@@ -2230,8 +2238,9 @@ e scriviamo:%
 \dot{x}\left(t\right)=-\dfrac{R}{L}x\left(t\right)+\dfrac{1}{L}u\left(t\right)
 \]
 ponendo lo stato $x\left(t\right)=i\left(t\right)$ (compare la derivata
-della corrente in $v_{{\scriptscriptstyle L}}\left(t\right)$). Nel
-passaggio dal mondo analogico a quello digitale discreto c'è l'operazione
+della corrente in $v_{{\scriptscriptstyle L}}\left(t\right)$).\demo
+
+Nel passaggio dal mondo analogico a quello digitale discreto c'è l'operazione
 di \emph{campionamento}, ovvero l'acquisizione di un segnale a intervalli
 regolari: questi intervalli di tempo sono chiamati \emph{periodi}
 di campionamento ($T_{s}$).
@@ -2257,7 +2266,7 @@ Inoltre essendo il sistema scalare abbiamo già l'autovalore $a=-R/L$.
 Per quanto riguarda l'equazione di uscita, essa rimane invariata come
 $y\left(k\right)=x\left(k\right)$, infatti nella discretizzazione
 si approssima solo l'operazione di derivazione nelle equazioni di
-stato.\demo
+stato.
 
 Il metodo appena visto nell'Esempio \ref{exa:Circuito-RL-elettrovalvola}
 ha dei vantaggi per i sistemi a tempo continuo asintoticamente stabili:
@@ -2341,7 +2350,7 @@ Le equazioni per i sistemi a tempo discreto rimangono lineari, dunque
 vale la sovrapposizione degli effetti come nel tempo continuo: se
 abbiamo due condizioni iniziali $x^{\prime}\left(0\right)$ e $x^{\prime\prime}\left(0\right)$,
 e due andamenti $x^{\prime}\left(k\right)$ e $x^{\prime\prime}\left(k\right)$,
-posto che l'ingresso $u^{\prime\prime\prime}\left(k\right)=\alpha u^{\prime}\left(k\right)+\beta u^{\prime\prime}\left(k\right)$
+posto l'ingresso $u^{\prime\prime\prime}\left(k\right)=\alpha u^{\prime}\left(k\right)+\beta u^{\prime\prime}\left(k\right)$
 possiamo vedere il movimento dello stato a partire dalle coppie stato-ingresso
 come combinazione lineare dei movimenti ottenuti separatamente dalle
 condizioni iniziali e dagli ingressi separatamente:
@@ -2661,7 +2670,7 @@ scriverla nella forma di Jordan (\ref{eq:Forma-di-Jordan}), trovando
 una matrice di trasformazione $T_{{\scriptscriptstyle \text{J}}}$
 adeguata. Compariranno dei modi aggiuntivi nella matrice, al di sopra
 della diagonale principale; si avranno dunque sulla diagonale i modi
-$z_{i}^{k}$, mentre al di sopra i modi $k^{\eta-1}z^{k-\eta-1}$
+$z_{i}^{k}$, mentre sopra di essa i modi $k^{\eta-1}z^{k-\eta-1}$,
 dove $\eta$ dipende dalle molteplicità degli autovalori e $i$ è
 l'indice di colonna nella matrice.
 
@@ -2696,7 +2705,7 @@ il seguente Teorema \ref{thm:Stabilit=0000E0-sistema-LTI-discreto}.
 \end{rem}
 \begin{thm}
 \label{thm:Stabilit=0000E0-sistema-LTI-discreto}In un sistema LTI
-a tempo dinamico un movimento (incluso quello di equilibrio) è stabile,
+a tempo discreto un movimento (incluso quello di equilibrio) è stabile,
 asintoticamente stabile o instabile se e solo se sono rispettivamente
 stabili, asintoticamente stabili o instabili tutti i movimenti del
 sistema.
@@ -2735,9 +2744,9 @@ stabili:
 \begin{enumerate}
 \item Un movimento per $k\rightarrow\infty$ non dipende dalle condizioni
 iniziali $x\left(k_{0}\right)$;
-\item La risposta a un impulso tende ad annullarsi per $t\rightarrow\infty$;
+\item La risposta a un impulso tende ad annullarsi per $k\rightarrow\infty$;
 \item La risposta a qualunque ingresso limitato nel tempo tende ad annullarsi
-per $t\rightarrow\infty$;
+per $k\rightarrow\infty$;
 \item Gli stati e le uscite di equilibrio, con ingresso $\overline{u}$
 costante nel tempo, sono univocamente definiti e pari a $\overline{x}$
 e $\overline{y}$;
@@ -2818,7 +2827,7 @@ termine 1 è positivo:
 \[
 \begin{cases}
 1-\beta^{2}>0 & \left(1\right)\\
-1-\beta^{2}-\dfrac{\alpha^{2}\left(1-\beta\right)^{2}}{1-\beta^{2}} & \left(2\right)
+1-\beta^{2}-\dfrac{\alpha^{2}\left(1-\beta\right)^{2}}{1-\beta^{2}}>0 & \left(2\right)
 \end{cases}=\begin{cases}
 \beta\in\left(-1,\,1\right)\\
 1+\beta\in\left(-\alpha,\,\alpha\right)
@@ -3275,8 +3284,8 @@ funzione di trasferimento non è più razionale a coefficienti reali
 (l'esponenziale ha comunque la variabile $s$ all'esponente).
 \begin{rem}
 \marginpar{Questo non vale per i sistemi retro-azionati (saranno discussi successivamente)}Dato
-un sistema LTI con ritardo, supponendo di non avere cancellazioni
-nella funzione di trasferimento e tutti i poli abbiano parte reale
+un sistema LTI con ritardo, supponiamo di non avere cancellazioni
+nella funzione di trasferimento e che tutti i poli abbiano parte reale
 negativa, ovvero il sistema sarà asintoticamente stabile (dall'Osservazione
 \ref{oss:Stabilit=0000E0-segno-poli}); si dimostra che, se il sistema
 interno è asintoticamente stabile, eventuali ritardi su ingressi e
@@ -3710,8 +3719,8 @@ trascurabile e il sistema risponde come se non avesse affatto lo zero.\bigskip{}
 \subsection{\label{subsec:Sistemi-ord-2-poli-complessi-coniugati}Sistemi del
 II ordine con poli complessi coniugati}
 
-La forma della funzione di trasferimento in questo caso può essere
-scritta nella seguente forma:
+L'espressione della funzione di trasferimento in questo caso può essere
+scritta nel modo seguente:
 \[
 G\left(s\right)=\frac{\mu\omega_{n}^{2}}{\left(s^{2}+2\xi\omega_{n}s+\omega_{n}^{2}\right)}\qquad\omega_{n}>0,\,\xi\in\left(0,1\right)
 \]
@@ -3796,9 +3805,9 @@ Il tempo di assestamento, come nel caso di poli reali, vale $T_{a,\varepsilon}=-
 \marginpar{In presenza di zeri o poli con parte reale positiva (instabili) non
 valgono le approssimazioni seguenti}Consideriamo un sistema asintoticamente stabile di ordine maggiore
 del secondo, nel quale \uline{tutte} le singolarità (poli e zeri)
-abbiano parte reale negativa; nel caso i cui alcuni poli o zeri abbiano
-la parte reale in modulo molto maggiore di quella degli altri (la
-costante di tempo associata è molto piccola), possiamo trascurare
+abbiano parte reale negativa; nel caso inalterate cui alcuni poli
+o zeri abbiano la parte reale in modulo molto maggiore di quella degli
+altri (la costante di tempo associata è molto piccola), possiamo trascurare
 quelle singolarità nell'espressione della risposta allo scalino del
 sistema.
 \begin{example}
@@ -3849,7 +3858,8 @@ di tempo ($\tau_{z}=1$) è piccola rispetto a quella del polo dominante
 ignorando lo zero; si avrà un andamento in uscita con una sottoelongazione
 dovuta allo zero positivo trascurato, poi delle oscillazioni attorno
 al valore asintotico dovute ai poli complessi coniugati e infine il
-transitorio si stabilirà attorno al valore finale in circa.\demo
+transitorio si stabilirà attorno al valore finale in circa $5$ costanti
+di tempo.\demo
 \end{example}
 
 \section{Realizzazione}
@@ -4049,7 +4059,7 @@ a una funzione di trasferimento $G\left(s\right)$;\tabularnewline\addlinespace
 caratterizzati da un segno $+$ o $-$, e una sola uscita $y=u_{1}-u_{2}$;\tabularnewline\addlinespace
 \cmidrule{2-2} 
 \includegraphics{\string"Illustrazioni/4_1-3 Diramazione\string".pdf} & \emph{Diramazione}, consiste nello sdoppiare un segnale: si rappresenta
-con un ingresso $u$ e almeno due uscita $y_{1}$ e $y_{2}$ pari
+con un ingresso $u$ e almeno due uscite $y_{1}$ e $y_{2}$ pari
 all'ingresso.\tabularnewline\addlinespace
 \end{tabular}
 \par\end{centering}
@@ -4306,7 +4316,10 @@ Y\left(s\right)=G_{1}\left(s\right)U\left(s\right)+G_{2}\left(s\right)U\left(s\r
 Segue che la funzione di trasferimento complessiva del parallelo dei
 sistemi è pari alla \uline{somma} delle loro funzioni di trasferimento:
 \begin{equation}
-G\left(s\right)=G_{1}\left(s\right)+G_{2}\left(s\right)=\frac{N_{G_{1}}\left(s\right)}{D_{G_{1}}\left(s\right)}+\frac{N_{G_{2}}\left(s\right)}{D_{G_{2}}\left(s\right)}=\frac{N_{G_{1}}\left(s\right)\cdot D_{G_{2}}\left(s\right)+N_{G_{2}}\left(s\right)\cdot D_{G_{1}}\left(s\right)}{D_{G_{1}}\left(s\right)\cdot D_{G_{2}}\left(s\right)}\label{eq:Sistemi-in-parallelo}
+\begin{array}{c}
+G\left(s\right)=G_{1}\left(s\right)+G_{2}\left(s\right)=\dfrac{N_{G_{1}}\left(s\right)}{D_{G_{1}}\left(s\right)}+\dfrac{N_{G_{2}}\left(s\right)}{D_{G_{2}}\left(s\right)}\\
+=\dfrac{N_{G_{1}}\left(s\right)\cdot D_{G_{2}}\left(s\right)+N_{G_{2}}\left(s\right)\cdot D_{G_{1}}\left(s\right)}{D_{G_{1}}\left(s\right)\cdot D_{G_{2}}\left(s\right)}
+\end{array}\label{eq:Sistemi-in-parallelo}
 \end{equation}
 
 Come nel caso della serie, i poli della funzione di trasferimento
@@ -4747,7 +4760,7 @@ un numero finito (quattro) di andamenti:
 \end{enumerate}
 \noun{$\qquad$}\textbf{\noun{Guadagno statico}}\\
 Il valore di guadagno è indipendente da $\omega$, e rimane costante;
-il sua andamento è costante e interseca l'asse del modulo in $\left|\mu\right|_{{\scriptscriptstyle dB}}=20\log_{10}\left|\mu\right|$.
+il sua andamento è costante e interseca l'asse del modulo in $\left|\mu\right|_{{\scriptscriptstyle dB}}^{1/g}=20\log_{10}\left|\mu\right|$.
 Il segno è determinato dal segno di $\mu$.\medskip{}
 
 \noun{$\qquad$}\textbf{\noun{Poli o zeri nell'origine}}\\
@@ -6513,8 +6526,8 @@ l'uscita vale esattamente come il riferimento e il disturbo non ha
 effetto su di essa. Nella pratica si progetta il sistema di controllo
 in anello chiuso in modo che $F\left(s\right)$ sia un filtro passa
 basso, per rigettare i disturbi di misura; invece, la funzione $S\left(s\right)$
-viene dimensionata come un filtro passa alto (per attenuare il disturbo
-di processo sulle pulsazioni contenenti il segnale di riferimento),
+viene dimensio\-nata come un filtro passa alto (per attenuare il
+disturbo di processo sulle pulsazioni contenenti il segnale di riferimento),
 con banda passante vicina a quella di $F\left(s\right)$.
 \begin{rem}
 Da ora in avanti assumeremo che il sistema in esame sia asintoticamente
@@ -6960,7 +6973,7 @@ positivo).
 \subsection{Sensitività del comando}
 
 Facendo riferimento al modello in figura \ref{fig:Schema-di-riferimento-controllo},
-otteniamo la trasforma del segnale di controllo $u\left(t\right)$
+otteniamo la trasformata del segnale di controllo $u\left(t\right)$
 nel dominio di Laplace:
 \[
 U\left(s\right)=\underset{{\scriptstyle Q\left(s\right)}}{\underbrace{\frac{R\left(s\right)}{1+L\left(s\right)}}}W\left(s\right)-\frac{R\left(s\right)}{1+L\left(s\right)}N\left(s\right)-\frac{R\left(s\right)}{1+L\left(s\right)}D\left(s\right)
@@ -7109,7 +7122,7 @@ di anello $G\left(s\right)$:
 \item si potrebbe soddisfare la specifica in modo conservativo ponendo $g\geq2$;
 tuttavia possiamo porre $g=1$ e impostare la relazione 
 \[
-\left|e_{\infty}\right|=5/\mu\leq2\,\text{m}/\text{s}\rightarrow\mu\geq5/2;
+\left|e_{\infty}\right|=5/\mu\leq2\,\text{km}/\text{h}\rightarrow\mu\geq5/2;
 \]
 \item $\left|L\left(j\omega\right)\right|\geq20\,\text{dB}$ per $\omega\in\left[0,\,0.001\right]$;
 \item $\left|L\left(j\omega\right)\right|\leq-20\,\text{dB}$ per $\omega\in\left[10^{2},\,10^{3}\right]$;
@@ -7308,7 +7321,7 @@ poli nell'origine del regolatore), e valgono le seguenti relazioni:
 di $G\left(s\right)$, il tipo della funzione di anello vale $g=g_{{\scriptscriptstyle \text{R}}}+n_{{\scriptscriptstyle \text{G}}}$;
 \item rispetto al guadagno $\mu_{{\scriptscriptstyle \text{G}}}$ della
 funzione $G\left(s\right)$, il guadagno della funzione di anello
-vale $\mu=\mu_{{\scriptscriptstyle \text{R}}}+\mu_{{\scriptscriptstyle \text{G}}}$.
+vale $\mu=\mu_{{\scriptscriptstyle \text{R}}}\cdot\mu_{{\scriptscriptstyle \text{G}}}$.
 \end{itemize}
 Per progettare il regolatore dinamico, prima di tutto inseriamo il
 regolatore statico nell'anello, ricavando una prima funzione di anello
@@ -7558,7 +7571,7 @@ PD & $R\left(s\right)=\dfrac{\left(\left(1+\frac{{\scriptstyle 1}}{{\scriptstyle
 \captionof{table}{Sottoclassi del regolatore PID}\label{tab:Sottoclassi-del-regolatore-PID}%
 \end{minipage}%
 \begin{minipage}[c]{0.5\textwidth}%
-Non si utilizza nello standard industriale un regolatore D, dotato
+Non si utilizza nello standard industria\-le un regolatore D, dotato
 solo di azione derivativa; invece i regolatori PI sono quelli più
 diffusi, dato che comprendono un polo nell'origine (permette inseguimento
 asintotico di riferimenti costanti, si veda \tabref{Prestazioni-statiche}),
@@ -8461,9 +8474,10 @@ Inoltre l'inversione $\left(zI-A_{R}^{*}\right)^{-1}$ comporta la
 divisione per il suo determinante e, trattandosi del polinomio caratteristico
 (\ref{eq:Polinomio-caratteristico}), se il regolatore è asintoticamente
 stabile, tutte le radici al denominatore di $R^{*}\left(z\right)$
-avranno parte reale negativa. Avendo una funzione di trasferimento
-costruita in questo modo, nel dominio di z, è molto facile ricavare
-da essa un'equazione ricorsiva che permetta di calcolare il comando.
+avranno modulo della parte reale monore di 1. Avendo una funzione
+di trasferimento costruita in questo modo, nel dominio di z, è molto
+facile ricavare da essa un'equazione ricorsiva che permetta di calcolare
+il comando.
 
 In generale la funzione del regolatore avrà una forma del tipo:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
 \textbf{\footnotesize{}Funzione del regolatore discreto in z}{\footnotesize{}\index{Regolatore discreto, trasferimento in z@{\footnotesize{}Regolatore discreto, trasferimento in z}}}}[0.1cm]
@@ -8907,9 +8921,9 @@ b_{n,1} & \cdots & b_{n,n}
 \begin{thm}
 Data una matrice quadrata $A$, essa è invertibile se e solo se non
 è singolare; se $A$ non è singolare allora la sua inversa vale $A^{-1}=\dfrac{1}{\det\left(A\right)}A^{*}$;
-con $A^{*}=\left[a_{i,,j}^{*}\right]$ si indica la \emph{matrice
-aggiunta} di $A$, ovvero quella il cui elemento di posto $a_{i,,j}^{*}$
-corrisponde al complemento algebrico di $a_{j,,i}$.
+con $A^{*}=\left[a_{i,j}^{*}\right]$ si indica la \emph{matrice aggiunta}
+di $A$, ovvero quella il cui elemento di posto $a_{i,j}^{*}$ corrisponde
+al complemento algebrico di $a_{j,i}$.
 \end{thm}
 \begin{example}
 Si vuole invertire la seguente matrice:
@@ -9266,7 +9280,7 @@ quindi gli stessi autovalori.
 Una matrice si dice \emph{diagonalizzabile} se è simile a una matrice
 diagonale, ovvero $A$ è diagonalizzabile se
 \[
-\exists T_{{\scriptscriptstyle \text{D}}}\,:\,A_{{\scriptscriptstyle \text{D}}}=T_{{\scriptscriptstyle \text{D}}}AT_{{\scriptscriptstyle \text{D}}}^{-1}
+\exists T_{{\scriptscriptstyle \text{D}}}\,:\,A_{{\scriptscriptstyle \text{D}}}=T_{{\scriptscriptstyle \text{D}}}\cdot A\cdot T_{{\scriptscriptstyle \text{D}}}^{-1}
 \]
 dove $A_{{\scriptscriptstyle \text{D}}}$ è una matrice diagonale
 con gli stessi autovalori di $A$.
@@ -9529,7 +9543,7 @@ che $A\cdot e^{A\cdot t}=e^{A\cdot t}\cdot A$; dato che $A$ è diagonale,
 anche la sua esponenziale sarà una matrice diagonale e il prodotto
 di due matrici diagonali è commutativo.
 
-Dalla Osservazione \ref{oss:Esponenziali-matrici-simili} otteniamo
+Dall'Osservazione \ref{oss:Esponenziali-matrici-simili} otteniamo
 che questa uguaglianza vale in generale per una matrice $A$ qualsiasi;
 infatti $T_{{\scriptscriptstyle \text{D}}}^{-1}\cdot A_{{\scriptscriptstyle \text{D}}}\cdot T_{{\scriptscriptstyle \text{D}}}\cdot T_{{\scriptscriptstyle \text{D}}}^{-1}\cdot e^{A_{{\scriptscriptstyle \text{D}}}\cdot t}\cdot T_{{\scriptscriptstyle \text{D}}}=T_{{\scriptscriptstyle \text{D}}}^{-1}\cdot A_{{\scriptscriptstyle \text{D}}}\cdot e^{A_{{\scriptscriptstyle \text{D}}}\cdot t}\cdot T_{{\scriptscriptstyle \text{D}}}=A$.
 \end{rem}
@@ -9554,7 +9568,7 @@ la parte immaginaria; $j$ è l'unità immaginaria tale che $j^{2}=-1$.
 Ogni numero complesso possiede un complesso coniugato, che ha la stessa
 parte reale e la parte immaginaria cambiata di segno ($\overline{s}=a-jb$).
 
-I numero complessi ammettono anche la rappresentazione in forma trigonometrica
+I numeri complessi ammettono anche la rappresentazione in forma trigonometrica
 (modulo e fase) sul piano di Gauss: $s=\rho\left(\cos\left(\varphi\right)+j\sin\left(\varphi\right)\right)$,
 dove $\rho$ è la distanza del numero dall'origine e $\varphi$ è
 l'angolo che questa distanza forma con l'asse orizzontale.
@@ -9646,9 +9660,9 @@ della trasformata di Laplace, definita come\marginpar{\rule[0.5ex]{3cm}{1pt}\tex
 \begin{equation}
 \mathscr{L}^{-1}\left[F\left(s\right)\right]=f\left(t\right)=\dfrac{1}{2\pi j}\cdot\lm{\omega}{+\infty}{\somme{\sigma-j\omega}{\sigma+j\omega}{F\left(s\right)e^{st}}s}\label{eq:Antitrasformata-Laplace}
 \end{equation}
-dove agli estremi di integrazione si ha $\sigma>\overline{\sigma},\,\sigma\in\mathbb{R}$
-qualsiasi. La corrispondenza tra trasformata e antitrasformata di
-Laplace è biunivoca nel caso di funzioni nulle per $t<0$.
+dove agli estremi di integrazione si ha $\sigma>\overline{\sigma},\,\forall\sigma\in\mathbb{R}$.
+La corrispondenza tra trasformata e antitrasformata di Laplace è biunivoca
+nel caso di funzioni nulle per $t<0$.
 \end{defn}
 
 \section{Proprietà\label{sec:Propriet=0000E0-della-trasformata}}
@@ -9659,7 +9673,7 @@ vale
 \[
 \mathscr{L}\left[\alpha f\left(t\right)+\beta g\left(t\right)\right]=\alpha F\left(s\right)+\beta G\left(s\right)
 \]
-ovvero la (\ref{eq:Trasformata-razionale}) è una operazione lineare.\bigskip{}
+ovvero la (\ref{eq:Trasformata-Laplace}) è una operazione lineare.\bigskip{}
 \item [{$\mathrm{\left(II\right)}\,\text{\textsc{Traslazione nel dominio del Tempo}}$\noun{:}}] Comunque
 preso un ritardo $\tau>0$, si consideri la funzione traslata $f\left(t-\tau\right)$;
 la sua trasformata di Laplace vale
@@ -9828,7 +9842,8 @@ rampa come integrale dello scalino (moltiplicando quindi per $\nicefrac{1}{s}$
 la trasformata dello scalino).
 
 La \textbf{parabola} è un ingresso canonico monotono che si annulla
-nell'istante iniziale, definita a partire dallo scalino come $\text{par}\left(t\right)=\nicefrac{1}{2}\,t^{2}\text{sca}\left(t\right)$;
+nell'istante iniziale, essa è definita a partire dallo scalino, come
+$\text{par}\left(t\right)=\nicefrac{1}{2}\,t^{2}\text{sca}\left(t\right)$;
 la sua trasformata di Laplace vale:
 \[
 \mathscr{L}\left[\text{par}\left(t\right)\right]=\mathscr{L}\left[\somme 0{\infty}{\text{ram}\left(t\right)}t\right]\overset{{\scriptscriptstyle \left(\mathrm{VI}\right)}}{=}\dfrac{1}{s}\mathscr{L}\left[\text{ram}\left(t\right)\right]=\dfrac{1}{s^{3}}
@@ -9845,7 +9860,7 @@ $\checkmark$Calcolare la trasformata di Laplace di tale movimento.}
 Utilizziamo le proprietà di traslazione e di convoluzione per ottenere
 il seguente risultato:
 \[
-\mathscr{L}\left[f\left(t\right)\right]=\dfrac{1}{s-\alpha}\cdot\dfrac{1}{s}=\dfrac{1}{s\left(s-\alpha\right)}
+\mathscr{L}\left[f\left(t\right)\right]=\dfrac{1}{s-\alpha}\cdot\dfrac{1}{s^{2}}=\dfrac{1}{s\left(s-\alpha\right)}
 \]
 
 \emph{$\checkmark$Calcolare valore iniziale e finale del movimento
@@ -9906,7 +9921,7 @@ F\left(s\right)=\dfrac{N\left(s\right)}{D\left(s\right)}=\dfrac{\beta_{0}s^{n}+\
 \[
 =\dfrac{\beta_{0}}{\alpha_{0}}+\dfrac{\left(\beta_{1}-\beta_{0}\alpha_{1}\right)s^{n}+\left(\beta_{2}-\beta_{1}\alpha_{2}\right)s^{n-1}+\ldots+\left(\beta_{n}-\beta_{n-1}\alpha_{n}\right)}{\alpha_{0}s^{n}+\alpha_{1}s^{n-1}+\ldots+\alpha_{n}}
 \]
-Vale in generale che una funzione razionale può essere scritta come
+Vale in generale che una funzione razionale possa essere scritta come
 somma di una costante e di una frazione strettamente propria, e grazie
 alla proprietà $\left(\mathrm{I}\right)$ essa è ancora una antitrasformata
 di Laplace.
@@ -10107,9 +10122,8 @@ F\left(s\right)\doteq\dfrac{s+18}{s\left(s+3\right)^{2}}=\dfrac{P_{1,1}}{s}+\dfr
 \[
 s+18=P_{1,1}\left(s+3\right)^{2}+P_{2,1}s\left(s+3\right)+P_{2,2}s
 \]
-A questo punto si raccolgono le $s$ per imporre delle condizioni
-rispetto ai residui e ai valori già noti dal numeratore, a sinistra
-dell'uguale:
+A questo punto si raccolgono le $s$ a sinistra dell'uguale, per imporre
+delle condizioni rispetto ai residui e ai valori già noti dal numeratore:
 \[
 s+18=s^{2}\left(P_{1,1}+P_{2,1}\right)+s\left(6P_{1,1}+3P_{2,1}+P_{2,2}\right)+9P_{1}
 \]

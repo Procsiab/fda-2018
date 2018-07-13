@@ -14,6 +14,7 @@
 \usepackage{imakeidx}
 \usepackage{amsmath}
 \usepackage{wrapfig}
+\usepackage{hyphenat}
 
 \renewcommand{\marginpar}[1]{\marginnote{\footnotesize #1}}
 \setlength\marginparsep{0.3cm}
@@ -544,7 +545,7 @@ I sistemi sono classificati tramite caratteristiche dei modelli (delle equazioni
 \labelwidthstring 00.00.0000
 Statico/Dinamico: la presenza del solo ingresso nella funzione di uscita
  del sistema lo classifica come statico; si dirà invece dinamico se presenta
- delle variabili di stato (vedi Esempio 
+ delle variabili di stato (si veda Esempio 
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "exa:maglia-rc"
@@ -1764,14 +1765,28 @@ demo
 Nel prossimo esempio un sistema dinamico di ordine 
 \noun on
 IV:
-\noun default
+\end_layout
 
-\begin_inset Wrap figure
-lines 0
-placement o
-overhang 0in
-width "45text%"
-status collapsed
+\begin_layout Standard
+
+\emph on
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "50text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -1779,7 +1794,7 @@ status collapsed
 \begin_inset Graphics
 	filename Illustrazioni/1_2-5 Sistema due masse sospensioni.pdf
 	display false
-	scale 150
+	scale 120
 
 \end_inset
 
@@ -1787,10 +1802,14 @@ status collapsed
 \end_layout
 
 \begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_inset ERT
+status open
 
 \begin_layout Plain Layout
-Sistema di due masse con sospensioni
+
+
+\backslash
+captionof{figure}{Sistema di due masse con sospensioni}
 \end_layout
 
 \end_inset
@@ -1801,7 +1820,23 @@ Sistema di due masse con sospensioni
 \end_inset
 
 
-\end_layout
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "c"
+use_parbox 0
+use_makebox 0
+width "50text%"
+special "none"
+height "1in"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
 
 \begin_layout Example
 \begin_inset CommandInset label
@@ -1856,8 +1891,19 @@ Sia dato un sistema costituito da due masse
 \begin_inset Formula $p_{2}\left(t\right)$
 \end_inset
 
-; si possa esercitare una forza su ciascuna massa in modo longitudinale
- rispetto al sistema (rispettivamente 
+;
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+si possa esercitare una forza su ciascuna massa in modo longitudinale rispetto
+ al sistema (rispettivamente 
 \begin_inset Formula $F_{1}\left(t\right)$
 \end_inset
 
@@ -1873,7 +1919,7 @@ Sia dato un sistema costituito da due masse
 Si scriva un modello per misurare la posizione nel tempo delle due masse.
 \end_layout
 
-\begin_layout Example
+\begin_layout Standard
 Usando l'equilibrio delle forze (per una massa alla volta) possiamo scrivere
  un'equazione tra forza d'inerzia, forza dell'ammortizzatore, forza elastica
  e forze esercitate dall'altra massa in seguito al suo moto relativo, tutto
@@ -2616,7 +2662,20 @@ Un movimento si dice
 \emph on
 asintoticamente stabile
 \emph default
- se soddisfa la Definizione 
+ se soddisfa la Defini
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+-
+\end_layout
+
+\end_inset
+
+zione 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "def:Stabilità"
@@ -2785,12 +2844,12 @@ Si tratta dell'equazione analitica del movimento dello stato in forma chiusa;
 \begin_inset Formula $C$
 \end_inset
 
- sono positivi) possiamo affermare che la precedente tende per 
-\begin_inset Formula $t\rightarrow\infty$
+ sono positivi) possiamo affermare che la precedente tende a 
+\begin_inset Formula $\overline{u}$
 \end_inset
 
- a 
-\begin_inset Formula $\overline{u}$
+ per 
+\begin_inset Formula $t\rightarrow\infty$
 \end_inset
 
 , che è il valore del movimento nominale: il movimento converge a quello
@@ -3381,7 +3440,7 @@ reference "eq:Formula-di-Lagrange"
  otteniamo (portando le costanti fuori dall'integrale)
 \begin_inset Formula 
 \[
-x\left(t\right)=\somme 0t{e^{a\left(t-\tau\right)}b\overline{u}\text{sca}\left(\tau\right)}{\tau}=e^{at}b\overline{u}\somme 0t{e^{-a\tau}\text{sca}\left(\tau\right)}{\tau}
+x\left(t\right)=\somme 0t{e^{a\left(t-\tau\right)}b\overline{u}\cdot\text{sca}\left(\tau\right)}{\tau}=e^{at}b\overline{u}\somme 0t{e^{-a\tau}\text{sca}\left(\tau\right)}{\tau}
 \]
 
 \end_inset
@@ -3600,7 +3659,7 @@ Per il primo contributo, essendo il sistema in equilibrio per ipotesi, il
 \end_inset
 
 .
- Per il secondo contributo considero
+ Per il secondo contributo consideriamo
 \begin_inset Formula 
 \[
 \begin{cases}
@@ -3884,7 +3943,7 @@ reference "eq:Forma-standard-matrice-LTI"
 L'equazione di uscita sarà di conseguenza
 \begin_inset Formula 
 \[
-y\left(t\right)=C\cdot x\left(t\right)+D\cdot u\left(t\right)\rightarrow y\left(t\right)=C\cdot T^{-1}\hat{x}\left(t\right)+Du\left(t\right)
+y\left(t\right)=Cx\left(t\right)+Du\left(t\right)\rightarrow y\left(t\right)=C\cdot T^{-1}\hat{x}\left(t\right)+Du\left(t\right)
 \]
 
 \end_inset
@@ -4034,7 +4093,7 @@ reference "eq:Formula-di-Lagrange"
 \end_layout
 
 \begin_layout Remark
-Si nota che qualsiasi movimento dello stato di un sistema LTI è combinazione
+Si noti che qualsiasi movimento dello stato di un sistema LTI è combinazione
  lineare di un numero piccolo di movimenti possibili, tanti quanti gli autovalor
 i della matrice 
 \begin_inset Formula $A$
@@ -4112,8 +4171,8 @@ Se scegliamo un nuovo stato
 \begin_inset Formula $\hat{x}\left(t\right)=T_{{\scriptscriptstyle \text{D}}}\cdot x\left(t\right)$
 \end_inset
 
- ottenuto tramite la matrice di diagonalizzazione, ottengo l'equazione del
- modello:
+ ottenuto tramite la matrice di diagonalizzazione, otteniamo l'equazione
+ del modello:
 \begin_inset Formula 
 \[
 \begin{cases}
@@ -4308,21 +4367,21 @@ status open
 \begin_inset Formula $\lambda_{i}<0$
 \end_inset
 
-: modo convergenti;
+: modo convergente;
 \end_layout
 
 \begin_layout Itemize
 \begin_inset Formula $\lambda_{i}=0$
 \end_inset
 
-: modo costanti;
+: modo costante;
 \end_layout
 
 \begin_layout Itemize
 \begin_inset Formula $\lambda_{i}>0$
 \end_inset
 
-: modo divergenti.
+: modo divergente.
 \end_layout
 
 \end_deeper
@@ -4725,7 +4784,7 @@ Autovalori reali e distinti
 
 \begin_layout Example
 In questo caso vale 
-\begin_inset Formula $\lambda_{1},\,\lambda_{2}\in\mathbb{R}\land\lambda_{1}\neq\lambda_{2}$
+\begin_inset Formula $\lambda_{1},\,\lambda_{2}\in\mathbb{R}\,\land\,\lambda_{1}\neq\lambda_{2}$
 \end_inset
 
  dunque avendo autovalori distinti la matrice 
@@ -4783,6 +4842,17 @@ reference "chap:Richiami-di-Geometria"
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[-1cm]
 \end_layout
 
 \end_inset
@@ -4846,7 +4916,7 @@ La precedente ha due componenti siccome lo stato ha due componenti.
  I suoi coefficienti sono una combinazione lineare dei coefficienti dello
  stato iniziale e degli elementi della matrice di trasformazione.
  Il movimento avrà un andamento sempre convergente: dall'espressione degli
- autovalori ricavata inizialmente si ricava
+ autovalori ottenuta inizialmente si ricava
 \begin_inset Formula 
 \[
 \lambda_{1,2}=-\dfrac{R}{2L}\left(1\pm\sqrt{1-\dfrac{4L}{R^{2}C}}\right)<0
@@ -5284,13 +5354,24 @@ name "fig:Schema-doppio-integratore"
 
 \begin_layout Example
 \begin_inset Marginal
-status collapsed
+status open
 
 \begin_layout Plain Layout
 Il sistema nell'esempio con due autovalori coincidenti nulli appartiene
  alla categoria dei 
 \emph on
 doppi integratori
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+[-0.6cm]
 \end_layout
 
 \end_inset
@@ -8311,7 +8392,7 @@ con
 \begin_inset Formula $\alpha,\,\beta>0$
 \end_inset
 
-); la politica di prezzo è definito da
+); la politica di prezzo è definita da
 \begin_inset Formula 
 \[
 p\left(k+1\right)=p\left(k\right)+\gamma\left(k\right)\cdot\left(s_{0}\left(k\right)-s\left(k\right)\right)+\delta\left(k\right)\cdot v\left(t\right)
@@ -8719,7 +8800,23 @@ ponendo lo stato
 \end_inset
 
 ).
- Nel passaggio dal mondo analogico a quello digitale discreto c'è l'operazione
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+demo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Nel passaggio dal mondo analogico a quello digitale discreto c'è l'operazione
  di 
 \emph on
 campionamento
@@ -8799,19 +8896,6 @@ Si nota che, essendo il sistema tempo invariante, gli estremi di integrazione
 
 , infatti nella discretizzazione si approssima solo l'operazione di derivazione
  nelle equazioni di stato.
-\begin_inset ERT
-status open
-
-\begin_layout Plain Layout
-
-
-\backslash
-demo
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -9128,7 +9212,7 @@ Le equazioni per i sistemi a tempo discreto rimangono lineari, dunque vale
 \begin_inset Formula $x^{\prime\prime}\left(k\right)$
 \end_inset
 
-, posto che l'ingresso 
+, posto l'ingresso 
 \begin_inset Formula $u^{\prime\prime\prime}\left(k\right)=\alpha u^{\prime}\left(k\right)+\beta u^{\prime\prime}\left(k\right)$
 \end_inset
 
@@ -10348,11 +10432,11 @@ reference "eq:Forma-di-Jordan"
 \begin_inset Formula $z_{i}^{k}$
 \end_inset
 
-, mentre al di sopra i modi 
+, mentre sopra di essa i modi 
 \begin_inset Formula $k^{\eta-1}z^{k-\eta-1}$
 \end_inset
 
- dove 
+, dove 
 \begin_inset Formula $\eta$
 \end_inset
 
@@ -10524,7 +10608,7 @@ name "thm:Stabilità-sistema-LTI-discreto"
 
 \end_inset
 
-In un sistema LTI a tempo dinamico un movimento (incluso quello di equilibrio)
+In un sistema LTI a tempo discreto un movimento (incluso quello di equilibrio)
  è stabile, asintoticamente stabile o instabile se e solo se sono rispettivament
 e stabili, asintoticamente stabili o instabili tutti i movimenti del sistema.
 \end_layout
@@ -10651,7 +10735,7 @@ Un movimento per
 
 \begin_layout Enumerate
 La risposta a un impulso tende ad annullarsi per 
-\begin_inset Formula $t\rightarrow\infty$
+\begin_inset Formula $k\rightarrow\infty$
 \end_inset
 
 ;
@@ -10660,7 +10744,7 @@ La risposta a un impulso tende ad annullarsi per
 \begin_layout Enumerate
 La risposta a qualunque ingresso limitato nel tempo tende ad annullarsi
  per 
-\begin_inset Formula $t\rightarrow\infty$
+\begin_inset Formula $k\rightarrow\infty$
 \end_inset
 
 ;
@@ -11073,7 +11157,7 @@ reference "thm:Criterio-di-Jury"
 \[
 \begin{cases}
 1-\beta^{2}>0 & \left(1\right)\\
-1-\beta^{2}-\dfrac{\alpha^{2}\left(1-\beta\right)^{2}}{1-\beta^{2}} & \left(2\right)
+1-\beta^{2}-\dfrac{\alpha^{2}\left(1-\beta\right)^{2}}{1-\beta^{2}}>0 & \left(2\right)
 \end{cases}=\begin{cases}
 \beta\in\left(-1,\,1\right)\\
 1+\beta\in\left(-\alpha,\,\alpha\right)
@@ -12620,8 +12704,8 @@ Questo non vale per i sistemi retro-azionati (saranno discussi successivamente)
 
 \end_inset
 
-Dato un sistema LTI con ritardo, supponendo di non avere cancellazioni nella
- funzione di trasferimento e tutti i poli abbiano parte reale negativa,
+Dato un sistema LTI con ritardo, supponiamo di non avere cancellazioni nella
+ funzione di trasferimento e che tutti i poli abbiano parte reale negativa,
  ovvero il sistema sarà asintoticamente stabile (dall'Osservazione 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -14237,8 +14321,8 @@ Sistemi del II ordine con poli complessi coniugati
 \end_layout
 
 \begin_layout Standard
-La forma della funzione di trasferimento in questo caso può essere scritta
- nella seguente forma:
+L'espressione della funzione di trasferimento in questo caso può essere
+ scritta nel modo seguente:
 \begin_inset Formula 
 \[
 G\left(s\right)=\frac{\mu\omega_{n}^{2}}{\left(s^{2}+2\xi\omega_{n}s+\omega_{n}^{2}\right)}\qquad\omega_{n}>0,\,\xi\in\left(0,1\right)
@@ -14461,11 +14545,11 @@ Consideriamo un sistema asintoticamente stabile di ordine maggiore del secondo,
 \bar under
 tutte
 \bar default
- le singolarità (poli e zeri) abbiano parte reale negativa; nel caso i cui
- alcuni poli o zeri abbiano la parte reale in modulo molto maggiore di quella
- degli altri (la costante di tempo associata è molto piccola), possiamo
- trascurare quelle singolarità nell'espressione della risposta allo scalino
- del sistema.
+ le singolarità (poli e zeri) abbiano parte reale negativa; nel caso inalterate
+ cui alcuni poli o zeri abbiano la parte reale in modulo molto maggiore
+ di quella degli altri (la costante di tempo associata è molto piccola),
+ possiamo trascurare quelle singolarità nell'espressione della risposta
+ allo scalino del sistema.
 \end_layout
 
 \begin_layout Example
@@ -14625,7 +14709,11 @@ Osserviamo che il nuovo zero ha parte reale positiva, e la sua costante
  si avrà un andamento in uscita con una sottoelongazione dovuta allo zero
  positivo trascurato, poi delle oscillazioni attorno al valore asintotico
  dovute ai poli complessi coniugati e infine il transitorio si stabilirà
- attorno al valore finale in circa.
+ attorno al valore finale in circa 
+\begin_inset Formula $5$
+\end_inset
+
+ costanti di tempo.
 \begin_inset ERT
 status open
 
@@ -15322,7 +15410,7 @@ Diramazione
 \begin_inset Formula $u$
 \end_inset
 
- e almeno due uscita 
+ e almeno due uscite 
 \begin_inset Formula $y_{1}$
 \end_inset
 
@@ -16245,7 +16333,10 @@ somma
  delle loro funzioni di trasferimento:
 \begin_inset Formula 
 \begin{equation}
-G\left(s\right)=G_{1}\left(s\right)+G_{2}\left(s\right)=\frac{N_{G_{1}}\left(s\right)}{D_{G_{1}}\left(s\right)}+\frac{N_{G_{2}}\left(s\right)}{D_{G_{2}}\left(s\right)}=\frac{N_{G_{1}}\left(s\right)\cdot D_{G_{2}}\left(s\right)+N_{G_{2}}\left(s\right)\cdot D_{G_{1}}\left(s\right)}{D_{G_{1}}\left(s\right)\cdot D_{G_{2}}\left(s\right)}\label{eq:Sistemi-in-parallelo}
+\begin{array}{c}
+G\left(s\right)=G_{1}\left(s\right)+G_{2}\left(s\right)=\dfrac{N_{G_{1}}\left(s\right)}{D_{G_{1}}\left(s\right)}+\dfrac{N_{G_{2}}\left(s\right)}{D_{G_{2}}\left(s\right)}\\
+=\dfrac{N_{G_{1}}\left(s\right)\cdot D_{G_{2}}\left(s\right)+N_{G_{2}}\left(s\right)\cdot D_{G_{1}}\left(s\right)}{D_{G_{1}}\left(s\right)\cdot D_{G_{2}}\left(s\right)}
+\end{array}\label{eq:Sistemi-in-parallelo}
 \end{equation}
 
 \end_inset
@@ -18229,7 +18320,7 @@ Il valore di guadagno è indipendente da
 
 , e rimane costante; il sua andamento è costante e interseca l'asse del
  modulo in 
-\begin_inset Formula $\left|\mu\right|_{{\scriptscriptstyle dB}}=20\log_{10}\left|\mu\right|$
+\begin_inset Formula $\left|\mu\right|_{{\scriptscriptstyle dB}}^{1/g}=20\log_{10}\left|\mu\right|$
 \end_inset
 
 .
@@ -25130,9 +25221,22 @@ In assenza ideale di disturbi di misura (
 \begin_inset Formula $S\left(s\right)$
 \end_inset
 
- viene dimensionata come un filtro passa alto (per attenuare il disturbo
- di processo sulle pulsazioni contenenti il segnale di riferimento), con
- banda passante vicina a quella di 
+ viene dimensio
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+-
+\end_layout
+
+\end_inset
+
+nata come un filtro passa alto (per attenuare il disturbo di processo sulle
+ pulsazioni contenenti il segnale di riferimento), con banda passante vicina
+ a quella di 
 \begin_inset Formula $F\left(s\right)$
 \end_inset
 
@@ -27013,7 +27117,7 @@ noprefix "false"
 
 \end_inset
 
-, otteniamo la trasforma del segnale di controllo 
+, otteniamo la trasformata del segnale di controllo 
 \begin_inset Formula $u\left(t\right)$
 \end_inset
 
@@ -27606,7 +27710,7 @@ si potrebbe soddisfare la specifica in modo conservativo ponendo
  e impostare la relazione 
 \begin_inset Formula 
 \[
-\left|e_{\infty}\right|=5/\mu\leq2\,\text{m}/\text{s}\rightarrow\mu\geq5/2;
+\left|e_{\infty}\right|=5/\mu\leq2\,\text{km}/\text{h}\rightarrow\mu\geq5/2;
 \]
 
 \end_inset
@@ -28500,7 +28604,7 @@ rispetto al guadagno
 \end_inset
 
 , il guadagno della funzione di anello vale 
-\begin_inset Formula $\mu=\mu_{{\scriptscriptstyle \text{R}}}+\mu_{{\scriptscriptstyle \text{G}}}$
+\begin_inset Formula $\mu=\mu_{{\scriptscriptstyle \text{R}}}\cdot\mu_{{\scriptscriptstyle \text{G}}}$
 \end_inset
 
 .
@@ -29556,10 +29660,22 @@ backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
-Non si utilizza nello standard industriale un regolatore D, dotato solo
- di azione derivativa; invece i regolatori PI sono quelli più diffusi, dato
- che comprendono un polo nell'origine (permette inseguimento asintotico
- di riferimenti costanti, si veda 
+Non si utilizza nello standard industria
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+-
+\end_layout
+
+\end_inset
+
+le un regolatore D, dotato solo di azione derivativa; invece i regolatori
+ PI sono quelli più diffusi, dato che comprendono un polo nell'origine (permette
+ inseguimento asintotico di riferimenti costanti, si veda 
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "tab:Prestazioni-statiche"
@@ -33178,7 +33294,7 @@ noprefix "false"
 \begin_inset Formula $R^{*}\left(z\right)$
 \end_inset
 
- avranno parte reale negativa.
+ avranno modulo della parte reale monore di 1.
  Avendo una funzione di trasferimento costruita in questo modo, nel dominio
  di z, è molto facile ricavare da essa un'equazione ricorsiva che permetta
  di calcolare il comando.
@@ -35260,7 +35376,7 @@ Data una matrice quadrata
 \end_inset
 
 ; con 
-\begin_inset Formula $A^{*}=\left[a_{i,,j}^{*}\right]$
+\begin_inset Formula $A^{*}=\left[a_{i,j}^{*}\right]$
 \end_inset
 
  si indica la 
@@ -35272,11 +35388,11 @@ matrice aggiunta
 \end_inset
 
 , ovvero quella il cui elemento di posto 
-\begin_inset Formula $a_{i,,j}^{*}$
+\begin_inset Formula $a_{i,j}^{*}$
 \end_inset
 
  corrisponde al complemento algebrico di 
-\begin_inset Formula $a_{j,,i}$
+\begin_inset Formula $a_{j,i}$
 \end_inset
 
 .
@@ -36586,7 +36702,7 @@ diagonalizzabile
  è diagonalizzabile se
 \begin_inset Formula 
 \[
-\exists T_{{\scriptscriptstyle \text{D}}}\,:\,A_{{\scriptscriptstyle \text{D}}}=T_{{\scriptscriptstyle \text{D}}}AT_{{\scriptscriptstyle \text{D}}}^{-1}
+\exists T_{{\scriptscriptstyle \text{D}}}\,:\,A_{{\scriptscriptstyle \text{D}}}=T_{{\scriptscriptstyle \text{D}}}\cdot A\cdot T_{{\scriptscriptstyle \text{D}}}^{-1}
 \]
 
 \end_inset
@@ -37505,7 +37621,7 @@ Sia
 \end_layout
 
 \begin_layout Remark
-Dalla Osservazione 
+Dall'Osservazione 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "oss:Esponenziali-matrici-simili"
@@ -37597,7 +37713,7 @@ Ogni numero complesso possiede un complesso coniugato, che ha la stessa
 \end_layout
 
 \begin_layout Definition
-I numero complessi ammettono anche la rappresentazione in forma trigonometrica
+I numeri complessi ammettono anche la rappresentazione in forma trigonometrica
  (modulo e fase) sul piano di Gauss: 
 \begin_inset Formula $s=\rho\left(\cos\left(\varphi\right)+j\sin\left(\varphi\right)\right)$
 \end_inset
@@ -38046,10 +38162,10 @@ status open
 \end_inset
 
 dove agli estremi di integrazione si ha 
-\begin_inset Formula $\sigma>\overline{\sigma},\,\sigma\in\mathbb{R}$
+\begin_inset Formula $\sigma>\overline{\sigma},\,\forall\sigma\in\mathbb{R}$
 \end_inset
 
- qualsiasi.
+.
  La corrispondenza tra trasformata e antitrasformata di Laplace è biunivoca
  nel caso di funzioni nulle per 
 \begin_inset Formula $t<0$
@@ -38101,7 +38217,10 @@ name "sec:Proprietà-della-trasformata"
 ovvero la 
 \begin_inset CommandInset ref
 LatexCommand eqref
-reference "eq:Trasformata-razionale"
+reference "eq:Trasformata-Laplace"
+plural "false"
+caps "false"
+noprefix "false"
 
 \end_inset
 
@@ -38698,8 +38817,8 @@ La
 \series bold
 parabola
 \series default
- è un ingresso canonico monotono che si annulla nell'istante iniziale, definita
- a partire dallo scalino come 
+ è un ingresso canonico monotono che si annulla nell'istante iniziale, essa
+ è definita a partire dallo scalino, come 
 \begin_inset Formula $\text{par}\left(t\right)=\nicefrac{1}{2}\,t^{2}\text{sca}\left(t\right)$
 \end_inset
 
@@ -38742,7 +38861,7 @@ Utilizziamo le proprietà di traslazione e di convoluzione per ottenere il
  seguente risultato:
 \begin_inset Formula 
 \[
-\mathscr{L}\left[f\left(t\right)\right]=\dfrac{1}{s-\alpha}\cdot\dfrac{1}{s}=\dfrac{1}{s\left(s-\alpha\right)}
+\mathscr{L}\left[f\left(t\right)\right]=\dfrac{1}{s-\alpha}\cdot\dfrac{1}{s^{2}}=\dfrac{1}{s\left(s-\alpha\right)}
 \]
 
 \end_inset
@@ -39112,7 +39231,7 @@ F\left(s\right)=\dfrac{N\left(s\right)}{D\left(s\right)}=\dfrac{\beta_{0}s^{n}+\
 
 \end_inset
 
-Vale in generale che una funzione razionale può essere scritta come somma
+Vale in generale che una funzione razionale possa essere scritta come somma
  di una costante e di una frazione strettamente propria, e grazie alla proprietà
  
 \begin_inset Formula $\left(\mathrm{I}\right)$
@@ -39876,8 +39995,8 @@ A questo punto si raccolgono le
 \begin_inset Formula $s$
 \end_inset
 
- per imporre delle condizioni rispetto ai residui e ai valori già noti dal
- numeratore, a sinistra dell'uguale:
+ a sinistra dell'uguale, per imporre delle condizioni rispetto ai residui
+ e ai valori già noti dal numeratore:
 \begin_inset Formula 
 \[
 s+18=s^{2}\left(P_{1,1}+P_{2,1}\right)+s\left(6P_{1,1}+3P_{2,1}+P_{2,2}\right)+9P_{1}
