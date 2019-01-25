@@ -1,4 +1,4 @@
-%% LyX 2.3.0 created this file.  For more info, see http://www.lyx.org/.
+%% LyX 2.3.2 created this file.  For more info, see http://www.lyx.org/.
 %% Do not edit unless you really know what you are doing.
 \RequirePackage{fix-cm}
 \documentclass[12pt,italian]{amsbook}
@@ -43,9 +43,9 @@
 \AtBeginDocument{\providecommand\defref[1]{\ref{def:#1}}}
 \AtBeginDocument{\providecommand\exaref[1]{\ref{exa:#1}}}
 \AtBeginDocument{\providecommand\chapref[1]{\ref{chap:#1}}}
+\AtBeginDocument{\providecommand\figref[1]{\ref{fig:#1}}}
 \AtBeginDocument{\providecommand\tabref[1]{\ref{tab:#1}}}
 \AtBeginDocument{\providecommand\subsecref[1]{\ref{subsec:#1}}}
-\AtBeginDocument{\providecommand\figref[1]{\ref{fig:#1}}}
 \AtBeginDocument{\providecommand\secref[1]{\ref{sec:#1}}}
 \newcommand{\noun}[1]{\textsc{#1}}
 %% Because html converters don't know tabularnewline
@@ -150,9 +150,7 @@
 
 \begin{document}
 \newgeometry{margin=1cm}
-
 \title{Appunti di Fondamenti di Automatica}
-
 \author{Lorenzo Prosseda, a.a. 2017-2018}
 
 \maketitle
@@ -160,11 +158,11 @@
 
 \tableofcontents{}
 
-\global\long\def\lm#1#2#3{\underset{{\scriptstyle #1\rightarrow#2}}{\lim}#3}
+\global\long\def\lm#1#2#3{\underset{{\scriptstyle #1\rightarrow#2}}{\lim}#3}%
 
-\global\long\def\serie#1#2#3{\overset{{\scriptstyle #2}}{\underset{{\scriptstyle #1}}{\sum}}#3}
+\global\long\def\serie#1#2#3{\overset{{\scriptstyle #2}}{\underset{{\scriptstyle #1}}{\sum}}#3}%
 
-\global\long\def\somme#1#2#3#4{\underset{{\scriptstyle #1}}{\overset{{\scriptstyle #2}}{\int}}#3d#4}
+\global\long\def\somme#1#2#3#4{\underset{{\scriptstyle #1}}{\overset{{\scriptstyle #2}}{\int}}#3d#4}%
 
 
 \chapter{Sistemi LTI a tempo continuo}
@@ -196,13 +194,14 @@ nel tempo (\emph{non stazionario}).
 \end{lyxlist}
 Un processo è costituito in generale dai seguenti elementi:
 \begin{itemize}
-\item \noun{Uscita}: chiamata in generale $y\left(t\right)\in\mathbb{R}^{{\scriptscriptstyle p}}$,
-è la variabile che viene misurata e vogliamo controllare; l'apice
-$p$ indica la cardinalità dell'uscita (numero di uscite, sono trattate
-come un vettore) ed essa è chiamata anche variabile controllata.
-\item \noun{Trasduttore}: misura le variabili fisiche dell'uscita, restituendo
-in retroazione una misura dell'uscita o dei disturbi del processo;
-esso sarà soggetto a un errore di misura.
+\item \noun{Uscita}: chiamata in generale variabile controllata si indica
+come $y\left(t\right)\in\mathbb{R}^{{\scriptscriptstyle p}}$, è la
+variabile che viene misurata e che vogliamo controllare; l'apice $p$
+indica la cardinalità dell'uscita (numero di uscite, sono trattate
+come un vettore).
+\item \noun{Trasduttore}: misura le variabili fisiche dell'uscita, producendo
+una misura dell'uscita o dei disturbi del processo; esso sarà soggetto
+a un errore di misura.
 \item \noun{Controllore}: sistema che, interagendo col processo, ne controlla
 le variabili tramite un attuatore; prende in ingresso i valori di
 misura dei trasduttori e l'andamento desiderato del processo (chiamato
@@ -229,7 +228,7 @@ ingressi e uscite).
 \end{minipage}
 \par\end{center}
 
-Quando $m=p$ il sistema si dice quadrato ed è una minima condizione
+Quando $m=p$ il sistema si dice quadrato ed è una condizione minima
 per ottenere il comportamento desiderato dal sistema, tuttavia non
 è detto che il numero di ingressi sia sempre pari alle uscite.
 
@@ -250,11 +249,11 @@ manipolabili ($d\left(t\right)$); un modello per questo sistema è
 dato dalla Definizione \defref{modello-matematico}.
 \begin{defn}
 \label{def:modello-matematico}Un modello matematico è un insieme
-di equazioni che descrivono il comportamento del sistema e i legami
-tra ingressi e uscite.
+di equazioni che descrivono il comportamento di un sistema e i legami
+tra i suoi ingressi e uscite.
 \end{defn}
-I sistemi sono classificati tramite caratteristiche dei modelli (delle
-equazioni) che li rappresentano:
+I sistemi sono classificati tramite le caratteristiche dei modelli
+(delle equazioni) che li rappresentano:
 \begin{lyxlist}{00.00.0000}
 \item [{Statico/Dinamico:}] la presenza del solo ingresso nella funzione
 di uscita del sistema lo classifica come statico; si dirà invece dinamico
@@ -263,9 +262,9 @@ se presenta delle variabili di stato (si veda Esempio \exaref{maglia-rc}).
 delle variabili di stato e degli ingressi.
 \item [{Proprio:}] l'ingresso figura nell'equazione di uscita; altrimenti,
 se l'ingresso non compare nell'equazione di uscita (la influenza indirettamente)
-il sistema si dice strettamente proprio.
+il sistema si dice \emph{strettamente} proprio.
 \item [{Stazionario:}] la variabile tempo non modifica esplicitamente le
-variabili del sistema (per esempio una variabile che cambia comportamento
+altre variabili del sistema (una variabile può cambiare il suo valore
 nel tempo, come un componente che si usura).
 \item [{SISO/MIMO:}] sistema con una sola uscita e un solo ingresso o più
 uscite e più ingressi.
@@ -524,11 +523,11 @@ riguardi la grandezza spazio $p\left(t\right)$. Sapendo che $v\left(t\right)=\do
 e ponendo dunque $x_{1}\left(t\right)=p\left(t\right)$ e $x_{2}\left(t\right)=v\left(t\right)$
 si ottiene
 \[
-\left\{ \begin{array}{l}
+{\scriptstyle \text{(nuovo modello per il sistema)}}\left\{ \begin{array}{l}
 \dot{x}_{1}\left(t\right)=x_{2}\left(t\right)\\
 \dot{x}_{2}\left(t\right)=-\beta x_{2}^{2}\left(t\right)+\dfrac{u\left(t\right)}{m}\\
 y\left(t\right)=x_{2}\left(t\right)
-\end{array}\right.{\scriptstyle \text{(nuovo modello per il sistema)}}
+\end{array}\right.
 \]
 Rispetto al modello precedente è cambiato l'ordine (secondo) mentre
 le altre caratteristiche sono immutate.\demo
@@ -540,7 +539,9 @@ Nel prossimo esempio un sistema dinamico di ordine \noun{IV:}
 \begin{center}
 \includegraphics[scale=1.2]{\string"Illustrazioni/1_2-5 Sistema due masse sospensioni\string".pdf}
 \par\end{center}
-\captionof{figure}{Sistema di due masse con sospensioni}%
+\begin{center}
+\captionsetup{justification=centering}\captionof{figure}{Sistema di due masse con sospensioni}
+\par\end{center}%
 \end{minipage}\emph{}%
 \begin{minipage}[c]{0.5\textwidth}%
 \begin{example}
@@ -693,7 +694,7 @@ sia lineare non ostante la presenta di disturbi si può studiare usando
 la \emph{sovrapposizione degli effetti}: se l'ingresso e l'uscita
 sono combinazioni lineari di due segnali allora il sistema è lineare,
 ovvero deve valere\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
-\textbf{\footnotesize{}Sovrapposizione degli effetti per LTI}{\footnotesize{}\index{LTI, sovrapposizione degli effetti@{\footnotesize{}LTI, sovrapposizione degli effetti}}}}[0.25cm]
+\textbf{\footnotesize{}Sovrapposizione degli effetti per sistemi LTI}{\footnotesize{}\index{LTI, sovrapposizione degli effetti@{\footnotesize{}LTI, sovrapposizione degli effetti}}}}[0.25cm]
 \begin{equation}
 \begin{array}{c}
 u_{{\scriptscriptstyle \text{TOT}}}\left(t\right)=\alpha_{1}u_{1}\left(t\right)+\alpha_{2}u_{2}\left(t\right)\\
@@ -729,7 +730,7 @@ per ottenere un andamento costante.
 
 Un equilibrio è dunque una coppia di valori $\left(\overline{u},\,\overline{x}\right)$
 tali che le equazioni di stato siano tutte nulle ($f\left(\overline{u},\,\overline{x},\,t\right)=0$)
-e l'uscita di equilibrio vale $g\left(\overline{u},\,\overline{x},\,t\right)=\overline{y}$.
+e l'uscita di equilibrio valga $g\left(\overline{u},\,\overline{x},\,t\right)=\overline{y}$.
 \end{defn}
 Uno dei requisiti principali dei sistemi di controllo è la garanzia
 di stabilità; questo concetto è legato in modo analitico ai movimenti
@@ -741,7 +742,7 @@ da condizioni iniziali $x\left(t_{0}\right)$ e applicando l'ingresso
 $u\left(t\geq t_{0}\right)$ si dice \emph{stabile} se, comunque preso
 un $\varepsilon$ piccolo a piacere positivo esiste un $\delta$ piccolo
 a piacere positivo tale che, per tutti i valori di $\tilde{x}_{0}$
-(perturbazioni dei valori iniziali) che soddisfano $\left\Vert \tilde{x}_{0}-x_{0}\right\Vert \leq\delta$
+(perturbazioni dei valori iniziali) che soddisfino $\left\Vert \tilde{x}_{0}-x_{0}\right\Vert \leq\delta$
 (condizione iniziale perturbata sufficientemente vicina a quella iniziale
 nominale) risulti $\left\Vert \tilde{x}\left(t\right)-x\left(t\right)\right\Vert \leq\varepsilon$,
 dove $\tilde{x}\left(t\right)$ è il movimento generato dal sistema
@@ -847,7 +848,7 @@ dal movimento dello stato):
 \]
 dove si assume che $x\left(\tau=t_{0}\right)$ e $u\left(\tau>t_{0}\right)$.
 Moltiplicando entrambi i membri per l'esponenziale di matrice $e^{A\left(t-\tau\right)}$
-si ottiene\marginpar{{\footnotesize{}Si ricordi che i coefficienti scritti in maiuscolo
+si ottiene\marginpar{{\footnotesize{}Si ricorda che i coefficienti scritti in maiuscolo
 sono matrici, per le quali valgono specifiche proprietà (consultare
 \chapref{Richiami-di-Geometria})}}
 \[
@@ -940,14 +941,14 @@ Considerando il caso $a<0$, ci chiediamo quanto velocemente il movimento
 libero converga a zero, ovvero quando $x\left(t\right)=\varepsilon x_{0}$
 con $\varepsilon\in\left(0,1\right)$ molto piccolo.
 
-Sostituendo si ha $e^{at_{\varepsilon}}x_{0}=x_{0}\varepsilon\rightarrow e^{at_{\varepsilon}}=\varepsilon\rightarrow t\varepsilon=\dfrac{1}{\left|a\right|}\left|\ln\left(\varepsilon\right)\right|$
+Sostituendo si ha $e^{at_{\varepsilon}}x_{0}=x_{0}\varepsilon\rightarrow e^{at_{\varepsilon}}=\varepsilon\rightarrow t_{\varepsilon}=\dfrac{1}{\left|a\right|}\left|\ln\left(\varepsilon\right)\right|$
 e ponendo $T=\dfrac{1}{\left|a\right|}$ (chiamata \emph{costante
 di tempo}) scriviamo infine
 \[
 t_{\varepsilon}=T\left|\ln\left(\varepsilon\right)\right|
 \]
-Il valore $T$ ci dice quanto velocemente il movimento libero (per
-moto \uline{convergente}) converge. Per esempio per $\varepsilon=5\%$
+Il valore $T$ ci dice quanto velocemente converga il movimento libero
+(per moto \uline{convergente}). Per esempio per $\varepsilon=5\%$
 vale $t_{\varepsilon}\simeq3T$.
 
 \marginpar{Nell'automatica si utilizzano gli \emph{ingressi canonici} di un sistema,
@@ -955,10 +956,8 @@ segnali interessanti dal punto di vista delle prestazioni del sistema
 e del calcolo del suo comportamento; useremo nel seguito lo scalino
 ($\text{sca}\left(t\right)$)}Analizziamo adesso il movimento forzato, ponendo l'ingresso al valore
 $u\left(t\right)=\overline{u}\cdot\text{sca}\left(t\right)$ dove
-l'ingresso canonico $\text{sca}\left(t\right):\begin{cases}
-1 & \text{per }t\geq0\\
-0 & \text{per }t<0
-\end{cases}$ viene moltiplicato per il valore costante $\overline{u}$. Annulliamo
+l'ingresso canonico $\text{sca}\left(t\right):\left\{ 1\,\text{per }t\geq0;\,0\,\text{per }t<0\right\} $
+viene moltiplicato per il valore costante $\overline{u}$. Annulliamo
 le altre condizioni iniziali per studiare solo la parte forzata, ponendo
 $t_{0}=0,\,\overline{u}>0,\,x_{0}=0$. Sono ammissibili due procedimenti:
 \begin{enumerate}
@@ -977,7 +976,7 @@ $1$\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
 \end{equation}
 Al variare dello scalare $a$ nell'esponenziale si hanno i seguenti
 andamenti (supponiamo $b\geq0$):\\
-\begin{minipage}[t]{1\columnwidth}%
+\begin{minipage}[t]{0.89\columnwidth}%
 \begin{itemize}
 \item per $a>0$ si ha un andamento esponenziale crescente, tendente a $+\infty$;
 \item per $a<0$ si ha un andamento esponenziale decrescente, tendente a
@@ -1029,7 +1028,7 @@ $x_{0}=x_{0}^{\prime}+x_{0}^{\prime\prime}$):
 \[
 x\left(t\right)=-\dfrac{b}{a}\overline{u}\left(1-e^{at}\right)
 \]
-Otteniamo infine lo stesso risultato dell'integrale di convoluzione.
+Otteniamo lo stesso risultato del metodo con la Formula di Lagrange.
 \end{enumerate}
 \begin{rem}
 Ricapitolando, abbiamo scelto una condizione iniziale e un ingresso
@@ -1183,7 +1182,7 @@ del modello:
 \[
 \begin{cases}
 \dot{\hat{x}}\left(t\right)=A_{{\scriptscriptstyle \text{D}}}\cdot\hat{x}\left(t\right)+T_{{\scriptscriptstyle \text{D}}}\cdot Bu\left(t\right)\\
-y\left(t\right)=C\cdot T_{{\scriptscriptstyle \text{D}}}^{-1}\cdot\hat{x}\left(t\right)+D\cdot u\left(t\right)
+y\left(t\right)=C\cdot T_{{\scriptscriptstyle \text{D}}}^{-1}\cdot\hat{x}\left(t\right)+Du\left(t\right)
 \end{cases}
 \]
 Notiamo che il nuovo sistema ha per matrice di stato una matrice diagonale
@@ -1227,21 +1226,21 @@ una coppia di autovalori complessi coniugati):\marginpar{\rule[0.5ex]{3cm}{1pt}\
 \begin{itemize}
 \item $\lambda_{i}\in\mathbb{\mathbb{R}}$
 \begin{itemize}
-\item $\lambda_{i}<0$: modo convergente;
-\item $\lambda_{i}=0$: modo costante;
 \item $\lambda_{i}>0$: modo divergente.
+\item $\lambda_{i}=0$: modo costante;
+\item $\lambda_{i}<0$: modo convergente;
 \end{itemize}
 \item $\lambda_{i}\in\mathbb{C}$
 \begin{itemize}
-\item $\Re\left(\lambda_{i}\right)>0$: modo oscillante divergente;
-\item $\Re\left(\lambda_{i}\right)=0$: modo oscillante limitato;
-\item $\Re\left(\lambda_{i}\right)<0$: modo oscillante convergente.
+\item $\mathscr{R}_{e}\left(\lambda_{i}\right)>0$: modo oscillante divergente;
+\item $\mathscr{R}_{e}\left(\lambda_{i}\right)=0$: modo oscillante limitato;
+\item $\mathscr{R}_{e}\left(\lambda_{i}\right)<0$: modo oscillante convergente.
 \end{itemize}
 \end{itemize}
 \bigskip{}
 
 In particolare, per il caso di autovalori complessi coniugati, avremo
-$\lambda_{i,1}=\sigma_{i}+j\omega_{i},\,\lambda_{i,2}=\sigma_{i}-j\omega_{i}$,
+$\lambda_{i,1}=\sigma_{i}+j\omega_{i},\,\lambda_{i,2}=\sigma_{i}-j\omega_{i}$:
 si dimostra che anche gli autovettori associati sono complessi coniugati
 e gli esponenziali $e^{\lambda_{i}t}$ saranno moltiplicati per coefficienti
 complessi coniugati; otterremo dei termini del tipo:
@@ -1307,7 +1306,8 @@ x_{2}\left(t\right)
 v_{c}\left(t\right)
 \end{bmatrix}
 \]
-da cui segue la seguente scrittura per l'equazione di stato (\ref{eq:Forma-standard-matrice-LTI}):
+da cui segue per l'equazione di stato (\ref{eq:Forma-standard-matrice-LTI})
+la scrittura:
 \[
 \dot{x}\left(t\right)=\overset{{\scriptstyle A}}{\overbrace{\begin{bmatrix}-R/L & -1/L\\
 1/C & 0
@@ -1504,9 +1504,9 @@ del tipo\\
 $te^{\sigma t}\left(\cos\left(\omega t+\varphi\right)+j\sin\left(\omega t+\varphi\right)\right)$):\smallskip{}
 
 \begin{itemize}
-\item $\Re\left(\lambda_{i}\right)>0$: modo divergente (esponenziale);
-\item $\Re\left(\lambda_{i}\right)=0$: modo divergente (lineare);
-\item $\Re\left(\lambda_{i}\right)<0$: modo convergente.
+\item $\mathscr{R}_{e}\left(\lambda_{i}\right)>0$: modo divergente (esponenziale);
+\item $\mathscr{R}_{e}\left(\lambda_{i}\right)=0$: modo divergente (lineare);
+\item $\mathscr{R}_{e}\left(\lambda_{i}\right)<0$: modo convergente.
 \end{itemize}
 \end{itemize}
 \demo\bigskip{}
@@ -1604,7 +1604,7 @@ x\left(t\right)=\somme 0t{e^{A\left(t-\tau\right)}Bu\left(\tau\right)}{\tau}=\so
 \end{bmatrix}
 \]
 I coefficienti risultanti dal movimento forzato sono una riscrittura
-delle equazioni della dinamica, rispettivamente $a_{1,1}:\,v\left(t\right)=a\left(t\right)t,\,a_{2,1}:\,p\left(t\right)=\dfrac{1}{2}a\left(t\right)t^{2}$
+delle equazioni della dinamica, rispettivamente $a_{1,1}:\,v\left(t\right)=a\left(t\right)\cdot t,\,a_{2,1}:\,p\left(t\right)=\dfrac{1}{2}a\left(t\right)\cdot t^{2}$
 ponendo $a\left(t\right)=\overline{u}/m$. Notiamo inoltre che il
 movimento forzato della posizione sarà un esponenziale mentre quello
 della velocità è lineare, entrambi divergenti.\demo
@@ -1670,13 +1670,13 @@ caso):
 \]
 L'equazione ammette soluzione solo per ingresso nullo $\overline{u}=0$,
 mentre la prima equazione impone la velocità $\overline{x}_{2}=0$;
-a questo punto la posizione $\overline{x}_{1}=\alpha,\,\alpha\in\mathbb{R}$
-può assumere qualunque valore reale.\demo
+a questo punto la posizione $\overline{x}_{1}=\alpha,$ con $\alpha\in\mathbb{R}$
+che può assumere qualunque valore reale.\demo
 \end{example}
 
 \section{Risposta all'impulso}
 
-L'ingresso canonico chiamato impulso è definito come $\text{imp}\left(t\right)=\left\{ 1\,\text{per }t=0;\;0\,\text{per }t\neq0\right\} $
+L'ingresso canonico chiamato \emph{impulso} è definito come $\text{imp}\left(t\right)=\left\{ 1\,\text{per }t=0;\;0\,\text{per }t\neq0\right\} $
 e il suo integrale vale:
 \[
 \somme{-\infty}{\infty}{\text{imp}\left(t\right)}t=1
@@ -1781,9 +1781,9 @@ a quella algebrica, allora tutti i modi divergeranno (vedi le condizioni
 \vpageref{eq:Andamento-modi-autovalori-multipli}). Enunciamo il seguente
 \begin{thm}
 In un sistema LTI, per autovalori della matrice di stato tali che
-$\Re\left(\lambda_{i}\right)=0$, se vale $n_{i}=g_{i}$ si ha un
-sistema stabile (modi limitati); nel caso in cui $g_{i}<n_{i}$ allora
-il sistema è instabile.
+$\mathscr{R}_{e}\left(\lambda_{i}\right)=0$, se vale $n_{i}=g_{i}$
+si ha un sistema stabile (modi limitati); nel caso in cui $g_{i}<n_{i}$
+allora il sistema è instabile.
 \end{thm}
 Riprendiamo due esempi fatti in precedenza per mostrare un'applicazione
 dei teoremi appena enunciati:
@@ -1818,10 +1818,11 @@ tempo.
 \subsection{Segno degli autovalori\label{subsec:Segno-degli-autovalori}}
 
 Sappiamo che gli autovalori della matrice di stato sono i valori per
-cui vale la Definizione \ref{def:Autovalore} e risolvono (\ref{eq:Polinomio-caratteristico});
-chiamiamo tale polinomio $\varphi\left(\lambda\right)=0$, che in
-generale ha grado pari all'ordine della matrice da cui deriva (nel
-nostro caso ha grado pari all'ordine di $A$).
+cui vale la Definizione \ref{def:Autovalore} e risolvono il polinomio
+caratteristco (\ref{eq:Polinomio-caratteristico}); definiamolo come
+$\varphi\left(\lambda\right)=0$, che in generale ha grado pari all'ordine
+della matrice da cui deriva (nel nostro caso ha grado pari all'ordine
+di $A$).
 
 Possiamo scrivere tale polinomio come
 \begin{equation}
@@ -1836,7 +1837,7 @@ allora i coefficienti del suo polinomio caratteristico $\varphi_{i},\,i\in0\ldot
 hanno tutti lo stesso segno.
 \end{thm}
 \begin{cor}
-In un sistema di ordine $n\leq2$, la condizione del Teorema (\ref{thm:Criterio-segni-concordi-autovalori})
+In un sistema di ordine $n\leq2$, la condizione del Teorema \ref{thm:Criterio-segni-concordi-autovalori}
 diventa necessaria e sufficiente.
 \end{cor}
 Nel caso di un sistema di ordine maggiore di 2 con segno concorde
@@ -1943,14 +1944,14 @@ autovalori incerti abbiano segno concorde.
 \begin{tabular}{ccc}
 1 & $1+2\beta$ & 0\tabularnewline[\doublerulesep]
 $2+\beta$ & $\alpha+\beta$ & 0\tabularnewline[\doublerulesep]
-\cline{1-2} 
+\cline{1-2} \cline{2-2} 
 $\left(1+2\beta\right)-\dfrac{1\cdot\left(\alpha+\beta\right)}{2+\beta}$ & $0-\dfrac{1\cdot0}{2+\beta}$ & 0\tabularnewline[\doublerulesep]
 $\left(\alpha+\beta\right)-\dfrac{\left(2+\beta\right)\cdot0}{\dfrac{2\left(\beta+1\right)^{2}-\alpha}{\beta+2}}$ & $0-\dfrac{\left(2+\beta\right)\cdot0}{\dfrac{2\left(\beta+1\right)^{2}-\alpha}{\beta+2}}$ & 0\tabularnewline[\doublerulesep]
 \end{tabular}$=\quad$%
 \begin{tabular}{ccc}
 1 & $1+2\beta$ & 0\tabularnewline[\doublerulesep]
 $2+\beta$ & $\alpha+\beta$ & 0\tabularnewline[\doublerulesep]
-\cline{1-2} 
+\cline{1-2} \cline{2-2} 
 $\dfrac{2\left(\beta+1\right)^{2}-\alpha}{\beta+2}$ & 0 & 0\tabularnewline[\doublerulesep]
 $\alpha+\beta$ & 0 & 0\tabularnewline[\doublerulesep]
 \end{tabular}
@@ -1985,7 +1986,7 @@ dello stato avrà almeno una costante indeterminata).
 
 I movimenti di equilibrio di questi sistemi sono tuttavia ottenibili
 direttamente usando la Definizione \ref{def:Equilibrio-LTI}; per
-sistemi non lineari si cercano nella pratica degli equilibri di interesse
+sistemi non lineari si cercano in pratica degli equilibri di interesse
 attorno ai quali i movimenti sono stabili. Grazie a una trasformazione
 chiamata linearizzazione, ovvero tramite uno sviluppo di Taylor al
 primo ordine (lineare) delle matrici (\ref{eq:Dimensioni-coeff-matrici-standard})
@@ -2075,9 +2076,10 @@ col metodo grafico}
 \end{figure}
 
 \begin{example}
-\emph{Sia dato il grafico in figura che indica l'andamento dell'equazione
-di stato in funzione dello stato, in un sistema di ordine 1: $\checkmark$determinare
-la stabilità degli eventuali equilibri.}
+\emph{Sia dato il grafico ne \figref{Funzione-di-stato-metodo-grafico}
+che indica l'andamento dell'equazione di stato in funzione dello stato,
+in un sistema di ordine 1: $\checkmark$determinare la stabilità degli
+eventuali equilibri.}
 
 Notiamo che la funzione di stato (una cosinusoide) si annulla in tre
 punti, che chiameremo in ordine 1, 2 e 3; osservando il segno della
@@ -2225,7 +2227,7 @@ la tensione sul resistore vale $Ri\left(t\right)$ e quella sull'induttore
 $v_{{\scriptscriptstyle L}}\left(t\right)=\partial i\left(t\right)/\partial t$;
 con un bilancio di tensioni rispetto al generatore controllabile,
 vale $u\left(t\right)=Ri\left(t\right)+v_{{\scriptscriptstyle L}}\left(t\right)$.
-Poniamo $y\left(t\right)=i\left(i\right)$, come richiesto dall'esempio
+Poniamo $y\left(t\right)=i\left(t\right)$, come richiesto dall'esempio
 e scriviamo:%
 \end{minipage}\emph{}%
 \begin{minipage}[c]{0.4\textwidth}%
@@ -2258,7 +2260,7 @@ x\left(k+1\right)=e^{-\nicefrac{R}{L}T_{s}}x\left(k_{0}\right)+\somme 0{T_{s}}{e
 \[
 =\underset{{\scriptstyle a}}{\underbrace{e^{-\nicefrac{R}{L}T_{s}}}}x\left(k\right)+\underset{{\scriptstyle b}}{\underbrace{\dfrac{1-e^{-\nicefrac{R}{L}T_{s}}}{R}}}u\left(k\right)
 \]
-Si nota che, essendo il sistema tempo invariante, gli estremi di integrazione
+Si nota che, essendo il sistema tempo-invariante, gli estremi di integrazione
 possono essere traslati in $0-T_{s}$ invece di avere $kT_{s}-\left(k+1\right)T_{s}$
 (la distanza tra istanti successivi è costante) e il valore di ingresso
 $u\left(k\right)$ sarà mantenuto costante tra due istanti successivi.
@@ -2287,7 +2289,7 @@ metodo di discretizzazione.
 Un metodo alternativo consiste nell'usare la formula (\ref{eq:Formula-di-Eulero})
 approssimando la derivata nel tempo continuo come una differenza finita:
 \[
-\dot{x}\left(t\right)=\dfrac{\partial x\left(t\right)}{\partial d}\simeq\dfrac{x\left(k+1\right)-x\left(k\right)}{T_{s}}
+\dot{x}\left(t\right)=\dfrac{\partial x\left(t\right)}{\partial t}\simeq\dfrac{x\left(k+1\right)-x\left(k\right)}{T_{s}}
 \]
 Questa approssimazione è valida nella misura in cui il periodo di
 campionamento ha dimensione adeguata rispetto alla velocità del sistema.
@@ -2324,7 +2326,7 @@ essa si ricava applicando ricorsivamente l'equazione di stato, dalla
 quale si ottiene poi l'equazione di uscita:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
 \textbf{\footnotesize{}Formula di Lagrange a tempo discreto}{\footnotesize{}\index{Lagrange, formula discretizzata@{\footnotesize{}Lagrange, formula discretizzata}}}}[0.5cm]
 \begin{equation}
-x\left(k\right)=A^{k}\cdot x_{0}+\serie{i=0}{k-1}{A^{k-i-1}\cdot B\cdot u\left(i\right)}\label{eq:Formula-di-Lagrange-discreta}
+x\left(k\right)=A^{k}\cdot x_{0}+\serie{i=0}{k-1}{\left[A^{k-i-1}\cdot B\cdot u\left(i\right)\right]}\label{eq:Formula-di-Lagrange-discreta}
 \end{equation}
 L'integrale di convoluzione nel tempo discreto diventa la sommatoria
 appena mostrata; questo risultato intuitivo si ottiene con l'iterazione
@@ -2340,7 +2342,7 @@ libero e forzato:
 \begin{itemize}
 \item movimento libero $x_{{\scriptscriptstyle \text{L}}}\left(k\right)=A^{k}\cdot x_{0}$:
 è indipendente dagli ingressi e legato alle condizioni iniziali;
-\item movimento forzato $x_{{\scriptscriptstyle \text{F}}}\left(k\right)=\serie{i=0}{k-1}{A^{k-i-1}\cdot B\cdot u\left(i\right)}$:
+\item movimento forzato $x_{{\scriptscriptstyle \text{F}}}\left(k\right)=\serie{i=0}{k-1}{\left[A^{k-i-1}\cdot B\cdot u\left(i\right)\right]}$:
 è legato agli ingressi.
 \end{itemize}
 
@@ -2366,13 +2368,13 @@ y^{\prime\prime\prime}\left(k\right)=\alpha y^{\prime}\left(k\right)+\beta y^{\p
 \]
 dove $f\left(x\left(0\right),\,u\left(k\right)\right)$ rappresenta
 la (\ref{eq:Formula-di-Lagrange-discreta}) con condizione iniziale
-$x\left(0\right)$e ingresso $u\left(k\right)$.
+$x\left(0\right)$ e ingresso $u\left(k\right)$.
 
 Si può facilmente verificare questa proprietà per sostituzione; l'equazione
 di uscita in forma chiusa, dalla (\ref{eq:Formula-di-Lagrange-discreta}),
 vale allora:
 \begin{equation}
-y\left(k\right)=C\cdot A^{k}\cdot x_{0}+C\cdot\serie{i=0}{k-1}{A^{k-i-1}\cdot B\cdot u\left(i\right)}+D\cdot u\left(k\right)\label{eq:Movimento-uscita-Lagrange-discreto}
+y\left(k\right)=C\cdot A^{k}x_{0}+C\cdot\serie{i=0}{k-1}{\left[A^{k-i-1}\cdot B\,u\left(i\right)\right]}+D\,u\left(k\right)\label{eq:Movimento-uscita-Lagrange-discreto}
 \end{equation}
 
 
@@ -2381,8 +2383,8 @@ y\left(k\right)=C\cdot A^{k}\cdot x_{0}+C\cdot\serie{i=0}{k-1}{A^{k-i-1}\cdot B\
 \subsection{Equilibrio}
 
 Un movimento di un sistema a tempo discreto si ottiene iterando l'equazione
-di stato fino all'istante di interesse. Una coppia di ingressi $\overline{x}$
-e uscite $\overline{u}$ è un equilibrio se $\overline{x}=f\left(\overline{x},\,\overline{u},\,k\right)$;
+di stato fino all'istante di interesse. Una coppia di ingressi e uscite
+$\left(\overline{u},\,\overline{x}\right)$ è un equilibrio se $\overline{x}=f\left(\overline{x},\,\overline{u},\,k\right)$;
 l'equazione di stato infatti restituisce lo stato all'istante successivo
 e se questo è uguale allo stato attuale, si ha un andamento costante
 dello stato nel tempo. L'uscita di equilibrio è funzione della coppia
@@ -2417,7 +2419,7 @@ tra ingressi costanti e uscite costanti).
 Se $\left(I-A\right)$ non fosse invertibile si potrebbero avere nessuna
 o infinite soluzioni (non nulle), sempre che per un $\overline{u}$
 si riesca a trovare $\overline{x}$ di equilibrio; la coppia ingresso-uscita
-di equilibrio nulla risolve comunque il sistema.
+di equilibrio non risolverebbe comunque il sistema.
 
 \subsection{Stabilità}
 
@@ -2467,13 +2469,13 @@ tra stato originale ed equivalente:
 x\left(k\right)=T^{-1}\cdot\hat{x}\left(k\right)\,\leftrightarrows\,\hat{x}\left(k\right)=T\cdot x\left(k\right)
 \]
 Possiamo parlare di rappresentazioni equivalenti di sistemi LTI a
-tempo discreto, in particolare se il sistema di partenza è della forma
+tempo discreto; in particolare se il sistema di partenza è della forma
 (\ref{eq:Forma-standard-matrice-LTI-discreto}), con questa trasformazione
 otteniamo la rappresentazione equivalente:
 \begin{equation}
 \begin{array}{c}
-\hat{x}\left(k+1\right)=T\cdot A\cdot T^{-1}\cdot\hat{x}\left(k\right)+T\cdot B\cdot u\left(k\right)\\
-y\left(k\right)=C\cdot T^{-1}\cdot\hat{x}\left(k\right)+D\cdot u\left(k\right)
+\hat{x}\left(k+1\right)=T\cdot A\cdot T^{-1}\cdot\hat{x}\left(k\right)+T\cdot B\,u\left(k\right)\\
+y\left(k\right)=C\cdot T^{-1}\cdot\hat{x}\left(k\right)+D\,u\left(k\right)
 \end{array}\label{eq:Rappresentazione-equivalente-discreta}
 \end{equation}
 
@@ -2542,8 +2544,8 @@ per la loro analisi adottiamo la rappresentazione polare:
 \[
 \rho=\sqrt{\sigma^{2}+\omega^{2}},\;\varphi=\arg\left(z_{i}\right)
 \]
-da cui gli autovalori valgono $z_{1,2}=\rho e^{\pm j\varphi}$ e i
-modi $z_{1,2}^{k}=\rho^{k}e^{\pm jk\varphi}$; questi modi saranno
+da cui gli autovalori valgono $z_{1,2}=\rho\,e^{\pm j\varphi}$ e
+i modi $z_{1,2}^{k}=\rho^{k}e^{\pm jk\varphi}$; questi modi saranno
 sempre combinati, nel movimento complessivo, con dei coefficienti
 $\alpha$ anch'essi complessi coniugati, in generale nella forma $\alpha=\rho_{\alpha}e^{j\varphi_{\alpha}}$.
 
@@ -2656,7 +2658,7 @@ z_{i}=1\rightarrow\text{\ensuremath{{\scriptstyle \text{limitato e costante}}}}\
 z_{i}=-1\rightarrow\text{\ensuremath{{\scriptstyle \text{limitato a segni alterni}}}}
 \end{array}$\tabularnewline
 \noalign{\vskip\doublerulesep}
-$z_{i}\in\mathbb{C}$ & $\Re\left(z_{i}\right)=0,\,\Im\left(z_{i}\right)=\pm1\rightarrow\text{\ensuremath{{\scriptstyle \text{limitato come cosinusoide}}}}$\tabularnewline
+$z_{i}\in\mathbb{C}$ & $\mathscr{R}_{e}\left(z_{i}\right)=0,\,\mathscr{I}_{m}\left(z_{i}\right)=\pm1\rightarrow\text{\ensuremath{{\scriptstyle \text{limitato come cosinusoide}}}}$\tabularnewline
 \noalign{\vskip\doublerulesep}
 \end{tabular}
 \par\end{centering}
@@ -2777,7 +2779,7 @@ h_{0} & h_{1} & h_{2} & \ldots & h_{\nu} & 0 & 0\\
 \end{array}\label{eq:Tabella-di-Jury}
 \end{equation}
 Questa tabella si compila grazie al seguente \emph{algoritmo di Jury}
-che dalle riga precedente ($h_{i}$) ottiene la successiva ($\ell_{i}$):
+che dalla riga precedente ($h_{i}$) ottiene la successiva ($\ell_{i}$):
 \begin{equation}
 \ell_{i}=\dfrac{1}{h_{1}}\cdot\det\left(\begin{bmatrix}h_{1} & h_{\nu-i+1}\\
 h_{\nu} & h_{i}
@@ -2813,7 +2815,7 @@ Scegliendo di applicare il criterio di Jury, costruiamo la tabella
 \begin{center}
 \begin{tabular}{cccc}
 1 & $\alpha$ & $\beta$ & 0\tabularnewline[\doublerulesep]
-\cline{1-3} 
+\cline{1-3} \cline{2-3} \cline{3-3} 
 $1-\beta^{2}$ & $\alpha\left(1-\beta\right)$ & 0 & 0\tabularnewline[\doublerulesep]
 $1-\beta^{2}-\dfrac{\alpha^{2}\left(1-\beta\right)^{2}}{1-\beta^{2}}$ & 0 & 0 & 0\tabularnewline[\doublerulesep]
 \end{tabular}
@@ -3348,11 +3350,12 @@ degli zeri sono scalari.
 
 Se rappresentiamo i poli complessi coniugati sul piano di Gauss, appaiono
 evidenti alcune proprietà riguardo pulsazioni naturali e smorzamenti:
-preso un polo stabile, esso avrà (risolvendo le radici) $\Re\left(p\right)=-\xi\omega_{n}$,
-$\Im\left(p\right)=\pm\omega_{n}\sqrt{1-\xi^{2}}$; in particolare
-$\omega_{n}$ è la distanza dall'origine di ciascun polo della coppia
-coniugata, mentre il coseno dell'angolo $\vartheta$ che questa distanza
-forma con l'asse reale è pari a $\xi$, dunque vale $\vartheta=\arccos\left(\xi\right)$.
+preso un polo stabile, esso avrà (risolvendo le radici) $\mathscr{R}_{e}\left(p\right)=-\xi\omega_{n}$,
+$\mathscr{I}_{m}\left(p\right)=\pm\omega_{n}\sqrt{1-\xi^{2}}$; in
+particolare $\omega_{n}$ è la distanza dall'origine di ciascun polo
+della coppia coniugata, mentre il coseno dell'angolo $\vartheta$
+che questa distanza forma con l'asse reale è pari a $\xi$, dunque
+vale $\vartheta=\arccos\left(\xi\right)$.
 
 Da queste osservazioni segue che, a parità di pulsazione $\omega_{n}$
 lo smorzamento $\xi$ è inversamente proporzionale all'angolo $\vartheta$
@@ -5159,7 +5162,8 @@ per tracciare i diagrammi della fase.\bigskip{}
 
 $\qquad$\textbf{\noun{Guadagno statico}}\\
 Il guadagno $\mu$ è un numero reale: se lo rappresentiamo sul piano
-complesso, esso sarà sull'asse reale ($\Im\left(\mu\right)=0$): \marginpar{Si prende per convenzione l'angolo negativo in senso antiorario}
+complesso, esso sarà sull'asse reale ($\mathscr{I}_{m}\left(\mu\right)=0$):
+\marginpar{Si prende per convenzione l'angolo negativo in senso antiorario}
 \[
 \begin{cases}
 \arg\left(\mu\right)=0 & \text{per }\mu>0\\
@@ -5203,8 +5207,8 @@ la risposta armonica vale:
 Il numero complesso di cui si cerca la fase ha parte reale pari a
 1 e parte immaginaria pari a $\omega T$; se rappresentiamo questo
 numero sul piano complesso, esso si troverà sulla retta perpendicolare
-all'ascissa, passante in $\Re=1$; inoltre a seconda del segno della
-costante di tempo, esso avrà fase positiva o negativa.
+all'ascissa, passante in $\mathscr{R}_{e}=1$; inoltre a seconda del
+segno della costante di tempo, esso avrà fase positiva o negativa.
 
 Osserviamo che, per $\omega=\pm1/\left|T\right|$, la fase vale $\pm45{^\circ}$,
 in dipendenza dal segno della singolarità, e dalla presenza di un
@@ -8903,7 +8907,7 @@ invertibile.
 massimo di vettori \emph{linearmente indipendenti} tra righe e colonne;
 presi $n$ vettori, essi si dicono linearmente indipendenti se $\serie{i=1}n{\alpha_{i}v_{i}\neq0}\,\forall\alpha_{i}\in\mathbb{R},\,\alpha\neq0$.
 
-Vice versa si parla di vettori linearmente \emph{dipendenti} se $\exists\alpha_{i},\,i\in1\ldots n\,:\,\serie{i=1}n{\alpha_{i}v_{i}=0}$.
+Si parla invece di $n$ vettori linearmente \emph{dipendenti} se $\exists\alpha_{i},\,i\in1\ldots n\,:\,\serie{i=1}n{\alpha_{i}v_{i}=0}$.
 \end{defn}
 %
 \begin{defn}
@@ -9254,7 +9258,7 @@ per 0) mentre le prima due righe e colonne sono l'una l'opposto dell'altra
 \item Per il secondo autovalore, che ha molteplicità algebrica $1$, la
 molteplicità geometrica vale $g_{2}=1$.
 \end{enumerate}
-In conclusione, abbiamo trovato $g_{1}=1,\,g_{2}=1$\demo\smallskip{}
+In conclusione, abbiamo trovato $g_{1}=2,\,g_{2}=1$\demo\smallskip{}
 
 
 \section{Similitudine e diagonalizzabilità}
@@ -9349,7 +9353,7 @@ v_{3,1} & v_{3,2}
 Imponendo $v_{3,1}=0$ possiamo scegliere $v_{1,1}=0$ e $v_{2,1}\neq0$
 per ottenere due autovettori linearmente indipendenti:
 \[
-v_{1}=\left(1,0,0\right),\,\left(0,1,0\right)
+v_{1}=\left(\left(0,1,0\right),\,\left(1,0,0\right)\right)
 \]
 \item Per $\lambda_{2}=2$ abbiamo $\left(2I-A\right)v_{2}=0:$
 \[
@@ -9473,12 +9477,10 @@ sono pari a 1;
 
 L'esponenziale di una matrice in forma di Jordan è costituito dall'esponenziale
 di ogni blocco di Jordan di ordine uno, mentre per i blocchi di ordine
-maggiore i coefficienti al di sopra della diagonale (quelli sulla
-diagonale sono l'esponenziale dei coefficienti sulla diagonale) sono
-pari al termine $t^{h}/h!$ con $h=i-j$ la distanza dell'elemento
-$a_{{\scriptscriptstyle \text{J}},\,i,j}^{\prime}$ da quello sulla
-diagonale $a_{{\scriptscriptstyle \text{J}},\,i,i}^{\prime}$ all'interno
-della stessa riga:
+maggiore di uno i coefficienti al di sopra della diagonale sono pari
+al termine $t^{h}/h!$ con $h=i-j$ la distanza dell'elemento $a_{{\scriptscriptstyle \text{J}},\,i,j}^{\prime}$
+da quello sulla diagonale $a_{{\scriptscriptstyle \text{J}},\,i,i}^{\prime}$
+all'interno della stessa riga:
 \[
 e^{A_{{\scriptscriptstyle \text{J}}}t}=e^{\lambda_{1}}\cdot\begin{bmatrix}1 & t & t^{2}/2\\
 0 & 1 & t\\
@@ -9562,7 +9564,7 @@ matrice $A$.
 \section{Numeri nel campo complesso}
 \begin{defn}
 Un numero complesso nella forma algebrica è scritto come $s=a+jb$,
-dove $a=\Re\left(s\right)$ è la parte reale e $b=\Im\left(s\right)$
+dove $a=\mathscr{R}_{e}\left(s\right)$ è la parte reale e $b=\mathscr{I}_{m}\left(s\right)$
 la parte immaginaria; $j$ è l'unità immaginaria tale che $j^{2}=-1$.
 
 Ogni numero complesso possiede un complesso coniugato, che ha la stessa
@@ -9625,9 +9627,9 @@ va inteso come $0^{-}$ (avvicinamento da sinistra), ovvero esso comprende
 i contributi impulsivi della funzione applicati nell'istante $t=0$.
 \begin{defn}
 Sia $\overline{\sigma}>-\infty$ l'estremo inferiore delle parti reali
-$\Re\left(s\right)$ dei valori $s$ per cui l'integrale (\ref{eq:Trasformata-Laplace})
-converge; allora la trasformata di Laplace esiste in un semipiano
-delimitato dalla condizione $\Re\left(s\right)>\overline{\sigma}$,
+$\mathscr{R}_{e}\left(s\right)$ dei valori $s$ per cui l'integrale
+(\ref{eq:Trasformata-Laplace}) converge; allora la trasformata di
+Laplace esiste in un semipiano delimitato dalla condizione $\mathscr{R}_{e}\left(s\right)>\overline{\sigma}$,
 per questo motivo $\overline{\sigma}$ si chiama ascissa di convergenza.
 \end{defn}
 %
@@ -9764,7 +9766,7 @@ f\left(0\right)=\lm s{+\infty}{s\cdot F\left(s\right)}.\label{eq:Teorema-valore-
 \item [{$\mathrm{\left(IX\right)}\,\text{\textsc{Teorema del valore finale}}$\noun{:}}] Se
 la trasformata è razionale nella forma (\ref{eq:Trasformata-razionale})
 e vale $n\left(N\left(s\right)\right)<n\left(D\left(s\right)\right)$,
-e inoltre per ogni suo polo $p_{i}$ vale $\Re\left(p_{1}\right)<0$,
+e inoltre per ogni suo polo $p_{i}$ vale $\mathscr{R}_{e}\left(p_{1}\right)<0$,
 allora vale:
 \begin{equation}
 \lm t{+\infty}{f\left(t\right)}=\lm s0{\,s\cdot F\left(s\right)}.\label{eq:Teorema-valore-finale}

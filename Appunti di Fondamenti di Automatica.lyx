@@ -301,16 +301,17 @@ Un processo è costituito in generale dai seguenti elementi:
 \noun on
 Uscita
 \noun default
-: chiamata in generale 
+: chiamata in generale variabile controllata si indica come 
 \begin_inset Formula $y\left(t\right)\in\mathbb{R}^{{\scriptscriptstyle p}}$
 \end_inset
 
-, è la variabile che viene misurata e vogliamo controllare; l'apice 
+, è la variabile che viene misurata e che vogliamo controllare; l'apice
+ 
 \begin_inset Formula $p$
 \end_inset
 
  indica la cardinalità dell'uscita (numero di uscite, sono trattate come
- un vettore) ed essa è chiamata anche variabile controllata.
+ un vettore).
 \end_layout
 
 \begin_layout Itemize
@@ -318,9 +319,8 @@ Uscita
 \noun on
 Trasduttore
 \noun default
-: misura le variabili fisiche dell'uscita, restituendo in retroazione una
- misura dell'uscita o dei disturbi del processo; esso sarà soggetto a un
- errore di misura.
+: misura le variabili fisiche dell'uscita, producendo una misura dell'uscita
+ o dei disturbi del processo; esso sarà soggetto a un errore di misura.
 \end_layout
 
 \begin_layout Itemize
@@ -470,7 +470,7 @@ Quando
 \begin_inset Formula $m=p$
 \end_inset
 
- il sistema si dice quadrato ed è una minima condizione per ottenere il
+ il sistema si dice quadrato ed è una condizione minima per ottenere il
  comportamento desiderato dal sistema, tuttavia non è detto che il numero
  di ingressi sia sempre pari alle uscite.
 \end_layout
@@ -533,12 +533,12 @@ name "def:modello-matematico"
 \end_inset
 
 Un modello matematico è un insieme di equazioni che descrivono il comportamento
- del sistema e i legami tra ingressi e uscite.
+ di un sistema e i legami tra i suoi ingressi e uscite.
 \end_layout
 
 \begin_layout Standard
-I sistemi sono classificati tramite caratteristiche dei modelli (delle equazioni
-) che li rappresentano:
+I sistemi sono classificati tramite le caratteristiche dei modelli (delle
+ equazioni) che li rappresentano:
 \end_layout
 
 \begin_layout Labeling
@@ -565,14 +565,18 @@ Lineare: tutte le equazioni del modello sono combinazioni lineari delle
 \labelwidthstring 00.00.0000
 Proprio: l'ingresso figura nell'equazione di uscita; altrimenti, se l'ingresso
  non compare nell'equazione di uscita (la influenza indirettamente) il sistema
- si dice strettamente proprio.
+ si dice 
+\emph on
+strettamente
+\emph default
+ proprio.
 \end_layout
 
 \begin_layout Labeling
 \labelwidthstring 00.00.0000
-Stazionario: la variabile tempo non modifica esplicitamente le variabili
- del sistema (per esempio una variabile che cambia comportamento nel tempo,
- come un componente che si usura).
+Stazionario: la variabile tempo non modifica esplicitamente le altre variabili
+ del sistema (una variabile può cambiare il suo valore nel tempo, come un
+ componente che si usura).
 \end_layout
 
 \begin_layout Labeling
@@ -1735,11 +1739,11 @@ Se ora immaginiamo di voler misurare anche la posizione del veicolo, dobbiamo
  si ottiene
 \begin_inset Formula 
 \[
-\left\{ \begin{array}{l}
+{\scriptstyle \text{(nuovo modello per il sistema)}}\left\{ \begin{array}{l}
 \dot{x}_{1}\left(t\right)=x_{2}\left(t\right)\\
 \dot{x}_{2}\left(t\right)=-\beta x_{2}^{2}\left(t\right)+\dfrac{u\left(t\right)}{m}\\
 y\left(t\right)=x_{2}\left(t\right)
-\end{array}\right.{\scriptstyle \text{(nuovo modello per il sistema)}}
+\end{array}\right.
 \]
 
 \end_inset
@@ -1802,12 +1806,16 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset ERT
 status open
 
 \begin_layout Plain Layout
 
 
+\backslash
+captionsetup{justification=centering}
 \backslash
 captionof{figure}{Sistema di due masse con sospensioni}
 \end_layout
@@ -2319,7 +2327,7 @@ height "1pt"
 \begin_inset Newline newline
 \end_inset
 
-Sovrapposizione degli effetti per LTI
+Sovrapposizione degli effetti per sistemi LTI
 \series default
 
 \begin_inset Index idx
@@ -2470,7 +2478,7 @@ Un equilibrio è dunque una coppia di valori
 \begin_inset Formula $f\left(\overline{u},\,\overline{x},\,t\right)=0$
 \end_inset
 
-) e l'uscita di equilibrio vale 
+) e l'uscita di equilibrio valga 
 \begin_inset Formula $g\left(\overline{u},\,\overline{x},\,t\right)=\overline{y}$
 \end_inset
 
@@ -2514,7 +2522,7 @@ stabile
 \begin_inset Formula $\tilde{x}_{0}$
 \end_inset
 
- (perturbazioni dei valori iniziali) che soddisfano 
+ (perturbazioni dei valori iniziali) che soddisfino 
 \begin_inset Formula $\left\Vert \tilde{x}_{0}-x_{0}\right\Vert \leq\delta$
 \end_inset
 
@@ -2951,7 +2959,7 @@ status collapsed
 \begin_layout Plain Layout
 
 \size footnotesize
-Si ricordi che i coefficienti scritti in maiuscolo sono matrici, per le
+Si ricorda che i coefficienti scritti in maiuscolo sono matrici, per le
  quali valgono specifiche proprietà (consultare 
 \begin_inset CommandInset ref
 LatexCommand formatted
@@ -3333,7 +3341,7 @@ Considerando il caso
 
 \begin_layout Standard
 Sostituendo si ha 
-\begin_inset Formula $e^{at_{\varepsilon}}x_{0}=x_{0}\varepsilon\rightarrow e^{at_{\varepsilon}}=\varepsilon\rightarrow t\varepsilon=\dfrac{1}{\left|a\right|}\left|\ln\left(\varepsilon\right)\right|$
+\begin_inset Formula $e^{at_{\varepsilon}}x_{0}=x_{0}\varepsilon\rightarrow e^{at_{\varepsilon}}=\varepsilon\rightarrow t_{\varepsilon}=\dfrac{1}{\left|a\right|}\left|\ln\left(\varepsilon\right)\right|$
 \end_inset
 
  e ponendo 
@@ -3356,11 +3364,11 @@ Il valore
 \begin_inset Formula $T$
 \end_inset
 
- ci dice quanto velocemente il movimento libero (per moto 
+ ci dice quanto velocemente converga il movimento libero (per moto 
 \bar under
 convergente
 \bar default
-) converge.
+).
  Per esempio per 
 \begin_inset Formula $\varepsilon=5\%$
 \end_inset
@@ -3397,10 +3405,7 @@ Analizziamo adesso il movimento forzato, ponendo l'ingresso al valore
 \end_inset
 
  dove l'ingresso canonico 
-\begin_inset Formula $\text{sca}\left(t\right):\begin{cases}
-1 & \text{per }t\geq0\\
-0 & \text{per }t<0
-\end{cases}$
+\begin_inset Formula $\text{sca}\left(t\right):\left\{ 1\,\text{per }t\geq0;\,0\,\text{per }t<0\right\} $
 \end_inset
 
  viene moltiplicato per il valore costante 
@@ -3531,7 +3536,7 @@ has_inner_box 1
 inner_pos "t"
 use_parbox 0
 use_makebox 0
-width "100col%"
+width "89col%"
 special "none"
 height "1in"
 height_special "totalheight"
@@ -3734,7 +3739,7 @@ x\left(t\right)=-\dfrac{b}{a}\overline{u}\left(1-e^{at}\right)
 
 \end_inset
 
-Otteniamo infine lo stesso risultato dell'integrale di convoluzione.
+Otteniamo lo stesso risultato del metodo con la Formula di Lagrange.
 \end_layout
 
 \begin_layout Remark
@@ -4177,7 +4182,7 @@ Se scegliamo un nuovo stato
 \[
 \begin{cases}
 \dot{\hat{x}}\left(t\right)=A_{{\scriptscriptstyle \text{D}}}\cdot\hat{x}\left(t\right)+T_{{\scriptscriptstyle \text{D}}}\cdot Bu\left(t\right)\\
-y\left(t\right)=C\cdot T_{{\scriptscriptstyle \text{D}}}^{-1}\cdot\hat{x}\left(t\right)+D\cdot u\left(t\right)
+y\left(t\right)=C\cdot T_{{\scriptscriptstyle \text{D}}}^{-1}\cdot\hat{x}\left(t\right)+Du\left(t\right)
 \end{cases}
 \]
 
@@ -4364,10 +4369,10 @@ status open
 
 \begin_deeper
 \begin_layout Itemize
-\begin_inset Formula $\lambda_{i}<0$
+\begin_inset Formula $\lambda_{i}>0$
 \end_inset
 
-: modo convergente;
+: modo divergente.
 \end_layout
 
 \begin_layout Itemize
@@ -4378,10 +4383,10 @@ status open
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $\lambda_{i}>0$
+\begin_inset Formula $\lambda_{i}<0$
 \end_inset
 
-: modo divergente.
+: modo convergente;
 \end_layout
 
 \end_deeper
@@ -4394,21 +4399,21 @@ status open
 
 \begin_deeper
 \begin_layout Itemize
-\begin_inset Formula $\Re\left(\lambda_{i}\right)>0$
+\begin_inset Formula $\mathscr{R}_{e}\left(\lambda_{i}\right)>0$
 \end_inset
 
 : modo oscillante divergente;
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $\Re\left(\lambda_{i}\right)=0$
+\begin_inset Formula $\mathscr{R}_{e}\left(\lambda_{i}\right)=0$
 \end_inset
 
 : modo oscillante limitato;
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $\Re\left(\lambda_{i}\right)<0$
+\begin_inset Formula $\mathscr{R}_{e}\left(\lambda_{i}\right)<0$
 \end_inset
 
 : modo oscillante convergente.
@@ -4427,7 +4432,7 @@ In particolare, per il caso di autovalori complessi coniugati, avremo
 \begin_inset Formula $\lambda_{i,1}=\sigma_{i}+j\omega_{i},\,\lambda_{i,2}=\sigma_{i}-j\omega_{i}$
 \end_inset
 
-, si dimostra che anche gli autovettori associati sono complessi coniugati
+: si dimostra che anche gli autovettori associati sono complessi coniugati
  e gli esponenziali 
 \begin_inset Formula $e^{\lambda_{i}t}$
 \end_inset
@@ -4687,14 +4692,14 @@ v_{c}\left(t\right)
 
 \end_inset
 
-da cui segue la seguente scrittura per l'equazione di stato 
+da cui segue per l'equazione di stato 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:Forma-standard-matrice-LTI"
 
 \end_inset
 
-:
+ la scrittura:
 \begin_inset Formula 
 \[
 \dot{x}\left(t\right)=\overset{{\scriptstyle A}}{\overbrace{\begin{bmatrix}-R/L & -1/L\\
@@ -5275,21 +5280,21 @@ name "eq:Andamento-modi-autovalori-multipli"
 
 \begin_deeper
 \begin_layout Itemize
-\begin_inset Formula $\Re\left(\lambda_{i}\right)>0$
+\begin_inset Formula $\mathscr{R}_{e}\left(\lambda_{i}\right)>0$
 \end_inset
 
 : modo divergente (esponenziale);
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $\Re\left(\lambda_{i}\right)=0$
+\begin_inset Formula $\mathscr{R}_{e}\left(\lambda_{i}\right)=0$
 \end_inset
 
 : modo divergente (lineare);
 \end_layout
 
 \begin_layout Itemize
-\begin_inset Formula $\Re\left(\lambda_{i}\right)<0$
+\begin_inset Formula $\mathscr{R}_{e}\left(\lambda_{i}\right)<0$
 \end_inset
 
 : modo convergente.
@@ -5582,7 +5587,7 @@ x\left(t\right)=\somme 0t{e^{A\left(t-\tau\right)}Bu\left(\tau\right)}{\tau}=\so
 
 I coefficienti risultanti dal movimento forzato sono una riscrittura delle
  equazioni della dinamica, rispettivamente 
-\begin_inset Formula $a_{1,1}:\,v\left(t\right)=a\left(t\right)t,\,a_{2,1}:\,p\left(t\right)=\dfrac{1}{2}a\left(t\right)t^{2}$
+\begin_inset Formula $a_{1,1}:\,v\left(t\right)=a\left(t\right)\cdot t,\,a_{2,1}:\,p\left(t\right)=\dfrac{1}{2}a\left(t\right)\cdot t^{2}$
 \end_inset
 
  ponendo 
@@ -5783,10 +5788,14 @@ L'equazione ammette soluzione solo per ingresso nullo
 \end_inset
 
 ; a questo punto la posizione 
-\begin_inset Formula $\overline{x}_{1}=\alpha,\,\alpha\in\mathbb{R}$
+\begin_inset Formula $\overline{x}_{1}=\alpha,$
 \end_inset
 
- può assumere qualunque valore reale.
+ con 
+\begin_inset Formula $\alpha\in\mathbb{R}$
+\end_inset
+
+ che può assumere qualunque valore reale.
 \begin_inset ERT
 status open
 
@@ -5807,7 +5816,11 @@ Risposta all'impulso
 \end_layout
 
 \begin_layout Standard
-L'ingresso canonico chiamato impulso è definito come 
+L'ingresso canonico chiamato 
+\emph on
+impulso
+\emph default
+ è definito come 
 \begin_inset Formula $\text{imp}\left(t\right)=\left\{ 1\,\text{per }t=0;\;0\,\text{per }t\neq0\right\} $
 \end_inset
 
@@ -6395,7 +6408,7 @@ reference "eq:Andamento-modi-autovalori-multipli"
 
 \begin_layout Theorem
 In un sistema LTI, per autovalori della matrice di stato tali che 
-\begin_inset Formula $\Re\left(\lambda_{i}\right)=0$
+\begin_inset Formula $\mathscr{R}_{e}\left(\lambda_{i}\right)=0$
 \end_inset
 
 , se vale 
@@ -6540,14 +6553,14 @@ reference "def:Autovalore"
 
 \end_inset
 
- e risolvono 
+ e risolvono il polinomio caratteristco 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:Polinomio-caratteristico"
 
 \end_inset
 
-; chiamiamo tale polinomio 
+; definiamolo come 
 \begin_inset Formula $\varphi\left(\lambda\right)=0$
 \end_inset
 
@@ -6601,8 +6614,11 @@ In un sistema di ordine
 
 , la condizione del Teorema 
 \begin_inset CommandInset ref
-LatexCommand eqref
+LatexCommand ref
 reference "thm:Criterio-segni-concordi-autovalori"
+plural "false"
+caps "false"
+noprefix "false"
 
 \end_inset
 
@@ -7829,7 +7845,7 @@ reference "def:Equilibrio-LTI"
 
 \end_inset
 
-; per sistemi non lineari si cercano nella pratica degli equilibri di interesse
+; per sistemi non lineari si cercano in pratica degli equilibri di interesse
  attorno ai quali i movimenti sono stabili.
  Grazie a una trasformazione chiamata linearizzazione, ovvero tramite uno
  sviluppo di Taylor al primo ordine (lineare) delle matrici 
@@ -8118,7 +8134,7 @@ se la funzione presenta un o o più intervalli di punti in cui la derivata
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \noindent
@@ -8160,8 +8176,18 @@ Funzione di stato analizzata col metodo grafico
 \begin_layout Example
 
 \emph on
-Sia dato il grafico in figura che indica l'andamento dell'equazione di stato
- in funzione dello stato, in un sistema di ordine 1: 
+Sia dato il grafico ne 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:Funzione-di-stato-metodo-grafico"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+ che indica l'andamento dell'equazione di stato in funzione dello stato,
+ in un sistema di ordine 1: 
 \begin_inset Formula $\checkmark$
 \end_inset
 
@@ -8724,7 +8750,7 @@ Chiamiamo la corrente che scorre nella maglia
 
 .
  Poniamo 
-\begin_inset Formula $y\left(t\right)=i\left(i\right)$
+\begin_inset Formula $y\left(t\right)=i\left(t\right)$
 \end_inset
 
 , come richiesto dall'esempio e scriviamo:
@@ -8870,7 +8896,7 @@ x\left(k+1\right)=e^{-\nicefrac{R}{L}T_{s}}x\left(k_{0}\right)+\somme 0{T_{s}}{e
 
 \end_inset
 
-Si nota che, essendo il sistema tempo invariante, gli estremi di integrazione
+Si nota che, essendo il sistema tempo-invariante, gli estremi di integrazione
  possono essere traslati in 
 \begin_inset Formula $0-T_{s}$
 \end_inset
@@ -8959,7 +8985,7 @@ reference "eq:Formula-di-Eulero"
  approssimando la derivata nel tempo continuo come una differenza finita:
 \begin_inset Formula 
 \[
-\dot{x}\left(t\right)=\dfrac{\partial x\left(t\right)}{\partial d}\simeq\dfrac{x\left(k+1\right)-x\left(k\right)}{T_{s}}
+\dot{x}\left(t\right)=\dfrac{\partial x\left(t\right)}{\partial t}\simeq\dfrac{x\left(k+1\right)-x\left(k\right)}{T_{s}}
 \]
 
 \end_inset
@@ -9132,7 +9158,7 @@ status open
 
 \begin_inset Formula 
 \begin{equation}
-x\left(k\right)=A^{k}\cdot x_{0}+\serie{i=0}{k-1}{A^{k-i-1}\cdot B\cdot u\left(i\right)}\label{eq:Formula-di-Lagrange-discreta}
+x\left(k\right)=A^{k}\cdot x_{0}+\serie{i=0}{k-1}{\left[A^{k-i-1}\cdot B\cdot u\left(i\right)\right]}\label{eq:Formula-di-Lagrange-discreta}
 \end{equation}
 
 \end_inset
@@ -9183,7 +9209,7 @@ movimento libero
 
 \begin_layout Itemize
 movimento forzato 
-\begin_inset Formula $x_{{\scriptscriptstyle \text{F}}}\left(k\right)=\serie{i=0}{k-1}{A^{k-i-1}\cdot B\cdot u\left(i\right)}$
+\begin_inset Formula $x_{{\scriptscriptstyle \text{F}}}\left(k\right)=\serie{i=0}{k-1}{\left[A^{k-i-1}\cdot B\cdot u\left(i\right)\right]}$
 \end_inset
 
 : è legato agli ingressi.
@@ -9248,7 +9274,7 @@ reference "eq:Formula-di-Lagrange-discreta"
 \begin_inset Formula $x\left(0\right)$
 \end_inset
 
-e ingresso 
+ e ingresso 
 \begin_inset Formula $u\left(k\right)$
 \end_inset
 
@@ -9267,7 +9293,7 @@ reference "eq:Formula-di-Lagrange-discreta"
 , vale allora:
 \begin_inset Formula 
 \begin{equation}
-y\left(k\right)=C\cdot A^{k}\cdot x_{0}+C\cdot\serie{i=0}{k-1}{A^{k-i-1}\cdot B\cdot u\left(i\right)}+D\cdot u\left(k\right)\label{eq:Movimento-uscita-Lagrange-discreto}
+y\left(k\right)=C\cdot A^{k}x_{0}+C\cdot\serie{i=0}{k-1}{\left[A^{k-i-1}\cdot B\,u\left(i\right)\right]}+D\,u\left(k\right)\label{eq:Movimento-uscita-Lagrange-discreto}
 \end{equation}
 
 \end_inset
@@ -9286,12 +9312,8 @@ Equilibrio
 \begin_layout Standard
 Un movimento di un sistema a tempo discreto si ottiene iterando l'equazione
  di stato fino all'istante di interesse.
- Una coppia di ingressi 
-\begin_inset Formula $\overline{x}$
-\end_inset
-
- e uscite 
-\begin_inset Formula $\overline{u}$
+ Una coppia di ingressi e uscite 
+\begin_inset Formula $\left(\overline{u},\,\overline{x}\right)$
 \end_inset
 
  è un equilibrio se 
@@ -9436,8 +9458,8 @@ Se
 \begin_inset Formula $\overline{x}$
 \end_inset
 
- di equilibrio; la coppia ingresso-uscita di equilibrio nulla risolve comunque
- il sistema.
+ di equilibrio; la coppia ingresso-uscita di equilibrio non risolverebbe
+ comunque il sistema.
 \end_layout
 
 \begin_layout Subsection
@@ -9619,7 +9641,7 @@ x\left(k\right)=T^{-1}\cdot\hat{x}\left(k\right)\,\leftrightarrows\,\hat{x}\left
 \end_inset
 
 Possiamo parlare di rappresentazioni equivalenti di sistemi LTI a tempo
- discreto, in particolare se il sistema di partenza è della forma 
+ discreto; in particolare se il sistema di partenza è della forma 
 \begin_inset CommandInset ref
 LatexCommand eqref
 reference "eq:Forma-standard-matrice-LTI-discreto"
@@ -9630,8 +9652,8 @@ reference "eq:Forma-standard-matrice-LTI-discreto"
 \begin_inset Formula 
 \begin{equation}
 \begin{array}{c}
-\hat{x}\left(k+1\right)=T\cdot A\cdot T^{-1}\cdot\hat{x}\left(k\right)+T\cdot B\cdot u\left(k\right)\\
-y\left(k\right)=C\cdot T^{-1}\cdot\hat{x}\left(k\right)+D\cdot u\left(k\right)
+\hat{x}\left(k+1\right)=T\cdot A\cdot T^{-1}\cdot\hat{x}\left(k\right)+T\cdot B\,u\left(k\right)\\
+y\left(k\right)=C\cdot T^{-1}\cdot\hat{x}\left(k\right)+D\,u\left(k\right)
 \end{array}\label{eq:Rappresentazione-equivalente-discreta}
 \end{equation}
 
@@ -9888,7 +9910,7 @@ Nel caso di valori complessi coniugati i modi sono sempre
 \end_inset
 
 da cui gli autovalori valgono 
-\begin_inset Formula $z_{1,2}=\rho e^{\pm j\varphi}$
+\begin_inset Formula $z_{1,2}=\rho\,e^{\pm j\varphi}$
 \end_inset
 
  e i modi 
@@ -10368,7 +10390,7 @@ z_{i}=-1\rightarrow\text{{\scriptstyle \text{limitato a segni alterni}}}
 \begin_inset Text
 
 \begin_layout Plain Layout
-\begin_inset Formula $\Re\left(z_{i}\right)=0,\,\Im\left(z_{i}\right)=\pm1\rightarrow\text{{\scriptstyle \text{limitato come cosinusoide}}}$
+\begin_inset Formula $\mathscr{R}_{e}\left(z_{i}\right)=0,\,\mathscr{I}_{m}\left(z_{i}\right)=\pm1\rightarrow\text{{\scriptstyle \text{limitato come cosinusoide}}}$
 \end_inset
 
 
@@ -10835,7 +10857,7 @@ Questa tabella si compila grazie al seguente
 \emph on
 algoritmo di Jury
 \emph default
- che dalle riga precedente (
+ che dalla riga precedente (
 \begin_inset Formula $h_{i}$
 \end_inset
 
@@ -12982,11 +13004,11 @@ Poli complessi coniugati
 Se rappresentiamo i poli complessi coniugati sul piano di Gauss, appaiono
  evidenti alcune proprietà riguardo pulsazioni naturali e smorzamenti: preso
  un polo stabile, esso avrà (risolvendo le radici) 
-\begin_inset Formula $\Re\left(p\right)=-\xi\omega_{n}$
+\begin_inset Formula $\mathscr{R}_{e}\left(p\right)=-\xi\omega_{n}$
 \end_inset
 
 , 
-\begin_inset Formula $\Im\left(p\right)=\pm\omega_{n}\sqrt{1-\xi^{2}}$
+\begin_inset Formula $\mathscr{I}_{m}\left(p\right)=\pm\omega_{n}\sqrt{1-\xi^{2}}$
 \end_inset
 
 ; in particolare 
@@ -20098,7 +20120,7 @@ Il guadagno
 
  è un numero reale: se lo rappresentiamo sul piano complesso, esso sarà
  sull'asse reale (
-\begin_inset Formula $\Im\left(\mu\right)=0$
+\begin_inset Formula $\mathscr{I}_{m}\left(\mu\right)=0$
 \end_inset
 
 ): 
@@ -20251,7 +20273,7 @@ Il numero complesso di cui si cerca la fase ha parte reale pari a 1 e parte
 
 ; se rappresentiamo questo numero sul piano complesso, esso si troverà sulla
  retta perpendicolare all'ascissa, passante in 
-\begin_inset Formula $\Re=1$
+\begin_inset Formula $\mathscr{R}_{e}=1$
 \end_inset
 
 ; inoltre a seconda del segno della costante di tempo, esso avrà fase positiva
@@ -35278,7 +35300,11 @@ linearmente indipendenti
 \end_layout
 
 \begin_layout Definition
-Vice versa si parla di vettori linearmente 
+Si parla invece di 
+\begin_inset Formula $n$
+\end_inset
+
+ vettori linearmente 
 \emph on
 dipendenti
 \emph default
@@ -36581,7 +36607,7 @@ Per il secondo autovalore, che ha molteplicità algebrica
 
 \begin_layout Standard
 In conclusione, abbiamo trovato 
-\begin_inset Formula $g_{1}=1,\,g_{2}=1$
+\begin_inset Formula $g_{1}=2,\,g_{2}=1$
 \end_inset
 
 
@@ -36930,7 +36956,7 @@ Imponendo
  per ottenere due autovettori linearmente indipendenti:
 \begin_inset Formula 
 \[
-v_{1}=\left(1,0,0\right),\,\left(0,1,0\right)
+v_{1}=\left(\left(0,1,0\right),\,\left(1,0,0\right)\right)
 \]
 
 \end_inset
@@ -37365,9 +37391,8 @@ Nei blocchi di ordine maggiore di uno (hanno ordine
 \begin_layout Standard
 L'esponenziale di una matrice in forma di Jordan è costituito dall'esponenziale
  di ogni blocco di Jordan di ordine uno, mentre per i blocchi di ordine
- maggiore i coefficienti al di sopra della diagonale (quelli sulla diagonale
- sono l'esponenziale dei coefficienti sulla diagonale) sono pari al termine
- 
+ maggiore di uno i coefficienti al di sopra della diagonale sono pari al
+ termine 
 \begin_inset Formula $t^{h}/h!$
 \end_inset
 
@@ -37685,11 +37710,11 @@ Un numero complesso nella forma algebrica è scritto come
 \end_inset
 
 , dove 
-\begin_inset Formula $a=\Re\left(s\right)$
+\begin_inset Formula $a=\mathscr{R}_{e}\left(s\right)$
 \end_inset
 
  è la parte reale e 
-\begin_inset Formula $b=\Im\left(s\right)$
+\begin_inset Formula $b=\mathscr{I}_{m}\left(s\right)$
 \end_inset
 
  la parte immaginaria; 
@@ -37997,7 +38022,7 @@ Sia
 \end_inset
 
  l'estremo inferiore delle parti reali 
-\begin_inset Formula $\Re\left(s\right)$
+\begin_inset Formula $\mathscr{R}_{e}\left(s\right)$
 \end_inset
 
  dei valori 
@@ -38013,7 +38038,7 @@ reference "eq:Trasformata-Laplace"
 
  converge; allora la trasformata di Laplace esiste in un semipiano delimitato
  dalla condizione 
-\begin_inset Formula $\Re\left(s\right)>\overline{\sigma}$
+\begin_inset Formula $\mathscr{R}_{e}\left(s\right)>\overline{\sigma}$
 \end_inset
 
 , per questo motivo 
@@ -38604,7 +38629,7 @@ reference "eq:Trasformata-razionale"
 \end_inset
 
  vale 
-\begin_inset Formula $\Re\left(p_{1}\right)<0$
+\begin_inset Formula $\mathscr{R}_{e}\left(p_{1}\right)<0$
 \end_inset
 
 , allora vale:
