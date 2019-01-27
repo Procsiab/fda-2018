@@ -11688,7 +11688,7 @@ dove il coefficiente di
 \begin_inset Formula $G\left(s\right)$
 \end_inset
 
-, il prodotto di convoluzione
+, il prodotto di convoluzione:
 \begin_inset Marginal
 status collapsed
 
@@ -11784,7 +11784,7 @@ Notiamo che, avendo
 \end_inset
 
 ; inoltre, se abbiamo un sistema SISO, la funzione di trasferimento è scalare
- (a 1 dimensione, essendo 
+ (ha 1 dimensione, essendo 
 \begin_inset Formula $p=m=1$
 \end_inset
 
@@ -13077,6 +13077,13 @@ In questo modo si eliminano i poli nell'origine.
 
 \begin_layout Section
 Risposta forzata allo scalino
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Risposta-forzata-allo-scalino"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -13289,7 +13296,18 @@ Questo limite vale
 \begin_inset Formula $\rho$
 \end_inset
 
- se numeratore e denominatore sono di pari grado, altrimenti si annulla.
+ se numeratore e denominatore sono di pari grado, altrimenti si annulla
+ (per le ipotesi fatte alla fine de 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "sec:Risposta-forzata-allo-scalino"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
 \end_layout
 
 \begin_layout Standard
@@ -13467,7 +13485,7 @@ tempo di salita
 \begin_inset Formula $y_{\infty}$
 \end_inset
 
- per la prima volta approssimato tra il 
+ per la prima volta, approssimato tra il 
 \begin_inset Formula $10\%$
 \end_inset
 
@@ -13693,7 +13711,7 @@ Y\left(s\right)=\dfrac{a}{s}+\dfrac{b}{1+T_{1}s}+\dfrac{c}{1+T_{2}s}
 \begin{array}{l}
 a=\left.\dfrac{\mu}{\left(1+T_{1}s\right)\left(1+T_{2}s\right)}\right|_{s=0}=\mu\\
 b=\left.\dfrac{\mu}{s\left(1+T_{2}s\right)}\right|_{s=-\nicefrac{1}{T_{1}}}=\dfrac{\mu}{{\scriptstyle -\nicefrac{1}{T_{1}}}\left(1-{\scriptstyle \nicefrac{T_{2}}{T_{1}}}\right)}=\dfrac{-\mu T_{1}^{2}}{T_{1}-T_{2}}\\
-b=\left.\dfrac{\mu}{s\left(1+T_{1}s\right)}\right|_{s=-\nicefrac{1}{T_{2}}}=\dfrac{\mu}{{\scriptstyle -\nicefrac{1}{T_{2}}}\left(1-{\scriptstyle \nicefrac{T_{1}}{T_{2}}}\right)}=\dfrac{\mu T_{1}^{2}}{T_{1}-T_{2}}
+c=\left.\dfrac{\mu}{s\left(1+T_{1}s\right)}\right|_{s=-\nicefrac{1}{T_{2}}}=\dfrac{\mu}{{\scriptstyle -\nicefrac{1}{T_{2}}}\left(1-{\scriptstyle \nicefrac{T_{1}}{T_{2}}}\right)}=\dfrac{\mu T_{1}^{2}}{T_{1}-T_{2}}
 \end{array}
 \]
 
@@ -13715,7 +13733,7 @@ Riscriviamo infine l'espressione dell'uscita per favorire l'antitrasformazione,
  raccogliendo i termini di secondo grado dei numeratori:
 \begin_inset Formula 
 \[
-Y\left(s\right)=\mu\left(\dfrac{1}{s}-\dfrac{\mu T_{1}}{\left(T_{1}-T_{2}\right)}\cdot\dfrac{1}{{\scriptstyle \nicefrac{1}{T_{1}}}+s}+\dfrac{\mu T_{2}}{\left(T_{1}-T_{2}\right)}\cdot\dfrac{1}{{\scriptstyle \nicefrac{1}{T_{2}}}+s}\right)
+Y\left(s\right)=\mu\left(\dfrac{1}{s}-\dfrac{T_{1}}{\left(T_{1}-T_{2}\right)}\cdot\dfrac{1}{s+{\scriptstyle \nicefrac{1}{T_{1}}}}+\dfrac{T_{2}}{\left(T_{1}-T_{2}\right)}\cdot\dfrac{1}{s+{\scriptstyle \nicefrac{1}{T_{2}}}}\right)
 \]
 
 \end_inset
@@ -13944,8 +13962,8 @@ reference "eq:Metodo-di-Heaviside"
 \[
 \begin{array}{l}
 a=\left.\dfrac{\mu\left(1+\tau s\right)}{\left(1+T_{1}s\right)\left(1+T_{2}s\right)}\right|_{s=0}=\mu\\
-b=\left.\dfrac{\mu\left(1+\tau s\right)}{\left(1+T_{2}s\right)}\right|_{s=-\nicefrac{1}{T_{1}}}=\dfrac{\mu\left(1-\tau/T_{1}\right)}{-1/T_{1}\left(1-T_{2}/T_{1}\right)}=-\dfrac{\mu T_{1}\left(T_{1}-\tau\right)}{T_{1}-T_{2}}\\
-c=\left.\dfrac{\mu\left(1+\tau s\right)}{\left(1+T_{1}s\right)}\right|_{s=-\nicefrac{1}{T_{2}}}=\dfrac{\mu\left(1-\tau/T_{2}\right)}{-1/T_{2}\left(1-T_{1}/T_{2}\right)}=\dfrac{\mu T_{2}\left(T_{2}-\tau\right)}{T_{1}-T_{2}}
+b=\left.\dfrac{\mu\left(1+\tau s\right)}{s\left(1+T_{2}s\right)}\right|_{s=-\nicefrac{1}{T_{1}}}=\dfrac{\mu\left(1-\tau/T_{1}\right)}{-1/T_{1}\left(1-T_{2}/T_{1}\right)}=-\dfrac{\mu T_{1}\left(T_{1}-\tau\right)}{T_{1}-T_{2}}\\
+c=\left.\dfrac{\mu\left(1+\tau s\right)}{s\left(1+T_{1}s\right)}\right|_{s=-\nicefrac{1}{T_{2}}}=\dfrac{\mu\left(1-\tau/T_{2}\right)}{-1/T_{2}\left(1-T_{1}/T_{2}\right)}=\dfrac{\mu T_{2}\left(T_{2}-\tau\right)}{T_{1}-T_{2}}
 \end{array}
 \]
 
@@ -14214,7 +14232,7 @@ reference "fig:Risposta-2-ord-zero-negativo"
 
 ) durante il transitorio, tanto maggiore quanto più lo zero è vicino all'origine
  (come prima, se lo zero fosse nell'origine si avrebbe un impulso che precede
- il transitorio); Uno zero reale negativo allora velocizza la risposta del
+ il transitorio); uno zero reale negativo allora velocizza la risposta del
  sistema.
 \begin_inset VSpace bigskip
 \end_inset
@@ -14531,8 +14549,9 @@ reference "subsec:Valori-della-risposta"
 
 \begin_layout Remark
 Sia smorzamento che pulsazione naturale influenzano la velocità con cui
- le pulsazioni tendono a 0: l'inviluppo esponenziale del movimento è analogo
- a quello di una risposta del primo ordine, con costante di tempo 
+ le pulsazioni tendono ad annullarsi: l'inviluppo esponenziale del movimento
+ è analogo a quello di una risposta del primo ordine, con costante di tempo
+ 
 \begin_inset Formula $T=1/\xi\omega_{n}$
 \end_inset
 
@@ -14567,11 +14586,14 @@ Consideriamo un sistema asintoticamente stabile di ordine maggiore del secondo,
 \bar under
 tutte
 \bar default
- le singolarità (poli e zeri) abbiano parte reale negativa; nel caso inalterate
+ le singolarità (poli e zeri) abbiano parte reale negativa; nel caso in
  cui alcuni poli o zeri abbiano la parte reale in modulo molto maggiore
  di quella degli altri (la costante di tempo associata è molto piccola),
- possiamo trascurare quelle singolarità nell'espressione della risposta
- allo scalino del sistema.
+ possiamo trascurare le 
+\bar under
+altre
+\bar default
+ singolarità nell'espressione della risposta allo scalino del sistema.
 \end_layout
 
 \begin_layout Example
@@ -14653,7 +14675,7 @@ G^{\prime}\left(s\right)=\dfrac{5}{\left(1+10s\right)}
 la cui funzione di uscita ottenuta antitrasformando è
 \begin_inset Formula 
 \[
-y^{\prime}\left(t\right)=\mu\left(-e^{-10t}\right)\text{sca}\left(t\right).
+y^{\prime}\left(t\right)=5\left(-e^{-10t}\right)\text{sca}\left(t\right).
 \]
 
 \end_inset
@@ -14774,7 +14796,7 @@ Si sceglie per comodità un sistema nella
 forma canonica di raggiungibilità
 \emph default
  (non ci sono cancellazioni polo-zero), dalla quale è possibile arrivare
- ad equazioni adeguate adottando una sua rappresentazioni equivalente.
+ a equazioni adeguate, adottando una sua rappresentazioni equivalente.
 \end_layout
 
 \begin_layout Standard
@@ -14987,7 +15009,7 @@ Nella matrice
 
  equazioni di stato sono banali, poiché ogni derivata è pari allo stato
  successivo; essa è chiamata forma canonica di raggiungibilità poiché l'ingresso
- è in grado di influenzare l'ultimo stato, mentre gli stati successivi sono
+ è in grado di influenzare l'ultimo stato, mentre gli stati precedenti sono
  suoi integratori (l'ingresso influenza tutti gli stati).
 \begin_inset VSpace bigskip
 \end_inset
@@ -37953,7 +37975,7 @@ trasformata di Laplace
 \begin_inset Formula $f\left(t\right)$
 \end_inset
 
- e si indice come 
+ e si indica come 
 \begin_inset Formula $\mathscr{L}\left[f\left(t\right)\right]=F\left(s\right)$
 \end_inset
 
@@ -38045,7 +38067,11 @@ reference "eq:Trasformata-Laplace"
 \begin_inset Formula $\overline{\sigma}$
 \end_inset
 
- si chiama ascissa di convergenza.
+ si chiama 
+\emph on
+ascissa di convergenza
+\emph default
+.
 \end_layout
 
 \begin_layout Standard
@@ -38628,11 +38654,11 @@ reference "eq:Trasformata-razionale"
 \begin_inset Formula $p_{i}$
 \end_inset
 
- vale 
-\begin_inset Formula $\mathscr{R}_{e}\left(p_{1}\right)<0$
+ si ha che 
+\begin_inset Formula $\mathscr{R}_{e}\left(p_{i}\right)<0$
 \end_inset
 
-, allora vale:
+, allora si verifica:
 \begin_inset Formula 
 \begin{equation}
 \lm t{+\infty}{f\left(t\right)}=\lm s0{\,s\cdot F\left(s\right)}.\label{eq:Teorema-valore-finale}
@@ -38886,7 +38912,7 @@ Utilizziamo le proprietà di traslazione e di convoluzione per ottenere il
  seguente risultato:
 \begin_inset Formula 
 \[
-\mathscr{L}\left[f\left(t\right)\right]=\dfrac{1}{s-\alpha}\cdot\dfrac{1}{s^{2}}=\dfrac{1}{s\left(s-\alpha\right)}
+\mathscr{L}\left[f\left(t\right)\right]=\dfrac{1}{s-\alpha}\cdot\dfrac{1}{s^{2}}=\dfrac{1}{s^{2}\left(s-\alpha\right)}
 \]
 
 \end_inset
@@ -39284,7 +39310,7 @@ dato che l'antitrasformata di una costante è un impulso di ampiezza la costante
 \begin_layout Standard
 Analizziamo come antitrasformare una funzione che abbia 
 \series bold
-poli distinti
+poli reali distinti
 \series default
 ; si procede scomponendo 
 \begin_inset Formula $F\left(s\right)$
@@ -39677,7 +39703,7 @@ reference "eq:Metodo-di-Heaviside"
 , tenendo conto dei poli complessi coniugati:
 \begin_inset Formula 
 \[
-F\left(s\right)=\dfrac{P_{1}}{s-p_{1}}+\dfrac{P_{2}}{s-p_{2}}+\dfrac{P_{2}^{*}}{s-p_{2}^{*}}=\dfrac{P_{1}}{s+1}+\dfrac{P_{2}}{s+2-j3}+\dfrac{P_{2}^{*}}{s+2-j3}
+F\left(s\right)=\dfrac{P_{1}}{s-p_{1}}+\dfrac{P_{2}}{s-p_{2}}+\dfrac{P_{2}^{*}}{s-p_{2}^{*}}=\dfrac{P_{1}}{s+1}+\dfrac{P_{2}}{s+2-j3}+\dfrac{P_{2}^{*}}{s+2+j3}
 \]
 
 \end_inset
@@ -40034,7 +40060,7 @@ da cui si nota che
 \end_inset
 
  dunque 
-\begin_inset Formula $P_{1,1}+P_{2,1}=0\rightarrow P_{1,1}=-P_{2,2}$
+\begin_inset Formula $P_{1,1}+P_{2,1}=0\rightarrow P_{1,1}=-P_{2,1}$
 \end_inset
 
  e, avendo già calcolato il valore di 
@@ -40147,7 +40173,7 @@ F\left(s\right)=\dfrac{100}{\left(s+1\right)\left(\left(s+2\right)^{2}+9\right)}
 
 \end_inset
 
-Nel secondo addendo abbiamo posto il denominatore pari a una combinazione
+Nel secondo addendo abbiamo posto il numeratore pari a una combinazione
  lineare di residui con grado inferiore di uno rispetto al polo associato;
  otteniamo dunque i seguenti valori dei residui:
 \end_layout
@@ -40234,7 +40260,7 @@ Osservando che nel numeratore non compare la variabile
 \end_inset
 
 , otteniamo sostituendo nella precedente che 
-\begin_inset Formula $P_{2}=-30$
+\begin_inset Formula $P_{3}=-30$
 \end_inset
 
 .
