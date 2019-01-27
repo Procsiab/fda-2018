@@ -2992,7 +2992,7 @@ dove il coefficiente di $U\left(s\right)$ è la trasformata del movimento
 forzato, mentre il coefficiente di $x\left(0\right)$ è la trasformata
 del movimento libero dell'uscita; in particolare chiamiamo funzione
 di trasferimento, e la indichiamo con $G\left(s\right)$, il prodotto
-di convoluzione\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+di convoluzione:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
 \textbf{\footnotesize{}Funzione di trasferimento}{\footnotesize{}\index{Trasferimento nel tempo continuo, funzione@{\footnotesize{}Trasferimento nel tempo continuo, funzione}}}}[0.5cm]
 \begin{equation}
 G\left(s\right)=C\cdot\left(sI-A\right)^{-1}\cdot B+D\label{eq:Funzione-trasferimento}
@@ -3008,7 +3008,8 @@ Y\left(s\right)=G\left(s\right)\cdot U\left(s\right)\label{eq:Uscita-trasferimen
 Notiamo che, avendo $Y\left(s\right)$ grado $p$ e $U\left(s\right)$
 grado $m$, allora $G\left(s\right)$ avrà dimensioni $p\times m$;
 inoltre, se abbiamo un sistema SISO, la funzione di trasferimento
-è scalare (a 1 dimensione, essendo $p=m=1$) e vale la scrittura $G\left(s\right)=Y\left(s\right)/U\left(s\right)$.
+è scalare (ha 1 dimensione, essendo $p=m=1$) e vale la scrittura
+$G\left(s\right)=Y\left(s\right)/U\left(s\right)$.
 
 Per osservare che il significato della (\ref{eq:Funzione-trasferimento})
 è quello di trasformata della risposta dell'uscita a un impulso (a
@@ -3371,7 +3372,7 @@ statico generalizzato come:
 \]
 In questo modo si eliminano i poli nell'origine.
 
-\section{Risposta forzata allo scalino}
+\section{Risposta forzata allo scalino\label{sec:Risposta-forzata-allo-scalino}}
 
 \begin{minipage}[c]{0.65\textwidth}%
 Consideriamo un sistema dinamico nel dominio del tempo, espresso in
@@ -3422,7 +3423,7 @@ Calcoliamo il valore iniziale come l'uscita al tempo $t=0$, usando
 y\left(t\rightarrow0\right)=\lm s{+\infty}{s\cdot Y\left(s\right)}=\lm s{+\infty}{G\left(s\right)}
 \]
 Questo limite vale $\rho$ se numeratore e denominatore sono di pari
-grado, altrimenti si annulla.
+grado, altrimenti si annulla (per le ipotesi fatte alla fine de \secref{Risposta-forzata-allo-scalino}).
 
 Possiamo calcolare anche il valore iniziale delle derivate dell'uscita
 nello stesso modo: supponendo che la funzione di trasferimento sia
@@ -3462,7 +3463,7 @@ alcuni termini per la nomenclatura e l'analisi di questa risposta:
 il quale l'uscita è definitivamente compresa in $\left(y_{\infty}+\varepsilon,\,y_{\infty}-\varepsilon\right)$;
 \item Il \emph{tempo di salita} $T_{s}=y^{-1}\left(0.9y_{\infty}\right)-y^{-1}\left(0.1y_{\infty}\right)$
 è l'intervallo di tempo nel quale l'uscita raggiunge il valore stazionario
-$y_{\infty}$ per la prima volta approssimato tra il $10\%$ e il
+$y_{\infty}$ per la prima volta, approssimato tra il $10\%$ e il
 $90\%$.
 \end{itemize}
 
@@ -3531,7 +3532,7 @@ Y\left(s\right)=\dfrac{a}{s}+\dfrac{b}{1+T_{1}s}+\dfrac{c}{1+T_{2}s}
 \begin{array}{l}
 a=\left.\dfrac{\mu}{\left(1+T_{1}s\right)\left(1+T_{2}s\right)}\right|_{s=0}=\mu\\
 b=\left.\dfrac{\mu}{s\left(1+T_{2}s\right)}\right|_{s=-\nicefrac{1}{T_{1}}}=\dfrac{\mu}{{\scriptstyle -\nicefrac{1}{T_{1}}}\left(1-{\scriptstyle \nicefrac{T_{2}}{T_{1}}}\right)}=\dfrac{-\mu T_{1}^{2}}{T_{1}-T_{2}}\\
-b=\left.\dfrac{\mu}{s\left(1+T_{1}s\right)}\right|_{s=-\nicefrac{1}{T_{2}}}=\dfrac{\mu}{{\scriptstyle -\nicefrac{1}{T_{2}}}\left(1-{\scriptstyle \nicefrac{T_{1}}{T_{2}}}\right)}=\dfrac{\mu T_{1}^{2}}{T_{1}-T_{2}}
+c=\left.\dfrac{\mu}{s\left(1+T_{1}s\right)}\right|_{s=-\nicefrac{1}{T_{2}}}=\dfrac{\mu}{{\scriptstyle -\nicefrac{1}{T_{2}}}\left(1-{\scriptstyle \nicefrac{T_{1}}{T_{2}}}\right)}=\dfrac{\mu T_{1}^{2}}{T_{1}-T_{2}}
 \end{array}
 \]
 \[
@@ -3541,7 +3542,7 @@ Y\left(s\right)=\dfrac{\mu}{s}-\dfrac{\mu T_{1}^{2}}{\left(T_{1}-T_{2}\right)\le
 Riscriviamo infine l'espressione dell'uscita per favorire l'antitrasformazione,
 raccogliendo i termini di secondo grado dei numeratori:
 \[
-Y\left(s\right)=\mu\left(\dfrac{1}{s}-\dfrac{\mu T_{1}}{\left(T_{1}-T_{2}\right)}\cdot\dfrac{1}{{\scriptstyle \nicefrac{1}{T_{1}}}+s}+\dfrac{\mu T_{2}}{\left(T_{1}-T_{2}\right)}\cdot\dfrac{1}{{\scriptstyle \nicefrac{1}{T_{2}}}+s}\right)
+Y\left(s\right)=\mu\left(\dfrac{1}{s}-\dfrac{T_{1}}{\left(T_{1}-T_{2}\right)}\cdot\dfrac{1}{s+{\scriptstyle \nicefrac{1}{T_{1}}}}+\dfrac{T_{2}}{\left(T_{1}-T_{2}\right)}\cdot\dfrac{1}{s+{\scriptstyle \nicefrac{1}{T_{2}}}}\right)
 \]
 \begin{equation}
 y\left(t\right)=\mathscr{L}^{-1}\left[Y\left(s\right)\right]=\mu\left(1-\dfrac{T_{1}}{T_{1}-T_{2}}e^{-\nicefrac{t}{T_{1}}}+\dfrac{T_{2}}{T_{1}-T_{2}}e^{-\nicefrac{t}{T_{2}}}\right)\text{sca}\left(t\right)\label{eq:Risposta-scalino-ord-2}
@@ -3627,8 +3628,8 @@ il metodo (\ref{eq:Metodo-di-Heaviside}):
 \[
 \begin{array}{l}
 a=\left.\dfrac{\mu\left(1+\tau s\right)}{\left(1+T_{1}s\right)\left(1+T_{2}s\right)}\right|_{s=0}=\mu\\
-b=\left.\dfrac{\mu\left(1+\tau s\right)}{\left(1+T_{2}s\right)}\right|_{s=-\nicefrac{1}{T_{1}}}=\dfrac{\mu\left(1-\tau/T_{1}\right)}{-1/T_{1}\left(1-T_{2}/T_{1}\right)}=-\dfrac{\mu T_{1}\left(T_{1}-\tau\right)}{T_{1}-T_{2}}\\
-c=\left.\dfrac{\mu\left(1+\tau s\right)}{\left(1+T_{1}s\right)}\right|_{s=-\nicefrac{1}{T_{2}}}=\dfrac{\mu\left(1-\tau/T_{2}\right)}{-1/T_{2}\left(1-T_{1}/T_{2}\right)}=\dfrac{\mu T_{2}\left(T_{2}-\tau\right)}{T_{1}-T_{2}}
+b=\left.\dfrac{\mu\left(1+\tau s\right)}{s\left(1+T_{2}s\right)}\right|_{s=-\nicefrac{1}{T_{1}}}=\dfrac{\mu\left(1-\tau/T_{1}\right)}{-1/T_{1}\left(1-T_{2}/T_{1}\right)}=-\dfrac{\mu T_{1}\left(T_{1}-\tau\right)}{T_{1}-T_{2}}\\
+c=\left.\dfrac{\mu\left(1+\tau s\right)}{s\left(1+T_{1}s\right)}\right|_{s=-\nicefrac{1}{T_{2}}}=\dfrac{\mu\left(1-\tau/T_{2}\right)}{-1/T_{2}\left(1-T_{1}/T_{2}\right)}=\dfrac{\mu T_{2}\left(T_{2}-\tau\right)}{T_{1}-T_{2}}
 \end{array}
 \]
 \[
@@ -3690,7 +3691,7 @@ rispetto al caso positivo, col presentarsi di una \emph{sovraelongazione}
 (si veda \figref{Risposta-2-ord-zero-negativo}) durante il transitorio,
 tanto maggiore quanto più lo zero è vicino all'origine (come prima,
 se lo zero fosse nell'origine si avrebbe un impulso che precede il
-transitorio); Uno zero reale negativo allora velocizza la risposta
+transitorio); uno zero reale negativo allora velocizza la risposta
 del sistema.\bigskip{}
 
 \noun{$\qquad$}\textbf{\noun{Zero nei pressi del polo}}
@@ -3796,9 +3797,9 @@ esponenziale di proporzionalità inversa.
 %
 \begin{rem}
 Sia smorzamento che pulsazione naturale influenzano la velocità con
-cui le pulsazioni tendono a 0: l'inviluppo esponenziale del movimento
-è analogo a quello di una risposta del primo ordine, con costante
-di tempo $T=1/\xi\omega_{n}$.
+cui le pulsazioni tendono ad annullarsi: l'inviluppo esponenziale
+del movimento è analogo a quello di una risposta del primo ordine,
+con costante di tempo $T=1/\xi\omega_{n}$.
 
 Il tempo di assestamento, come nel caso di poli reali, vale $T_{a,\varepsilon}=-\ln\left(\varepsilon\right)/\xi\omega_{n}$.
 \end{rem}
@@ -3808,11 +3809,11 @@ Il tempo di assestamento, come nel caso di poli reali, vale $T_{a,\varepsilon}=-
 \marginpar{In presenza di zeri o poli con parte reale positiva (instabili) non
 valgono le approssimazioni seguenti}Consideriamo un sistema asintoticamente stabile di ordine maggiore
 del secondo, nel quale \uline{tutte} le singolarità (poli e zeri)
-abbiano parte reale negativa; nel caso inalterate cui alcuni poli
-o zeri abbiano la parte reale in modulo molto maggiore di quella degli
-altri (la costante di tempo associata è molto piccola), possiamo trascurare
-quelle singolarità nell'espressione della risposta allo scalino del
-sistema.
+abbiano parte reale negativa; nel caso in cui alcuni poli o zeri abbiano
+la parte reale in modulo molto maggiore di quella degli altri (la
+costante di tempo associata è molto piccola), possiamo trascurare
+le \uline{altre} singolarità nell'espressione della risposta allo
+scalino del sistema.
 \begin{example}
 \emph{\label{ese:Approssimazione-polo-dominante}Sia data la seguente
 funzione di trasferimento:}
@@ -3841,7 +3842,7 @@ G^{\prime}\left(s\right)=\dfrac{5}{\left(1+10s\right)}
 \]
 la cui funzione di uscita ottenuta antitrasformando è
 \[
-y^{\prime}\left(t\right)=\mu\left(-e^{-10t}\right)\text{sca}\left(t\right).
+y^{\prime}\left(t\right)=5\left(-e^{-10t}\right)\text{sca}\left(t\right).
 \]
 \end{example}
 Se avessimo degli zeri con parte reale positiva, al contrario dei
@@ -3875,7 +3876,7 @@ partenza.
 
 Si sceglie per comodità un sistema nella \emph{forma canonica di raggiungibilità}
 (non ci sono cancellazioni polo-zero), dalla quale è possibile arrivare
-ad equazioni adeguate adottando una sua rappresentazioni equivalente.
+a equazioni adeguate, adottando una sua rappresentazioni equivalente.
 
 Partiamo dalla scrittura generale di una funzione di trasferimento
 di un sistema SISO, immaginando di aver raccolto il termine di grado
@@ -3943,7 +3944,7 @@ y\left(t\right)=\overset{C}{\overbrace{\begin{bmatrix}\hat{\beta}_{0} & \hat{\be
 Nella matrice $A$ le prime $n-1$ equazioni di stato sono banali,
 poiché ogni derivata è pari allo stato successivo; essa è chiamata
 forma canonica di raggiungibilità poiché l'ingresso è in grado di
-influenzare l'ultimo stato, mentre gli stati successivi sono suoi
+influenzare l'ultimo stato, mentre gli stati precedenti sono suoi
 integratori (l'ingresso influenza tutti gli stati).\bigskip{}
 
 Verifichiamo che da questa forma canonica si riottiene l'equazione
@@ -4083,10 +4084,9 @@ al caso SISO.
 \begin{rem}
 Prendiamo un sistema quadrato che in generale potrebbe avere molti
 ingressi e uscite; nel nostro caso scegliamo un sistema di ordine
-2 (nel dominio di Laplace); se è di ordine due e ha due uscite, la
-matrice di trasferimento ha ordine 2, quindi possiede 4 funzioni di
-trasferimento (ognuna razionale fratta); le uscite del sistema saranno
-legati nel modo seguente: 
+2 (nel dominio di Laplace); la matrice di trasferimento possiede 4
+funzioni di trasferimento (ognuna razionale fratta); le uscite del
+sistema saranno determinate nel modo seguente: 
 \[
 Y\left(s\right)=\begin{bmatrix}Y_{1}\left(s\right)\\
 Y_{2}\left(s\right)
@@ -4104,7 +4104,8 @@ ne \figref{Sistema-con-pi=0000F9-uscite-blocchi-SISO}.
 
 Lo schema è stato ottenuto rispettando la scrittura delle equazioni
 di uscita, effettuando il prodotto righe per colonne della matrice
-di trasferimento con quella degli ingressi; infatti vale:
+di trasferimento con quella degli ingressi; infatti così facendo si
+ha:
 \[
 \begin{cases}
 Y_{1}\left(s\right)=U_{1}\left(s\right)G_{1,1}\left(s\right)+U_{2}\left(s\right)G_{1,2}\left(s\right)\\
@@ -4203,7 +4204,7 @@ dal sistema (\ref{eq:Trasferimento-1-sistema})), mentre l'uscita
 \Delta\left(s\right)=\frac{1}{\left(Js+\beta\right)s}T\left(s\right)\label{eq:Trasferimento-2-sistema}
 \end{equation}
 Abbiamo ottenuto un sistema del secondo ordine (denominatore di grado
-2) con i poli $p_{1}=0,\,p_{2}=\beta/J$, semplicemente stabile con
+2) con i poli $p_{1}=0,\,p_{2}=-\beta/J$, semplicemente stabile con
 un polo nell'origine; intuitivamente l'uscita di questo secondo sistema
 sarà un ingresso in retroazione per il precedente (\ref{eq:Trasferimento-1-sistema}).
 
@@ -4237,15 +4238,15 @@ dove le costanti $k_{{\scriptscriptstyle A,B}}$ sono proprie del
 terzo sistema in esame; sostituendo nella precedente e trasformando
 otteniamo:
 \[
-J_{{\scriptscriptstyle \text{A}}}s^{2}\vartheta\left(s\right)+\beta_{{\scriptscriptstyle \text{A}}}s\vartheta\left(s\right)=\left(k_{{\scriptscriptstyle A}}+dk_{{\scriptscriptstyle B}}\right)\Delta\left(s\right)
+J_{{\scriptscriptstyle \text{A}}}s^{2}\Theta\left(s\right)+\beta_{{\scriptscriptstyle \text{A}}}s\Theta\left(s\right)=\left(k_{{\scriptscriptstyle A}}+dk_{{\scriptscriptstyle B}}\right)\Delta\left(s\right)
 \]
 L'uscita di interesse è proprio l'angolo di beccheggio dell'aeroplano,
 mentre l'ingresso è la posizione dell'alettone; la funzione di trasferimento
 è:
 \begin{equation}
-\vartheta\left(s\right)=\frac{k_{{\scriptscriptstyle A}}+dk_{{\scriptscriptstyle B}}}{\left(J_{{\scriptscriptstyle \text{A}}}s+\beta_{{\scriptscriptstyle \text{A}}}\right)s}\Delta\left(s\right)\label{eq:Trasferimento-3-sistema}
+\Theta\left(s\right)=\frac{k_{{\scriptscriptstyle A}}+dk_{{\scriptscriptstyle B}}}{\left(J_{{\scriptscriptstyle \text{A}}}s+\beta_{{\scriptscriptstyle \text{A}}}\right)s}\Delta\left(s\right)\label{eq:Trasferimento-3-sistema}
 \end{equation}
-Abbiamo ottenuto un sistema del secondo ordine con i poli $p_{1}=0,\,p_{2}=\beta_{{\scriptscriptstyle \text{A}}}/J_{{\scriptscriptstyle \text{A}}}$,
+Abbiamo ottenuto un sistema del secondo ordine con i poli $p_{1}=0,\,p_{2}=-\beta_{{\scriptscriptstyle \text{A}}}/J_{{\scriptscriptstyle \text{A}}}$,
 semplicemente stabile con un polo nell'origine.
 
 \begin{figure}[!h]
@@ -4311,8 +4312,9 @@ dei modi interni instabili.
 \subsection{Sistemi in parallelo}
 
 Presentano una diramazione in ingresso, che immette lo stesso valore
-in sistemi con trasferimento differente; le uscite di tali sistemi
-sono raccolte da un nodo somma; valgono le seguenti regole di elaborazione:
+in sistemi con trasferimento differente (si veda \figref{Schema-sistemi-parallelo});
+le uscite di tali sistemi sono raccolte da un nodo somma; valgono
+le seguenti regole di elaborazione:
 \[
 Y\left(s\right)=G_{1}\left(s\right)U\left(s\right)+G_{2}\left(s\right)U\left(s\right)=\left(G_{1}\left(s\right)+G_{2}\left(s\right)\right)U\left(s\right)
 \]
@@ -4337,10 +4339,11 @@ apparentemente stabile, che ha tuttavia dei modi interni instabili.
 \subsection{Sistemi in retroazione}
 
 Presentano un nodo somma che riporta l'uscita di un sistema nell'ingresso
-dell'altro, sommandola all'ingresso esterno; l'uscita del primo sistema
-è inoltre riportata in ingresso al secondo tramite una diramazione;
-a seconda del segno del nodo somma si parla di retroazione negativa
-o positiva; valgono le seguenti regole di elaborazione:
+di un'altro, sommandola all'ingresso esterno (si veda \figref{Schema-sistemi-retroazione});
+l'uscita del primo sistema è inoltre riportata in ingresso al secondo
+tramite una diramazione; a seconda del segno del nodo somma si parla
+di retroazione negativa o positiva; valgono le seguenti regole di
+elaborazione:
 \[
 \begin{cases}
 U^{\prime}\left(s\right)=U\left(s\right)-G_{2}\left(s\right)Y\left(s\right)\\
@@ -4349,7 +4352,7 @@ Y\left(s\right)=G_{1}\left(s\right)\cdot U^{\prime}=G_{1}\left(s\right)\cdot\lef
 \]
 Riscriviamo la funzione di uscita in forma fattorizzata:
 \[
-1+G_{1}\left(s\right)G_{2}\left(s\right)Y\left(s\right)=G_{1}\left(s\right)U\left(s\right)\rightarrow Y\left(s\right)=\frac{G_{1}\left(s\right)}{1\mp G_{1}\left(s\right)G_{2}\left(s\right)}U\left(s\right)
+1\mp G_{1}\left(s\right)G_{2}\left(s\right)Y\left(s\right)=G_{1}\left(s\right)U\left(s\right)\rightarrow Y\left(s\right)=\frac{G_{1}\left(s\right)}{1\mp G_{1}\left(s\right)G_{2}\left(s\right)}U\left(s\right)
 \]
 dove il $\mp$ dipende dall'opposto del segno della retroazione (nel
 nostro caso $+$ per retroazione negativa); la regola generale per
@@ -4400,7 +4403,7 @@ dei gradi dei singoli sistemi.
 \subsection{Stabilità dei sistemi in retroazione}
 
 Consideriamo un caso generale per la stabilità dei sistemi in retroazione
-(vedi \figref{Schema-sistemi-retroazione}): prendendo due sistemi
+(si veda \figref{Schema-sistemi-retroazione}): prendendo due sistemi
 con trasferimento $G_{a}\left(s\right)$ e $G_{b}\left(s\right)$
 chiusi in un anello di retroazione negativa possiamo affermare che,
 in assenza di cancellazioni tra le due funzioni, presi uscita e ingresso
@@ -9613,7 +9616,7 @@ una variabile complessa $s=\sigma+j\omega\in\mathbb{C}$; se la funzione\marginpa
 F\left(s\right)=\somme 0{+\infty}{f\left(t\right)e^{-st}}t\label{eq:Trasformata-Laplace}
 \end{equation}
 esiste per qualche valore di $s$, essa si dice \emph{trasformata
-di Laplace} di $f\left(t\right)$ e si indice come $\mathscr{L}\left[f\left(t\right)\right]=F\left(s\right)$.
+di Laplace} di $f\left(t\right)$ e si indica come $\mathscr{L}\left[f\left(t\right)\right]=F\left(s\right)$.
 \end{defn}
 La definizione appena enunciata implica che $f\left(t\right)$ sia
 almeno definita per $t\geq0$; i contributi della funzione per $t<0$
@@ -9630,7 +9633,8 @@ Sia $\overline{\sigma}>-\infty$ l'estremo inferiore delle parti reali
 $\mathscr{R}_{e}\left(s\right)$ dei valori $s$ per cui l'integrale
 (\ref{eq:Trasformata-Laplace}) converge; allora la trasformata di
 Laplace esiste in un semipiano delimitato dalla condizione $\mathscr{R}_{e}\left(s\right)>\overline{\sigma}$,
-per questo motivo $\overline{\sigma}$ si chiama ascissa di convergenza.
+per questo motivo $\overline{\sigma}$ si chiama \emph{ascissa di
+convergenza}.
 \end{defn}
 %
 \begin{defn}
@@ -9766,8 +9770,8 @@ f\left(0\right)=\lm s{+\infty}{s\cdot F\left(s\right)}.\label{eq:Teorema-valore-
 \item [{$\mathrm{\left(IX\right)}\,\text{\textsc{Teorema del valore finale}}$\noun{:}}] Se
 la trasformata è razionale nella forma (\ref{eq:Trasformata-razionale})
 e vale $n\left(N\left(s\right)\right)<n\left(D\left(s\right)\right)$,
-e inoltre per ogni suo polo $p_{i}$ vale $\mathscr{R}_{e}\left(p_{1}\right)<0$,
-allora vale:
+e inoltre per ogni suo polo $p_{i}$ si ha che $\mathscr{R}_{e}\left(p_{i}\right)<0$,
+allora si verifica:
 \begin{equation}
 \lm t{+\infty}{f\left(t\right)}=\lm s0{\,s\cdot F\left(s\right)}.\label{eq:Teorema-valore-finale}
 \end{equation}
@@ -9862,7 +9866,7 @@ $\checkmark$Calcolare la trasformata di Laplace di tale movimento.}
 Utilizziamo le proprietà di traslazione e di convoluzione per ottenere
 il seguente risultato:
 \[
-\mathscr{L}\left[f\left(t\right)\right]=\dfrac{1}{s-\alpha}\cdot\dfrac{1}{s^{2}}=\dfrac{1}{s\left(s-\alpha\right)}
+\mathscr{L}\left[f\left(t\right)\right]=\dfrac{1}{s-\alpha}\cdot\dfrac{1}{s^{2}}=\dfrac{1}{s^{2}\left(s-\alpha\right)}
 \]
 
 \emph{$\checkmark$Calcolare valore iniziale e finale del movimento
@@ -9936,9 +9940,9 @@ dato che l'antitrasformata di una costante è un impulso di ampiezza
 la costante.\bigskip{}
 
 Analizziamo come antitrasformare una funzione che abbia \textbf{poli
-distinti}; si procede scomponendo $F\left(s\right)$ in una sommatoria
-di termini semplici (con denominatore al più di secondo grado) di
-cui conosciamo l'antitrasformata e dai quali otterremo l'antitrasformata
+reali distinti}; si procede scomponendo $F\left(s\right)$ in una
+sommatoria di termini semplici (con denominatore al più di secondo
+grado) di cui conosciamo l'antitrasformata e dai quali otterremo l'antitrasformata
 complessiva per linearità.
 
 Si scrive il polinomio al denominatore nel modo seguente:
@@ -10031,7 +10035,7 @@ con il secondo e il terzo polo le radici complesse coniugate del polinomio
 $s^{2}+4s+13$. Ricaviamo ora i residuo con il (\ref{eq:Metodo-di-Heaviside}),
 tenendo conto dei poli complessi coniugati:
 \[
-F\left(s\right)=\dfrac{P_{1}}{s-p_{1}}+\dfrac{P_{2}}{s-p_{2}}+\dfrac{P_{2}^{*}}{s-p_{2}^{*}}=\dfrac{P_{1}}{s+1}+\dfrac{P_{2}}{s+2-j3}+\dfrac{P_{2}^{*}}{s+2-j3}
+F\left(s\right)=\dfrac{P_{1}}{s-p_{1}}+\dfrac{P_{2}}{s-p_{2}}+\dfrac{P_{2}^{*}}{s-p_{2}^{*}}=\dfrac{P_{1}}{s+1}+\dfrac{P_{2}}{s+2-j3}+\dfrac{P_{2}^{*}}{s+2+j3}
 \]
 Da questa scrittura applichiamo il metodo di Heaviside e otteniamo
 i residui $P_{1,2,3}$, moltiplicando a turno la trasformata per ciascun
@@ -10129,7 +10133,7 @@ delle condizioni rispetto ai residui e ai valori già noti dal numeratore:
 \[
 s+18=s^{2}\left(P_{1,1}+P_{2,1}\right)+s\left(6P_{1,1}+3P_{2,1}+P_{2,2}\right)+9P_{1}
 \]
-da cui si nota che $s^{2}=0$ dunque $P_{1,1}+P_{2,1}=0\rightarrow P_{1,1}=-P_{2,2}$
+da cui si nota che $s^{2}=0$ dunque $P_{1,1}+P_{2,1}=0\rightarrow P_{1,1}=-P_{2,1}$
 e, avendo già calcolato il valore di $P_{1.1}$, segue che $P_{2,1}=-2$.
 \end{itemize}
 %
@@ -10159,7 +10163,7 @@ come in questo caso per il secondo e terzo residuo}
 \[
 F\left(s\right)=\dfrac{100}{\left(s+1\right)\left(\left(s+2\right)^{2}+9\right)}=\dfrac{P_{1}}{s+1}+\dfrac{P_{2}s+P_{3}}{\left(s+2\right)^{2}+9}
 \]
-Nel secondo addendo abbiamo posto il denominatore pari a una combinazione
+Nel secondo addendo abbiamo posto il numeratore pari a una combinazione
 lineare di residui con grado inferiore di uno rispetto al polo associato;
 otteniamo dunque i seguenti valori dei residui:
 
@@ -10178,7 +10182,7 @@ le condizioni necessarie a calcolare $P_{2}$ e $P_{3}$:
 \]
 Osservando che nel numeratore non compare la variabile $s$, imponiamo
 che $100=13P_{1}+P_{3}$ da cui, con la conoscenza di $P_{1}=10$,
-otteniamo sostituendo nella precedente che $P_{2}=-30$.\\
+otteniamo sostituendo nella precedente che $P_{3}=-30$.\\
 Infine usiamo il coefficiente di $s^{2}$ per imporre che $P_{1}+P_{2}=0\rightarrow P_{2}=-P_{1}=-10$.
 \end{itemize}
 %

@@ -15584,9 +15584,9 @@ Per semplicità considereremo i sistemi SISO scalari; in presenza di un sistema
 \begin_layout Remark
 Prendiamo un sistema quadrato che in generale potrebbe avere molti ingressi
  e uscite; nel nostro caso scegliamo un sistema di ordine 2 (nel dominio
- di Laplace); se è di ordine due e ha due uscite, la matrice di trasferimento
- ha ordine 2, quindi possiede 4 funzioni di trasferimento (ognuna razionale
- fratta); le uscite del sistema saranno legati nel modo seguente: 
+ di Laplace); la matrice di trasferimento possiede 4 funzioni di trasferimento
+ (ognuna razionale fratta); le uscite del sistema saranno determinate nel
+ modo seguente: 
 \begin_inset Formula 
 \[
 Y\left(s\right)=\begin{bmatrix}Y_{1}\left(s\right)\\
@@ -15621,7 +15621,7 @@ noprefix "false"
 \begin_layout Standard
 Lo schema è stato ottenuto rispettando la scrittura delle equazioni di uscita,
  effettuando il prodotto righe per colonne della matrice di trasferimento
- con quella degli ingressi; infatti vale:
+ con quella degli ingressi; infatti così facendo si ha:
 \begin_inset Formula 
 \[
 \begin{cases}
@@ -15989,7 +15989,7 @@ noprefix "false"
 
 Abbiamo ottenuto un sistema del secondo ordine (denominatore di grado 2)
  con i poli 
-\begin_inset Formula $p_{1}=0,\,p_{2}=\beta/J$
+\begin_inset Formula $p_{1}=0,\,p_{2}=-\beta/J$
 \end_inset
 
 , semplicemente stabile con un polo nell'origine; intuitivamente l'uscita
@@ -16096,7 +16096,7 @@ dove le costanti
  trasformando otteniamo:
 \begin_inset Formula 
 \[
-J_{{\scriptscriptstyle \text{A}}}s^{2}\vartheta\left(s\right)+\beta_{{\scriptscriptstyle \text{A}}}s\vartheta\left(s\right)=\left(k_{{\scriptscriptstyle A}}+dk_{{\scriptscriptstyle B}}\right)\Delta\left(s\right)
+J_{{\scriptscriptstyle \text{A}}}s^{2}\Theta\left(s\right)+\beta_{{\scriptscriptstyle \text{A}}}s\Theta\left(s\right)=\left(k_{{\scriptscriptstyle A}}+dk_{{\scriptscriptstyle B}}\right)\Delta\left(s\right)
 \]
 
 \end_inset
@@ -16105,13 +16105,13 @@ L'uscita di interesse è proprio l'angolo di beccheggio dell'aeroplano, mentre
  l'ingresso è la posizione dell'alettone; la funzione di trasferimento è:
 \begin_inset Formula 
 \begin{equation}
-\vartheta\left(s\right)=\frac{k_{{\scriptscriptstyle A}}+dk_{{\scriptscriptstyle B}}}{\left(J_{{\scriptscriptstyle \text{A}}}s+\beta_{{\scriptscriptstyle \text{A}}}\right)s}\Delta\left(s\right)\label{eq:Trasferimento-3-sistema}
+\Theta\left(s\right)=\frac{k_{{\scriptscriptstyle A}}+dk_{{\scriptscriptstyle B}}}{\left(J_{{\scriptscriptstyle \text{A}}}s+\beta_{{\scriptscriptstyle \text{A}}}\right)s}\Delta\left(s\right)\label{eq:Trasferimento-3-sistema}
 \end{equation}
 
 \end_inset
 
 Abbiamo ottenuto un sistema del secondo ordine con i poli 
-\begin_inset Formula $p_{1}=0,\,p_{2}=\beta_{{\scriptscriptstyle \text{A}}}/J_{{\scriptscriptstyle \text{A}}}$
+\begin_inset Formula $p_{1}=0,\,p_{2}=-\beta_{{\scriptscriptstyle \text{A}}}/J_{{\scriptscriptstyle \text{A}}}$
 \end_inset
 
 , semplicemente stabile con un polo nell'origine.
@@ -16360,8 +16360,18 @@ Sistemi in parallelo
 
 \begin_layout Standard
 Presentano una diramazione in ingresso, che immette lo stesso valore in
- sistemi con trasferimento differente; le uscite di tali sistemi sono raccolte
- da un nodo somma; valgono le seguenti regole di elaborazione:
+ sistemi con trasferimento differente (si veda 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:Schema-sistemi-parallelo"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+); le uscite di tali sistemi sono raccolte da un nodo somma; valgono le
+ seguenti regole di elaborazione:
 \begin_inset Formula 
 \[
 Y\left(s\right)=G_{1}\left(s\right)U\left(s\right)+G_{2}\left(s\right)U\left(s\right)=\left(G_{1}\left(s\right)+G_{2}\left(s\right)\right)U\left(s\right)
@@ -16407,10 +16417,19 @@ Sistemi in retroazione
 
 \begin_layout Standard
 Presentano un nodo somma che riporta l'uscita di un sistema nell'ingresso
- dell'altro, sommandola all'ingresso esterno; l'uscita del primo sistema
- è inoltre riportata in ingresso al secondo tramite una diramazione; a seconda
- del segno del nodo somma si parla di retroazione negativa o positiva; valgono
- le seguenti regole di elaborazione:
+ di un'altro, sommandola all'ingresso esterno (si veda 
+\begin_inset CommandInset ref
+LatexCommand formatted
+reference "fig:Schema-sistemi-retroazione"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+); l'uscita del primo sistema è inoltre riportata in ingresso al secondo
+ tramite una diramazione; a seconda del segno del nodo somma si parla di
+ retroazione negativa o positiva; valgono le seguenti regole di elaborazione:
 \begin_inset Formula 
 \[
 \begin{cases}
@@ -16424,7 +16443,7 @@ Y\left(s\right)=G_{1}\left(s\right)\cdot U^{\prime}=G_{1}\left(s\right)\cdot\lef
 Riscriviamo la funzione di uscita in forma fattorizzata:
 \begin_inset Formula 
 \[
-1+G_{1}\left(s\right)G_{2}\left(s\right)Y\left(s\right)=G_{1}\left(s\right)U\left(s\right)\rightarrow Y\left(s\right)=\frac{G_{1}\left(s\right)}{1\mp G_{1}\left(s\right)G_{2}\left(s\right)}U\left(s\right)
+1\mp G_{1}\left(s\right)G_{2}\left(s\right)Y\left(s\right)=G_{1}\left(s\right)U\left(s\right)\rightarrow Y\left(s\right)=\frac{G_{1}\left(s\right)}{1\mp G_{1}\left(s\right)G_{2}\left(s\right)}U\left(s\right)
 \]
 
 \end_inset
@@ -16662,7 +16681,7 @@ Stabilità dei sistemi in retroazione
 
 \begin_layout Standard
 Consideriamo un caso generale per la stabilità dei sistemi in retroazione
- (vedi 
+ (si veda 
 \begin_inset CommandInset ref
 LatexCommand formatted
 reference "fig:Schema-sistemi-retroazione"
