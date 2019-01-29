@@ -28,7 +28,7 @@
 		\semilog{-1}{2}{-180}{90}
 
 		% Andamento asintotico
- 		\BodeGraph[asintoto]{-1:1.95}{\POArg{20}{1} + \RetArg{1}}
+ 		\BodeGraph[asintoto]{-1:1.7}{\POArg{20}{1} + \RetArg{1.8}}
 		% Andamento effettivo
 		\BodeGraph[effettivo]{-1:2}{\POArg{20}{1}}
 

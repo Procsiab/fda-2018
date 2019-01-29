@@ -4583,7 +4583,7 @@ qualsiasi segnale nel tempo continuo può essere scomposto in una sommatoria
 in generale infinita ma numerabile di cosinusoidi.
 
 Se un segnale nella forma (\ref{eq:Scomposizione-in-serie-di-Fourier})
-l'ingresso di un sistema LTI asintoticamente stabile, l'uscita si
+è l'ingresso di un sistema LTI asintoticamente stabile, l'uscita si
 scrive:
 \[
 y\left(t\right)=Y_{0}+2\serie{n=1}{\infty}{\left|Y_{n}\right|\cos\left(n\omega_{0}t+\arg\left(Y_{n}\right)\right)}
@@ -4656,7 +4656,7 @@ armonica (\ref{eq:Risposta-armonica}) è il rapporto tra lo spettro
 (\ref{eq:Trasformata-di-Fourier}) del segnale di ingresso e quello
 di uscita.
 \end{rem}
-Lo spettro di un segnale e legato alla potenza del segnale stesso:
+Lo spettro di un segnale è legato alla potenza del segnale stesso:
 per esempio, un sistema asintoticamente stabile agisce attenuando
 i modi delle componenti dello spettro alle alte frequenze.
 
@@ -4691,7 +4691,7 @@ esponenziale arrivi a una ampiezza infinita.
 I diagrammi di Bode sono strumenti grafici per valutare l'andamento
 nel tempo della funzione di risposta armonica (\ref{eq:Risposta-armonica}),
 in particolare del suo modulo e della sua fase. Entrambi presentano
-sull'ascissa la pulsazione $\omega$, definita da 0 a $+\infty$;
+sull'ascissa la pulsazione $\omega$, definita tra 0 e $+\infty$;
 per questo asse si utilizza una scala logaritmica in base 10, in modo
 che compaiano a distanza costante (decadi) potenze crescenti di 10.
 
@@ -4774,17 +4774,17 @@ Prendiamo $G_{p}\left(s\right)=1/s$ per un polo e $G_{z}\left(s\right)=s$
 per uno zero nell'origine; il modulo della risposta armonica vale,
 rispettivamente:
 \[
-\left|G_{p}\left(j\omega\right)\right|_{{\scriptscriptstyle dB}}=20\log_{10}\left(1/\left|\omega\right|\right)=-20\log_{10}\left|\omega\right|
+\left|G_{p}\left(j\omega\right)\right|_{{\scriptscriptstyle dB}}=20\log_{10}\left(1/\left|\omega\right|\right)=-20\log_{10}\left|j\omega\right|
 \]
 \[
-\left|G_{z}\left(j\omega\right)\right|_{{\scriptscriptstyle dB}}=20\log_{10}\left|\omega\right|
+\left|G_{z}\left(j\omega\right)\right|_{{\scriptscriptstyle dB}}=20\log_{10}\left|j\omega\right|
 \]
 
 \begin{minipage}[c]{0.5\textwidth}%
 Rappresentiamo sul diagramma di Bode del modulo, in corrispondenza
-di $\omega=1$, una retta che interseca l'asse delle pulsazioni in
-$\omega=1$, con coefficiente angolare che dipende, in generale, dal
-numero di poli e di zeri nell'origine (quindi dal tipo $g$):
+di $\omega=1$, una retta che interseca l'asse delle pulsazioni, con
+coefficiente angolare che dipende, in generale, dal numero di poli
+e di zeri nell'origine (quindi dal tipo $g$):
 \[
 \left.\frac{\partial}{\partial\omega}\right|_{{\scriptscriptstyle \omega=1}}=-20\cdot g\,dB/\text{dec}
 \]
@@ -4825,7 +4825,7 @@ l'alto dell'andamento delle singolarità nell'origine.\demo%
 \begin{center}
 \includegraphics[scale=0.8]{\string"Illustrazioni/5_3-2 Bode modulo polo origine esercizio\string".pdf}
 \par\end{center}
-\captionof{figure}{Diagramma del modulo per la funzione dell'esercizio}%
+\captionof{figure}{Diagramma del modulo per la funzione dell'esempio}%
 \end{minipage}\smallskip{}
 \end{example}
 \noun{$\qquad$}\textbf{\noun{Poli e zeri reali}}\\
@@ -5037,8 +5037,7 @@ di ciascuna singolarità e poi sommandoli assieme per ciascuna pulsazione
 anche se immediato, esso diventa sconveniente per funzioni con molte
 singolarità.
 
-Il\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
-\textbf{\footnotesize{}Tracciamento del diagramma del modulo}{\footnotesize{}\index{Tracciamento del diagramma del modulo@{\footnotesize{}Tracciamento del diagramma del modulo}}}}[-0.2cm] secondo approccio consiste nei seguenti passi:
+Il secondo approccio consiste nei seguenti passi:
 \begin{itemize}
 \item Assumendo $\omega\rightarrow0$, tracciamo l'andamento asintotico
 di $\mu/s^{g}$; questo è sempre possibile, dato che si può scegliere
@@ -5069,25 +5068,25 @@ $\checkmark$Tracciare il diagramma asintotico del modulo della funzione.}
 Per prima cosa isoliamo il guadagno statico generalizzato, usando
 la definizione (\ref{eq:Teorema-valore-iniziale}):
 \[
-\mu=\lm s0{s^{g}G\left(s\right)}=10=20\,dB
+\mu=\lm s0{\,s^{g}G\left(s\right)}=10=20\,dB
 \]
 Otteniamo questo risultato poiché il tipo del sistema è $g=1$ (un
 polo nell'origine); le singolarità si trovano in corrispondenza dei
 seguenti valori
 \[
-z_{1}=1,\,z_{2}=-1/10,\qquad p_{1}=0,\,p_{2,3}=\{\omega_{n}=300,\,\xi=-1/2\}
+z_{1}=1,\,z_{2}=-1/10,\qquad p_{1}=-10,\,p_{2,3}=\{\omega_{n}=300,\,\xi=-1/2\}
 \]
 Per i poli complessi coniugati $p_{2,3}$ abbiamo considerato smorzamento
 e pulsazione naturale, dato che sono gli unici valori determinanti
 sul diagramma del modulo; abbiamo ottenuto la pulsazione dal termine
 fattorizzato in forma di Bode:
 \[
-1+2s\frac{\xi}{\omega_{n}}+\frac{s^{2}}{\omega_{n}^{2}}=1-\frac{s}{300}+\frac{s^{2}}{90000}
+1+2\xi\frac{s}{\omega_{n}}+\frac{s^{2}}{\omega_{n}^{2}}=1-\frac{s}{300}+\frac{s^{2}}{90000}
 \]
 da cui si ricava direttamente $\omega_{n}=\sqrt{90000}=300$, e impostando
 $\frac{2\xi}{300}={\scriptstyle -}\frac{1}{300}$ si ottiene $2\xi=-1\rightarrow\xi=-1/2$.
 
-Indicando sull'ascissa delle pulsazioni una decade precedente ($10^{-2}$)
+Indichiamo sull'ascissa delle pulsazioni una decade precedente ($10^{-2}$)
 alla singolarità dalla pulsazione più bassa ($z_{2}\rightarrow10^{-1}$),
 e una decade successiva ($10^{3}$) alla singolarità dalla pulsazione
 più elevata ($p_{2,3}\rightarrow300$).
@@ -5106,19 +5105,20 @@ $\ocircle$ e i poli con $\times$).
 
 Usando il metodo proposto, tracciamo il profilo di una retta che passa
 per $\omega=1,\,\left.\mu\right|_{{\scriptscriptstyle dB}}=20\,\text{dB}$,
-con pendenza $-20\,\text{dB}/\text{dec}$; questa retta corrisponde
-con l'andamento asintotico del modulo fino alla prima singolarità
-($z_{2}$): dal momento che si tratta di uno zero, la pendenza cambia
-di $+20\,\text{dB}/\text{dec}$, annullandosi; lo zero successivo
-$z_{1}$, in $\omega=1$, comporta un ulteriore aumento della pendenza
-che diventa $20\,\text{dB}/\text{dec}$.
+con pendenza $-20\,\text{dB}/\text{dec}$; inoltre trasliamo la retta
+di $+20\text{dB/dec}$ per il contributo del guadagno statico. Questa
+retta corrisponde con l'andamento asintotico del modulo fino alla
+prima singolarità ($z_{2}$): dal momento che si tratta di uno zero,
+la pendenza cambia di $+20\,\text{dB}/\text{dec}$, annullandosi;
+lo zero successivo $z_{1}$, in $\omega=1$, comporta un ulteriore
+aumento della pendenza che diventa $20\,\text{dB}/\text{dec}$.
 
 Segue il polo $p_{1}$ in $\omega=10$, che abbassa di nuovo la pendenza
 di $-20\,\text{dB}/\text{dec}$, annullandola; infine i poli complessi
 coniugati $p_{2,3}$ in $\omega=300$ abbassano la pendenza di $-40\,\text{dB}/\text{dec}$;
-il modulo si azzererà alla decade successiva, in $\omega=3000$. Questo
-viene riconfermato dal fatto che il grado relativo è 2 (numeratore
-del 2° grado e denominatore del 4°).
+il modulo si azzererà entro la decade successiva, in $\omega=3000$.
+La pendenza finale viene riconfermata dal fatto che il grado relativo
+è 2 (numeratore del 2° grado e denominatore del 4°).
 
 Il diagramma effettivo differisce per gli errori di $\pm3\,\text{dB}$
 in corrispondenza della pulsazione dei poli e zeri reali ($z_{1},\,z_{2},\,p_{1}$),
@@ -5131,10 +5131,10 @@ limite di sotto-smorzamento $1/\sqrt{2}\simeq0.7$).\demo
 \subsection{Diagrammi della fase}
 
 Una generica funzione di trasferimento valutata come risposta armonica,
-essa può essere espressa nella forma (\ref{eq:Risposta-armonica});
-se essa è il risultato del prodotto di ciascuna singolarità (anch'esse
+può essere espressa nella forma (\ref{eq:Risposta-armonica}); se
+essa è il risultato del prodotto di ciascuna singolarità (anch'esse
 espresse in forma esponenziale), allora il modulo della risposata
-armonica sarà il prodotti dei moduli delle singolarità e la fase della
+armonica sarà il prodotto dei moduli delle singolarità e la fase della
 risposta armonica sarà la somma delle fasi delle singolarità.
 \begin{example}
 \emph{Sia data la seguente funzione di trasferimento:}
@@ -5268,7 +5268,7 @@ vale:
 \arg\left[G_{z}\left(j\omega\right)\right]=\arg\left(1+2j\zeta\cdot\omega/\alpha_{n}-\omega^{2}/\alpha_{n}^{2}\right)
 \]
 Se rappresentiamo sul piano complesso i numeri immaginari di cui cerchiamo
-la fase, vediamo che il segno dello smorzamento determina l segno
+la fase, vediamo che il segno dello smorzamento determina il segno
 della fase, inoltre il segno della fase di poli complessi coniugati
 sarà sempre invertito.
 
@@ -5337,9 +5337,10 @@ il contributo di fase iniziale vale
 ovvero la fase iniziale è determinata dal segno del guadagno statico
 e dal tipo del sistema.
 \item Si procede facendo tendere $\omega$ a $\infty$, visitando la pulsazione
-di ciascuna singolarità; per ogni polo o zero reale si somma $\mp90{^\circ}$
-e per ogni coppia di poli o zeri complessi coniugati si somma $\pm180{^\circ}$,
-a seconda del segno della parte reale.
+di ciascuna singolarità; per ogni polo o zero reale (negativi) si
+somma $\mp90{^\circ}$ e per ogni coppia di poli o zeri complessi
+coniugati (negativi) si somma $\mp180{^\circ}$, a seconda del segno
+della parte reale.
 \end{itemize}
 \begin{example}
 \emph{In riferimento all'Esempio \ref{exa:Esempio-bode-modulo-somma-grafici},
@@ -5403,7 +5404,7 @@ Lo sfasamento causato dal ritardo è lineare, tuttavia sul diagramma
 di Bode (dotato di scala logaritmica), esso appare come una esponenziale.
 
 Il ritardo è tanto più influente sulla risposta armonica di un sistema
-quanto più le frequenze su cui agisce sono elevate, rispetto al valore
+quanto più le frequenze su cui agisce sono basse, rispetto al valore
 del tempo di ritardo $\tau$ (per un valore molto piccolo di ritardo,
 solo frequenze elevate della risposta armonica saranno influenzate).\pagebreak{}
 
@@ -5411,10 +5412,10 @@ solo frequenze elevate della risposta armonica saranno influenzate).\pagebreak{}
 
 \subsection{Definizione}
 
-Il diagramma sul piano complesso del modulo e della fase ricavati
-dai diagrammi di Bode della risposta armonica si chiama diagramma
-polare; esso rappresenta l'andamento di $G\left(j\omega\right)$ per
-$\omega\rightarrow+\infty$, con dominio il semiasse immaginario positivo.
+Il diagramma sul piano complesso, tracciato da quelli di Bode del
+modulo e della fase della risposta armonica, si chiama \emph{diagramma
+polare}; esso rappresenta l'andamento di $G\left(j\omega\right)$
+per $\omega\rightarrow+\infty$, con $\omega\in\left(0,\,+\infty\right)$.
 La curva ottenuta è l'immagine della funzione di risposta armonica,
 in funzione della fase.
 
@@ -5465,7 +5466,7 @@ la seguente curva complessa che rappresenta il diagramma polare:
 Per $\omega\ll1$ la fase vale $0{^\circ}$ e il modulo $14\,\text{dB}\simeq5$;
 il modulo rimane entro $14\,\text{db}$ fino a che $\omega=50\,\text{rad}$;
 la fase vale $-45{^\circ}$ e il modulo decresce a $14\,\text{dB}-3\,\text{dB}\simeq5/\sqrt{2}$.
-asintoticamente il modulo tende ad annullarsi (in $-\infty\,\text{dB}$),
+Asintoticamente il modulo tende ad annullarsi (in $-\infty\,\text{dB}$),
 dunque la curva si avvicinerà all'origine con pendenza asintotica
 determinata dal valore finale della fase ($-90{^\circ}$).\demo
 \begin{example}
@@ -5477,8 +5478,8 @@ $\checkmark$Tracciare il diagramma polare della sua risposta armonica.}
 
 Notiamo la presenza di un polo nell'origine ($g=1$), e per il teorema
 del valore iniziale (\ref{eq:Teorema-valore-iniziale}) il guadagno
-statico vale $\left|\mu\right|=5=14\,\text{dB}$; le singolarità si
-trovano, in $z_{1}=-1$ e $p_{1}=-100$:
+statico vale $\left|\mu\right|=5=14\,\text{dB}$, con $\mu<0$ ($-180{^\circ}$);
+le singolarità si trovano, in $z_{1}=-1$ e $p_{1}=-100$:
 
 \begin{minipage}[c]{1\textwidth}%
 \begin{center}
@@ -5542,11 +5543,12 @@ di $-\omega$ fornito dal ritardo di tempo per $\tau=1$.
 \end{minipage}\bigskip{}
 
 Se avessimo solo il polo, la fase iniziale sarebbe $0{^\circ}$ ($\mu>0$)
-ed esso tenderebbe a $-90{^\circ}$ come un'arcotangente, con argomento
+ed essa tenderebbe a $-90{^\circ}$ come un'arcotangente, con argomento
 pari a $-45{^\circ}$ per $\omega=1$; tuttavia il ritardo somma un
 ulteriore contributo di $-1\,\text{rad}\simeq-57.3{^\circ}$, dunque
-la fase effettiva in $\omega=1$ è pari a $-102.3{^\circ}$, con andamento
-esponenziale (dovuto al contributo del ritardo).
+la fase effettiva alla decade successiva è pari a $-102.3{^\circ}$,
+con andamento esponenziale (dovuto al contributo del ritardo). Il
+diagramma polare che ne risulta è il seguente:
 
 \begin{minipage}[c]{1\textwidth}%
 \begin{center}
@@ -5567,7 +5569,7 @@ tracciarne con certezza il diagramma della fase conoscendo quello
 del modulo:
 \begin{defn}
 Chiamiamo a smorzamento minimo un sistema in cui il guadagno è positivo,
-e tutte le singolarità hanno parte reale positiva.
+e tutte le singolarità hanno parte reale \uline{negativa}.
 \end{defn}
 Analizziamo il seguente esempio per chiarire questo concetto:
 \begin{example}
@@ -5584,10 +5586,10 @@ Analizziamo il seguente esempio per chiarire questo concetto:
 stessa funzione, sapendo che il sistema è a smorzamento minimo.}
 
 Assumiamo che il guadagno sia pari a 1 (se fosse diversamente, il
-grafico del modulo avrebbe una traslazione verticale pari al guadagno);
-isoliamo i punti in cui il diagramma asintotico si spezza: essi saranno
-in corrispondenza delle singolarità (già indicate sul bordo inferiore
-del grafico).
+grafico del \mbox{modulo} avrebbe una traslazione verticale pari
+al guadagno); isoliamo i punti in cui il diagramma asintotico si spezza:
+essi saranno in corrispondenza delle singolarità (già indicate sul
+bordo inferiore del grafico).
 
 La pendenza iniziale di $-40\,\text{dB}$ denota la presenza di ben
 2 zeri nell'origine (vedi \figref{Bode-modulo-singolarit=0000E0-origine}),
@@ -5724,7 +5726,7 @@ ovvero $\omega\in\left[\underline{\omega},\,+\infty\right)$.
 \begin{example}
 \emph{Sia dato il seguente circuito, nel quale l'ingresso è la tensione
 a vuoto $u\left(t\right)$ ai capi della serie del resistore $R$
-e del condensatore $C$; l'uscita è la tensione sul resistore, $y\left(t\right)$.
+e del condensatore $C$; l'uscita è la tensione sul resistore, $x_{{\scriptscriptstyle \text{C}}}\left(t\right)$.
 $\checkmark$Scrivere la funzione di trasferimento del sistema.}
 \end{example}
 %
@@ -5816,7 +5818,7 @@ gli andamenti asintotici):
 
 \chapter{Analisi dei sistemi di controllo}
 
-Richiamiamo di problema di controllo (vedi \subsecref{Problemi-di-controllo}):
+Richiamiamo il problema di controllo (vedi \subsecref{Problemi-di-controllo}):
 abbiamo un processo, che consiste in un aspetto fisico di un oggetto
 di interesse, e un suo andamento desiderato; l'insieme di questi due
 elementi definisce il problema di controllo.
@@ -5857,7 +5859,7 @@ P^{-1}\left(y\left(t\right)\right)=u\left(t\right)
 Vorremmo allora la funzione dell'andamento desiderato espressa come
 $F^{*}\left(w\left(t\right)\right)=y\left(t\right)$ che indica il
 comportamento desiderato; allora un metodo di progettazione consiste
-nel scrivere la funzione del regolatore rispetto all'andamento desiderato:
+nello scrivere la funzione del regolatore rispetto all'andamento desiderato:
 \[
 R\left(w\left(t\right)\right)=u\left(t\right)=P^{-1}\left(F^{*}\left(w\left(t\right)\right)\right)
 \]
@@ -5882,7 +5884,7 @@ per ottenerne uno SISO.
 Dopo aver scomposto il problema di controllo in più problemi SISO,
 è possibile esprimere il processo con una funzione di trasferimento
 $G\left(s\right)$ che indica il rapporto tra uscita e ingresso; se
-il processo è asintoticamente stabile e non presenta zeri a parte
+il processo è asintoticamente stabile e non presenta zeri con parte
 reale positiva, possiamo calcolare la sua inversione come $G^{-1}\left(s\right)$
 e usarla nel regolatore per cancellare la dinamica del sistema e sostituirla
 col comportamento desiderato $F^{*}\left(s\right)$:
@@ -5926,7 +5928,7 @@ che possa essere attenuato in qualche modo.
 
 \subsection{Anello chiuso}
 
-I sistemi di controllo in anello chiuso sono caratterizzati dal\marginpar{Dato il basso costo de sensori accurati, e i vantaggi di questa architettura,
+I sistemi di controllo in anello chiuso sono caratterizzati dal\marginpar{Dato il basso costo di sensori accurati, e i vantaggi di questa architettura,
 oggi quasi tutti i sistemi di controllo sono in anello chiuso} regolatore che preleva l'informazione sull'andamento dell'uscita
 e la sfrutta per determinare l'ingresso.
 
@@ -5969,7 +5971,7 @@ sono definite in modo particolare:
 \begin{itemize}
 \item $S\left(s\right)$ è la funzione di \emph{sensitività} dell'uscita,
 che contiene l'informazione sulla sensitività dell'uscita al disturbo;
-nel progetto di sistemi di controllo si preferisce mantenere piccola
+nel progetto dei sistemi di controllo si preferisce mantenere piccola
 questa funzione.
 \item $F\left(s\right)$ è la funzione di \emph{sensitività complementare},
 dato che $F\left(s\right)+S\left(s\right)=1$; idealmente cerchiamo
@@ -6043,10 +6045,9 @@ semplificato:
 \begin{itemize}
 \item rimuoviamo\marginpar{Attenzione a non confondere il disturbo di processo $d$ (agisce sul
 valore effettivo dell'uscita) e $n$ (viene visto solo dal regolatore),
-quest'ultimo molto più critico} la funzione del trasduttore dall'anello di retroazione, poi moltiplicandola
+quest'ultimo molto più critico} la funzione del trasduttore dall'anello di retroazione, moltiplicandola
 per $R\left(s\right)$ e il suo inverso per $\tilde{w}\left(t\right)$; 
-\item accorpiamo attuatore e impianto, spostando il nodo somma a valle dell'impianto
-(al posto di $G\left(s\right)$);
+\item accorpiamo attuatore e impianto, spostando il nodo somma a valle dell'impianto;
 \item chiamiamo $n$ la variabile del disturbo di misura;
 \item ignoriamo il trasduttore, che si comporterà come un guadagno statico
 (filtro passa basso con banda passante molto più grande di qualsiasi
@@ -6136,7 +6137,7 @@ negativa e di errore di inseguimento (stiamo semplificando il modello
 ne \figref{Schema-di-riferimento-controllo}). Poniamoci nel caso
 di un sistema LTI, per il quale la stabilità è una proprietà strutturale:
 supponiamo (d'ora in avanti) che nella funzione di trasferimento non
-vi siano state cancellazioni, o al più esse sono state non critiche.
+vi siano state cancellazioni, o al più esse siano state non critiche.
 
 Sotto queste ipotesi, l'asintotica stabilità in anello chiuso si verifica
 se e solo se i poli della funzione di trasferimento ($1/\left[1+L\left(s\right)\right]$)
@@ -6186,8 +6187,8 @@ Sostituendo alla variabile $s$ nella funzione di anello i punti del
 cammino di Nyquist, si ottengono i corrispondenti punti sul diagramma
 di Nyquist; dato che il cammino è chiuso, anche il diagramma di Nyquist
 sarà sempre una curva chiusa (se si ha un tratto del diagramma aperto,
-si tracciano a partire da esso tanti semicerchi da 180° pari al numero
-di poli nell'origine).
+si tracciano a partire da esso tanti semicerchi da 180° quanti sono
+i poli nell'origine).
 \begin{rem}
 Un tratto del diagramma di Nyquist corrisponde esattamente al diagramma
 polare, in particolare il tratto immaginario positivo; in aggiunta,
@@ -6311,7 +6312,7 @@ e annullare ogni disturbo.
 Applicando tuttavia il criterio di Nyquist, notiamo che a furia di
 aumentare il guadagno (partiamo da una situazione di asintotica stabilità)
 vi sarà un valore di $k$ per cui il diagramma di Nyquist passa per
-il punto critico, rendendo il sistema instabile; per avere un aumento
+il punto critico, rendendo il sistema instabile: per avere un aumento
 di prestazioni bisogna spingere il sistema al limite della stabilità.
 
 \subsection{Condizioni sufficienti per la stabilità asintotica}
@@ -6331,10 +6332,10 @@ del sistema, e si dimostrano usando il Teorema \ref{thm:Criterio-di-Nyquist}.
 
 ~
 
-Prendiamo un sistema con ritardo di tempo $\tau>0$; nel dominio di
-Laplace esso avrà un andamento con coefficiente $e^{-\tau s}$, la
-cui corrispondente risposta armonica vale $e^{-\tau j\omega}$; il
-ritardo di fase introdotto è pari a $\arg\left(e^{-\tau j\omega}\right)=-\tau\omega$.
+Se prendiamo un sistema con ritardo di tempo $\tau>0$; nel dominio
+di Laplace esso avrà un andamento con coefficiente $e^{-\tau s}$,
+la cui corrispondente risposta armonica vale $e^{-\tau j\omega}$;
+il ritardo di fase introdotto è pari a $\arg\left(e^{-\tau j\omega}\right)=-\tau\omega$.
 
 Possiamo anche in questo caso sfruttare il criterio di Nyquist, e
 le due ipotesi appena enunciate (tenendo conto dello sfasamento dovuto
@@ -6371,10 +6372,9 @@ diagramma; il suo raggio non deve mai superare il valore di $\Delta n$.
 \subsection{Margine di guadagno}
 
 Immaginiamo di avere un diagramma di Nyquist nel quale esiste un valore
-di $\omega$ per cui la fase valga $-180{^\circ}$, ovvero $L\left(j\omega\pi\right)$,
-e indichiamo la fase di tale punto
+di $\omega$ per cui la fase valga $-180{^\circ}$, ovvero
 \begin{equation}
-\omega_{\pi}=\arg\left(L\left(j\omega_{\pi}\right)\right)\label{eq:Margine-di-guadagno}
+k_{{\scriptscriptstyle \text{m}}}=1\slash\left|L\left(j\omega_{\pi}\right)\right|,\,\arg\left(L\left(j\omega_{\pi}\right)\right)=-180{^\circ}\label{eq:Margine-di-guadagno}
 \end{equation}
 
 \begin{defn}
@@ -6382,18 +6382,17 @@ Il valore di guadagno che, moltiplicato per la funzione di trasferimento,
 fa sì che il punto $L\left(j\omega_{\pi}\right)$ si sovrapponga al
 punto critico si chiama \emph{margine di guadagno}; in generale possiamo
 indicarlo come $k_{{\scriptscriptstyle \text{m}}}=1\slash\left|L\left(j\omega_{\pi}\right)\right|$,
-che sarebbe il modulo della distanza dal punto in $\omega_{\pi}$
+che sarebbe l'inverso del modulo della distanza dal punto in $\omega_{\pi}$
 al punto critico.
 \end{defn}
-Nel caso di una funzione di trasferimento la cui fase non raggiunge
+Nel caso di una funzione di trasferimento la cui fase non raggiunga
 mai i 180°, essa avrà margine di guadagno infinito.
 
 \subsection{Margine di fase}
 
 Prendiamo una funzione di trasferimento che abbia diagramma di Nyquist
-che abbia un punto in comune con la circonferenza di raggio unitario;
-chiamiamo la pulsazione di tale punto \emph{pulsazione critica}, definita
-come:
+con un punto in comune con la circonferenza di raggio unitario; chiamiamo
+la pulsazione di tale punto \emph{pulsazione critica}, definita come:
 \begin{equation}
 \omega_{{\scriptscriptstyle \text{C}}}\coloneqq\left|L\left(j\omega_{{\scriptscriptstyle \text{C}}}\right)\right|=1\label{eq:Margine-di-fase}
 \end{equation}
@@ -6784,11 +6783,11 @@ un triangolo nel primo quadrante utilizzando l'angolo $\varphi_{m}$
 e la circonferenza di raggio unitario; avremo un triangolo isoscele
 con angoli alla base pari a $90{^\circ}-\varphi_{m}/2$.
 
-Tracciando l'altezza che cadde sull'asse reale positivo nel punto
-$h$ (vale $\sin\varphi_{m}$), otteniamo un ulteriore rettangolo
+Tracciando l'altezza che cade sull'asse reale positivo nel punto $h$
+(vale $\sin\varphi_{m}$), otteniamo un ulteriore triangolo rettangolo
 con angoli alla base $90{^\circ}$ e $90{^\circ}-\varphi_{m}/2$,
 dunque il suo angolo al vertice vale $\varphi_{m}/2$; la base del
-primo rettangolo (da 0 a 1) è suddivisa in due segmenti dall'altezza,
+primo tringolo (da 0 a 1) è suddivisa in due segmenti dall'altezza,
 nel punto $h$: il primo (da 0 a $h$) vale $\cos\varphi_{m}$.
 
 Il segmento di base (il minore) del triangolo isoscele vale:
@@ -6948,7 +6947,7 @@ del valore di regime in $5T=0.075\,\text{s}$.
 \subsection{Zeri reali positivi}
 
 In presenza di zeri a parte reale positiva nella funzione di anello,
-necessariamente la pulsazione naturale dovrà essere minore della pulsazione
+la pulsazione naturale dovrà essere necessariamente minore della pulsazione
 di tali singolarità; questo limite strutturale influenza la velocità
 di risposta del sistema.
 
@@ -6967,15 +6966,14 @@ regolatore, che altrimenti risulterebbe instabile.
 a parte reale positiva fornisce pendenza di $+20\,\text{db}/\text{dec}$,
 quindi per avere qualche attraversamento (in particolare perché esista
 $\omega_{{\scriptscriptstyle \text{C}}}$) è necessario avere almeno
-2 poli con parte reale negativa; il contributo di fase dello zero
-positivo è di $-90{^\circ}$, questo provoca un margine di fase negativo,
-comportando l'instabilità del sistema in anello chiuso.
+2 poli con parte reale negativa; invece il contributo di fase dello
+zero positivo è di $-90{^\circ}$, questo provoca un margine di fase
+negativo, comportando l'instabilità del sistema in anello chiuso.
 
 Ammettiamo un attraversamento al più in un intorno dello zero, dove
-la perdita di fase vale circa $-45{^\circ}$; in conclusione, uno
-zero con parte reale positiva impone dei limiti nel progetto del regolatore
-(bisogna evitare di cancellarlo, e il margine di fase deve rimanere
-positivo).
+la perdita di fase vale circa $-45{^\circ}$: uno zero con parte reale
+positiva impone dei limiti nel progetto del regolatore (bisogna evitare
+di cancellarlo, e il margine di fase deve rimanere positivo).
 
 \subsection{Sensitività del comando}
 
