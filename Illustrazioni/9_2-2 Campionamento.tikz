@@ -1,7 +1,7 @@
 ﻿\begin{tikzpicture} [scale=2]
 
 % Assi
-	\draw[-latex, gray] (-0.2, 0) -- (2.2, 0) node[right, black] {$t,\, k$};
+	\draw[-latex, gray] (-0.2, 0) -- (2.2, 0) node[right, black] {$k$};
 	\draw[-latex, gray] (0, -0.2) -- (0, 1.5) node[above, black] {$y(t)$};
 	\filldraw (0, 0) circle (0.5pt) node[below left] {$0$};
 

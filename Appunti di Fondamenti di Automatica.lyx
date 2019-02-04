@@ -27830,7 +27830,7 @@ noprefix "false"
 , deve essere tale che
 \begin_inset Formula 
 \[
-T_{0.1\%}=5T<10\,\text{s}\rightarrow\frac{5}{0.62\cdot\omega_{{\scriptscriptstyle \text{C}}}}<10\rightarrow\omega_{{\scriptscriptstyle \text{C}}}>\frac{0.5}{0.62}\simeq0.8\,\text{rad}/\text{s}.
+T_{0.1\%}=5T<10\,\text{s}\rightarrow\frac{5}{0.62\cdot\omega_{{\scriptscriptstyle \text{C}}}}<10\rightarrow\omega_{{\scriptscriptstyle \text{C}}}>\frac{0.5}{0.62}\simeq0.8\,\text{rad}/\text{s}
 \]
 
 \end_inset
@@ -27849,7 +27849,7 @@ In alternativa possiamo assumere che il margine di fase debba valere
 \end_inset
 
 e applicando gli stessi passaggi del punto precedente si ricava 
-\begin_inset Formula $\omega_{{\scriptscriptstyle \text{C}}}>0.5$
+\begin_inset Formula $\omega_{{\scriptscriptstyle \text{C}}}>0.5\,\text{rad}/\text{s}$
 \end_inset
 
 .
@@ -28085,13 +28085,13 @@ Questo metodo si può applicare solo se nella funzione
 assenti
 \bar default
  zeri reali positivi: in caso contrario, invertendola i suoi zeri diventano
- poli del regolatori, portando a cancellazioni critiche (e dunque all'instabilit
+ poli del regolatore, portando a cancellazioni critiche (e dunque all'instabilit
 à del regolatore!).
 \end_layout
 
 \begin_layout Standard
-Inoltre è necessario che la funzione di trasferimento desiderata sia realizzabil
-e, ovvero propria o meglio strettamente propria, quindi il suo grado relativo
+Inoltre è necessario che la funzione di anello desiderata sia realizzabile,
+ ovvero propria o meglio strettamente propria, quindi il suo grado relativo
  deve essere almeno uguale al grado di 
 \begin_inset Formula $G\left(s\right)$
 \end_inset
@@ -28155,12 +28155,12 @@ dove abbiamo usato direttamente
 \end_inset
 
  in prossimità del limite per 
-\begin_inset Formula $\omega_{{\scriptscriptstyle \text{C}}}\geq0.8$
+\begin_inset Formula $\omega_{{\scriptscriptstyle \text{C}}}\geq0.8\,\text{rad}/\text{s}$
 \end_inset
 
-, ma così facendo la pulsazione di attraversamento si abbassa troppo e il
- margine di fase in quel punto : è necessario inserire uno zero alla decade
- successiva (
+, ma così facendo la pulsazione di attraversamento e il margine di fase
+ in quel punto si abbassano troppo: è necessario inserire uno zero alla
+ decade successiva (
 \begin_inset Formula $\omega=10^{-1}$
 \end_inset
 
@@ -29110,7 +29110,7 @@ noprefix "false"
 
 \end_inset
 
-, per trovare la unzione del regolatore corrispondente:
+, per trovare la funzione del regolatore corrispondente:
 \begin_inset Formula 
 \[
 \mathscr{L}\left[u\left(t\right)\right]=U\left(s\right)=k_{{\scriptscriptstyle \text{P}}}E\left(s\right)+k_{{\scriptscriptstyle \text{I}}}\frac{E\left(s\right)}{s}+k_{{\scriptscriptstyle \text{D}}}sE\left(s\right)
@@ -29735,8 +29735,34 @@ noprefix "false"
 \end_inset
 
 Il regolatore PD può essere utilizzato quando l'impianto ha già un polo
- nell'origine, tipicamente per migliorare il margine di fase senza introdurre
- ulteriori poli nell'origine.
+ nell'
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+mbox{origine}
+\end_layout
+
+\end_inset
+
+, tipicamente per migliorare il margine di fase senza introdurre ulteriori
+ poli nell'
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+mbox{origine}
+\end_layout
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Section
@@ -30422,7 +30448,7 @@ status open
 
 
 \backslash
-captionof{figure}{Taratura per ispezione del grafico}
+captionof{figure}{Taratura per ispezione integrale}
 \end_layout
 
 \end_inset
@@ -30885,6 +30911,10 @@ G\left(s\right)=\frac{5}{s\left(s+5\right)}
 
 \end_inset
 
+
+\begin_inset Formula $\checked$
+\end_inset
+
 Tarare un regolatore PID in modo da ottenere 
 \begin_inset Formula $\left|e_{\infty}\right|=0$
 \end_inset
@@ -30897,7 +30927,7 @@ Tarare un regolatore PID in modo da ottenere
 \begin_inset Formula $T_{a,0.05}<0.3$
 \end_inset
 
-, e margine di fase 
+s, e margine di fase 
 \begin_inset Formula $\varphi_{m}>70°$
 \end_inset
 
@@ -31563,6 +31593,8 @@ dove nella sommatoria si ha lo spettro del segnale originale (
 \end_layout
 
 \begin_layout Example
+
+\emph on
 Sia dato un segnale 
 \begin_inset Formula $f\left(t\right)$
 \end_inset
@@ -31587,6 +31619,11 @@ Sia dato un segnale
 \end_inset
 
 .
+ 
+\begin_inset Formula $\checked$
+\end_inset
+
+Si ricostruisca il segnale prevenendo il fenomeno dell'aliasing.
 \end_layout
 
 \begin_layout Example
@@ -31713,10 +31750,22 @@ backgroundcolor "none"
 status open
 
 \begin_layout Plain Layout
-Per evitare il fenomeno dell'aliasing, è necessario avere una pulsazione
- di campionamento almeno doppia rispetto la massima frequenza dello spettro
- del segnale da campionare (per evitare che lo spettro si sovrapponga in
- prossimità delle 
+Per evitare il fenomeno dell'aliasing, è 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+mbox{necessario}
+\end_layout
+
+\end_inset
+
+ avere una pulsazione di campionamento almeno doppia rispetto la massima
+ frequenza dello spettro del segnale da campionare (per evitare che lo spettro
+ si sovrapponga in prossimità delle 
 \begin_inset Formula $\omega_{s}$
 \end_inset
 
@@ -31821,7 +31870,7 @@ Scegliamo sempre di dimensionare il filtro anti-aliasing e il convertitore
 
 \end_inset
 
-per verificare il teorema 
+per verificare il Teorema 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "thm:Teorema-del-campionamento"
@@ -32520,7 +32569,7 @@ noprefix "false"
 
 \end_inset
 
-, per ottenere lo spettro del segnale in uscita dal mantenitore (
+, e infine lo spettro del segnale in uscita dal mantenitore (
 \begin_inset Formula $\mathscr{F}\left[u\left(t\right)\right]$
 \end_inset
 
@@ -32938,7 +32987,7 @@ status open
 
 \begin_inset Formula 
 \begin{equation}
-\frac{T_{a,0.01}}{50}<T_{s}<\frac{T_{a,0.01}}{5}\label{eq:Vincoli-periodo-campionamento}
+\frac{T_{a,0.01}}{50}>T_{s}>\frac{T_{a,0.01}}{5}\label{eq:Vincoli-periodo-campionamento}
 \end{equation}
 
 \end_inset
@@ -33087,7 +33136,11 @@ Dato un segnale
 
 \end_inset
 
-con z variabile complessa, e la trasformata è indicata con la lettera maiuscola;
+con 
+\begin_inset Formula $z$
+\end_inset
+
+ variabile complessa, e la trasformata è indicata con la lettera maiuscola;
  in analogia con la trasformata di Laplace (si veda 
 \begin_inset CommandInset ref
 LatexCommand eqref
@@ -33109,7 +33162,7 @@ noprefix "false"
 \begin_layout Standard
 Senza entrare nei dettagli (siamo interessati solo a una specifica proprietà,
  per la discretizzazione del regolatore digitale a tempo continuo), per
- la trasformata z valgono tutte le proprietà che abbiamo introdotto sulla
+ la trasformata zeta valgono tutte le proprietà che abbiamo introdotto sulla
  trasformata di Laplace (si veda 
 \begin_inset CommandInset ref
 LatexCommand formatted
@@ -33187,8 +33240,11 @@ Osserviamo che, moltiplicare per
 \begin_inset Formula $z^{a}$
 \end_inset
 
- un segnale nel dominio della variabile z equivale a traslarlo in avanti
- (ritardarlo) di 
+ un segnale nel dominio della variabile 
+\begin_inset Formula $z$
+\end_inset
+
+ equivale a traslarlo in avanti (ritardarlo) di 
 \begin_inset Formula $a$
 \end_inset
 
@@ -33196,8 +33252,11 @@ Osserviamo che, moltiplicare per
 \begin_inset Formula $z^{-b}$
 \end_inset
 
- lo stesso segnale nel dominio di z equivale a traslarlo indietro (anticiparlo)
- di 
+ lo stesso segnale nel dominio di 
+\begin_inset Formula $z$
+\end_inset
+
+ equivale a traslarlo indietro (anticiparlo) di 
 \begin_inset Formula $b$
 \end_inset
 
@@ -33220,9 +33279,29 @@ noprefix "false"
 \end_inset
 
  per il regolatore digitale nel tempo continuo; utilizzando la trasformata
- zeta, possiamo ricavare da queste equazioni (nel dominio del tempo) la
- relazione ingresso-uscita del regolatore, quindi la funzione di trasferimento
- (nel dominio di z).
+ zeta, 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+mbox{possiamo}
+\end_layout
+
+\end_inset
+
+ ricavare da queste equazioni (nel dominio del tempo 
+\begin_inset Formula $t\in\mathbb{R}$
+\end_inset
+
+) la relazione ingresso-uscita del regolatore, quindi la funzione di trasferimen
+to (nel dominio di 
+\begin_inset Formula $z\in\mathbb{Z}$
+\end_inset
+
+).
  Applichiamo la proprietà 
 \begin_inset CommandInset ref
 LatexCommand eqref
@@ -33284,7 +33363,11 @@ U^{*}\left(z\right)=\left[C_{R}^{*}\left(zI-A_{R}^{*}\right)^{-1}B_{R}^{*}+D_{R}
 \end_inset
 
 l'espressione moltiplicata per l'errore di inseguimento è la funzione di
- trasferimento del regolatore discreto nel dominio di z:
+ trasferimento del regolatore discreto nel dominio di 
+\begin_inset Formula $z$
+\end_inset
+
+:
 \begin_inset Formula 
 \begin{equation}
 R^{*}\left(z\right)=C_{R}^{*}\left(zI-A_{R}^{*}\right)^{-1}B_{R}^{*}+D_{R}^{*}\label{eq:Trasferimento-regolatore-nel-dominio-z}
@@ -33329,10 +33412,14 @@ noprefix "false"
 \begin_inset Formula $R^{*}\left(z\right)$
 \end_inset
 
- avranno modulo della parte reale monore di 1.
+ avranno modulo della parte reale minore di 1.
  Avendo una funzione di trasferimento costruita in questo modo, nel dominio
- di z, è molto facile ricavare da essa un'equazione ricorsiva che permetta
- di calcolare il comando.
+ di 
+\begin_inset Formula $z$
+\end_inset
+
+, è molto facile ricavare da essa un'equazione ricorsiva che permetta di
+ calcolare il comando.
 \end_layout
 
 \begin_layout Standard
@@ -33356,8 +33443,11 @@ height "1pt"
 \begin_inset Newline newline
 \end_inset
 
-Funzione del regolatore discreto in z
+Funzione del regolatore discreto in 
+\emph on
+z
 \series default
+\emph default
 
 \begin_inset Index idx
 status open
@@ -33499,12 +33589,18 @@ Realizzazione del regolatore digitale
 \end_layout
 
 \begin_layout Standard
-Il vantaggio di usare la trasformata z è evidente quando si deve realizzare
- il regolatore digitale: se sappiamo calcolare la funzione di trasferimento
- nel dominio di z, riusciamo agevolmente a ricavare l'equazione ricorsiva
- del comando; non passeremo attraverso una realizzazione del regolatore
- tramite variabili di stato, ma vedremo un metodo per ottenere direttamente
- 
+Il vantaggio di usare la trasformata 
+\begin_inset Formula $z$
+\end_inset
+
+ è evidente quando si deve realizzare il regolatore digitale: se sappiamo
+ calcolare la funzione di trasferimento nel dominio di 
+\begin_inset Formula $z$
+\end_inset
+
+, riusciamo agevolmente a ricavare l'equazione ricorsiva del comando; non
+ passeremo attraverso una realizzazione del regolatore tramite variabili
+ di stato, ma vedremo un metodo per ottenere direttamente 
 \begin_inset Formula $R^{*}\left(z\right)$
 \end_inset
 
@@ -33918,7 +34014,7 @@ status open
 
 \begin_layout Plain Layout
 
-[0.5cm]
+[0.6cm]
 \end_layout
 
 \end_inset
@@ -33926,7 +34022,7 @@ status open
 
 \begin_inset Formula 
 \begin{equation}
-\somme{kT_{s}}{\left(k+1\right)T_{s}}{f\left(t\right)}t\simeq T_{s}\left[\left(1-\alpha\right)f^{*}\left(k\right)+\alpha f^{*}\left(k+1\right)\right],\;\alpha\in\left[0,\,0.5,\,1\right]\label{eq:Metodi-approssimazione-lineare}
+\somme{kT_{s}}{\left(k+1\right)T_{s}}{f\left(t\right)}t\simeq T_{s}\left[\left(1-\alpha\right)f^{*}\left(k\right)+\alpha f^{*}\left(k+1\right)\right],\;\alpha\in\left\{ 0,\,0.5,\,1\right\} \label{eq:Metodi-approssimazione-lineare}
 \end{equation}
 
 \end_inset
@@ -33979,8 +34075,11 @@ x_{R}^{*}\left(k+1\right)-x_{R}^{*}\left(k\right)=A_{R}T_{s}\left[\left(1-\alpha
 
 \end_inset
 
-Adesso applichiamo la trasformata z all'equazione, effettuando anche i raccoglim
-enti:
+Adesso applichiamo la trasformata 
+\begin_inset Formula $z$
+\end_inset
+
+ all'equazione, effettuando anche i raccoglimenti:
 \begin_inset Formula 
 \[
 \left(z-1\right)X_{R}^{*}\left(z\right)=T_{s}\left(1-\alpha+\alpha z\right)\left(A_{R}X_{R}^{*}\left(z\right)+B_{R}E^{*}\left(z\right)\right)
@@ -34042,8 +34141,11 @@ La relazione appena ottenuta corrisponde alla funzione del regolatore a
 \end_inset
 
 ; possiamo concludere che, per passare dalla funzione del regolatore a tempo
- continuo a quella a tempo discreto (nel dominio di z), useremo la seguente
- relazione:
+ continuo a quella a tempo discreto (nel dominio di 
+\begin_inset Formula $z$
+\end_inset
+
+), useremo la seguente relazione:
 \begin_inset Marginal
 status open
 
@@ -34421,7 +34523,7 @@ Poniamoci sul piano complesso, nel dominio della variabile
 \end_inset
 
 : la regione di asintotica stabilità a tempo continuo è il semipiano sinistro,
- dove compariranno i poli a parte reale negativa; per il dominio di 
+ dove si trovano i poli a parte reale negativa; nel dominio di 
 \begin_inset Formula $z$
 \end_inset
 

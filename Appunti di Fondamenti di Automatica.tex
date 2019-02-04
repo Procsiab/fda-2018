@@ -7146,12 +7146,12 @@ $\varphi_{m}\geq62{^\circ}$.\\
 La costante di tempo, da (\ref{eq:Sovraelongazione-e-costante-tempo-rispetto-smorzamento}),
 deve essere tale che
 \[
-T_{0.1\%}=5T<10\,\text{s}\rightarrow\frac{5}{0.62\cdot\omega_{{\scriptscriptstyle \text{C}}}}<10\rightarrow\omega_{{\scriptscriptstyle \text{C}}}>\frac{0.5}{0.62}\simeq0.8\,\text{rad}/\text{s}.
+T_{0.1\%}=5T<10\,\text{s}\rightarrow\frac{5}{0.62\cdot\omega_{{\scriptscriptstyle \text{C}}}}<10\rightarrow\omega_{{\scriptscriptstyle \text{C}}}>\frac{0.5}{0.62}\simeq0.8\,\text{rad}/\text{s}
 \]
 \item In alternativa possiamo assumere che il margine di fase debba valere
 $\varphi_{m}>65{^\circ}$, e il sistema si comporterà come se avesse
 polo dominante reale: in queste condizioni $T=1/\omega_{{\scriptscriptstyle \text{C}}},$e
-applicando gli stessi passaggi del punto precedente si ricava $\omega_{{\scriptscriptstyle \text{C}}}>0.5$.
+applicando gli stessi passaggi del punto precedente si ricava $\omega_{{\scriptscriptstyle \text{C}}}>0.5\,\text{rad}/\text{s}$.
 \end{enumerate}
 \end{enumerate}
 I vincoli così ottenuti possono essere tracciati sul diagramma di
@@ -7203,12 +7203,12 @@ R\left(s\right)=L^{*}\left(s\right)/G\left(s\right)\label{eq:Regolatore-con-inve
 
 Questo metodo si può applicare solo se nella funzione $G\left(s\right)$
 sono \uline{assenti} zeri reali positivi: in caso contrario, invertendola
-i suoi zeri diventano poli del regolatori, portando a cancellazioni
+i suoi zeri diventano poli del regolatore, portando a cancellazioni
 critiche (e dunque all'instabilità del regolatore!).
 
-Inoltre è necessario che la funzione di trasferimento desiderata sia
-realizzabile, ovvero propria o meglio strettamente propria, quindi
-il suo grado relativo deve essere almeno uguale al grado di $G\left(s\right)$.
+Inoltre è necessario che la funzione di anello desiderata sia realizzabile,
+ovvero propria o meglio strettamente propria, quindi il suo grado
+relativo deve essere almeno uguale al grado di $G\left(s\right)$.
 \begin{example}
 \emph{\label{exa:Regolatore-Cruise-control}Facendo riferimento al
 sistema nell'Esempio \ref{exa:Cruise-control}, $\checked$si progetti
@@ -7225,9 +7225,9 @@ L^{*}\left(s\right)=\frac{10}{s}\cdot\frac{\left(1+s/0.1\right)}{\left(1+s/0.01\
 \]
 dove abbiamo usato direttamente $\mu=10$ per soddisfare il requisito
 sul guadagno statico; poi inseriamo un polo in $\omega=10^{-2}$ per
-attraversare l'asse $0\,\text{dB}$ in prossimità del limite per $\omega_{{\scriptscriptstyle \text{C}}}\geq0.8$,
-ma così facendo la pulsazione di attraversamento si abbassa troppo
-e il margine di fase in quel punto : è necessario inserire uno zero
+attraversare l'asse $0\,\text{dB}$ in prossimità del limite per $\omega_{{\scriptscriptstyle \text{C}}}\geq0.8\,\text{rad}/\text{s}$,
+ma così facendo la pulsazione di attraversamento e il margine di fase
+in quel punto si abbassano troppo: è necessario inserire uno zero
 alla decade successiva ($\omega=10^{-1}$) per ottenere infine un
 attraversamento in prossimità di $\omega=1$.
 
@@ -7454,7 +7454,7 @@ u\left(t\right)=k_{{\scriptscriptstyle \text{P}}}\cdot e\left(t\right)+k_{{\scri
 
 Utilizzando la trasformazione nel domini di Laplace, studiamo un segnale
 di risposta dello stesso tipo di (\ref{eq:Somma-contributi-PID}),
-per trovare la unzione del regolatore corrispondente:
+per trovare la funzione del regolatore corrispondente:
 \[
 \mathscr{L}\left[u\left(t\right)\right]=U\left(s\right)=k_{{\scriptscriptstyle \text{P}}}E\left(s\right)+k_{{\scriptscriptstyle \text{I}}}\frac{E\left(s\right)}{s}+k_{{\scriptscriptstyle \text{D}}}sE\left(s\right)
 \]
@@ -7587,8 +7587,8 @@ sul margine di fase).%
 
 \medskip{}
 Il regolatore PD può essere utilizzato quando l'impianto ha già un
-polo nell'origine, tipicamente per migliorare il margine di fase senza
-introdurre ulteriori poli nell'origine.
+polo nell'\mbox{origine}, tipicamente per migliorare il margine di
+fase senza introdurre ulteriori poli nell'\mbox{origine}.
 
 \section{Aspetti realizzativi}
 
@@ -7793,7 +7793,7 @@ l'ampiezza dello scalino iniettato ($y_{\infty}/A$,).
 \begin{center}
 \includegraphics{\string"Illustrazioni/8_3-1 Taratura per ispezione del grafico\string".pdf}
 \par\end{center}
-\captionof{figure}{Taratura per ispezione del grafico}\label{fig:Taratura-ispezione-grafico}%
+\captionof{figure}{Taratura per ispezione integrale}\label{fig:Taratura-ispezione-grafico}%
 \end{minipage}%
 \begin{minipage}[c]{0.5\textwidth}%
 \begin{center}
@@ -7858,9 +7858,9 @@ Vediamo un esempio di applicazione dei metodi di taratura appena introdotti.
 \[
 G\left(s\right)=\frac{5}{s\left(s+5\right)}
 \]
-Tarare un regolatore PID in modo da ottenere $\left|e_{\infty}\right|=0$
+$\checked$Tarare un regolatore PID in modo da ottenere $\left|e_{\infty}\right|=0$
 con riferimento $w\left(t\right)=\text{sca}\left(t\right)$, tempo
-di assestamento della risposta $T_{a,0.05}<0.3$, e margine di fase
+di assestamento della risposta $T_{a,0.05}<0.3$s, e margine di fase
 $\varphi_{m}>70{^\circ}$.}
 
 In questo caso dobbiamo tenere a mente le limitazioni che un regolatore
@@ -8053,11 +8053,13 @@ ripetuto e traslato (nella frequenza) di multipli interi della pulsazione
 di campionamento; questo è lo spettro del segnale campionato. Vediamo
 un esempio grafico per comprendere questa relazione.
 \begin{example}
-Sia dato un segnale $f\left(t\right)$ limitato in banda, la cui trasformata
-di Fourier è un numero complesso, il cui modulo ha pulsazione $\omega\in\left[\omega_{{\scriptscriptstyle \text{MIN}}},\,\omega_{{\scriptscriptstyle \text{MAX}}}\right]$.
+\emph{Sia dato un segnale $f\left(t\right)$ limitato in banda, la
+cui trasformata di Fourier è un numero complesso, il cui modulo ha
+pulsazione $\omega\in\left[\omega_{{\scriptscriptstyle \text{MIN}}},\,\omega_{{\scriptscriptstyle \text{MAX}}}\right]$.
 Se $\omega_{s}$ è in prossimità della banda del segnale $f\left(t\right)$,
 i termini dello spettro del segnale campionato si sovrappongono tra
-loro attorno ai multipli di $\omega_{s}$.
+loro attorno ai multipli di $\omega_{s}$. $\checked$Si ricostruisca
+il segnale prevenendo il fenomeno dell'aliasing.}
 
 Per la relazione (\ref{eq:Spettro-segnale-campionato-rispetto-originale}),
 dovremo sommare tutti questi termini (spettri tratteggiati, nella
@@ -8073,11 +8075,11 @@ originale (fenomeno chiamato \emph{aliasing}).\demo
 \captionof{figure}{Aliasing dello spettro}\label{fig:Aliasing}%
 \end{minipage}%
 \begin{minipage}[c]{0.5\textwidth}%
-Per evitare il fenomeno dell'aliasing, è necessario avere una pulsazione
-di campionamento almeno doppia rispetto la massima frequenza dello
-spettro del segnale da campionare (per evitare che lo spettro si sovrapponga
-in prossimità delle $\omega_{s}$); questa considerazione è riassunta
-nel seguente teorema del campionamento.%
+Per evitare il fenomeno dell'aliasing, è \mbox{necessario} avere
+una pulsazione di campionamento almeno doppia rispetto la massima
+frequenza dello spettro del segnale da campionare (per evitare che
+lo spettro si sovrapponga in prossimità delle $\omega_{s}$); questa
+considerazione è riassunta nel seguente teorema del campionamento.%
 \end{minipage}
 \begin{thm}
 \label{thm:Teorema-del-campionamento}Se\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
@@ -8099,7 +8101,7 @@ A/D in modo da avere
 \[
 \omega_{f}>\omega_{{\scriptscriptstyle \text{MAX}}}\land\omega_{s}>2\omega_{f}
 \]
-per verificare il teorema \ref{thm:Teorema-del-campionamento} e filtrare
+per verificare il Teorema \ref{thm:Teorema-del-campionamento} e filtrare
 le frequenze troppo alte dello spettro del segnale.
 
 \section{Mantenitore (D/A)}
@@ -8263,7 +8265,7 @@ di Fourier vale (usando l'equazione (\ref{eq:Spettro-segnale-campionato-rispetto
 Moltiplichiamo ora lo spettro del segnale entrante nel mantenitore
 ($\mathscr{F}\left[u^{*}\left(k\right)\right]$) per la funzione di
 risposta armonica (\ref{eq:Risposta-mantenitore-bassa-frequenza}),
-per ottenere lo spettro del segnale in uscita dal mantenitore ($\mathscr{F}\left[u\left(t\right)\right]$):
+e infine lo spettro del segnale in uscita dal mantenitore ($\mathscr{F}\left[u\left(t\right)\right]$):
 \[
 \mathscr{F}\left[u\left(t\right)\right]=\frac{1}{\cancel{T_{s}}}U\left(j\omega\right)\cdot e^{-j\omega T_{s}/2}\cancel{T_{s}}
 \]
@@ -8356,7 +8358,7 @@ dove se $\alpha=2\pi$, la precedente relazione diventa (invertendo
 per esplicitare $T_{s}$):\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
 \textbf{\footnotesize{}Vincoli sul periodo di campionamento}{\footnotesize{}\index{Mantenitore, vincoli sul periodo di campionamento@{\footnotesize{}Mantenitore, vincoli sul periodo di campionamento}}}}[0.2cm]
 \begin{equation}
-\frac{T_{a,0.01}}{50}<T_{s}<\frac{T_{a,0.01}}{5}\label{eq:Vincoli-periodo-campionamento}
+\frac{T_{a,0.01}}{50}>T_{s}>\frac{T_{a,0.01}}{5}\label{eq:Vincoli-periodo-campionamento}
 \end{equation}
 In pratica, in un transitorio di risposta a uno scalino, vogliamo
 acquisire dai 5 ai 50 campioni per rispettare la specifica sul tempo
@@ -8412,15 +8414,15 @@ Dato un segnale $f^{*}\left(k\right),\,k\in\mathbb{Z}$, la sua trasformata
 \[
 \mathcal{Z}\left[f^{*}\left(k\right)\right]=F^{*}\left(z\right)\coloneqq\serie{k=0}{+\infty}{f^{*}\left(k\right)z^{-k}}
 \]
-con z variabile complessa, e la trasformata è indicata con la lettera
+con $z$ variabile complessa, e la trasformata è indicata con la lettera
 maiuscola; in analogia con la trasformata di Laplace (si veda (\ref{eq:Trasformata-Laplace})),
 abbiamo una sommatoria (invece dell'integrale) e moltiplichiamo il
 segnale iniziale per $z^{.k}$ (invece di moltiplicare per l'esponenziale).
 
 Senza entrare nei dettagli (siamo interessati solo a una specifica
 proprietà, per la discretizzazione del regolatore digitale a tempo
-continuo), per la trasformata z valgono tutte le proprietà che abbiamo
-introdotto sulla trasformata di Laplace (si veda \chapref{Trasformata-di-Laplace}),
+continuo), per la trasformata zeta valgono tutte le proprietà che
+abbiamo introdotto sulla trasformata di Laplace (si veda \chapref{Trasformata-di-Laplace}),
 infatti è un operatore lineare, è invertibile e soprattutto vale la
 seguente proprietà (analoga alla derivazione in Laplace):\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
 \textbf{\footnotesize{}Ritardo e Anticipo nella trasformata z}{\footnotesize{}\index{Trasformata z, ritardo e anticipo@{\footnotesize{}Trasformata z, ritardo e anticipo}}}}[0.4cm]
@@ -8432,18 +8434,19 @@ seguente proprietà (analoga alla derivazione in Laplace):\marginpar{\rule[0.5ex]
 \end{array}\label{eq:Trasformata-z-ritardo-e-anticipo}
 \end{equation}
 Osserviamo che, moltiplicare per $z^{a}$ un segnale nel dominio della
-variabile z equivale a traslarlo in avanti (ritardarlo) di $a$ passi
-nel tempo discreto, e moltiplicare per $z^{-b}$ lo stesso segnale
-nel dominio di z equivale a traslarlo indietro (anticiparlo) di $b$
-passi nel tempo discreto.
+variabile $z$ equivale a traslarlo in avanti (ritardarlo) di $a$
+passi nel tempo discreto, e moltiplicare per $z^{-b}$ lo stesso segnale
+nel dominio di $z$ equivale a traslarlo indietro (anticiparlo) di
+$b$ passi nel tempo discreto.
 
 \subsection{Trasferimento del regolatore digitale}
 
 Riprendiamo le equazioni (\ref{eq:Modello-discreto-regolatore-digitale})
 per il regolatore digitale nel tempo continuo; utilizzando la trasformata
-zeta, possiamo ricavare da queste equazioni (nel dominio del tempo)
-la relazione ingresso-uscita del regolatore, quindi la funzione di
-trasferimento (nel dominio di z). Applichiamo la proprietà (\ref{eq:Trasformata-z-ritardo-e-anticipo})
+zeta, \mbox{possiamo} ricavare da queste equazioni (nel dominio del
+tempo $t\in\mathbb{R}$) la relazione ingresso-uscita del regolatore,
+quindi la funzione di trasferimento (nel dominio di $z\in\mathbb{Z}$).
+Applichiamo la proprietà (\ref{eq:Trasformata-z-ritardo-e-anticipo})
 effettuando la trasformata zeta delle equazioni (\ref{eq:Modello-discreto-regolatore-digitale}):
 \[
 \begin{cases}
@@ -8465,7 +8468,7 @@ di uscita:
 U^{*}\left(z\right)=\left[C_{R}^{*}\left(zI-A_{R}^{*}\right)^{-1}B_{R}^{*}+D_{R}^{*}\right]E^{*}\left(z\right)
 \]
 l'espressione moltiplicata per l'errore di inseguimento è la funzione
-di trasferimento del regolatore discreto nel dominio di z:
+di trasferimento del regolatore discreto nel dominio di $z$:
 \begin{equation}
 R^{*}\left(z\right)=C_{R}^{*}\left(zI-A_{R}^{*}\right)^{-1}B_{R}^{*}+D_{R}^{*}\label{eq:Trasferimento-regolatore-nel-dominio-z}
 \end{equation}
@@ -8479,13 +8482,13 @@ Inoltre l'inversione $\left(zI-A_{R}^{*}\right)^{-1}$ comporta la
 divisione per il suo determinante e, trattandosi del polinomio caratteristico
 (\ref{eq:Polinomio-caratteristico}), se il regolatore è asintoticamente
 stabile, tutte le radici al denominatore di $R^{*}\left(z\right)$
-avranno modulo della parte reale monore di 1. Avendo una funzione
-di trasferimento costruita in questo modo, nel dominio di z, è molto
-facile ricavare da essa un'equazione ricorsiva che permetta di calcolare
-il comando.
+avranno modulo della parte reale minore di 1. Avendo una funzione
+di trasferimento costruita in questo modo, nel dominio di $z$, è
+molto facile ricavare da essa un'equazione ricorsiva che permetta
+di calcolare il comando.
 
 In generale la funzione del regolatore avrà una forma del tipo:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
-\textbf{\footnotesize{}Funzione del regolatore discreto in z}{\footnotesize{}\index{Regolatore discreto, trasferimento in z@{\footnotesize{}Regolatore discreto, trasferimento in z}}}}[0.1cm]
+\textbf{\footnotesize{}Funzione del regolatore discreto in }\textbf{\emph{\footnotesize{}z}}{\footnotesize{}\index{Regolatore discreto, trasferimento in z@{\footnotesize{}Regolatore discreto, trasferimento in z}}}}[0.1cm]
 \begin{equation}
 R^{*}\left(z\right)=\frac{\beta_{m}z^{m}+\beta_{m-1}z^{m-1}+\ldots+\beta_{0}}{\alpha_{n}z^{n}+\alpha_{n-1}z^{n-1}+\ldots+\alpha_{0}}=\frac{U^{*}\left(z\right)}{E^{*}\left(z\right)}\label{eq:Regolatore-in-z-rispetto-errore-e-comando}
 \end{equation}
@@ -8525,12 +8528,12 @@ u^{*}\left(k\right)=0.5u^{*}\left(k-1\right)+e^{*}\left(k\right)+5e^{*}\left(k-1
 
 \subsection{Realizzazione del regolatore digitale}
 
-Il vantaggio di usare la trasformata z è evidente quando si deve realizzare
-il regolatore digitale: se sappiamo calcolare la funzione di trasferimento
-nel dominio di z, riusciamo agevolmente a ricavare l'equazione ricorsiva
-del comando; non passeremo attraverso una realizzazione del regolatore
-tramite variabili di stato, ma vedremo un metodo per ottenere direttamente
-$R^{*}\left(z\right)$.
+Il vantaggio di usare la trasformata $z$ è evidente quando si deve
+realizzare il regolatore digitale: se sappiamo calcolare la funzione
+di trasferimento nel dominio di $z$, riusciamo agevolmente a ricavare
+l'equazione ricorsiva del comando; non passeremo attraverso una realizzazione
+del regolatore tramite variabili di stato, ma vedremo un metodo per
+ottenere direttamente $R^{*}\left(z\right)$.
 
 Torniamo nel dominio del tempo e partiamo dal regolatore a tempo continuo
 scritto rispetto alle sue variabili di stato:
@@ -8603,9 +8606,9 @@ tipo; in generale abbiamo tre metodi di approssimazione a disposizione:\textbf{\
 
 I metodi di approssimazione proposti in figura \ref{fig:Metodi-approssimazione-lineare-integrale}
 possono essere riassunti nella seguente formula:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
-\textbf{\footnotesize{}Approssimazione lineare per l'integrale}{\footnotesize{}\index{Approssimazione per l'integrale@{\footnotesize{}Approssimazione per l'integrale}}}}[0.5cm]
+\textbf{\footnotesize{}Approssimazione lineare per l'integrale}{\footnotesize{}\index{Approssimazione per l'integrale@{\footnotesize{}Approssimazione per l'integrale}}}}[0.6cm]
 \begin{equation}
-\somme{kT_{s}}{\left(k+1\right)T_{s}}{f\left(t\right)}t\simeq T_{s}\left[\left(1-\alpha\right)f^{*}\left(k\right)+\alpha f^{*}\left(k+1\right)\right],\;\alpha\in\left[0,\,0.5,\,1\right]\label{eq:Metodi-approssimazione-lineare}
+\somme{kT_{s}}{\left(k+1\right)T_{s}}{f\left(t\right)}t\simeq T_{s}\left[\left(1-\alpha\right)f^{*}\left(k\right)+\alpha f^{*}\left(k+1\right)\right],\;\alpha\in\left\{ 0,\,0.5,\,1\right\} \label{eq:Metodi-approssimazione-lineare}
 \end{equation}
 nella precedente abbiamo Eulero in avanti per $\alpha=0$, Eulero
 all'indietro per $\alpha=1$ e il metodo di Tustin per $\alpha=0.5$.
@@ -8624,8 +8627,8 @@ x_{R}^{*}\left(k+1\right)-x_{R}^{*}\left(k\right)=A_{R}T_{s}\left[\left(1-\alpha
 \[
 +B_{R}T_{s}\left[\left(1-\alpha\right)e^{*}\left(k\right)+\alpha e^{*}\left(k+1\right)\right]
 \]
-Adesso applichiamo la trasformata z all'equazione, effettuando anche
-i raccoglimenti:
+Adesso applichiamo la trasformata $z$ all'equazione, effettuando
+anche i raccoglimenti:
 \[
 \left(z-1\right)X_{R}^{*}\left(z\right)=T_{s}\left(1-\alpha+\alpha z\right)\left(A_{R}X_{R}^{*}\left(z\right)+B_{R}E^{*}\left(z\right)\right)
 \]
@@ -8652,8 +8655,8 @@ U^{*}\left(z\right)=C_{R}\left[\biggl(\frac{1}{T_{s}}\cdot\frac{z-1}{\left(1-\al
 La relazione appena ottenuta corrisponde alla funzione del regolatore
 a tempo continuo, valutata per $s=\frac{1}{T_{s}}\cdot\frac{z-1}{\left(1-\alpha+\alpha z\right)}$;
 possiamo concludere che, per passare dalla funzione del regolatore
-a tempo continuo a quella a tempo discreto (nel dominio di z), useremo
-la seguente relazione:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
+a tempo continuo a quella a tempo discreto (nel dominio di $z$),
+useremo la seguente relazione:\marginpar{\rule[0.5ex]{3cm}{1pt}\textbf{\footnotesize{}}\protect \\
 \textbf{\footnotesize{}Relazione tra regolatore continuo e discreto}{\footnotesize{}\index{Regolatore discreto, relazione con regolatore continuo@{\footnotesize{}Regolatore discreto, relazione con regolatore continuo}}}}[0.2cm]
 \begin{equation}
 R\left(\frac{1}{T_{s}}\cdot\frac{z-1}{\left(1-\alpha+\alpha z\right)}\right)\simeq R^{*}\left(z\right)\label{eq:Relazione-regolatore-continuo-con-discreto}
@@ -8725,8 +8728,8 @@ u^{*}\left(k\right)=-u^{*}\left(k-1\right)+200e^{*}\left(k\right)-180e^{*}\left(
 
 Poniamoci sul piano complesso, nel dominio della variabile $s$: la
 regione di asintotica stabilità a tempo continuo è il semipiano sinistro,
-dove compariranno i poli a parte reale negativa; per il dominio di
-$z$ possiamo avere i seguenti casi, a seconda del metodo di approssimazione
+dove si trovano i poli a parte reale negativa; nel dominio di $z$
+possiamo avere i seguenti casi, a seconda del metodo di approssimazione
 adottato nella discretizzazione; infatti non è detto che un polo a
 parte reale negativa abbia in $z$ una immagine nella regione di asintotica
 stabilità (circonferenza di raggio unitario):
